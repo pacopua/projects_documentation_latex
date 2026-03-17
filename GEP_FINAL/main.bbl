@@ -1,0 +1,50 @@
+\begin{thebibliography}{1}
+
+\bibitem{agentskills_home}
+{AgentSkills}.
+\newblock {AgentSkills} documentation.
+\newblock \url{https://agentskills.io/home}, 2026.
+
+\bibitem{buildermethods_agent_os}
+{Builder Methods}.
+\newblock buildermethods/agent-os.
+\newblock \url{https://github.com/buildermethods/agent-os}, 2025.
+
+\bibitem{cursor_ai}
+{Cursor}.
+\newblock Cursor: The best way to code with {AI}.
+\newblock \url{https://cursor.com}, 2026.
+
+\bibitem{modul2_1}
+{Departament d’Organitzaciód’Empreses (FIB)}.
+\newblock Mòdul 2.1.b - gestión ágil de proyectos.
+
+\bibitem{github_spec_kit}
+{GitHub}.
+\newblock github/spec-kit repository.
+\newblock \url{https://github.com/github/spec-kit}, 2025.
+
+\bibitem{github_copilot_docs}
+{GitHub}.
+\newblock {GitHub} copilot documentation.
+\newblock \url{https://docs-internal.github.com/en/copilot}, 2026.
+
+\bibitem{jama_requirements}
+{Jama Software}.
+\newblock What is requirements gathering in software engineering?
+\newblock
+  \url{https://www.jamasoftware.com/requirements-management-guide/requirements-gathering-and-management-processes/what-is-requirements-gathering/},
+  2026.
+
+\bibitem{vscode_agents}
+{Microsoft}.
+\newblock Using agents in visual studio code.
+\newblock \url{https://code.visualstudio.com/docs/copilot/agents/overview},
+  2026.
+
+\bibitem{ostroff_agile_2004}
+Jonathan Ostroff, David Makalsky, and Richard Paige.
+\newblock Agile specification-driven development.
+\newblock In {\em Extreme Programming and Agile Methods}, 2004.
+
+\end{thebibliography}
