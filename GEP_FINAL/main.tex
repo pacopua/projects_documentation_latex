@@ -388,6 +388,29 @@ A continuación, se presenta una tabla resumen con la información clave de cada
 \end{tabularx}
 \vspace{0.5cm}
 
+\subsubsection{Desglose de horas por rol}
+Dado que el autor asume distintos roles a lo largo del proyecto (tal y como se detalla en la sección de Gestión Económica), la siguiente tabla resume cómo se distribuyen las aproximadamente 540 horas totales entre cada uno de ellos:
+
+\vspace{0.3cm}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\textbf{Rol} & \textbf{Horas estimadas} & \textbf{Tareas principales} \\
+\hline
+Jefe del Proyecto & $\sim$77h & - \textbf{GP} (25\%), \textbf{TP2}, \textbf{DA3} (análisis de errores) \\
+\hline
+Investigador / Documentador & $\sim$190h & \textbf{GP} (75\%), \textbf{TP1}, \textbf{DA2} (investigación), \textbf{DA4} (IR), \textbf{GP6} \\
+\hline
+Programador Junior & $\sim$210h & \textbf{DA1}, \textbf{DA2} (desarrollo), \textbf{DA3} (implementación), \textbf{DA4} (integración) \\
+\hline
+Tester & $\sim$60h & \textbf{PV1}, \textbf{PV2} \\
+\hline
+\hline
+\textbf{Total} & \textbf{$\sim$537h} & \\
+\hline
+\end{tabularx}
+\vspace{0.4cm}
+
 \subsection{Diagrama de Gantt}
 En la siguiente página se muestra el diagrama de gantt resultante de la planifiación de las tareas anteriores.
 \begin{landscape}
@@ -404,9 +427,10 @@ En la siguiente página se muestra el diagrama de gantt resultante de la planifi
 Durante la planificación y ejecución de este proyecto, se han identificado diversos obstáculos potenciales inherentes al desarrollo con IA. A continuación, se detallan estos riesgos junto con sus respectivos planes alternativos, tal y como dictan las buenas prácticas de gestión ágil de proyectos.
 
 \begin{itemize}
-    \item \textbf{Riesgo 1: Cambios repentinos en los requerimientos por parte de la empresa} 
+    \item \textbf{Riesgo 1: Cambios repentinos en los requerimientos por parte de la empresa}
     \begin{itemize}
         \item \textbf{Probabilidad:} Media / Alta
+        \item \textbf{Tareas afectadas:} Principalmente las fases de Desarrollo Ágil (\textbf{DA1--DA4}), ya que un cambio de requerimientos puede invalidar trabajo ya implementado en cualquier \textit{Sprint}. También se ve afectada la tarea \textbf{GP5} (Reuniones de Seguimiento), que deberá absorber sesiones extraordinarias de re-planificación, y potencialmente \textbf{PV} si los cambios implican redefinir los criterios de validación.
         \item \textbf{Tareas alternativas (Plan B):} Re-evaluación del \textit{Sprint Backlog} actual, congelación del código afectado y re-planificación de los objetivos en una reunión extraordinaria para el siguiente \textit{Sprint}.
         \item \textbf{Afectación a la duración total:} Retraso estimado de 15 horas sobre la planificación original, absorbible en la fase de pruebas (PV).
         \item \textbf{Recursos adicionales necesarios:} Horas extra del autor y disponibilidad del Director del proyecto para una sesión de rediseño.
@@ -417,6 +441,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
     \item \textbf{Riesgo 2: Bloqueo tecnológico (Vendor Lock-in) por cambio de precios o políticas en las APIs de los LLMs}
     \begin{itemize}
         \item \textbf{Probabilidad:} Media
+        \item \textbf{Tareas afectadas:} El impacto recae principalmente sobre \textbf{DA3} (Habilidades e Integración MCP), donde se construyen los módulos de conexión con las APIs, y sobre \textbf{DA4} (Recuperación de Información y Refinamiento), que depende de integraciones avanzadas con proveedores externos. En menor medida, también puede afectar a \textbf{DA1} si el agente base necesita ser reconectado a un proveedor distinto.
         \item \textbf{Tareas alternativas (Plan B):} Migración del motor cognitivo del sistema hacia modelos \textit{Open Source} (ej. LLaMA o Mistral) ejecutados en local o a través de proveedores alternativos, modificando el módulo de conexión (\textit{wrapper}).
         \item \textbf{Afectación a la duración total:} Aumento de 20 horas en la fase de Integración MCP (DA3).
         \item \textbf{Recursos adicionales necesarios:} Tiempo extra de desarrollo y posible necesidad de hardware local con mayor capacidad de procesamiento (GPU) temporal.
@@ -427,9 +452,43 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 \item \textbf{Riesgo 3: Documentación interna insuficiente para la generación autónoma de código estructurado}
     \begin{itemize}
         \item \textbf{Probabilidad:} Media
+        \item \textbf{Tareas afectadas:} Afecta directamente a \textbf{DA1} (implementación del agente Developer, cuya capacidad de escritura se reduciría), \textbf{DA2} (las métricas de evaluación perderían parte de su utilidad si el agente no genera código autónomamente) y \textbf{PV2} (el bucle completo \textit{Human in the Loop} requeriría una mayor intervención manual del autor, alterando la naturaleza de la validación).
         \item \textbf{Tareas alternativas (Plan B):} Reducción del alcance del sistema (\textit{scope downgrade}). Se limitarán las capacidades de escritura del agente \textit{Developer}. El desarrollador humano (usuario) asumirá la implementación directa del código base, mientras que los agentes (\textit{Architect} y \textit{Reviewer}) se reorientarán exclusivamente a tareas de lectura: documentar, auditar la estructura y comprobar la calidad del código manual contra la especificación original.
         \item \textbf{Afectación a la duración total:} Impacto temporal neutro. Las horas ahorradas en el desarrollo de \textit{skills} complejas de escritura para los agentes se reinvertirán en la codificación manual por parte del autor durante el bucle de pruebas (PV).
         \item \textbf{Recursos adicionales necesarios:} Mayor carga de programación manual y esfuerzo cognitivo por parte del autor, al delegar menos carga de implementación en la inteligencia artificial.
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \item \textbf{Riesgo 4: Limitaciones de control sobre el flujo de orquestación en el ecosistema IDE}
+    \begin{itemize}
+        \item \textbf{Probabilidad:} Media
+        \item \textbf{Tareas afectadas:} Afecta directamente a \textbf{DA1} (implementación del MVP sobre el entorno IDE) y a \textbf{DA3} (Habilidades e Integración MCP), donde se construyen los módulos de orquestación entre agentes. Si las restricciones del IDE resultan insalvables, estas tareas deberán ser rediseñadas.
+        \item \textbf{Tareas alternativas (Plan B):} Rediseño de los \textit{prompts} de cada agente para que sean más breves, concisos y con un alcance muy acotado, reduciendo así la tendencia del modelo a desviarse del comportamiento esperado. En este escenario, la coordinación entre agentes recae explícitamente sobre el desarrollador humano, que actúa como orquestador manual del flujo. El inconveniente de esta solución es que exige que el usuario conozca con precisión el proceso de trabajo del sistema para dirigir correctamente a cada agente, lo que aumenta la curva de aprendizaje de la herramienta.
+        \item \textbf{Afectación a la duración total:} Aumento estimado de 20 horas en \textbf{DA3} para rediseñar y ajustar los \textit{prompts} de los agentes afectados y documentar el flujo de coordinación manual para el usuario.
+        \item \textbf{Recursos adicionales necesarios:} Tiempo de diseño de \textit{prompts} por parte del autor y elaboración de documentación del flujo de uso dirigida al desarrollador.
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \item \textbf{Riesgo 5: Desbordamiento de la ventana de contexto en proyectos grandes}
+    \begin{itemize}
+        \item \textbf{Probabilidad:} Media / Alta
+        \item \textbf{Tareas afectadas:} Impacta principalmente en \textbf{DA4} (Recuperación de Información y Refinamiento), cuyo objetivo específico es abordar este problema mediante técnicas de \textit{Information Retrieval}. Si se manifiesta antes, también puede bloquear el avance de \textbf{DA1} y \textbf{DA3}, al impedir que los agentes mantengan suficiente contexto para operar correctamente.
+        \item \textbf{Tareas alternativas (Plan B):} Aplicar dos estrategias complementarias de reducción de contexto. La primera consiste en implementar resúmenes automáticos o manuales de la conversación, descartando el historial detallado y reteniendo únicamente las decisiones clave ya tomadas. La segunda estrategia consiste en aislar al máximo el alcance de cada agente: en lugar de proporcionar contexto global del proyecto, cada agente opera exclusivamente sobre la \textit{feature} o módulo que tiene asignado, desconociendo intencionadamente el resto de la implementación. Esto mantiene la ventana de contexto acotada y manejable incluso en proyectos grandes.
+        \item \textbf{Afectación a la duración total:} Impacto absorbible dentro de las 80 horas ya asignadas a \textbf{DA4}, aunque podría suponer un retraso de hasta 15 horas adicionales si la solución de aislamiento requiere rediseñar la estructura de memoria del sistema.
+        \item \textbf{Recursos adicionales necesarios:} Ninguno adicional si se resuelve dentro de \textbf{DA4}; posibles horas extra del autor si la estrategia de aislamiento debe adelantarse a \textit{Sprints} anteriores.
+    \end{itemize}
+
+    \vspace{0.3cm}
+
+    \item \textbf{Riesgo 6: Exceso de fricción en el bucle de desarrollo por auditorías demasiado estrictas}
+    \begin{itemize}
+        \item \textbf{Probabilidad:} Media
+        \item \textbf{Tareas afectadas:} Afecta a \textbf{DA3} (implementación del agente Reviewer y sus políticas de auditoría) y a \textbf{PV2} (pruebas del bucle completo \textit{Human in the Loop}), donde se evalúa empíricamente si el sistema resulta usable o frustrante para el desarrollador.
+        \item \textbf{Tareas alternativas (Plan B):} Rediseño del agente \textit{Reviewer} para implementar niveles de severidad en las auditorías (errores críticos bloqueantes vs. advertencias no bloqueantes), permitiendo al usuario continuar el desarrollo ante desviaciones menores y reservando los bloqueos para incumplimientos graves de la especificación.
+        \item \textbf{Afectación a la duración total:} Aumento de aproximadamente 10 horas en \textbf{DA3} para recalibrar y probar los umbrales de tolerancia del agente \textit{Reviewer}.
+        \item \textbf{Recursos adicionales necesarios:} Sesiones de prueba adicionales con el autor actuando como usuario final para validar que el nuevo umbral resulta equilibrado.
     \end{itemize}
 \end{itemize}
 
@@ -637,30 +696,52 @@ A continuación, se presenta una tabla resumen con la consolidación de todas la
 \subsection{Control de gestión}
 Para asegurar la viabilidad económica del Trabajo de Fin de Grado y evitar que el proyecto supere el presupuesto establecido, es estrictamente necesario aplicar un control de gestión continuo. Al utilizar una metodología ágil (SCRUM), este control se realizará al finalizar cada iteración o \textit{Sprint}, así como en las reuniones de seguimiento estipuladas.
 
-El control se basará en comparar los valores estimados en este documento con los gastos y horas reales consumidas. Para cuantificar estas posibles diferencias, se definen los siguientes indicadores numéricos de control:
+El control se basará en comparar los valores estimados en este documento con los gastos y horas reales consumidas. Para cada indicador se define su fórmula de cálculo y los criterios de actuación concretos en función de la magnitud de la desviación detectada:
 
 \begin{itemize}
     \item \textbf{Desviación de horas por tarea:} Mide si se ha invertido más o menos tiempo del planificado en una tarea concreta.
     \begin{equation}
         Desviaci\acute{o}n\ Horas = Horas\ Estimadas - Horas\ Reales
     \end{equation}
-    
+    \textbf{Criterio de actuación:}
+    \begin{itemize}
+        \item Desviación entre 0 y $-$10\%: dentro del margen tolerable. Se registra como nota en la revisión del \textit{Sprint} pero no requiere acción inmediata.
+        \item Desviación entre $-$10\% y $-$20\%: se analiza la causa en la reunión de seguimiento con el director y se ajusta la estimación de las tareas pendientes del mismo bloque.
+        \item Desviación superior al $-$20\%: se convoca una sesión extraordinaria de re-planificación, se re-prioriza el \textit{Sprint Backlog} y se eliminan o posponen las subtareas de menor valor del incremento actual.
+    \end{itemize}
+
     \item \textbf{Desviación de coste de personal:} Calcula el impacto económico de la desviación de horas, multiplicándolo por el salario bruto del rol implicado.
     \begin{equation}
         Desviaci\acute{o}n\ Coste\ Personal = (Horas\ Estimadas - Horas\ Reales) * Coste\ Rol
     \end{equation}
+    \textbf{Criterio de actuación:}
+    \begin{itemize}
+        \item Desviación acumulada inferior a $-$300\verb|€|: absorbible con el fondo de contingencias (15\%), sin acción adicional.
+        \item Desviación acumulada entre $-$300\verb|€| y $-$800\verb|€|: se activa el fondo de contingencias y se restringe el alcance de las tareas de menor prioridad del bloque en curso.
+        \item Desviación acumulada superior a $-$800\verb|€|: se aplica un \textit{scope downgrade} formal, eliminando funcionalidades secundarias para reconducir el presupuesto hacia los objetivos críticos del proyecto.
+    \end{itemize}
 
     \item \textbf{Desviación de costes genéricos:} Controla si herramientas de software, hardware o infraestructura han sufrido variaciones de precio (por ejemplo, subida de tarifas en las APIs de los LLMs).
     \begin{equation}
         Desviaci\acute{o}n\ Gen\acute{e}ricos = Coste\ Gen\acute{e}rico\ Estimado - Coste\ Gen\acute{e}rico\ Real
     \end{equation}
+    \textbf{Criterio de actuación:}
+    \begin{itemize}
+        \item Desviación puntual inferior a $-$30\verb|€|/mes: se registra y monitoriza. Si persiste más de dos meses consecutivos, se revisan alternativas.
+        \item Desviación sostenida o superior a $-$30\verb|€|/mes: se evalúa la sustitución de la herramienta afectada por una alternativa gratuita u \textit{open source} equivalente (por ejemplo, migrar a un proveedor de LLM alternativo en caso de subida de tarifas de APIs).
+    \end{itemize}
 
-    \item \textbf{Consumo del fondo de imprevistos:} Evalúa cuánto remanente nos queda del fondo de emergencias calculado. Si el resultado es negativo, significa que hemos agotado el presupuesto de seguridad.
+    \item \textbf{Consumo del fondo de imprevistos:} Evalúa cuánto remanente queda del fondo de emergencias calculado. Si el resultado es negativo, significa que se ha agotado el presupuesto de seguridad.
     \begin{equation}
         Estado\ Imprevistos = Total\ Imprevistos\ Estimado - Coste\ Imprevistos\ Consumido
     \end{equation}
+    \textbf{Criterio de actuación:}
+    \begin{itemize}
+        \item Remanente superior al 50\% (más de 183\verb|€| disponibles): situación bajo control, sin cambios en el plan.
+        \item Remanente entre el 0\% y el 50\%: se congela el uso del fondo para nuevos imprevistos menores y se activa el fondo de contingencias para cubrir desviaciones adicionales.
+        \item Remanente negativo (fondo agotado): se aplica de inmediato un \textit{scope downgrade} de las funcionalidades con mayor riesgo económico y se notifica al director del proyecto para valorar conjuntamente medidas extraordinarias.
+    \end{itemize}
 \end{itemize}
-Si durante una revisión de \textit{Sprint} se detecta que los indicadores arrojan valores negativos sostenidos (es decir, el coste real supera al estimado), se tomarán medidas correctivas, tales como reajustar el \textit{Sprint Backlog}, priorizar tareas críticas o, en última instancia, reducir el alcance (\textit{scope downgrade}) de funciones secundarias para no comprometer la entrega final del proyecto.
 
 \newpage
 

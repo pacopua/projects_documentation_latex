@@ -36,27 +36,28 @@
 \contentsline {subsubsection}{\numberline {5.5.2}Recursos de Software}{15}{subsubsection.5.5.2}%
 \contentsline {subsubsection}{\numberline {5.5.3}Recursos Humanos}{16}{subsubsection.5.5.3}%
 \contentsline {subsection}{\numberline {5.6}Tabla resumen de tareas}{17}{subsection.5.6}%
+\contentsline {subsubsection}{\numberline {5.6.1}Desglose de horas por rol}{18}{subsubsection.5.6.1}%
 \contentsline {subsection}{\numberline {5.7}Diagrama de Gantt}{18}{subsection.5.7}%
 \contentsline {section}{\numberline {6}Gestión de riesgos: Planes alternativos y obstáculos}{20}{section.6}%
-\contentsline {section}{\numberline {7}Gestión económica}{22}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Coste del personal}{22}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Coste por actividad}{22}{subsection.7.2}%
-\contentsline {subsubsection}{\numberline {7.2.1}Gestión del proyecto}{22}{subsubsection.7.2.1}%
-\contentsline {subsubsection}{\numberline {7.2.2}Trabajo Previo}{22}{subsubsection.7.2.2}%
-\contentsline {subsubsection}{\numberline {7.2.3}Desarrollo Ágil}{23}{subsubsection.7.2.3}%
-\contentsline {subsubsection}{\numberline {7.2.4}Pruebas y Validación}{24}{subsubsection.7.2.4}%
-\contentsline {subsection}{\numberline {7.3}Costes genéricos}{24}{subsection.7.3}%
-\contentsline {subsubsection}{\numberline {7.3.1}Costes estructurales}{24}{subsubsection.7.3.1}%
-\contentsline {subsubsection}{\numberline {7.3.2}Costes de \textit {Software}}{24}{subsubsection.7.3.2}%
-\contentsline {subsubsection}{\numberline {7.3.3}Costes de \textit {Hardware}}{25}{subsubsection.7.3.3}%
-\contentsline {subsection}{\numberline {7.4}Contingencias e imprevistos}{25}{subsection.7.4}%
-\contentsline {subsubsection}{\numberline {7.4.1}Contingencias}{26}{subsubsection.7.4.1}%
-\contentsline {subsubsection}{\numberline {7.4.2}Imprevistos}{26}{subsubsection.7.4.2}%
-\contentsline {subsection}{\numberline {7.5}Coste total}{27}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Control de gestión}{27}{subsection.7.6}%
-\contentsline {section}{\numberline {8}Informe de sostenibilidad}{29}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Autoevaluación de la competencia}{29}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Dimensión económica}{29}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Dimensión social}{29}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}Dimensión ambiental}{30}{subsection.8.4}%
-\contentsline {section}{Referencias}{31}{subsection.8.4}%
+\contentsline {section}{\numberline {7}Gestión económica}{24}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Coste del personal}{24}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Coste por actividad}{24}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Gestión del proyecto}{24}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Trabajo Previo}{24}{subsubsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.3}Desarrollo Ágil}{25}{subsubsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.4}Pruebas y Validación}{26}{subsubsection.7.2.4}%
+\contentsline {subsection}{\numberline {7.3}Costes genéricos}{26}{subsection.7.3}%
+\contentsline {subsubsection}{\numberline {7.3.1}Costes estructurales}{26}{subsubsection.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.2}Costes de \textit {Software}}{26}{subsubsection.7.3.2}%
+\contentsline {subsubsection}{\numberline {7.3.3}Costes de \textit {Hardware}}{27}{subsubsection.7.3.3}%
+\contentsline {subsection}{\numberline {7.4}Contingencias e imprevistos}{27}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {7.4.1}Contingencias}{28}{subsubsection.7.4.1}%
+\contentsline {subsubsection}{\numberline {7.4.2}Imprevistos}{28}{subsubsection.7.4.2}%
+\contentsline {subsection}{\numberline {7.5}Coste total}{29}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Control de gestión}{29}{subsection.7.6}%
+\contentsline {section}{\numberline {8}Informe de sostenibilidad}{31}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Autoevaluación de la competencia}{31}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Dimensión económica}{31}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Dimensión social}{31}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Dimensión ambiental}{32}{subsection.8.4}%
+\contentsline {section}{Referencias}{33}{subsection.8.4}%
