@@ -1,14 +1,15 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{\numberline {1}Contexto}{3}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Introducción}{3}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Marco de la empresa}{3}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Conceptos Relevantes}{3}{subsection.1.3}%
-\contentsline {subsubsection}{\numberline {1.3.1}Spec-Driven-Development (SDD)}{3}{subsubsection.1.3.1}%
-\contentsline {subsubsection}{\numberline {1.3.2}Toma de requerimientos}{3}{subsubsection.1.3.2}%
-\contentsline {subsubsection}{\numberline {1.3.3}Asistentes de Inteligencia Artificial y Agentes Basados en LLMs}{4}{subsubsection.1.3.3}%
-\contentsline {subsection}{\numberline {1.4}Agentes Implicados}{4}{subsection.1.4}%
-\contentsline {subsubsection}{\numberline {1.4.1}Desarrolladores}{4}{subsubsection.1.4.1}%
-\contentsline {subsubsection}{\numberline {1.4.2}Cliente y sus usuarios}{5}{subsubsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.2}Definición del Problema}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Marco de la empresa}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Conceptos Relevantes}{4}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}Spec-Driven-Development (SDD)}{4}{subsubsection.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.4.2}Toma de requerimientos}{4}{subsubsection.1.4.2}%
+\contentsline {subsubsection}{\numberline {1.4.3}Asistentes de Inteligencia Artificial y Agentes Basados en LLMs}{5}{subsubsection.1.4.3}%
+\contentsline {subsection}{\numberline {1.5}Agentes Implicados}{5}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Desarrolladores}{5}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Cliente y sus usuarios}{5}{subsubsection.1.5.2}%
 \contentsline {section}{\numberline {2}Justificación}{6}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Estado del arte y soluciones existentes}{6}{subsection.2.1}%
 \contentsline {subsubsection}{\numberline {2.1.1}Spec Kit}{6}{subsubsection.2.1.1}%
@@ -22,40 +23,40 @@
 \contentsline {subsubsection}{\numberline {3.2.1}Requerimientos Funcionales}{9}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Requerimientos No Funcionales}{9}{subsubsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.3}Obstáculos y Riesgos}{9}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Metodología y Rigor}{10}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Metodología de Trabajo}{10}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Herramientas de Seguimiento y Control}{10}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Descripción de las tareas}{10}{section.5}%
-\contentsline {subsection}{\numberline {5.1}GP - Gestión del proyecto}{11}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}TP - Trabajo Previo}{12}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}DA - Desarrollo Ágil (Sprints Iterativos)}{12}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}PV - Pruebas y Validación}{13}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Recursos}{14}{subsection.5.5}%
-\contentsline {subsubsection}{\numberline {5.5.1}Recursos Materiales}{14}{subsubsection.5.5.1}%
-\contentsline {subsubsection}{\numberline {5.5.2}Recursos de Software}{14}{subsubsection.5.5.2}%
-\contentsline {subsubsection}{\numberline {5.5.3}Recursos Humanos}{15}{subsubsection.5.5.3}%
-\contentsline {subsection}{\numberline {5.6}Tabla resumen de tareas}{16}{subsection.5.6}%
-\contentsline {subsection}{\numberline {5.7}Diagrama de Gantt}{17}{subsection.5.7}%
-\contentsline {section}{\numberline {6}Gestión de riesgos: Planes alternativos y obstáculos}{19}{section.6}%
-\contentsline {section}{\numberline {7}Gestión económica}{21}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Coste del personal}{21}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Coste por actividad}{21}{subsection.7.2}%
-\contentsline {subsubsection}{\numberline {7.2.1}Gestión del proyecto}{21}{subsubsection.7.2.1}%
-\contentsline {subsubsection}{\numberline {7.2.2}Trabajo Previo}{21}{subsubsection.7.2.2}%
-\contentsline {subsubsection}{\numberline {7.2.3}Desarrollo Ágil}{22}{subsubsection.7.2.3}%
-\contentsline {subsubsection}{\numberline {7.2.4}Pruebas y Validación}{23}{subsubsection.7.2.4}%
-\contentsline {subsection}{\numberline {7.3}Costes genéricos}{23}{subsection.7.3}%
-\contentsline {subsubsection}{\numberline {7.3.1}Costes estructurales}{23}{subsubsection.7.3.1}%
-\contentsline {subsubsection}{\numberline {7.3.2}Costes de \textit {Software}}{23}{subsubsection.7.3.2}%
-\contentsline {subsubsection}{\numberline {7.3.3}Costes de \textit {Hardware}}{24}{subsubsection.7.3.3}%
-\contentsline {subsection}{\numberline {7.4}Contingencias e imprevistos}{24}{subsection.7.4}%
-\contentsline {subsubsection}{\numberline {7.4.1}Contingencias}{25}{subsubsection.7.4.1}%
-\contentsline {subsubsection}{\numberline {7.4.2}Imprevistos}{25}{subsubsection.7.4.2}%
-\contentsline {subsection}{\numberline {7.5}Coste total}{26}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Control de gestión}{26}{subsection.7.6}%
-\contentsline {section}{\numberline {8}Informe de sostenibilidad}{28}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Autoevaluación de la competencia}{28}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Dimensión económica}{28}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Dimensión social}{28}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}Dimensión ambiental}{29}{subsection.8.4}%
-\contentsline {section}{Referencias}{30}{subsection.8.4}%
+\contentsline {section}{\numberline {4}Metodología y Rigor}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Metodología de Trabajo}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Herramientas de Seguimiento y Control}{11}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Descripción de las tareas}{11}{section.5}%
+\contentsline {subsection}{\numberline {5.1}GP - Gestión del proyecto}{12}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}TP - Trabajo Previo}{13}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}DA - Desarrollo Ágil (Sprints Iterativos)}{13}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}PV - Pruebas y Validación}{14}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Recursos}{15}{subsection.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.1}Recursos Materiales}{15}{subsubsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.2}Recursos de Software}{15}{subsubsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.3}Recursos Humanos}{16}{subsubsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.6}Tabla resumen de tareas}{17}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Diagrama de Gantt}{18}{subsection.5.7}%
+\contentsline {section}{\numberline {6}Gestión de riesgos: Planes alternativos y obstáculos}{20}{section.6}%
+\contentsline {section}{\numberline {7}Gestión económica}{22}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Coste del personal}{22}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Coste por actividad}{22}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Gestión del proyecto}{22}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Trabajo Previo}{22}{subsubsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.3}Desarrollo Ágil}{23}{subsubsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.4}Pruebas y Validación}{24}{subsubsection.7.2.4}%
+\contentsline {subsection}{\numberline {7.3}Costes genéricos}{24}{subsection.7.3}%
+\contentsline {subsubsection}{\numberline {7.3.1}Costes estructurales}{24}{subsubsection.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.2}Costes de \textit {Software}}{24}{subsubsection.7.3.2}%
+\contentsline {subsubsection}{\numberline {7.3.3}Costes de \textit {Hardware}}{25}{subsubsection.7.3.3}%
+\contentsline {subsection}{\numberline {7.4}Contingencias e imprevistos}{25}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {7.4.1}Contingencias}{26}{subsubsection.7.4.1}%
+\contentsline {subsubsection}{\numberline {7.4.2}Imprevistos}{26}{subsubsection.7.4.2}%
+\contentsline {subsection}{\numberline {7.5}Coste total}{27}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Control de gestión}{27}{subsection.7.6}%
+\contentsline {section}{\numberline {8}Informe de sostenibilidad}{29}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Autoevaluación de la competencia}{29}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Dimensión económica}{29}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Dimensión social}{29}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Dimensión ambiental}{30}{subsection.8.4}%
+\contentsline {section}{Referencias}{31}{subsection.8.4}%
