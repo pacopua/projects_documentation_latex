@@ -221,6 +221,8 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
 \end{itemize}
 
 \subsection{Obstáculos y Riesgos}
+Todo proyecto conlleva dificultades que deben analizarse anticipadamente para minimizar su impacto. En la sección \ref{sec:gestion_riesgos} se especifican los riesgos y obstáculos del proyecto con detalle, incluyendo sus planes alternativos y las tareas afectadas. A modo de resumen, se enumeran las principales dificultades identificadas:
+
 \begin{itemize}
     \item \textbf{Limitaciones de control en el ecosistema IDE:} La decisión de construir el sistema sobre agentes nativos de entornos de desarrollo integrados (como GitHub Copilot, Claude Code o Cursor) implica aceptar las restricciones que estas plataformas imponen sobre el flujo de orquestación. A diferencia de una solución construida desde cero con herramientas de más bajo nivel —como una combinación de \textit{LangChain} con llamadas directas a las APIs de los LLMs—, los asistentes integrados en el IDE no permiten un control tan granular sobre el encadenamiento de agentes, la gestión de memoria intermedia o la lógica de decisión entre pasos. Esto puede limitar la capacidad de implementar flujos de trabajo complejos o de depurar el comportamiento del sistema cuando este no actúa como se espera. La mitigación pasa por diseñar los componentes del sistema de forma modular, de modo que, si las restricciones del IDE resultan insalvables, sea viable migrar la lógica de orquestación a una solución de más bajo nivel sin reescribir el sistema completo.
 
@@ -252,6 +254,8 @@ Para garantizar el correcto seguimiento del progreso del proyecto, se emplearán
     
     \item \textbf{Reuniones de Seguimiento Académico:} Además de las interacciones diarias con la empresa, se establecerán reuniones periódicas con el director academico del TFG. La frecuencia exacta de estos encuentros se irá definiendo y ajustando de mutuo acuerdo a lo largo del desarrollo, con el objetivo de validar el rigor del proyecto, y revisar los entregables de documentación.
 \end{itemize}
+
+\newpage
 
 \section{Descripción de las tareas}
 Para garantizar el éxito en la implementación del ecosistema de agentes basados en Spec-Driven Development (SDD), se ha elaborado una planificación temporal detallada. El proyecto comenzó el 12 de febrero de 2026 (contando la documentación de esta asignatura) y tiene prevista su finalización y defensa entre el \textbf{23 de junio} hasta el \textbf{1 de julio} de 2026. Se estima que la dedicación total para la realización de este Trabajo de Fin de Grado es de aproximadamente 540 horas. La dedicación media será de unas 5 horas diarias durante los días laborables, y en ocasiones, un extra en las etapas en que se deba escribir bastante documentación.
@@ -418,13 +422,16 @@ En la siguiente página se muestra el diagrama de gantt resultante de la planifi
      \centering
      \title{AAA}
      \includegraphics[width=1.5\textwidth]{Gant_Lliurament2.png}
-     \caption{Diagrama de Gantt, creado con el software \textit{GanttProject}. Generación propia} 
-     \label{fig:heatmap}
+     \caption{Diagrama de Gantt, creado con el software \textit{GanttProject}. Generación propia}
+     \label{fig:gantt}
     \end{figure}
 \end{landscape}
 
+\newpage
+
 \section{Gestión de riesgos: Planes alternativos y obstáculos}
-Durante la planificación y ejecución de este proyecto, se han identificado diversos obstáculos potenciales inherentes al desarrollo con IA. A continuación, se detallan estos riesgos junto con sus respectivos planes alternativos, tal y como dictan las buenas prácticas de gestión ágil de proyectos.
+\label{sec:gestion_riesgos}
+Durante la planificación y ejecución de este proyecto, se han identificado diversos obstáculos potenciales inherentes al desarrollo con IA. A continuación, se detallan estos riesgos junto con sus respectivos planes alternativos, tal y como dictan las buenas prácticas de gestión ágil de proyectos. En el apartado \ref{sec:imprevistos} se cuantifica el coste económico estimado de cada uno de estos imprevistos.
 
 \begin{itemize}
     \item \textbf{Riesgo 1: Cambios repentinos en los requerimientos por parte de la empresa}
@@ -629,6 +636,7 @@ Sumando todos los componentes detallados en esta subsección, el total de costes
 \end{equation}
 
 \subsection{Contingencias e imprevistos}
+\label{sec:imprevistos}
 En el desarrollo de cualquier proyecto de ingeniería informática, es fundamental disponer de un margen económico para hacer frente a posibles desviaciones temporales o problemas técnicos. Este margen se divide en dos partidas: las contingencias (para riesgos desconocidos) y los imprevistos (para riesgos ya identificados).
 
 \subsubsection{Contingencias}
@@ -790,7 +798,7 @@ Esta falta de base académica ha sido mi principal punto débil al afrontar la e
     \bibitem{ostroff_agile_2004}
     Ostroff, J., Makalsky, D., y Paige, R. (2004). \textit{Agile Specification-Driven Development}.
     En: \textit{Extreme Programming and Agile Methods}. Springer.
-    \url{https://doi.org/10.1007/978-3-540-24853-8_12}
+    \url{https://doi.org/10.1007/978-3-540-24853-8_12}. Accedido el 24/02/2026
 
     \bibitem{github_spec_kit}
     GitHub. (2025). \textit{github/spec-kit Repository}.
@@ -822,7 +830,7 @@ Esta falta de base académica ha sido mi principal punto débil al afrontar la e
 
     \bibitem{modul2_1}
     Departament d'Organització d'Empreses (FIB). \textit{Mòdul 2.1.b -- Gestión ágil de proyectos}.
-    Universitat Politècnica de Catalunya.
+    Universitat Politècnica de Catalunya. Accedido el 24/02/2026
 
     \bibitem{indeed_salarios}
     Indeed. (2026). \textit{Guía de salarios en España: Explorar sueldos por cargo y ubicación}.
