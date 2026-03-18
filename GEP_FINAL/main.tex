@@ -436,7 +436,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 \begin{itemize}
     \item \textbf{Riesgo 1: Cambios repentinos en los requerimientos por parte de la empresa}
     \begin{itemize}
-        \item \textbf{Probabilidad:} Media / Alta
+        \item \textbf{Probabilidad:} Baja / Media (40\%)
         \item \textbf{Tareas afectadas:} Principalmente las fases de Desarrollo Ágil (\textbf{DA1--DA4}), ya que un cambio de requerimientos puede invalidar trabajo ya implementado en cualquier \textit{Sprint}. También se ve afectada la tarea \textbf{GP5} (Reuniones de Seguimiento), que deberá absorber sesiones extraordinarias de re-planificación, y potencialmente \textbf{PV} si los cambios implican redefinir los criterios de validación.
         \item \textbf{Tareas alternativas (Plan B):} Re-evaluación del \textit{Sprint Backlog} actual, congelación del código afectado y re-planificación de los objetivos en una reunión extraordinaria para el siguiente \textit{Sprint}.
         \item \textbf{Afectación a la duración total:} Retraso estimado de 15 horas sobre la planificación original, absorbible en la fase de pruebas (PV).
@@ -447,7 +447,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 
     \item \textbf{Riesgo 2: Bloqueo tecnológico (Vendor Lock-in) por cambio de precios o políticas en las APIs de los LLMs}
     \begin{itemize}
-        \item \textbf{Probabilidad:} Media
+        \item \textbf{Probabilidad:} Baja / Media (30\%)
         \item \textbf{Tareas afectadas:} El impacto recae principalmente sobre \textbf{DA3} (Habilidades e Integración MCP), donde se construyen los módulos de conexión con las APIs, y sobre \textbf{DA4} (Recuperación de Información y Refinamiento), que depende de integraciones avanzadas con proveedores externos. En menor medida, también puede afectar a \textbf{DA1} si el agente base necesita ser reconectado a un proveedor distinto.
         \item \textbf{Tareas alternativas (Plan B):} Migración del motor cognitivo del sistema hacia modelos \textit{Open Source} (ej. LLaMA o Mistral) ejecutados en local o a través de proveedores alternativos, modificando el módulo de conexión (\textit{wrapper}).
         \item \textbf{Afectación a la duración total:} Aumento de 20 horas en la fase de Integración MCP (DA3).
@@ -458,7 +458,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 
 \item \textbf{Riesgo 3: Documentación interna insuficiente para la generación autónoma de código estructurado}
     \begin{itemize}
-        \item \textbf{Probabilidad:} Media
+        \item \textbf{Probabilidad:} Media (50\%)
         \item \textbf{Tareas afectadas:} Afecta directamente a \textbf{DA1} (implementación del agente Developer, cuya capacidad de escritura se reduciría), \textbf{DA2} (las métricas de evaluación perderían parte de su utilidad si el agente no genera código autónomamente) y \textbf{PV2} (el bucle completo \textit{Human in the Loop} requeriría una mayor intervención manual del autor, alterando la naturaleza de la validación).
         \item \textbf{Tareas alternativas (Plan B):} Reducción del alcance del sistema (\textit{scope downgrade}). Se limitarán las capacidades de escritura del agente \textit{Developer}. El desarrollador humano (usuario) asumirá la implementación directa del código base, mientras que los agentes (\textit{Architect} y \textit{Reviewer}) se reorientarán exclusivamente a tareas de lectura: documentar, auditar la estructura y comprobar la calidad del código manual contra la especificación original.
         \item \textbf{Afectación a la duración total:} Impacto temporal neutro. Las horas ahorradas en el desarrollo de \textit{skills} complejas de escritura para los agentes se reinvertirán en la codificación manual por parte del autor durante el bucle de pruebas (PV).
@@ -469,7 +469,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 
     \item \textbf{Riesgo 4: Limitaciones de control sobre el flujo de orquestación en el ecosistema IDE}
     \begin{itemize}
-        \item \textbf{Probabilidad:} Media
+        \item \textbf{Probabilidad:} Media / Alta (65\%)
         \item \textbf{Tareas afectadas:} Afecta directamente a \textbf{DA1} (implementación del MVP sobre el entorno IDE) y a \textbf{DA3} (Habilidades e Integración MCP), donde se construyen los módulos de orquestación entre agentes. Si las restricciones del IDE resultan insalvables, estas tareas deberán ser rediseñadas.
         \item \textbf{Tareas alternativas (Plan B):} Rediseño de los \textit{prompts} de cada agente para que sean más breves, concisos y con un alcance muy acotado, reduciendo así la tendencia del modelo a desviarse del comportamiento esperado. En este escenario, la coordinación entre agentes recae explícitamente sobre el desarrollador humano, que actúa como orquestador manual del flujo. El inconveniente de esta solución es que exige que el usuario conozca con precisión el proceso de trabajo del sistema para dirigir correctamente a cada agente, lo que aumenta la curva de aprendizaje de la herramienta.
         \item \textbf{Afectación a la duración total:} Aumento estimado de 20 horas en \textbf{DA3} para rediseñar y ajustar los \textit{prompts} de los agentes afectados y documentar el flujo de coordinación manual para el usuario.
@@ -480,7 +480,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 
     \item \textbf{Riesgo 5: Desbordamiento de la ventana de contexto en proyectos grandes}
     \begin{itemize}
-        \item \textbf{Probabilidad:} Media / Alta
+        \item \textbf{Probabilidad:} Baja / Media (35\%)
         \item \textbf{Tareas afectadas:} Impacta principalmente en \textbf{DA4} (Recuperación de Información y Refinamiento), cuyo objetivo específico es abordar este problema mediante técnicas de \textit{Information Retrieval}. Si se manifiesta antes, también puede bloquear el avance de \textbf{DA1} y \textbf{DA3}, al impedir que los agentes mantengan suficiente contexto para operar correctamente.
         \item \textbf{Tareas alternativas (Plan B):} Aplicar dos estrategias complementarias de reducción de contexto. La primera consiste en implementar resúmenes automáticos o manuales de la conversación, descartando el historial detallado y reteniendo únicamente las decisiones clave ya tomadas. La segunda estrategia consiste en aislar al máximo el alcance de cada agente: en lugar de proporcionar contexto global del proyecto, cada agente opera exclusivamente sobre la \textit{feature} o módulo que tiene asignado, desconociendo intencionadamente el resto de la implementación. Esto mantiene la ventana de contexto acotada y manejable incluso en proyectos grandes.
         \item \textbf{Afectación a la duración total:} Impacto absorbible dentro de las 80 horas ya asignadas a \textbf{DA4}, aunque podría suponer un retraso de hasta 15 horas adicionales si la solución de aislamiento requiere rediseñar la estructura de memoria del sistema.
@@ -491,7 +491,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 
     \item \textbf{Riesgo 6: Exceso de fricción en el bucle de desarrollo por auditorías demasiado estrictas}
     \begin{itemize}
-        \item \textbf{Probabilidad:} Media
+        \item \textbf{Probabilidad:} Baja (30\%)
         \item \textbf{Tareas afectadas:} Afecta a \textbf{DA3} (implementación del agente Reviewer y sus políticas de auditoría) y a \textbf{PV2} (pruebas del bucle completo \textit{Human in the Loop}), donde se evalúa empíricamente si el sistema resulta usable o frustrante para el desarrollador.
         \item \textbf{Tareas alternativas (Plan B):} Rediseño del agente \textit{Reviewer} para implementar niveles de severidad en las auditorías (errores críticos bloqueantes vs. advertencias no bloqueantes), permitiendo al usuario continuar el desarrollo ante desviaciones menores y reservando los bloqueos para incumplimientos graves de la especificación.
         \item \textbf{Afectación a la duración total:} Aumento de aproximadamente 10 horas en \textbf{DA3} para recalibrar y probar los umbrales de tolerancia del agente \textit{Reviewer}.
@@ -649,15 +649,15 @@ La partida de contingencias actúa como un fondo de reserva general. Dado que el
 Por otro lado, la partida de imprevistos cuantifica económicamente los riesgos específicos que ya fueron identificados y analizados en el Entregable 2. El coste que se añade al presupuesto se calcula multiplicando el coste del plan de acción alternativo (Plan B) por la probabilidad estimada de que el riesgo ocurra.
 
 \begin{itemize}
-    \item \textbf{Riesgo 1: Cambios repentinos en los requerimientos.} La probabilidad de ocurrencia se estimó como Media/Alta (asignaremos un 60\verb|%|). El plan de mitigación contempla un retraso de 15 horas, implicando re-planificación y desarrollo. Asignaremos 5 horas al \textit{Jefe de Proyecto} (26,20\verb|€|/h) y 10 horas al \textit{Programador junior} (14,92\verb|€|/h).
+    \item \textbf{Riesgo 1: Cambios repentinos en los requerimientos.} La probabilidad de ocurrencia se estimó como Baja/Media (40\verb|%|). El plan de mitigación contempla un retraso de 15 horas, implicando re-planificación y desarrollo. Asignaremos 5 horas al \textit{Jefe de Proyecto} (26,20\verb|€|/h) y 10 horas al \textit{Programador junior} (14,92\verb|€|/h).
     \begin{equation*}
-        Coste R1 = ((5h * 26{.}20\verb|€|/h) + (10h * 14{.}92\verb|€|/h)) * 0{.}60 = 280{.}2\verb|€| * 0{.}60 = 168{.}12\verb|€|
+        Coste R1 = ((5h * 26{.}20\verb|€|/h) + (10h * 14{.}92\verb|€|/h)) * 0{.}40 = 280{.}2\verb|€| * 0{.}40 = 112{.}08\verb|€|
     \end{equation*}
     \textbf{Impacto: Medio}
-    
-    \item \textbf{Riesgo 2: Bloqueo tecnológico (Vendor Lock-in) en APIs LLM.} La probabilidad es Media (50\verb|%|). El plan alternativo es la migración a modelos \textit{Open Source}, con un impacto de 20 horas de desarrollo (\textit{Programador junior}) y el alquiler puntual de hardware en la nube con GPU (estimado en 100\verb|€|).
+
+    \item \textbf{Riesgo 2: Bloqueo tecnológico (Vendor Lock-in) en APIs LLM.} La probabilidad es Baja/Media (30\verb|%|). El plan alternativo es la migración a modelos \textit{Open Source}, con un impacto de 20 horas de desarrollo (\textit{Programador junior}) y el alquiler puntual de hardware en la nube con GPU (estimado en 100\verb|€|).
     \begin{equation*}
-        Coste R2 = ((20h * 14{.}92\verb|€|/h) + 100\verb|€|) * 0{.}50 = 398{.}4\verb|€| * 0{.}50 = 199{.}2\verb|€|
+        Coste R2 = ((20h * 14{.}92\verb|€|/h) + 100\verb|€|) * 0{.}30 = 398{.}4\verb|€| * 0{.}30 = 119{.}52\verb|€|
     \end{equation*}
     \textbf{Impacto: Medio}
 
@@ -666,11 +666,29 @@ Por otro lado, la partida de imprevistos cuantifica económicamente los riesgos 
         Coste R3 = 0\verb|€| * 0{.}50 = 0\verb|€|
     \end{equation*}
     \textbf{Impacto: Bajo}
+
+    \item \textbf{Riesgo 4: Limitaciones de control en el ecosistema IDE.} Probabilidad Media/Alta (65\verb|%|). El plan alternativo implica rediseñar los \textit{prompts} y documentar el flujo manual, con un impacto estimado de 20 horas en DA3: 10 horas de \textit{Programador junior} (14,92\verb|€|/h) y 10 horas de \textit{Investigador/Documentador} (20,85\verb|€|/h).
+    \begin{equation*}
+        Coste R4 = ((10h * 14{.}92\verb|€|/h) + (10h * 20{.}85\verb|€|/h)) * 0{.}65 = 357{.}7\verb|€| * 0{.}65 = 232{.}51\verb|€|
+    \end{equation*}
+    \textbf{Impacto: Medio}
+
+    \item \textbf{Riesgo 5: Desbordamiento de la ventana de contexto.} Probabilidad Baja/Media (35\verb|%|). El plan alternativo puede requerir hasta 15 horas adicionales de \textit{Programador junior} (14,92\verb|€|/h) para rediseñar la estrategia de aislamiento de contexto.
+    \begin{equation*}
+        Coste R5 = (15h * 14{.}92\verb|€|/h) * 0{.}35 = 223{.}8\verb|€| * 0{.}35 = 78{.}33\verb|€|
+    \end{equation*}
+    \textbf{Impacto: Bajo}
+
+    \item \textbf{Riesgo 6: Exceso de fricción en el bucle de desarrollo.} Probabilidad Baja (30\verb|%|). El plan alternativo requiere aproximadamente 10 horas adicionales de \textit{Programador junior} (14,92\verb|€|/h) en DA3 para recalibrar los umbrales del agente \textit{Reviewer}.
+    \begin{equation*}
+        Coste R6 = (10h * 14{.}92\verb|€|/h) * 0{.}30 = 149{.}2\verb|€| * 0{.}30 = 44{.}76\verb|€|
+    \end{equation*}
+    \textbf{Impacto: Bajo}
 \end{itemize}
 
 Sumando los valores obtenidos, calculamos el fondo total reservado para imprevistos:
 \begin{equation}
-    Total Imprevistos = 168{.}12\verb|€| + 199{.}2\verb|€| + 0\verb|€| = 367{.}32\verb|€|
+    Total Imprevistos = 112{.}08\verb|€| + 119{.}52\verb|€| + 0\verb|€| + 232{.}51\verb|€| + 78{.}33\verb|€| + 44{.}76\verb|€| = 587{.}20\verb|€|
 \end{equation}
 
 \subsection{Coste total}
@@ -691,10 +709,10 @@ A continuación, se presenta una tabla resumen con la consolidación de todas la
          \textbf{Subtotal (Base del proyecto)} & \textbf{11.750,09€} \\
          \hline
          Contingencias (15\verb|%| sobre el Subtotal) & 1.762,52€ \\
-         Imprevistos (Riesgos evaluados) & 367,32€ \\
+         Imprevistos (Riesgos evaluados) & 587,20€ \\
          \hline
          \hline
-         \textbf{PRESUPUESTO TOTAL} & \textbf{13.879,93€} \\
+         \textbf{PRESUPUESTO TOTAL} & \textbf{14.099,81€} \\
          \hline
     \end{tabular}
     \caption{Presupuesto total estimado del proyecto. Generación propia.}
@@ -762,7 +780,7 @@ Esta falta de base académica ha sido mi principal punto débil al afrontar la e
 
 \subsection{Dimensión económica}
 % Añadir beneficios del proyecto. ¿Porque puede merecer la pena gastarse 14.000€ en esto?
-\textbf{PPP:} El coste total del proyecto se estima en 13.879,93€. Tras reflexionar sobre este presupuesto, considero que es realista y competitivo para un desarrollo de 540 horas que integra tecnologías punteras de IA. La optimización del gasto se logra mediante el uso de herramientas de código abierto y un modelo de pago por uso para las APIs, centrando la inversión en el valor del esfuerzo humano y la investigación.
+\textbf{PPP:} El coste total del proyecto se estima en 14.099,81€. Tras reflexionar sobre este presupuesto, considero que es realista y competitivo para un desarrollo de 540 horas que integra tecnologías punteras de IA. La optimización del gasto se logra mediante el uso de herramientas de código abierto y un modelo de pago por uso para las APIs, centrando la inversión en el valor del esfuerzo humano y la investigación.
 
 \textbf{Vida Útil:} Actualmente, la industria aborda el desarrollo asistido por IA de forma impulsiva (Code-Driven), lo que reduce costes iniciales pero dispara los de mantenimiento debido a la deuda técnica. Esta solución basada en SDD mejora económicamente este escenario al reducir dicha deuda desde la fase de planificación. Idealmente, el ahorro en tiempo de comprensión y corrección de errores debería amortizar la inversión inicial del proyecto.
 

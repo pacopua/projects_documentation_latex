@@ -54,10 +54,10 @@
 \contentsline {subsubsection}{\numberline {7.4.1}Contingencias}{29}{subsubsection.7.4.1}%
 \contentsline {subsubsection}{\numberline {7.4.2}Imprevistos}{29}{subsubsection.7.4.2}%
 \contentsline {subsection}{\numberline {7.5}Coste total}{30}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Control de gestión}{30}{subsection.7.6}%
-\contentsline {section}{\numberline {8}Informe de sostenibilidad}{32}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Autoevaluación de la competencia}{32}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Dimensión económica}{32}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Dimensión social}{32}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}Dimensión ambiental}{33}{subsection.8.4}%
-\contentsline {section}{Referencias}{34}{subsection.8.4}%
+\contentsline {subsection}{\numberline {7.6}Control de gestión}{31}{subsection.7.6}%
+\contentsline {section}{\numberline {8}Informe de sostenibilidad}{33}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Autoevaluación de la competencia}{33}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Dimensión económica}{33}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Dimensión social}{33}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Dimensión ambiental}{34}{subsection.8.4}%
+\contentsline {section}{Referencias}{35}{subsection.8.4}%
