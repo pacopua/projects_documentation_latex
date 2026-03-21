@@ -1,4 +1,4 @@
-\documentclass[12pt, letterpaper]{article}
+\documentclass[11pt, letterpaper]{article}
 \usepackage[table]{xcolor}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{titlesec}
@@ -19,7 +19,7 @@
 \usepackage[spanish]{babel}
 \usepackage{amssymb} % Añadido para simbolos extra
 
-\usepackage[left=3.5cm, right=3.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
 
 \begin{document}
 
@@ -114,9 +114,9 @@ En el ámbito del desarrollo de software, los Modelos de Lenguaje de Gran Tamañ
 \begin{itemize}
     \item \textbf{Instrucciones (\textit{Prompts}):} Son las entradas en lenguaje natural que el usuario utiliza para comunicarse con el modelo. Un \textit{prompt} define la tarea a realizar y proporciona el contexto y las restricciones necesarias.
     
-    \item \textbf{Agentes de Código:} Un agente es un asistente al que se le asigna un rol mediante un \textit{prompt} y se le equipa con distintas \textit{Agent Skills} y herramientas varias. Su propósito es llevar a cabo una tarea específica. Además, es posible encadenar varios agentes especializados para construir un sistema coordinado. \cite{vscode_agents}
-    
-    \item \textbf{Habilidades del Agente (\textit{Agent Skills}):} Son funciones, herramientas o \textit{scripts} específicos que el agente puede invocar para ejecutar acciones tangibles sobre el entorno local, como leer, crear o modificar archivos en un repositorio. \cite{agentskills_home}
+    \item \textbf{Agentes de Código:} Un agente es un asistente al que se le asigna un rol mediante un \textit{prompt} y se le equipa con distintas \textit{Agent Skills} y herramientas varias. Su propósito es llevar a cabo una tarea específica. Además, es posible encadenar varios agentes especializados para construir un sistema coordinado. \cite{vscode_agents} \cite{wang_llm_agents_2024}
+
+    \item \textbf{Habilidades del Agente (\textit{Agent Skills}):} Son funciones, herramientas o \textit{scripts} específicos que el agente puede invocar para ejecutar acciones tangibles sobre el entorno local, como leer, crear o modificar archivos en un repositorio. \cite{agentskills_home} \cite{yao_react_2023}
 \end{itemize}
 
 \subsection{Agentes Implicados}
@@ -142,11 +142,10 @@ Para contextualizar el desarrollo de nuestro sistema, es fundamental analizar la
 Spec Kit es una herramienta diseñada específicamente para facilitar el desarrollo basado en especificaciones. Su enfoque principal radica en la generación de documentos de diseño y arquitectura como paso previo y obligatorio a la implementación de código, estructurando así el ciclo de vida del desarrollo. \cite{github_spec_kit}
 
 \subsubsection{AgentOS}
-AgentOS propone un marco de trabajo (\textit{framework}) integral para la creación y orquestación de agentes autónomos. Proporciona una estructura robusta que permite a los desarrolladores construir sistemas basados en inteligencia artificial capaces de ejecutar tareas complejas y encadenadas de forma independiente. \cite{buildermethods_agent_os}
+AgentOS propone un marco de trabajo (\textit{framework}) integral para la creación y orquestación de agentes autónomos. Proporciona una estructura robusta que permite a los desarrolladores construir sistemas basados en inteligencia artificial capaces de ejecutar tareas complejas y encadenadas de forma independiente. \cite{buildermethods_agent_os} \cite{yao_react_2023}
 
 \subsubsection{Asistentes Comerciales (Copilot, Cursor)}
-En el mercado actual destacan diversas herramientas comerciales de asistencia a la programación impulsadas por IA, tales como GitHub Copilot, Cursor o Devin. Estas soluciones son altamente eficientes para la generación de código en tiempo real y la resolución de dudas técnicas, operando bajo un paradigma principalmente \textit{Code-Driven} (orientado a la escritura directa de código). \cite{github_copilot_docs}
- \cite{cursor_ai}
+En el mercado actual destacan diversas herramientas comerciales de asistencia a la programación impulsadas por IA, tales como GitHub Copilot, Cursor o Devin. Estas soluciones son altamente eficientes para la generación de código en tiempo real y la resolución de dudas técnicas, operando bajo un paradigma principalmente \textit{Code-Driven} (orientado a la escritura directa de código). \cite{github_copilot_docs} \cite{cursor_ai} \cite{chen_codex_2021} \cite{peng_copilot_2023}
 \subsection{Análisis comparativo: ¿Está justificada una solución a medida?}
 
 Si bien las alternativas mencionadas presentan avances significativos, su aplicación directa en nuestro entorno de trabajo plantea diversos desafíos operativos y arquitectónicos. 
@@ -210,7 +209,7 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
     \item El sistema debe permitir la ingesta y gestión de reglas fundamentales del proyecto (pila tecnológica, estándares de código) y mantener un registro actualizado de las características a desarrollar.
     \item El sistema debe ser capaz de interpretar funcionalidades de alto nivel y desglosarlas en un plan de tareas granulares y estructuradas.
     \item El sistema debe incluir un mecanismo de auditoría autónoma que contraste el código fuente generado con las especificaciones documentadas, para ver si existe algún conflicto con las documentación y el código generado.
-    \item Se le ha de ofrecer al desarrollador métricas para analizar la calidad y la estructura del código generado. Métricas como la \textit{Complejidad Ciclomática} del código, el Indice de Sostenibilidad del Código, y otras que se explorarán mas adelante.
+    \item Se le ha de ofrecer al desarrollador métricas para analizar la calidad y la estructura del código generado. Métricas como la \textit{Complejidad Ciclomática}\cite{McCabe_Complexity} del código, el Indice de Sostenibilidad del Código, y otras que se explorarán mas adelante.
 \end{itemize}
 
 \subsubsection{Requerimientos No Funcionales}
@@ -224,6 +223,10 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
 Todo proyecto conlleva dificultades que deben analizarse anticipadamente para minimizar su impacto. En la sección \ref{sec:gestion_riesgos} se especifican los riesgos y obstáculos del proyecto con detalle, incluyendo sus planes alternativos y las tareas afectadas. A modo de resumen, se enumeran las principales dificultades identificadas:
 
 \begin{itemize}
+    \item \textbf{Cambios repentinos en los requerimientos:} La empresa o el director del proyecto puede solicitar cambios de alcance, de prioridades o una reorientación del sistema durante el desarrollo, lo que podría invalidar trabajo ya implementado en un \textit{Sprint} avanzado. El impacto es mayor si el cambio se produce en fases tardías como DA3 o DA4, donde la integración entre componentes ya es significativa. La mitigación pasa por la propia metodología ágil adoptada (SCRUM): el \textit{Sprint Backlog} se revisa en cada iteración, lo que permite absorber modificaciones de forma incremental y limitar el retrabajo al sprint en curso, sin comprometer el resto de la planificación.
+
+    \item \textbf{Bloqueo tecnológico (\textit{Vendor Lock-in}) en APIs de LLMs:} El sistema depende de APIs de modelos de lenguaje proporcionadas por terceros (Anthropic, OpenAI u otros). Cambios repentinos en las condiciones de uso, incrementos significativos de precio, degradación del servicio o restricciones de acceso podrían bloquear el avance del proyecto sin margen de reacción. La mitigación pasa por diseñar el módulo de conexión con los LLMs como un componente intercambiable (\textit{wrapper} o adaptador), de modo que sea viable sustituir el proveedor —o migrar hacia modelos \textit{Open Source} ejecutados en local— sin necesidad de reescribir la lógica central del sistema.
+
     \item \textbf{Limitaciones de control en el ecosistema IDE:} La decisión de construir el sistema sobre agentes nativos de entornos de desarrollo integrados (como GitHub Copilot, Claude Code o Cursor) implica aceptar las restricciones que estas plataformas imponen sobre el flujo de orquestación. A diferencia de una solución construida desde cero con herramientas de más bajo nivel —como una combinación de \textit{LangChain} con llamadas directas a las APIs de los LLMs—, los asistentes integrados en el IDE no permiten un control tan granular sobre el encadenamiento de agentes, la gestión de memoria intermedia o la lógica de decisión entre pasos. Esto puede limitar la capacidad de implementar flujos de trabajo complejos o de depurar el comportamiento del sistema cuando este no actúa como se espera. La mitigación pasa por diseñar los componentes del sistema de forma modular, de modo que, si las restricciones del IDE resultan insalvables, sea viable migrar la lógica de orquestación a una solución de más bajo nivel sin reescribir el sistema completo.
 
     \item \textbf{Gestión de la Ventana de Contexto:} Los LLMs disponen de una capacidad limitada de contexto activo (\textit{context window}). A medida que el proyecto crezca —más archivos de especificación, más reglas arquitectónicas, más historial de tareas— mantener todo ese conocimiento disponible para el agente sin superar el límite de \textit{tokens} se convierte en un reto técnico no trivial. Si no se gestiona correctamente, el agente puede operar con información incompleta y generar código incoherente con el estado real del proyecto. La mitigación requiere diseñar estrategias de recuperación selectiva de información (\textit{Information Retrieval}), priorizando el contexto más relevante para cada tarea concreta.
@@ -350,16 +353,22 @@ El ecosistema tecnológico del proyecto se apoya en diversas herramientas catego
 \subsubsection{Recursos Humanos}
 Al tratarse de un Trabajo de Fin de Grado, el equipo humano se estructura de la siguiente manera:
 \begin{itemize}
-    \item \textbf{Desarrollador / Investigador Principal (Autor):} Encargado de la investigación del estado del arte, planificación, desarrollo del código, diseño de \textit{prompts} e integración de agentes. Asume la carga de trabajo estimada de 540 horas.
+    \item \textbf{Desarrollador / Investigador Principal (Autor):} Encargado de la totalidad de la carga de trabajo estimada de 540 horas. Al tratarse de un proyecto individual, el autor asume distintos roles a lo largo del desarrollo en función de la naturaleza de cada tarea:
+    \begin{itemize}
+        \item \textbf{Jefe del Proyecto (JP):} Responsable de la planificación, coordinación y seguimiento del progreso general. Incluye la gestión de reuniones y la toma de decisiones estratégicas.
+        \item \textbf{Investigador / Documentador (ID):} Encargado del estudio del estado del arte, la redacción de documentación técnica y la investigación sobre metodologías de uso de IA.
+        \item \textbf{Programador Junior (PJ):} Responsable de la implementación del código: desarrollo de los agentes, integración de herramientas MCP y sprints de desarrollo ágil.
+        \item \textbf{Tester:} Encargado de la verificación y validación del sistema mediante pruebas unitarias de \textit{Agent Skills} y pruebas del bucle completo (HITL).
+    \end{itemize}
     \item \textbf{Director del Proyecto:} Proporciona la visión técnica, valida las decisiones arquitectónicas del sistema y orienta sobre la viabilidad de la implementación.
     \item \textbf{Ponente y Tutor GEP:} Encargados del seguimiento metodológico de la gestión del proyecto, la revisión de la documentación y el asesoramiento académico continuo.
 \end{itemize}
-\newpage
-\subsection{Tabla resumen de tareas}
-A continuación, se presenta una tabla resumen con la información clave de cada tarea del proyecto, detallando su código, descripción, tiempo estimado en horas, dependencias temporales y los recursos principales asignados para su ejecución:
 
-\vspace{0.4cm}
-\noindent
+\subsection{Tabla resumen de tareas}
+A continuación, se presenta una tabla resumen con la información clave de cada tarea del proyecto, detallando su código, descripción, tiempo estimado en horas, dependencias temporales y los recursos principales asignados para su ejecución. En la columna \textit{Recursos específicos}, el término \textit{Autor} se emplea de forma unificada dado que cada tarea implica una combinación variable de los roles definidos (JP, ID, PJ y Tester) en proporciones que dependen de la naturaleza y la fase concreta de la tarea. El desglose detallado de horas por rol se recoge en la subsección siguiente:
+
+\begin{table}[H]
+\centering
 \begin{tabularx}{\textwidth}{
   >{\centering\arraybackslash}p{1.2cm}
   >{\raggedright\arraybackslash}X
@@ -390,30 +399,34 @@ A continuación, se presenta una tabla resumen con la información clave de cada
 \textbf{PV2} & Pruebas bucle completo (HITL) & 40h & DA1 & Autor, Tutor, Compañero, PC \\
 \bottomrule
 \end{tabularx}
-\vspace{0.5cm}
+\caption{Resumen de las tareas del proyecto con sus dependencias y recursos asignados. Generación propia.}
+\label{tab:resumen_tareas}
+\end{table}
 
 \subsubsection{Desglose de horas por rol}
 Dado que el autor asume distintos roles a lo largo del proyecto (tal y como se detalla en la sección de Gestión Económica), la siguiente tabla resume cómo se distribuyen las aproximadamente 540 horas totales entre cada uno de ellos:
 
-\vspace{0.3cm}
-\noindent
+\begin{table}[H]
+\centering
 \begin{tabularx}{\textwidth}{|X|X|X|}
 \hline
 \textbf{Rol} & \textbf{Horas estimadas} & \textbf{Tareas principales} \\
 \hline
-Jefe del Proyecto & $\sim$77h & - \textbf{GP} (25\%), \textbf{TP2}, \textbf{DA3} (análisis de errores) \\
+Jefe del Proyecto & $\sim$77h & \textbf{GP} (25\%), \textbf{TP2} (100\%), \textbf{DA3} (19\%) \\
 \hline
-Investigador / Documentador & $\sim$190h & \textbf{GP} (75\%), \textbf{TP1}, \textbf{DA2} (investigación), \textbf{DA4} (IR), \textbf{GP6} \\
+Investigador / Documentador & $\sim$190h & \textbf{GP} (75\%), \textbf{TP1} (100\%), \textbf{DA2} (30\%), \textbf{DA4} (25\%) \\
 \hline
-Programador Junior & $\sim$210h & \textbf{DA1}, \textbf{DA2} (desarrollo), \textbf{DA3} (implementación), \textbf{DA4} (integración) \\
+Programador Junior & $\sim$210h & \textbf{DA1} (100\%), \textbf{DA2} (70\%), \textbf{DA3} (81\%), \textbf{DA4} (75\%) \\
 \hline
-Tester & $\sim$60h & \textbf{PV1}, \textbf{PV2} \\
+Tester & $\sim$60h & \textbf{PV1} (100\%), \textbf{PV2} (100\%) \\
 \hline
 \hline
 \textbf{Total} & \textbf{$\sim$537h} & \\
 \hline
 \end{tabularx}
-\vspace{0.4cm}
+\caption{Distribución estimada de horas del autor por rol a lo largo del proyecto. Generación propia.}
+\label{tab:desglose_roles}
+\end{table}
 
 \subsection{Diagrama de Gantt}
 En la siguiente página se muestra el diagrama de gantt resultante de la planifiación de las tareas anteriores.
@@ -433,70 +446,58 @@ En la siguiente página se muestra el diagrama de gantt resultante de la planifi
 \label{sec:gestion_riesgos}
 Durante la planificación y ejecución de este proyecto, se han identificado diversos obstáculos potenciales inherentes al desarrollo con IA. A continuación, se detallan estos riesgos junto con sus respectivos planes alternativos, tal y como dictan las buenas prácticas de gestión ágil de proyectos. En el apartado \ref{sec:imprevistos} se cuantifica el coste económico estimado de cada uno de estos imprevistos.
 
+\subsection{Riesgo 1: Cambios repentinos en los requerimientos por parte de la empresa}
 \begin{itemize}
-    \item \textbf{Riesgo 1: Cambios repentinos en los requerimientos por parte de la empresa}
-    \begin{itemize}
-        \item \textbf{Probabilidad:} Baja / Media (40\%)
-        \item \textbf{Tareas afectadas:} Principalmente las fases de Desarrollo Ágil (\textbf{DA1--DA4}), ya que un cambio de requerimientos puede invalidar trabajo ya implementado en cualquier \textit{Sprint}. También se ve afectada la tarea \textbf{GP5} (Reuniones de Seguimiento), que deberá absorber sesiones extraordinarias de re-planificación, y potencialmente \textbf{PV} si los cambios implican redefinir los criterios de validación.
-        \item \textbf{Tareas alternativas (Plan B):} Re-evaluación del \textit{Sprint Backlog} actual, congelación del código afectado y re-planificación de los objetivos en una reunión extraordinaria para el siguiente \textit{Sprint}.
-        \item \textbf{Afectación a la duración total:} Retraso estimado de 15 horas sobre la planificación original, absorbible en la fase de pruebas (PV).
-        \item \textbf{Recursos adicionales necesarios:} Horas extra del autor y disponibilidad del Director del proyecto para una sesión de rediseño.
-    \end{itemize}
-    
-    \vspace{0.3cm}
+    \item \textbf{Probabilidad:} Baja / Media (40\%)
+    \item \textbf{Tareas afectadas:} Principalmente las fases de Desarrollo Ágil (\textbf{DA1--DA4}), ya que un cambio de requerimientos puede invalidar trabajo ya implementado en cualquier \textit{Sprint}. También se ve afectada la tarea \textbf{GP5} (Reuniones de Seguimiento), que deberá absorber sesiones extraordinarias de re-planificación, y potencialmente \textbf{PV} si los cambios implican redefinir los criterios de validación.
+    \item \textbf{Tareas alternativas (Plan B):} Re-evaluación del \textit{Sprint Backlog} actual, congelación del código afectado y re-planificación de los objetivos en una reunión extraordinaria para el siguiente \textit{Sprint}.
+    \item \textbf{Afectación a la duración total:} Retraso estimado de 15 horas sobre la planificación original, absorbible en la fase de pruebas (PV).
+    \item \textbf{Recursos adicionales necesarios:} Horas extra del autor y disponibilidad del Director del proyecto para una sesión de rediseño.
+\end{itemize}
 
-    \item \textbf{Riesgo 2: Bloqueo tecnológico (Vendor Lock-in) por cambio de precios o políticas en las APIs de los LLMs}
-    \begin{itemize}
-        \item \textbf{Probabilidad:} Baja / Media (30\%)
-        \item \textbf{Tareas afectadas:} El impacto recae principalmente sobre \textbf{DA3} (Habilidades e Integración MCP), donde se construyen los módulos de conexión con las APIs, y sobre \textbf{DA4} (Recuperación de Información y Refinamiento), que depende de integraciones avanzadas con proveedores externos. En menor medida, también puede afectar a \textbf{DA1} si el agente base necesita ser reconectado a un proveedor distinto.
-        \item \textbf{Tareas alternativas (Plan B):} Migración del motor cognitivo del sistema hacia modelos \textit{Open Source} (ej. LLaMA o Mistral) ejecutados en local o a través de proveedores alternativos, modificando el módulo de conexión (\textit{wrapper}).
-        \item \textbf{Afectación a la duración total:} Aumento de 20 horas en la fase de Integración MCP (DA3).
-        \item \textbf{Recursos adicionales necesarios:} Tiempo extra de desarrollo y posible necesidad de hardware local con mayor capacidad de procesamiento (GPU) temporal.
-    \end{itemize}
-    
-    \vspace{0.3cm}
+\subsection{Riesgo 2: Bloqueo tecnológico (Vendor Lock-in) por cambio de precios o políticas en las APIs de los LLMs}
+\begin{itemize}
+    \item \textbf{Probabilidad:} Baja / Media (30\%) \cite{opara_vendor_lockin_2016}
+    \item \textbf{Tareas afectadas:} El impacto recae principalmente sobre \textbf{DA3} (Habilidades e Integración MCP), donde se construyen los módulos de conexión con las APIs, y sobre \textbf{DA4} (Recuperación de Información y Refinamiento), que depende de integraciones avanzadas con proveedores externos. En menor medida, también puede afectar a \textbf{DA1} si el agente base necesita ser reconectado a un proveedor distinto.
+    \item \textbf{Tareas alternativas (Plan B):} Migración del motor cognitivo del sistema hacia modelos \textit{Open Source} (ej. LLaMA o Mistral) ejecutados en local o a través de proveedores alternativos, modificando el módulo de conexión (\textit{wrapper}).
+    \item \textbf{Afectación a la duración total:} Aumento de 20 horas en la fase de Integración MCP (DA3).
+    \item \textbf{Recursos adicionales necesarios:} Tiempo extra de desarrollo y posible necesidad de hardware local con mayor capacidad de procesamiento (GPU) temporal.
+\end{itemize}
 
-\item \textbf{Riesgo 3: Documentación interna insuficiente para la generación autónoma de código estructurado}
-    \begin{itemize}
-        \item \textbf{Probabilidad:} Media (50\%)
-        \item \textbf{Tareas afectadas:} Afecta directamente a \textbf{DA1} (implementación del agente Developer, cuya capacidad de escritura se reduciría), \textbf{DA2} (las métricas de evaluación perderían parte de su utilidad si el agente no genera código autónomamente) y \textbf{PV2} (el bucle completo \textit{Human in the Loop} requeriría una mayor intervención manual del autor, alterando la naturaleza de la validación).
-        \item \textbf{Tareas alternativas (Plan B):} Reducción del alcance del sistema (\textit{scope downgrade}). Se limitarán las capacidades de escritura del agente \textit{Developer}. El desarrollador humano (usuario) asumirá la implementación directa del código base, mientras que los agentes (\textit{Architect} y \textit{Reviewer}) se reorientarán exclusivamente a tareas de lectura: documentar, auditar la estructura y comprobar la calidad del código manual contra la especificación original.
-        \item \textbf{Afectación a la duración total:} Impacto temporal neutro. Las horas ahorradas en el desarrollo de \textit{skills} complejas de escritura para los agentes se reinvertirán en la codificación manual por parte del autor durante el bucle de pruebas (PV).
-        \item \textbf{Recursos adicionales necesarios:} Mayor carga de programación manual y esfuerzo cognitivo por parte del autor, al delegar menos carga de implementación en la inteligencia artificial.
-    \end{itemize}
+\subsection{Riesgo 3: Documentación interna insuficiente para la generación autónoma de código estructurado}
+\begin{itemize}
+    \item \textbf{Probabilidad:} Media (50\%)
+    \item \textbf{Tareas afectadas:} Afecta directamente a \textbf{DA1} (implementación del agente Developer, cuya capacidad de escritura se reduciría), \textbf{DA2} (las métricas de evaluación perderían parte de su utilidad si el agente no genera código autónomamente) y \textbf{PV2} (el bucle completo \textit{Human in the Loop} requeriría una mayor intervención manual del autor, alterando la naturaleza de la validación).
+    \item \textbf{Tareas alternativas (Plan B):} Reducción del alcance del sistema (\textit{scope downgrade}). Se limitarán las capacidades de escritura del agente \textit{Developer}. El desarrollador humano (usuario) asumirá la implementación directa del código base, mientras que los agentes (\textit{Architect} y \textit{Reviewer}) se reorientarán exclusivamente a tareas de lectura: documentar, auditar la estructura y comprobar la calidad del código manual contra la especificación original.
+    \item \textbf{Afectación a la duración total:} Impacto temporal neutro. Las horas ahorradas en el desarrollo de \textit{skills} complejas de escritura para los agentes se reinvertirán en la codificación manual por parte del autor durante el bucle de pruebas (PV).
+    \item \textbf{Recursos adicionales necesarios:} Mayor carga de programación manual y esfuerzo cognitivo por parte del autor, al delegar menos carga de implementación en la inteligencia artificial.
+\end{itemize}
 
-    \vspace{0.3cm}
+\subsection{Riesgo 4: Limitaciones de control sobre el flujo de orquestación en el ecosistema IDE}
+\begin{itemize}
+    \item \textbf{Probabilidad:} Media / Alta (65\%)
+    \item \textbf{Tareas afectadas:} Afecta directamente a \textbf{DA1} (implementación del MVP sobre el entorno IDE) y a \textbf{DA3} (Habilidades e Integración MCP), donde se construyen los módulos de orquestación entre agentes. Si las restricciones del IDE resultan insalvables, estas tareas deberán ser rediseñadas.
+    \item \textbf{Tareas alternativas (Plan B):} Rediseño de los \textit{prompts} de cada agente para que sean más breves, concisos y con un alcance muy acotado, reduciendo así la tendencia del modelo a desviarse del comportamiento esperado. En este escenario, la coordinación entre agentes recae explícitamente sobre el desarrollador humano, que actúa como orquestador manual del flujo. El inconveniente de esta solución es que exige que el usuario conozca con precisión el proceso de trabajo del sistema para dirigir correctamente a cada agente, lo que aumenta la curva de aprendizaje de la herramienta.
+    \item \textbf{Afectación a la duración total:} Aumento estimado de 20 horas en \textbf{DA3} para rediseñar y ajustar los \textit{prompts} de los agentes afectados y documentar el flujo de coordinación manual para el usuario.
+    \item \textbf{Recursos adicionales necesarios:} Tiempo de diseño de \textit{prompts} por parte del autor y elaboración de documentación del flujo de uso dirigida al desarrollador.
+\end{itemize}
 
-    \item \textbf{Riesgo 4: Limitaciones de control sobre el flujo de orquestación en el ecosistema IDE}
-    \begin{itemize}
-        \item \textbf{Probabilidad:} Media / Alta (65\%)
-        \item \textbf{Tareas afectadas:} Afecta directamente a \textbf{DA1} (implementación del MVP sobre el entorno IDE) y a \textbf{DA3} (Habilidades e Integración MCP), donde se construyen los módulos de orquestación entre agentes. Si las restricciones del IDE resultan insalvables, estas tareas deberán ser rediseñadas.
-        \item \textbf{Tareas alternativas (Plan B):} Rediseño de los \textit{prompts} de cada agente para que sean más breves, concisos y con un alcance muy acotado, reduciendo así la tendencia del modelo a desviarse del comportamiento esperado. En este escenario, la coordinación entre agentes recae explícitamente sobre el desarrollador humano, que actúa como orquestador manual del flujo. El inconveniente de esta solución es que exige que el usuario conozca con precisión el proceso de trabajo del sistema para dirigir correctamente a cada agente, lo que aumenta la curva de aprendizaje de la herramienta.
-        \item \textbf{Afectación a la duración total:} Aumento estimado de 20 horas en \textbf{DA3} para rediseñar y ajustar los \textit{prompts} de los agentes afectados y documentar el flujo de coordinación manual para el usuario.
-        \item \textbf{Recursos adicionales necesarios:} Tiempo de diseño de \textit{prompts} por parte del autor y elaboración de documentación del flujo de uso dirigida al desarrollador.
-    \end{itemize}
+\subsection{Riesgo 5: Desbordamiento de la ventana de contexto en proyectos grandes}
+\begin{itemize}
+    \item \textbf{Probabilidad:} Baja / Media (35\%)
+    \item \textbf{Tareas afectadas:} Impacta principalmente en \textbf{DA4} (Recuperación de Información y Refinamiento), cuyo objetivo específico es abordar este problema mediante técnicas de \textit{Information Retrieval}. Si se manifiesta antes, también puede bloquear el avance de \textbf{DA1} y \textbf{DA3}, al impedir que los agentes mantengan suficiente contexto para operar correctamente.
+    \item \textbf{Tareas alternativas (Plan B):} Aplicar dos estrategias complementarias de reducción de contexto. La primera consiste en implementar resúmenes automáticos o manuales de la conversación, descartando el historial detallado y reteniendo únicamente las decisiones clave ya tomadas. La segunda estrategia consiste en aislar al máximo el alcance de cada agente: en lugar de proporcionar contexto global del proyecto, cada agente opera exclusivamente sobre la \textit{feature} o módulo que tiene asignado, desconociendo intencionadamente el resto de la implementación. Esto mantiene la ventana de contexto acotada y manejable incluso en proyectos grandes.
+    \item \textbf{Afectación a la duración total:} Impacto absorbible dentro de las 80 horas ya asignadas a \textbf{DA4}, aunque podría suponer un retraso de hasta 15 horas adicionales si la solución de aislamiento requiere rediseñar la estructura de memoria del sistema.
+    \item \textbf{Recursos adicionales necesarios:} Ninguno adicional si se resuelve dentro de \textbf{DA4}; posibles horas extra del autor si la estrategia de aislamiento debe adelantarse a \textit{Sprints} anteriores.
+\end{itemize}
 
-    \vspace{0.3cm}
-
-    \item \textbf{Riesgo 5: Desbordamiento de la ventana de contexto en proyectos grandes}
-    \begin{itemize}
-        \item \textbf{Probabilidad:} Baja / Media (35\%)
-        \item \textbf{Tareas afectadas:} Impacta principalmente en \textbf{DA4} (Recuperación de Información y Refinamiento), cuyo objetivo específico es abordar este problema mediante técnicas de \textit{Information Retrieval}. Si se manifiesta antes, también puede bloquear el avance de \textbf{DA1} y \textbf{DA3}, al impedir que los agentes mantengan suficiente contexto para operar correctamente.
-        \item \textbf{Tareas alternativas (Plan B):} Aplicar dos estrategias complementarias de reducción de contexto. La primera consiste en implementar resúmenes automáticos o manuales de la conversación, descartando el historial detallado y reteniendo únicamente las decisiones clave ya tomadas. La segunda estrategia consiste en aislar al máximo el alcance de cada agente: en lugar de proporcionar contexto global del proyecto, cada agente opera exclusivamente sobre la \textit{feature} o módulo que tiene asignado, desconociendo intencionadamente el resto de la implementación. Esto mantiene la ventana de contexto acotada y manejable incluso en proyectos grandes.
-        \item \textbf{Afectación a la duración total:} Impacto absorbible dentro de las 80 horas ya asignadas a \textbf{DA4}, aunque podría suponer un retraso de hasta 15 horas adicionales si la solución de aislamiento requiere rediseñar la estructura de memoria del sistema.
-        \item \textbf{Recursos adicionales necesarios:} Ninguno adicional si se resuelve dentro de \textbf{DA4}; posibles horas extra del autor si la estrategia de aislamiento debe adelantarse a \textit{Sprints} anteriores.
-    \end{itemize}
-
-    \vspace{0.3cm}
-
-    \item \textbf{Riesgo 6: Exceso de fricción en el bucle de desarrollo por auditorías demasiado estrictas}
-    \begin{itemize}
-        \item \textbf{Probabilidad:} Baja (30\%)
-        \item \textbf{Tareas afectadas:} Afecta a \textbf{DA3} (implementación del agente Reviewer y sus políticas de auditoría) y a \textbf{PV2} (pruebas del bucle completo \textit{Human in the Loop}), donde se evalúa empíricamente si el sistema resulta usable o frustrante para el desarrollador.
-        \item \textbf{Tareas alternativas (Plan B):} Rediseño del agente \textit{Reviewer} para implementar niveles de severidad en las auditorías (errores críticos bloqueantes vs. advertencias no bloqueantes), permitiendo al usuario continuar el desarrollo ante desviaciones menores y reservando los bloqueos para incumplimientos graves de la especificación.
-        \item \textbf{Afectación a la duración total:} Aumento de aproximadamente 10 horas en \textbf{DA3} para recalibrar y probar los umbrales de tolerancia del agente \textit{Reviewer}.
-        \item \textbf{Recursos adicionales necesarios:} Sesiones de prueba adicionales con el autor actuando como usuario final para validar que el nuevo umbral resulta equilibrado.
-    \end{itemize}
+\subsection{Riesgo 6: Exceso de fricción en el bucle de desarrollo por auditorías demasiado estrictas}
+\begin{itemize}
+    \item \textbf{Probabilidad:} Baja (30\%)
+    \item \textbf{Tareas afectadas:} Afecta a \textbf{DA3} (implementación del agente Reviewer y sus políticas de auditoría) y a \textbf{PV2} (pruebas del bucle completo \textit{Human in the Loop}), donde se evalúa empíricamente si el sistema resulta usable o frustrante para el desarrollador.
+    \item \textbf{Tareas alternativas (Plan B):} Rediseño del agente \textit{Reviewer} para implementar niveles de severidad en las auditorías (errores críticos bloqueantes vs. advertencias no bloqueantes), permitiendo al usuario continuar el desarrollo ante desviaciones menores y reservando los bloqueos para incumplimientos graves de la especificación.
+    \item \textbf{Afectación a la duración total:} Aumento de aproximadamente 10 horas en \textbf{DA3} para recalibrar y probar los umbrales de tolerancia del agente \textit{Reviewer}.
+    \item \textbf{Recursos adicionales necesarios:} Sesiones de prueba adicionales con el autor actuando como usuario final para validar que el nuevo umbral resulta equilibrado.
 \end{itemize}
 
 \newpage
@@ -778,6 +779,10 @@ Tras realizar la encuesta de autoevaluación, identifico un perfil técnico sól
 
 Esta falta de base académica ha sido mi principal punto débil al afrontar la estimación de costes y riesgos de este proyecto. Sin embargo, mediante un proceso de aprendizaje autónomo durante la planificación, he comprendido la importancia crítica de estos conceptos para gestionar adecuadamente un proyecto de cierto calibre como puede ser un TFG. Esta reflexión me ha permitido adoptar una visión más empática de la ingeniería, utilizando la metodología SDD no solo para buscar la eficiencia, sino para prevenir el \textit{burnout} y fomentar la sostenibilidad social del equipo.
 
+Concretamente, en el bloque de métricas de impacto ambiental y social, comprendo de forma intuitiva conceptos básicos como la huella ambiental o el ciclo de vida de un producto, pero los marcos de medición más formalizados y los indicadores cuantitativos de impacto social eran prácticamente desconocidos para mí. Esta brecha fue evidente al tener que razonar sobre el impacto social de una herramienta de IA como la que propone este TFG.
+
+El bloque donde partía con menor preparación era el de gestión económica: conceptos como las amortizaciones, el control de desviaciones presupuestarias o la estructura detallada de un presupuesto los he aprendido prácticamente desde cero durante la elaboración del proyecto, lo que ha supuesto el reto más importante a nivel de sostenibilidad de todo el GEP. En contraste, en lo relativo a los principios éticos y deontológicos del impacto de la IA, ya contaba con una conciencia bastante desarrollada antes de comenzar, al tratarse de un tema que me preocupa activamente como futuro ingeniero.
+
 \subsection{Dimensión económica}
 % Añadir beneficios del proyecto. ¿Porque puede merecer la pena gastarse 14.000€ en esto?
 \textbf{PPP:} El coste total del proyecto se estima en 14.099,81€. Tras reflexionar sobre este presupuesto, considero que es realista y competitivo para un desarrollo de 540 horas que integra tecnologías punteras de IA. La optimización del gasto se logra mediante el uso de herramientas de código abierto y un modelo de pago por uso para las APIs, centrando la inversión en el valor del esfuerzo humano y la investigación.
@@ -786,7 +791,7 @@ Esta falta de base académica ha sido mi principal punto débil al afrontar la e
 
 \textbf{Mantenimiento:} El coste operativo tras la entrega es mínimo, estimado en aproximadamente 120€/mes. Este importe cubre los costes de suscripciones a las APIs de IA (GitHub, Anthropic, ...) y unas 4 horas mensuales de soporte técnico de un \textit{programador junior} para actualizaciones menores y ajustes varios.
 \begin{equation}
-    CosteMantenimiento = 60\verb|€|/mes + 4h/mes * 14{.}92\verb|€|/h = 119{.}68\verb|€|
+    CosteMantenimiento = 60\verb|€|/mes + 4h/mes * 14{.}92\verb|€|/h = 119{.}68\verb|€|/mes
 \end{equation}
 
 \subsection{Dimensión social}
@@ -802,74 +807,15 @@ Esta falta de base académica ha sido mi principal punto débil al afrontar la e
 
 % HOLA DAVID, HE ELIMINADO EL APARTADO DE REFERENCIAS porque según los documentos de ejemplo porpocionados por mi universidad, en esta entrega que solo es documentación no eran necesarias!
 
-%\addcontentsline{toc}{section}{Referencias}
 
-%\bibliographystyle{plain} 
 
 %\bibliography{references1}
+%\bibliography{references2}
 
 \newpage
+
 \addcontentsline{toc}{section}{Referencias}
-
-\begin{thebibliography}{99}
-
-    \bibitem{ostroff_agile_2004}
-    Ostroff, J., Makalsky, D., y Paige, R. (2004). \textit{Agile Specification-Driven Development}.
-    En: \textit{Extreme Programming and Agile Methods}. Springer.
-    \url{https://doi.org/10.1007/978-3-540-24853-8_12}. Accedido el 24/02/2026
-
-    \bibitem{github_spec_kit}
-    GitHub. (2025). \textit{github/spec-kit Repository}.
-    Recuperado de: \url{https://github.com/github/spec-kit}. Accedido el 24/02/2026
-
-    \bibitem{jama_requirements}
-    Jama Software. (2026). \textit{What is Requirements Gathering in Software Engineering?}
-    Recuperado de: \url{https://www.jamasoftware.com/requirements-management-guide/requirements-gathering-and-management-processes/what-is-requirements-gathering/}. Accedido el 25/02/2026
-
-    \bibitem{vscode_agents}
-    Microsoft. (2026). \textit{Using agents in Visual Studio Code}.
-    Recuperado de: \url{https://code.visualstudio.com/docs/copilot/agents/overview}. Accedido el 25/02/2026
-
-    \bibitem{agentskills_home}
-    AgentSkills. (2026). \textit{AgentSkills Documentation}.
-    Recuperado de: \url{https://agentskills.io/home}. Accedido el 25/02/2026
-
-    \bibitem{buildermethods_agent_os}
-    Builder Methods. (2025). \textit{buildermethods/agent-os}.
-    Recuperado de: \url{https://github.com/buildermethods/agent-os}. Accedido el 25/02/2026
-
-    \bibitem{github_copilot_docs}
-    GitHub. (2026). \textit{GitHub Copilot documentation}.
-    Recuperado de: \url{https://docs.github.com/en/copilot}. Accedido el 25/02/2026
-
-    \bibitem{cursor_ai}
-    Cursor. (2026). \textit{Cursor: The best way to code with AI}.
-    Recuperado de: \url{https://cursor.com}. Accedido el 25/02/2026
-
-    \bibitem{modul2_1}
-    Departament d'Organització d'Empreses (FIB). \textit{Mòdul 2.1.b -- Gestión ágil de proyectos}.
-    Universitat Politècnica de Catalunya. Accedido el 24/02/2026
-
-    \bibitem{indeed_salarios}
-    Indeed. (2026). \textit{Guía de salarios en España: Explorar sueldos por cargo y ubicación}.
-    Recuperado de: \url{https://es.indeed.com/career/salaries}. Accedido el 08/03/2026
-
-    \bibitem{barcelona_coworking}
-    Barcelona Life. (2026). \textit{Guide to Coworking Spaces in Barcelona: Shared Offices}.
-    Disponible en: \url{https://www.barcelona-life.com/barcelona-coworking-spaces}. Accedido el 10/03/2026
-
-    \bibitem{naturgy_precios}
-    Naturgy. (2026). \textit{Precio de la luz y tarifas eléctricas para el hogar}.
-    Disponible en: \url{https://www.naturgy.es/hogar/luz/precio_de_la_luz}. Accedido el 10/03/2026
-
-    \bibitem{github_pricing}
-    GitHub. (2026). \textit{GitHub Pricing Plans: Personal and Business}.
-    Recuperado de: \url{https://github.com/pricing}. Accedido el 09/03/2026
-
-    \bibitem{claude_plans}
-    Anthropic. (2026). \textit{Choosing a Claude plan: Free, Pro, and Team}.
-    Recuperado de: \url{https://support.claude.com/en/articles/11049762-choosing-a-claude-plan}. Accedido el 09/03/2026
-
-\end{thebibliography}
+\bibliographystyle{plain} 
+\bibliography{references}
 
 \end{document}

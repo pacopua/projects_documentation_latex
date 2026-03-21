@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.3.17)  18 MAR 2026 15:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.3.17)  21 MAR 2026 18:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -8,8 +8,8 @@ entering extended mode
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count185
 \c@section=\count186
@@ -631,23 +631,23 @@ LaTeX Info: Redefining \% on input line 24.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(99.58464pt, 415.12572pt, 99.58464pt)
+* h-part:(L,W,R)=(71.13188pt, 472.03123pt, 71.13188pt)
 * v-part:(T,H,B)=(71.13188pt, 652.70622pt, 71.13188pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=415.12572pt
+* \textwidth=472.03123pt
 * \textheight=652.70622pt
-* \oddsidemargin=27.31465pt
-* \evensidemargin=27.31465pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
 * \topmargin=-38.1381pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=12.0pt
+* \topskip=11.0pt
 * \footskip=30.0pt
-* \marginparwidth=44.0pt
+* \marginparwidth=59.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -661,11 +661,11 @@ LaTeX Info: Redefining \% on input line 24.
 LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
 (Font)              using `OT1/cmr/bx/n' instead on input line 28.
 
-<Logo_UPC.svg.png, id=255, 2055.68pt x 2055.68pt>
+<Logo_UPC.svg.png, id=279, 2055.68pt x 2055.68pt>
 File: Logo_UPC.svg.png Graphic file (type png)
 <use Logo_UPC.svg.png>
 Package pdftex.def Info: Logo_UPC.svg.png  used on input line 34.
-(pdftex.def)             Requested size: 62.26631pt x 62.2637pt.
+(pdftex.def)             Requested size: 70.8018pt x 70.79556pt.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 35.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -674,13 +674,13 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<logo-fiblletres-upc-color.png, id=257, 863.225pt x 130.4875pt>
+<logo-fiblletres-upc-color.png, id=281, 863.225pt x 130.4875pt>
 File: logo-fiblletres-upc-color.png Graphic file (type png)
 <use logo-fiblletres-upc-color.png>
 Package pdftex.def Info: logo-fiblletres-upc-color.png  used on input line 39.
-(pdftex.def)             Requested size: 352.85939pt x 53.33893pt.
+(pdftex.def)             Requested size: 401.22942pt x 60.65016pt.
 
-Overfull \hbox (13.52643pt too wide) in paragraph at lines 32--41
+Overfull \hbox (14.30928pt too wide) in paragraph at lines 32--41
 []$[]$   $[]$ 
  []
 
@@ -692,7 +692,7 @@ LaTeX Info: Redefining \% on input line 1.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.40 ...5.7}Diagrama de Gantt}{19}{subsection.5.7}
+l.44 ... c√≥digo estructurado}{20}{subsection.6.3}
                                                   % [1])
 \tf@toc=\write5
 \openout5 = `main.toc'.
@@ -703,133 +703,77 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--105
  []
 
 [4] [5] [6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
 
  []
 
-[8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 415--415
-[]|\OT1/cmr/m/n/12 Investigador / Do-cu-
+[8] [9] [10] [11] [12]
+Overfull \hbox (1.19276pt too wide) in paragraph at lines 304--305
+[]\OT1/cmr/bx/n/10.95 DA2.1 \OT1/cmr/m/n/10.95 In-ves-ti-ga-ci^^Son, se-lec-ci^^Son y con-fi-gu-ra-ci^^Son de m^^Setri-cas cla-ve (Com-ple-ji-dad Ci-clom^^Sati-
+ []
+
+[13]
+Overfull \hbox (0.94032pt too wide) in paragraph at lines 319--320
+[]\OT1/cmr/bx/n/10.95 DA4.2 \OT1/cmr/m/n/10.95 In-te-gra-ci^^Son de MCPs avan-za-dos y he-rra-mien-tas ex-ter-nas (ej. co-ne-xi^^Son con GitHub
+ []
+
+[14] [15] [16]
+Underfull \hbox (badness 4366) in paragraph at lines 426--426
+[]|\OT1/cmr/bx/n/10.95 GP \OT1/cmr/m/n/10.95 (25$ $%), \OT1/cmr/bx/n/10.95 TP2 \OT1/cmr/m/n/10.95 (100$ $%),
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 415--415
-\OT1/cmr/m/n/12 (in-ves-ti-ga-ci^^Son), \OT1/cmr/bx/n/12 DA4
+Underfull \hbox (badness 4366) in paragraph at lines 426--426
+[]|\OT1/cmr/bx/n/10.95 GP \OT1/cmr/m/n/10.95 (75$ $%), \OT1/cmr/bx/n/10.95 TP1 \OT1/cmr/m/n/10.95 (100$ $%),
  []
 
-[19]
-<Gant_Lliurament2.png, id=439, 1676.2625pt x 1098.1025pt>
+[17] [18]
+<Gant_Lliurament2.png, id=480, 1676.2625pt x 1098.1025pt>
 File: Gant_Lliurament2.png Graphic file (type png)
 <use Gant_Lliurament2.png>
-Package pdftex.def Info: Gant_Lliurament2.png  used on input line 424.
-(pdftex.def)             Requested size: 622.68857pt x 407.91685pt.
+Package pdftex.def Info: Gant_Lliurament2.png  used on input line 437.
+(pdftex.def)             Requested size: 708.04684pt x 463.83054pt.
 
-
-LaTeX Warning: Float too large for page by 19.62445pt on input line 427.
-
-[20 <./Gant_Lliurament2.png (PNG copy)>]
-Overfull \hbox (29.0986pt too wide) in paragraph at lines 432--432
-|[]\OT1/cmr/bx/n/17.28 Gesti^^Son de ries-gos: Pla-nes al-ter-na-ti-vos y obst^^Sacu-
+Overfull \hbox (55.34062pt too wide) in paragraph at lines 437--438
+ [][] 
  []
 
-[21
+
+LaTeX Warning: Float too large for page by 17.52847pt on input line 440.
+
+[19 <./Gant_Lliurament2.png (PNG copy)>] [20
 
 
-] [22] [23] [24]
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 533.
+] [21] [22]
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 534.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) [25] [26] [27]
-Underfull \hbox (badness 10000) in paragraph at lines 624--624
-[]|\OT1/cmr/m/n/12 Estaci^^Son de
+) [23] [24] [25] [26]
+Overfull \hbox (0.6247pt too wide) in paragraph at lines 677--678
+\OT1/cmr/m/n/10.95 El plan al-ter-na-ti-vo pue-de re-que-rir has-ta 15 ho-ras adi-cio-na-les de \OT1/cmr/m/it/10.95 Pro-gra-ma-dor ju-nior \OT1/cmr/m/n/10.95 (14,92[][]\TS1/cmtt/m/n/10.95 ø[]\OT1/cmr/m/n/10.95 /h)
+ []
+
+[27] [28] [29] [30] [31] (./main.bbl
+Underfull \hbox (badness 2941) in paragraph at lines 25--29
+[]\OT1/cmr/m/n/10.95 Builder Methods.  buildermethods/agent-os.  []$\OT1/cmtt/m/n/10.95 https : / / github . com / buildermethods /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 624--624
-[]|\OT1/cmr/m/n/12 Monitor ex-
+Underfull \hbox (badness 10000) in paragraph at lines 73--79
+[]\OT1/cmr/m/n/10.95 Jama Soft-wa-re.  What is re-qui-re-ments gathe-ring in soft-wa-re en-gi-nee-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 624--624
-[]|\OT1/cmr/m/n/12 Perif^^Seri-cos
+Underfull \hbox (badness 10000) in paragraph at lines 73--79
+\OT1/cmr/m/n/10.95 ring?  []$\OT1/cmtt/m/n/10.95 https : / / www . jamasoftware . com / requirements-[]management-[]guide /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 624--624
-\OT1/cmr/m/n/12 (Te-cla-do,
+Overfull \hbox (11.16513pt too wide) in paragraph at lines 73--79
+\OT1/cmtt/m/n/10.95 requirements-[]gathering-[]and-[]management-[]processes / what-[]is-[]requirements-[]gathering/$[]\OT1/cmr/m/n/10.95 ,
  []
 
-[28]
-Overfull \hbox (3.10846pt too wide) detected at line 655
-\OML/cmm/m/it/12 CosteR\OT1/cmr/m/n/12 1 = ((5\OML/cmm/m/it/12 h \OMS/cmsy/m/n/12 ^^C \OT1/cmr/m/n/12 26\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 20[]\OML/cmm/m/it/12 =h\OT1/cmr/m/n/12 ) + (10\OML/cmm/m/it/12 h \OMS/cmsy/m/n/12 ^^C \OT1/cmr/m/n/12 14\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 92[]\OML/cmm/m/it/12 =h\OT1/cmr/m/n/12 )) \OMS/cmsy/m/n/12 ^^C \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 40 = 280\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 2[] \OMS/cmsy/m/n/12 ^^C \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 40 = 112\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 08[]
- []
-
-
-Overfull \hbox (8.9834pt too wide) detected at line 673
-\OML/cmm/m/it/12 CosteR\OT1/cmr/m/n/12 4 = ((10\OML/cmm/m/it/12 h \OMS/cmsy/m/n/12 ^^C \OT1/cmr/m/n/12 14\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 92[]\OML/cmm/m/it/12 =h\OT1/cmr/m/n/12 ) + (10\OML/cmm/m/it/12 h \OMS/cmsy/m/n/12 ^^C \OT1/cmr/m/n/12 20\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 85[]\OML/cmm/m/it/12 =h\OT1/cmr/m/n/12 )) \OMS/cmsy/m/n/12 ^^C \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 65 = 357\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 7[] \OMS/cmsy/m/n/12 ^^C \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 65 = 232\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 51[]
- []
-
-[29] [30]
-Overfull \hbox (13.90825pt too wide) detected at line 742
-[][]\OML/cmm/m/it/12 Desviaci[]n Coste Personal \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 Horas Estimadas \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 Horas Reales\OT1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^C \OML/cmm/m/it/12 Coste Rol
- []
-
-[31]
-Overfull \hbox (52.9506pt too wide) detected at line 763
-[][]\OML/cmm/m/it/12 Estado Imprevistos \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 Total Imprevistos Estimado \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 Coste Imprevistos Consumido
- []
-
-[32] [33] [34]
-Underfull \hbox (badness 2318) in paragraph at lines 822--824
-[]\OT1/cmr/m/n/12 GitHub. (2025). \OT1/cmr/m/it/12 github/spec-kit Re-po-si-tory\OT1/cmr/m/n/12 . Re-cu-pe-ra-do de: []$\OT1/cmtt/m/n/12 https : / /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 826--828
-[]\OT1/cmr/m/n/12 Jama Soft-wa-re. (2026). \OT1/cmr/m/it/12 What is Re-qui-re-ments Gathe-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 826--828
-\OT1/cmr/m/it/12 ring in Soft-wa-re En-gi-nee-ring? \OT1/cmr/m/n/12 Re-cu-pe-ra-do de: []$\OT1/cmtt/m/n/12 https : / /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 826--828
-\OT1/cmtt/m/n/12 www . jamasoftware . com / requirements-[]management-[]guide /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 826--828
-\OT1/cmtt/m/n/12 requirements-[]gathering-[]and-[]management-[]processes /
- []
-
-
-Underfull \hbox (badness 6063) in paragraph at lines 830--832
-[]$\OT1/cmtt/m/n/12 https : / / code . visualstudio . com / docs / copilot / agents / overview$[]\OT1/cmr/m/n/12 . Ac-
- []
-
-
-Underfull \hbox (badness 5681) in paragraph at lines 858--860
-[]\OT1/cmr/m/n/12 Barcelona Li-fe. (2026). \OT1/cmr/m/it/12 Gui-de to Co-wor-king Spa-ces in Bar-ce-lo-na:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 858--860
-\OT1/cmr/m/it/12 Sha-red Of-fi-ces\OT1/cmr/m/n/12 . Dis-po-ni-ble en: []$\OT1/cmtt/m/n/12 https : / / www . barcelona-[]life . com /
- []
-
-
-Underfull \hbox (badness 3471) in paragraph at lines 870--872
-[]\OT1/cmr/m/n/12 Anthropic. (2026). \OT1/cmr/m/it/12 Choo-sing a Clau-de plan: Free, Pro, and Team\OT1/cmr/m/n/12 .
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 870--872
-\OT1/cmr/m/n/12 Re-cu-pe-ra-do de: []$\OT1/cmtt/m/n/12 https : / / support . claude . com / en / articles /
- []
-
-[35] [36] (./main.aux
+[32]) [33] (./main.aux
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
@@ -837,21 +781,21 @@ LaTeX Info: Redefining \% on input line 25.
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 25E7604D920BC91D9C67FC0BE891CA34;10980.
+(rerunfilecheck)             Checksum: 6852EE26C2AF99788BDD738CF8D3160B;14176.
  ) 
 Here is how much of TeX's memory you used:
- 23642 strings out of 480185
- 426696 string characters out of 5894213
- 724502 words of memory out of 5000000
- 41067 multiletter control sequences out of 15000+600000
- 478781 words of font info for 62 fonts, out of 8000000 for 9000
+ 23680 strings out of 480185
+ 427357 string characters out of 5894213
+ 727999 words of memory out of 5000000
+ 41091 multiletter control sequences out of 15000+600000
+ 479391 words of font info for 64 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 83i,12n,80p,1207b,629s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/adri/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcbx1200.600pk> </home/adri/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1200.600pk> </home/adri/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (37 pages, 551098 bytes).
+ 83i,12n,80p,1207b,631s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/adri/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcbx1095.600pk> </home/adri/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1095.600pk> </home/adri/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on main.pdf (34 pages, 584517 bytes).
 PDF statistics:
- 651 PDF objects out of 1000 (max. 8388607)
- 580 compressed objects within 6 object streams
- 132 named destinations out of 1000 (max. 500000)
- 524 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 685 PDF objects out of 1000 (max. 8388607)
+ 614 compressed objects within 7 object streams
+ 143 named destinations out of 1000 (max. 500000)
+ 572 words of extra memory for PDF output out of 10000 (max. 10000000)
 

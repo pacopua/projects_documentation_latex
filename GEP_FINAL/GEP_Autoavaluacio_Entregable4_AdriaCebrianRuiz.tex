@@ -1,0 +1,94 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[left=3.5cm, right=3.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{booktabs}
+
+\titleformat{\section}
+  {\large\bfseries}{}{0em}{}[\vspace{-0.4em}\rule{\linewidth}{0.6pt}\vspace{0.2em}]
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    pdftitle={Autoevaluacion Entregable 4 - GEP},
+}
+
+\setlength{\parskip}{0.5em}
+
+% ------------------------------------------------------------------
+\begin{document}
+
+% ---- Portada ----
+\begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    {\LARGE\bfseries Autoevaluación del Entregable 4\\[0.5em]}
+    {\large Gestió de Projectes · Documento Final Integrado\\[3em]}
+    {\normalsize
+        \textbf{Autor:} Adrià Cebrián Ruiz\\[0.4em]
+        \textbf{Director:} Luis Jonás Cuervo Derqui\\[0.4em]
+        \textbf{Ponente:} David Garcia Soriano\\[0.4em]
+        \textbf{Tutor GEP:} Joan Sardà Ferrer\\[2em]
+        Facultat d'Informàtica de Barcelona (FIB)\\
+        Universitat Politècnica de Catalunya\\
+        Mencío de Computació · Grau en Enginyeria Informàtica\\[2em]
+        \today
+    }
+\end{titlepage}
+
+% ---- Introducción ----
+\noindent Este documento recoge la autoevaluación integrada de todos los criterios de la rúbrica del GEP, evaluados a lo largo de los cuatro entregables y consolidados en el Documento Final (Entregable 4). Se estructura siguiendo los cuatro bloques de la rúbrica: Contextualització i Abast, Planificació Temporal, Pressupost y Format.
+
+% ==================================================================
+\section{Contextualització i Abast}
+% (criterios evaluados en el Entregable 1)
+
+\textbf{Context (4/4):} He tratado todos los temas indicados en la rúbrica con una profundidad adecuada. Se contextualiza el proyecto en el marco de la empresa Colb.Ai y la FIB (§1.3), se definen los términos y conceptos propios del tema ---SDD, LLMs, Agentes de Código, \textit{Agent Skills}--- (§1.4), se identifica claramente el problema a resolver ---\textit{slop code}, falta de trazabilidad y barrera de incorporación--- (§1.2) y se describen los agentes implicados: desarrolladores y clientes/usuarios de Colb.Ai (§1.5).
+
+\textbf{Justificació (4/4):} Se han presentado las soluciones disponibles en el mercado para el problema explicado en el apartado anterior (Spec Kit, AgentOS, GitHub Copilot y Cursor), comparándolas mediante una tabla de características e inconvenientes principales (§2.1). Se explica por qué ninguna de estas se adapta plenamente a las necesidades específicas de la empresa, justificando así el desarrollo de una solución a medida cuya propuesta de implementación se describe en §2.3.
+
+\textbf{Abast (4/4):} Se ha comunicado adecuadamente el objetivo general del proyecto y se han enumerado cuatro subobjetivos funcionales y arquitectónicos concretos (§3.1). Además, se identifican los requerimientos funcionales (4 ítems) y no funcionales (3 ítems) que ha de cumplir el sistema (§3.2), así como los obstáculos y riesgos principales resumidos en §3.3 y desarrollados en detalle en §6.
+
+\textbf{Metodologia i Rigor (4/4):} Se explica la metodología ágil SCRUM y cómo se adapta al proyecto concreto, con sprints de 2--3 semanas y reuniones diarias con el equipo de Colb.Ai a través de Microsoft Teams (§4.1). Se describen también las herramientas de seguimiento empleadas para validar que se alcanzan los objetivos: Odoo para la gestión de tareas, Git/GitHub para el control de versiones, y reuniones de seguimiento periódicas con el director y el tutor académico (§4.2).
+
+\textbf{Referèncias (4/4):} Todas las referencias aparecen citadas en el lugar apropiado del texto en formato numérico y figuran en un listado ordenado al final del documento. Las 14 referencias siguen un estilo consistente e incluyen la fecha de acceso. Dado que varias fuentes son repositorios, herramientas de software o documentación técnica de organizaciones, en lugar del nombre de un autor individual se indica el nombre del software o la organización responsable, lo cual es coherente con el tipo de fuente.
+
+% ==================================================================
+\section{Planificació Temporal}
+% (criterios evaluados en el Entregable 2)
+
+\textbf{Descripció de les tasques (4/4):} Las tareas se han desglosado individualmente hasta el nivel de subtarea (por ejemplo DA1.1, DA1.2, DA1.3), incluyendo descripciones claras, estimaciones justificadas en horas, dependencias de precedencia explícitas y asignación de recursos humanos y materiales. Se incluye una tabla resumen (Cuadro 2) con toda esta información consolidada, junto con un desglose detallado de horas por rol (Cuadro 3), ambos en §5.6.
+
+\textbf{Estimacions i Gantt (4/4):} Las estimaciones están calculadas íntegramente en horas, sumando un total de $\sim$537h distribuidas entre los cuatro roles definidos (Jefe de Proyecto, Investigador/Documentador, Programador Junior, Tester). El diagrama de Gantt (Figura 1, generado con GanttProject) refleja la concurrencia de tareas ---GP5 y GP6 corren en paralelo durante todo el proyecto---, las dependencias entre sprints y es coherente con la definición de las tareas en el documento.
+
+\textbf{Gestió del risc i plans alternatius (4/4):} Se han identificado 6 riesgos específicos del proyecto, cada uno con su plan alternativo (Plan B). Para cada riesgo se detalla: las tareas alternativas a ejecutar, el impacto en la duración total del proyecto (cuantificado en horas) y los recursos adicionales necesarios. La viabilidad temporal del proyecto queda garantizada gracias al margen absorbible por las fases de pruebas. El coste económico estimado de cada imprevisto está integrado en el presupuesto (§7.4.2).
+
+% ==================================================================
+\section{Pressupost}
+% (criterios evaluados en el Entregable 3)
+
+\textbf{Identificació dels costos (4/4):} Se han desglosado y descrito con total claridad todas las partidas necesarias: costes de personal por actividad (GP, TP, DA1--DA4, PV) con desglose por rol, costes genéricos (estructurales, software y hardware), amortizaciones del equipamiento calculadas mediante la fórmula de vida útil (Cuadro 5), contingencias del 15\% sobre el subtotal, e imprevistos basados en los riesgos identificados. Todas las partidas están vinculadas directamente a las actividades del Gantt.
+
+\textbf{Estimació dels costos (4/4):} Los costes son coherentes y están fundamentados en fuentes externas referenciadas: salarios de mercado según perfil profesional (Indeed [10]), precios de software ([13][14]), coworking ([11]) y electricidad ([12]). Se ha aplicado correctamente el multiplicador de 1{,}30 para la Seguridad Social, y los costes por hora están diferenciados según el perfil. El presupuesto total resultante (14.099,81\,€) es realista para un desarrollo de 537h que integra tecnologías punteras de IA.
+
+\textbf{Control de gestió (4/4):} Se propone un control de gestión continuo alineado con la metodología ágil, con revisión al finalizar cada Sprint y en las reuniones de seguimiento. Se definen cuatro indicadores numéricos con sus fórmulas explícitas (ec. 11--14): desviación de horas por tarea, desviación de coste de personal, desviación de costes genéricos y consumo del fondo de imprevistos. Para cada indicador se especifican umbrales y criterios de actuación concretos según la magnitud de la desviación detectada.
+
+\textbf{Informe de Sostenibilitat (4/4):} El informe incluye la autoevaluación de la competencia de sostenibilidad (§8.1), elaborada a partir de la encuesta realizada, con una reflexión sobre mis puntos fuertes ---compromiso con la eficiencia técnica y el \textit{Green Computing}, conciencia ética desarrollada sobre el impacto de la IA--- y mis puntos débiles ---gestión económica aprendida prácticamente desde cero durante el proyecto, y desconocimiento previo de marcos de medición formalizados de impacto social---. Se analizan exhaustivamente las tres dimensiones ---económica (§8.2), social (§8.3) y ambiental (§8.4)--- tanto para la fase de realización del proyecto (PPP) como para la vida útil del sistema, incluyendo el coste de mantenimiento mensual estimado (ec.~15).
+
+% ==================================================================
+\section{Format}
+% (criterios evaluados en los Entregables 1, 2 y 3; aplicados al documento integrado)
+
+\textbf{Organització (4/4):} El documento final presenta una estructura lógica y fluida, con los apartados bien enlazados mediante referencias cruzadas internas. La portada incluye todos los datos requeridos (autor, director, ponente, tutor GEP, facultad, mención y fecha). Todas las páginas están numeradas; las tablas (Cuadros 1--6), la figura (Figura 1) y las fórmulas matemáticas (ecuaciones 1--15) están debidamente numeradas, tituladas y referenciadas en el texto.
+
+\textbf{Claredat (4/4):} Considero que el contenido se presenta de forma clara y técnica. El uso de listas con viñetas, tablas comparativas, ecuaciones numeradas y el diagrama de Gantt facilita la comprensión de las ideas. He procurado que las explicaciones sean directas y precisas, evitando la ambigüedad tanto en las decisiones de diseño como en las estimaciones económicas.
+
+\textbf{Redacció (4/4):} He revisado el texto en su totalidad y no he encontrado faltas de gramática, ortografía ni puntuación significativas. La redacción es consistente en estilo y terminología a lo largo de las 37 páginas del documento.
+
+\end{document}
