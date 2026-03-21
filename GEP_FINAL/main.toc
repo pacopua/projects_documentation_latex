@@ -22,48 +22,49 @@
 \contentsline {subsection}{\numberline {3.2}Requerimientos}{8}{subsection.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Requerimientos Funcionales}{8}{subsubsection.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Requerimientos No Funcionales}{9}{subsubsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.3}Obstáculos y Riesgos}{9}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Metodología y Rigor}{11}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Metodología de Trabajo}{11}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Herramientas de Seguimiento y Control}{11}{subsection.4.2}%
-\contentsline {section}{\numberline {5}Descripción de las tareas}{12}{section.5}%
-\contentsline {subsection}{\numberline {5.1}GP - Gestión del proyecto}{12}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}TP - Trabajo Previo}{13}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}DA - Desarrollo Ágil (Sprints Iterativos)}{13}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}PV - Pruebas y Validación}{14}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Recursos}{15}{subsection.5.5}%
-\contentsline {subsubsection}{\numberline {5.5.1}Recursos Materiales}{15}{subsubsection.5.5.1}%
-\contentsline {subsubsection}{\numberline {5.5.2}Recursos de Software}{15}{subsubsection.5.5.2}%
-\contentsline {subsubsection}{\numberline {5.5.3}Recursos Humanos}{15}{subsubsection.5.5.3}%
-\contentsline {subsection}{\numberline {5.6}Tabla resumen de tareas}{16}{subsection.5.6}%
-\contentsline {subsubsection}{\numberline {5.6.1}Desglose de horas por rol}{17}{subsubsection.5.6.1}%
-\contentsline {subsection}{\numberline {5.7}Diagrama de Gantt}{18}{subsection.5.7}%
-\contentsline {section}{\numberline {6}Gestión de riesgos: Planes alternativos y obstáculos}{20}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Riesgo 1: Cambios repentinos en los requerimientos por parte de la empresa}{20}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Riesgo 2: Bloqueo tecnológico (Vendor Lock-in) por cambio de precios o políticas en las APIs de los LLMs}{20}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Riesgo 3: Documentación interna insuficiente para la generación autónoma de código estructurado}{20}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Riesgo 4: Limitaciones de control sobre el flujo de orquestación en el ecosistema IDE}{21}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Riesgo 5: Desbordamiento de la ventana de contexto en proyectos grandes}{21}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}Riesgo 6: Exceso de fricción en el bucle de desarrollo por auditorías demasiado estrictas}{22}{subsection.6.6}%
-\contentsline {section}{\numberline {7}Gestión económica}{23}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Coste del personal}{23}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Coste por actividad}{23}{subsection.7.2}%
-\contentsline {subsubsection}{\numberline {7.2.1}Gestión del proyecto}{23}{subsubsection.7.2.1}%
-\contentsline {subsubsection}{\numberline {7.2.2}Trabajo Previo}{23}{subsubsection.7.2.2}%
-\contentsline {subsubsection}{\numberline {7.2.3}Desarrollo Ágil}{23}{subsubsection.7.2.3}%
-\contentsline {subsubsection}{\numberline {7.2.4}Pruebas y Validación}{24}{subsubsection.7.2.4}%
-\contentsline {subsection}{\numberline {7.3}Costes genéricos}{24}{subsection.7.3}%
-\contentsline {subsubsection}{\numberline {7.3.1}Costes estructurales}{24}{subsubsection.7.3.1}%
-\contentsline {subsubsection}{\numberline {7.3.2}Costes de \textit {Software}}{25}{subsubsection.7.3.2}%
-\contentsline {subsubsection}{\numberline {7.3.3}Costes de \textit {Hardware}}{25}{subsubsection.7.3.3}%
-\contentsline {subsection}{\numberline {7.4}Contingencias e imprevistos}{26}{subsection.7.4}%
-\contentsline {subsubsection}{\numberline {7.4.1}Contingencias}{26}{subsubsection.7.4.1}%
-\contentsline {subsubsection}{\numberline {7.4.2}Imprevistos}{26}{subsubsection.7.4.2}%
-\contentsline {subsection}{\numberline {7.5}Coste total}{27}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Control de gestión}{28}{subsection.7.6}%
-\contentsline {section}{\numberline {8}Informe de sostenibilidad}{30}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Autoevaluación de la competencia}{30}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}Dimensión económica}{30}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}Dimensión social}{31}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}Dimensión ambiental}{31}{subsection.8.4}%
-\contentsline {section}{Referencias}{32}{subsection.8.4}%
+\contentsline {subsection}{\numberline {3.3}Métricas de Evaluación del Código}{9}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Obstáculos y Riesgos}{10}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Metodología y Rigor}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Metodología de Trabajo}{12}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Herramientas de Seguimiento y Control}{12}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Descripción de las tareas}{13}{section.5}%
+\contentsline {subsection}{\numberline {5.1}GP - Gestión del proyecto}{13}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}TP - Trabajo Previo}{14}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}DA - Desarrollo Ágil (Sprints Iterativos)}{14}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}PV - Pruebas y Validación}{15}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Recursos}{16}{subsection.5.5}%
+\contentsline {subsubsection}{\numberline {5.5.1}Recursos Materiales}{16}{subsubsection.5.5.1}%
+\contentsline {subsubsection}{\numberline {5.5.2}Recursos de Software}{16}{subsubsection.5.5.2}%
+\contentsline {subsubsection}{\numberline {5.5.3}Recursos Humanos}{16}{subsubsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.6}Tabla resumen de tareas}{17}{subsection.5.6}%
+\contentsline {subsubsection}{\numberline {5.6.1}Desglose de horas por rol}{18}{subsubsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.7}Diagrama de Gantt}{19}{subsection.5.7}%
+\contentsline {section}{\numberline {6}Gestión de riesgos: Planes alternativos y obstáculos}{21}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Riesgo 1: Cambios repentinos en los requerimientos por parte de la empresa}{21}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Riesgo 2: Bloqueo tecnológico (Vendor Lock-in) por cambio de precios o políticas en las APIs de los LLMs}{21}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Riesgo 3: Documentación interna insuficiente para la generación autónoma de código estructurado}{21}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Riesgo 4: Limitaciones de control sobre el flujo de orquestación en el ecosistema IDE}{22}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Riesgo 5: Desbordamiento de la ventana de contexto en proyectos grandes}{22}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Riesgo 6: Exceso de fricción en el bucle de desarrollo por auditorías demasiado estrictas}{23}{subsection.6.6}%
+\contentsline {section}{\numberline {7}Gestión económica}{24}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Coste del personal}{24}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Coste por actividad}{24}{subsection.7.2}%
+\contentsline {subsubsection}{\numberline {7.2.1}Gestión del proyecto}{24}{subsubsection.7.2.1}%
+\contentsline {subsubsection}{\numberline {7.2.2}Trabajo Previo}{24}{subsubsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.3}Desarrollo Ágil}{24}{subsubsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.4}Pruebas y Validación}{25}{subsubsection.7.2.4}%
+\contentsline {subsection}{\numberline {7.3}Costes genéricos}{25}{subsection.7.3}%
+\contentsline {subsubsection}{\numberline {7.3.1}Costes estructurales}{25}{subsubsection.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.2}Costes de \textit {Software}}{26}{subsubsection.7.3.2}%
+\contentsline {subsubsection}{\numberline {7.3.3}Costes de \textit {Hardware}}{26}{subsubsection.7.3.3}%
+\contentsline {subsection}{\numberline {7.4}Contingencias e imprevistos}{27}{subsection.7.4}%
+\contentsline {subsubsection}{\numberline {7.4.1}Contingencias}{27}{subsubsection.7.4.1}%
+\contentsline {subsubsection}{\numberline {7.4.2}Imprevistos}{27}{subsubsection.7.4.2}%
+\contentsline {subsection}{\numberline {7.5}Coste total}{28}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Control de gestión}{29}{subsection.7.6}%
+\contentsline {section}{\numberline {8}Informe de sostenibilidad}{31}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Autoevaluación de la competencia}{31}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Dimensión económica}{31}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Dimensión social}{32}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Dimensión ambiental}{32}{subsection.8.4}%
+\contentsline {section}{Referencias}{33}{subsection.8.4}%

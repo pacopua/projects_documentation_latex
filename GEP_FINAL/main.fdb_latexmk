@@ -1,17 +1,17 @@
 # Fdb version 3
-["bibtex main"] 1774114749 "main.aux" "main.bbl" "main" 1774114750
+["bibtex main"] 1774125275 "main.aux" "main.bbl" "main" 1774130174
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1774114750 14153 14aa7233070f030d2394867afa8c6f4e "pdflatex"
-  "references.bib" 1774114748 6485 ff136f6c9f0c6af9a3c32db5b6ccf5b7 ""
+  "main.aux" 1774130174 14637 5aeda74d7a8010ddcf2e7ad41ac83abf "pdflatex"
+  "references.bib" 1774125275 7609 c2f71e4d2bbf06fef94060292d5cdfc0 ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1774114749 "/home/adri/Desktop/UPC/8e_quatri/TFG/documents/projects_documentation_latex/GEP_FINAL/main.tex" "main.pdf" "main" 1774114750
+["pdflatex"] 1774130172 "/home/adri/Desktop/UPC/8e_quatri/TFG/documents/projects_documentation_latex/GEP_FINAL/main.tex" "main.pdf" "main" 1774130174
   "/etc/texmf/web2c/texmf.cnf" 1773770192 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/adri/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcbx1095.600pk" 1774114425 13556 7dfac3f9019b8c3f982336e53e055063 ""
   "/home/adri/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk" 1774114426 12644 de557497aaf71f7f9797c354b1e553bc ""
   "/home/adri/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1095.600pk" 1774114425 10372 080afeff71443c52bfee0deade55dff5 ""
-  "/home/adri/Desktop/UPC/8e_quatri/TFG/documents/projects_documentation_latex/GEP_FINAL/main.tex" 1774114716 76814 58b62e5ac6f85ffaaed1a8d316cba2ee ""
+  "/home/adri/Desktop/UPC/8e_quatri/TFG/documents/projects_documentation_latex/GEP_FINAL/main.tex" 1774130172 81113 246aada507f1dc6ba213b5982b5db3de ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcbx1095.tfm" 1136768653 1536 0adca69c597a47fe7664bf81057bb53b ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -190,11 +190,11 @@
   "Gant_Lliurament2.png" 1773770374 136009 85f08fde4d40ef713331b00fdc4089de ""
   "Logo_UPC.svg.png" 1773770893 122417 8b1243547074c81f4041355474c00a53 ""
   "logo-fiblletres-upc-color.png" 1773770893 78592 ac8b11d7e21663a229fc48c0f8c8a4bf ""
-  "main.aux" 1774114750 14153 14aa7233070f030d2394867afa8c6f4e "pdflatex"
-  "main.bbl" 1774114749 4298 e10e2ae1b433da881110ca1c8e6dfe33 "bibtex main"
-  "main.out" 1774114750 14176 6852ee26c2af99788bdd738cf8d3160b "pdflatex"
-  "main.tex" 1774114716 76814 58b62e5ac6f85ffaaed1a8d316cba2ee ""
-  "main.toc" 1774114750 6630 278efdc8358c6883df91f82d0d8d3310 "pdflatex"
+  "main.aux" 1774130174 14637 5aeda74d7a8010ddcf2e7ad41ac83abf "pdflatex"
+  "main.bbl" 1774125275 4957 53ac9d419e0e44075a4dc20e4aee90b2 "bibtex main"
+  "main.out" 1774130174 14420 7d7886d923b9be1e1c98b58e32f07259 "pdflatex"
+  "main.tex" 1774130172 81113 246aada507f1dc6ba213b5982b5db3de ""
+  "main.toc" 1774130174 6733 7c2842c4bc6804a20e92d09db278e715 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

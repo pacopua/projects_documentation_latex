@@ -30,7 +30,6 @@
 \bibitem{chen_codex_2021}
 Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, et~al.
 \newblock Evaluating large language models trained on code, 2021.
-\newblock Accedido el 20/03/2026.
 
 \bibitem{cursor_ai}
 {Cursor}.
@@ -83,6 +82,14 @@ T.J. McCabe.
 \newblock {\em IEEE Transactions on Software Engineering}, SE-2(4):308--320,
   1976.
 
+\bibitem{microsoft_maintainability_index}
+{Microsoft}.
+\newblock Code metrics values: Maintainability index.
+\newblock
+  \url{https://learn.microsoft.com/en-us/visualstudio/code-quality/code-metrics-values?view=visualstudio},
+  2024.
+\newblock Accedido el 21/03/2026.
+
 \bibitem{vscode_agents}
 {Microsoft}.
 \newblock Using agents in visual studio code.
@@ -102,31 +109,45 @@ Justice Opara-Martins, Reza Sahandi, and Feng Tian.
   migration: a business perspective.
 \newblock {\em Journal of Cloud Computing: Advances, Systems and Applications},
   5(1):1--23, 2016.
-\newblock Accedido el 20/03/2026.
 
 \bibitem{ostroff_agile_2004}
 J.~Ostroff, D.~Makalsky, and R.~Paige.
 \newblock Agile specification-driven development.
 \newblock In {\em Extreme Programming and Agile Methods}. Springer, 2004.
-\newblock Accedido el 24/02/2026.
 
 \bibitem{peng_copilot_2023}
 Sida Peng, Eirini Kalliamvakou, et~al.
 \newblock The impact of ai on developer productivity: Evidence from github
   copilot, 2023.
-\newblock Accedido el 20/03/2026.
+
+\bibitem{schwaber_scrum_2020}
+Ken Schwaber and Jeff Sutherland.
+\newblock The scrum guide: The definitive guide to scrum: The rules of the
+  game.
+\newblock
+  \url{https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-US.pdf},
+  2020.
+\newblock Accedido el 21/03/2026.
+
+\bibitem{sommerville_se_2015}
+Ian Sommerville.
+\newblock {\em Software Engineering}.
+\newblock Pearson, 10 edition, 2015.
 
 \bibitem{wang_llm_agents_2024}
 Lei Wang, Chen Ma, Xueyang Feng, et~al.
 \newblock A survey on large language model based autonomous agents.
 \newblock {\em Frontiers of Computer Science}, 18, 2024.
-\newblock Accedido el 20/03/2026.
 
 \bibitem{yao_react_2023}
 Shunyu Yao, Jeffrey Zhao, Dian Yu, et~al.
 \newblock React: Synergizing reasoning and acting in language models.
 \newblock In {\em International Conference on Learning Representations (ICLR
   2023)}, 2023.
-\newblock Accedido el 20/03/2026.
+
+\bibitem{zhu_coverage_1997}
+Hong Zhu, Patrick A.~V. Hall, and John H.~R. May.
+\newblock Software unit test coverage and adequacy.
+\newblock {\em ACM Computing Surveys}, 29(4):366--427, 1997.
 
 \end{thebibliography}

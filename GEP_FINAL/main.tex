@@ -105,7 +105,7 @@ En otras palabras, hay que tener definido previamente exactamente qué queremos 
 
 \subsubsection{Toma de requerimientos}
 
-La toma de requerimientos (en inglés \textit{Requirements Gathering}) es una fase fundamental dentro de la ingeniería de software. En ella se investigan, descubren y extraen las necesidades de los clientes, usuarios y otras partes interesadas del sistema. A través de conversaciones con un cliente, que en muchas ocasiones no está muy seguro de qué quiere exactamente, el analista debe generar diseños y especificaciones funcionales específicas con comportamientos detallados \cite{jama_requirements}.
+La toma de requerimientos (en inglés \textit{Requirements Gathering}) es una fase fundamental dentro de la ingeniería de software. En ella se investigan, descubren y extraen las necesidades de los clientes, usuarios y otras partes interesadas del sistema. A través de conversaciones con un cliente, que en muchas ocasiones no está muy seguro de qué quiere exactamente, el analista debe generar diseños y especificaciones funcionales específicas con comportamientos detallados \cite{jama_requirements} \cite{sommerville_se_2015}.
 
 \subsubsection{Asistentes de Inteligencia Artificial y Agentes Basados en LLMs}
 
@@ -219,6 +219,20 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
     \item \textbf{Modularidad:} El diseño de los roles (\textit{prompts} y \textit{skills}) debe ser lo suficientemente modular para permitir futuras expansiones.
 \end{itemize}
 
+\subsection{Métricas de Evaluación del Código}
+
+Para validar empíricamente la calidad del código generado por el sistema, se emplearán métricas de análisis estático ampliamente adoptadas en la ingeniería del software \cite{sommerville_se_2015}. Estas métricas serán calculadas de forma automatizada por el agente \textit{Reviewer} sobre el código del repositorio local, y sus resultados se presentarán al desarrollador como parte de la auditoría. Para cada métrica, se definirá un umbral de aceptación a partir del cual el agente considerará el código como no conforme y señalará las funciones o módulos problemáticos. El conjunto de métricas aquí descrito no es definitivo; está previsto ampliarlo en iteraciones futuras del proyecto a medida que se identifiquen indicadores adicionales relevantes para el contexto del sistema.
+
+Las métricas inicialmente contempladas son las siguientes:
+
+\begin{itemize}
+    \item \textbf{Complejidad Ciclomática} \cite{McCabe_Complexity}: Mide el número de caminos de ejecución independientes dentro de una función o módulo. Un valor elevado indica una lógica excesivamente ramificada, lo que dificulta las pruebas y el mantenimiento del código.
+
+    \item \textbf{Índice de Mantenibilidad} (\textit{Maintainability Index}) \cite{microsoft_maintainability_index}: Métrica compuesta que combina la complejidad ciclomática, el volumen de Halstead y el número de líneas de código para producir un índice global de facilidad de mantenimiento. Un valor bajo indica código difícil de comprender y modificar.
+
+    \item \textbf{Cobertura de Pruebas} (\textit{Test Coverage}) \cite{zhu_coverage_1997}: Porcentaje de líneas o ramas del código fuente que son ejercitadas por el conjunto de pruebas automatizadas. Una cobertura baja implica que una parte significativa del comportamiento del sistema no está verificada.
+\end{itemize}
+
 \subsection{Obstáculos y Riesgos}
 Todo proyecto conlleva dificultades que deben analizarse anticipadamente para minimizar su impacto. En la sección \ref{sec:gestion_riesgos} se especifican los riesgos y obstáculos del proyecto con detalle, incluyendo sus planes alternativos y las tareas afectadas. A modo de resumen, se enumeran las principales dificultades identificadas:
 
@@ -243,7 +257,7 @@ Todo proyecto conlleva dificultades que deben analizarse anticipadamente para mi
 \subsection{Metodología de Trabajo}
 Para el desarrollo de este Trabajo de Final de Grado, se adoptará una \textbf{metodología ágil}, específicamente en el marco de \textit{SCRUM}, orientada a la entrega continua de valor y a la adaptación rápida frente a posibles cambios. 
 
-La idea es que el flujo de trabajo sea mediante ciclos iterativos breves, para ir validando e iterando sobre el producto, haciendo cambios sobre esta basándonos en las valoraciones del ciclo anterior. \cite{modul2_1}
+La idea es que el flujo de trabajo sea mediante ciclos iterativos breves, para ir validando e iterando sobre el producto, haciendo cambios sobre esta basándonos en las valoraciones del ciclo anterior. \cite{modul2_1} \cite{schwaber_scrum_2020}
 
 Una pieza fundamental de esta metodología serán las reuniones diarias . Estas sesiones breves se llevarán a cabo de forma telemática mediante \textbf{Microsoft Teams} junto al equipo de \textit{Colb.Ai}. En ellas se expondrá el progreso realizado el día anterior y se iterará sobre las ideas del proceso actual. Esto asegurará que el desarrollo se mantenga alineado con los objetivos de la empresa y los estándares de calidad esperados.
 
@@ -290,6 +304,7 @@ El proyecto se estructura en iteraciones o Sprints de 2 a 3 semanas de duración
 
 \textit{Apunte:} debido a la naturaleza dinámica del proyecto, y la flexibilidad que nos proporciona la metodología ágil, la descripción y estimación de horas de las tareas podrían llegar a variar a lo largo del trabajo.
 
+La distribución de horas entre sprints no es uniforme, sino que responde a la complejidad técnica acumulada de cada iteración. Los primeros sprints (DA1 y DA2, 50h cada uno) son más ligeros porque su alcance está acotado: DA1 establece la base funcional de los agentes sobre tecnologías ya estudiadas en la fase TP, y DA2 añade un conjunto inicial de métricas de análisis con scripts relativamente independientes. En cambio, DA3 y DA4 (80h cada uno) requieren significativamente más esfuerzo: DA3 introduce la integración con protocolos MCP y el desarrollo de \textit{AgentSkills}, que exigen una depuración iterativa compleja al operar directamente sobre el entorno local; y DA4 afronta la implementación de técnicas de \textit{Information Retrieval} y la integración de herramientas externas avanzadas, además de incorporar el refinamiento global del sistema acumulado en los sprints anteriores.
 
 \begin{itemize}
     \item \textbf{DA1 - Sprint 1: MVP (50h)}: Implementar la versión base funcional de los agentes asistentes en un entorno IDE (como VSCode).
@@ -789,6 +804,8 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 
 \textbf{Vida Útil:} Actualmente, la industria aborda el desarrollo asistido por IA de forma impulsiva (Code-Driven), lo que reduce costes iniciales pero dispara los de mantenimiento debido a la deuda técnica. Esta solución basada en SDD mejora económicamente este escenario al reducir dicha deuda desde la fase de planificación. Idealmente, el ahorro en tiempo de comprensión y corrección de errores debería amortizar la inversión inicial del proyecto.
 
+\textbf{Riesgos:} El principal riesgo económico durante la vida útil del sistema es la escalada de precios de las APIs de los LLMs. Una subida significativa de tarifas por parte de los proveedores (Anthropic, OpenAI) podría encarecer el coste de mantenimiento mensual estimado, comprometiendo la viabilidad económica de la herramienta a largo plazo. La mitigación consiste en que el diseño del sistema sea compatible con distintes proveedores, permitiendo migrar a distintos proveedores o alternativas más económicas.
+
 \textbf{Mantenimiento:} El coste operativo tras la entrega es mínimo, estimado en aproximadamente 120€/mes. Este importe cubre los costes de suscripciones a las APIs de IA (GitHub, Anthropic, ...) y unas 4 horas mensuales de soporte técnico de un \textit{programador junior} para actualizaciones menores y ajustes varios.
 \begin{equation}
     CosteMantenimiento = 60\verb|€|/mes + 4h/mes * 14{.}92\verb|€|/h = 119{.}68\verb|€|/mes
@@ -799,11 +816,14 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 
 \textbf{Vida Útil:} Existe una necesidad real en el mercado debido al creciente estrés y frustración profesional que genera trabajar con bases de código incoherentes. La metodología SDD mejora la calidad de vida de los programadores al obligar a establecer especificaciones claras, reduciendo el caos y fomentando un entorno laboral más estructurado y colaborativo.
 
+\textbf{Riesgos:} El principal riesgo social es la resistencia por parte de los desarrolladores a adoptar una metodología más estructurada como SDD, especialmente en equipos con poca cultura de documentación previa. Si la herramienta se percibe como una carga burocrática en lugar de un asistente, podría ser abandonada o eludida, anulando su impacto positivo. La mitigación pasa por un diseño centrado en la usabilidad, que guie al programador en su uso.
+
 \subsection{Dimensión ambiental}
 \textbf{PPP:} El impacto ambiental proviene del consumo eléctrico de los equipos durante las 540 horas de trabajo y el uso de servidores en la nube para las APIs. Para minimizar este impacto, se ha optado por reutilizar hardware personal y planificar un desarrollo local mediante WSL que limite las peticiones innecesarias a la red durante las fases iniciales de pruebas.
 
 \textbf{Vida Útil:} Este sistema actúa como un optimizador de recursos. Mientras que las soluciones actuales fomentan un bucle de \verb|"|ensayo y error\verb|"| que multiplica las peticiones a los LLMs, el enfoque SDD permite ir \verb|"|al grano\verb|"| con código estructurado. Esto se traduce en una reducción drástica de llamadas a los modelos masivos a largo plazo, disminuyendo el consumo energético global de los centros de datos.
 
+\textbf{Riesgos:} El principal riesgo ambiental es que, aunque el sistema genere menos llamadas a los LLMs que las soluciones actuales, cada llamada sea inherentemente más compleja al tener que seguir un \textit{workflow} específico con mayor volumen de contexto. Esto podría traducirse en un consumo energético por interacción equivalente o superior al de las soluciones existentes, reduciendo el beneficio ambiental esperado.
 
 % HOLA DAVID, HE ELIMINADO EL APARTADO DE REFERENCIAS porque según los documentos de ejemplo porpocionados por mi universidad, en esta entrega que solo es documentación no eran necesarias!
 
