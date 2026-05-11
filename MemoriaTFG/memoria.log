@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.14)  11 MAY 2026 17:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.14)  11 MAY 2026 17:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/adria/UPC/TFG/projects_documentation_latex/GEP_FINAL/GEP_Entregable4_AdriaCebrianRuiz.tex
-(/home/adria/UPC/TFG/projects_documentation_latex/GEP_FINAL/GEP_Entregable4_AdriaCebrianRuiz.tex
+**/home/adria/UPC/TFG/projects_documentation_latex/memoria.tex
+(/home/adria/UPC/TFG/projects_documentation_latex/memoria.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -577,11 +577,11 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count353
 \l__pdf_internal_box=\box76
-) (./GEP_Entregable4_AdriaCebrianRuiz.aux
+) (./memoria.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
-\openout1 = `GEP_Entregable4_AdriaCebrianRuiz.aux'.
+\openout1 = `memoria.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
 LaTeX Font Info:    ... okay on input line 24.
@@ -622,9 +622,9 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 \c@lstlisting=\count360
 Package hyperref Info: Link coloring OFF on input line 24.
- (./GEP_Entregable4_AdriaCebrianRuiz.out) (./GEP_Entregable4_AdriaCebrianRuiz.out)
+ (./memoria.out) (./memoria.out)
 \@outlinefile=\write4
-\openout4 = `GEP_Entregable4_AdriaCebrianRuiz.out'.
+\openout4 = `memoria.out'.
 
 LaTeX Info: Redefining \. on input line 24.
 LaTeX Info: Redefining \% on input line 24.
@@ -692,7 +692,7 @@ Overfull \hbox (14.30928pt too wide) in paragraph at lines 32--41
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Logo_UPC.svg.png> <./logo-fiblletres-upc-color.png>] (./GEP_Entregable4_AdriaCebrianRuiz.toc
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Logo_UPC.svg.png> <./logo-fiblletres-upc-color.png>] (./memoria.toc
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 
@@ -702,7 +702,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 l.44 ... las APIs de los LLMs}{21}{subsection.6.2}
                                                   % [1])
 \tf@toc=\write5
-\openout5 = `GEP_Entregable4_AdriaCebrianRuiz.toc'.
+\openout5 = `memoria.toc'.
 
  [2] [3]
 Underfull \hbox (badness 10000) in paragraph at lines 104--105
@@ -765,7 +765,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 799--801
 
  []
 
-[31] [32] (./GEP_Entregable4_AdriaCebrianRuiz.bbl
+[31] [32] (./memoria.bbl
 Underfull \hbox (badness 2941) in paragraph at lines 22--26
 []\OT1/cmr/m/n/10.95 Builder Methods.  buildermethods/agent-os.  []$\OT1/cmtt/m/n/10.95 https : / / github . com / buildermethods /
  []
@@ -785,7 +785,7 @@ Overfull \hbox (11.16513pt too wide) in paragraph at lines 68--72
 \OT1/cmtt/m/n/10.95 requirements-[]gathering-[]and-[]management-[]processes / what-[]is-[]requirements-[]gathering/$[]\OT1/cmr/m/n/10.95 ,
  []
 
-[34]) [35] (./GEP_Entregable4_AdriaCebrianRuiz.aux
+[34]) [35] (./memoria.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -797,19 +797,19 @@ L3 programming layer <2024-01-22>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package rerunfilecheck Info: File `GEP_Entregable4_AdriaCebrianRuiz.out' has not changed.
+Package rerunfilecheck Info: File `memoria.out' has not changed.
 (rerunfilecheck)             Checksum: FAC80807AC2E34E2DA2BC19838486F10;14803.
  ) 
 Here is how much of TeX's memory you used:
  23976 strings out of 474222
- 434754 string characters out of 5748733
+ 433999 string characters out of 5748733
  1947975 words of memory out of 5000000
  45691 multiletter control sequences out of 15000+600000
  568201 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,12n,87p,1208b,745s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,12n,87p,1173b,745s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on GEP_Entregable4_AdriaCebrianRuiz.pdf (36 pages, 610357 bytes).
+Output written on memoria.pdf (36 pages, 610357 bytes).
 PDF statistics:
  725 PDF objects out of 1000 (max. 8388607)
  650 compressed objects within 7 object streams

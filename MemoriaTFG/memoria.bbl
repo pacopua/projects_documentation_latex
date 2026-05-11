@@ -9,16 +9,13 @@
 \bibitem{claude_plans}
 {Anthropic}.
 \newblock Choosing a claude plan: Free, pro, and team.
-\newblock
-  \url{https://support.claude.com/en/articles/11049762-choosing-a-claude-plan},
-  2026.
+\newblock \url{https://support.claude.com/en/articles/11049762-choosing-a-claude-plan}, 2026.
 \newblock Accedido el 09/03/2026.
 
 \bibitem{barcelona_coworking}
 {Barcelona Life}.
 \newblock Guide to coworking spaces in barcelona: Shared offices.
-\newblock \url{https://www.barcelona-life.com/barcelona-coworking-spaces},
-  2026.
+\newblock \url{https://www.barcelona-life.com/barcelona-coworking-spaces}, 2026.
 \newblock Accedido el 10/03/2026.
 
 \bibitem{buildermethods_agent_os}
@@ -63,38 +60,31 @@ Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, et~al.
 
 \bibitem{indeed_salarios}
 {Indeed}.
-\newblock Gu\'{i}a de salarios en espa\~{n}a: Explorar sueldos por cargo y
-  ubicaci\'{o}n.
+\newblock Gu\'{i}a de salarios en espa\~{n}a: Explorar sueldos por cargo y ubicaci\'{o}n.
 \newblock \url{https://es.indeed.com/career/salaries}, 2026.
 \newblock Accedido el 08/03/2026.
 
 \bibitem{jama_requirements}
 {Jama Software}.
 \newblock What is requirements gathering in software engineering?
-\newblock
-  \url{https://www.jamasoftware.com/requirements-management-guide/requirements-gathering-and-management-processes/what-is-requirements-gathering/},
-  2026.
+\newblock \url{https://www.jamasoftware.com/requirements-management-guide/requirements-gathering-and-management-processes/what-is-requirements-gathering/}, 2026.
 \newblock Accedido el 25/02/2026.
 
 \bibitem{McCabe_Complexity}
 T.J. McCabe.
 \newblock A complexity measure.
-\newblock {\em IEEE Transactions on Software Engineering}, SE-2(4):308--320,
-  1976.
+\newblock {\em IEEE Transactions on Software Engineering}, SE-2(4):308--320, 1976.
 
 \bibitem{microsoft_maintainability_index}
 {Microsoft}.
 \newblock Code metrics values: Maintainability index.
-\newblock
-  \url{https://learn.microsoft.com/en-us/visualstudio/code-quality/code-metrics-values?view=visualstudio},
-  2024.
+\newblock \url{https://learn.microsoft.com/en-us/visualstudio/code-quality/code-metrics-values?view=visualstudio}, 2024.
 \newblock Accedido el 17/03/2026.
 
 \bibitem{vscode_agents}
 {Microsoft}.
 \newblock Using agents in visual studio code.
-\newblock \url{https://code.visualstudio.com/docs/copilot/agents/overview},
-  2026.
+\newblock \url{https://code.visualstudio.com/docs/copilot/agents/overview}, 2026.
 \newblock Accedido el 25/02/2026.
 
 \bibitem{naturgy_precios}
@@ -105,10 +95,8 @@ T.J. McCabe.
 
 \bibitem{opara_vendor_lockin_2016}
 Justice Opara-Martins, Reza Sahandi, and Feng Tian.
-\newblock Critical analysis of vendor lock-in and its impact on cloud computing
-  migration: a business perspective.
-\newblock {\em Journal of Cloud Computing: Advances, Systems and Applications},
-  5(1):1--23, 2016.
+\newblock Critical analysis of vendor lock-in and its impact on cloud computing migration: a business perspective.
+\newblock {\em Journal of Cloud Computing: Advances, Systems and Applications}, 5(1):1--23, 2016.
 
 \bibitem{ostroff_agile_2004}
 J.~Ostroff, D.~Makalsky, and R.~Paige.
@@ -117,16 +105,12 @@ J.~Ostroff, D.~Makalsky, and R.~Paige.
 
 \bibitem{peng_copilot_2023}
 Sida Peng, Eirini Kalliamvakou, et~al.
-\newblock The impact of ai on developer productivity: Evidence from github
-  copilot, 2023.
+\newblock The impact of ai on developer productivity: Evidence from github copilot, 2023.
 
 \bibitem{schwaber_scrum_2020}
 Ken Schwaber and Jeff Sutherland.
-\newblock The scrum guide: The definitive guide to scrum: The rules of the
-  game.
-\newblock
-  \url{https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-US.pdf},
-  2020.
+\newblock The scrum guide: The definitive guide to scrum: The rules of the game.
+\newblock \url{https://scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-US.pdf}, 2020.
 \newblock Accedido el 17/03/2026.
 
 \bibitem{sommerville_se_2015}
@@ -142,8 +126,7 @@ Lei Wang, Chen Ma, Xueyang Feng, et~al.
 \bibitem{yao_react_2023}
 Shunyu Yao, Jeffrey Zhao, Dian Yu, et~al.
 \newblock React: Synergizing reasoning and acting in language models.
-\newblock In {\em International Conference on Learning Representations (ICLR
-  2023)}, 2023.
+\newblock In {\em International Conference on Learning Representations (ICLR 2023)}, 2023.
 
 \bibitem{zhu_coverage_1997}
 Hong Zhu, Patrick A.~V. Hall, and John H.~R. May.
