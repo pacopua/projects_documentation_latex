@@ -6,6 +6,12 @@
 \newblock \url{https://agentskills.io/home}, 2026.
 \newblock Accedido el 25/02/2026.
 
+\bibitem{claude_code_2024}
+{Anthropic}.
+\newblock Claude code: Agentic coding in your terminal.
+\newblock \url{https://docs.anthropic.com/en/docs/claude-code}, 2024.
+\newblock Accedido el 29/04/2026.
+
 \bibitem{claude_plans}
 {Anthropic}.
 \newblock Choosing a claude plan: Free, pro, and team.
@@ -27,6 +33,12 @@
 \bibitem{chen_codex_2021}
 Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, et~al.
 \newblock Evaluating large language models trained on code, 2021.
+
+\bibitem{code_review_graph_2025}
+{code-review-graph}.
+\newblock Repositorio code-review-graph.
+\newblock \url{https://github.com/nicholasgriffintn/llm-code-review-graph}, 2025.
+\newblock Accedido el 29/04/2026.
 
 \bibitem{cursor_ai}
 {Cursor}.
@@ -93,10 +105,21 @@ T.J. McCabe.
 \newblock \url{https://www.naturgy.es/hogar/luz/precio_de_la_luz}, 2026.
 \newblock Accedido el 10/03/2026.
 
+\bibitem{oman_maintainability_1992}
+P.~Oman and J.~Hagemeister.
+\newblock Metrics for assessing a software system's maintainability.
+\newblock In {\em Proceedings Conference on Software Maintenance}, 1992.
+
 \bibitem{opara_vendor_lockin_2016}
 Justice Opara-Martins, Reza Sahandi, and Feng Tian.
 \newblock Critical analysis of vendor lock-in and its impact on cloud computing migration: a business perspective.
 \newblock {\em Journal of Cloud Computing: Advances, Systems and Applications}, 5(1):1--23, 2016.
+
+\bibitem{opencode_2025}
+{OpenCode}.
+\newblock Opencode: Open source coding assistant.
+\newblock \url{https://github.com/sst/opencode}, 2025.
+\newblock Accedido el 29/04/2026.
 
 \bibitem{ostroff_agile_2004}
 J.~Ostroff, D.~Makalsky, and R.~Paige.
@@ -117,6 +140,12 @@ Ken Schwaber and Jeff Sutherland.
 Ian Sommerville.
 \newblock {\em Software Engineering}.
 \newblock Pearson, 10 edition, 2015.
+
+\bibitem{superpowers_2025}
+{Superpowers}.
+\newblock Superpowers plugin for {Claude Code}.
+\newblock \url{https://github.com/superpowers-ai/superpowers}, 2025.
+\newblock Accedido el 29/04/2026.
 
 \bibitem{wang_llm_agents_2024}
 Lei Wang, Chen Ma, Xueyang Feng, et~al.

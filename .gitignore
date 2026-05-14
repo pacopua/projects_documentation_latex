@@ -1,0 +1,10 @@
+# We will ignore generated files by latex.
+*.aux
+*.lof
+*.log
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.toc

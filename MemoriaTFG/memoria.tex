@@ -66,11 +66,14 @@
 \newpage
 
 \section{Contexto}
+\label{sec:contexto}
 
 \subsection{Introducción}
+\label{sec:introduccion}
 Estamos viviendo el auge de la \textit{Inteligencia Artificial Generativa}, una época en la que una gran parte de los desarrolladores de software y sus respectivas empresas han incorporado la inteligencia artificial en el día a día para el desarrollo de software. Esto conlleva varios problemas como la falta de interés que tienen algunos desarrolladores para aprender nuevos conocimientos, delegando el razonamiento crítico al modelo, lo que genera el conocido como \textit{slop code}: código funcional pero deficiente en estructura y sostenibilidad.
 
 \subsection{Definición del Problema}
+\label{sec:definicion_problema}
 
 El problema central que este TFG busca resolver es la ausencia de un flujo de trabajo estructurado que discipline y oriente el uso de la IA generativa en el desarrollo de software profesional.
 
@@ -89,25 +92,30 @@ Por otro lado, las herramientas que sí exigen especificación previa (como Spec
 \textbf{En definitiva, el problema es la inexistencia de una solución de asistencia al desarrollo que equilibre la agilidad de las herramientas \textit{Code-Driven} con la rigurosidad estructural que exige el desarrollo de software profesional y sostenible.} Este TFG propone construir exactamente esa solución.
 
 \subsection{Marco de la empresa}
+\label{sec:marco_empresa}
 
 La empresa \textit{Colb.Ai} es una consultoría que implementa soluciones de IA para sus clientes; además, la empresa misma intenta maximizar el provecho que obtiene de estas herramientas en el desarrollo de sus soluciones de software.
 
 El objetivo de este TFG es implementar un sistema que utilice distintos \textit{frameworks} y modelos de inteligencia artificial para que ayude a los desarrolladores a llevar a cabo la toma de requerimientos, planificación del proyecto, y la organización/documentación del código, con tal de ayudar a la empresa a investigar como comenzar nuevos proyectos, y planificar el proceso de desarrollo. 
 
 \subsection{Conceptos Relevantes}
+\label{sec:conceptos_relevantes}
 Los principales conceptos relevantes que envuelven este tema son los siguientes:
 
 \subsubsection{Spec-Driven-Development (SDD)}
+\label{sec:sdd}
 
 El \textit{Spec-Driven Development} (SDD) es una filosofía donde la documentación detallada de los requisitos y el comportamiento esperado del sistema (la especificación) dirige la creación del software. A diferencia del enfoque tradicional, donde estos documentos descriptivos solían quedar subordinados o desactualizarse frente al código, el SDD invierte esta relación. El documento estructurado en lenguaje natural actúa como la base de la verdad sobre la que se construirá el futuro código. \cite{ostroff_agile_2004} \cite{github_spec_kit}
 
 En otras palabras, hay que tener definido previamente exactamente qué queremos que haga cada pieza de código, y cómo queremos que lo haga. Cuando se quiera hacer cambios en la implementación, se han de aplicar primero en los documentos de especificación y luego en el código del proyecto. \\
 
 \subsubsection{Toma de requerimientos}
+\label{sec:toma_requerimientos}
 
 La toma de requerimientos (en inglés \textit{Requirements Gathering}) es una fase fundamental dentro de la ingeniería de software. En ella se investigan, descubren y extraen las necesidades de los clientes, usuarios y otras partes interesadas del sistema. A través de conversaciones con un cliente, que en muchas ocasiones no está muy seguro de qué quiere exactamente, el analista debe generar diseños y especificaciones funcionales específicas con comportamientos detallados \cite{jama_requirements} \cite{sommerville_se_2015}.
 
 \subsubsection{Asistentes de Inteligencia Artificial y Agentes Basados en LLMs}
+\label{sec:asistentes_ia}
 
 En el ámbito del desarrollo de software, los Modelos de Lenguaje de Gran Tamaño (LLMs) son la base tecnológica de los asistentes de código. Un asistente de código es una herramienta que actúa como un colaborador interactivo integrado en el entorno de trabajo. Su función principal es ayudar al desarrollador a interpretar requisitos, generar fragmentos de código o depurar errores mediante la recepción de instrucciones. Para comprender cómo estas herramientas se estructuran y evolucionan en este proyecto, es necesario definir los siguientes conceptos clave:
 
@@ -120,33 +128,42 @@ En el ámbito del desarrollo de software, los Modelos de Lenguaje de Gran Tamañ
 \end{itemize}
 
 \subsection{Agentes Implicados}
+\label{sec:agentes_implicados}
 
 Los principales agentes implicados en esta situación son los siguientes:
 
 \subsubsection{Desarrolladores}
+\label{sec:desarrolladores}
 
 Los primeros beneficiarios de la implantación de este sistema son los desarrolladores y diseñadores de software. Al implementar metodologías de código orientadas a la creación de código estructurado y documentado, el mantenimiento del código se haría mucho más sencillo, así como el desarrollo y entendimiento de este. Modularizando las distintas features e implementaciones de código, facilitaríamos el entendimiento de la estructura en general del producto, lo cual resultaría altamente beneficioso para su futura escalabilidad y mantenimiento.
 
 \subsubsection{Cliente y sus usuarios}
+\label{sec:cliente_usuarios}
 
 Tener un código bien estructurado y entendido en profundidad por sus creadores, significa un producto de mayor calidad, más fácil de mantener y, en muchos casos, más seguro y eficiente. Por lo que la adopción de un sistema de asistencia al desarrollador para la creación de código también sería beneficiosa para los clientes de Colb.AI.
 
 \newpage
 
 \section{Justificación}
+\label{sec:justificacion}
 
 \subsection{Estado del arte y soluciones existentes}
+\label{sec:estado_arte}
 Para contextualizar el desarrollo de nuestro sistema, es fundamental analizar las herramientas actuales que buscan resolver problemas similares en el ámbito de la ingeniería de software asistida por IA.
 
 \subsubsection{Spec Kit}
+\label{sec:spec_kit}
 Spec Kit es una herramienta diseñada específicamente para facilitar el desarrollo basado en especificaciones. Su enfoque principal radica en la generación de documentos de diseño y arquitectura como paso previo y obligatorio a la implementación de código, estructurando así el ciclo de vida del desarrollo. \cite{github_spec_kit}
 
 \subsubsection{AgentOS}
+\label{sec:agentos}
 AgentOS propone un marco de trabajo (\textit{framework}) integral para la creación y orquestación de agentes autónomos. Proporciona una estructura robusta que permite a los desarrolladores construir sistemas basados en inteligencia artificial capaces de ejecutar tareas complejas y encadenadas de forma independiente. \cite{buildermethods_agent_os} \cite{yao_react_2023}
 
 \subsubsection{Asistentes Comerciales (Copilot, Cursor)}
+\label{sec:asistentes_comerciales}
 En el mercado actual destacan diversas herramientas comerciales de asistencia a la programación impulsadas por IA, tales como GitHub Copilot, Cursor o Devin. Estas soluciones son altamente eficientes para la generación de código en tiempo real y la resolución de dudas técnicas, operando bajo un paradigma principalmente \textit{Code-Driven} (orientado a la escritura directa de código). \cite{github_copilot_docs} \cite{cursor_ai} \cite{chen_codex_2021} \cite{peng_copilot_2023}
 \subsection{Análisis comparativo: ¿Está justificada una solución a medida?}
+\label{sec:analisis_comparativo}
 
 Si bien las alternativas mencionadas presentan avances significativos, su aplicación directa en nuestro entorno de trabajo plantea diversos desafíos operativos y arquitectónicos. 
 
@@ -175,6 +192,7 @@ En el Cuadro \ref{tab:comparativa_herramientas} se presenta un resumen de las ca
 A la vista de estas limitaciones, la creación de una solución propia resulta razonable. Desarrollar nuestro propio sistema nos proporciona la flexibilidad indispensable para integrarlo de forma nativa con nuestro \textit{pipeline} de trabajo. Esto nos permitirá personalizar la ingesta de contexto conectando la herramienta directamente a nuestras bases de datos, permitiendo la lectura automatizada de \textit{issues en GitHub} y la integración fluida con plataformas de gestión interna como \textit{Odoo} y \textit{Microsoft Teams}.
 
 \subsection{Propuesta de implementación}
+\label{sec:propuesta_implementacion}
 
 Concluido que las herramientas preexistentes no se adaptan plenamente a nuestros requerimientos de agilidad e integración, nuestra propuesta toma inspiración de sus puntos fuertes para construir un sistema a medida.
 
@@ -183,10 +201,12 @@ En lugar de depender de ecosistemas cerrados o frameworks pesados, hemos optado 
 \newpage
 
 \section{Alcance del Proyecto}
+\label{sec:alcance}
 
 De acuerdo con las necesidades de \textit{Colb.Ai} y la filosofía de documentar primero reglas y planes de implementación, y luego basar el código desarrollado en estos planes, este proyecto se centrará en el diseño e implementación de un ecosistema de agentes basados en el entorno de desarrollo para orquestar un flujo de trabajo basado en la metodología de \textit{Spec-Driven Development (SDD)}.
 
 \subsection{Objetivo General}
+\label{sec:objetivo_general}
 El objetivo principal de este proyecto es diseñar y desarrollar un sistema de asistencia a la programación compuesto por un equipo especializado de agentes de IA. Este sistema operará de forma integrada en el entorno local del desarrollador, utilizando especificaciones en lenguaje natural como motor principal para planificar, estructurar y auditar la creación de software, garantizando que el código generado sea el resultado directo de una planificación previa.
 
 La validación de los resultados del sistema se hará a través de ciertas métricas de análisis de calidad del código, conocidas y utilizadas en el paradigma del desarrollo de software. Además de, por supuesto, los revisores humanos, que han de analizar en todo momento el código generado y los resultados producidos, haciendo a este un sistema con lo que se conoce \textit{Human In The Loop}, cosa que significa que en todo momento hay supervisión e intervención humana. \\
@@ -203,8 +223,10 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
 \end{itemize}
 
 \subsection{Requerimientos}
+\label{sec:requerimientos}
 
 \subsubsection{Requerimientos Funcionales}
+\label{sec:req_funcionales}
 \begin{itemize}
     \item El sistema debe permitir la ingesta y gestión de reglas fundamentales del proyecto (pila tecnológica, estándares de código) y mantener un registro actualizado de las características a desarrollar.
     \item El sistema debe ser capaz de interpretar funcionalidades de alto nivel y desglosarlas en un plan de tareas granulares y estructuradas.
@@ -213,6 +235,7 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
 \end{itemize}
 
 \subsubsection{Requerimientos No Funcionales}
+\label{sec:req_no_funcionales}
 \begin{itemize}
     \item \textbf{Transparencia y Trazabilidad:} Todo el estado, la memoria y las normativas manejadas por los agentes deben persistir en formatos de texto en un sistema de control de versiones.
     \item \textbf{Integración Local:} El ecosistema debe poder acoplarse al entorno de desarrollo integrado (IDE) del usuario, utilizando protocolos de intercomunicación que permitan a los agentes actuar directamente sobre los archivos locales del proyecto.
@@ -220,6 +243,7 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
 \end{itemize}
 
 \subsection{Métricas de Evaluación del Código}
+\label{sec:metricas}
 
 Para validar empíricamente la calidad del código generado por el sistema, se emplearán métricas de análisis estático ampliamente adoptadas en la ingeniería del software \cite{sommerville_se_2015}. Estas métricas serán calculadas de forma automatizada por el agente \textit{Reviewer} sobre el código del repositorio local, y sus resultados se presentarán al desarrollador como parte de la auditoría. Para cada métrica, se definirá un umbral de aceptación a partir del cual el agente considerará el código como no conforme y señalará las funciones o módulos problemáticos. El conjunto de métricas aquí descrito no es definitivo; está previsto ampliarlo en iteraciones futuras del proyecto a medida que se identifiquen indicadores adicionales relevantes para el contexto del sistema.
 
@@ -234,6 +258,7 @@ Las métricas inicialmente contempladas son las siguientes:
 \end{itemize}
 
 \subsection{Obstáculos y Riesgos}
+\label{sec:obstaculos_riesgos}
 Todo proyecto conlleva dificultades que deben analizarse anticipadamente para minimizar su impacto. En la sección \ref{sec:gestion_riesgos} se especifican los riesgos y obstáculos del proyecto con detalle, incluyendo sus planes alternativos y las tareas afectadas. A modo de resumen, se enumeran las principales dificultades identificadas:
 
 \begin{itemize}
@@ -253,8 +278,10 @@ Todo proyecto conlleva dificultades que deben analizarse anticipadamente para mi
 \newpage
 
 \section{Metodología y Rigor}
+\label{sec:metodologia}
 
 \subsection{Metodología de Trabajo}
+\label{sec:metodologia_trabajo}
 Para el desarrollo de este Trabajo de Final de Grado, se adoptará una \textbf{metodología ágil}, específicamente en el marco de \textit{SCRUM}, orientada a la entrega continua de valor y a la adaptación rápida frente a posibles cambios. 
 
 La idea es que el flujo de trabajo sea mediante ciclos iterativos breves, para ir validando e iterando sobre el producto, haciendo cambios sobre esta basándonos en las valoraciones del ciclo anterior. \cite{modul2_1} \cite{schwaber_scrum_2020}
@@ -262,6 +289,7 @@ La idea es que el flujo de trabajo sea mediante ciclos iterativos breves, para i
 Una pieza fundamental de esta metodología serán las reuniones diarias . Estas sesiones breves se llevarán a cabo de forma telemática mediante \textbf{Microsoft Teams} junto al equipo de \textit{Colb.Ai}. En ellas se expondrá el progreso realizado el día anterior y se iterará sobre las ideas del proceso actual. Esto asegurará que el desarrollo se mantenga alineado con los objetivos de la empresa y los estándares de calidad esperados.
 
 \subsection{Herramientas de Seguimiento y Control}
+\label{sec:herramientas_seguimiento}
 Para garantizar el correcto seguimiento del progreso del proyecto, se emplearán las siguientes herramientas y dinámicas:
 
 \begin{itemize}
@@ -275,9 +303,11 @@ Para garantizar el correcto seguimiento del progreso del proyecto, se emplearán
 \newpage
 
 \section{Descripción de las tareas}
+\label{sec:descripcion_tareas}
 Para garantizar el éxito en la implementación del ecosistema de agentes basados en Spec-Driven Development (SDD), se ha elaborado una planificación temporal detallada. El proyecto comenzó el 12 de febrero de 2026 (contando la documentación de esta asignatura) y tiene prevista su finalización y defensa entre el \textbf{23 de junio} hasta el \textbf{1 de julio} de 2026. Se estima que la dedicación total para la realización de este Trabajo de Fin de Grado es de aproximadamente 540 horas. La dedicación media será de unas 5 horas diarias durante los días laborables, y en ocasiones, un extra en las etapas en que se deba escribir bastante documentación.
 
 \subsection{GP - Gestión del proyecto}
+\label{sec:gp}
 Este bloque engloba las tareas organizativas y documentales. Estas tareas son concurrentes y se extienden a lo largo de toda la vida del proyecto.
 \begin{itemize}
     \item \textbf{GP1 - Contexto y Alcance (20h):} Definición de los objetivos principales, motivación del proyecto y delimitación de las funcionalidades del sistema basado en agentes.
@@ -290,6 +320,7 @@ Este bloque engloba las tareas organizativas y documentales. Estas tareas son co
 \end{itemize}
 \newpage
 \subsection{TP - Trabajo Previo}
+\label{sec:tp}
 Fase de preparación previa antes de comenzar el desarrollo del proyecto.
 \begin{itemize}
     \item \textbf{TP1 - Estudio estado del arte (30h)}: Investigar las tecnologías, código y estructura que utilizan las alternativas como GitHub SpecKit y AgenOS. Se usará las ideas de estas como referencia para el desarrollo de la alternativa que trabajaremos en el TFG.
@@ -297,6 +328,7 @@ Fase de preparación previa antes de comenzar el desarrollo del proyecto.
 \end{itemize}
 
 \subsection{DA - Desarrollo Ágil (Sprints Iterativos)}
+\label{sec:da}
 
 El desarrollo de este ecosistema se rige por una metodología ágil adaptada, tomando como referencia principal el marco de trabajo SCRUM. Esta metodología es ideal para un proyecto con la incertidumbre y el dinamismo que supone el entorno, donde nuevas tecnologías y sistemas surgen frecuentemente. 
 
@@ -337,6 +369,7 @@ La distribución de horas entre sprints no es uniforme, sino que responde a la c
 \end{itemize}
 
 \subsection{PV - Pruebas y Validación}
+\label{sec:pv}
 Fase dedicada a la validación empírica y técnica del sistema, evaluando tanto el código como la interacción del usuario.
 \begin{itemize}
     \item \textbf{PV1 - Pruebas unitarias de las Agent Skills (20h)}: Verificación técnica de los \textit{scripts} locales en Python y bash para asegurar que interactúan correctamente con el sistema de archivos y el IDE.
@@ -346,8 +379,10 @@ Fase dedicada a la validación empírica y técnica del sistema, evaluando tanto
 \newpage
 
 \subsection{Recursos}
+\label{sec:recursos}
 A continuación se listan los recursos Materiales, Humanos, y de software de los que se prevé que dependerá el proyecto.
 \subsubsection{Recursos Materiales}
+\label{sec:recursos_materiales}
 Para el desarrollo óptimo de este proyecto, se requiere la siguiente infraestructura física:
 \begin{itemize}
     \item \textbf{Estación de trabajo:} Ordenador personal (PC o portátil) con capacidad suficiente para ejecutar entornos de desarrollo virtualizados (mínimo recomendado 16GB de RAM y procesador de gama media-alta).
@@ -356,6 +391,7 @@ Para el desarrollo óptimo de este proyecto, se requiere la siguiente infraestru
 \end{itemize}
 
 \subsubsection{Recursos de Software}
+\label{sec:recursos_software}
 El ecosistema tecnológico del proyecto se apoya en diversas herramientas categorizadas según su propósito:
 \begin{itemize}
     \item \textbf{Entorno de Desarrollo:} Sistema operativo Windows con Windows Subsystem for Linux (WSL) habilitado, proporcionando un entorno Unix nativo indispensable para la ejecución de \textit{scripts} en Bash y Python. El editor principal será Visual Studio Code (VSCode).
@@ -366,6 +402,7 @@ El ecosistema tecnológico del proyecto se apoya en diversas herramientas catego
 \end{itemize}
 
 \subsubsection{Recursos Humanos}
+\label{sec:recursos_humanos}
 Al tratarse de un Trabajo de Fin de Grado, el equipo humano se estructura de la siguiente manera:
 \begin{itemize}
     \item \textbf{Desarrollador / Investigador Principal (Autor):} Encargado de la totalidad de la carga de trabajo estimada de 540 horas. Al tratarse de un proyecto individual, el autor asume distintos roles a lo largo del desarrollo en función de la naturaleza de cada tarea:
@@ -380,6 +417,7 @@ Al tratarse de un Trabajo de Fin de Grado, el equipo humano se estructura de la 
 \end{itemize}
 
 \subsection{Tabla resumen de tareas}
+\label{sec:tabla_resumen}
 A continuación, se presenta una tabla resumen con la información clave de cada tarea del proyecto, detallando su código, descripción, tiempo estimado en horas, dependencias temporales y los recursos principales asignados para su ejecución. En la columna \textit{Recursos específicos}, el término \textit{Autor} se emplea de forma unificada dado que cada tarea implica una combinación variable de los roles definidos (JP, ID, PJ y Tester) en proporciones que dependen de la naturaleza y la fase concreta de la tarea. El desglose detallado de horas por rol se recoge en la subsección siguiente:
 
 \begin{table}[H]
@@ -419,6 +457,7 @@ A continuación, se presenta una tabla resumen con la información clave de cada
 \end{table}
 
 \subsubsection{Desglose de horas por rol}
+\label{sec:desglose_horas}
 Dado que el autor asume distintos roles a lo largo del proyecto (tal y como se detalla en la sección de Gestión Económica), la siguiente tabla resume cómo se distribuyen las aproximadamente 540 horas totales entre cada uno de ellos:
 
 \begin{table}[H]
@@ -444,6 +483,7 @@ Tester & $\sim$60h & \textbf{PV1} (100\%), \textbf{PV2} (100\%) \\
 \end{table}
 
 \subsection{Diagrama de Gantt}
+\label{sec:gantt}
 En la siguiente página se muestra el diagrama de gantt resultante de la planifiación de las tareas anteriores.
 \begin{landscape}
     \begin{figure}[htbp] % Cambiamos [H] por [htbp]
@@ -462,6 +502,7 @@ En la siguiente página se muestra el diagrama de gantt resultante de la planifi
 Durante la planificación y ejecución de este proyecto, se han identificado diversos obstáculos potenciales inherentes al desarrollo con IA. A continuación, se detallan estos riesgos junto con sus respectivos planes alternativos, tal y como dictan las buenas prácticas de gestión ágil de proyectos. En el apartado \ref{sec:imprevistos} se cuantifica el coste económico estimado de cada uno de estos imprevistos.
 
 \subsection{Riesgo 1: Cambios repentinos en los requerimientos por parte de la empresa}
+\label{sec:riesgo1}
 \begin{itemize}
     \item \textbf{Probabilidad:} Baja / Media (40\%)
     \item \textbf{Tareas afectadas:} Principalmente las fases de Desarrollo Ágil (\textbf{DA1--DA4}), ya que un cambio de requerimientos puede invalidar trabajo ya implementado en cualquier \textit{Sprint}. También se ve afectada la tarea \textbf{GP5} (Reuniones de Seguimiento), que deberá absorber sesiones extraordinarias de re-planificación, y potencialmente \textbf{PV} si los cambios implican redefinir los criterios de validación.
@@ -471,6 +512,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 \end{itemize}
 
 \subsection{Riesgo 2: Bloqueo tecnológico (Vendor Lock-in) por cambio de precios o políticas en las APIs de los LLMs}
+\label{sec:riesgo2}
 \begin{itemize}
     \item \textbf{Probabilidad:} Baja / Media (30\%) \cite{opara_vendor_lockin_2016}
     \item \textbf{Tareas afectadas:} El impacto recae principalmente sobre \textbf{DA3} (Habilidades e Integración MCP), donde se construyen los módulos de conexión con las APIs, y sobre \textbf{DA4} (Recuperación de Información y Refinamiento), que depende de integraciones avanzadas con proveedores externos. En menor medida, también puede afectar a \textbf{DA1} si el agente base necesita ser reconectado a un proveedor distinto.
@@ -480,6 +522,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 \end{itemize}
 
 \subsection{Riesgo 3: Documentación interna insuficiente para la generación autónoma de código estructurado}
+\label{sec:riesgo3}
 \begin{itemize}
     \item \textbf{Probabilidad:} Media (50\%)
     \item \textbf{Tareas afectadas:} Afecta directamente a \textbf{DA1} (implementación del agente Developer, cuya capacidad de escritura se reduciría), \textbf{DA2} (las métricas de evaluación perderían parte de su utilidad si el agente no genera código autónomamente) y \textbf{PV2} (el bucle completo \textit{Human in the Loop} requeriría una mayor intervención manual del autor, alterando la naturaleza de la validación).
@@ -489,6 +532,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 \end{itemize}
 
 \subsection{Riesgo 4: Limitaciones de control sobre el flujo de orquestación en el ecosistema IDE}
+\label{sec:riesgo4}
 \begin{itemize}
     \item \textbf{Probabilidad:} Media / Alta (65\%)
     \item \textbf{Tareas afectadas:} Afecta directamente a \textbf{DA1} (implementación del MVP sobre el entorno IDE) y a \textbf{DA3} (Habilidades e Integración MCP), donde se construyen los módulos de orquestación entre agentes. Si las restricciones del IDE resultan insalvables, estas tareas deberán ser rediseñadas.
@@ -498,6 +542,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 \end{itemize}
 
 \subsection{Riesgo 5: Desbordamiento de la ventana de contexto en proyectos grandes}
+\label{sec:riesgo5}
 \begin{itemize}
     \item \textbf{Probabilidad:} Baja / Media (35\%)
     \item \textbf{Tareas afectadas:} Impacta principalmente en \textbf{DA4} (Recuperación de Información y Refinamiento), cuyo objetivo específico es abordar este problema mediante técnicas de \textit{Information Retrieval}. Si se manifiesta antes, también puede bloquear el avance de \textbf{DA1} y \textbf{DA3}, al impedir que los agentes mantengan suficiente contexto para operar correctamente.
@@ -507,6 +552,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 \end{itemize}
 
 \subsection{Riesgo 6: Exceso de fricción en el bucle de desarrollo por auditorías demasiado estrictas}
+\label{sec:riesgo6}
 \begin{itemize}
     \item \textbf{Probabilidad:} Baja (30\%)
     \item \textbf{Tareas afectadas:} Afecta a \textbf{DA3} (implementación del agente Reviewer y sus políticas de auditoría) y a \textbf{PV2} (pruebas del bucle completo \textit{Human in the Loop}), donde se evalúa empíricamente si el sistema resulta usable o frustrante para el desarrollador.
@@ -518,9 +564,11 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 \newpage
 
 \section{Gestión económica}
+\label{sec:gestion_economica}
 En este apartado plantearemos los distintos costes que se prevé que aparecerán a lo largo del desarrollo del proyecto.
 
 \subsection{Coste del personal}
+\label{sec:coste_personal}
 Aplicando el \textit{feedback} de la anterior entrega de GEP, vamos a dividir este apartado en distintos roles. Cada uno tendrá un coste por hora determinado, y visitando el diagrama de Gantt y las tablas con las horas asignadas a cada tarea y sus recursos personales adjuntados, calcularemos el total de cada uno de estos roles. Adicionalmente, se mostrarán tanto los salarios netos como los brutos - añadida la contribución de 30\verb|%| a la Seguridad Social (SS) -, y cuando se haga la suma total de los costes, se utilizará obviamente el salario bruto.
 
 \begin{table}[H]
@@ -541,19 +589,23 @@ Aplicando el \textit{feedback} de la anterior entrega de GEP, vamos a dividir es
 \end{table}
 
 \subsection{Coste por actividad}
+\label{sec:coste_actividad}
 Repasaremos las actividades presentadas en el entregable anterior, estudiaremos los recursos humanos invertidos en dicha actividad, y calcularemos el coste de cada una.
 \subsubsection{Gestión del proyecto}
+\label{sec:coste_gp}
 Esta se ha estimado que durará unas 167 horas en total. Dando por hecho que se desarrolla en un 25\verb|%| por el \textit{Jefe del Proyecto} y el restante 75\verb|%| por el \textit{Investigador/Documentador}, el coste humano de esta tarea es de: 
 \begin{equation}
 \centering
 Coste GP = (0{.}25*26{.}2 \verb|€|/h + 0{.}75*20{.}85 \verb|€|/h)*167h = 3705{.}32\verb|€|
 \end{equation}
 \subsubsection{Trabajo Previo}
+\label{sec:coste_tp}
 Esta actividad se estima que es de unas 50 horas. Requiere un estudio del estado del arte, y planificación del flujo del funcionamiento del proyecto. Las 30 horas de investigación del estudio del arte podrían estar desarolladas por el \textit{Investigador/Desarrollador}, mientras que la planificación del proyecto se llevaría a cabo por el \textit{Jefe del Proyecto}, por lo que 20 horas de su parte.
 \begin{equation}
     Coste TP = 20h * 26{.}2\verb|€/h| + 30h * 20{.}85\verb|€|/h = 1149{.}5\verb|€|
 \end{equation}
 \subsubsection{Desarrollo Ágil}
+\label{sec:coste_da}
 Como se hizo en la entrega anterior, el desarrollo ágil (DA) se dividirá en DA1, DA2, DA3 y DA4. Basándonos en la naturaleza de cada iteración, repartiremos la carga de trabajo entre los distintos roles definidos para estimar su coste:
 
 \begin{itemize}
@@ -583,15 +635,18 @@ Sumando los costes de los cuatro \textit{Sprints}, obtenemos el coste total de l
     Coste DA = 746\verb|€| + 836\verb|€| + 1362{.}8\verb|€| + 1312{.}2\verb|€| = 4257\verb|€|
 \end{equation}
 \subsubsection{Pruebas y Validación}
+\label{sec:coste_pv}
 Se estimó que en total esta tarea tomaría unas 60 horas a lo largo del proyecto. De estas 60 horas, todas ellas serian asignadas al Tester.
 
 \begin{equation}
     Coste PV = 60h * 19{.}17\verb|€|/h = 1150{.}2\verb|€|
 \end{equation}
 \subsection{Costes genéricos}
+\label{sec:costes_genericos}
 En este apartado se referenciarán los costes que no se pueden asignar a una actividad específica, sino que están presentes a lo largo de todo el desarrollo. Estos incluyen los gastos de infraestructura, licencias de software y la amortización del equipo físico utilizado.
 
 \subsubsection{Costes estructurales}
+\label{sec:costes_estructurales}
 Los costes estructurales contemplan los gastos derivados del uso de un espacio de trabajo físico, así como los suministros básicos necesarios para llevar a cabo el desarrollo. Asumiendo que el proyecto tiene una duración estimada de 4,5 meses (desde mediados de febrero hasta principios de julio), se han estimado los siguientes gastos mensuales:
 
 \begin{itemize}
@@ -607,6 +662,7 @@ En total, el coste estructural mensual asciende a 240\verb|€|. Por lo tanto, e
 \end{equation}
 
 \subsubsection{Costes de \textit{Software}}
+\label{sec:costes_software}
 El ecosistema tecnológico del proyecto se apoya en diversas herramientas. Afortunadamente, muchas de ellas cuentan con licencias gratuitas o versiones académicas sin coste (como Git, GitHub, VSCode, Odoo y Microsoft Teams). Sin embargo, el núcleo de este TFG requiere el uso de inteligencia artificial, lo que implica costes de suscripción y consumo de APIs (Claude Code, GitHub Copilot y servicios de Microsoft Azure / OpenAI).
 
 Se ha estimado un presupuesto de consumo mensual para estas herramientas:
@@ -620,6 +676,7 @@ Se ha estimado un presupuesto de consumo mensual para estas herramientas:
 \end{equation}
 
 \subsubsection{Costes de \textit{Hardware}}
+\label{sec:costes_hardware}
 Para calcular el coste del hardware, no se debe imputar el precio total de compra de los equipos, ya que estos no agotarán su vida útil exclusivamente con este proyecto. Se debe calcular su amortización. 
 
 La fórmula de amortización se define dividiendo el precio del equipo entre sus horas de vida útil, y multiplicando el resultado por las horas dedicadas al TFG (estimadas en 540 horas en total). Se asume una vida útil de 4 años para los equipos informáticos (aproximadamente 220 días laborables al año, a 8 horas diarias = 7040 horas).
@@ -656,12 +713,14 @@ Sumando todos los componentes detallados en esta subsección, el total de costes
 En el desarrollo de cualquier proyecto de ingeniería informática, es fundamental disponer de un margen económico para hacer frente a posibles desviaciones temporales o problemas técnicos. Este margen se divide en dos partidas: las contingencias (para riesgos desconocidos) y los imprevistos (para riesgos ya identificados).
 
 \subsubsection{Contingencias}
+\label{sec:contingencias}
 La partida de contingencias actúa como un fondo de reserva general. Dado que el proyecto se basa en la integración de Inteligencia Artificial (LLMs) y herramientas en constante evolución, existe un grado de incertidumbre inherente. Aplicando las buenas prácticas de gestión de proyectos informáticos, se establece un margen de contingencia del 15\verb|%| sobre la suma total de los costes de personal y los costes genéricos estimados hasta el momento.
 \begin{equation}
     Coste Contingencias = (Coste Personal + Coste Genericos) * 0{.}15
 \end{equation}
 
 \subsubsection{Imprevistos}
+\label{sec:imprevistos_sub}
 Por otro lado, la partida de imprevistos cuantifica económicamente los riesgos específicos que ya fueron identificados y analizados en el Entregable 2. El coste que se añade al presupuesto se calcula multiplicando el coste del plan de acción alternativo (Plan B) por la probabilidad estimada de que el riesgo ocurra.
 
 \begin{itemize} 
@@ -708,6 +767,7 @@ Sumando los valores obtenidos, calculamos el fondo total reservado para imprevis
 \end{equation}
 
 \subsection{Coste total}
+\label{sec:coste_total}
 Una vez estimados todos los gastos asociados al desarrollo del proyecto, tanto directos (personal) como indirectos (genéricos), y habiendo reservado los fondos necesarios para contingencias e imprevistos, podemos definir el presupuesto final. 
 
 A continuación, se presenta una tabla resumen con la consolidación de todas las partidas económicas calculadas previamente:
@@ -736,6 +796,7 @@ A continuación, se presenta una tabla resumen con la consolidación de todas la
 \end{table}
 
 \subsection{Control de gestión}
+\label{sec:control_gestion}
 Para asegurar la viabilidad económica del Trabajo de Fin de Grado y evitar que el proyecto supere el presupuesto establecido, es estrictamente necesario aplicar un control de gestión continuo. Al utilizar una metodología ágil (SCRUM), este control se realizará al finalizar cada iteración o \textit{Sprint}, así como en las reuniones de seguimiento estipuladas.
 
 El control se basará en comparar los valores estimados en este documento con los gastos y horas reales consumidas. Para cada indicador se define su fórmula de cálculo y los criterios de actuación concretos en función de la magnitud de la desviación detectada:
@@ -788,8 +849,10 @@ El control se basará en comparar los valores estimados en este documento con lo
 \newpage
 
 \section{Informe de sostenibilidad}
+\label{sec:sostenibilidad}
 
 \subsection{Autoevaluación de la competencia}
+\label{sec:autoevaluacion}
 Tras realizar la encuesta de autoevaluación, identifico un perfil técnico sólido pero con carencias formativas en la gestión de la sostenibilidad. Uno de mis puntos fuertes es el compromiso con la eficiencia técnica y el orden del código (\textit{Green Computing}), lo que garantiza soluciones robustas y mantenibles a largo plazo. No obstante, el cuestionario ha evidenciado que durante la carrera me han faltado asignaturas que profundicen en métricas de sostenibilidad medioambiental, económica y social.
 
 Esta falta de base académica ha sido mi principal punto débil al afrontar la estimación de costes y riesgos de este proyecto. Sin embargo, mediante un proceso de aprendizaje autónomo durante la planificación, he comprendido la importancia crítica de estos conceptos para gestionar adecuadamente un proyecto de cierto calibre como puede ser un TFG. Esta reflexión me ha permitido adoptar una visión más empática de la ingeniería, utilizando la metodología SDD no solo para buscar la eficiencia, sino para prevenir el \textit{burnout} y fomentar la sostenibilidad social del equipo.
@@ -802,6 +865,7 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 \textit{Nota: Los contenidos de la matriz de sostenibilidad (PPP, Vida Útil y Riesgos) para cada una de las tres dimensiones se desarrollan a continuación en un formato narrativo en lugar de tabular, para facilitar la exposición de los conceptos.}
 
 \subsection{Dimensión económica}
+\label{sec:dimension_economica}
 % Añadir beneficios del proyecto. ¿Porque puede merecer la pena gastarse 14.000€ en esto?
 \textbf{PPP:} El coste total del proyecto se estima en 14.099,81€. Tras reflexionar sobre este presupuesto, considero que es realista y competitivo para un desarrollo de 540 horas que integra tecnologías punteras de IA. La optimización del gasto se logra mediante el uso de herramientas de código abierto y un modelo de pago por uso para las APIs, centrando la inversión en el valor del esfuerzo humano y la investigación.
 
@@ -815,6 +879,7 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 \end{equation}
 
 \subsection{Dimensión social}
+\label{sec:dimension_social}
 \textbf{PPP:} A nivel personal, este proyecto es un catalizador en mi formación. Me permite consolidar conocimientos técnicos en la orquestación de LLMs y, simultáneamente, adquirir habilidades críticas en gestión económica y metodologías ágiles (SCRUM), competencias que han demostrado ser tan vitales como la propia programación.
 
 \textbf{Vida Útil:} Existe una necesidad real en el mercado debido al creciente estrés y frustración profesional que genera trabajar con bases de código incoherentes. La metodología SDD mejora la calidad de vida de los programadores al obligar a establecer especificaciones claras, reduciendo el caos y fomentando un entorno laboral más estructurado y colaborativo.
@@ -822,6 +887,7 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 \textbf{Riesgos:} El principal riesgo social es la resistencia por parte de los desarrolladores a adoptar una metodología más estructurada como SDD, especialmente en equipos con poca cultura de documentación previa. Si la herramienta se percibe como una carga burocrática en lugar de un asistente, podría ser abandonada o eludida, anulando su impacto positivo. La mitigación pasa por un diseño centrado en la usabilidad, que guie al programador en su uso.
 
 \subsection{Dimensión ambiental}
+\label{sec:dimension_ambiental}
 \textbf{PPP:} El impacto ambiental proviene del consumo eléctrico de los equipos durante las 540 horas de trabajo y el uso de servidores en la nube para las APIs. Para minimizar este impacto, se ha optado por reutilizar hardware personal y planificar un desarrollo local mediante WSL que limite las peticiones innecesarias a la red durante las fases iniciales de pruebas.
 
 \textbf{Vida Útil:} Este sistema actúa como un optimizador de recursos. Mientras que las soluciones actuales fomentan un bucle de \verb|"|ensayo y error\verb|"| que multiplica las peticiones a los LLMs, el enfoque SDD permite ir \verb|"|al grano\verb|"| con código estructurado. Esto se traduce en una reducción drástica de llamadas a los modelos masivos a largo plazo, disminuyendo el consumo energético global de los centros de datos.
@@ -831,7 +897,9 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 \newpage
 
 \section{Cambios de Alcance del Proyecto}
+\label{sec:cambios_alcance}
 \subsection{Motivación del cambio}
+\label{sec:motivacion_cambio}
 La planificación inicial del proyecto partía de un conocimiento superficial del ecosistema de herramientas de asistencia al desarrollo existentes. En el GEP se identificaron herramientas como Spec Kit, AgentOS o los asistentes comerciales (Copilot, Cursor), pero sin profundizar en el grado de extensibilidad que estos entornos ofrecían. Durante la fase de Trabajo Previo TP1, al investigar en detalle la arquitectura de los asistentes de código CLI más avanzados, se descubrió que el ecosistema era considerablemente más rico y maduro de lo que se había anticipado.
 
 En concreto, herramientas como ClaudeCode y OpenCode ofrecen mecanismos nativos de extensibilidad —plugins, hooks de ciclo de vida y el protocolo MCP (Model Context Protocol)— que permiten definir flujos de trabajo de programación estructurados de forma composable, sin necesidad de construir un asistente desde cero. Lo que en la planificación inicial se concebía como un problema de ingeniería complejo (imponer un flujo Spec-First sobre un agente de código) resultó ser un problema de configuración e integración, abordable dentro del alcance de un TFG.
@@ -841,8 +909,418 @@ Este descubrimiento, unido a la evolución de las necesidades de Colb.Ai durante
 Ante este rediseño del problema, en consenso con la empresa y el director del proyecto, se tomó la decisión de redirigir el foco del TFG hacia una contribución más ajustada a las necesidades reales de Colb.Ai: diseñar, integrar y evaluar el flujo de trabajo completo que cubre el ciclo de vida de un proyecto software, desde la toma de requerimientos hasta el seguimiento del cliente, aprovechando las capacidades de extensibilidad de los asistentes existentes en lugar de construir uno nuevo.
 
 
+\subsection{Nuevos objetivos del proyecto}
+\label{sec:nuevos_objetivos}
+El proyecto pasa a estructurarse en torno a tres pilares complementarios, cada uno de los cuales aborda una fase diferente del ciclo de vida de un proyecto de software:
+
+\textbf{Toma de Requerimientos:} Diseñar e implementar un flujo de trabajo asistido por IA que, a partir de la transcripción de una reunión con el cliente, sea capaz de generar un plan de implementación estructurado, explorando automáticamente los frameworks y tecnologías relevantes mediante búsqueda semántica en la web.
+
+\textbf{Spec Driven Development (Estructura del repositorio):} Integrar y configurar los asistentes de código de tipo CLI (ClaudeCode y OpenCode) con un conjunto de herramientas, plugins y workflows personalizados que impongan un flujo de trabajo Spec-First al equipo de desarrollo, garantizando que cada implementación esté precedida por una especificación validada y revisada.
+
+\textbf{Seguimiento del cliente:} Automatizar la generación de documentación de seguimiento post-reunión, produciendo de forma estructurada el resumen de lo acordado y los próximos pasos para ambas partes, a partir de la transcripción de las reuniones periódicas con el cliente.
+
+\subsection{Continuidad con la planificación inicial}
+\label{sec:continuidad_planificacion}
+Este cambio de alcance no supone un abandono de los objetivos originales del GEP, sino una evolución coherente de los mismos. Los sub-objetivos de coherencia arquitectónica, trazabilidad entre especificación y código, y modularidad del sistema se mantienen intactos y se materializan ahora a través de la configuración de los asistentes existentes en lugar de mediante el desarrollo de uno propio.
+
+Los riesgos identificados en el GEP (vendor lock-in, gestión de la ventana de contexto, fricción en el bucle de desarrollo) se mantienen vigentes y son abordados específicamente en el diseño de los módulos descritos en los capítulos siguientes. En concreto, el riesgo de vendor lock-in se mitiga mediante la integración paralela de ClaudeCode y OpenCode, tal como se describe en el capítulo \ref{sec:sdd_implementacion}.
+
+\newpage
+
+\section{Toma de Requerimientos}
+\label{sec:toma_requerimientos_cap}
+La toma de requerimientos es la primera fase del ciclo de vida de un proyecto de software. En este contexto, el objetivo es transformar las necesidades expresadas por el cliente en conversaciones informales en documentos de especificación técnica utilizables por el equipo de desarrollo. El proceso se articula en dos módulos independientes y secuenciales: en primer lugar, el módulo de transcripción convierte las reuniones en texto estructurado; a continuación, el módulo de procesamiento analiza ese texto y genera el plan de implementación. Cada módulo dispone de dos implementaciones complementarias, con el propósito de no depender de un único proveedor.
+
+\subsection{Módulo de transcripción}
+\label{sec:modulo_transcripcion}
+Para que el módulo de procesamiento pueda operar, es necesario disponer previamente de una transcripción de la reunión con el cliente. Dependiendo del tipo de reunión, la forma de obtenerla difiere.
+
+\subsubsection{Reuniones telemáticas}
+\label{sec:reuniones_telematicas}
+Las principales plataformas de videoconferencia (Microsoft Teams, Google Meet, Zoom, entre otras) ofrecen transcripción automática integrada. Dado que cada participante habla desde su propio dispositivo y micrófono, la atribución de fragmentos de texto a cada hablante (diarización) es gestionada de forma nativa por la plataforma, sin necesidad de ningún procesamiento adicional. Para las reuniones telemáticas, se utiliza directamente la transcripción exportada por la plataforma correspondiente como entrada al módulo de procesamiento.
+
+\subsubsection{Reuniones presenciales}
+\label{sec:reuniones_presenciales}
+En el caso de las reuniones presenciales, no existe ninguna plataforma que genere una transcripción de forma automática. Para cubrir este caso, se graba el audio de la reunión y se procesa a posteriori mediante Azure Speech Service, el servicio de transcripción de audio proporcionado por el proveedor de servicios cloud de la empresa.
+
+La característica técnica diferencial en este contexto es la diarización (\textit{speaker diarization}): el servicio no transcribe el audio como un bloque de texto continuo, sino que identifica a cada participante de forma independiente y etiqueta cada fragmento de texto con el hablante que lo pronunció. Esta atribución es especialmente relevante para la toma de requerimientos, ya que permite al módulo de procesamiento distinguir qué peticiones o restricciones provienen del cliente y cuáles son aclaraciones o comentarios del equipo técnico, mejorando la calidad del plan de implementación resultante.
+
+\paragraph{Preprocesamiento del audio.}
+Antes de enviar el audio al servicio de transcripción, se aplica un paso de compresión cuyo objetivo es doble: reducir el tamaño del fichero para minimizar costes de almacenamiento y transferencia, y garantizar que el proceso sea determinista. La función \texttt{downsample\_audio\_deterministic} utiliza \texttt{ffmpeg} para convertir el audio original a formato MP3 mono a 8\,kHz, eliminando metadatos y aplicando flags de codificación bit-exacta (\texttt{-bitexact}, \texttt{-map\_metadata -1}, \texttt{-id3v2\_version 0}). Gracias a estas garantías, el mismo archivo de entrada siempre produce exactamente los mismos bytes de salida y, por tanto, el mismo hash SHA-256. Este hash actúa como identificador único del contenido del audio a lo largo de todo el sistema.
+
+\paragraph{Gestión idempotente mediante máquina de estados.}
+El componente \texttt{SpeechToText} implementa un mecanismo idempotente apoyado en Azure Blob Storage. Al recibir un fichero de audio, se calcula su hash determinista y se consulta el fichero \texttt{state.txt} asociado en el contenedor de almacenamiento. El ciclo de vida de una transcripción sigue la siguiente secuencia de estados:
+
+\begin{enumerate}
+    \item \textbf{\texttt{just\_created}}: el audio aún no ha sido procesado. Se sube el fichero comprimido al blob, se genera una URL de acceso temporal con firma de acceso compartido (SAS), y se lanza el trabajo de transcripción por lotes.
+    \item \textbf{\texttt{transcribing}}: la transcripción está en curso. Si se recibe una nueva solicitud para el mismo hash, el sistema devuelve inmediatamente un mensaje informativo sin lanzar un trabajo duplicado.
+    \item \textbf{\texttt{transcribed}}: la transcripción ha concluido con éxito. El texto resultante se almacena en el blob y se devuelve una URL SAS de acceso al fichero.
+\end{enumerate}
+
+Este diseño garantiza que procesar dos veces el mismo audio no genere costes adicionales ni resultados duplicados.
+
+\paragraph{Transcripción por lotes (\textit{Batch API}).}
+La transcripción se realiza a través de la API REST de Azure Speech Service en su versión 3.2, concretamente el endpoint de \textit{batch transcription}. El componente \texttt{BatchTranscriptor} realiza tres pasos:
+
+\begin{enumerate}
+    \item \textbf{Envío del trabajo}: se realiza una petición \texttt{POST} al endpoint de transcripciones con la URL SAS del audio comprimido. La configuración incluye el idioma (español por defecto), el modo de puntuación automática y, cuando la diarización está habilitada, los parámetros \texttt{diarizationEnabled: true} junto con el rango esperado de hablantes (mínimo 2, máximo 5).
+    \item \textbf{Sondeo del estado}: se consulta periódicamente el estado del trabajo (cada 5 segundos) hasta que la API reporta \texttt{Succeeded} o \texttt{Failed}.
+    \item \textbf{Descarga y formateo del resultado}: una vez completado el trabajo, se descarga el fichero de resultados y se procesan las frases reconocidas (\texttt{recognizedPhrases}). Cuando la diarización está activa, cada frase se ordena cronológicamente según su \textit{offset} en formato ISO 8601 y se formatea como \texttt{[Speaker N]: texto}, produciendo una transcripción estructurada por hablante. Si la diarización no está disponible, se recurre al campo \texttt{combinedRecognizedPhrases} como fallback.
+\end{enumerate}
+
+\subsection{Módulo de procesamiento de requerimientos}
+\label{sec:modulo_procesamiento}
+Una vez disponible la transcripción (producida por cualquiera de las vías descritas en la sección anterior), el módulo de procesamiento la analiza y genera un plan de implementación estructurado. Este módulo también dispone de dos implementaciones: un enfoque basado en la plataforma Claude Cowork y una implementación propia en Python.
+
+\subsubsection{Enfoque mediante Claude Cowork}
+  \label{sec:enfoque_claude_cowork}
+  Claude Cowork es una herramienta de Anthropic orientada a la automatización de tareas en entorno de escritorio. 
+  
+  El modelo de uso se basa en el concepto de Skill: un workflow de automatización configurable que combina un prompt especializado con conexiones a herramientas, servicios externos y scripts personalizados.
+  
+  La skill recibe una entrada (por ejemplo, una transcripción de texto), las herramientas que puede invocar durante su ejecución (búsqueda en internet, lectura y escritura de archivos, llamadas a APIs externas, ejecución de scripts) y el formato de la salida que produce. A diferencia de un prompt ordinario enviado en una conversación, una skill encapsula el flujo de trabajo completo, con scripts y ejecutables incluidos dentro de la propia skill, y puede reutilizarse de forma consistente en cualquier proyecto sin necesidad de redefinirlo.
+  
+  \begin{figure}[H]
+      \centering
+      \includegraphics[width=1\textwidth]{imagenes/coworkSkills/skill_components_and_definition.png}
+      \caption{Estructura de una skill en Claude Cowork.}
+      \label{fig:skill_definition}
+  \end{figure}
+
+Se ha configurado una skill específica para la toma de requerimientos que implementa el siguiente flujo:
+
+\begin{enumerate}
+    \item El usuario proporciona a la skill la transcripción de la reunión con el cliente, notas informales o un resumen de las necesidades expresadas.
+    \item La skill procesa el contexto y genera una visión global del proyecto (\textit{big picture}), identificando los componentes principales del sistema, las posibles tecnologías a emplear y las áreas de incertidumbre que requieren aclaración.
+    \item Mediante las herramientas de búsqueda en internet integradas en Claude Cowork, el agente investiga las tecnologías propuestas y contrasta alternativas.
+    \item El agente presenta al usuario las opciones tecnológicas encontradas para que seleccione las preferidas. El resultado es un documento de especificación inicial estructurado, listo para incorporarse al repositorio como punto de partida del desarrollo.
+\end{enumerate}
+
+Este enfoque es el preferido cuando se dispone de acceso a la plataforma Claude Cowork, dado que la integración con las herramientas de búsqueda y la calidad del razonamiento son superiores a los de la implementación propia.
+
+\subsubsection{Implementación propia}
+\label{sec:implementacion_propia_tr}
+Con el objetivo de disponer de una alternativa de coste reducido e independiente de suscripciones comerciales, se ha desarrollado una aplicación Python que replica el proceso anterior. La aplicación está estructurada en módulos desacoplados y orquestada mediante LangChain.
+
+\paragraph{Arquitectura.}
+El núcleo de la aplicación es el módulo \texttt{transcription\_preprocessing}, que implementa la clase \texttt{TranscriptionProcessor} y coordina toda la lógica de negocio. El módulo recibe como entrada el texto de la transcripción y produce como salida un plan de implementación arquitectónico en formato Markdown.
+
+El diseño emplea dos modelos de lenguaje con roles diferenciados: un modelo económico (Azure OpenAI) para las operaciones de alta frecuencia que no requieren razonamiento profundo, y un modelo de mayor capacidad (Google Gemini) para las tareas de síntesis y razonamiento arquitectónico. Esta estrategia de dos niveles optimiza el coste sin sacrificar la calidad del resultado final.
+
+\paragraph{Pipeline de procesamiento.}
+El flujo de procesamiento sigue cuatro fases secuenciales:
+
+\paragraph{Fase 1: Chunking y filtrado:} la transcripción se divide en fragmentos de hasta 25.000 caracteres con un solapamiento de 1.200 caracteres y separadores jerárquicos (párrafos, líneas, frases), lo que permite procesar reuniones de larga duración sin superar los límites de contexto de los modelos. El modelo económico procesa cada fragmento de forma independiente y extrae únicamente el contenido relevante según un criterio configurable (por defecto, «requerimientos funcionales y reglas de negocio»), descartando saludos, divagaciones y contenido irrelevante. Los fragmentos sin contenido útil se descartan con la marca \texttt{SIN\_CONTENIDO\_RELEVANTE}.
+    
+\paragraph{Fase 2: Generación del plan de investigación:} el modelo de mayor capacidad analiza el texto filtrado e identifica las decisiones técnicas pendientes (elección de base de datos, framework, infraestructura). A partir de este análisis genera un plan de búsquedas estructurado con un máximo de tres \textit{queries}, para no saturar el límite de créditos del servicio de búsqueda.
+    
+\paragraph{Fase 3: Investigación web mediante Tavily:} Tavily opera como un motor de búsqueda semántica diseñado para agentes de IA, utilizando un \textit{pipeline} de filtrado híbrido. Primero, realiza una recuperación léxica para identificar URLs candidatas; posteriormente, mediante un motor de \textit{scraping} dinámico capaz de renderizar JavaScript, extrae el contenido relevante eliminando el ruido del HTML (anuncios, menús) y transformándolo en Markdown. El sistema procesa el texto mediante \textit{embeddings} vectoriales, calculando la similitud de coseno entre la consulta y los fragmentos extraídos para realizar un \textit{re-ranking} semántico en tiempo real. Finalmente, selecciona los segmentos con mayor densidad de información factual. Las \textit{queries} se ejecutan con búsqueda profunda (\texttt{search\_depth=advanced}), limitando los resultados a fuentes del último año y formateándolos como contexto estructurado.
+    
+\paragraph{Fase 4: Generación del plan arquitectónico:} el modelo de mayor capacidad combina la transcripción original con los resultados de la investigación y produce un documento de arquitectura en formato Markdown. El documento incluye el resumen de objetivos, la propuesta de stack tecnológico justificada con la investigación, los componentes clave del sistema y la hoja de ruta de implementación.
+
+
+\paragraph{Bucle de refinamiento con \textit{Human in the Loop}.}
+Una característica diferencial de la aplicación es la capacidad de refinamiento iterativo en cada fase. El usuario puede modificar el plan de investigación o el plan arquitectónico mediante instrucciones en lenguaje natural. El sistema mantiene un historial de conversación mediante la abstracción \texttt{MessagesPlaceholder} de LangChain, lo que permite que el modelo tome en cuenta el contexto de intercambios anteriores al procesar cada solicitud de refinamiento. Este mecanismo implementa el principio \textit{Human in the Loop} definido en los objetivos del proyecto.
+
+\section{Spec Driven Development: Implementación}
+\label{sec:sdd_implementacion}
+Una vez definidos los requerimientos iniciales del proyecto, el siguiente paso es garantizar que el desarrollo de código siga un flujo estructurado y trazable. Este capítulo describe la arquitectura de herramientas y asistentes que se ha configurado para implementar la metodología SDD en el día a día del equipo de desarrollo.
+
+\subsection{Asistentes de Programación}
+\label{sec:asistentes_programacion}
+Una de las decisiones de diseño fundamentales del sistema es el rechazo a la dependencia exclusiva de un único proveedor de asistencia al código, fenómeno conocido como vendor lock-in. Para mitigar este riesgo, identificado ya en la planificación inicial (Riesgo~\ref{sec:riesgo2}), se ha optado por la integración de dos asistentes de programación de tipo CLI (\textit{Command-Line Interface}) que operan directamente desde la terminal:
+
+\subsubsection{ClaudeCode}
+\label{sec:claudecode}
+ClaudeCode es la herramienta de asistencia a la programación desarrollada por Anthropic \cite{claude_code_2024}. Se trata de un agente CLI que opera directamente en la terminal del desarrollador, con acceso nativo al sistema de archivos del proyecto. ClaudeCode ha establecido el estándar actual en el ámbito de los agentes de programación, introduciendo o popularizando conceptos clave como los agentes especializados, los hooks de ciclo de vida, las skills, los plugins y el protocolo MCP (Model Context Protocol). Al tratarse de un servicio de pago, su uso está sujeto a las condiciones y tarifas de Anthropic.
+
+\subsubsection{OpenCode}
+\label{sec:opencode}
+OpenCode \cite{opencode_2025} es un asistente de programación de código abierto compatible con modelos de lenguaje locales y remotos. Su arquitectura es funcionalmente equivalente a la de ClaudeCode: opera desde la terminal, tiene acceso al sistema de archivos y es compatible con el protocolo MCP, lo que lo hace interoperable con la mayoría de las herramientas y plugins desarrollados para el ecosistema. Su naturaleza open source y su compatibilidad con modelos locales lo convierten en la alternativa directa a ClaudeCode en escenarios donde se requiere control total sobre los costes o la privacidad de los datos.
+
+\subsubsection{Justificación de la doble integración}
+\label{sec:justificacion_doble_integracion}
+La utilización de ambas herramientas no es redundante, sino estratégica. Al configurar el sistema de modo que ambos asistentes sean capaces de operar con la misma configuración de proyecto (archivos de instrucciones, plugins y MCPs), se elimina la dependencia de cualquiera de los dos proveedores. Si las condiciones de uno de ellos cambian de forma desfavorable, el equipo puede migrar su flujo de trabajo sin necesidad de reconfigurarlo desde cero.
+
+Adicionalmente, los asistentes de tipo CLI resuelven de forma más limpia los problemas de integración con el entorno de desarrollo que afectan a los asistentes integrados en el IDE, ya que disponen de herramientas de edición, lectura y búsqueda implementadas directamente sobre el sistema de archivos del sistema operativo.
+
+\subsubsection{Arquitectura interna: el patrón ReAct y su implementación en TypeScript}
+\label{sec:react_pattern}
+Para comprender plenamente cómo se pueden extender y configurar estas herramientas, es conveniente conocer la arquitectura interna sobre la que están construidas. Tanto ClaudeCode como OpenCode son aplicaciones de TypeScript que implementan un bucle de agente basado en el patrón ReAct (Reasoning + Acting), propuesto por Yao et al. (2022) \cite{yao_react_2023} como paradigma estándar para la construcción de agentes basados en modelos de lenguaje.
+
+El patrón ReAct estructura el comportamiento del agente en un ciclo iterativo de tres fases:
+
+\textbf{Razonamiento (Thought):} El modelo recibe el estado actual del contexto y genera un razonamiento interno en el que planifica el siguiente paso. Este razonamiento no es visible para el usuario, pero es el mecanismo por el que el agente decide qué acción tomar.
+
+\textbf{Acción (Action):} El modelo emite una llamada a herramienta estructurada (\textit{tool call}) en formato JSON, especificando qué herramienta invocar y con qué parámetros. Las herramientas disponibles incluyen la lectura de archivos, la escritura de código y la ejecución de comandos en terminal.
+
+\textbf{Observación (Observation):} El runtime de TypeScript ejecuta la acción sobre el sistema de archivos de la terminal y devuelve el resultado al modelo como nuevo mensaje en el historial. Este resultado se convierte en la entrada del siguiente ciclo.
+
+El runtime que orquesta este bucle está implementado en TypeScript sobre Node.js. Su flujo de ejecución puede describirse de forma simplificada en tres pasos:
+
+\begin{enumerate}
+    \item Al iniciarse una sesión, el runtime construye el system prompt combinando las instrucciones globales del asistente con el contenido del archivo de configuración del proyecto (CLAUDE.md o equivalente), y define el conjunto de herramientas disponibles mediante un esquema JSON.
+    \item En cada iteración del bucle, el runtime envía el historial de conversación actualizado a la API del modelo. Si la respuesta contiene llamadas a herramienta, las ejecuta secuencialmente, añade los resultados al historial y lanza una nueva iteración.
+    \item Si la respuesta no contiene llamadas a herramienta, el runtime la presenta al usuario como respuesta final y espera una nueva instrucción, reiniciando el ciclo con el historial acumulado.
+\end{enumerate}
+
+Este diseño en TypeScript es la base sobre la que se apoyan todos los mecanismos de extensibilidad descritos en las secciones siguientes: al tratarse de un proceso Node.js estándar, es posible interceptar el bucle en distintos puntos mediante hooks, inyectar herramientas adicionales mediante plugins, y conectar servicios externos mediante el protocolo MCP.
+
+\subsubsection{El ciclo de vida completo de una sesión en OpenCode}
+\label{sec:ciclo_vida_opencode}
+Para extender y configurar OpenCode de forma eficaz, es necesario comprender con exactitud en qué momento del ciclo se carga cada componente ---plugins, skills, herramientas y agentes--- y cómo interactúan durante una conversación. A continuación se describe este ciclo de forma detallada, desde la inicialización del proceso hasta la entrega de la respuesta al usuario.
+
+\paragraph{Inicialización perezosa del espacio de trabajo.}
+OpenCode implementa el patrón de inicialización perezosa (\textit{lazy initialization}) mediante el objeto \texttt{InstanceState}. Cuando el usuario abre un proyecto por primera vez en la sesión, el sistema no instancia de inmediato todos los servicios: los plugins, el registro de herramientas, el catálogo de skills y los clientes MCP se crean la primera vez que son necesarios y se mantienen en caché para el resto de la sesión, usando la librería de efectos \texttt{Effect-TS} para gestionar las dependencias entre servicios. Esto permite que el proceso arranque rápidamente con independencia del tamaño del proyecto.
+
+\paragraph{Descubrimiento de plugins y herramientas.}
+Cuando el registro de herramientas se inicializa por primera vez, OpenCode ejecuta el proceso de descubrimiento de plugins. Los plugins se cargan desde tres fuentes: (1) los plugins internos del propio asistente, (2) los paquetes npm instalados en el sistema que declaren el punto de entrada del plugin en su \texttt{package.json}, y (3) los archivos JavaScript o TypeScript localizados en los directorios \texttt{tool/} o \texttt{tools/} del proyecto. Cada plugin puede registrar herramientas adicionales mediante la interfaz de hooks que OpenCode expone, concretamente el campo \texttt{Hooks.tool}. Todas las herramientas ---las nativas del asistente más las aportadas por plugins y por los servidores MCP configurados--- se registran en el registro global y se describen al modelo mediante un esquema JSON.
+
+\paragraph{Descubrimiento de skills.}
+Paralelamente al descubrimiento de plugins, el sistema escanea el sistema de archivos para localizar las skills disponibles. La búsqueda se realiza en un conjunto predefinido de rutas: \texttt{\textasciitilde/.claude/skills/}, \texttt{\textasciitilde/.agents/skills/}, los directorios \texttt{.claude/} y \texttt{.agents/} de la raíz del proyecto, los directorios de configuración global de OpenCode, y las rutas adicionales declaradas en el campo \texttt{skills.paths} del archivo \texttt{opencode.json}. Para cada skill encontrada, el sistema registra su nombre, descripción y ubicación. Sin embargo, el contenido completo de la skill \textit{no} se carga en este momento: el descubrimiento construye únicamente el catálogo, sin consumir tokens del contexto.
+
+\paragraph{Construcción del system prompt.}
+Al recibir un mensaje del usuario, el sistema construye el system prompt que se enviará al LLM combinando cuatro componentes:
+\begin{enumerate}
+    \item \textbf{Prompt base del proveedor}: instrucciones genéricas del asistente, adaptadas al modelo concreto que esté activo (Anthropic Claude, Google Gemini u otros).
+    \item \textbf{Entorno y contexto}: directorio de trabajo actual, fecha, plataforma del sistema operativo y agente activo en la sesión.
+    \item \textbf{Catálogo de skills}: una sección del system prompt lista los nombres y descripciones breves de todas las skills descubiertas. Esta lista es lo único que el LLM recibe sobre las skills en el prompt inicial; el contenido detallado de cada skill se carga bajo demanda más adelante.
+    \item \textbf{Archivo de instrucciones del proyecto}: el contenido del archivo de instrucciones del repositorio (equivalente al \texttt{CLAUDE.md} de ClaudeCode). Además, los plugins pueden modificar el system prompt resultante mediante el hook \texttt{experimental.chat.system.transform}, inyectando secciones adicionales antes de que el prompt se envíe al modelo.
+\end{enumerate}
+
+\paragraph{La llamada al LLM mediante streaming.}
+Una vez construido el system prompt y serializado el historial de conversación, OpenCode realiza la llamada al modelo a través de la función \texttt{streamText()} del SDK de Vercel AI. Esta función gestiona la transmisión de tokens en tiempo real (\textit{streaming}), de modo que el agente puede reaccionar a cada fragmento de texto generado por el modelo sin esperar a que la respuesta esté completa. Antes de la llamada, los hooks \texttt{chat.params} y \texttt{chat.headers} permiten a los plugins inyectar parámetros adicionales (temperatura, cabeceras HTTP, etc.).
+
+La respuesta del modelo llega como un flujo asíncrono de eventos (\texttt{fullStream}) que el componente \texttt{SessionProcessor} consume evento a evento. Los tipos de eventos posibles incluyen: inicio de paso, fragmentos de texto (\textit{text-delta}), razonamiento interno del modelo (\textit{reasoning}), llamadas a herramienta (\textit{tool-call}), resultados de herramienta, y señales de finalización. A medida que se reciben fragmentos de texto, estos se publican en el bus de eventos interno de OpenCode, que los propaga al frontend mediante Server-Sent Events (SSE), permitiendo que la interfaz de usuario renderice la respuesta en tiempo real con baja latencia.
+
+\paragraph{Ejecución de herramientas.}
+Cuando el modelo decide invocar una herramienta, el \texttt{SessionProcessor} recibe el evento \texttt{tool-call} con el nombre de la herramienta y sus parámetros. Antes de ejecutar la herramienta, se disparan los hooks \texttt{tool.execute.before} de todos los plugins registrados; tras la ejecución, se disparan los hooks \texttt{tool.execute.after}. El resultado se añade al historial de conversación como un nuevo mensaje de tipo \textit{tool result} y se inicia un nuevo ciclo del bucle ReAct, reenviando el historial actualizado al modelo.
+
+\paragraph{Carga perezosa de skills bajo demanda.}
+La herramienta \texttt{skill} ilustra con claridad el principio de carga perezosa. Cuando el modelo, al ver el catálogo de skills en el system prompt, decide que necesita las instrucciones de una skill concreta para ejecutar una tarea, invoca la herramienta \texttt{skill} con el nombre de la skill como parámetro. Es en ese momento ---y solo en ese momento--- cuando el sistema lee el archivo \texttt{SKILL.md} correspondiente del disco, enumera los ficheros asociados a la skill (hasta un máximo de diez), y devuelve el contenido completo al modelo envuelto en una etiqueta XML estructurada. De esta forma, el contenido detallado de las skills no ocupa tokens del contexto inicial: solo las descripciones breves del catálogo están siempre presentes; los contenidos completos se cargan únicamente cuando el modelo los solicita.
+
+\paragraph{La herramienta TodoWrite.}
+Una herramienta especialmente relevante para el flujo SDD es \texttt{TodoWrite}, que permite al modelo crear y actualizar una lista de tareas estructurada. Conviene aclarar que esta herramienta no implementa ningún mecanismo de cumplimiento a nivel de código: cuando el modelo escribe la lista de tareas, el sistema únicamente persiste las entradas en una base de datos SQLite local y publica un evento en el bus interno para que la interfaz muestre la lista actualizada. La disciplina de ejecutar las tareas en orden, marcar cada una como completada antes de avanzar a la siguiente, o respetar los estados \texttt{pending} / \texttt{in\_progress} / \texttt{completed}, es puramente una consecuencia del texto de descripción de la herramienta; el runtime no bloquea al modelo si decide no seguir ese protocolo. En la práctica, la efectividad de TodoWrite como mecanismo de planificación depende de la calidad de las instrucciones del sistema y de la capacidad de seguimiento de instrucciones del modelo utilizado.
+
+\paragraph{Pipeline de eventos hacia la interfaz de usuario.}
+Toda la actividad generada por el agente ---fragmentos de texto, llamadas a herramienta, actualizaciones de la lista de tareas--- se publica en el bus de eventos interno mediante el servicio \texttt{Bus}. Este bus propaga los eventos al frontend a través de una conexión SSE (\textit{Server-Sent Events}), donde la interfaz, construida con \textit{Solid.js}, recibe y aplica los eventos en tiempo real actualizando reactivamente la vista. El diseño asíncrono permite que la llamada HTTP que inicia la conversación retorne de inmediato (respuesta 202) mientras toda la actividad del agente fluye de forma independiente por el canal SSE.
+
+\paragraph{Similitud con ClaudeCode.}
+ClaudeCode implementa un pipeline arquitectónicamente muy similar. Aunque las implementaciones concretas difieren ---ClaudeCode no es software libre---, el flujo conceptual es idéntico: inicialización perezosa de servicios al inicio de la sesión, construcción del system prompt a partir de archivos de instrucciones y catálogos de skills, bucle ReAct con llamadas a herramienta y streaming de tokens, carga perezosa de skills bajo demanda, y mecanismos de hooks para interceptar el ciclo de vida. Esta equivalencia es precisamente la que hace posible que un plugin como colbPowers, que se apoya en skills y hooks genéricos, funcione de forma transparente en ambos asistentes con mínimas diferencias de integración.
+
+\subsection{Mecanismos de extensibilidad}
+\label{sec:mecanismos_extensibilidad}
+El valor diferencial de los asistentes CLI frente a otras soluciones reside en su arquitectura de extensibilidad. Antes de describir la configuración concreta del sistema, es necesario definir con precisión los conceptos que la componen, ya que estos términos ---plugin, MCP, hook, skill, agente--- se utilizan con frecuencia de forma imprecisa en la literatura del sector.
+
+\subsubsection{Conceptos clave}
+\label{sec:conceptos_clave_ext}
+\textbf{Hook:} Un hook es un callback que se ejecuta automáticamente en momentos específicos del ciclo de vida del agente: al iniciar una sesión (SessionStart), antes o después de editar un archivo, al ejecutar un comando de terminal, etc. Los hooks permiten interceptar el flujo de trabajo del agente e inyectar comportamiento sin que el usuario lo solicite explícitamente. En colbPowers, el hook SessionStart es el mecanismo que inyecta el skill de bootstrap en cada sesión.
+
+\textbf{Skill:} Una skill es un documento Markdown que contiene instrucciones especializadas para el agente sobre cómo comportarse en una tarea concreta. A diferencia de un prompt de usuario, una skill forma parte del contexto del sistema y está disponible para el agente como conocimiento procedimental persistente. Cuando el agente necesita ejecutar una tarea para la que existe una skill (por ejemplo, hacer brainstorming de una feature o escribir un plan), lee ese documento y sigue sus instrucciones.
+
+\textbf{Agente (subagente):} En el contexto de estos asistentes, un agente o subagente es una instancia del modelo de lenguaje creada dinámicamente por el orquestador para ejecutar una tarea concreta en aislamiento. A diferencia del agente principal, el subagente arranca con un contexto específico y sin acceso al historial de conversación del orquestador. Esta separación garantiza que cada tarea se ejecuta con el contexto mínimo necesario, evitando interferencias entre tareas y reduciendo el consumo de tokens.
+
+\textbf{Plugin:} Un plugin es un paquete instalable que agrupa y distribuye extensiones para el asistente: skills, hooks, comandos y agentes. Su función es análoga a la de un paquete npm: encapsula un conjunto coherente de funcionalidades y las hace instalables en cualquier proyecto con un único comando. Los plugins se instalan a nivel de usuario o de proyecto y son la unidad de distribución del ecosistema.
+
+\textbf{MCP (Model Context Protocol):} El MCP es un protocolo estándar abierto que define cómo un proceso externo puede exponer herramientas al agente. Un servidor MCP es un proceso independiente (escrito en cualquier lenguaje) que anuncia un conjunto de herramientas invocables mediante el protocolo. Cuando el agente necesita una capacidad externa ---consultar un grafo de código, buscar en la web, leer una base de datos---, el runtime llama al servidor MCP correspondiente, que ejecuta la operación y devuelve el resultado. La separación entre el runtime del agente y el servidor MCP garantiza que cualquier herramienta externa puede integrarse sin modificar el asistente.
+
+\subsubsection{Archivo de instrucciones del proyecto}
+\label{sec:archivo_instrucciones}
+Ambos asistentes se configuran a nivel de proyecto mediante archivos de instrucciones persistentes que actúan como contexto estático del agente. ClaudeCode utiliza un archivo denominado CLAUDE.md ubicado en la raíz del repositorio; OpenCode utiliza un archivo equivalente en su directorio de configuración. En cada sesión de trabajo, el asistente incorpora automáticamente este archivo en su system prompt, lo que garantiza acceso inmediato a las reglas del proyecto, el stack tecnológico y los estándares de código sin que el desarrollador los proporcione manualmente. El contenido típico incluye la descripción del proyecto, la pila tecnológica, los estándares de código del equipo, las herramientas disponibles y las restricciones que el agente debe respetar.
+
+\subsubsection{Plugins y MCPs}
+\label{sec:plugins_mcps}
+Ambos asistentes son extensibles mediante el protocolo MCP. La instalación y configuración de plugins se realiza a nivel de proyecto o de usuario, garantizando que el conjunto de herramientas disponibles sea consistente en todas las sesiones. Cada plugin puede registrar servidores MCP adicionales que amplían el esquema de herramientas del agente; el agente ve estas herramientas adicionales exactamente igual que las nativas (Read, Write, Bash), y puede invocarlas mediante el mismo mecanismo de tool call descrito en la sección~\ref{sec:react_pattern}.
+
+\subsubsection{Hooks de ciclo de vida}
+\label{sec:hooks_ciclo_vida}
+ClaudeCode expone un sistema de hooks configurables en un archivo hooks.json que permite registrar callbacks para distintos eventos del ciclo de vida del agente. Los hooks más relevantes para el flujo SDD son SessionStart (inyección de contexto al inicio de sesión) y PreToolUse (intercepción antes de ejecutar una herramienta concreta, útil para forzar consultas al grafo de código antes de cualquier modificación). En OpenCode, estos hooks se implementan mediante callbacks definidos en el plugin JavaScript correspondiente, con semántica equivalente.
+
+\subsubsection{Skills y agentes en colbPowers}
+\label{sec:skills_agentes_colbpowers}
+colbPowers hace un uso central de ambos mecanismos. Las skills definen el comportamiento del orquestador en cada fase del ciclo SDD: el skill \textit{using-colbpowers} (inyectado en SessionStart) contiene las reglas de orquestación y detección de estado del proyecto; \textit{brainstorming} y \textit{writing-plans} instruyen al agente sobre cómo producir los documentos de diseño y planificación; \textit{requesting-code-review} define el protocolo de auditoría del código generado. Los subagentes se crean dinámicamente cuando una tarea requiere ejecución aislada: el orquestador genera un prompt específico para esa tarea (incluyendo el design.md y el tasks.md relevantes, y excluyendo el resto del historial) y lanza un subagente que opera exclusivamente sobre ese contexto acotado.
+
+\subsection{Herramientas de Apoyo al Flujo SDD}
+\label{sec:herramientas_apoyo_sdd}
+La efectividad del flujo SDD depende en gran medida de la calidad del contexto que el agente tiene disponible en cada momento. A continuación se describen las herramientas principales integradas en el sistema.
+
+\subsubsection{code-review-graph}
+\label{sec:code_review_graph}
+code-review-graph \cite{code_review_graph_2025} es una herramienta de código abierto que utiliza el parser de sintaxis Tree-Sitter para analizar el repositorio y construir un grafo de dependencias entre las distintas entidades de código (funciones, clases, módulos). Este grafo se almacena en una base de datos SQLite local y se expone al agente a través de un servidor MCP, proporcionando un mecanismo eficiente para navegar la estructura del código sin necesidad de leer todos los archivos del proyecto.
+
+La integración de esta herramienta aborda directamente el problema de gestión de la ventana de contexto identificado en el apartado de riesgos (sección~\ref{sec:riesgo5}). En pruebas preliminares realizadas sobre un monorepo de Colb.Ai, el agente con code-review-graph integrado necesitó aproximadamente 40.000 tokens para describir la arquitectura del proyecto, frente a los 64.000 tokens requeridos sin la herramienta, lo que supone una reducción del 37,5\verb|%| en esa prueba concreta. Las capacidades que expone al agente incluyen: análisis de diffs de git para identificar cambios de mayor riesgo, cálculo del radio de impacto (\textit{blast radius}) de cualquier modificación, identificación de los flujos de ejecución afectados, búsqueda semántica de entidades de código, y obtención de una visión de alto nivel de la arquitectura del sistema.
+
+\subsubsection{Herramientas de métricas de complejidad}
+\label{sec:metricas_complejidad}
+La disponibilidad del árbol sintáctico abstracto (AST) de Tree-Sitter en la base de code-review-graph permite calcular métricas de calidad de código de forma granular a nivel de función. Las métricas de interés son la Complejidad Ciclomática \cite{McCabe_Complexity} (número de caminos independientes en el flujo de control de una función), el Volumen de Halstead (medida del vocabulario del código basada en operadores y operandos únicos) y el Índice de Mantenibilidad \cite{oman_maintainability_1992} (combinación logarítmica de las dos métricas anteriores junto con las líneas de código). Estas métricas se calculan durante la fase de construcción del grafo y se almacenan como atributos de cada nodo, quedando disponibles para que el agente las consulte al auditar el código generado.
+
+\subsubsection{colbPowers: flujo de trabajo}
+\label{sec:colbpowers_flujo}
+colbPowers \cite{superpowers_2025} es un plugin instalable en cualquier proyecto que implementa el flujo de trabajo Spec-First de forma autónoma. Una vez instalado, no requiere que el desarrollador recuerde invocar comandos ni seguir un protocolo manual: el propio agente detecta el estado del proyecto al inicio de cada sesión y guía al usuario por el flujo correcto de forma proactiva.
+
+\paragraph{Estructura del proyecto esperada}
+Para funcionar, colbPowers asume que el proyecto dispone de una plantilla de repositorio con una estructura específica bajo el directorio \texttt{.specs/memory/}. Esta plantilla incluye los documentos base del proyecto y puede contener adicionalmente indicaciones de estilo, planificación, o apuntes y referencias de proyectos anteriores que sirven de contexto al agente:
+
+\textbf{constitution.md:} Documento de alcance global. Define la visión del proyecto, el stack tecnológico, los estándares de código no negociables y las reglas de gobernanza. Es la fuente de verdad sobre cómo se trabaja en este proyecto.
+
+\textbf{features.md:} Roadmap del producto. Lista todas las features aprobadas con su descripción, requisitos funcionales, restricciones técnicas y dependencias. Cualquier nueva funcionalidad debe estar aquí definida antes de poder planificarse.
+
+\textbf{docs/specs/:} Documentos de diseño por feature: descripción del comportamiento esperado, decisiones de arquitectura y justificación técnica de cada implementación.
+
+\textbf{docs/plans/:} Planes de implementación granulares por feature: listas de tareas ordenadas con criterios de aceptación.
+
+\paragraph{Flujo de trabajo autónomo}
+El flujo de trabajo completo se desarrolla de la siguiente forma cuando el usuario solicita cualquier cambio o nueva funcionalidad:
+
+\begin{enumerate}
+    \item \textbf{Verificación del estado del proyecto:} al iniciar la sesión, el agente lee \texttt{.specs/memory/} y comprueba si existen la constitución y el roadmap de features. Si alguno de los dos está ausente, el agente inicia de forma proactiva una conversación guiada con el usuario para definirlos, formulando preguntas sobre la visión del proyecto, el stack tecnológico, los estándares de código y las funcionalidades previstas. Este paso se ejecuta una única vez por proyecto.
+    \item \textbf{Definición interactiva de la especificación:} una vez que los documentos base existen, el agente lleva al usuario por un proceso de preguntas estructuradas para definir con precisión la nueva implementación. Se determina qué debe hacer, a cuál de las features del roadmap pertenece, cuáles son los comportamientos esperados, qué restricciones técnicas aplican y qué criterios de aceptación debe cumplir. El objetivo es eliminar toda ambigüedad antes de escribir una sola línea de código.
+    \item \textbf{Generación de la especificación:} cuando el usuario confirma que la definición es correcta, el agente redacta el documento de especificación (design.md) y lo guarda en \texttt{docs/specs/}. Este documento es la fuente de verdad de la implementación y será consultado en cada paso posterior.
+    \item \textbf{Generación del plan de implementación:} a partir de la especificación, el agente elabora un plan de tareas (plan.md) en \texttt{docs/plans/} que desglosa la implementación en pasos concretos y ordenados, cada uno con su criterio de aceptación explícito.
+    \item \textbf{Ejecución iterativa con implementador y revisor:} el agente utiliza la herramienta de lista de tareas (TodoWrite) integrada en los asistentes CLI para ejecutar el plan de forma iterativa. Para cada tarea, actúa un subagente implementador que escribe el código, y a continuación un subagente revisor que verifica que el código se ajusta a la especificación, sigue el plan y pasa los tests definidos. Cuando estén disponibles, el revisor utilizará además las métricas de calidad de código para evaluar la calidad de la implementación.
+\end{enumerate}
+
+\subsubsection{La plantilla de repositorio}
+\label{sec:plantilla_repositorio}
+La plantilla de repositorio que colbPowers espera encontrar está diseñada para mantenerse ligera y no imponer burocracia innecesaria. Los únicos documentos imprescindibles son constitution.md y features.md, que el propio agente puede generar desde cero en la primera sesión si no existen. El resto de la estructura (\texttt{docs/specs/}, \texttt{docs/plans/}) se va poblando de forma orgánica a medida que el equipo desarrolla features, convirtiéndose en un registro vivo y trazable de todas las decisiones de diseño del proyecto.
+
+Esta aproximación resuelve uno de los problemas identificados en el análisis del estado del arte: a diferencia de herramientas como Spec Kit, que exigen documentación exhaustiva incluso para cambios pequeños, colbPowers adapta el nivel de formalismo a la magnitud de la tarea. Una corrección menor puede implementarse directamente con el agente; una nueva feature importante pasará por el ciclo completo de especificación, planificación y revisión. El agente decide el nivel de rigor apropiado en cada caso, basándose en el contexto del proyecto y la magnitud del cambio solicitado.
+
+\subsection{Evaluación y Resultados}
+\label{sec:evaluacion_resultados}
+Con el objetivo de evaluar empíricamente el impacto de las herramientas desarrolladas, se ha diseñado un experimento controlado que compara tres condiciones de implementación sobre dos casos de uso distintos. Los experimentos están planificados y pendientes de ejecución; esta sección describe el diseño experimental y la estructura de resultados que se completará con los datos obtenidos.
+
+\subsubsection{Diseño experimental}
+\label{sec:diseno_experimental}
+El experimento sigue un diseño de tres condiciones (A/B/C) con tres repeticiones por condición (n=3), ejecutadas con temperatura 0 para minimizar la varianza estocástica del modelo. Las tres condiciones son:
+
+\textbf{Condición A --- Sin plugins:} El agente dispone únicamente de las herramientas nativas del asistente CLI (Read, Write, Edit, Bash, Grep). No se activa ningún plugin ni servidor MCP adicional.
+
+\textbf{Condición B --- Con code-review-graph:} El agente dispone de las herramientas nativas más el servidor MCP de code-review-graph. El agente puede consultar el grafo de dependencias, calcular el blast radius de los cambios y realizar búsquedas semánticas sobre el código.
+
+\textbf{Condición C --- Con colbPowers + code-review-graph:} El agente opera bajo el flujo SDD completo de colbPowers, con acceso además al servidor MCP de code-review-graph. La tarea se ejecuta siguiendo el ciclo constitution $\rightarrow$ features $\rightarrow$ spec $\rightarrow$ plan $\rightarrow$ execute $\rightarrow$ review.
+
+Las métricas recogidas en cada ejecución son: tokens de entrada consumidos, tokens de salida consumidos, número total de tool calls, número de tool calls específicas de code-review-graph, cobertura de la implementación (porcentaje de ítems del enunciado correctamente implementados), y número de regresiones introducidas (cambios en funcionalidad no solicitada).
+
+\subsubsection{Caso 1: ConfortMental --- cambios cross-cutting en base de código real}
+\label{sec:caso1_confortmental}
+El primer caso de uso aplica el experimento sobre un repositorio de producción de Colb.Ai: la aplicación móvil ConfortMental, desarrollada en React Native. La tarea consiste en implementar los cinco cambios globales del documento de revisión de la aplicación (Bloque 1): unificación tipográfica con DM Sans y DM Serif Display, corrección de contraste de textos secundarios a WCAG AA, sustitución del patrón de validación de formularios por mensajes inline en rojo, humanización y traducción de mensajes de error del sistema, y unificación de las etiquetas de frecuencia de check-in.
+
+Este caso de uso es especialmente adecuado para evaluar code-review-graph porque los cinco cambios son cross-cutting: afectan a múltiples pantallas y componentes de forma transversal. La hipótesis es que el agente bajo la condición B identificará más instancias de cada patrón (mayor cobertura) y consumirá menos tokens de exploración que el agente bajo la condición A, que debe descubrir la estructura del proyecto mediante herramientas estándar.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Métrica} & \textbf{Cond. A} & \textbf{Cond. B} & \textbf{Cond. C} \\
+ & \textbf{(sin plugins)} & \textbf{(code-review-graph)} & \textbf{(colbPowers + CRG)} \\
+\hline
+Tokens entrada (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tokens salida (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tool calls totales (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tool calls CRG (media) & N/A & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Cobertura (media \verb|%|) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+\hline
+\end{tabular}
+\caption{Resultados Caso 1: ConfortMental}
+\label{tab:caso1_resultados}
+\end{table}
+
+\subsubsection{Caso 2: Aplicación de simulación 3D}
+\label{sec:caso2_simulacion3d}
+El segundo caso de uso aplica el experimento sobre una tarea de nueva implementación desde cero: el desarrollo de una aplicación de simulación 3D en la que, al pulsar una tecla, aparece una esfera en el entorno tridimensional; al hacer clic sobre ella, la esfera explota en una animación de partículas. A diferencia del caso ConfortMental (modificación de una base de código existente), este caso evalúa el comportamiento de las herramientas en la creación de funcionalidad nueva.
+
+Este caso es especialmente relevante para evaluar colbPowers porque la condición C puede ejecutar el ciclo completo de la metodología SDD: el Architect define la constitution del proyecto y las features, el Developer genera el documento de diseño y el plan de tareas, y la ejecución se realiza tarea a tarea con revisión al final. La hipótesis es que la condición C produce código de mayor calidad estructural (menor complejidad ciclomática, mejor índice de mantenibilidad) y mayor trazabilidad entre las decisiones de diseño y el código implementado.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Métrica} & \textbf{Cond. A} & \textbf{Cond. B} & \textbf{Cond. C} \\
+ & \textbf{(sin plugins)} & \textbf{(code-review-graph)} & \textbf{(colbPowers + CRG)} \\
+\hline
+Tokens entrada (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tokens salida (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tool calls totales (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Cobertura funcional (media \verb|%|) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Complejidad ciclomática (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Índice de mantenibilidad (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+\hline
+\end{tabular}
+\caption{Resultados Caso 2: Aplicación de simulación 3D}
+\label{tab:caso2_resultados}
+\end{table}
+
+\newpage
+
+\section{Seguimiento del Cliente}
+\label{sec:seguimiento_cliente}
+La tercera dimensión del proyecto aborda la automatización del seguimiento posterior a las reuniones periódicas con el cliente. El objetivo es minimizar el tiempo dedicado a la redacción de documentación de seguimiento y garantizar que los acuerdos alcanzados en cada reunión queden recogidos de forma estructurada y accesible para ambas partes.
+
+\subsection{Generación de documentación con Claude Cowork}
+\label{sec:generacion_doc_claude_cowork}
+El flujo implementado mediante Claude Cowork se integra directamente con el proceso de reunión. Al finalizar cada reunión de seguimiento con el cliente, la transcripción o el resumen de lo acordado se proporciona como entrada a una skill de Claude Cowork desarrollada específicamente para este propósito. La skill procesa la información y genera de forma automática un documento Word estructurado que incluye los siguientes apartados: el resumen de los temas tratados en la reunión, las decisiones tomadas y los acuerdos alcanzados, las tareas asignadas al equipo de Colb.Ai con sus plazos correspondientes, y las tareas o acciones que corresponden al cliente. Este documento se genera y está disponible para ser enviado al cliente en el mismo momento en que finaliza la reunión, eliminando la latencia habitual en la producción de este tipo de documentación.
+
+La skill aprovecha las capacidades nativas de Claude Cowork para acceder a herramientas de gestión de archivos en el entorno de escritorio, lo que le permite escribir directamente el documento en el directorio de trabajo del proyecto, integrándose de forma transparente en el flujo de gestión documental de la empresa.
+
+\subsection{Alternativa de código abierto}
+\label{sec:alternativa_codigo_abierto}
+De forma análoga al enfoque adoptado en la toma de requerimientos, se dispone de una alternativa de código abierto e independiente para los casos en que no se desee depender de la plataforma Claude Cowork. Esta alternativa se basa en una aplicación que combina un modelo de lenguaje de gran tamaño, accedido mediante API, con la biblioteca python-docx para la generación de documentos Word con formato estructurado. El flujo de la aplicación es equivalente al de la skill: a partir de la transcripción de la reunión, el modelo genera los distintos apartados del documento de seguimiento con un formato definido, que son entonces volcados al documento Word mediante la biblioteca de generación. Aunque la integración es menos fluida que la ofrecida por Claude Cowork, esta alternativa es igualmente válida para los casos de uso habituales y no incurre en costes de suscripción adicionales más allá del consumo de la API del modelo.
+
+\newpage
+
+\section{Estado Actual de la Implementación}
+\label{sec:estado_implementacion}
+Este capítulo describe el estado de desarrollo de cada uno de los tres módulos del proyecto en el momento de redacción de esta memoria. El objetivo es ofrecer una fotografía honesta del grado de madurez de cada componente, distinguiendo entre lo que está operativo, lo que está en proceso iterativo y lo que queda pendiente como trabajo futuro.
+
+\subsection{Toma de Requerimientos}
+\label{sec:estado_toma_requerimientos}
+
+\subsubsection{Módulo de transcripción}
+\label{sec:estado_modulo_transcripcion}
+El módulo de transcripción para reuniones presenciales, basado en Azure Speech Service con diarización, está implementado e integrado en la aplicación. La transcripción automática para reuniones telemáticas no requiere implementación propia, dado que se delega en las herramientas nativas de las plataformas de videoconferencia (Microsoft Teams, Google Meet, Zoom).
+
+\subsubsection{Implementación propia (aplicación Python)}
+\label{sec:estado_implementacion_python}
+La aplicación Python de toma de requerimientos está en un estado avanzado de desarrollo. El pipeline completo está implementado y ha sido validado sobre un proyecto real de Colb.Ai con resultados satisfactorios: el sistema generó un plan de implementación estructurado con propuesta tecnológica justificada y lista de issues de GitHub accionables. Está pendiente una revisión final del código para consolidar casos límite y asegurar la robustez del módulo antes de considerarlo completamente terminado.
+
+La skill de Claude Cowork para toma de requerimientos está igualmente operativa y ha sido utilizada en proyectos de la empresa.
+
+\textbf{Estado:} Funcional. Pendiente de revisión y validación final.
+
+\subsection{Spec Driven Development: colbPowers}
+\label{sec:estado_colbpowers}
+colbPowers está en un estado funcional. La infraestructura central del plugin está completa y operativa:
+
+\begin{itemize}
+    \item El hook SessionStart inyecta correctamente el skill using-colbpowers al inicio de cada sesión, activando el comportamiento de orquestador en el agente principal.
+    \item El conjunto de skills heredadas de Superpowers \cite{superpowers_2025} está disponible y funciona con la configuración de artefactos de colbSpec.
+    \item El plugin ha sido instalado y probado en proyectos reales de Colb.Ai, refinándose de forma iterativa a partir del feedback de uso.
+\end{itemize}
+
+Las siguientes funcionalidades están pendientes de implementación:
+
+\textbf{Métricas de calidad de código:} La integración de las métricas de Complejidad Ciclomática, Volumen de Halstead e Índice de Mantenibilidad en el flujo de revisión no está aún implementada. Requiere extender code-review-graph con los cálculos correspondientes sobre el AST de Tree-Sitter y exponer los resultados al agente Reviewer mediante una nueva herramienta MCP.
+
+\textbf{Adaptación completa de rutas de artefactos:} Los skills brainstorming y writing-plans generan actualmente los documentos en la ruta heredada de Superpowers. La adaptación para que los artefactos aterricen directamente en \texttt{.specs/memory/docs/specs/} y \texttt{.specs/memory/docs/plans/} está pendiente como segunda iteración del plugin.
+
+\textbf{Estado:} Funcional. En proceso iterativo activo. Métricas de calidad y adaptación de rutas de artefactos pendientes.
+
+\subsection{Seguimiento del Cliente}
+\label{sec:estado_seguimiento_cliente}
+
+\subsubsection{Skill de Claude Cowork}
+\label{sec:estado_skill_claude_cowork}
+La skill de Claude Cowork para la generación automática de documentación de seguimiento post-reunión está implementada y en uso activo. Al finalizar cada reunión con el cliente, la skill procesa la transcripción y genera un documento Word estructurado con el resumen de los temas tratados, las decisiones acordadas y los próximos pasos para ambas partes. La skill ha sido utilizada en reuniones reales de Colb.Ai con resultado satisfactorio.
+
+\subsubsection{Alternativa propia}
+\label{sec:estado_alternativa_propia}
+La implementación propia basada en python-docx (descrita en la sección~\ref{sec:alternativa_codigo_abierto}) está pendiente de desarrollo. En el período cubierto por esta memoria, la skill de Claude Cowork ha cubierto completamente la necesidad operativa, por lo que la alternativa propia queda registrada como trabajo futuro.
+
+\textbf{Estado:} Skill de Claude Cowork operativa. Alternativa propia pendiente de implementación.
+
 \addcontentsline{toc}{section}{Referencias}
-\bibliographystyle{plain} 
+\bibliographystyle{plain}
 \bibliography{references}
 
 \end{document}
