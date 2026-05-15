@@ -30,6 +30,12 @@
 \newblock \url{https://github.com/buildermethods/agent-os}, 2025.
 \newblock Accedido el 25/02/2026.
 
+\bibitem{colbpowers_2026}
+Adrià Cebrián~Ruiz.
+\newblock colbpowers: Spec-first plugin for {Claude Code} and {OpenCode}.
+\newblock \url{https://github.com/Adria-Colbai/colbPowers}, 2026.
+\newblock Accedido el 14/05/2026.
+
 \bibitem{chen_codex_2021}
 Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, et~al.
 \newblock Evaluating large language models trained on code, 2021.

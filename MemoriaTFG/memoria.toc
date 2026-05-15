@@ -94,30 +94,26 @@
 \contentsline {subsubsection}{\numberline {11.1.2}OpenCode}{40}{subsubsection.11.1.2}%
 \contentsline {subsubsection}{\numberline {11.1.3}Justificación de la doble integración}{41}{subsubsection.11.1.3}%
 \contentsline {subsubsection}{\numberline {11.1.4}Arquitectura interna: el patrón ReAct y su implementación en TypeScript}{41}{subsubsection.11.1.4}%
-\contentsline {subsubsection}{\numberline {11.1.5}El ciclo de vida completo de una sesión en OpenCode}{42}{subsubsection.11.1.5}%
-\contentsline {paragraph}{Inicialización perezosa del espacio de trabajo.}{42}{paragraph*.11}%
-\contentsline {paragraph}{Descubrimiento de plugins y herramientas.}{42}{paragraph*.12}%
-\contentsline {paragraph}{Descubrimiento de skills.}{42}{paragraph*.13}%
-\contentsline {paragraph}{Construcción del system prompt.}{42}{paragraph*.14}%
-\contentsline {paragraph}{La llamada al LLM mediante streaming.}{43}{paragraph*.15}%
-\contentsline {paragraph}{Ejecución de herramientas.}{43}{paragraph*.16}%
-\contentsline {paragraph}{Carga perezosa de skills bajo demanda.}{43}{paragraph*.17}%
-\contentsline {paragraph}{La herramienta TodoWrite.}{43}{paragraph*.18}%
-\contentsline {paragraph}{Pipeline de eventos hacia la interfaz de usuario.}{44}{paragraph*.19}%
-\contentsline {paragraph}{Similitud con ClaudeCode.}{44}{paragraph*.20}%
-\contentsline {subsection}{\numberline {11.2}Mecanismos de extensibilidad}{44}{subsection.11.2}%
-\contentsline {subsubsection}{\numberline {11.2.1}Conceptos clave}{44}{subsubsection.11.2.1}%
-\contentsline {subsubsection}{\numberline {11.2.2}Archivo de instrucciones del proyecto}{45}{subsubsection.11.2.2}%
-\contentsline {subsubsection}{\numberline {11.2.3}Plugins y MCPs}{45}{subsubsection.11.2.3}%
-\contentsline {subsubsection}{\numberline {11.2.4}Hooks de ciclo de vida}{45}{subsubsection.11.2.4}%
-\contentsline {subsubsection}{\numberline {11.2.5}Skills y agentes en colbPowers}{45}{subsubsection.11.2.5}%
-\contentsline {subsection}{\numberline {11.3}Herramientas de Apoyo al Flujo SDD}{46}{subsection.11.3}%
-\contentsline {subsubsection}{\numberline {11.3.1}code-review-graph}{46}{subsubsection.11.3.1}%
+\contentsline {subsection}{\numberline {11.2}Mecanismos de extensibilidad}{42}{subsection.11.2}%
+\contentsline {subsubsection}{\numberline {11.2.1}Conceptos clave}{42}{subsubsection.11.2.1}%
+\contentsline {subsubsection}{\numberline {11.2.2}El ciclo de vida completo de una sesión en OpenCode}{42}{subsubsection.11.2.2}%
+\contentsline {paragraph}{Inicialización perezosa del espacio de trabajo.}{43}{paragraph*.11}%
+\contentsline {paragraph}{Descubrimiento de plugins y herramientas.}{43}{paragraph*.12}%
+\contentsline {paragraph}{Descubrimiento de skills.}{43}{paragraph*.13}%
+\contentsline {paragraph}{Construcción del system prompt.}{43}{paragraph*.14}%
+\contentsline {paragraph}{La llamada al LLM mediante streaming.}{44}{paragraph*.15}%
+\contentsline {paragraph}{Ejecución de herramientas.}{44}{paragraph*.16}%
+\contentsline {paragraph}{Carga perezosa de skills bajo demanda.}{44}{paragraph*.17}%
+\contentsline {paragraph}{Similitud con ClaudeCode.}{44}{paragraph*.18}%
+\contentsline {subsubsection}{\numberline {11.2.3}Hooks de ciclo de vida}{45}{subsubsection.11.2.3}%
+\contentsline {subsubsection}{\numberline {11.2.4}Skills y agentes en colbPowers}{45}{subsubsection.11.2.4}%
+\contentsline {subsection}{\numberline {11.3}Herramientas de Apoyo al Flujo SDD}{45}{subsection.11.3}%
+\contentsline {subsubsection}{\numberline {11.3.1}code-review-graph}{45}{subsubsection.11.3.1}%
 \contentsline {subsubsection}{\numberline {11.3.2}Herramientas de métricas de complejidad}{46}{subsubsection.11.3.2}%
 \contentsline {subsubsection}{\numberline {11.3.3}colbPowers: flujo de trabajo}{46}{subsubsection.11.3.3}%
-\contentsline {paragraph}{Estructura del proyecto esperada}{46}{paragraph*.21}%
-\contentsline {paragraph}{Flujo de trabajo autónomo}{47}{paragraph*.22}%
-\contentsline {subsubsection}{\numberline {11.3.4}La plantilla de repositorio}{47}{subsubsection.11.3.4}%
+\contentsline {paragraph}{Estructura del proyecto esperada}{46}{paragraph*.19}%
+\contentsline {paragraph}{Flujo de trabajo autónomo}{47}{paragraph*.20}%
+\contentsline {subsubsection}{\numberline {11.3.4}La plantilla de repositorio}{48}{subsubsection.11.3.4}%
 \contentsline {subsection}{\numberline {11.4}Evaluación y Resultados}{48}{subsection.11.4}%
 \contentsline {subsubsection}{\numberline {11.4.1}Diseño experimental}{48}{subsubsection.11.4.1}%
 \contentsline {subsubsection}{\numberline {11.4.2}Caso 1: ConfortMental --- cambios cross-cutting en base de código real}{48}{subsubsection.11.4.2}%

@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex memoria"] 1778748497.33194 "memoria.aux" "memoria.bbl" "memoria" 1778748500.05326 0
-  "./references.bib" 1778513845.19023 9145 557da882e3b4363ddff2361464fb0b59 ""
+["bibtex memoria"] 1778761093.64988 "memoria.aux" "memoria.bbl" "memoria" 1778761095.45205 0
+  "./references.bib" 1778758197.50569 9432 d412ab4e7fd06cec0f690993eb4205c7 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "memoria.aux" 1778748499.59449 34794 ab013b075799400e2c886566a48734e0 "pdflatex"
+  "memoria.aux" 1778761095.14182 34112 b837969d71c4f61ad1c7550d24482a48 "pdflatex"
   (generated)
   "memoria.bbl"
   "memoria.blg"
   (rewritten before read)
-["pdflatex"] 1778748497.50285 "/home/adria/UPC/TFG/projects_documentation_latex/MemoriaTFG/memoria.tex" "memoria.pdf" "memoria" 1778748500.05361 0
+["pdflatex"] 1778761093.76859 "/home/adria/UPC/TFG/projects_documentation_latex/MemoriaTFG/memoria.tex" "memoria.pdf" "memoria" 1778761095.45227 0
   "/etc/texmf/web2c/texmf.cnf" 1776199657.44924 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/adria/UPC/TFG/projects_documentation_latex/MemoriaTFG/memoria.tex" 1778748492.97705 143478 80ed7746fc8eab7bc40cbaa83ca13c9c ""
+  "/home/adria/UPC/TFG/projects_documentation_latex/MemoriaTFG/memoria.tex" 1778760733.11645 144717 e988e077556b9d61ccad34bbfc621261 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcbx1095.tfm" 1136768653 1536 0adca69c597a47fe7664bf81057bb53b ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -25,6 +25,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbxti10.tfm" 1136768653 1532 9162035f4e7176612125649e348e2195 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm" 1136768653 1300 63a6111ee6274895728663cf4b4e7e81 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmitt10.tfm" 1136768653 768 2297ad2ac26f37e67f756dad27c77d68 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm" 1136768653 1528 abec98dbc43e172678c11b3b9031252a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
@@ -42,6 +43,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb" 1248133631 36554 b67dc2cfa451409e100b3fcf5f506509 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb" 1248133631 32001 6aeea3afe875097b1eb0da29acd61e28 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb" 1248133631 26057 fad158094905eaf20f4ae3782af0c45c ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -194,11 +196,11 @@
   "Logo_UPC.svg.png" 1778512611.06911 122417 8b1243547074c81f4041355474c00a53 ""
   "imagenes/coworkSkills/skill_components_and_definition.png" 1778671669.21133 138140 3ef2f9e6ab1abe4946f0b314d31de99d ""
   "logo-fiblletres-upc-color.png" 1778512611.08494 78592 ac8b11d7e21663a229fc48c0f8c8a4bf ""
-  "memoria.aux" 1778748499.59449 34794 ab013b075799400e2c886566a48734e0 "pdflatex"
-  "memoria.bbl" 1778748497.49012 5913 b0b015c08e2e68cb27baaa42fee562f2 "bibtex memoria"
-  "memoria.out" 1778748499.59883 24213 97073c42f78a072bf71b1cc7d9d6c8eb "pdflatex"
-  "memoria.tex" 1778748492.97705 143478 80ed7746fc8eab7bc40cbaa83ca13c9c ""
-  "memoria.toc" 1778748499.59883 13125 b720bc4f8b7b2a990dbab3e0d0e8764c "pdflatex"
+  "memoria.aux" 1778761095.14182 34112 b837969d71c4f61ad1c7550d24482a48 "pdflatex"
+  "memoria.bbl" 1778761093.75605 6136 b739837b2b7c8f4871a50ab98446ed89 "bibtex memoria"
+  "memoria.out" 1778761095.14601 23798 882bb6f2471a21ecc9a41c02d2f8955a "pdflatex"
+  "memoria.tex" 1778760733.11645 144717 e988e077556b9d61ccad34bbfc621261 ""
+  "memoria.toc" 1778761095.14601 12746 b16b1bbc963a6cad84a2ac70d5652f31 "pdflatex"
   (generated)
   "memoria.aux"
   "memoria.log"
