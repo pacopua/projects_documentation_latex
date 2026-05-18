@@ -913,11 +913,11 @@ Ante este rediseño del problema, en consenso con la empresa y el director del p
 \label{sec:nuevos_objetivos}
 El proyecto pasa a estructurarse en torno a tres pilares complementarios, cada uno de los cuales aborda una fase diferente del ciclo de vida de un proyecto de software:
 
-\textbf{Toma de Requerimientos:} Diseñar e implementar un flujo de trabajo asistido por IA que, a partir de la transcripción de una reunión con el cliente, sea capaz de generar un plan de implementación estructurado, explorando automáticamente los frameworks y tecnologías relevantes mediante búsqueda semántica en la web.
-
-\textbf{Spec Driven Development (Estructura del repositorio):} Integrar y configurar los asistentes de código de tipo CLI (ClaudeCode y OpenCode) con un conjunto de herramientas, plugins y workflows personalizados que impongan un flujo de trabajo Spec-First al equipo de desarrollo, garantizando que cada implementación esté precedida por una especificación validada y revisada.
-
-\textbf{Seguimiento del cliente:} Automatizar la generación de documentación de seguimiento post-reunión, produciendo de forma estructurada el resumen de lo acordado y los próximos pasos para ambas partes, a partir de la transcripción de las reuniones periódicas con el cliente.
+\begin{description}
+    \item[\textbf{Toma de Requerimientos:}] Diseñar e implementar un flujo de trabajo asistido por IA que, a partir de la transcripción de una reunión con el cliente, sea capaz de generar un plan de implementación estructurado, explorando automáticamente los frameworks y tecnologías relevantes mediante búsqueda semántica en la web.
+    \item[\textbf{Spec Driven Development (Estructura del repositorio):}] Integrar y configurar los asistentes de código de tipo CLI (ClaudeCode y OpenCode) con un conjunto de herramientas, plugins y workflows personalizados que impongan un flujo de trabajo Spec-First al equipo de desarrollo, garantizando que cada implementación esté precedida por una especificación validada y revisada.
+    \item[\textbf{Seguimiento del cliente:}] Automatizar la generación de documentación de seguimiento post-reunión, produciendo de forma estructurada el resumen de lo acordado y los próximos pasos para ambas partes, a partir de la transcripción de las reuniones periódicas con el cliente.
+\end{description}
 
 \subsection{Continuidad con la planificación inicial}
 \label{sec:continuidad_planificacion}
@@ -1124,7 +1124,26 @@ La herramienta \texttt{skill} ilustra con claridad el principio de carga perezos
 \paragraph{Similitud con ClaudeCode.}
 ClaudeCode implementa un pipeline estructuralmente análogo en lo que respecta al ciclo de vida de la conversación. Aunque las implementaciones concretas difieren ---ClaudeCode no es software libre---, el flujo conceptual comparte los mismos patrones: inicialización perezosa de servicios al inicio de la sesión, construcción del system prompt a partir de archivos de instrucciones y catálogos de skills, bucle ReAct con llamadas a herramienta y streaming de tokens, carga perezosa de skills bajo demanda, y mecanismos de hooks para interceptar el ciclo de vida.
 
-Sin embargo, existen diferencias arquitectónicas significativas que conviene señalar. En lo que respecta a los proveedores de LLM, ClaudeCode es exclusivo de Anthropic y sus modelos Claude, mientras que OpenCode soporta más de veinticinco proveedores a través del SDK de Vercel AI (OpenAI, Google, Azure, Bedrock, Mistral, Groq, GitHub Copilot, entre otros). En cuanto al modelo de interfaz, ClaudeCode es exclusivamente una herramienta de línea de comandos cuya interfaz se renderiza en el terminal mediante React e Ink, mientras que OpenCode expone un servidor HTTP local (Hono) que sirve una aplicación web SolidJS y soporta adicionalmente aplicaciones de escritorio nativas (Tauri y Electron). En materia de persistencia, ClaudeCode mantiene el estado de la conversación en memoria y en ficheros JSON locales, mientras que OpenCode persiste las sesiones en una base de datos SQLite con instantáneas del sistema de ficheros antes de cada invocación de herramienta, lo que permite revertir cambios. Finalmente, ClaudeCode utiliza TypeScript estándar para la composición de servicios, mientras que OpenCode hace un uso intensivo del framework Effect (programación funcional monádica) para la gestión de dependencias, errores y concurrencia.
+Sin embargo, existen diferencias arquitectónicas significativas que conviene señalar:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{2.8cm}|p{4.5cm}|p{7cm}|}
+\hline
+\textbf{Dimensión} & \textbf{ClaudeCode} & \textbf{OpenCode} \\
+\hline
+Proveedores LLM & Exclusivo de Anthropic (modelos Claude) & Más de 25 proveedores a través del SDK de Vercel AI (OpenAI, Google, Azure, Bedrock, Mistral, Groq, GitHub Copilot, entre otros) \\
+\hline
+Modelo de interfaz & Exclusivamente CLI; interfaz renderizada en terminal mediante React e Ink & Servidor HTTP local (Hono) con aplicación web SolidJS; soporta además aplicaciones de escritorio nativas (Tauri y Electron) \\
+\hline
+Persistencia & Estado en memoria y ficheros JSON locales & Sesiones persistidas en SQLite con instantáneas del sistema de ficheros antes de cada invocación de herramienta, lo que permite revertir cambios \\
+\hline
+Framework técnico & TypeScript estándar para la composición de servicios & Uso intensivo del framework Effect (programación funcional monádica) para gestión de dependencias, errores y concurrencia \\
+\hline
+\end{tabular}
+\caption{Comparativa arquitectónica entre ClaudeCode y OpenCode}
+\label{tab:comparativa_asistentes}
+\end{table}
 
 Esta equivalencia a nivel de flujo de conversación ---y no de arquitectura completa--- es la que hace posible que un plugin como colbPowers, que se apoya en skills y hooks genéricos, funcione de forma comparable en ambos asistentes, si bien los adaptadores de hooks concretos difieren entre plataformas.
 
@@ -1210,13 +1229,24 @@ Con el objetivo de evaluar empíricamente el impacto de las herramientas desarro
 \label{sec:diseno_experimental}
 El experimento sigue un diseño de cuatro condiciones (A/B/C/D) con cuatro repeticiones por condición (n=3), ejecutadas con temperatura 0 para minimizar la varianza estocástica del modelo. Las cuatro condiciones son:
 
-\textbf{Condición A --- Sin plugins:} El agente dispone únicamente de las herramientas nativas del asistente CLI (Read, Write, Edit, Bash, Grep). No se activa ningún plugin ni servidor MCP adicional.
-
-\textbf{Condición B --- Con code-review-graph:} El agente dispone de las herramientas nativas más el servidor MCP de code-review-graph. El agente puede consultar el grafo de dependencias, calcular el blast radius de los cambios y realizar búsquedas semánticas sobre el código.
-
-\textbf{Condición C --- Con colbPowers:} El agente opera bajo un flujo de SSD de colbPowers, sin embargo no tiene acceso a herramientas de expliración de códico proporcionadas por code-review-graph.
-
-\textbf{Condición D --- Con colbPowers + code-review-graph:} El agente opera bajo el flujo SDD completo de colbPowers, con acceso además al servidor MCP de code-review-graph. La tarea se ejecuta siguiendo el ciclo constitution $\rightarrow$ features $\rightarrow$ spec $\rightarrow$ plan $\rightarrow$ execute $\rightarrow$ review.
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{1.2cm}|p{4.8cm}|p{8.2cm}|}
+\hline
+\textbf{Cond.} & \textbf{Herramientas activas} & \textbf{Descripción} \\
+\hline
+A & Herramientas nativas CLI & Solo Read, Write, Edit, Bash, Grep. Sin plugins ni servidores MCP adicionales. Actúa como baseline. \\
+\hline
+B & Nativas + code-review-graph & Añade el servidor MCP de code-review-graph. El agente puede consultar el grafo de dependencias, calcular el blast radius de los cambios y realizar búsquedas semánticas sobre el código. \\
+\hline
+C & Nativas + colbPowers & El agente opera bajo el flujo SDD de colbPowers, sin acceso a las herramientas de exploración de código de code-review-graph. \\
+\hline
+D & Nativas + colbPowers + code-review-graph & Combinación completa. El agente sigue el flujo SDD de colbPowers con acceso además al servidor MCP de code-review-graph. La tarea sigue el ciclo: constitution $\rightarrow$ features $\rightarrow$ spec $\rightarrow$ plan $\rightarrow$ execute $\rightarrow$ review. \\
+\hline
+\end{tabular}
+\caption{Condiciones experimentales del diseño A/B/C/D}
+\label{tab:condiciones_experimentales}
+\end{table}
 
 Las métricas recogidas en cada ejecución son: tokens de entrada consumidos, tokens de salida consumidos, número total de tool calls, número de tool calls específicas de code-review-graph, cobertura de la implementación (porcentaje de ítems del enunciado correctamente implementados), y número de regresiones introducidas (cambios en funcionalidad no solicitada).
 

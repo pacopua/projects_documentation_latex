@@ -107,8 +107,8 @@
 \contentsline {paragraph}{Similitud con ClaudeCode.}{45}{paragraph*.18}%
 \contentsline {subsubsection}{\numberline {11.2.3}Hooks de ciclo de vida}{46}{subsubsection.11.2.3}%
 \contentsline {subsubsection}{\numberline {11.2.4}Skills y agentes en colbPowers}{46}{subsubsection.11.2.4}%
-\contentsline {subsection}{\numberline {11.3}Herramientas de Apoyo al Flujo SDD}{46}{subsection.11.3}%
-\contentsline {subsubsection}{\numberline {11.3.1}code-review-graph}{46}{subsubsection.11.3.1}%
+\contentsline {subsection}{\numberline {11.3}Herramientas de Apoyo al Flujo SDD}{47}{subsection.11.3}%
+\contentsline {subsubsection}{\numberline {11.3.1}code-review-graph}{47}{subsubsection.11.3.1}%
 \contentsline {subsubsection}{\numberline {11.3.2}Herramientas de métricas de complejidad}{47}{subsubsection.11.3.2}%
 \contentsline {subsubsection}{\numberline {11.3.3}colbPowers: flujo de trabajo}{47}{subsubsection.11.3.3}%
 \contentsline {paragraph}{Estructura del proyecto esperada}{48}{paragraph*.19}%
@@ -118,7 +118,7 @@
 \contentsline {subsubsection}{\numberline {11.4.1}Diseño experimental}{50}{subsubsection.11.4.1}%
 \contentsline {paragraph}{Metodología:}{51}{paragraph*.21}%
 \contentsline {subsubsection}{\numberline {11.4.2}Caso 1: ConfortMental --- cambios cross-cutting en base de código real}{51}{subsubsection.11.4.2}%
-\contentsline {subsubsection}{\numberline {11.4.3}Caso 2: Aplicación de simulación 3D}{51}{subsubsection.11.4.3}%
+\contentsline {subsubsection}{\numberline {11.4.3}Caso 2: Aplicación de simulación 3D}{52}{subsubsection.11.4.3}%
 \contentsline {section}{\numberline {12}Seguimiento del Cliente}{53}{section.12}%
 \contentsline {subsection}{\numberline {12.1}Generación de documentación con Claude Cowork}{53}{subsection.12.1}%
 \contentsline {subsection}{\numberline {12.2}Alternativa de código abierto}{53}{subsection.12.2}%
