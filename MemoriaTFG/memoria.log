@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.14)  18 MAY 2026 09:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.14)  18 MAY 2026 10:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -783,44 +783,68 @@ File: imagenes/coworkSkills/skill_components_and_definition.png Graphic file (ty
 <use imagenes/coworkSkills/skill_components_and_definition.png>
 Package pdftex.def Info: imagenes/coworkSkills/skill_components_and_definition.png  used on input line 985.
 (pdftex.def)             Requested size: 472.03123pt x 267.04703pt.
- [38 <./imagenes/coworkSkills/skill_components_and_definition.png>] [39] [40] [41] [42] [43] [44]
-Underfull \hbox (badness 10000) in paragraph at lines 1135--1135
+ [38 <./imagenes/coworkSkills/skill_components_and_definition.png>] [39] [40] [41]
+Underfull \hbox (badness 10000) in paragraph at lines 1087--1087
+[]|\OT1/cmr/m/n/10.95 Agente
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1087--1087
+\OT1/cmr/m/n/10.95 (subagen-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1091--1091
+[]|\OT1/cmr/m/n/10.95 MCP (Mo-del
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1091--1091
+\OT1/cmr/m/n/10.95 Con-text Pro-
+ []
+
+
+Overfull \hbox (20.8128pt too wide) in paragraph at lines 1079--1094
+ [][] 
+ []
+
+[42] [43] [44]
+Underfull \hbox (badness 10000) in paragraph at lines 1145--1145
 []|\OT1/cmr/m/n/10.95 Proveedores
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1135--1135
+Underfull \hbox (badness 10000) in paragraph at lines 1145--1145
 []|\OT1/cmr/m/n/10.95 Exclusivo de Anth-ro-pic
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1141--1141
+Underfull \hbox (badness 10000) in paragraph at lines 1151--1151
 []|\OT1/cmr/m/n/10.95 Framework
  []
 
 [45] [46]
-Overfull \hbox (20.5337pt too wide) in paragraph at lines 1175--1176
+Overfull \hbox (20.5337pt too wide) in paragraph at lines 1192--1193
 []\OT1/cmr/m/n/10.95 colbPowers [[]] es un plu-gin de-sa-rro-lla-do a par-tir de la ba-se pro-por-cio-na-da por el plu-gin [][]\OT1/cmtt/m/n/10.95 "[]\OT1/cmr/m/n/10.95 superpowers[][]\OT1/cmtt/m/n/10.95 "
  []
 
-
-Overfull \hbox (0.43057pt too wide) in paragraph at lines 1179--1180
+[47]
+Overfull \hbox (0.43057pt too wide) in paragraph at lines 1196--1197
 \OT1/cmr/m/n/10.95 nes an-te-rio-res cum-ple un pa-pel ar-qui-tect^^Soni-co es-pec^^S^^Pfi-co den-tro del flu-jo SDD. El hook \OT1/cmtt/m/n/10.95 SessionStart
  []
 
-[47]
-<imagenes/JustColbPowers.png, id=925, 2557.05313pt x 1838.87pt>
+<imagenes/JustColbPowers.png, id=926, 2557.05313pt x 1838.87pt>
 File: imagenes/JustColbPowers.png Graphic file (type png)
 <use imagenes/JustColbPowers.png>
-Package pdftex.def Info: imagenes/JustColbPowers.png  used on input line 1202.
+Package pdftex.def Info: imagenes/JustColbPowers.png  used on input line 1219.
 (pdftex.def)             Requested size: 472.03123pt x 339.4561pt.
- [48] [49 <./imagenes/JustColbPowers.png>]
-Underfull \hbox (badness 4699) in paragraph at lines 1244--1244
+[48] [49 <./imagenes/JustColbPowers.png>]
+Underfull \hbox (badness 4699) in paragraph at lines 1261--1261
 []|\OT1/cmr/m/n/10.95 Nativas + colb-Po-wers +
  []
 
 [50] [51]
-Overfull \hbox (37.99068pt too wide) in paragraph at lines 1287--1300
+Overfull \hbox (37.99068pt too wide) in paragraph at lines 1304--1317
  [][] 
  []
 
@@ -868,18 +892,18 @@ Package rerunfilecheck Info: File `memoria.out' has not changed.
 (rerunfilecheck)             Checksum: 882BB6F2471A21ECC9A41C02D2F8955A;23798.
  ) 
 Here is how much of TeX's memory you used:
- 24288 strings out of 474222
- 439939 string characters out of 5748733
+ 24290 strings out of 474222
+ 439977 string characters out of 5748733
  1947975 words of memory out of 5000000
- 45885 multiletter control sequences out of 15000+600000
+ 45886 multiletter control sequences out of 15000+600000
  568369 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,12n,87p,1744b,745s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on memoria.pdf (58 pages, 1244067 bytes).
+Output written on memoria.pdf (58 pages, 1243864 bytes).
 PDF statistics:
- 1139 PDF objects out of 1200 (max. 8388607)
- 1030 compressed objects within 11 object streams
- 269 named destinations out of 1000 (max. 500000)
+ 1140 PDF objects out of 1200 (max. 8388607)
+ 1031 compressed objects within 11 object streams
+ 270 named destinations out of 1000 (max. 500000)
  926 words of extra memory for PDF output out of 10000 (max. 10000000)
 

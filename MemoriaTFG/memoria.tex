@@ -1074,18 +1074,28 @@ El valor diferencial de los asistentes CLI frente a otras soluciones reside en s
 
 \subsubsection{Conceptos clave}
 \label{sec:conceptos_clave_ext}
-\textbf{Hook:} Un hook es un callback que se ejecuta automáticamente en momentos específicos del ciclo de vida del agente: al iniciar una sesión (SessionStart), antes o después de editar un archivo, al ejecutar un comando de terminal, etc. Los hooks permiten interceptar el flujo de trabajo del agente e inyectar comportamiento sin que el usuario lo solicite explícitamente. En colbPowers, el hook SessionStart es el mecanismo que inyecta el skill de bootstrap en cada sesión: al arrancar, el hook ejecuta un script que lee el archivo \texttt{SKILL.md} de la skill \textit{using-colbPowers}, formatea su contenido como JSON y lo entrega al runtime como contexto adicional (\texttt{additionalContext}), que el asistente añade al system prompt antes de que el modelo reciba el primer mensaje del usuario.
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{2.5cm}|p{8cm}|p{5.5cm}|}
+\hline
+\textbf{Concepto} & \textbf{Qué es} & \textbf{Cuándo actúa} \\
+\hline
+Hook & Callback registrado en el runtime que se ejecuta automáticamente ante eventos del ciclo de vida del agente (SessionStart, PreToolUse, PostToolUse, etc.). Permite inyectar comportamiento sin intervención explícita del usuario. & Al inicio de sesión, antes o después de editar archivos, o al ejecutar comandos de terminal. \\
+\hline
+Skill & Documento Markdown con instrucciones procedimentales especializadas para el agente, análogo a las skills de Claude Cowork (véase Fig.~\ref{fig:skill_definition}). Puede incluir scripts, templates y referencias a herramientas. & Cuando el agente detecta que una tarea requiere un procedimiento específico; el contenido se carga bajo demanda para no consumir tokens innecesariamente. \\
+\hline
+Agente (subagente) & Instancia del LLM creada dinámicamente por el orquestador para ejecutar una tarea en aislamiento, sin acceso al historial de conversación del orquestador. & Para tareas que requieren un contexto acotado e independiente, eliminando interferencias con el hilo principal. \\
+\hline
+Plugin & Paquete instalable (análogo a un paquete npm) que agrupa y distribuye skills, hooks, comandos y agentes. Es la unidad de distribución del ecosistema. Su estructura incluye carpetas \texttt{skills/}, \texttt{agents/} y un fichero \texttt{hooks.json}. & Al inicializar el proyecto; instalable a nivel de usuario o de proyecto con un único comando. \\
+\hline
+MCP (Model Context Protocol) & Protocolo estándar abierto que define cómo un proceso externo expone herramientas invocables al agente. El servidor MCP es un proceso independiente (en cualquier lenguaje) que ejecuta las operaciones y devuelve los resultados al runtime. & Cuando el agente necesita capacidades externas: consultar un grafo de código, buscar en la web, leer una base de datos, etc. \\
+\hline
+\end{tabular}
+\caption{Conceptos clave del sistema de extensibilidad de los asistentes CLI}
+\label{tab:conceptos_extensibilidad}
+\end{table}
 
-\textbf{Skill:} Muy similar a una skill en Claude Cowork denifida anteriormente \ref{fig:skill_definition}, una skill es un documento Markdown que contiene instrucciones especializadas para el agente sobre cómo comportarse en una tarea concreta, y que puede añadir scripts, comandos y templates a los que referenciar. A diferencia de un prompt de usuario, una skill forma parte del contexto del sistema y está disponible para el agente como conocimiento procedimental persistente. Cuando el agente necesita ejecutar una tarea para la que existe una skill (por ejemplo, hacer brainstorming de una feature o escribir un plan), lee ese documento y sigue sus instrucciones.
-
-\textbf{Agente (subagente):} En el contexto de estos asistentes, un agente o subagente es una instancia del modelo de lenguaje creada dinámicamente por el orquestador para ejecutar una tarea concreta en aislamiento. A diferencia del agente principal, el subagente arranca con un contexto específico y sin acceso al historial de conversación del orquestador. Esta separación garantiza que cada tarea se ejecuta con el contexto mínimo necesario, evitando interferencias entre tareas. 
-
-\textbf{Plugin:} Un plugin es un paquete instalable que agrupa y distribuye extensiones para el asistente: skills, hooks, comandos y agentes. Su función es análoga a la de un paquete npm: encapsula un conjunto coherente de funcionalidades y las hace instalables en cualquier proyecto con un único comando. Los plugins se instalan a nivel de usuario o de proyecto y son la unidad de distribución del ecosistema. La definición de un plugin consiste en una estructura de carpetas en la que se define una carpeta \textit{skills/} con \textit{skills} definidas, otra carpeta \textit{agents/} con agentes definidos mediante lenguaje natural en archivos \textit{Markdown} para que el agente orquestrador los pueda invocar, y finalmente la definición de hooks en un \textit{hooks.json}.
-
-\textbf{MCP (Model Context Protocol):} El MCP es un protocolo estándar abierto que define cómo un proceso externo puede exponer herramientas al agente. Un servidor MCP es un proceso independiente (escrito en cualquier lenguaje) que anuncia un conjunto de herramientas invocables mediante el protocolo. Cuando el agente necesita una capacidad externa ---consultar un grafo de código, buscar en la web, leer una base de datos---, el runtime llama al servidor MCP correspondiente, que ejecuta la operación y devuelve el resultado. La separación entre el runtime del agente y el servidor MCP garantiza que cualquier herramienta externa puede integrarse sin modificar el asistente.
-
-% TODO: Revisar la distinción entre MCP y Skills
-\textbf{Distinción entre MCP y Skill:} Los conceptos de MCP y Skill pueden parecer similares en el papel, puesto que ambos basicamente le proporcionan al agente de programacion una herramienta a la que puede llamar. La principal distinción entre los dos conceptos, es el hecho de que una skill, suele ser un prompt dentro de el cual se pueden llamar herramientas, las cuales se ejecutan de forma local. A diferencia de las herramientas que nos proporcionan un MCP, que aunque tienen una descripción explicando cúando deben ser utilizadas, no incluyen un prompt de instrucciones para el agente, además de que la ejecución de la herramienta proporcionada por el MCP, se suele hacer en el servidor de ese dado MCP, mientras que las Skills de ejecutan de forma local principalmente.
+\textbf{Distinción entre MCP y Skill.} Aunque ambos mecanismos amplían las capacidades del agente, su naturaleza es diferente. Una skill es esencialmente un prompt procedimental: incluye instrucciones detalladas sobre cómo abordar una tarea y puede invocar herramientas locales durante su ejecución. Un servidor MCP, en cambio, expone herramientas atómicas acompañadas únicamente de una descripción de su interfaz, sin lógica de orquestación; la ejecución se produce en el proceso del servidor MCP, no en el runtime local del asistente. En la práctica, las skills definen \textit{cómo} debe razonar el agente ante una clase de tarea, mientras que los MCPs definen \textit{qué} operaciones externas puede invocar.
 
 \subsubsection{El ciclo de vida completo de una sesión en OpenCode}
 \label{sec:ciclo_vida_opencode}
@@ -1164,7 +1174,14 @@ La efectividad del flujo SDD depende en gran medida de la calidad del contexto q
 \label{sec:code_review_graph}
 code-review-graph \cite{code_review_graph_2025} es una herramienta de código abierto que utiliza el parser de sintaxis Tree-Sitter para analizar el repositorio y construir un grafo de dependencias entre las distintas entidades de código (funciones, clases, módulos). Este grafo se almacena en una base de datos SQLite local y se expone al agente a través de un servidor MCP, proporcionando un mecanismo eficiente para navegar la estructura del código sin necesidad de leer todos los archivos del proyecto.
 
-La integración de esta herramienta aborda directamente el problema de gestión de la ventana de contexto identificado en el apartado de riesgos (sección~\ref{sec:riesgo5}). En pruebas preliminares realizadas sobre un monorepo de Colb.Ai, el agente con code-review-graph integrado necesitó aproximadamente 40.000 tokens para describir la arquitectura del proyecto, frente a los 64.000 tokens requeridos sin la herramienta, lo que supone una reducción del 37,5\verb|%| en esa prueba concreta. Las capacidades que expone al agente incluyen: análisis de diffs de git para identificar cambios de mayor riesgo, cálculo del radio de impacto (\textit{blast radius}) de cualquier modificación, identificación de los flujos de ejecución afectados, búsqueda semántica de entidades de código, y obtención de una visión de alto nivel de la arquitectura del sistema.
+La integración de esta herramienta aborda directamente el problema de gestión de la ventana de contexto identificado en el apartado de riesgos (sección~\ref{sec:riesgo5}). En pruebas preliminares realizadas sobre un monorepo de Colb.Ai, el agente con code-review-graph integrado necesitó aproximadamente 40.000 tokens para describir la arquitectura del proyecto, frente a los 64.000 tokens requeridos sin la herramienta, lo que supone una reducción del 37,5\verb|%| en esa prueba concreta. Las capacidades que expone al agente incluyen:
+\begin{itemize}
+    \item Análisis de diffs de git para identificar cambios de mayor riesgo.
+    \item Cálculo del radio de impacto (\textit{blast radius}) de cualquier modificación.
+    \item Identificación de los flujos de ejecución afectados por un cambio.
+    \item Búsqueda semántica de entidades de código (funciones, clases, módulos).
+    \item Obtención de una visión de alto nivel de la arquitectura del sistema.
+\end{itemize}
 
 \subsubsection{Herramientas de métricas de complejidad}
 \label{sec:metricas_complejidad}
@@ -1309,7 +1326,14 @@ La tercera dimensión del proyecto aborda la automatización del seguimiento pos
 
 \subsection{Generación de documentación con Claude Cowork}
 \label{sec:generacion_doc_claude_cowork}
-El flujo implementado mediante Claude Cowork se integra directamente con el proceso de reunión. Al finalizar cada reunión de seguimiento con el cliente, la transcripción o el resumen de lo acordado se proporciona como entrada a una skill de Claude Cowork desarrollada específicamente para este propósito. La skill procesa la información y genera de forma automática un documento Word estructurado que incluye los siguientes apartados: el resumen de los temas tratados en la reunión, las decisiones tomadas y los acuerdos alcanzados, las tareas asignadas al equipo de Colb.Ai con sus plazos correspondientes, y las tareas o acciones que corresponden al cliente. Este documento se genera y está disponible para ser enviado al cliente en el mismo momento en que finaliza la reunión, eliminando la latencia habitual en la producción de este tipo de documentación.
+El flujo implementado mediante Claude Cowork se integra directamente con el proceso de reunión. Al finalizar cada reunión de seguimiento con el cliente, la transcripción o el resumen de lo acordado se proporciona como entrada a una skill de Claude Cowork desarrollada específicamente para este propósito. La skill procesa la información y genera de forma automática un documento Word estructurado que incluye los siguientes apartados:
+\begin{itemize}
+    \item Resumen de los temas tratados en la reunión.
+    \item Decisiones tomadas y acuerdos alcanzados.
+    \item Tareas asignadas al equipo de Colb.Ai con sus plazos correspondientes.
+    \item Tareas o acciones que corresponden al cliente.
+\end{itemize}
+Este documento se genera y está disponible para ser enviado al cliente en el mismo momento en que finaliza la reunión, eliminando la latencia habitual en la producción de este tipo de documentación.
 
 La skill aprovecha las capacidades nativas de Claude Cowork para acceder a herramientas de gestión de archivos en el entorno de escritorio, lo que le permite escribir directamente el documento en el directorio de trabajo del proyecto, integrándose de forma transparente en el flujo de gestión documental de la empresa.
 
