@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.14)  14 MAY 2026 14:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.14)  18 MAY 2026 09:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -580,6 +580,10 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 ) (./memoria.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
+
+
+LaTeX Warning: Label `fig:skill_definition' multiply defined.
+
 )
 \openout1 = `memoria.aux'.
 
@@ -774,17 +778,28 @@ File: imagenes/coworkSkills/skill_components_and_definition.png Graphic file (ty
 <use imagenes/coworkSkills/skill_components_and_definition.png>
 Package pdftex.def Info: imagenes/coworkSkills/skill_components_and_definition.png  used on input line 985.
 (pdftex.def)             Requested size: 472.03123pt x 267.04703pt.
- [38 <./imagenes/coworkSkills/skill_components_and_definition.png>] [39] [40] [41] [42] [43] [44] [45]
-Overfull \hbox (0.43057pt too wide) in paragraph at lines 1147--1148
+ [38 <./imagenes/coworkSkills/skill_components_and_definition.png>] [39] [40] [41] [42] [43] [44] [45] [46]
+Overfull \hbox (20.5337pt too wide) in paragraph at lines 1156--1157
+[]\OT1/cmr/m/n/10.95 colbPowers [[]] es un plu-gin de-sa-rro-lla-do a par-tir de la ba-se pro-por-cio-na-da por el plu-gin [][]\OT1/cmtt/m/n/10.95 "[]\OT1/cmr/m/n/10.95 superpowers[][]\OT1/cmtt/m/n/10.95 "
+ []
+
+
+Overfull \hbox (0.43057pt too wide) in paragraph at lines 1160--1161
 \OT1/cmr/m/n/10.95 nes an-te-rio-res cum-ple un pa-pel ar-qui-tect^^Soni-co es-pec^^S^^Pfi-co den-tro del flu-jo SDD. El hook \OT1/cmtt/m/n/10.95 SessionStart
  []
 
-[46] [47] [48]
-Overfull \hbox (37.99068pt too wide) in paragraph at lines 1228--1241
+[47]
+<imagenes/JustColbPowers.png, id=924, 2557.05313pt x 1838.87pt>
+File: imagenes/JustColbPowers.png Graphic file (type png)
+<use imagenes/JustColbPowers.png>
+Package pdftex.def Info: imagenes/JustColbPowers.png  used on input line 1183.
+(pdftex.def)             Requested size: 472.03123pt x 339.4561pt.
+ [48] [49 <./imagenes/JustColbPowers.png>] [50] [51]
+Overfull \hbox (37.99068pt too wide) in paragraph at lines 1257--1270
  [][] 
  []
 
-[49] [50] [51] (./memoria.bbl
+[52] [53] [54] (./memoria.bbl
 Underfull \hbox (badness 2941) in paragraph at lines 28--32
 []\OT1/cmr/m/n/10.95 Builder Methods.  buildermethods/agent-os.  []$\OT1/cmtt/m/n/10.95 https : / / github . com / buildermethods /
  []
@@ -794,7 +809,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--48
 []\OT1/cmr/m/n/10.95 code-review-graph.  Re-po-si-to-rio code-review-graph.  []$\OT1/cmtt/m/n/10.95 https : / / github . com /
  []
 
-[52]
+[55]
 Underfull \hbox (badness 10000) in paragraph at lines 86--90
 []\OT1/cmr/m/n/10.95 Jama Soft-wa-re.  What is re-qui-re-ments gathe-ring in soft-wa-re en-gi-nee-
  []
@@ -809,7 +824,7 @@ Overfull \hbox (11.16513pt too wide) in paragraph at lines 86--90
 \OT1/cmtt/m/n/10.95 requirements-[]gathering-[]and-[]management-[]processes / what-[]is-[]requirements-[]gathering/$[]\OT1/cmr/m/n/10.95 ,
  []
 
-[53]) [54] (./memoria.aux
+[56]) [57] (./memoria.aux
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
 )
@@ -821,22 +836,25 @@ L3 programming layer <2024-01-22>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `memoria.out' has not changed.
 (rerunfilecheck)             Checksum: 882BB6F2471A21ECC9A41C02D2F8955A;23798.
  ) 
 Here is how much of TeX's memory you used:
- 24262 strings out of 474222
- 439414 string characters out of 5748733
+ 24281 strings out of 474222
+ 439786 string characters out of 5748733
  1947975 words of memory out of 5000000
- 45866 multiletter control sequences out of 15000+600000
+ 45880 multiletter control sequences out of 15000+600000
  568369 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  83i,12n,87p,1744b,745s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on memoria.pdf (55 pages, 785002 bytes).
+Output written on memoria.pdf (58 pages, 1243365 bytes).
 PDF statistics:
- 1120 PDF objects out of 1200 (max. 8388607)
- 1016 compressed objects within 11 object streams
- 262 named destinations out of 1000 (max. 500000)
- 921 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1137 PDF objects out of 1200 (max. 8388607)
+ 1028 compressed objects within 11 object streams
+ 267 named destinations out of 1000 (max. 500000)
+ 926 words of extra memory for PDF output out of 10000 (max. 10000000)
 

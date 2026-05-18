@@ -1022,6 +1022,8 @@ El flujo de procesamiento sigue cuatro fases secuenciales:
 \paragraph{Bucle de refinamiento con \textit{Human in the Loop}.}
 Una característica diferencial de la aplicación es la capacidad de refinamiento iterativo en cada fase. El usuario puede modificar el plan de investigación o el plan arquitectónico mediante instrucciones en lenguaje natural. El sistema mantiene un historial de conversación mediante la abstracción \texttt{MessagesPlaceholder} de LangChain, lo que permite que el modelo tome en cuenta el contexto de intercambios anteriores al procesar cada solicitud de refinamiento. Este mecanismo implementa el principio \textit{Human in the Loop} definido en los objetivos del proyecto.
 
+\newpage
+
 \section{Spec Driven Development: Implementación}
 \label{sec:sdd_implementacion}
 Una vez definidos los requerimientos iniciales del proyecto, el siguiente paso es garantizar que el desarrollo de código siga un flujo estructurado y trazable. Este capítulo describe la arquitectura de herramientas y asistentes que se ha configurado para implementar la metodología SDD en el día a día del equipo de desarrollo.
@@ -1082,15 +1084,18 @@ El valor diferencial de los asistentes CLI frente a otras soluciones reside en s
 
 \textbf{MCP (Model Context Protocol):} El MCP es un protocolo estándar abierto que define cómo un proceso externo puede exponer herramientas al agente. Un servidor MCP es un proceso independiente (escrito en cualquier lenguaje) que anuncia un conjunto de herramientas invocables mediante el protocolo. Cuando el agente necesita una capacidad externa ---consultar un grafo de código, buscar en la web, leer una base de datos---, el runtime llama al servidor MCP correspondiente, que ejecuta la operación y devuelve el resultado. La separación entre el runtime del agente y el servidor MCP garantiza que cualquier herramienta externa puede integrarse sin modificar el asistente.
 
+% TODO: Revisar la distinción entre MCP y Skills
+\textbf{Distinción entre MCP y Skill:} Los conceptos de MCP y Skill pueden parecer similares en el papel, puesto que ambos basicamente le proporcionan al agente de programacion una herramienta a la que puede llamar. La principal distinción entre los dos conceptos, es el hecho de que una skill, suele ser un prompt dentro de el cual se pueden llamar herramientas, las cuales se ejecutan de forma local. A diferencia de las herramientas que nos proporcionan un MCP, que aunque tienen una descripción explicando cúando deben ser utilizadas, no incluyen un prompt de instrucciones para el agente, además de que la ejecución de la herramienta proporcionada por el MCP, se suele hacer en el servidor de ese dado MCP, mientras que las Skills de ejecutan de forma local principalmente.
+
 \subsubsection{El ciclo de vida completo de una sesión en OpenCode}
 \label{sec:ciclo_vida_opencode}
-Para extender y configurar OpenCode de forma eficaz, es necesario comprender con exactitud en qué momento del ciclo se carga cada componente ---plugins, skills, herramientas y agentes--- y cómo interactúan durante una conversación. A continuación se describe este ciclo de forma detallada, desde la inicialización del proceso hasta la entrega de la respuesta al usuario.
+Para extender y configurar OpenCode de forma eficaz, es necesario comprender con exactitud en qué momento del ciclo se carga cada componente ---plugins, skills, herramientas y agentes--- y cómo interactúan durante una conversación. Aprovechando que opencode es una herramienta de codigo abierto, a continuación vamos a describir el ciclo de funcionamiento de forma detallada, desde la inicialización del proceso hasta la entrega de la respuesta al usuario. % TODO: Cite oficial opencode repo
 
 \paragraph{Inicialización perezosa del espacio de trabajo.}
 OpenCode implementa el patrón de inicialización perezosa (\textit{lazy initialization}): cuando el usuario abre un proyecto por primera vez en la sesión, el sistema no instancia de inmediato todos los servicios. Los plugins, el registro de herramientas, el catálogo de skills y los clientes MCP se crean la primera vez que son necesarios y se mantienen en caché para el resto de la sesión. Esto permite que el proceso arranque rápidamente con independencia del tamaño del proyecto.
 
 \paragraph{Descubrimiento de plugins y herramientas.}
-Cuando el registro de herramientas se inicializa por primera vez, OpenCode ejecuta el proceso de descubrimiento de plugins. Los plugins se cargan desde tres fuentes: (1) los plugins internos del propio asistente, (2) los paquetes npm instalados en el sistema que declaren el punto de entrada del plugin en su \texttt{package.json}, y (3) los archivos JavaScript o TypeScript localizados en los directorios \texttt{tool/} o \texttt{tools/} del proyecto. Cada plugin puede registrar herramientas adicionales mediante la interfaz de hooks que OpenCode expone, concretamente el campo \texttt{Hooks.tool}. Todas las herramientas ---las nativas del asistente más las aportadas por plugins y por los servidores MCP configurados--- se registran en el registro global y se describen al modelo mediante un esquema JSON.
+Cuando el registro de herramientas se inicializa por primera vez, OpenCode ejecuta el proceso de descubrimiento de plugins. Los plugins se cargan desde dos fuentes: (1) los plugins internos del propio asistente, integrados directamente en el binario (autenticación con Codex, GitHub Copilot, GitLab, Cloudflare y otros), y (2) los plugins externos declarados explícitamente en el archivo de configuración de OpenCode, que pueden ser paquetes npm instalados bajo demanda o rutas de archivo locales (por ejemplo, \texttt{./mi-plugin.ts}). OpenCode no escanea automáticamente los directorios del proyecto en busca de plugins; la declaración explícita en la configuración es requisito indispensable para cargar un plugin externo. Cada plugin puede registrar herramientas adicionales mediante la interfaz de hooks que OpenCode expone, concretamente el campo \texttt{Hooks.tool}. Todas las herramientas ---las nativas del asistente más las aportadas por plugins y por los servidores MCP configurados--- se registran en el registro global y se describen al modelo mediante un esquema JSON.
 
 \paragraph{Descubrimiento de skills.}
 Paralelamente al descubrimiento de plugins, el sistema escanea el sistema de archivos para localizar las skills disponibles. La búsqueda se realiza en un conjunto predefinido de rutas: \texttt{\textasciitilde/.claude/skills/}, \texttt{\textasciitilde/.agents/skills/}, los directorios \texttt{.claude/} y \texttt{.agents/} de la raíz del proyecto, los directorios de configuración global de OpenCode, y las rutas adicionales declaradas en el campo \texttt{skills.paths} del archivo \texttt{opencode.json}. Para cada skill encontrada, el sistema registra su nombre, descripción y ubicación. Sin embargo, el contenido completo de la skill \textit{no} se carga en este momento: el descubrimiento construye únicamente el catálogo, sin consumir tokens del contexto.
@@ -1098,7 +1103,7 @@ Paralelamente al descubrimiento de plugins, el sistema escanea el sistema de arc
 \paragraph{Construcción del system prompt.}
 Al recibir un mensaje del usuario, el sistema construye el system prompt que se enviará al LLM combinando cuatro componentes:
 \begin{enumerate}
-    \item \textbf{Prompt base del proveedor}: instrucciones genéricas del asistente, adaptadas al modelo concreto que esté activo (Anthropic Claude, Google Gemini u otros).
+    \item \textbf{Prompt base del proveedor}: instrucciones genéricas del asistente, adaptadas al modelo concreto que esté activo (Anthropic Claude, Google Gemini u otros). Si el agente activo define un campo \texttt{prompt} propio en su configuración, este sustituye al prompt base del proveedor.
     \item \textbf{Entorno y contexto}: directorio de trabajo actual, fecha, plataforma del sistema operativo y agente activo en la sesión.
     \item \textbf{Catálogo de skills}: una sección del system prompt lista los nombres y descripciones breves de todas las skills descubiertas. Esta lista es lo único que el LLM recibe sobre las skills en el prompt inicial; el contenido detallado de cada skill se carga bajo demanda más adelante.
     \item \textbf{Archivo de instrucciones del proyecto}: el contenido de un archivo de instrucciones del repositorio con el nombre \texttt{AGENTS.md} o  \texttt{CLAUDE.md} (para asegurar compatibilidad con proyectos desarrollados usando ClaudeCode) , que típicamente incluye la descripción del proyecto, el stack tecnológico, los estándares de código del equipo y las restricciones que el agente debe respetar. Además, los plugins pueden modificar el system prompt resultante mediante el hook \texttt{experimental.chat.system.transform}, inyectando secciones adicionales antes de que el prompt se envíe al modelo.
@@ -1115,8 +1120,13 @@ Cuando el modelo decide invocar una herramienta, el runtime recibe el evento cor
 \paragraph{Carga perezosa de skills bajo demanda.}
 La herramienta \texttt{skill} ilustra con claridad el principio de carga perezosa. Cuando el modelo, al ver el catálogo de skills en el system prompt, decide que necesita las instrucciones de una skill concreta para ejecutar una tarea, invoca la herramienta \texttt{skill} con el nombre de la skill como parámetro. Es en ese momento ---y solo en ese momento--- cuando el sistema lee el archivo \texttt{SKILL.md} correspondiente del disco, enumera los ficheros asociados a la skill (hasta un máximo de diez), y devuelve el contenido completo al modelo envuelto en una etiqueta XML estructurada. De esta forma, el contenido detallado de las skills no ocupa tokens del contexto inicial: solo las descripciones breves del catálogo están siempre presentes; los contenidos completos se cargan únicamente cuando el modelo los solicita. La skill \textit{using-colbPowers} de colbPowers es una excepción deliberada a este principio: al inyectarse mediante el hook SessionStart antes de que comience la conversación, su contenido completo llega al modelo directamente en el system prompt, sin pasar por el mecanismo de carga perezosa. Esto garantiza que las reglas de orquestación estén activas desde el primer mensaje, sin depender de que el modelo recuerde invocar la herramienta \texttt{skill}.
 
+% TODO: cite filtered ClaudeCode repo?
 \paragraph{Similitud con ClaudeCode.}
-ClaudeCode implementa un pipeline arquitectónicamente muy similar. Aunque las implementaciones concretas difieren ---ClaudeCode no es software libre---, el flujo conceptual es idéntico: inicialización perezosa de servicios al inicio de la sesión, construcción del system prompt a partir de archivos de instrucciones y catálogos de skills, bucle ReAct con llamadas a herramienta y streaming de tokens, carga perezosa de skills bajo demanda, y mecanismos de hooks para interceptar el ciclo de vida. Esta equivalencia es precisamente la que hace posible que un plugin como colbPowers, que se apoya en skills y hooks genéricos, funcione de forma transparente en ambos asistentes con mínimas diferencias de integración.
+ClaudeCode implementa un pipeline estructuralmente análogo en lo que respecta al ciclo de vida de la conversación. Aunque las implementaciones concretas difieren ---ClaudeCode no es software libre---, el flujo conceptual comparte los mismos patrones: inicialización perezosa de servicios al inicio de la sesión, construcción del system prompt a partir de archivos de instrucciones y catálogos de skills, bucle ReAct con llamadas a herramienta y streaming de tokens, carga perezosa de skills bajo demanda, y mecanismos de hooks para interceptar el ciclo de vida.
+
+Sin embargo, existen diferencias arquitectónicas significativas que conviene señalar. En lo que respecta a los proveedores de LLM, ClaudeCode es exclusivo de Anthropic y sus modelos Claude, mientras que OpenCode soporta más de veinticinco proveedores a través del SDK de Vercel AI (OpenAI, Google, Azure, Bedrock, Mistral, Groq, GitHub Copilot, entre otros). En cuanto al modelo de interfaz, ClaudeCode es exclusivamente una herramienta de línea de comandos cuya interfaz se renderiza en el terminal mediante React e Ink, mientras que OpenCode expone un servidor HTTP local (Hono) que sirve una aplicación web SolidJS y soporta adicionalmente aplicaciones de escritorio nativas (Tauri y Electron). En materia de persistencia, ClaudeCode mantiene el estado de la conversación en memoria y en ficheros JSON locales, mientras que OpenCode persiste las sesiones en una base de datos SQLite con instantáneas del sistema de ficheros antes de cada invocación de herramienta, lo que permite revertir cambios. Finalmente, ClaudeCode utiliza TypeScript estándar para la composición de servicios, mientras que OpenCode hace un uso intensivo del framework Effect (programación funcional monádica) para la gestión de dependencias, errores y concurrencia.
+
+Esta equivalencia a nivel de flujo de conversación ---y no de arquitectura completa--- es la que hace posible que un plugin como colbPowers, que se apoya en skills y hooks genéricos, funcione de forma comparable en ambos asistentes, si bien los adaptadores de hooks concretos difieren entre plataformas.
 
 \subsubsection{Hooks de ciclo de vida}
 \label{sec:hooks_ciclo_vida}
@@ -1130,6 +1140,7 @@ colbPowers hace un uso central de ambos mecanismos. Las skills definen el compor
 \label{sec:herramientas_apoyo_sdd}
 La efectividad del flujo SDD depende en gran medida de la calidad del contexto que el agente tiene disponible en cada momento. A continuación se describen las herramientas principales integradas en el sistema.
 
+% Todo, cite Tree-Sitter here
 \subsubsection{code-review-graph}
 \label{sec:code_review_graph}
 code-review-graph \cite{code_review_graph_2025} es una herramienta de código abierto que utiliza el parser de sintaxis Tree-Sitter para analizar el repositorio y construir un grafo de dependencias entre las distintas entidades de código (funciones, clases, módulos). Este grafo se almacena en una base de datos SQLite local y se expone al agente a través de un servidor MCP, proporcionando un mecanismo eficiente para navegar la estructura del código sin necesidad de leer todos los archivos del proyecto.
@@ -1142,7 +1153,9 @@ La disponibilidad del árbol sintáctico abstracto (AST) de Tree-Sitter en la ba
 
 \subsubsection{colbPowers: flujo de trabajo}
 \label{sec:colbpowers_flujo}
-colbPowers \cite{colbpowers_2026} es un plugin (variación de otro plugin llamado superpowers \cite{superpowers_2025}) instalable en cualquier proyecto que implementa el flujo de trabajo Spec-First de forma autónoma. Una vez instalado, no requiere que el desarrollador recuerde invocar comandos ni seguir un protocolo manual: el propio agente detecta el estado del proyecto al inicio de cada sesión y guía al usuario por el flujo correcto de forma proactiva. Distribuir el sistema como plugin ---en lugar de como un conjunto de archivos de skills copiados manualmente en el proyecto--- aporta dos garantías que los archivos por sí solos no pueden ofrecer: el hook \texttt{SessionStart}, que inyecta la skill de bootstrap de forma incondicional en cada sesión sin depender de que el desarrollador la invoque, y una instalación cómoda y reproducible en cualquier proyecto, ya que los plugins se referencian directamente desde su repositorio en GitHub y ambos asistentes los descargan e instalan automáticamente.
+colbPowers \cite{colbpowers_2026} es un plugin desarrollado a partir de la base proporcionada por el plugin \verb|"|superpowers\verb|"| \cite{superpowers_2025}, colbPowers es instalable en cualquier proyecto y implementa el flujo de trabajo Spec-First de forma autónoma. Una vez instalado, no requiere que el desarrollador recuerde invocar comandos ni seguir un protocolo manual, gracias a una combinación de hooks que inyectan contexto y skills, el agente es capaz de entender la etapa del desarrollo en la que se encuentra en todo momento. 
+
+Distribuir el sistema como un plugin ---en lugar de como un conjunto de archivos de skills copiados manualmente en el proyecto--- aporta dos garantías que los archivos por sí solos no pueden ofrecer: el hook \texttt{SessionStart}, que inyecta la skill de bootstrap de forma incondicional en cada sesión sin depender de que el desarrollador la invoque, y una instalación cómoda y reproducible en cualquier proyecto, ya que los plugins se referencian directamente desde su repositorio en GitHub y ambos asistentes los descargan e instalan automáticamente.
 
 El diseño de colbPowers no es arbitrario: cada mecanismo de extensibilidad descrito en las secciones anteriores cumple un papel arquitectónico específico dentro del flujo SDD. El hook \texttt{SessionStart} convierte el flujo de trabajo de un protocolo opcional en un comportamiento por defecto: al inyectar las reglas de orquestación antes de que el modelo reciba el primer mensaje, garantiza que el agente no pueda operar sin tenerlas presentes, independientemente de si el desarrollador las invoca o no. Las skills codifican cada fase del ciclo SDD como un procedimiento especializado e independiente: al cargarse únicamente cuando son necesarias, la especificación de brainstorming no ocupa contexto durante la revisión de código, y viceversa, manteniendo el consumo de tokens acotado a la fase activa en cada momento. Los subagentes aislados protegen la integridad de la especificación frente a la deriva conversacional: al arrancar sin acceso al historial de la sesión principal, el subagente implementador solo puede basar sus decisiones en el \texttt{design.md} que el orquestador le proporciona explícitamente, eliminando el riesgo de que cambios de alcance discutidos informalmente en el chat contaminen la implementación. Finalmente, el propio skill \textit{using-colbPowers}, inyectado en cada arranque, instruye al agente a verificar que \texttt{constitution.md} y \texttt{features.md} existen antes de cualquier otra acción, y a crearlos interactivamente si no es así: la especificación no es un documento opcional que el desarrollador puede consultar, sino una precondición estructural al inicio de cada sesión.
 
@@ -1153,12 +1166,24 @@ Para funcionar, colbPowers asume que el proyecto dispone de una plantilla de rep
 
 \textbf{features.md:} Roadmap del producto. Lista todas las features aprobadas con su descripción, requisitos funcionales, restricciones técnicas y dependencias. Cualquier nueva funcionalidad debe estar aquí definida antes de poder planificarse.
 
+En caso de que una de las anteriores no exista. Al agente se le indica que ejecute las skills de "defining-constitution" y "defining-features", para popular estos archivos a través de un proceso iteractivo de preguntas al usuario.
+
 \textbf{docs/specs/:} Documentos de diseño por feature: descripción del comportamiento esperado, decisiones de arquitectura y justificación técnica de cada implementación.
 
 \textbf{docs/plans/:} Planes de implementación granulares por feature: listas de tareas ordenadas con criterios de aceptación.
 
+
+
 \paragraph{Flujo de trabajo autónomo}
 El flujo de trabajo completo se desarrolla de la siguiente forma cuando el usuario solicita cualquier cambio o nueva funcionalidad:
+
+% Metemos aquí la fotillo con el diagrama
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{imagenes/JustColbPowers.png}
+    \caption{Diagrama de flujo de colbPowers.}
+    \label{fig:skill_definition}
+\end{figure}
 
 \begin{enumerate}
     \item \textbf{Verificación del estado del proyecto:} al iniciar la sesión, el agente lee \texttt{.specs/memory/} y comprueba si existen la constitución y el roadmap de features. Si alguno de los dos está ausente, el agente inicia de forma proactiva una conversación guiada con el usuario para definirlos, formulando preguntas sobre la visión del proyecto, el stack tecnológico, los estándares de código y las funcionalidades previstas. Este paso se ejecuta una única vez por proyecto.
@@ -1183,15 +1208,19 @@ Con el objetivo de evaluar empíricamente el impacto de las herramientas desarro
 
 \subsubsection{Diseño experimental}
 \label{sec:diseno_experimental}
-El experimento sigue un diseño de tres condiciones (A/B/C) con tres repeticiones por condición (n=3), ejecutadas con temperatura 0 para minimizar la varianza estocástica del modelo. Las tres condiciones son:
+El experimento sigue un diseño de cuatro condiciones (A/B/C/D) con cuatro repeticiones por condición (n=3), ejecutadas con temperatura 0 para minimizar la varianza estocástica del modelo. Las cuatro condiciones son:
 
 \textbf{Condición A --- Sin plugins:} El agente dispone únicamente de las herramientas nativas del asistente CLI (Read, Write, Edit, Bash, Grep). No se activa ningún plugin ni servidor MCP adicional.
 
 \textbf{Condición B --- Con code-review-graph:} El agente dispone de las herramientas nativas más el servidor MCP de code-review-graph. El agente puede consultar el grafo de dependencias, calcular el blast radius de los cambios y realizar búsquedas semánticas sobre el código.
 
-\textbf{Condición C --- Con colbPowers + code-review-graph:} El agente opera bajo el flujo SDD completo de colbPowers, con acceso además al servidor MCP de code-review-graph. La tarea se ejecuta siguiendo el ciclo constitution $\rightarrow$ features $\rightarrow$ spec $\rightarrow$ plan $\rightarrow$ execute $\rightarrow$ review.
+\textbf{Condición C --- Con colbPowers:} El agente opera bajo un flujo de SSD de colbPowers, sin embargo no tiene acceso a herramientas de expliración de códico proporcionadas por code-review-graph.
+
+\textbf{Condición D --- Con colbPowers + code-review-graph:} El agente opera bajo el flujo SDD completo de colbPowers, con acceso además al servidor MCP de code-review-graph. La tarea se ejecuta siguiendo el ciclo constitution $\rightarrow$ features $\rightarrow$ spec $\rightarrow$ plan $\rightarrow$ execute $\rightarrow$ review.
 
 Las métricas recogidas en cada ejecución son: tokens de entrada consumidos, tokens de salida consumidos, número total de tool calls, número de tool calls específicas de code-review-graph, cobertura de la implementación (porcentaje de ítems del enunciado correctamente implementados), y número de regresiones introducidas (cambios en funcionalidad no solicitada).
+
+\paragraph{Metodología:} La metodología del expoe
 
 \subsubsection{Caso 1: ConfortMental --- cambios cross-cutting en base de código real}
 \label{sec:caso1_confortmental}

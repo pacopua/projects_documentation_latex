@@ -88,45 +88,46 @@
 \contentsline {paragraph}{Fase 3: Investigación web mediante Tavily:}{39}{paragraph*.8}%
 \contentsline {paragraph}{Fase 4: Generación del plan arquitectónico:}{40}{paragraph*.9}%
 \contentsline {paragraph}{Bucle de refinamiento con \textit {Human in the Loop}.}{40}{paragraph*.10}%
-\contentsline {section}{\numberline {11}Spec Driven Development: Implementación}{40}{section.11}%
-\contentsline {subsection}{\numberline {11.1}Asistentes de Programación}{40}{subsection.11.1}%
-\contentsline {subsubsection}{\numberline {11.1.1}ClaudeCode}{40}{subsubsection.11.1.1}%
-\contentsline {subsubsection}{\numberline {11.1.2}OpenCode}{40}{subsubsection.11.1.2}%
+\contentsline {section}{\numberline {11}Spec Driven Development: Implementación}{41}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Asistentes de Programación}{41}{subsection.11.1}%
+\contentsline {subsubsection}{\numberline {11.1.1}ClaudeCode}{41}{subsubsection.11.1.1}%
+\contentsline {subsubsection}{\numberline {11.1.2}OpenCode}{41}{subsubsection.11.1.2}%
 \contentsline {subsubsection}{\numberline {11.1.3}Justificación de la doble integración}{41}{subsubsection.11.1.3}%
-\contentsline {subsubsection}{\numberline {11.1.4}Arquitectura interna: el patrón ReAct y su implementación en TypeScript}{41}{subsubsection.11.1.4}%
+\contentsline {subsubsection}{\numberline {11.1.4}Arquitectura interna: el patrón ReAct y su implementación en TypeScript}{42}{subsubsection.11.1.4}%
 \contentsline {subsection}{\numberline {11.2}Mecanismos de extensibilidad}{42}{subsection.11.2}%
 \contentsline {subsubsection}{\numberline {11.2.1}Conceptos clave}{42}{subsubsection.11.2.1}%
-\contentsline {subsubsection}{\numberline {11.2.2}El ciclo de vida completo de una sesión en OpenCode}{42}{subsubsection.11.2.2}%
-\contentsline {paragraph}{Inicialización perezosa del espacio de trabajo.}{43}{paragraph*.11}%
-\contentsline {paragraph}{Descubrimiento de plugins y herramientas.}{43}{paragraph*.12}%
-\contentsline {paragraph}{Descubrimiento de skills.}{43}{paragraph*.13}%
-\contentsline {paragraph}{Construcción del system prompt.}{43}{paragraph*.14}%
-\contentsline {paragraph}{La llamada al LLM mediante streaming.}{44}{paragraph*.15}%
-\contentsline {paragraph}{Ejecución de herramientas.}{44}{paragraph*.16}%
-\contentsline {paragraph}{Carga perezosa de skills bajo demanda.}{44}{paragraph*.17}%
-\contentsline {paragraph}{Similitud con ClaudeCode.}{44}{paragraph*.18}%
-\contentsline {subsubsection}{\numberline {11.2.3}Hooks de ciclo de vida}{45}{subsubsection.11.2.3}%
-\contentsline {subsubsection}{\numberline {11.2.4}Skills y agentes en colbPowers}{45}{subsubsection.11.2.4}%
-\contentsline {subsection}{\numberline {11.3}Herramientas de Apoyo al Flujo SDD}{45}{subsection.11.3}%
-\contentsline {subsubsection}{\numberline {11.3.1}code-review-graph}{45}{subsubsection.11.3.1}%
-\contentsline {subsubsection}{\numberline {11.3.2}Herramientas de métricas de complejidad}{46}{subsubsection.11.3.2}%
-\contentsline {subsubsection}{\numberline {11.3.3}colbPowers: flujo de trabajo}{46}{subsubsection.11.3.3}%
-\contentsline {paragraph}{Estructura del proyecto esperada}{46}{paragraph*.19}%
-\contentsline {paragraph}{Flujo de trabajo autónomo}{47}{paragraph*.20}%
-\contentsline {subsubsection}{\numberline {11.3.4}La plantilla de repositorio}{48}{subsubsection.11.3.4}%
-\contentsline {subsection}{\numberline {11.4}Evaluación y Resultados}{48}{subsection.11.4}%
-\contentsline {subsubsection}{\numberline {11.4.1}Diseño experimental}{48}{subsubsection.11.4.1}%
-\contentsline {subsubsection}{\numberline {11.4.2}Caso 1: ConfortMental --- cambios cross-cutting en base de código real}{48}{subsubsection.11.4.2}%
-\contentsline {subsubsection}{\numberline {11.4.3}Caso 2: Aplicación de simulación 3D}{49}{subsubsection.11.4.3}%
-\contentsline {section}{\numberline {12}Seguimiento del Cliente}{50}{section.12}%
-\contentsline {subsection}{\numberline {12.1}Generación de documentación con Claude Cowork}{50}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}Alternativa de código abierto}{50}{subsection.12.2}%
-\contentsline {section}{\numberline {13}Estado Actual de la Implementación}{51}{section.13}%
-\contentsline {subsection}{\numberline {13.1}Toma de Requerimientos}{51}{subsection.13.1}%
-\contentsline {subsubsection}{\numberline {13.1.1}Módulo de transcripción}{51}{subsubsection.13.1.1}%
-\contentsline {subsubsection}{\numberline {13.1.2}Implementación propia (aplicación Python)}{51}{subsubsection.13.1.2}%
-\contentsline {subsection}{\numberline {13.2}Spec Driven Development: colbPowers}{51}{subsection.13.2}%
-\contentsline {subsection}{\numberline {13.3}Seguimiento del Cliente}{52}{subsection.13.3}%
-\contentsline {subsubsection}{\numberline {13.3.1}Skill de Claude Cowork}{52}{subsubsection.13.3.1}%
-\contentsline {subsubsection}{\numberline {13.3.2}Alternativa propia}{52}{subsubsection.13.3.2}%
-\contentsline {section}{Referencias}{52}{subsubsection.13.3.2}%
+\contentsline {subsubsection}{\numberline {11.2.2}El ciclo de vida completo de una sesión en OpenCode}{43}{subsubsection.11.2.2}%
+\contentsline {paragraph}{Inicialización perezosa del espacio de trabajo.}{44}{paragraph*.11}%
+\contentsline {paragraph}{Descubrimiento de plugins y herramientas.}{44}{paragraph*.12}%
+\contentsline {paragraph}{Descubrimiento de skills.}{44}{paragraph*.13}%
+\contentsline {paragraph}{Construcción del system prompt.}{44}{paragraph*.14}%
+\contentsline {paragraph}{La llamada al LLM mediante streaming.}{45}{paragraph*.15}%
+\contentsline {paragraph}{Ejecución de herramientas.}{45}{paragraph*.16}%
+\contentsline {paragraph}{Carga perezosa de skills bajo demanda.}{45}{paragraph*.17}%
+\contentsline {paragraph}{Similitud con ClaudeCode.}{45}{paragraph*.18}%
+\contentsline {subsubsection}{\numberline {11.2.3}Hooks de ciclo de vida}{46}{subsubsection.11.2.3}%
+\contentsline {subsubsection}{\numberline {11.2.4}Skills y agentes en colbPowers}{46}{subsubsection.11.2.4}%
+\contentsline {subsection}{\numberline {11.3}Herramientas de Apoyo al Flujo SDD}{46}{subsection.11.3}%
+\contentsline {subsubsection}{\numberline {11.3.1}code-review-graph}{46}{subsubsection.11.3.1}%
+\contentsline {subsubsection}{\numberline {11.3.2}Herramientas de métricas de complejidad}{47}{subsubsection.11.3.2}%
+\contentsline {subsubsection}{\numberline {11.3.3}colbPowers: flujo de trabajo}{47}{subsubsection.11.3.3}%
+\contentsline {paragraph}{Estructura del proyecto esperada}{48}{paragraph*.19}%
+\contentsline {paragraph}{Flujo de trabajo autónomo}{48}{paragraph*.20}%
+\contentsline {subsubsection}{\numberline {11.3.4}La plantilla de repositorio}{50}{subsubsection.11.3.4}%
+\contentsline {subsection}{\numberline {11.4}Evaluación y Resultados}{50}{subsection.11.4}%
+\contentsline {subsubsection}{\numberline {11.4.1}Diseño experimental}{50}{subsubsection.11.4.1}%
+\contentsline {paragraph}{Metodología:}{51}{paragraph*.21}%
+\contentsline {subsubsection}{\numberline {11.4.2}Caso 1: ConfortMental --- cambios cross-cutting en base de código real}{51}{subsubsection.11.4.2}%
+\contentsline {subsubsection}{\numberline {11.4.3}Caso 2: Aplicación de simulación 3D}{51}{subsubsection.11.4.3}%
+\contentsline {section}{\numberline {12}Seguimiento del Cliente}{53}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Generación de documentación con Claude Cowork}{53}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Alternativa de código abierto}{53}{subsection.12.2}%
+\contentsline {section}{\numberline {13}Estado Actual de la Implementación}{54}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Toma de Requerimientos}{54}{subsection.13.1}%
+\contentsline {subsubsection}{\numberline {13.1.1}Módulo de transcripción}{54}{subsubsection.13.1.1}%
+\contentsline {subsubsection}{\numberline {13.1.2}Implementación propia (aplicación Python)}{54}{subsubsection.13.1.2}%
+\contentsline {subsection}{\numberline {13.2}Spec Driven Development: colbPowers}{54}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Seguimiento del Cliente}{55}{subsection.13.3}%
+\contentsline {subsubsection}{\numberline {13.3.1}Skill de Claude Cowork}{55}{subsubsection.13.3.1}%
+\contentsline {subsubsection}{\numberline {13.3.2}Alternativa propia}{55}{subsubsection.13.3.2}%
+\contentsline {section}{Referencias}{55}{subsubsection.13.3.2}%
