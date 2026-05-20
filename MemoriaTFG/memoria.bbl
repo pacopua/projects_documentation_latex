@@ -24,6 +24,11 @@
 \newblock \url{https://www.barcelona-life.com/barcelona-coworking-spaces}, 2026.
 \newblock Accedido el 10/03/2026.
 
+\bibitem{boyter2025scc}
+Ben Boyter.
+\newblock {SCC}: Sloc, cloc and code --- a tool for counting lines of code, 2025.
+\newblock Accedido el 20/05/2026.
+
 \bibitem{buildermethods_agent_os}
 {Builder Methods}.
 \newblock buildermethods/agent-os.
@@ -46,6 +51,12 @@ Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, et~al.
 \newblock \url{https://github.com/nicholasgriffintn/llm-code-review-graph}, 2025.
 \newblock Accedido el 29/04/2026.
 
+\bibitem{cursor}
+{Cursor}.
+\newblock Cursor.
+\newblock Cursor Documentation.
+\newblock Accedido el 20/05/2026.
+
 \bibitem{cursor_ai}
 {Cursor}.
 \newblock Cursor: The best way to code with ai.
@@ -57,6 +68,11 @@ Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, et~al.
 \newblock M\`{o}dul 2.1.b -- gesti\'{o}n \'{a}gil de proyectos.
 \newblock Universitat Polit\`{e}cnica de Catalunya.
 \newblock Accedido el 24/02/2026.
+
+\bibitem{differentai2025openwork}
+{different-ai}.
+\newblock Openwork: An open-source alternative to {Claude Cowork} (powered by opencode), 2025.
+\newblock Accedido el 20/05/2026.
 
 \bibitem{github_spec_kit}
 {GitHub}.
@@ -147,6 +163,11 @@ J.~Ostroff, D.~Makalsky, and R.~Paige.
 \bibitem{peng_copilot_2023}
 Sida Peng, Eirini Kalliamvakou, et~al.
 \newblock The impact of ai on developer productivity: Evidence from github copilot, 2023.
+
+\bibitem{radford2022whisper}
+Alec Radford, Jong~Wook Kim, Tao Xu, Greg Brockman, Christine McLeavy, and Ilya Sutskever.
+\newblock Robust speech recognition via large-scale weak supervision.
+\newblock {\em arXiv preprint arXiv:2212.04356}, 2022.
 
 \bibitem{rodriguez2026copilot}
 Mario Rodriguez.

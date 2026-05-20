@@ -897,15 +897,14 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 
 \section{Cambios de Alcance del Proyecto}
 \label{sec:cambios_alcance}
-\subsection{Motivación del cambio}
-\label{sec:motivacion_cambio}
+
 La planificación inicial del proyecto partía de un conocimiento superficial del ecosistema de herramientas de asistencia al desarrollo existentes. En el GEP se identificaron herramientas como Spec Kit, AgentOS o los asistentes comerciales (Copilot, Cursor), pero sin profundizar en el grado de extensibilidad que estos entornos ofrecían. Durante la fase de Trabajo Previo TP1, al investigar en detalle la arquitectura de los asistentes de código CLI más avanzados, se descubrió que el ecosistema era considerablemente más rico y maduro de lo que se había anticipado.
 
 En concreto, herramientas como ClaudeCode y OpenCode ofrecen mecanismos nativos de extensibilidad —plugins, hooks de ciclo de vida y el protocolo MCP (Model Context Protocol)— que permiten definir flujos de trabajo de programación estructurados de forma composable, sin necesidad de construir un asistente desde cero. Lo que en la planificación inicial se concebía como un problema de ingeniería complejo (imponer un flujo Spec-First sobre un agente de código) resultó ser un problema de configuración e integración, abordable dentro del alcance de un TFG.
 
 Este descubrimiento, unido a la evolución de las necesidades de Colb.Ai durante el período de desarrollo, fue el detonante del cambio de alcance. La empresa reconoció que el problema real al que se enfrentaba no era la ausencia de herramientas de generación de código —de eso ya había suficiente oferta—, sino la falta de un marco de trabajo que garantizase una estructura de proyecto consistente y trazable con independencia del desarrollador o del asistente concreto que se utilizase. Dicho de otro modo: a Colb.Ai no le importa cómo cada desarrollador aplica las tareas del día a día, sino que todos los proyectos arranquen con una definición clara de su arquitectura, mantengan actualizado un conjunto de documentos de referencia (la constitución del proyecto y el archivo features.md), y que cualquier nueva funcionalidad sea coherente con esas bases antes de ser implementada.
 
-Ante este rediseño del problema, en consenso con la empresa y el director del proyecto, se tomó la decisión de redirigir el foco del TFG hacia una contribución más ajustada a las necesidades reales de Colb.Ai: diseñar, integrar y evaluar el flujo de trabajo completo que cubre el ciclo de vida de un proyecto software, desde la toma de requerimientos hasta el seguimiento del cliente, aprovechando las capacidades de extensibilidad de los asistentes existentes en lugar de construir uno nuevo.
+Ante este rediseño del problema, se tomó la decisión de redirigir el foco del TFG hacia una contribución más ajustada a las necesidades reales de Colb.Ai: diseñar, integrar y evaluar el flujo de trabajo completo que cubre el ciclo de vida de un proyecto software, desde la toma de requerimientos hasta el seguimiento del cliente, aprovechando las capacidades de extensibilidad de los asistentes existentes en lugar de construir uno nuevo.
 
 
 \subsection{Nuevos objetivos del proyecto}
@@ -913,16 +912,119 @@ Ante este rediseño del problema, en consenso con la empresa y el director del p
 El proyecto pasa a estructurarse en torno a tres pilares complementarios, cada uno de los cuales aborda una fase diferente del ciclo de vida de un proyecto de software:
 
 \begin{description}
-    \item[\textbf{Toma de Requerimientos:}] Diseñar e implementar un flujo de trabajo asistido por IA que, a partir de la transcripción de una reunión con el cliente, sea capaz de generar un plan de implementación estructurado, explorando automáticamente los frameworks y tecnologías relevantes mediante búsqueda semántica en la web.
-    \item[\textbf{Spec Driven Development (Estructura del repositorio):}] Integrar y configurar los asistentes de código de tipo CLI (ClaudeCode y OpenCode) con un conjunto de herramientas, plugins y workflows personalizados que impongan un flujo de trabajo Spec-First al equipo de desarrollo, garantizando que cada implementación esté precedida por una especificación validada y revisada.
-    \item[\textbf{Seguimiento del cliente:}] Automatizar la generación de documentación de seguimiento post-reunión, produciendo de forma estructurada el resumen de lo acordado y los próximos pasos para ambas partes, a partir de la transcripción de las reuniones periódicas con el cliente.
+    \item[\textbf{Toma de Requerimientos:}] Diseñar e implementar un flujo de trabajo asistido por IA que, a partir de la transcripción de una reunión con el cliente, sea capaz de generar un plan de implementación estructurado, explorando automáticamente los frameworks y tecnologías relevantes mediante búsqueda semántica en la web. Implementación documentada en el apartado \ref{sec:toma_requerimientos_cap}.
+    \item[\textbf{Spec Driven Development (Estructura del repositorio):}] Integrar y configurar los asistentes de código de tipo CLI (ClaudeCode y OpenCode) con un conjunto de herramientas, plugins y workflows personalizados que impongan un flujo de trabajo Spec-First al equipo de desarrollo, garantizando que cada implementación esté precedida por una especificación validada y revisada. Documentado en la sección \ref{sec:sdd_implementacion}.
+    \item[\textbf{Seguimiento del cliente:}] Automatizar la generación de documentación de seguimiento post-reunión, produciendo de forma estructurada el resumen de lo acordado y los próximos pasos para ambas partes, a partir de la transcripción de las reuniones periódicas con el cliente. Documentado en la sección \ref{sec:seguimiento_cliente}.
 \end{description}
 
-\subsection{Continuidad con la planificación inicial}
-\label{sec:continuidad_planificacion}
-Este cambio de alcance no supone un abandono de los objetivos originales del GEP, sino una evolución coherente de los mismos. Los sub-objetivos de coherencia arquitectónica, trazabilidad entre especificación y código, y modularidad del sistema se mantienen intactos y se materializan ahora a través de la configuración de los asistentes existentes en lugar de mediante el desarrollo de uno propio.
+\subsection{Actualización del estado del arte y tecnologías adoptadas}
+\label{sec:estado_arte_actualizado}
 
-Los riesgos identificados en el GEP (vendor lock-in, gestión de la ventana de contexto, fricción en el bucle de desarrollo) se mantienen vigentes y son abordados específicamente en el diseño de los módulos descritos en los capítulos siguientes. En concreto, el riesgo de vendor lock-in se mitiga mediante la integración paralela de ClaudeCode y OpenCode, tal como se describe en el capítulo \ref{sec:sdd_implementacion}.
+El cambio de alcance introduce dos pilares nuevos ---toma de requerimientos y seguimiento del cliente--- que no estaban presentes en el análisis de mercado del GEP inicial. A continuación se actualiza el estado del arte para los tres pilares del proyecto.
+
+\subsubsection{Toma de requerimientos.} 
+Las plataformas de videoconferencia (Microsoft Teams, Google Meet, Zoom) ofrecen 
+transcripción automática integrada para reuniones telemáticas, por lo que no requieren solución propia. Para reuniones presenciales, las principales alternativas son Whisper \cite{radford2022whisper} (OpenAI, ejecución local, sin coste de API pero sin diarización nativa) y Azure Speech Service (cloud, con diarización de hablantes). Se optó por Azure Speech Service al estar incluido en la suscripción de Azure de Colb.AI y por ofrecer resultados satisfactorios en las pruebas realizadas. Para la conversión de transcripciones en especificaciones técnicas, la solución principal estudiada fue Claude Cowork mediante skills, que permite definir flujos de trabajo reutilizables con acceso a herramientas de búsqueda web y escritura de archivos.
+
+Como alternativa open source se evaluó OpenWork 
+\cite{differentai2025openwork}, una aplicación de escritorio 
+construida sobre OpenCode que replica las capacidades de 
+Claude Cowork; sin embargo, su versión de escritorio para 
+Windows requiere el plan de pago y la comunidad reporta 
+inestabilidad significativa. Ante esta limitación, se desarrolló 
+una implementación propia mediante una aplicación Python 
+orquestada con LangChain, que replica el flujo de Claude Cowork 
+de forma independiente de cualquier suscripción: incorpora un 
+pipeline de chunking para procesar transcripciones largas, 
+búsqueda semántica web mediante Tavily para investigar las 
+tecnologías identificadas, y una estrategia de dos niveles de 
+modelo que combina Azure OpenAI para el filtrado de alto 
+volumen con Google Gemini para la síntesis arquitectónica. 
+Esta implementación se describe en detalle en la 
+sección \ref{sec:toma_requerimientos_cap}.
+
+\subsubsection{Spec Driven Development.} 
+El análisis del GEP inicial ---Spec Kit, AgentOS, Copilot y Cursor--- sigue siendo válido 
+para caracterizar el problema general. En cuanto a asistentes 
+extensibles, las tres herramientas principales del ecosistema 
+---ClaudeCode \cite{claude_code_2024}, OpenCode \cite{opencode_2025} y 
+Cursor \cite{cursor}--- exponen mecanismos equivalentes de 
+extensibilidad: hooks de ciclo de vida, protocolo MCP, skills y 
+agentes. El plugin colbPowers está diseñado sobre estos 
+estándares comunes y es en gran medida compatible con los tres 
+asistentes. Se optó por ClaudeCode como herramienta principal 
+al estar incluida en la suscripción de Colb.AI, y por OpenCode 
+como alternativa open source para mitigar el riesgo de 
+dependencia de proveedor, tal como se describe en la 
+sección \ref{sec:sdd_implementacion}.
+
+\subsubsection{Seguimiento del cliente.} 
+Existen herramientas 
+comerciales de transcripción y resumen de reuniones (Otter.ai, 
+Fireflies.ai, Microsoft Copilot for Teams) que generan 
+documentación post-reunión de forma automática. Sin embargo, 
+independientemente de su grado de personalización, la tarea de 
+seguimiento del cliente encaja de forma natural con el concepto 
+de Skill de Claude Cowork: un flujo de trabajo reutilizable que 
+recibe una transcripción como entrada, tiene acceso a 
+herramientas de escritura de archivos, y produce un documento 
+Word estructurado con el formato específico de Colb.AI. A esto 
+se suma que Claude Cowork está incluido en la suscripción de la 
+empresa, lo que elimina cualquier coste adicional. Al igual que 
+en el módulo de toma de requerimientos, se prevé desarrollar 
+también una implementación propia basada en Python que replique 
+este flujo de forma independiente de cualquier suscripción 
+comercial, siguiendo la misma arquitectura de pipeline descrita 
+en la sección \ref{sec:toma_requerimientos_cap}. 
+
+\subsection{Impacto en la planificación, costes y metodología}
+\label{sec:impacto_planificacion}
+
+\subsubsection{Impacto en los objetivos.} El cambio de alcance no 
+invalida los objetivos del GEP sino que los reorienta. Los 
+sub-objetivos de coherencia arquitectónica, trazabilidad entre 
+especificación y código, y modularidad del sistema se mantienen 
+intactos y se materializan ahora mediante la configuración de 
+herramientas existentes en lugar del desarrollo de un asistente 
+propio. El alcance se amplía además con dos pilares nuevos 
+---toma de requerimientos y seguimiento del cliente--- que no 
+estaban contemplados en la planificación inicial.
+
+\subsubsection{Impacto en los costes.} El presupuesto estimado de 
+14.099,81\verb|€| definido en el GEP se mantiene como referencia 
+válida. El cambio de alcance tiene un impacto económico 
+prácticamente neutro: las horas previstas para el desarrollo 
+de agentes desde cero se redistribuyen entre la investigación 
+del ecosistema de extensibilidad, la integración de herramientas 
+externas y la implementación de los módulos de toma de 
+requerimientos y seguimiento del cliente. La estructura de 
+costes de personal, costes genéricos y contingencias no varía 
+de forma significativa.
+
+\subsubsection{Metodología.} La metodología SCRUM adoptada en el GEP 
+no ha experimentado ningún cambio. El propio mecanismo de 
+revisión de sprint fue el que permitió absorber el cambio de 
+alcance de forma controlada: al finalizar la fase TP1, los 
+hallazgos sobre la extensibilidad de los asistentes CLI se 
+presentaron al director del proyecto y a Colb.AI, y el Sprint 
+Backlog se reorientó en consecuencia.
+
+\subsubsection{Estado actual del proyecto.} El módulo de transcripción 
+está implementado y pendiente de revisiones finales. colbPowers, 
+con el flujo SDD completo de skills y servidores MCP, está 
+implementado y actualmente en fase de pruebas y evaluación, 
+sujeto a ajustes en caso de detectarse fallos o mejoras. Para 
+la evaluación de estas pruebas se utilizará SCC 
+\cite{boyter2025scc}, una herramienta open source de análisis 
+estático que calcula métricas de calidad del código como 
+líneas de código, complejidad y cobertura, ya integrada en el 
+sistema. El módulo de seguimiento del cliente está pendiente 
+de implementación; se prevé que sea relativamente sencillo 
+dado que su estructura es análoga a la del módulo de toma de 
+requerimientos: recibe una transcripción o resumen como entrada 
+y produce un documento de salida con un formato predefinido. 
+El estado detallado de cada módulo se recoge en el 
+capítulo \ref{sec:estado_implementacion}.
 
 \newpage
 
@@ -1349,10 +1451,10 @@ De forma análoga al enfoque adoptado en la toma de requerimientos, se dispone d
 \label{sec:competencias_tecnicasa}
 En esta sección se va a asociar las competencias técnicas asignadas al proyecto y los conocimientos aplicados en el desarrollo de este.
 \begin{itemize}
-    \item\textbf{CCO1.3: Definir, evaluar y seleccionar plataformas de desarrollo y producción hardware y software para el desarrollo de aplicaciones y servicios informáticos de diversa complejidad. [Una mica]} El proyecto evalúa y selecciona herramientas para cada módulo del sistema: ClaudeCode y OpenCode como asistentes CLI frente a extensiones de IDE o frameworks de bajo nivel, Azure Speech Service frente a Whisper para la transcripción con diarización, y Tavily frente a APIs de búsqueda convencionales para la búsqueda semántica orientada a agentes. Cada decisión está justificada por criterios técnicos y de integración con el ecosistema de Colb.AI.
-    \item\textbf{CCO2.1: Demostrar conocimiento de los fundamentos, paradigmas y técnicas de los sistemas inteligentes, y analizar, diseñar y construir sistemas, servicios y aplicaciones informáticas que utilicen estas técnicas. [En profunditat]} Este proyecto diseña e implementa un sistema multi-agente basado en el patrón ReAct (Reasoning + Acting), el paradigma estándar para la construcción de agentes sobre LLMs. Se diseña una arquitectura con orquestador y subagentes aislados, se implementa la gestión del ciclo de vida de sesión mediante hooks, y se aplica ingeniería de prompts como mecanismo de control del comportamiento. El principio Human-in-the-Loop se incorpora de forma deliberada en todos los módulos del sistema.
-    \item\textbf{CCO2.2: Capacidad para adquirir, obtener, formalizar y representar el conocimiento humano de forma computable para la resolución de problemas mediante un sistema informático. [Bastant]} El módulo de toma de requisitos convierte conversaciones informales con clientes en especificaciones técnicas computables. El pipeline adquiere el conocimiento (grabación y transcripción), extrae el contenido relevante (chunking y filtrado configurable), y lo formaliza en documentos estructurados (constitution.md, features.md, design.md) que los agentes del sistema pueden leer y sobre los que pueden razonar. La diarización de hablantes permite distinguir qué restricciones provienen del cliente y cuáles del equipo técnico.
-    \item\textbf{CCO2.5:  Implementar software de búsqueda de información (information retrieval). [En profunditat]} El sistema aplica técnicas de IR en dos contextos. En la toma de requisitos, el pipeline identifica automáticamente las decisiones tecnológicas abiertas y formula queries de búsqueda que se ejecutan sobre Tavily, motor que combina recuperación léxica con re-ranking semántico por similitud de coseno. En el módulo SDD, codereview-graph construye un grafo de dependencias del repositorio mediante Tree-Sitter y lo expone al agente como un servicio de búsqueda semántica sobre entidades del código, con cálculo de blast radius. Las herramientas de IR son de terceros; la contribución del proyecto reside en el diseño del pipeline que las rodea.
+    \item\textbf{CCO1.3: Definir, evaluar y seleccionar plataformas de desarrollo y producción hardware y software para el desarrollo de aplicaciones y servicios informáticos de diversa complejidad. [Una poco]} El proyecto evalúa y selecciona herramientas para cada módulo del sistema: ClaudeCode y OpenCode como asistentes CLI frente a extensiones de IDE o frameworks de bajo nivel, Azure Speech Service frente a Whisper para la transcripción con diarización, y Tavily frente a APIs de búsqueda convencionales para la búsqueda semántica orientada a agentes. Cada decisión está justificada por criterios técnicos y de integración con el ecosistema de Colb.AI.
+    \item\textbf{CCO2.1: Demostrar conocimiento de los fundamentos, paradigmas y técnicas de los sistemas inteligentes, y analizar, diseñar y construir sistemas, servicios y aplicaciones informáticas que utilicen estas técnicas. [En profundidad]} Este proyecto diseña e implementa un sistema multi-agente basado en el patrón ReAct (Reasoning + Acting), el paradigma estándar para la construcción de agentes sobre LLMs. Se diseña una arquitectura con orquestador y subagentes aislados, se implementa la gestión del ciclo de vida de sesión mediante hooks, y se aplica ingeniería de prompts como mecanismo de control del comportamiento.
+    \item\textbf{CCO2.2: Capacidad para adquirir, obtener, formalizar y representar el conocimiento humano de forma computable para la resolución de problemas mediante un sistema informático. [Bastante]} El módulo de toma de requisitos convierte conversaciones informales con clientes en especificaciones técnicas computables. El pipeline adquiere el conocimiento (grabación y transcripción), extrae el contenido relevante (chunking y filtrado configurable), y lo formaliza en documentos estructurados (constitution.md, features.md, design.md) que los agentes del sistema pueden leer y sobre los que pueden razonar. La diarización de hablantes permite distinguir qué restricciones provienen del cliente y cuáles del equipo técnico.
+    \item\textbf{CCO2.5:  Implementar software de búsqueda de información (information retrieval). [En profundidad]} En la toma de requisitos, el pipeline identifica automáticamente las decisiones tecnológicas abiertas y formula queries de búsqueda que se ejecutan sobre Tavily, motor que combina recuperación léxica con re-ranking semántico por similitud de coseno. En el módulo SDD, codereview-graph construye un grafo de dependencias del repositorio mediante Tree-Sitter y lo expone al agente como un servicio de búsqueda semántica sobre entidades del código, con cálculo de blast radius. Las herramientas de IR son de terceros, la contribución del proyecto reside en el diseño del pipeline que las rodea.
 
 \end{itemize}
 
@@ -1361,9 +1463,9 @@ En esta sección se va a asociar las competencias técnicas asignadas al proyect
 En este apartado se presentan las asignaturas de las cuales se han podido utilizar conocimientos que aplicar al proyecto.
 
 \begin{itemize}
-    \item \textbf{Compresión de datos e imagenes (CDI):} Para el tema de el audio
-    \item \textbf{Busqueda y analisis de información masiva (CAIM):} Para lo de tavily, lo del chunking para el primer apartado... Y todo lo de information Retrieval.
-    \item \textbf{Introducción a la ingeniería del software (IES):} Para el diseño del sistema y de los diagrama de flujo y datos.
+    \item \textbf{Compresión de datos e imagenes (CDI):} Para la implementación propia de el módulo de transcripción, se utilizan ffmpeg con algunas tecnicas de compresión vistas en CDI, para que el proceso de transcripción tarde menos sin perder demasiada calidad en la transcripción. Principalmente, se hace un \textit{Donwsampling} -Reducción en el muestreo del audio-, luego se convierte a MP3 para que utilice \textit{Huffman Encoding} para reducir aún mas el tamaño. 
+    \item \textbf{Búsqueda y analisis de información masiva (CAIM):} Del apartado de \textit{Local Sensitive Hashing} de la asignatura, se extrajo la idea de almacenar los audios transcritos con sus respectivos hashes, aunque en la implementación no se utiliza ningún método de \textit{LSH}, se utiliza un hash criptográfico SHA-256 para identificación exacta del contenido. Los apartados de \textit{Web, Information Retrieval} fueron de utilidad para entender y implementar servicios como \textit{Tavily} para la búsqueda web, así como el temario de \textit{Networks} para la formación de el grafo de \textit{code-review-graph}, que facilita a los asistentes de programación la búsqueda y exploración del código.
+    \item \textbf{Introducción a la ingeniería del software (IES):} La base proporcionada en esta asignatura sobre requisitos de software, diseño de sistemas y creación de diagramas de flujo, fueron extremadamente útiles tanto para planificar el sistema implementado en este proyecto.
 \end{itemize}
 
 \newpage
@@ -1377,7 +1479,7 @@ En este apartado se presentan las asignaturas de las cuales se han podido utiliz
     
     El flujo Spec-Driven Development implementado en este proyecto sitúa explícitamente la generación de código en la categoría de IA asistida: el desarrollador define la especificación, valida el plan de implementación antes de que comience la escritura de código, y revisa el resultado entregado por el subagente. Toda esta intervención queda registrada en el repositorio git del proyecto, proporcionando la documentación requerida para acreditar la autoría humana.
 
-    \item \textbf{Licencias de terceros y Convenio de Cooperación Educativa: } Todas las herramientas de terceros utilizadas en el proyecto —OpenCode, code-review-graph, LangChain— disponen de licencias open source que permiten el uso comercial. Las APIs de Anthropic, Azure y Google Gemini no utilizan los datos de entrada para entrenar modelos bajo sus planes de pago. Por otro lado, Copilot sí que entrena con los datos adquiridos durante las interacciones con sus modelos -Des de el 24 de abril de 2026- de forma predeterminada, pero es una opción que se puede desactivar facilmente \cite{rodriguez2026copilot}. El TFG se desarrolla en el marco de un Convenio de Cooperación Educativa entre la UPC y Colb.AI, que regula la propiedad intelectual del trabajo y la confidencialidad de la información de la empresa. Los proyectos reales utilizados en la validación experimental están sujetos a NDA; en la memoria únicamente se reportan métricas técnicas que no exponen información confidencial del cliente
+    \item \textbf{Licencias de terceros y Convenio de Cooperación Educativa: } Todas las herramientas de terceros utilizadas en el proyecto —OpenCode, code-review-graph, LangChain— disponen de licencias open source que permiten el uso comercial. Las APIs de Anthropic, Azure y Google Gemini no utilizan los datos de entrada para entrenar modelos bajo sus planes de pago. Por otro lado, Copilot sí que entrena con los datos adquiridos durante las interacciones con sus modelos -Des de el 24 de abril de 2026- de forma predeterminada, pero es una opción que se puede desactivar facilmente \cite{rodriguez2026copilot}. El TFG se desarrolla en el marco de un Convenio de Cooperación Educativa entre la UPC y Colb.AI, que regula la propiedad intelectual del trabajo y la confidencialidad de la información de la empresa. Los proyectos reales utilizados en la validación experimental están sujetos a NDA; en la memoria únicamente se reportan métricas técnicas que no exponen información confidencial del cliente.
 \end{description}
 \newpage
 
