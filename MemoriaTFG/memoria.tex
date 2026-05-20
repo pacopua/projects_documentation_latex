@@ -45,7 +45,7 @@
     \vspace{2cm}
     {\huge \textsc{Sistema Inteligente Para la Asistencia en el Desarrollo Estructurado de Código Mediante Spec-Driven Development}\par}
     \vspace{2cm}
-    {\Large \textsc{\textbf{Memoria del proyecto}}\par}
+    {\Large \textsc{\textbf{Informe de seguimiento del proyecto}}\par}
     
     \vspace{2cm}
     {\normalsize \textbf{Autor:} {Adrià Cebrián Ruiz}\\ \par}
@@ -1368,7 +1368,35 @@ D & Nativas + colbPowers + code-review-graph & Combinación completa. El agente 
 
 Las métricas recogidas en cada ejecución son: tokens de entrada consumidos, tokens de salida consumidos, número total de tool calls, número de tool calls específicas de code-review-graph, cobertura de la implementación (porcentaje de ítems del enunciado correctamente implementados), y número de regresiones introducidas (cambios en funcionalidad no solicitada).
 
-\paragraph{Metodología:} La metodología del expoe
+\paragraph{Metodología:} Para reducir al máximo los sesgos de 
+confirmación y manipulación involuntaria por parte del experimentador, 
+se aplica un protocolo de intervención mínima con las siguientes 
+reglas, ordenadas por prioridad:
+
+\begin{itemize}
+    \item \textbf{(P1) Seguridad ante todo:} El experimentador puede 
+    interrumpir al agente en cualquier momento si detecta que está 
+    a punto de ejecutar una acción destructiva o peligrosa 
+    (eliminación de archivos, sobrescritura de datos críticos, etc.).
+    
+    \item \textbf{(P2) Solo responder lo que el agente solicite:} 
+    El experimentador únicamente responde preguntas directas del 
+    agente o acepta/deniega las solicitudes de permiso que este 
+    realice explícitamente. No se ofrece información ni correcciones 
+    de forma proactiva.
+    
+    \item \textbf{(P3) Feedback sobre pruebas manuales:} Si el 
+    agente solicita validación o el experimentador detecta un fallo 
+    durante las pruebas manuales de la implementación, puede 
+    comunicar el resultado observado (por ejemplo, que la 
+    funcionalidad no se comporta como se espera), sin indicar la 
+    causa ni cómo corregirlo.
+    
+    \item \textbf{(P4) Pistas como último recurso:} Solo en caso 
+    de bloqueo prolongado sin progreso, el experimentador puede 
+    proporcionar una pista mínima que desbloquee al agente, dejando 
+    constancia de la intervención en el registro del experimento.
+\end{itemize}
 
 \subsubsection{Caso 1: ConfortMental --- cambios cross-cutting en base de código real}
 \label{sec:caso1_confortmental}
@@ -1451,7 +1479,7 @@ De forma análoga al enfoque adoptado en la toma de requerimientos, se dispone d
 \label{sec:competencias_tecnicasa}
 En esta sección se va a asociar las competencias técnicas asignadas al proyecto y los conocimientos aplicados en el desarrollo de este.
 \begin{itemize}
-    \item\textbf{CCO1.3: Definir, evaluar y seleccionar plataformas de desarrollo y producción hardware y software para el desarrollo de aplicaciones y servicios informáticos de diversa complejidad. [Una poco]} El proyecto evalúa y selecciona herramientas para cada módulo del sistema: ClaudeCode y OpenCode como asistentes CLI frente a extensiones de IDE o frameworks de bajo nivel, Azure Speech Service frente a Whisper para la transcripción con diarización, y Tavily frente a APIs de búsqueda convencionales para la búsqueda semántica orientada a agentes. Cada decisión está justificada por criterios técnicos y de integración con el ecosistema de Colb.AI.
+    \item\textbf{CCO1.3: Definir, evaluar y seleccionar plataformas de desarrollo y producción hardware y software para el desarrollo de aplicaciones y servicios informáticos de diversa complejidad. [Un poco]} El proyecto evalúa y selecciona herramientas para cada módulo del sistema: ClaudeCode y OpenCode como asistentes CLI frente a extensiones de IDE o frameworks de bajo nivel, Azure Speech Service frente a Whisper para la transcripción con diarización, y Tavily frente a APIs de búsqueda convencionales para la búsqueda semántica orientada a agentes. Cada decisión está justificada por criterios técnicos y de integración con el ecosistema de Colb.AI.
     \item\textbf{CCO2.1: Demostrar conocimiento de los fundamentos, paradigmas y técnicas de los sistemas inteligentes, y analizar, diseñar y construir sistemas, servicios y aplicaciones informáticas que utilicen estas técnicas. [En profundidad]} Este proyecto diseña e implementa un sistema multi-agente basado en el patrón ReAct (Reasoning + Acting), el paradigma estándar para la construcción de agentes sobre LLMs. Se diseña una arquitectura con orquestador y subagentes aislados, se implementa la gestión del ciclo de vida de sesión mediante hooks, y se aplica ingeniería de prompts como mecanismo de control del comportamiento.
     \item\textbf{CCO2.2: Capacidad para adquirir, obtener, formalizar y representar el conocimiento humano de forma computable para la resolución de problemas mediante un sistema informático. [Bastante]} El módulo de toma de requisitos convierte conversaciones informales con clientes en especificaciones técnicas computables. El pipeline adquiere el conocimiento (grabación y transcripción), extrae el contenido relevante (chunking y filtrado configurable), y lo formaliza en documentos estructurados (constitution.md, features.md, design.md) que los agentes del sistema pueden leer y sobre los que pueden razonar. La diarización de hablantes permite distinguir qué restricciones provienen del cliente y cuáles del equipo técnico.
     \item\textbf{CCO2.5:  Implementar software de búsqueda de información (information retrieval). [En profundidad]} En la toma de requisitos, el pipeline identifica automáticamente las decisiones tecnológicas abiertas y formula queries de búsqueda que se ejecutan sobre Tavily, motor que combina recuperación léxica con re-ranking semántico por similitud de coseno. En el módulo SDD, codereview-graph construye un grafo de dependencias del repositorio mediante Tree-Sitter y lo expone al agente como un servicio de búsqueda semántica sobre entidades del código, con cálculo de blast radius. Las herramientas de IR son de terceros, la contribución del proyecto reside en el diseño del pipeline que las rodea.
@@ -1504,19 +1532,10 @@ La skill de Claude Cowork para toma de requerimientos está igualmente operativa
 
 \subsection{Spec Driven Development: colbPowers}
 \label{sec:estado_colbpowers}
-colbPowers está en un estado funcional. La infraestructura central del plugin está completa y operativa:
 
-\begin{itemize}
-    \item El hook SessionStart inyecta correctamente el skill using-colbpowers al inicio de cada sesión, activando el comportamiento de orquestador en el agente principal.
-    \item El conjunto de skills heredadas de Superpowers \cite{superpowers_2025} está disponible y funciona con la configuración de artefactos de colbSpec.
-    \item El plugin ha sido instalado y probado en proyectos reales de Colb.Ai, refinándose de forma iterativa a partir del feedback de uso.
-\end{itemize}
+\textbf{Métricas de calidad de código:} La integración de las métricas ya está cubierta. Gracias al repo opensource de SCC.
 
-Las siguientes funcionalidades están pendientes de implementación:
-
-\textbf{Métricas de calidad de código:} La integración de las métricas de Complejidad Ciclomática, Volumen de Halstead e Índice de Mantenibilidad en el flujo de revisión no está aún implementada. Requiere extender code-review-graph con los cálculos correspondientes sobre el AST de Tree-Sitter y exponer los resultados al agente Reviewer mediante una nueva herramienta MCP.
-
-\textbf{Estado:} Funcional. En proceso iterativo activo. Métricas de calidad pendientes.
+\textbf{Estado:} Funcional. En proceso iterativo activo.
 
 \subsection{Seguimiento del Cliente}
 \label{sec:estado_seguimiento_cliente}

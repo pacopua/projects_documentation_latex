@@ -138,7 +138,7 @@
 \contentsline {subsubsection}{\numberline {15.1.1}Módulo de transcripción}{58}{subsubsection.15.1.1}%
 \contentsline {subsubsection}{\numberline {15.1.2}Implementación propia (aplicación Python)}{58}{subsubsection.15.1.2}%
 \contentsline {subsection}{\numberline {15.2}Spec Driven Development: colbPowers}{58}{subsection.15.2}%
-\contentsline {subsection}{\numberline {15.3}Seguimiento del Cliente}{59}{subsection.15.3}%
-\contentsline {subsubsection}{\numberline {15.3.1}Skill de Claude Cowork}{59}{subsubsection.15.3.1}%
-\contentsline {subsubsection}{\numberline {15.3.2}Alternativa propia}{59}{subsubsection.15.3.2}%
-\contentsline {section}{Referencias}{60}{subsubsection.15.3.2}%
+\contentsline {subsection}{\numberline {15.3}Seguimiento del Cliente}{58}{subsection.15.3}%
+\contentsline {subsubsection}{\numberline {15.3.1}Skill de Claude Cowork}{58}{subsubsection.15.3.1}%
+\contentsline {subsubsection}{\numberline {15.3.2}Alternativa propia}{58}{subsubsection.15.3.2}%
+\contentsline {section}{Referencias}{59}{subsubsection.15.3.2}%
