@@ -122,12 +122,16 @@
 \contentsline {section}{\numberline {12}Seguimiento del Cliente}{53}{section.12}%
 \contentsline {subsection}{\numberline {12.1}Generación de documentación con Claude Cowork}{53}{subsection.12.1}%
 \contentsline {subsection}{\numberline {12.2}Alternativa de código abierto}{53}{subsection.12.2}%
-\contentsline {section}{\numberline {13}Estado Actual de la Implementación}{54}{section.13}%
-\contentsline {subsection}{\numberline {13.1}Toma de Requerimientos}{54}{subsection.13.1}%
-\contentsline {subsubsection}{\numberline {13.1.1}Módulo de transcripción}{54}{subsubsection.13.1.1}%
-\contentsline {subsubsection}{\numberline {13.1.2}Implementación propia (aplicación Python)}{54}{subsubsection.13.1.2}%
-\contentsline {subsection}{\numberline {13.2}Spec Driven Development: colbPowers}{54}{subsection.13.2}%
-\contentsline {subsection}{\numberline {13.3}Seguimiento del Cliente}{55}{subsection.13.3}%
-\contentsline {subsubsection}{\numberline {13.3.1}Skill de Claude Cowork}{55}{subsubsection.13.3.1}%
-\contentsline {subsubsection}{\numberline {13.3.2}Alternativa propia}{55}{subsubsection.13.3.2}%
-\contentsline {section}{Referencias}{55}{subsubsection.13.3.2}%
+\contentsline {section}{\numberline {13}Integración de conocimientos}{54}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Competencias técnicas del proyecto}{54}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Asignaturas}{54}{subsection.13.2}%
+\contentsline {section}{\numberline {14}Leyes y regulaciones}{55}{section.14}%
+\contentsline {section}{\numberline {15}Estado Actual de la Implementación}{55}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Toma de Requerimientos}{55}{subsection.15.1}%
+\contentsline {subsubsection}{\numberline {15.1.1}Módulo de transcripción}{55}{subsubsection.15.1.1}%
+\contentsline {subsubsection}{\numberline {15.1.2}Implementación propia (aplicación Python)}{55}{subsubsection.15.1.2}%
+\contentsline {subsection}{\numberline {15.2}Spec Driven Development: colbPowers}{55}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}Seguimiento del Cliente}{56}{subsection.15.3}%
+\contentsline {subsubsection}{\numberline {15.3.1}Skill de Claude Cowork}{56}{subsubsection.15.3.1}%
+\contentsline {subsubsection}{\numberline {15.3.2}Alternativa propia}{56}{subsubsection.15.3.2}%
+\contentsline {section}{Referencias}{56}{subsubsection.15.3.2}%

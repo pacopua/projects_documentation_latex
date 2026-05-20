@@ -45,8 +45,7 @@
     \vspace{2cm}
     {\huge \textsc{Sistema Inteligente Para la Asistencia en el Desarrollo Estructurado de Código Mediante Spec-Driven Development}\par}
     \vspace{2cm}
-    {\Large \textsc{\textbf{Gestió De Projectes - Entregable 4}}\par}
-    {\large \textsc{Documento Final}\par}
+    {\Large \textsc{\textbf{Memoria del proyecto}}\par}
     
     \vspace{2cm}
     {\normalsize \textbf{Autor:} {Adrià Cebrián Ruiz}\\ \par}
@@ -1342,6 +1341,34 @@ La skill aprovecha las capacidades nativas de Claude Cowork para acceder a herra
 De forma análoga al enfoque adoptado en la toma de requerimientos, se dispone de una alternativa de código abierto e independiente para los casos en que no se desee depender de la plataforma Claude Cowork. Esta alternativa se basa en una aplicación que combina un modelo de lenguaje de gran tamaño, accedido mediante API, con la biblioteca python-docx para la generación de documentos Word con formato estructurado. El flujo de la aplicación es equivalente al de la skill: a partir de la transcripción de la reunión, el modelo genera los distintos apartados del documento de seguimiento con un formato definido, que son entonces volcados al documento Word mediante la biblioteca de generación. Aunque la integración es menos fluida que la ofrecida por Claude Cowork, esta alternativa es igualmente válida para los casos de uso habituales y no incurre en costes de suscripción adicionales más allá del consumo de la API del modelo.
 
 \newpage
+
+\section{Integración de conocimientos}
+\label{sec:integracion_conocimientos}
+
+\subsection{Competencias técnicas del proyecto}
+\label{sec:competencias_tecnicasa}
+En esta sección se va a asociar las competencias técnicas asignadas al proyecto y los conocimientos aplicados en el desarrollo de este.
+\begin{itemize}
+    \item\textbf{CCO1.3: Definir, evaluar y seleccionar plataformas de desarrollo y producción hardware y software para el desarrollo de aplicaciones y servicios informáticos de diversa complejidad. [Una mica]} El proyecto evalúa y selecciona herramientas para cada módulo del sistema: ClaudeCode y OpenCode como asistentes CLI frente a extensiones de IDE o frameworks de bajo nivel, Azure Speech Service frente a Whisper para la transcripción con diarización, y Tavily frente a APIs de búsqueda convencionales para la búsqueda semántica orientada a agentes. Cada decisión está justificada por criterios técnicos y de integración con el ecosistema de Colb.AI.
+    \item\textbf{CCO2.1: Demostrar conocimiento de los fundamentos, paradigmas y técnicas de los sistemas inteligentes, y analizar, diseñar y construir sistemas, servicios y aplicaciones informáticas que utilicen estas técnicas. [En profunditat]} Este proyecto diseña e implementa un sistema multi-agente basado en el patrón ReAct (Reasoning + Acting), el paradigma estándar para la construcción de agentes sobre LLMs. Se diseña una arquitectura con orquestador y subagentes aislados, se implementa la gestión del ciclo de vida de sesión mediante hooks, y se aplica ingeniería de prompts como mecanismo de control del comportamiento. El principio Human-in-the-Loop se incorpora de forma deliberada en todos los módulos del sistema.
+    \item\textbf{CCO2.2: Capacidad para adquirir, obtener, formalizar y representar el conocimiento humano de forma computable para la resolución de problemas mediante un sistema informático. [Bastant]} El módulo de toma de requisitos convierte conversaciones informales con clientes en especificaciones técnicas computables. El pipeline adquiere el conocimiento (grabación y transcripción), extrae el contenido relevante (chunking y filtrado configurable), y lo formaliza en documentos estructurados (constitution.md, features.md, design.md) que los agentes del sistema pueden leer y sobre los que pueden razonar. La diarización de hablantes permite distinguir qué restricciones provienen del cliente y cuáles del equipo técnico.
+    \item\textbf{CCO2.5: Capacidad para adquirir, obtener, formalizar y representar el conocimiento humano de forma computable para la resolución de problemas mediante un sistema informático. [Bastant]} El módulo de toma de requisitos convierte conversaciones informales con clientes en especificaciones técnicas computables. El pipeline adquiere el conocimiento (grabación y transcripción), extrae el contenido relevante (chunking y filtrado configurable), y lo formaliza en documentos estructurados (constitution.md, features.md, design.md) que los agentes del sistema pueden leer y sobre los que pueden razonar. La diarización de hablantes permite distinguir qué restricciones provienen del cliente y cuáles del equipo técnico.
+
+\end{itemize}
+
+\subsection{Asignaturas}
+\label{sec:asignaturas}
+En este apartado se presentan las asignaturas de las cuales se han podido utilizar conocimientos que aplicar al proyecto.
+
+\begin{itemize}
+    \item \textbf{Compresión de datos e imagenes (CDI):} Para el tema de el audio
+    \item \textbf{Busqueda y analisis de información masiva (CAIM):} Para lo de tavily, lo del chunking para el primer apartado... Y todo lo de information Retrieval.
+    \item \textbf{Introducción a la ingeniería del software (IES):} Para el diseño del sistema y de los diagrama de flujo y datos.
+\end{itemize}
+
+\section{Leyes y regulaciones}
+\label{sec:leyes_y_regulaciones}
+
 
 \section{Estado Actual de la Implementación}
 \label{sec:estado_implementacion}
