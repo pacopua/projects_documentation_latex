@@ -93,6 +93,12 @@ T.J. McCabe.
 \newblock A complexity measure.
 \newblock {\em IEEE Transactions on Software Engineering}, SE-2(4):308--320, 1976.
 
+\bibitem{medinatamayo2025}
+Ra\'ul Medina~Tamayo.
+\newblock Propiedad intelectual del contenido generado por {IA}: gu\'ia pr\'actica para emprendedores, freelance y empresas innovadoras.
+\newblock UCAEmprende -- Servicio de Apoyo al Emprendimiento, Universidad de C\'adiz, 2025.
+\newblock Accedido el 20/05/2026.
+
 \bibitem{microsoft_maintainability_index}
 {Microsoft}.
 \newblock Code metrics values: Maintainability index.
@@ -132,9 +138,21 @@ J.~Ostroff, D.~Makalsky, and R.~Paige.
 \newblock Agile specification-driven development.
 \newblock In {\em Extreme Programming and Agile Methods}. Springer, 2004.
 
+\bibitem{euaiact2024}
+{Parlamento Europeo y Consejo de la Uni{\'o}n Europea}.
+\newblock Reglamento ({UE}) 2024/1689 del parlamento europeo y del consejo, de 13 de junio de 2024, por el que se establecen normas armonizadas en materia de inteligencia artificial ({Reglamento de Inteligencia Artificial}).
+\newblock Diario Oficial de la Uni{\'o}n Europea, L~2024/1689, julio 2024.
+\newblock Accedido el 20/05/2026.
+
 \bibitem{peng_copilot_2023}
 Sida Peng, Eirini Kalliamvakou, et~al.
 \newblock The impact of ai on developer productivity: Evidence from github copilot, 2023.
+
+\bibitem{rodriguez2026copilot}
+Mario Rodriguez.
+\newblock Updates to {GitHub Copilot} interaction data usage policy.
+\newblock The GitHub Blog, GitHub Inc., marzo 2026.
+\newblock Accedido el 20/05/2026.
 
 \bibitem{schwaber_scrum_2020}
 Ken Schwaber and Jeff Sutherland.

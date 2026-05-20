@@ -125,13 +125,13 @@
 \contentsline {section}{\numberline {13}Integración de conocimientos}{54}{section.13}%
 \contentsline {subsection}{\numberline {13.1}Competencias técnicas del proyecto}{54}{subsection.13.1}%
 \contentsline {subsection}{\numberline {13.2}Asignaturas}{54}{subsection.13.2}%
-\contentsline {section}{\numberline {14}Leyes y regulaciones}{55}{section.14}%
-\contentsline {section}{\numberline {15}Estado Actual de la Implementación}{55}{section.15}%
-\contentsline {subsection}{\numberline {15.1}Toma de Requerimientos}{55}{subsection.15.1}%
-\contentsline {subsubsection}{\numberline {15.1.1}Módulo de transcripción}{55}{subsubsection.15.1.1}%
-\contentsline {subsubsection}{\numberline {15.1.2}Implementación propia (aplicación Python)}{55}{subsubsection.15.1.2}%
-\contentsline {subsection}{\numberline {15.2}Spec Driven Development: colbPowers}{55}{subsection.15.2}%
-\contentsline {subsection}{\numberline {15.3}Seguimiento del Cliente}{56}{subsection.15.3}%
-\contentsline {subsubsection}{\numberline {15.3.1}Skill de Claude Cowork}{56}{subsubsection.15.3.1}%
-\contentsline {subsubsection}{\numberline {15.3.2}Alternativa propia}{56}{subsubsection.15.3.2}%
-\contentsline {section}{Referencias}{56}{subsubsection.15.3.2}%
+\contentsline {section}{\numberline {14}Leyes y regulaciones}{56}{section.14}%
+\contentsline {section}{\numberline {15}Estado Actual de la Implementación}{57}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Toma de Requerimientos}{57}{subsection.15.1}%
+\contentsline {subsubsection}{\numberline {15.1.1}Módulo de transcripción}{57}{subsubsection.15.1.1}%
+\contentsline {subsubsection}{\numberline {15.1.2}Implementación propia (aplicación Python)}{57}{subsubsection.15.1.2}%
+\contentsline {subsection}{\numberline {15.2}Spec Driven Development: colbPowers}{57}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}Seguimiento del Cliente}{58}{subsection.15.3}%
+\contentsline {subsubsection}{\numberline {15.3.1}Skill de Claude Cowork}{58}{subsubsection.15.3.1}%
+\contentsline {subsubsection}{\numberline {15.3.2}Alternativa propia}{58}{subsubsection.15.3.2}%
+\contentsline {section}{Referencias}{59}{subsubsection.15.3.2}%

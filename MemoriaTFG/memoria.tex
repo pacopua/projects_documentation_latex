@@ -1352,7 +1352,7 @@ En esta sección se va a asociar las competencias técnicas asignadas al proyect
     \item\textbf{CCO1.3: Definir, evaluar y seleccionar plataformas de desarrollo y producción hardware y software para el desarrollo de aplicaciones y servicios informáticos de diversa complejidad. [Una mica]} El proyecto evalúa y selecciona herramientas para cada módulo del sistema: ClaudeCode y OpenCode como asistentes CLI frente a extensiones de IDE o frameworks de bajo nivel, Azure Speech Service frente a Whisper para la transcripción con diarización, y Tavily frente a APIs de búsqueda convencionales para la búsqueda semántica orientada a agentes. Cada decisión está justificada por criterios técnicos y de integración con el ecosistema de Colb.AI.
     \item\textbf{CCO2.1: Demostrar conocimiento de los fundamentos, paradigmas y técnicas de los sistemas inteligentes, y analizar, diseñar y construir sistemas, servicios y aplicaciones informáticas que utilicen estas técnicas. [En profunditat]} Este proyecto diseña e implementa un sistema multi-agente basado en el patrón ReAct (Reasoning + Acting), el paradigma estándar para la construcción de agentes sobre LLMs. Se diseña una arquitectura con orquestador y subagentes aislados, se implementa la gestión del ciclo de vida de sesión mediante hooks, y se aplica ingeniería de prompts como mecanismo de control del comportamiento. El principio Human-in-the-Loop se incorpora de forma deliberada en todos los módulos del sistema.
     \item\textbf{CCO2.2: Capacidad para adquirir, obtener, formalizar y representar el conocimiento humano de forma computable para la resolución de problemas mediante un sistema informático. [Bastant]} El módulo de toma de requisitos convierte conversaciones informales con clientes en especificaciones técnicas computables. El pipeline adquiere el conocimiento (grabación y transcripción), extrae el contenido relevante (chunking y filtrado configurable), y lo formaliza en documentos estructurados (constitution.md, features.md, design.md) que los agentes del sistema pueden leer y sobre los que pueden razonar. La diarización de hablantes permite distinguir qué restricciones provienen del cliente y cuáles del equipo técnico.
-    \item\textbf{CCO2.5: Capacidad para adquirir, obtener, formalizar y representar el conocimiento humano de forma computable para la resolución de problemas mediante un sistema informático. [Bastant]} El módulo de toma de requisitos convierte conversaciones informales con clientes en especificaciones técnicas computables. El pipeline adquiere el conocimiento (grabación y transcripción), extrae el contenido relevante (chunking y filtrado configurable), y lo formaliza en documentos estructurados (constitution.md, features.md, design.md) que los agentes del sistema pueden leer y sobre los que pueden razonar. La diarización de hablantes permite distinguir qué restricciones provienen del cliente y cuáles del equipo técnico.
+    \item\textbf{CCO2.5:  Implementar software de búsqueda de información (information retrieval). [En profunditat]} El sistema aplica técnicas de IR en dos contextos. En la toma de requisitos, el pipeline identifica automáticamente las decisiones tecnológicas abiertas y formula queries de búsqueda que se ejecutan sobre Tavily, motor que combina recuperación léxica con re-ranking semántico por similitud de coseno. En el módulo SDD, codereview-graph construye un grafo de dependencias del repositorio mediante Tree-Sitter y lo expone al agente como un servicio de búsqueda semántica sobre entidades del código, con cálculo de blast radius. Las herramientas de IR son de terceros; la contribución del proyecto reside en el diseño del pipeline que las rodea.
 
 \end{itemize}
 
@@ -1366,9 +1366,20 @@ En este apartado se presentan las asignaturas de las cuales se han podido utiliz
     \item \textbf{Introducción a la ingeniería del software (IES):} Para el diseño del sistema y de los diagrama de flujo y datos.
 \end{itemize}
 
+\newpage
 \section{Leyes y regulaciones}
 \label{sec:leyes_y_regulaciones}
 
+\begin{description}     
+    \item \textbf{Reglamento europeo de inteligencia artificial (EU AI Act):} El sistema no pertenece a ninguna de las categorías de alto riesgo definidas en el Anexo~III del Reglamento~(UE)~2024/1689~\cite{euaiact2024}: no toma decisiones autónomas con impacto significativo sobre personas físicas, y el diseño Human-in-the-Loop garantiza supervisión humana en todas las acciones con consecuencias reales.
+     
+    \item \textbf{Propiedad intelectual del código generado: } La titularidad del software generado con asistencia de IA  depende del grado de intervención humana en el proceso creativo. Un uso puramente autónomo de la IA —sin especificación previa ni revisión humana— no genera derechos de autor reconocibles. Sin embargo, cuando  la IA actúa como herramienta asistida con intervención humana documentada, los derechos corresponden al autor humano, siempre que esa intervención quede acreditada. \cite{medinatamayo2025}
+    
+    El flujo Spec-Driven Development implementado en este proyecto sitúa explícitamente la generación de código en la categoría de IA asistida: el desarrollador define la especificación, valida el plan de implementación antes de que comience la escritura de código, y revisa el resultado entregado por el subagente. Toda esta intervención queda registrada en el repositorio git del proyecto, proporcionando la documentación requerida para acreditar la autoría humana.
+
+    \item \textbf{Licencias de terceros y Convenio de Cooperación Educativa: } Todas las herramientas de terceros utilizadas en el proyecto —OpenCode, code-review-graph, LangChain— disponen de licencias open source que permiten el uso comercial. Las APIs de Anthropic, Azure y Google Gemini no utilizan los datos de entrada para entrenar modelos bajo sus planes de pago. Por otro lado, Copilot sí que entrena con los datos adquiridos durante las interacciones con sus modelos -Des de el 24 de abril de 2026- de forma predeterminada, pero es una opción que se puede desactivar facilmente \cite{rodriguez2026copilot}. El TFG se desarrolla en el marco de un Convenio de Cooperación Educativa entre la UPC y Colb.AI, que regula la propiedad intelectual del trabajo y la confidencialidad de la información de la empresa. Los proyectos reales utilizados en la validación experimental están sujetos a NDA; en la memoria únicamente se reportan métricas técnicas que no exponen información confidencial del cliente
+\end{description}
+\newpage
 
 \section{Estado Actual de la Implementación}
 \label{sec:estado_implementacion}
@@ -1417,6 +1428,8 @@ La skill de Claude Cowork para la generación automática de documentación de s
 La implementación propia basada en python-docx (descrita en la sección~\ref{sec:alternativa_codigo_abierto}) está pendiente de desarrollo. En el período cubierto por esta memoria, la skill de Claude Cowork ha cubierto completamente la necesidad operativa, por lo que la alternativa propia queda registrada como trabajo futuro.
 
 \textbf{Estado:} Skill de Claude Cowork operativa. Alternativa propia pendiente de implementación.
+
+\newpage
 
 \addcontentsline{toc}{section}{Referencias}
 \bibliographystyle{plain}
