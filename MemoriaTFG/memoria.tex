@@ -1398,51 +1398,63 @@ reglas, ordenadas por prioridad:
     constancia de la intervención en el registro del experimento.
 \end{itemize}
 
-\subsubsection{Caso 1: ConfortMental --- cambios cross-cutting en base de código real}
+\subsubsection{Caso 1: Aplicación Flutter}
 \label{sec:caso1_confortmental}
-El primer caso de uso aplica el experimento sobre un repositorio de producción de Colb.Ai: la aplicación móvil ConfortMental, desarrollada en React Native. La tarea consiste en implementar los cinco cambios globales del documento de revisión de la aplicación (Bloque 1): unificación tipográfica con DM Sans y DM Serif Display, corrección de contraste de textos secundarios a WCAG AA, sustitución del patrón de validación de formularios por mensajes inline en rojo, humanización y traducción de mensajes de error del sistema, y unificación de las etiquetas de frecuencia de check-in.
+El primer experimento se llevará a cabo sobre un repositorio real de Colb.Ai. Con tal de respetar las políticas de confidencialidad, la descripción del proyecto será lo suficientemente detallada como para entender el contexto, pero se omitirán ciertos detalles con tal de anonimizarlo. 
 
-Este caso de uso es especialmente adecuado para evaluar code-review-graph porque los cinco cambios son cross-cutting: afectan a múltiples pantallas y componentes de forma transversal. La hipótesis es que el agente bajo la condición B identificará más instancias de cada patrón (mayor cobertura) y consumirá menos tokens de exploración que el agente bajo la condición A, que debe descubrir la estructura del proyecto mediante herramientas estándar.
+El proyecto consiste en una aplicación de escritorio desarrollada con el SDK \textit{Flutter}. El experimento consistirá en pedirle al asistente de IA que haga una lista de cambios considerablemente extensa a lo largo de las distintas páginas de la aplicación; principalmente cambios visuales. La hipótesis inicial es que un agente de código básico, se olvida rápidamente de muchos de los cambios pedidos (ya sea por alucinaciones o por ventana de contexto), en cambio agentes que siguen la metodología estructurada de colbPowers, documentando los cambios exactos que deben hacer antes de hacerlos, no sufrirán de este problema. Además, también se espera ver una reducción de consumo de tokens en las configuraciones que utilizan code-review-graph, puesto que en teoría esta herramienta es ideal para una tarea como esta, que requiere explorar distintos archivos del repositorio.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|c|c|c|}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|c|c|c|c|}
 \hline
-\textbf{Métrica} & \textbf{Cond. A} & \textbf{Cond. B} & \textbf{Cond. C} \\
- & \textbf{(sin plugins)} & \textbf{(code-review-graph)} & \textbf{(colbPowers + CRG)} \\
+\textbf{Métrica} & \textbf{Cond. A} & \textbf{Cond. B} & \textbf{Cond. C} & \textbf{Cond. D} \\
+ & \textbf{(sin plugins)} & \textbf{(code-review-graph)} & \textbf{(colbPowers)} & \textbf{(colbPowers + CRG)} \\
 \hline
-Tokens entrada (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Tokens salida (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Tool calls totales (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Tool calls CRG (media) & N/A & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Cobertura (media \verb|%|) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tokens entrada (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tokens salida (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tool calls totales (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tool calls CRG (media) & N/A & {[}PENDIENTE{]} & N/A & {[}PENDIENTE{]} \\
+Cobertura (media \%) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
 \hline
 \end{tabular}
-\caption{Resultados Caso 1: ConfortMental}
+}
+\caption{Resultados Caso 1: Aplicación Flutter}
 \label{tab:caso1_resultados}
 \end{table}
 
 \subsubsection{Caso 2: Aplicación de simulación 3D}
 \label{sec:caso2_simulacion3d}
-El segundo caso de uso aplica el experimento sobre una tarea de nueva implementación desde cero: el desarrollo de una aplicación de simulación 3D en la que, al pulsar una tecla, aparece una esfera en el entorno tridimensional; al hacer clic sobre ella, la esfera explota en una animación de partículas. A diferencia del caso ConfortMental (modificación de una base de código existente), este caso evalúa el comportamiento de las herramientas en la creación de funcionalidad nueva.
+El segundo caso de uso aplica el experimento sobre una tarea de nueva implementación desde cero: el desarrollo de una aplicación de simulación 3D en la que, al pulsar una tecla, aparece una esfera en el entorno tridimensional; al hacer clic sobre ella, la esfera explota en una animación de partículas. A diferencia del caso anterior (modificación de una base de código existente), este caso evalúa el comportamiento de las herramientas en la creación de funcionalidad nueva.
 
-Este caso es especialmente relevante para evaluar colbPowers porque la condición C puede ejecutar el ciclo completo de la metodología SDD: el Architect define la constitution del proyecto y las features, el Developer genera el documento de diseño y el plan de tareas, y la ejecución se realiza tarea a tarea con revisión al final. La hipótesis es que la condición C produce código de mayor calidad estructural (menor complejidad ciclomática, mejor índice de mantenibilidad) y mayor trazabilidad entre las decisiones de diseño y el código implementado.
+Este caso es especialmente relevante para evaluar colbPowers, ya que las condiciones C y D 
+pueden ejecutar el ciclo completo de la metodología SDD: primero se generan de forma 
+interactiva con el usuario los documentos de constitución y \textit{features} del 
+proyecto, y a continuación se genera la especificación técnica de la funcionalidad 
+a implementar. En todo momento el proceso sigue el principio de \textit{Human-in-the-Loop}: 
+el usuario participa en cada etapa y puede controlar el flujo. La hipótesis es que 
+las condiciones C y D producen código de mayor calidad estructural (menor complejidad 
+ciclomática, mejor índice de mantenibilidad) y mayor trazabilidad entre las 
+decisiones de diseño y el código implementado.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|c|c|c|}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|c|c|c|c|}
 \hline
-\textbf{Métrica} & \textbf{Cond. A} & \textbf{Cond. B} & \textbf{Cond. C} \\
- & \textbf{(sin plugins)} & \textbf{(code-review-graph)} & \textbf{(colbPowers + CRG)} \\
+\textbf{Métrica} & \textbf{Cond. A} & \textbf{Cond. B} & \textbf{Cond. C} & \textbf{Cond. D} \\
+ & \textbf{(sin plugins)} & \textbf{(code-review-graph)} & \textbf{(colbPowers)} & \textbf{(colbPowers + CRG)} \\
 \hline
-Tokens entrada (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Tokens salida (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Tool calls totales (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Cobertura funcional (media \verb|%|) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Complejidad ciclomática (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Índice de mantenibilidad (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tokens entrada (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tokens salida (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tool calls totales (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Cobertura funcional (media \%) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Complejidad ciclomática (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Índice de mantenibilidad (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
 \hline
-\end{tabular}
+\end{tabular}%
+}
 \caption{Resultados Caso 2: Aplicación de simulación 3D}
 \label{tab:caso2_resultados}
 \end{table}

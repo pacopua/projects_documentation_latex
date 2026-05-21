@@ -124,7 +124,7 @@
 \contentsline {subsection}{\numberline {11.4}Evaluación y Resultados}{51}{subsection.11.4}%
 \contentsline {subsubsection}{\numberline {11.4.1}Diseño experimental}{51}{subsubsection.11.4.1}%
 \contentsline {paragraph}{Metodología:}{52}{paragraph*.21}%
-\contentsline {subsubsection}{\numberline {11.4.2}Caso 1: ConfortMental --- cambios cross-cutting en base de código real}{52}{subsubsection.11.4.2}%
+\contentsline {subsubsection}{\numberline {11.4.2}Caso 1: Aplicación Flutter}{52}{subsubsection.11.4.2}%
 \contentsline {subsubsection}{\numberline {11.4.3}Caso 2: Aplicación de simulación 3D}{53}{subsubsection.11.4.3}%
 \contentsline {section}{\numberline {12}Seguimiento del Cliente}{54}{section.12}%
 \contentsline {subsection}{\numberline {12.1}Generación de documentación con Claude Cowork}{54}{subsection.12.1}%

@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex memoria"] 1779276618.42831 "memoria.aux" "memoria.bbl" "memoria" 1779277616.35518 0
+["bibtex memoria"] 1779352611.58815 "memoria.aux" "memoria.bbl" "memoria" 1779353251.04019 0
   "./references.bib" 1779264234.6101 12331 eb7ce5b66c78c367a130c3169bc8eac8 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "memoria.aux" 1779277616.08241 37682 9c1805a6a74cc6c43389577f34079dc5 "pdflatex"
+  "memoria.aux" 1779353250.77149 37606 eabaa26888bf051af90dd206ee0e7fd9 "pdflatex"
   (generated)
   "memoria.bbl"
   "memoria.blg"
   (rewritten before read)
-["pdflatex"] 1779277613.80751 "/home/adria/UPC/TFG/projects_documentation_latex/MemoriaTFG/memoria.tex" "memoria.pdf" "memoria" 1779277616.3554 0
+["pdflatex"] 1779353248.30491 "/home/adria/UPC/TFG/projects_documentation_latex/MemoriaTFG/memoria.tex" "memoria.pdf" "memoria" 1779353251.04041 0
   "/etc/texmf/web2c/texmf.cnf" 1776199657.44924 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/adria/UPC/TFG/projects_documentation_latex/MemoriaTFG/memoria.tex" 1779277613.59942 161045 75e4d482189b7fc5d8278ba904ba62a1 ""
+  "/home/adria/UPC/TFG/projects_documentation_latex/MemoriaTFG/memoria.tex" 1779353248.09349 161638 4184d2590c87f156a8859b53a9647040 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcbx1095.tfm" 1136768653 1536 0adca69c597a47fe7664bf81057bb53b ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1136768653 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -197,11 +197,11 @@
   "imagenes/JustColbPowers.png" 1779057955.64739 598383 2001176a095aed82a580aed7b0deb435 ""
   "imagenes/coworkSkills/skill_components_and_definition.png" 1778671669.21133 138140 3ef2f9e6ab1abe4946f0b314d31de99d ""
   "logo-fiblletres-upc-color.png" 1778512611.08494 78592 ac8b11d7e21663a229fc48c0f8c8a4bf ""
-  "memoria.aux" 1779277616.08241 37682 9c1805a6a74cc6c43389577f34079dc5 "pdflatex"
-  "memoria.bbl" 1779276618.50609 7757 dadd93d41db3aaa00e2e7f0d9faa90e4 "bibtex memoria"
-  "memoria.out" 1779277616.08633 26072 1501306ddb7edf8771bd093fa3ebd715 "pdflatex"
-  "memoria.tex" 1779277613.59942 161045 75e4d482189b7fc5d8278ba904ba62a1 ""
-  "memoria.toc" 1779277616.08633 13902 4ccb2b6e39d11a7a1885e3c0041a78d6 "pdflatex"
+  "memoria.aux" 1779353250.77149 37606 eabaa26888bf051af90dd206ee0e7fd9 "pdflatex"
+  "memoria.bbl" 1779352611.66597 7757 dadd93d41db3aaa00e2e7f0d9faa90e4 "bibtex memoria"
+  "memoria.out" 1779353250.77582 25838 b517a5b7ce0f23d33d1c69454f213f7d "pdflatex"
+  "memoria.tex" 1779353248.09349 161638 4184d2590c87f156a8859b53a9647040 ""
+  "memoria.toc" 1779353250.77582 13858 4917e3284d09463f3d88bb637ea9868e "pdflatex"
   (generated)
   "memoria.aux"
   "memoria.log"
