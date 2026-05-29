@@ -20,9 +20,9 @@ Añadir el ciclo de funcionamiento de opencode y claude code, distinguir mejor e
 
 # Seguimiento de reuniones
 
-Módulo de seguimiento programado, falta incorporar la capacidad de que el agente pueda hacer tablas, pero como no tengon configurado el .env, no puedo hacer este trabajo aún.
+Módulo de seguimiento programado, falta incorporar la capacidad de que el agente pueda hacer tablas, pero como no tengon configurado el .env, no puedo hacer este trabajo aún. [DONE]
 
-Después de esto hay que hacer pruebas.
+Después de esto hay que hacer pruebas. [ALMOST DONE]
 
 # Memoria
 - Lo de GEP se puede reescribir sin problema, presentarlo como considere, recomendado basarme en otros TFGs. Lo MAS importante del trabajo de verdad que es la memoria. Tienen que entenderse el contexto del problema, lo que se intenta cubrir, lo que no se intenta cubrir, etc. Esto es MAS importante que la implementación como tal incluso, ya que es la primera impresión que se lleva el corrector.
