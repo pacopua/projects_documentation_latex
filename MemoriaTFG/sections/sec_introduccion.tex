@@ -1,0 +1,147 @@
+\section{Introducción y contexto}
+\label{sec:contexto}
+
+El presente trabajo consiste en el diseño de un sistema de automatización para el desarrollo y diseño de proyectos de software, utilizando como base herramientas basadas en LLMs. El desarrollo de este sistema se enmarca y diseña para su uso dentro de una empresa real, \textit{Colb.ai}, dedicada principalmente a la consultoría de proyectos de software.
+
+Lo que se busca en concreto con este proyecto, es ahorrar tiempo y recursos de la empresa, automatizando al máximo las principales etapas contenidas en el ciclo de vida del desarrollo de un proyecto software, evitando a su vez disminuir la calidad del proyecto a consecuencia de utilizar estas herramientas.
+
+Se presentan tres apartados que automatizar en el desarrollo de este TFG:
+\begin{enumerate}
+    \item \textbf{Toma de requerimientos y diseño de arquitectura:} Necesidades del cliente, exploración de frameworks posibles a utilizar, y diseño de la arquitectura del proyecto.
+    \item \textbf{Desarrollo del código:} Asistencia de programación al desarrollador, generación de código a partir de las especificaciones. Evitando la generación de código de baja calidad, principalmente mediante la generación de documentación y especificaciones previas a la generación de código.
+    \item \textbf{Seguimiento del cliente:} Generación de informes de seguimiento para el cliente, basado en las reuniones con el mismo.
+\end{enumerate}
+
+\subsection{Definición del Problema}
+\label{sec:definicion_problema}
+
+
+El principal problema que se ha de resolver para conseguir la automatización de estas tareas sin la perdida de calidad, es conseguir un equilibrio entre la agilidad que ofrecen los asistentes de inteligencia artificial, y la involucración de un desarrollador que garantice que cada paso cubre con unos estándares de estructura y calidad.
+
+A continuación se describen los principales problemas para cada una de las partes del ciclo de desarrollo:
+
+
+\subsubsection{Toma de requerimientos}
+
+\subsubsection{Desarrollo de código}
+
+Actualmente, los asistentes de código más populares (GitHub Copilot, Cursor, etc.) operan bajo un paradigma \textit{Code-Driven}: el desarrollador describe vagamente lo que quiere y el modelo genera código de forma inmediata, sin exigir ninguna especificación previa. Este enfoque tiene dos consecuencias directas y documentadas:
+
+\begin{itemize}
+    \item \textbf{Generación de \textit{slop code}:} El código producido resuelve el problema inmediato, pero carece de estructura coherente, no sigue los estándares del proyecto y acumula deuda técnica. Al no haber una especificación de referencia, el modelo no puede saber qué es correcto más allá de lo que el usuario describe en ese momento. El resultado es un código difícil de mantener, escalar o auditar.
+
+    \item \textbf{Falta de trazabilidad entre requisitos y código:} Sin un documento de especificación que actúe como fuente de verdad, resulta imposible saber si el código generado cumple realmente con los requisitos del negocio, si ha habido desviaciones respecto al diseño original, o quién tomó qué decisión y cuándo.
+
+    \item \textbf{Barrera de incorporación para nuevos desarrolladores:} La ausencia de documentación estructurada convierte la incorporación de un nuevo miembro al equipo en un proceso lento y costoso. Sin especificaciones claras que expliquen el \textit{porqué} de cada decisión de diseño, el nuevo desarrollador debe deducir la arquitectura y las reglas del proyecto leyendo directamente el código, lo que ralentiza su productividad y aumenta el riesgo de que introduzca cambios inconsistentes con la visión original del sistema.
+\end{itemize}
+
+Por otro lado, las herramientas que sí exigen especificación previa (como Spec Kit o AgentOS) presentan el problema opuesto: generan una fricción operativa excesiva, produciendo documentación desproporcionada incluso para cambios pequeños, lo que las hace incompatibles con metodologías ágiles reales.
+
+\textbf{En definitiva, el problema es la inexistencia de una solución de asistencia al desarrollo que equilibre la agilidad de las herramientas \textit{Code-Driven} con la rigurosidad estructural que exige el desarrollo de software profesional y sostenible.} Este TFG propone construir exactamente esa solución.
+
+\subsubsection{Seguimiento del cliente}
+
+\subsection{Marco de la empresa}
+\label{sec:marco_empresa}
+
+La empresa \textit{Colb.Ai} es una consultoría que implementa soluciones de IA para sus clientes; además, la empresa misma intenta maximizar el provecho que obtiene de estas herramientas en el desarrollo de sus soluciones de software.
+
+El objetivo de este TFG es implementar un sistema que utilice distintos \textit{frameworks} y modelos de inteligencia artificial para que ayude a los desarrolladores a llevar a cabo la toma de requerimientos, planificación del proyecto, y la organización/documentación del código, con tal de ayudar a la empresa a investigar como comenzar nuevos proyectos, y planificar el proceso de desarrollo.
+
+\subsection{Conceptos Relevantes}
+\label{sec:conceptos_relevantes}
+Los principales conceptos relevantes que envuelven este tema son los siguientes:
+
+\subsubsection{Spec-Driven-Development (SDD)}
+\label{sec:sdd}
+
+El \textit{Spec-Driven Development} (SDD) es una filosofía donde la documentación detallada de los requisitos y el comportamiento esperado del sistema (la especificación) dirige la creación del software. A diferencia del enfoque tradicional, donde estos documentos descriptivos solían quedar subordinados o desactualizarse frente al código, el SDD invierte esta relación. El documento estructurado en lenguaje natural actúa como la base de la verdad sobre la que se construirá el futuro código. \cite{ostroff_agile_2004} \cite{github_spec_kit}
+
+En otras palabras, hay que tener definido previamente exactamente qué queremos que haga cada pieza de código, y cómo queremos que lo haga. Cuando se quiera hacer cambios en la implementación, se han de aplicar primero en los documentos de especificación y luego en el código del proyecto. \\
+
+\subsubsection{Toma de requerimientos}
+\label{sec:toma_requerimientos}
+
+La toma de requerimientos (en inglés \textit{Requirements Gathering}) es una fase fundamental dentro de la ingeniería de software. En ella se investigan, descubren y extraen las necesidades de los clientes, usuarios y otras partes interesadas del sistema. A través de conversaciones con un cliente, que en muchas ocasiones no está muy seguro de qué quiere exactamente, el analista debe generar diseños y especificaciones funcionales específicas con comportamientos detallados \cite{jama_requirements} \cite{sommerville_se_2015}.
+
+\subsubsection{Asistentes de Inteligencia Artificial y Agentes Basados en LLMs}
+\label{sec:asistentes_ia}
+
+En el ámbito del desarrollo de software, los Modelos de Lenguaje de Gran Tamaño (LLMs) son la base tecnológica de los asistentes de código. Un asistente de código es una herramienta que actúa como un colaborador interactivo integrado en el entorno de trabajo. Su función principal es ayudar al desarrollador a interpretar requisitos, generar fragmentos de código o depurar errores mediante la recepción de instrucciones. Para comprender cómo estas herramientas se estructuran y evolucionan en este proyecto, es necesario definir los siguientes conceptos clave:
+
+\begin{itemize}
+    \item \textbf{Instrucciones (\textit{Prompts}):} Son las entradas en lenguaje natural que el usuario utiliza para comunicarse con el modelo. Un \textit{prompt} define la tarea a realizar y proporciona el contexto y las restricciones necesarias.
+
+    \item \textbf{Agentes de Código:} Un agente es un asistente al que se le asigna un rol mediante un \textit{prompt} y se le equipa con distintas \textit{Agent Skills} y herramientas varias. Su propósito es llevar a cabo una tarea específica. Además, es posible encadenar varios agentes especializados para construir un sistema coordinado. \cite{vscode_agents} \cite{wang_llm_agents_2024}
+
+    \item \textbf{Habilidades del Agente (\textit{Agent Skills}):} Son funciones, herramientas o \textit{scripts} específicos que el agente puede invocar para ejecutar acciones tangibles sobre el entorno local, como leer, crear o modificar archivos en un repositorio. \cite{agentskills_home} \cite{yao_react_2023}
+\end{itemize}
+
+\subsection{Agentes Implicados}
+\label{sec:agentes_implicados}
+
+Los principales agentes implicados en esta situación son los siguientes:
+
+\subsubsection{Desarrolladores}
+\label{sec:desarrolladores}
+
+Los primeros beneficiarios de la implantación de este sistema son los desarrolladores y diseñadores de software. Al implementar metodologías de código orientadas a la creación de código estructurado y documentado, el mantenimiento del código se haría mucho más sencillo, así como el desarrollo y entendimiento de este. Modularizando las distintas features e implementaciones de código, facilitaríamos el entendimiento de la estructura en general del producto, lo cual resultaría altamente beneficioso para su futura escalabilidad y mantenimiento.
+
+\subsubsection{Cliente y sus usuarios}
+\label{sec:cliente_usuarios}
+
+Tener un código bien estructurado y entendido en profundidad por sus creadores, significa un producto de mayor calidad, más fácil de mantener y, en muchos casos, más seguro y eficiente. Por lo que la adopción de un sistema de asistencia al desarrollador para la creación de código también sería beneficiosa para los clientes de Colb.AI.
+
+
+\subsection{Estado del arte y soluciones existentes}
+\label{sec:estado_arte}
+Para contextualizar el desarrollo de nuestro sistema, es fundamental analizar las herramientas actuales que buscan resolver problemas similares en el ámbito de la ingeniería de software asistida por IA.
+
+\subsubsection{Spec Kit}
+\label{sec:spec_kit}
+Spec Kit es una herramienta diseñada específicamente para facilitar el desarrollo basado en especificaciones. Su enfoque principal radica en la generación de documentos de diseño y arquitectura como paso previo y obligatorio a la implementación de código, estructurando así el ciclo de vida del desarrollo. \cite{github_spec_kit}
+
+\subsubsection{AgentOS}
+\label{sec:agentos}
+AgentOS propone un marco de trabajo (\textit{framework}) integral para la creación y orquestación de agentes autónomos. Proporciona una estructura robusta que permite a los desarrolladores construir sistemas basados en inteligencia artificial capaces de ejecutar tareas complejas y encadenadas de forma independiente. \cite{buildermethods_agent_os} \cite{yao_react_2023}
+
+\subsubsection{Asistentes Comerciales (Copilot, Cursor)}
+\label{sec:asistentes_comerciales}
+En el mercado actual destacan diversas herramientas comerciales de asistencia a la programación impulsadas por IA, tales como GitHub Copilot, Cursor o Devin. Estas soluciones son altamente eficientes para la generación de código en tiempo real y la resolución de dudas técnicas, operando bajo un paradigma principalmente \textit{Code-Driven} (orientado a la escritura directa de código). \cite{github_copilot_docs} \cite{cursor_ai} \cite{chen_codex_2021} \cite{peng_copilot_2023}
+\subsection{Análisis comparativo: ¿Está justificada una solución a medida?}
+\label{sec:analisis_comparativo}
+
+Si bien las alternativas mencionadas presentan avances significativos, su aplicación directa en nuestro entorno de trabajo plantea diversos desafíos operativos y arquitectónicos.
+
+En primer lugar, los asistentes puramente comerciales fomentan un ciclo de desarrollo directo e impulsivo. Al no exigir una especificación estructurada previa, agravan el problema del \textit{slop code} (código descuidado o de baja calidad estructural) mencionado en la introducción. Por otro lado, herramientas enfocadas en la especificación como Spec Kit generan una fricción operativa excesiva, produciendo una cantidad desproporcionada de documentos incluso para implementar \textit{features} muy sencillas, lo que ralentiza el desarrollo ágil. Finalmente, marcos de trabajo como AgentOS están diseñados bajo un enfoque \textit{greenfield} (proyectos creados desde cero), resultando sumamente complejos de integrar en repositorios \textit{legacy} o ya existentes.
+
+En el Cuadro \ref{tab:comparativa_herramientas} se presenta un resumen de las características y limitaciones que estas soluciones presentan:
+
+% Nota: Asegúrate de tener \usepackage{booktabs} en tu preámbulo para que esta tabla se renderice correctamente.
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Herramienta} & \textbf{Enfoque Principal} & \textbf{Inconveniente Principal} & \textbf{Integración en Código Existente} \\
+    \hlineB{3}
+    \textbf{Spec Kit} & Basado en especificaciones & Exceso de documentación, alta fricción operativa & Moderada \\
+    \hline
+    \textbf{AgentOS} & Orquestación de agentes & Diseñado principalmente para proyectos \textit{greenfield} & Muy compleja (\textit{Legacy}) \\
+    \hline
+    \textbf{Copilot/Cursor} & \textit{Code-Driven} & Fomenta el \textit{slop code}, falta de planificación & Alta (pero sin contexto global) \\
+    \hline
+\end{tabularx}
+\caption{Comparativa de soluciones existentes. [Fuente: Elaboración propia]}
+\label{tab:comparativa_herramientas}
+\end{table}
+
+A la vista de estas limitaciones, la creación de una solución propia resulta razonable. Desarrollar nuestro propio sistema nos proporciona la flexibilidad indispensable para integrarlo de forma nativa con nuestro \textit{pipeline} de trabajo. Esto nos permitirá personalizar la ingesta de contexto conectando la herramienta directamente a nuestras bases de datos, permitiendo la lectura automatizada de \textit{issues en GitHub} y la integración fluida con plataformas de gestión interna como \textit{Odoo} y \textit{Microsoft Teams}.
+
+\subsection{Propuesta de implementación}
+\label{sec:propuesta_implementacion}
+
+Concluido que las herramientas preexistentes no se adaptan plenamente a nuestros requerimientos de agilidad e integración, nuestra propuesta toma inspiración de sus puntos fuertes para construir un sistema a medida.
+
+En lugar de depender de ecosistemas cerrados o frameworks pesados, hemos optado por aprovechar un concepto introducido recientemente en los IDEs más avanzados: los Agentes de Código \cite{vscode_agents} y las \textit{AgentSkills}\cite{agentskills_home}. Mediante la extensión y personalización de estas capacidades nativas de los entornos de desarrollo, propondremos un sistema híbrido de administración, planificación de tareas y generación de código que evite la fricción documental sin sacrificar la calidad estructural del proyecto.
+
+\newpage

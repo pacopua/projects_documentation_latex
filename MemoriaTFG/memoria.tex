@@ -64,17 +64,35 @@
 \tableofcontents
 \newpage
 
-\section{Contexto}
+\section{Introducción y contexto}
 \label{sec:contexto}
 
-\subsection{Introducción}
-\label{sec:introduccion}
-Estamos viviendo el auge de la \textit{Inteligencia Artificial Generativa}, una época en la que una gran parte de los desarrolladores de software y sus respectivas empresas han incorporado la inteligencia artificial en el día a día para el desarrollo de software. Esto conlleva varios problemas como la falta de interés que tienen algunos desarrolladores para aprender nuevos conocimientos, delegando el razonamiento crítico al modelo, lo que genera el conocido como \textit{slop code}: código funcional pero deficiente en estructura y sostenibilidad.
+El presente trabajo consiste en el diseño de un sistema de automatización para el desarrollo y diseño de proyectos de software, utilizando como base herramientas basadas en LLMs. El desarrollo de este sistema se enmarca y diseña para su uso dentro de una empresa real, \textit{Colb.ai}, dedicada principalmente a la consultoría de proyectos de software.
+
+Con la disponibilidad de las nuevas herramientas de inteligencia artificial basadas en modelos de lenguaje, está habiendo una revolución en la forma en que desarrollamos proyectos de software. Gracias a estas herramientas, se presenta la oportunidad de automatizar muchas de las tareas que tradicionalmente habian sido llevadas a cabo exclusivamente por los desarrolladores. Sin embargo, la implementación sin un plan premeditado de estas herramientas, en muchas ocasiones ha llevado a problemas que hacen la aplicación de estas herramientas una deuda técnica más que una ayuda real, consiguiendo resultados muy rapidos al inicio de un proyecto, pero teniendo una muy mala escalabilidad y mantenibilidad a largo plazo.
+
+Lo que se busca en concreto con este proyecto, es ahorrar tiempo y recursos de la empresa, automatizando al máximo las principales etapas contenidas en el ciclo de vida del desarrollo de un proyecto software.
+
+Se presentan tres apartados que automatizar en el desarrollo de este TFG:
+\begin{enumerate}
+    \item \textbf{Toma de requerimientos y diseño de arquitectura:} Necesidades del cliente, exploración de frameworks posibles a utilizar, y diseño de la arquitectura del proyecto.
+    \item \textbf{Desarrollo del código:} Asistencia de programación al desarrollador, generación de código a partir de las especificaciones. Evitando la generación de código de baja calidad, principalmente mediante la generación de documentación y especificaciones previas a la generación de código.
+    \item \textbf{Seguimiento del cliente:} Generación de informes de seguimiento para el cliente, basado en las reuniones con el mismo.
+\end{enumerate}
 
 \subsection{Definición del Problema}
 \label{sec:definicion_problema}
 
-El problema central que este TFG busca resolver es la ausencia de un flujo de trabajo estructurado que discipline y oriente el uso de la IA generativa en el desarrollo de software profesional.
+
+El principal problema que tenemos que se presenta en la automatización de estas tareas, sin perder calidad, es conseguir un equilibrio entre la agilidad que ofrecen los asistentes de inteligencia artificial, y la involucración de un desarrollador que garantice que cada paso cubre con unos estándares de estructura y calidad.
+
+Para esto, haremos mención a una temática discutida en el ambito de la neurología. \textit{ "The law of least effort"}, en otras palabras, la ley del minimo esfuerzo, es una teoria que dice que los humanos y otros organismos tienden a elegir la opción que requiere el menor esfuerzo para alcanzar sus objetivos, sea un esfuerzo físico o cognitivo. Aunque es ciertamente paradógico, puesto que a las personas nos gustas cosas como puzles y rompecabezas \cite{inzlicht_effort_paradox_2018}, creo que es el principal problema de la automatización de tareas, que el desarrollador tiene la tentación de dejar que el asistente de IA haga todo el trabajo, sin involucrarse lo suficiente para garantizar que el resultado cumple con los estándares de calidad y estructura necesarios para un proyecto profesional y sostenible a largo plazo.
+
+A continuación, se detallan los problemas mas específicos de cada apartado.
+
+\subsubsection{Toma de requerimientos}
+
+\subsubsection{Desarrollo de código}
 
 Actualmente, los asistentes de código más populares (GitHub Copilot, Cursor, etc.) operan bajo un paradigma \textit{Code-Driven}: el desarrollador describe vagamente lo que quiere y el modelo genera código de forma inmediata, sin exigir ninguna especificación previa. Este enfoque tiene dos consecuencias directas y documentadas:
 
@@ -89,6 +107,8 @@ Actualmente, los asistentes de código más populares (GitHub Copilot, Cursor, e
 Por otro lado, las herramientas que sí exigen especificación previa (como Spec Kit o AgentOS) presentan el problema opuesto: generan una fricción operativa excesiva, produciendo documentación desproporcionada incluso para cambios pequeños, lo que las hace incompatibles con metodologías ágiles reales.
 
 \textbf{En definitiva, el problema es la inexistencia de una solución de asistencia al desarrollo que equilibre la agilidad de las herramientas \textit{Code-Driven} con la rigurosidad estructural que exige el desarrollo de software profesional y sostenible.} Este TFG propone construir exactamente esa solución.
+
+\subsubsection{Seguimiento del cliente}
 
 \subsection{Marco de la empresa}
 \label{sec:marco_empresa}
@@ -141,10 +161,6 @@ Los primeros beneficiarios de la implantación de este sistema son los desarroll
 
 Tener un código bien estructurado y entendido en profundidad por sus creadores, significa un producto de mayor calidad, más fácil de mantener y, en muchos casos, más seguro y eficiente. Por lo que la adopción de un sistema de asistencia al desarrollador para la creación de código también sería beneficiosa para los clientes de Colb.AI.
 
-\newpage
-
-\section{Justificación}
-\label{sec:justificacion}
 
 \subsection{Estado del arte y soluciones existentes}
 \label{sec:estado_arte}
