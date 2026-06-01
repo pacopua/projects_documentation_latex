@@ -69,7 +69,7 @@
 
 El presente trabajo consiste en el diseño de un sistema de automatización para el desarrollo y diseño de proyectos de software, utilizando como base herramientas basadas en LLMs. El desarrollo de este sistema se enmarca y diseña para su uso dentro de una empresa real, \textit{Colb.ai}, dedicada principalmente a la consultoría de proyectos de software.
 
-Con la disponibilidad de las nuevas herramientas de inteligencia artificial basadas en modelos de lenguaje, está habiendo una revolución en la forma en que desarrollamos proyectos de software. Gracias a estas herramientas, se presenta la oportunidad de automatizar muchas de las tareas que tradicionalmente habian sido llevadas a cabo exclusivamente por los desarrolladores. Sin embargo, la implementación sin un plan premeditado de estas herramientas, en muchas ocasiones ha llevado a problemas que hacen la aplicación de estas herramientas una deuda técnica más que una ayuda real, consiguiendo resultados muy rapidos al inicio de un proyecto, pero teniendo una muy mala escalabilidad y mantenibilidad a largo plazo.
+Con la disponibilidad de las nuevas herramientas de inteligencia artificial basadas en modelos de lenguaje, está habiendo una revolución en la forma en que desarrollamos proyectos de software. Gracias a estas herramientas, se presenta la oportunidad de automatizar muchas de las tareas que tradicionalmente habían sido llevadas a cabo exclusivamente por los desarrolladores. Sin embargo, la implementación sin un plan premeditado de estas herramientas, en muchas ocasiones ha llevado a problemas que hacen la aplicación de estas herramientas una deuda técnica más que una ayuda real, consiguiendo resultados muy rapidos al inicio de un proyecto, pero teniendo una muy mala escalabilidad y mantenibilidad a largo plazo.
 
 Lo que se busca en concreto con este proyecto, es ahorrar tiempo y recursos de la empresa, automatizando al máximo las principales etapas contenidas en el ciclo de vida del desarrollo de un proyecto software.
 
@@ -84,17 +84,19 @@ Se presentan tres apartados que automatizar en el desarrollo de este TFG:
 \label{sec:definicion_problema}
 
 
-El principal problema que tenemos que se presenta en la automatización de estas tareas, sin perder calidad, es conseguir un equilibrio entre la agilidad que ofrecen los asistentes de inteligencia artificial, y la involucración de un desarrollador que garantice que cada paso cubre con unos estándares de estructura y calidad.
+El principal problema que se presenta en la automatización de estas tareas, sin perder calidad, es conseguir un equilibrio entre la agilidad que ofrecen los asistentes de inteligencia artificial, y la involucración de un desarrollador que garantice que cada paso cubre con unos estándares de estructura y calidad.
 
-Para esto, haremos mención a una temática discutida en el ambito de la neurología. \textit{ "The law of least effort"}, en otras palabras, la ley del minimo esfuerzo, es una teoria que dice que los humanos y otros organismos tienden a priorizar la opción que presenta la menor resistencia para alcanzar sus objetivos, sea por un esfuerzo físico o cognitivo. Aunque es ciertamente paradógico, puesto que a las personas nos gustas cosas como puzles y rompecabezas \cite{inzlicht_effort_paradox_2018}, creo que es el principal problema de la automatización de tareas, el desarrollador tiene la tentación de dejar que el asistente de IA haga todo el trabajo, sin involucrarse lo suficiente para garantizar que el resultado cumple con los estándares de calidad y estructura necesarios para un proyecto profesional y sostenible a largo plazo.
+Este equilibrio es difícil de mantener en la práctica, y su dificultad puede explicarse a través de un principio en el ámbito de la psicología cognitiva: \textit{The Law of Least Effort}, o en otras palabras, la ley del mínimo esfuerzo. Esta teoría sostiene que los humanos y otros organismos tienden a priorizar la opción que presenta la menor resistencia para alcanzar sus objetivos, ya sea en términos de esfuerzo físico o cognitivo \cite{inzlicht_effort_paradox_2018}. Aunque pueda parecer paradójico -puesto que a las personas también nos gustan los retos y los puzles-, este fenómeno explica con precisión la principal trampa de la automatización: el desarrollador tiene la tentación de delegar todo el trabajo en el asistente de IA sin involucrarse lo suficiente, comprometiendo así los estándares de calidad y estructura necesarios para un proyecto profesional y sostenible a largo plazo.
 
 A continuación, se detallan los problemas específicos identificados en cada apartado.
 
 \subsubsection{Toma de requerimientos y planificación de la arquitectura}
+\label{sec:ProblemaTomaRequerimientos}
 
-La toma de requerimientos es una fase especialmente crítica en el desarrollo de software, puesto que sienta las bases de lo que va a ser el desarrollo del proyecto, el alcance de este, las técnología a utilizar, y la arquitectura del sistema. Si esta fase no se lleva a cabo con el adecuado rigor, puede traer consecuencias muy graves para el resto del desarrollo, por lo que es extremadamente importante que si se quiere automatizar esta fase, se haga de una forma que garantice que el resultado es un documento de especificación completo, coherente y estructurado, que sirva como base sólida para la implementación posterior.
+La toma de requerimientos es una fase especialmente crítica en el desarrollo de software, puesto que sienta las bases de lo que va a ser el desarrollo del proyecto, el alcance de este, las técnologia a utilizar, y la arquitectura del sistema. Si esta fase no se lleva a cabo con el adecuado rigor, puede traer consecuencias muy graves para el resto del desarrollo, por lo que es extremadamente importante que si se quiere automatizar esta fase, se haga de una forma que garantice que el resultado es un documento de especificación completo, coherente y estructurado, que sirva como base sólida para la implementación posterior.
 
 \subsubsection{Desarrollo de código}
+\label{sec:ProblemaDesarrolloCodigo}
 
 Actualmente, los asistentes de código más populares (GitHub Copilot, Cursor, etc.) operan bajo un paradigma \textit{Code-Driven}: el desarrollador describe vagamente lo que quiere y el modelo genera código de forma inmediata, sin exigir ninguna especificación previa. Este enfoque tiene dos consecuencias directas y documentadas:
 
@@ -111,17 +113,11 @@ Por otro lado, las herramientas que sí exigen especificación previa (como Spec
 \textbf{En definitiva, el problema es la inexistencia de una solución de asistencia al desarrollo que equilibre la agilidad de las herramientas \textit{Code-Driven} con la rigurosidad estructural que exige el desarrollo de software profesional y sostenible.} Este TFG propone construir exactamente esa solución.
 
 \subsubsection{Seguimiento del cliente}
+\label{sec:ProblemaSeguimientoCliente}
 
-Este apartado se considera especialmente relevante en lo que es el ambito de la consultoría, debido a que la relación y involucramiento con el cliente es una componente esencia para conseguir que un proyecto de software progrese adecuadamente. En este sentido, la automatización de esta fase tiene el riesgo de que la información que se transmite al cliente no sea clara, o directamente sea incorrecta.
+Este apartado se considera especialmente relevante en lo que es el ámbito de la consultoría, debido a que la relación y involucramiento con el cliente es una componente esencial para conseguir que un proyecto de software progrese adecuadamente. En este sentido, la automatización de esta fase tiene el riesgo de que la información que se transmite al cliente no sea clara, o directamente sea incorrecta.
 
-\subsection{Marco de la empresa}
-\label{sec:marco_empresa}
-
-La empresa \textit{Colb.Ai} es una consultoría que implementa soluciones de IA para sus clientes; además, la empresa misma intenta maximizar el provecho que obtiene de estas herramientas en el desarrollo de sus soluciones de software.
-
-El objetivo de este TFG es implementar un sistema que utilice distintos \textit{frameworks} y modelos de inteligencia artificial para que ayude a los desarrolladores a llevar a cabo la toma de requerimientos, planificación del proyecto, y la organización/documentación del código, con tal de ayudar a la empresa a investigar como comenzar nuevos proyectos, y planificar el proceso de desarrollo. 
-
-\subsection{Conceptos Relevantes}
+\subsection{Conceptos Relevantes Previos}
 \label{sec:conceptos_relevantes}
 Los principales conceptos relevantes que envuelven este tema son los siguientes:
 
@@ -150,10 +146,10 @@ En el ámbito del desarrollo de software, los Modelos de Lenguaje de Gran Tamañ
     \item \textbf{Habilidades del Agente (\textit{Agent Skills}):} Son funciones, herramientas o \textit{scripts} específicos que el agente puede invocar para ejecutar acciones tangibles sobre el entorno local, como leer, crear o modificar archivos en un repositorio. \cite{agentskills_home} \cite{yao_react_2023}
 \end{itemize}
 
-\subsection{Agentes Implicados}
-\label{sec:agentes_implicados}
+\subsection{Stakeholders} % Esta sección debe cambiar un poco el enfoque, debido al cambio que ha habido, donde ahora también se cubre la toma de requerimientos y el seguimiento del cliente, no solo el desarrollo de código.
+\label{sec:stakeholders}
 
-Los principales agentes implicados en esta situación son los siguientes:
+Los principales stakeholders implicados en esta situación son los siguientes:
 
 \subsubsection{Desarrolladores}
 \label{sec:desarrolladores}
