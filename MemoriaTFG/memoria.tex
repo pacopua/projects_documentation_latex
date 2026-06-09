@@ -16,10 +16,11 @@
 \usepackage{tabulary}
 \usepackage{tcolorbox}
 \usepackage{hyperref}
-\usepackage[spanish]{babel}
 \usepackage{amssymb} % Añadido para simbolos extra
 
+\usepackage[spanish,es-noindentfirst]{babel}
 \usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage[skip=5pt plus1pt, indent=20pt]{parskip}
 
 \begin{document}
 
@@ -31,33 +32,36 @@
     \begin{figure}[H]
     \begin{minipage}{0.15\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Logo_UPC.svg.png}
+        \includegraphics[width=\textwidth]{imagenes/Logo_UPC.svg.png}
     \end{minipage}
     \hspace{0.02\textwidth}
     \begin{minipage}{0.85\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{logo-fiblletres-upc-color.png}
+        \includegraphics[width=\textwidth]{imagenes/logo-fiblletres-upc-color.png}
     \end{minipage}
     \end{figure}
     
     
     {\Huge \textsc{\textbf{}}\par}
     \vspace{2cm}
-    {\huge \textsc{Sistema Inteligente de Asistencia al Desarrollo Estructurado y Seguimiento de Proyectos de Software}\par}
+    {\huge \textbf{S{\LARGE ISTEMA} I{\LARGE NTELIGENTE} {\LARGE DE} A{\LARGE SISTENCIA} {\LARGE AL} D{\LARGE ESARROLLO} E{\LARGE STRUCTURADO} {\LARGE Y} S{\LARGE EGUIMIENTO} {\LARGE DE} P{\LARGE ROYECTOS} {\LARGE DE} S{\LARGE OFTWARE}}\par} % Esto es ridículisimo, pero me gusta como se ven las letras, escribo aquí el texto por si en algún momento queremos hacer ctrl + f poder encontrarlo "SISTEMA INTELIGENTE DE ASISTENCIA AL DESARROLLO ESTRUCTURADO Y SEGUIMIENTO DE PROYECTOS DE SOFTWARE"
     \vspace{2cm}
-    {\Large \textsc{\textbf{Informe de seguimiento del proyecto}}\par}
     
-    \vspace{2cm}
-    {\normalsize \textbf{Autor:} {Adrià Cebrián Ruiz}\\ \par}
-    {\normalsize \textbf{Director:} {Luis Jonás Cuervo Derqui}\\ \par}
-    {\normalsize \textbf{Ponente:} {David Garcia Soriano}\\ \par} 
-    {\normalsize \textbf{Tutor GEP:} {Joan Sarda Ferrer}\\ \par}
-    
-    \vspace{0.5cm}
-    {Facultat Informàtica de Barcelona (FIB)}\\
-    {\normalsize Menció de Computació - Grau en Enginyeria Informàtica\\ \par}
-    20 de mayo de 2026
+    {\normalsize \Large\textbf{ {Adrià Cebrián Ruiz}}\\ \par}
 
+    \vspace{2cm}
+    {\normalsize \textbf{Director:} {Luis Jonás Cuervo Derqui (Colbai Advisors SL)}\par}
+    %\vspace{0.2cm}
+    {\normalsize \textbf{Ponente:} {David García Soriano (Departamento de Ciencias de la Computación)}\par}
+    %\vspace{0.2cm}
+    {\normalsize \textbf{Titulación:} {Grado en Ingeniería Informática (Computación)}\par}
+    
+    \vspace{1.5cm}
+    
+    {\normalsize \textbf{Memoria del trabajo de fin de grado}}\par
+    {\normalsize\textbf{Facultat Informàtica de Barcelona (FIB)}}\par
+    {\normalsize \textbf{Universitat Politècnica de Catalunya (UPC) - BarcelonaTech} \par}
+    {\normalsize \textbf{22/06/2026}}
     \vfill
 \end{titlepage}
 
@@ -67,22 +71,21 @@
 \section{Introducción y contexto}
 \label{sec:contexto}
 
-El presente trabajo consiste en el diseño de un sistema de automatización para el desarrollo y diseño de proyectos de software, utilizando como base herramientas basadas en LLMs. El desarrollo de este sistema se enmarca y diseña para su uso dentro de una empresa real, \textit{Colb.ai}, dedicada principalmente a la consultoría de proyectos de software.
+El presente trabajo consiste en el diseño de un sistema de automatización para el desarrollo y diseño de proyectos de software, utilizando como base herramientas basadas en \textit{LLMs}. El desarrollo de este sistema se enmarca y diseña para su uso dentro de una empresa real, \textit{Colb.ai}, dedicada principalmente a la consultoría de proyectos de software.
 
-Con la disponibilidad de las nuevas herramientas de inteligencia artificial basadas en modelos de lenguaje, está habiendo una revolución en la forma en que desarrollamos proyectos de software. Gracias a estas herramientas, se presenta la oportunidad de automatizar muchas de las tareas que tradicionalmente habían sido llevadas a cabo exclusivamente por los desarrolladores. Sin embargo, la implementación sin un plan premeditado de estas herramientas, en muchas ocasiones ha llevado a problemas que hacen la aplicación de estas herramientas una deuda técnica más que una ayuda real, consiguiendo resultados muy rapidos al inicio de un proyecto, pero teniendo una muy mala escalabilidad y mantenibilidad a largo plazo.
+Es innegable que las herramientas de inteligencia artificial, principalmente los grandes modelos de lenguaje (\textit{LLMs}), están cambiando la forma en que se desarrollan los proyectos de software en la mayor parte de las empresas del sector. Estas tecnologías presentan la oportunidad de automatizar muchas de las tareas que tradicionalmente habían sido llevadas a cabo exclusivamente por los desarrolladores humanos. Sin embargo, a pesar de que habitualmente consigan resultados muy rápidos al comienzo del proyecto, la implementación sin un plan premeditado de estas herramientas sin una correcta supervisión humana, conlleva consecuencias como deudas técnicas, código no escalable o problemas de seguridad y eficiencia en el software a largo plazo.
 
-Lo que se busca en concreto con este proyecto, es ahorrar tiempo y recursos de la empresa, automatizando al máximo las principales etapas contenidas en el ciclo de vida del desarrollo de un proyecto software.
+Lo que se busca en concreto con este proyecto, es ahorrar tiempo y recursos de la empresa, automatizando al máximo las principales etapas contenidas en el ciclo de vida del desarrollo de un proyecto software. Pero evitando caer en los problemas mencionados, mediante la planificación y guía de los procesos.
 
-Se presentan tres apartados que automatizar en el desarrollo de este TFG:
+Se presentan tres apartados que se van a automatizar en el desarrollo de este TFG:
 \begin{enumerate}
-    \item \textbf{Toma de requerimientos y diseño de arquitectura:} Necesidades del cliente, exploración de frameworks posibles a utilizar, y diseño de la arquitectura del proyecto.
+    \item \textbf{Toma de requerimientos y diseño de arquitectura:} Necesidades del cliente, exploración de \textit{frameworks} posibles a utilizar, y diseño de la arquitectura del proyecto.
     \item \textbf{Desarrollo del código:} Asistencia de programación al desarrollador, generación de código a partir de las especificaciones. Evitando la generación de código de baja calidad, principalmente mediante la generación de documentación y especificaciones previas a la generación de código.
     \item \textbf{Seguimiento del cliente:} Generación de informes de seguimiento para el cliente, basado en las reuniones con el mismo.
 \end{enumerate}
 
 \subsection{Definición del Problema}
 \label{sec:definicion_problema}
-
 
 El principal problema que se presenta en la automatización de estas tareas, sin perder calidad, es conseguir un equilibrio entre la agilidad que ofrecen los asistentes de inteligencia artificial, y la involucración de un desarrollador que garantice que cada paso cubre con unos estándares de estructura y calidad.
 
@@ -96,7 +99,7 @@ A continuación, se detallan los problemas específicos identificados en cada ap
 La toma de requerimientos es una fase especialmente crítica en el desarrollo de software, puesto que sienta las bases de lo que va a ser el desarrollo del proyecto, el alcance de este, las técnologia a utilizar, y la arquitectura del sistema. Si esta fase no se lleva a cabo con el adecuado rigor, puede traer consecuencias muy graves para el resto del desarrollo, por lo que es extremadamente importante que si se quiere automatizar esta fase, se haga de una forma que garantice que el resultado es un documento de especificación completo, coherente y estructurado, que sirva como base sólida para la implementación posterior.
 
 \subsubsection{Desarrollo de código}
-\label{sec:ProblemaDesarrolloCodigo}
+\label{sec:ProblemaDesarrolloCodigo}    
 
 Actualmente, los asistentes de código más populares (GitHub Copilot, Cursor, etc.) operan bajo un paradigma \textit{Code-Driven}: el desarrollador describe vagamente lo que quiere y el modelo genera código de forma inmediata, sin exigir ninguna especificación previa. Este enfoque tiene dos consecuencias directas y documentadas:
 
@@ -504,7 +507,7 @@ En la siguiente página se muestra el diagrama de gantt resultante de la planifi
     \begin{figure}[htbp] % Cambiamos [H] por [htbp]
      \centering
      \title{AAA}
-     \includegraphics[width=1.5\textwidth]{Gant_Lliurament2.png}
+     \includegraphics[width=1.5\textwidth]{imagenes/Gant_Lliurament2.png}
      \caption{Diagrama de Gantt, creado con el software \textit{GanttProject}. Generación propia}
      \label{fig:gantt}
     \end{figure}
