@@ -337,7 +337,7 @@ Para garantizar el correcto seguimiento del progreso del proyecto, se emplearán
 
 \newpage
 
-\section{Descripción de las tareas}
+\section{Planificación}
 \label{sec:descripcion_tareas}
 Para garantizar el éxito en la implementación del ecosistema de agentes basados en Spec-Driven Development (SDD), se ha elaborado una planificación temporal detallada. El proyecto comenzó el 12 de febrero de 2026 (contando la documentación de esta asignatura) y tiene prevista su finalización y defensa entre el \textbf{23 de junio} hasta el \textbf{1 de julio} de 2026. Se estima que la dedicación total para la realización de este Trabajo de Fin de Grado es de aproximadamente 540 horas. La dedicación media será de unas 5 horas diarias durante los días laborables, y en ocasiones, un extra en las etapas en que se deba escribir bastante documentación.
 
@@ -532,11 +532,14 @@ En la siguiente página se muestra el diagrama de gantt resultante de la planifi
 
 \newpage
 
-\section{Gestión de riesgos: Planes alternativos y obstáculos}
+\section{Gestión del Proyecto}
+\label{sec:gestion_proyecto}
+
+\subsection{Gestión de riesgos: Planes alternativos y obstáculos}
 \label{sec:gestion_riesgos}
 Durante la planificación y ejecución de este proyecto, se han identificado diversos obstáculos potenciales inherentes al desarrollo con IA. A continuación, se detallan estos riesgos junto con sus respectivos planes alternativos, tal y como dictan las buenas prácticas de gestión ágil de proyectos. En el apartado \ref{sec:imprevistos} se cuantifica el coste económico estimado de cada uno de estos imprevistos.
 
-\subsection{Riesgo 1: Cambios repentinos en los requerimientos por parte de la empresa}
+\subsubsection{Riesgo 1: Cambios repentinos en los requerimientos por parte de la empresa}
 \label{sec:riesgo1}
 \begin{itemize}
     \item \textbf{Probabilidad:} Baja / Media (40\%)
@@ -546,7 +549,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
     \item \textbf{Recursos adicionales necesarios:} Horas extra del autor y disponibilidad del Director del proyecto para una sesión de rediseño.
 \end{itemize}
 
-\subsection{Riesgo 2: Bloqueo tecnológico (Vendor Lock-in) por cambio de precios o políticas en las APIs de los LLMs}
+\subsubsection{Riesgo 2: Bloqueo tecnológico (Vendor Lock-in) por cambio de precios o políticas en las APIs de los LLMs}
 \label{sec:riesgo2}
 \begin{itemize}
     \item \textbf{Probabilidad:} Baja / Media (30\%) \cite{opara_vendor_lockin_2016}
@@ -556,7 +559,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
     \item \textbf{Recursos adicionales necesarios:} Tiempo extra de desarrollo y posible necesidad de hardware local con mayor capacidad de procesamiento (GPU) temporal.
 \end{itemize}
 
-\subsection{Riesgo 3: Documentación interna insuficiente para la generación autónoma de código estructurado}
+\subsubsection{Riesgo 3: Documentación interna insuficiente para la generación autónoma de código estructurado}
 \label{sec:riesgo3}
 \begin{itemize}
     \item \textbf{Probabilidad:} Media (50\%)
@@ -566,7 +569,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
     \item \textbf{Recursos adicionales necesarios:} Mayor carga de programación manual y esfuerzo cognitivo por parte del autor, al delegar menos carga de implementación en la inteligencia artificial.
 \end{itemize}
 
-\subsection{Riesgo 4: Limitaciones de control sobre el flujo de orquestación en el ecosistema IDE}
+\subsubsection{Riesgo 4: Limitaciones de control sobre el flujo de orquestación en el ecosistema IDE}
 \label{sec:riesgo4}
 \begin{itemize}
     \item \textbf{Probabilidad:} Media / Alta (65\%)
@@ -576,7 +579,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
     \item \textbf{Recursos adicionales necesarios:} Tiempo de diseño de \textit{prompts} por parte del autor y elaboración de documentación del flujo de uso dirigida al desarrollador.
 \end{itemize}
 
-\subsection{Riesgo 5: Desbordamiento de la ventana de contexto en proyectos grandes}
+\subsubsection{Riesgo 5: Desbordamiento de la ventana de contexto en proyectos grandes}
 \label{sec:riesgo5}
 \begin{itemize}
     \item \textbf{Probabilidad:} Baja / Media (35\%)
@@ -586,7 +589,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
     \item \textbf{Recursos adicionales necesarios:} Ninguno adicional si se resuelve dentro de \textbf{DA4}; posibles horas extra del autor si la estrategia de aislamiento debe adelantarse a \textit{Sprints} anteriores.
 \end{itemize}
 
-\subsection{Riesgo 6: Exceso de fricción en el bucle de desarrollo por auditorías demasiado estrictas}
+\subsubsection{Riesgo 6: Exceso de fricción en el bucle de desarrollo por auditorías demasiado estrictas}
 \label{sec:riesgo6}
 \begin{itemize}
     \item \textbf{Probabilidad:} Baja (30\%)
@@ -598,11 +601,11 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 
 \newpage
 
-\section{Gestión económica}
+\subsection{Gestión económica}
 \label{sec:gestion_economica}
 En este apartado plantearemos los distintos costes que se prevé que aparecerán a lo largo del desarrollo del proyecto.
 
-\subsection{Coste del personal}
+\subsubsection{Coste del personal}
 \label{sec:coste_personal}
 Aplicando el \textit{feedback} de la anterior entrega de GEP, vamos a dividir este apartado en distintos roles. Cada uno tendrá un coste por hora determinado, y visitando el diagrama de Gantt y las tablas con las horas asignadas a cada tarea y sus recursos personales adjuntados, calcularemos el total de cada uno de estos roles. Adicionalmente, se mostrarán tanto los salarios netos como los brutos - añadida la contribución de 30\verb|%| a la Seguridad Social (SS) -, y cuando se haga la suma total de los costes, se utilizará obviamente el salario bruto.
 
@@ -623,23 +626,23 @@ Aplicando el \textit{feedback} de la anterior entrega de GEP, vamos a dividir es
     \label{tab:costes_personal}
 \end{table}
 
-\subsection{Coste por actividad}
+\subsubsection{Coste por actividad}
 \label{sec:coste_actividad}
 Repasaremos las actividades presentadas en el entregable anterior, estudiaremos los recursos humanos invertidos en dicha actividad, y calcularemos el coste de cada una.
-\subsubsection{Gestión del proyecto}
+\paragraph{Gestión del proyecto}
 \label{sec:coste_gp}
 Esta se ha estimado que durará unas 167 horas en total. Dando por hecho que se desarrolla en un 25\verb|%| por el \textit{Jefe del Proyecto} y el restante 75\verb|%| por el \textit{Investigador/Documentador}, el coste humano de esta tarea es de: 
 \begin{equation}
 \centering
 Coste GP = (0{.}25*26{.}2 \verb|€|/h + 0{.}75*20{.}85 \verb|€|/h)*167h = 3705{.}32\verb|€|
 \end{equation}
-\subsubsection{Trabajo Previo}
+\paragraph{Trabajo Previo}
 \label{sec:coste_tp}
 Esta actividad se estima que es de unas 50 horas. Requiere un estudio del estado del arte, y planificación del flujo del funcionamiento del proyecto. Las 30 horas de investigación del estudio del arte podrían estar desarolladas por el \textit{Investigador/Desarrollador}, mientras que la planificación del proyecto se llevaría a cabo por el \textit{Jefe del Proyecto}, por lo que 20 horas de su parte.
 \begin{equation}
     Coste TP = 20h * 26{.}2\verb|€/h| + 30h * 20{.}85\verb|€|/h = 1149{.}5\verb|€|
 \end{equation}
-\subsubsection{Desarrollo Ágil}
+\paragraph{Desarrollo Ágil}
 \label{sec:coste_da}
 Como se hizo en la entrega anterior, el desarrollo ágil (DA) se dividirá en DA1, DA2, DA3 y DA4. Basándonos en la naturaleza de cada iteración, repartiremos la carga de trabajo entre los distintos roles definidos para estimar su coste:
 
@@ -669,18 +672,18 @@ Sumando los costes de los cuatro \textit{Sprints}, obtenemos el coste total de l
 \begin{equation}
     Coste DA = 746\verb|€| + 836\verb|€| + 1362{.}8\verb|€| + 1312{.}2\verb|€| = 4257\verb|€|
 \end{equation}
-\subsubsection{Pruebas y Validación}
+\paragraph{Pruebas y Validación}
 \label{sec:coste_pv}
 Se estimó que en total esta tarea tomaría unas 60 horas a lo largo del proyecto. De estas 60 horas, todas ellas serian asignadas al Tester.
 
 \begin{equation}
     Coste PV = 60h * 19{.}17\verb|€|/h = 1150{.}2\verb|€|
 \end{equation}
-\subsection{Costes genéricos}
+\subsubsection{Costes genéricos}
 \label{sec:costes_genericos}
 En este apartado se referenciarán los costes que no se pueden asignar a una actividad específica, sino que están presentes a lo largo de todo el desarrollo. Estos incluyen los gastos de infraestructura, licencias de software y la amortización del equipo físico utilizado.
 
-\subsubsection{Costes estructurales}
+\paragraph{Costes estructurales}
 \label{sec:costes_estructurales}
 Los costes estructurales contemplan los gastos derivados del uso de un espacio de trabajo físico, así como los suministros básicos necesarios para llevar a cabo el desarrollo. Asumiendo que el proyecto tiene una duración estimada de 4,5 meses (desde mediados de febrero hasta principios de julio), se han estimado los siguientes gastos mensuales:
 
@@ -696,7 +699,7 @@ En total, el coste estructural mensual asciende a 240\verb|€|. Por lo tanto, e
     Coste Estructural = 4{.}5 \text{ meses} * 240\verb|€|/\text{mes} = 1080\verb|€|
 \end{equation}
 
-\subsubsection{Costes de \textit{Software}}
+\paragraph{Costes de \textit{Software}}
 \label{sec:costes_software}
 El ecosistema tecnológico del proyecto se apoya en diversas herramientas. Afortunadamente, muchas de ellas cuentan con licencias gratuitas o versiones académicas sin coste (como Git, GitHub, VSCode, Odoo y Microsoft Teams). Sin embargo, el núcleo de este TFG requiere el uso de inteligencia artificial, lo que implica costes de suscripción y consumo de APIs (Claude Code, GitHub Copilot y servicios de Microsoft Azure / OpenAI).
 
@@ -710,7 +713,7 @@ Se ha estimado un presupuesto de consumo mensual para estas herramientas:
     Coste Software = (10\verb|€|/\text{mes}+ 20\verb|€|/\text{mes} + 30\verb|€|/\text{mes}) * 4{.}5 \text{ meses} = 270\verb|€|
 \end{equation}
 
-\subsubsection{Costes de \textit{Hardware}}
+\paragraph{Costes de \textit{Hardware}}
 \label{sec:costes_hardware}
 Para calcular el coste del hardware, no se debe imputar el precio total de compra de los equipos, ya que estos no agotarán su vida útil exclusivamente con este proyecto. Se debe calcular su amortización. 
 
@@ -743,18 +746,18 @@ Sumando todos los componentes detallados en esta subsección, el total de costes
     Total Genericos = 1080\verb|€| + 270\verb|€| + 138{.}07\verb|€| = 1488{.}07\verb|€|
 \end{equation}
 
-\subsection{Contingencias e imprevistos}
+\subsubsection{Contingencias e imprevistos}
 \label{sec:imprevistos}
 En el desarrollo de cualquier proyecto de ingeniería informática, es fundamental disponer de un margen económico para hacer frente a posibles desviaciones temporales o problemas técnicos. Este margen se divide en dos partidas: las contingencias (para riesgos desconocidos) y los imprevistos (para riesgos ya identificados).
 
-\subsubsection{Contingencias}
+\paragraph{Contingencias}
 \label{sec:contingencias}
 La partida de contingencias actúa como un fondo de reserva general. Dado que el proyecto se basa en la integración de Inteligencia Artificial (LLMs) y herramientas en constante evolución, existe un grado de incertidumbre inherente. Aplicando las buenas prácticas de gestión de proyectos informáticos, se establece un margen de contingencia del 15\verb|%| sobre la suma total de los costes de personal y los costes genéricos estimados hasta el momento.
 \begin{equation}
     Coste Contingencias = (Coste Personal + Coste Genericos) * 0{.}15
 \end{equation}
 
-\subsubsection{Imprevistos}
+\paragraph{Imprevistos}
 \label{sec:imprevistos_sub}
 Por otro lado, la partida de imprevistos cuantifica económicamente los riesgos específicos que ya fueron identificados y analizados en el Entregable 2. El coste que se añade al presupuesto se calcula multiplicando el coste del plan de acción alternativo (Plan B) por la probabilidad estimada de que el riesgo ocurra.
 
@@ -801,7 +804,7 @@ Sumando los valores obtenidos, calculamos el fondo total reservado para imprevis
     Total Imprevistos = 112{.}08\verb|€| + 119{.}52\verb|€| + 0\verb|€| + 232{.}51\verb|€| + 78{.}33\verb|€| + 44{.}76\verb|€| = 587{.}20\verb|€|
 \end{equation}
 
-\subsection{Coste total}
+\subsubsection{Coste total}
 \label{sec:coste_total}
 Una vez estimados todos los gastos asociados al desarrollo del proyecto, tanto directos (personal) como indirectos (genéricos), y habiendo reservado los fondos necesarios para contingencias e imprevistos, podemos definir el presupuesto final. 
 
@@ -830,7 +833,7 @@ A continuación, se presenta una tabla resumen con la consolidación de todas la
     \label{tab:coste_total}
 \end{table}
 
-\subsection{Control de gestión}
+\subsubsection{Control de gestión}
 \label{sec:control_gestion}
 Para asegurar la viabilidad económica del Trabajo de Fin de Grado y evitar que el proyecto supere el presupuesto establecido, es estrictamente necesario aplicar un control de gestión continuo. Al utilizar una metodología ágil (SCRUM), este control se realizará al finalizar cada iteración o \textit{Sprint}, así como en las reuniones de seguimiento estipuladas.
 
@@ -883,10 +886,10 @@ El control se basará en comparar los valores estimados en este documento con lo
 
 \newpage
 
-\section{Informe de sostenibilidad}
+\subsection{Informe de sostenibilidad}
 \label{sec:sostenibilidad}
 
-\subsection{Autoevaluación de la competencia}
+\subsubsection{Autoevaluación de la competencia}
 \label{sec:autoevaluacion}
 Tras realizar la encuesta de autoevaluación, identifico un perfil técnico sólido pero con carencias formativas en la gestión de la sostenibilidad. Uno de mis puntos fuertes es el compromiso con la eficiencia técnica y el orden del código (\textit{Green Computing}), lo que garantiza soluciones robustas y mantenibles a largo plazo. No obstante, el cuestionario ha evidenciado que durante la carrera me han faltado asignaturas que profundicen en métricas de sostenibilidad medioambiental, económica y social.
 
@@ -899,7 +902,7 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 
 \textit{Nota: Los contenidos de la matriz de sostenibilidad (PPP, Vida Útil y Riesgos) para cada una de las tres dimensiones se desarrollan a continuación en un formato narrativo en lugar de tabular, para facilitar la exposición de los conceptos.}
 
-\subsection{Dimensión económica}
+\subsubsection{Dimensión económica}
 \label{sec:dimension_economica}
 % Añadir beneficios del proyecto. ¿Porque puede merecer la pena gastarse 14.000€ en esto?
 \textbf{PPP:} El coste total del proyecto se estima en 14.099,81€. Tras reflexionar sobre este presupuesto, considero que es realista y competitivo para un desarrollo de 540 horas que integra tecnologías punteras de IA. La optimización del gasto se logra mediante el uso de herramientas de código abierto y un modelo de pago por uso para las APIs, centrando la inversión en el valor del esfuerzo humano y la investigación.
@@ -913,7 +916,7 @@ El bloque donde partía con menor preparación era el de gestión económica: co
     CosteMantenimiento = 60\verb|€|/mes + 4h/mes * 14{.}92\verb|€|/h = 119{.}68\verb|€|/mes
 \end{equation}
 
-\subsection{Dimensión social}
+\subsubsection{Dimensión social}
 \label{sec:dimension_social}
 \textbf{PPP:} A nivel personal, este proyecto es un catalizador en mi formación. Me permite consolidar conocimientos técnicos en la orquestación de LLMs y, simultáneamente, adquirir habilidades críticas en gestión económica y metodologías ágiles (SCRUM), competencias que han demostrado ser tan vitales como la propia programación.
 
@@ -921,13 +924,26 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 
 \textbf{Riesgos:} El principal riesgo social es la resistencia por parte de los desarrolladores a adoptar una metodología más estructurada como SDD, especialmente en equipos con poca cultura de documentación previa. Si la herramienta se percibe como una carga burocrática en lugar de un asistente, podría ser abandonada o eludida, anulando su impacto positivo. La mitigación pasa por un diseño centrado en la usabilidad, que guie al programador en su uso.
 
-\subsection{Dimensión ambiental}
+\subsubsection{Dimensión ambiental}
 \label{sec:dimension_ambiental}
 \textbf{PPP:} El impacto ambiental proviene del consumo eléctrico de los equipos durante las 540 horas de trabajo y el uso de servidores en la nube para las APIs. Para minimizar este impacto, se ha optado por reutilizar hardware personal y planificar un desarrollo local mediante WSL que limite las peticiones innecesarias a la red durante las fases iniciales de pruebas.
 
 \textbf{Vida Útil:} Este sistema actúa como un optimizador de recursos. Mientras que las soluciones actuales fomentan un bucle de \verb|"|ensayo y error\verb|"| que multiplica las peticiones a los LLMs, el enfoque SDD permite ir \verb|"|al grano\verb|"| con código estructurado. Esto se traduce en una reducción drástica de llamadas a los modelos masivos a largo plazo, disminuyendo el consumo energético global de los centros de datos.
 
 \textbf{Riesgos:} El principal riesgo ambiental es que, aunque el sistema genere menos llamadas a los LLMs que las soluciones actuales, cada llamada sea inherentemente más compleja al tener que seguir un \textit{workflow} específico con mayor volumen de contexto. Esto podría traducirse en un consumo energético por interacción equivalente o superior al de las soluciones existentes, reduciendo el beneficio ambiental esperado.
+
+\subsection{Leyes y regulaciones}
+\label{sec:leyes_y_regulaciones}
+
+\begin{description}
+    \item \textbf{Reglamento europeo de inteligencia artificial (EU AI Act):} El sistema no pertenece a ninguna de las categorías de alto riesgo definidas en el Anexo~III del Reglamento~(UE)~2024/1689~\cite{euaiact2024}: no toma decisiones autónomas con impacto significativo sobre personas físicas, y el diseño Human-in-the-Loop garantiza supervisión humana en todas las acciones con consecuencias reales.
+
+    \item \textbf{Propiedad intelectual del código generado: } La titularidad del software generado con asistencia de IA  depende del grado de intervención humana en el proceso creativo. Un uso puramente autónomo de la IA —sin especificación previa ni revisión humana— no genera derechos de autor reconocibles. Sin embargo, cuando  la IA actúa como herramienta asistida con intervención humana documentada, los derechos corresponden al autor humano, siempre que esa intervención quede acreditada. \cite{medinatamayo2025}
+
+    El flujo Spec-Driven Development implementado en este proyecto sitúa explícitamente la generación de código en la categoría de IA asistida: el desarrollador define la especificación, valida el plan de implementación antes de que comience la escritura de código, y revisa el resultado entregado por el subagente. Toda esta intervención queda registrada en el repositorio git del proyecto, proporcionando la documentación requerida para acreditar la autoría humana.
+
+    \item \textbf{Licencias de terceros y Convenio de Cooperación Educativa: } Todas las herramientas de terceros utilizadas en el proyecto —OpenCode, code-review-graph, LangChain— disponen de licencias open source que permiten el uso comercial. Las APIs de Anthropic, Azure y Google Gemini no utilizan los datos de entrada para entrenar modelos bajo sus planes de pago. Por otro lado, Copilot sí que entrena con los datos adquiridos durante las interacciones con sus modelos -Des de el 24 de abril de 2026- de forma predeterminada, pero es una opción que se puede desactivar facilmente \cite{rodriguez2026copilot}. El TFG se desarrolla en el marco de un Convenio de Cooperación Educativa entre la UPC y Colb.AI, que regula la propiedad intelectual del trabajo y la confidencialidad de la información de la empresa. Los proyectos reales utilizados en la validación experimental están sujetos a NDA; en la memoria únicamente se reportan métricas técnicas que no exponen información confidencial del cliente.
+\end{description}
 
 \newpage
 
@@ -1054,13 +1070,11 @@ la evaluación de estas pruebas se utilizará SCC
 \cite{boyter2025scc}, una herramienta open source de análisis 
 estático que calcula métricas de calidad del código como 
 líneas de código, complejidad y cobertura, ya integrada en el 
-sistema. El módulo de seguimiento del cliente está pendiente 
-de implementación; se prevé que sea relativamente sencillo 
-dado que su estructura es análoga a la del módulo de toma de 
-requerimientos: recibe una transcripción o resumen como entrada 
-y produce un documento de salida con un formato predefinido. 
-El estado detallado de cada módulo se recoge en el 
-capítulo \ref{sec:estado_implementacion}.
+sistema. El módulo de seguimiento del cliente está pendiente
+de implementación; se prevé que sea relativamente sencillo
+dado que su estructura es análoga a la del módulo de toma de
+requerimientos: recibe una transcripción o resumen como entrada
+y produce un documento de salida con un formato predefinido.
 
 \newpage
 
@@ -1375,11 +1389,36 @@ La plantilla de repositorio que colbPowers espera encontrar está diseñada para
 
 Esta aproximación resuelve uno de los problemas identificados en el análisis del estado del arte: a diferencia de herramientas como Spec Kit, que exigen documentación exhaustiva incluso para cambios pequeños, colbPowers adapta el nivel de formalismo a la magnitud de la tarea. Una corrección menor puede implementarse directamente con el agente; una nueva feature importante pasará por el ciclo completo de especificación, planificación y revisión. El agente decide el nivel de rigor apropiado en cada caso, basándose en el contexto del proyecto y la magnitud del cambio solicitado.
 
-\subsection{Evaluación y Resultados}
+\newpage
+
+\section{Seguimiento del Cliente}
+\label{sec:seguimiento_cliente}
+La tercera dimensión del proyecto aborda la automatización del seguimiento posterior a las reuniones periódicas con el cliente. El objetivo es minimizar el tiempo dedicado a la redacción de documentación de seguimiento y garantizar que los acuerdos alcanzados en cada reunión queden recogidos de forma estructurada y accesible para ambas partes.
+
+\subsection{Generación de documentación con Claude Cowork}
+\label{sec:generacion_doc_claude_cowork}
+El flujo implementado mediante Claude Cowork se integra directamente con el proceso de reunión. Al finalizar cada reunión de seguimiento con el cliente, la transcripción o el resumen de lo acordado se proporciona como entrada a una skill de Claude Cowork desarrollada específicamente para este propósito. La skill procesa la información y genera de forma automática un documento Word estructurado que incluye los siguientes apartados:
+\begin{itemize}
+    \item Resumen de los temas tratados en la reunión.
+    \item Decisiones tomadas y acuerdos alcanzados.
+    \item Tareas asignadas al equipo de Colb.Ai con sus plazos correspondientes.
+    \item Tareas o acciones que corresponden al cliente.
+\end{itemize}
+Este documento se genera y está disponible para ser enviado al cliente en el mismo momento en que finaliza la reunión, eliminando la latencia habitual en la producción de este tipo de documentación.
+
+La skill aprovecha las capacidades nativas de Claude Cowork para acceder a herramientas de gestión de archivos en el entorno de escritorio, lo que le permite escribir directamente el documento en el directorio de trabajo del proyecto, integrándose de forma transparente en el flujo de gestión documental de la empresa.
+
+\subsection{Alternativa de código abierto}
+\label{sec:alternativa_codigo_abierto}
+De forma análoga al enfoque adoptado en la toma de requerimientos, se dispone de una alternativa de código abierto e independiente para los casos en que no se desee depender de la plataforma Claude Cowork. Esta alternativa se basa en una aplicación que combina un modelo de lenguaje de gran tamaño, accedido mediante API, con la biblioteca python-docx para la generación de documentos Word con formato estructurado. El flujo de la aplicación es equivalente al de la skill: a partir de la transcripción de la reunión, el modelo genera los distintos apartados del documento de seguimiento con un formato definido, que son entonces volcados al documento Word mediante la biblioteca de generación. Aunque la integración es menos fluida que la ofrecida por Claude Cowork, esta alternativa es igualmente válida para los casos de uso habituales y no incurre en costes de suscripción adicionales más allá del consumo de la API del modelo.
+
+\newpage
+
+\section{Experimentos y evaluación}
 \label{sec:evaluacion_resultados}
 Con el objetivo de evaluar empíricamente el impacto de las herramientas desarrolladas, se ha diseñado un experimento controlado que compara tres condiciones de implementación sobre dos casos de uso distintos. Los experimentos están planificados y pendientes de ejecución; esta sección describe el diseño experimental y la estructura de resultados que se completará con los datos obtenidos.
 
-\subsubsection{Diseño experimental}
+\subsection{Diseño experimental}
 \label{sec:diseno_experimental}
 El experimento sigue un diseño de cuatro condiciones (A/B/C/D) con cuatro repeticiones por condición (n=3), ejecutadas con temperatura 0 para minimizar la varianza estocástica del modelo. Las cuatro condiciones son:
 
@@ -1404,39 +1443,39 @@ D & Nativas + colbPowers + code-review-graph & Combinación completa. El agente 
 
 Las métricas recogidas en cada ejecución son: tokens de entrada consumidos, tokens de salida consumidos, número total de tool calls, número de tool calls específicas de code-review-graph, cobertura de la implementación (porcentaje de ítems del enunciado correctamente implementados), y número de regresiones introducidas (cambios en funcionalidad no solicitada).
 
-\paragraph{Metodología:} Para reducir al máximo los sesgos de 
-confirmación y manipulación involuntaria por parte del experimentador, 
-se aplica un protocolo de intervención mínima con las siguientes 
+\paragraph{Metodología:} Para reducir al máximo los sesgos de
+confirmación y manipulación involuntaria por parte del experimentador,
+se aplica un protocolo de intervención mínima con las siguientes
 reglas, ordenadas por prioridad:
 
 \begin{itemize}
-    \item \textbf{(P1) Seguridad ante todo:} El experimentador puede 
-    interrumpir al agente en cualquier momento si detecta que está 
-    a punto de ejecutar una acción destructiva o peligrosa 
+    \item \textbf{(P1) Seguridad ante todo:} El experimentador puede
+    interrumpir al agente en cualquier momento si detecta que está
+    a punto de ejecutar una acción destructiva o peligrosa
     (eliminación de archivos, sobrescritura de datos críticos, etc.).
-    
-    \item \textbf{(P2) Solo responder lo que el agente solicite:} 
-    El experimentador únicamente responde preguntas directas del 
-    agente o acepta/deniega las solicitudes de permiso que este 
-    realice explícitamente. No se ofrece información ni correcciones 
+
+    \item \textbf{(P2) Solo responder lo que el agente solicite:}
+    El experimentador únicamente responde preguntas directas del
+    agente o acepta/deniega las solicitudes de permiso que este
+    realice explícitamente. No se ofrece información ni correcciones
     de forma proactiva.
-    
-    \item \textbf{(P3) Feedback sobre pruebas manuales:} Si el 
-    agente solicita validación o el experimentador detecta un fallo 
-    durante las pruebas manuales de la implementación, puede 
-    comunicar el resultado observado (por ejemplo, que la 
-    funcionalidad no se comporta como se espera), sin indicar la 
+
+    \item \textbf{(P3) Feedback sobre pruebas manuales:} Si el
+    agente solicita validación o el experimentador detecta un fallo
+    durante las pruebas manuales de la implementación, puede
+    comunicar el resultado observado (por ejemplo, que la
+    funcionalidad no se comporta como se espera), sin indicar la
     causa ni cómo corregirlo.
-    
-    \item \textbf{(P4) Pistas como último recurso:} Solo en caso 
-    de bloqueo prolongado sin progreso, el experimentador puede 
-    proporcionar una pista mínima que desbloquee al agente, dejando 
+
+    \item \textbf{(P4) Pistas como último recurso:} Solo en caso
+    de bloqueo prolongado sin progreso, el experimentador puede
+    proporcionar una pista mínima que desbloquee al agente, dejando
     constancia de la intervención en el registro del experimento.
 \end{itemize}
 
-\subsubsection{Caso 1: Aplicación Flutter}
+\subsection{Caso 1: Aplicación Flutter}
 \label{sec:caso1_confortmental}
-El primer experimento se llevará a cabo sobre un repositorio real de Colb.Ai. Con tal de respetar las políticas de confidencialidad, la descripción del proyecto será lo suficientemente detallada como para entender el contexto, pero se omitirán ciertos detalles con tal de anonimizarlo. 
+El primer experimento se llevará a cabo sobre un repositorio real de Colb.Ai. Con tal de respetar las políticas de confidencialidad, la descripción del proyecto será lo suficientemente detallada como para entender el contexto, pero se omitirán ciertos detalles con tal de anonimizarlo.
 
 El proyecto consiste en una aplicación de escritorio desarrollada con el SDK \textit{Flutter}. El experimento consistirá en pedirle al asistente de IA que haga una lista de cambios considerablemente extensa a lo largo de las distintas páginas de la aplicación; principalmente cambios visuales. La hipótesis inicial es que un agente de código básico, se olvida rápidamente de muchos de los cambios pedidos (ya sea por alucinaciones o por ventana de contexto), en cambio agentes que siguen la metodología estructurada de colbPowers, documentando los cambios exactos que deben hacer antes de hacerlos, no sufrirán de este problema. Además, también se espera ver una reducción de consumo de tokens en las configuraciones que utilizan code-review-graph, puesto que en teoría esta herramienta es ideal para una tarea como esta, que requiere explorar distintos archivos del repositorio.
 
@@ -1460,18 +1499,18 @@ Cobertura (media \%) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}
 \label{tab:caso1_resultados}
 \end{table}
 
-\subsubsection{Caso 2: Aplicación de simulación 3D}
+\subsection{Caso 2: Aplicación de simulación 3D}
 \label{sec:caso2_simulacion3d}
 El segundo caso de uso aplica el experimento sobre una tarea de nueva implementación desde cero: el desarrollo de una aplicación de simulación 3D en la que, al pulsar una tecla, aparece una esfera en el entorno tridimensional; al hacer clic sobre ella, la esfera explota en una animación de partículas. A diferencia del caso anterior (modificación de una base de código existente), este caso evalúa el comportamiento de las herramientas en la creación de funcionalidad nueva.
 
-Este caso es especialmente relevante para evaluar colbPowers, ya que las condiciones C y D 
-pueden ejecutar el ciclo completo de la metodología SDD: primero se generan de forma 
-interactiva con el usuario los documentos de constitución y \textit{features} del 
-proyecto, y a continuación se genera la especificación técnica de la funcionalidad 
-a implementar. En todo momento el proceso sigue el principio de \textit{Human-in-the-Loop}: 
-el usuario participa en cada etapa y puede controlar el flujo. La hipótesis es que 
-las condiciones C y D producen código de mayor calidad estructural (menor complejidad 
-ciclomática, mejor índice de mantenibilidad) y mayor trazabilidad entre las 
+Este caso es especialmente relevante para evaluar colbPowers, ya que las condiciones C y D
+pueden ejecutar el ciclo completo de la metodología SDD: primero se generan de forma
+interactiva con el usuario los documentos de constitución y \textit{features} del
+proyecto, y a continuación se genera la especificación técnica de la funcionalidad
+a implementar. En todo momento el proceso sigue el principio de \textit{Human-in-the-Loop}:
+el usuario participa en cada etapa y puede controlar el flujo. La hipótesis es que
+las condiciones C y D producen código de mayor calidad estructural (menor complejidad
+ciclomática, mejor índice de mantenibilidad) y mayor trazabilidad entre las
 decisiones de diseño y el código implementado.
 
 \begin{table}[H]
@@ -1494,29 +1533,6 @@ Complejidad ciclomática (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIE
 \caption{Resultados Caso 2: Aplicación de simulación 3D}
 \label{tab:caso2_resultados}
 \end{table}
-
-\newpage
-
-\section{Seguimiento del Cliente}
-\label{sec:seguimiento_cliente}
-La tercera dimensión del proyecto aborda la automatización del seguimiento posterior a las reuniones periódicas con el cliente. El objetivo es minimizar el tiempo dedicado a la redacción de documentación de seguimiento y garantizar que los acuerdos alcanzados en cada reunión queden recogidos de forma estructurada y accesible para ambas partes.
-
-\subsection{Generación de documentación con Claude Cowork}
-\label{sec:generacion_doc_claude_cowork}
-El flujo implementado mediante Claude Cowork se integra directamente con el proceso de reunión. Al finalizar cada reunión de seguimiento con el cliente, la transcripción o el resumen de lo acordado se proporciona como entrada a una skill de Claude Cowork desarrollada específicamente para este propósito. La skill procesa la información y genera de forma automática un documento Word estructurado que incluye los siguientes apartados:
-\begin{itemize}
-    \item Resumen de los temas tratados en la reunión.
-    \item Decisiones tomadas y acuerdos alcanzados.
-    \item Tareas asignadas al equipo de Colb.Ai con sus plazos correspondientes.
-    \item Tareas o acciones que corresponden al cliente.
-\end{itemize}
-Este documento se genera y está disponible para ser enviado al cliente en el mismo momento en que finaliza la reunión, eliminando la latencia habitual en la producción de este tipo de documentación.
-
-La skill aprovecha las capacidades nativas de Claude Cowork para acceder a herramientas de gestión de archivos en el entorno de escritorio, lo que le permite escribir directamente el documento en el directorio de trabajo del proyecto, integrándose de forma transparente en el flujo de gestión documental de la empresa.
-
-\subsection{Alternativa de código abierto}
-\label{sec:alternativa_codigo_abierto}
-De forma análoga al enfoque adoptado en la toma de requerimientos, se dispone de una alternativa de código abierto e independiente para los casos en que no se desee depender de la plataforma Claude Cowork. Esta alternativa se basa en una aplicación que combina un modelo de lenguaje de gran tamaño, accedido mediante API, con la biblioteca python-docx para la generación de documentos Word con formato estructurado. El flujo de la aplicación es equivalente al de la skill: a partir de la transcripción de la reunión, el modelo genera los distintos apartados del documento de seguimiento con un formato definido, que son entonces volcados al documento Word mediante la biblioteca de generación. Aunque la integración es menos fluida que la ofrecida por Claude Cowork, esta alternativa es igualmente válida para los casos de uso habituales y no incurre en costes de suscripción adicionales más allá del consumo de la API del modelo.
 
 \newpage
 
@@ -1544,61 +1560,6 @@ En este apartado se presentan las asignaturas de las cuales se han podido utiliz
     \item \textbf{Introducción a la ingeniería del software (IES):} La base proporcionada en esta asignatura sobre requisitos de software, diseño de sistemas y creación de diagramas de flujo, fueron extremadamente útiles tanto para planificar el sistema implementado en este proyecto.
 \end{itemize}
 
-\newpage
-\section{Leyes y regulaciones}
-\label{sec:leyes_y_regulaciones}
-
-\begin{description}     
-    \item \textbf{Reglamento europeo de inteligencia artificial (EU AI Act):} El sistema no pertenece a ninguna de las categorías de alto riesgo definidas en el Anexo~III del Reglamento~(UE)~2024/1689~\cite{euaiact2024}: no toma decisiones autónomas con impacto significativo sobre personas físicas, y el diseño Human-in-the-Loop garantiza supervisión humana en todas las acciones con consecuencias reales.
-     
-    \item \textbf{Propiedad intelectual del código generado: } La titularidad del software generado con asistencia de IA  depende del grado de intervención humana en el proceso creativo. Un uso puramente autónomo de la IA —sin especificación previa ni revisión humana— no genera derechos de autor reconocibles. Sin embargo, cuando  la IA actúa como herramienta asistida con intervención humana documentada, los derechos corresponden al autor humano, siempre que esa intervención quede acreditada. \cite{medinatamayo2025}
-    
-    El flujo Spec-Driven Development implementado en este proyecto sitúa explícitamente la generación de código en la categoría de IA asistida: el desarrollador define la especificación, valida el plan de implementación antes de que comience la escritura de código, y revisa el resultado entregado por el subagente. Toda esta intervención queda registrada en el repositorio git del proyecto, proporcionando la documentación requerida para acreditar la autoría humana.
-
-    \item \textbf{Licencias de terceros y Convenio de Cooperación Educativa: } Todas las herramientas de terceros utilizadas en el proyecto —OpenCode, code-review-graph, LangChain— disponen de licencias open source que permiten el uso comercial. Las APIs de Anthropic, Azure y Google Gemini no utilizan los datos de entrada para entrenar modelos bajo sus planes de pago. Por otro lado, Copilot sí que entrena con los datos adquiridos durante las interacciones con sus modelos -Des de el 24 de abril de 2026- de forma predeterminada, pero es una opción que se puede desactivar facilmente \cite{rodriguez2026copilot}. El TFG se desarrolla en el marco de un Convenio de Cooperación Educativa entre la UPC y Colb.AI, que regula la propiedad intelectual del trabajo y la confidencialidad de la información de la empresa. Los proyectos reales utilizados en la validación experimental están sujetos a NDA; en la memoria únicamente se reportan métricas técnicas que no exponen información confidencial del cliente.
-\end{description}
-\newpage
-
-\section{Estado Actual de la Implementación}
-\label{sec:estado_implementacion}
-Este capítulo describe el estado de desarrollo de cada uno de los tres módulos del proyecto en el momento de redacción de esta memoria. El objetivo es ofrecer una fotografía honesta del grado de madurez de cada componente, distinguiendo entre lo que está operativo, lo que está en proceso iterativo y lo que queda pendiente como trabajo futuro.
-
-\subsection{Toma de Requerimientos}
-\label{sec:estado_toma_requerimientos}
-
-\subsubsection{Módulo de transcripción}
-\label{sec:estado_modulo_transcripcion}
-El módulo de transcripción para reuniones presenciales, basado en Azure Speech Service con diarización, está implementado e integrado en la aplicación. La transcripción automática para reuniones telemáticas no requiere implementación propia, dado que se delega en las herramientas nativas de las plataformas de videoconferencia (Microsoft Teams, Google Meet, Zoom).
-
-\subsubsection{Implementación propia (aplicación Python)}
-\label{sec:estado_implementacion_python}
-La aplicación Python de toma de requerimientos está en un estado avanzado de desarrollo. El pipeline completo está implementado y ha sido validado sobre un proyecto real de Colb.Ai con resultados satisfactorios: el sistema generó un plan de implementación estructurado con propuesta tecnológica justificada y lista de issues de GitHub accionables. Está pendiente una revisión final del código para consolidar casos límite y asegurar la robustez del módulo antes de considerarlo completamente terminado.
-
-La skill de Claude Cowork para toma de requerimientos está igualmente operativa y ha sido utilizada en proyectos de la empresa.
-
-\textbf{Estado:} Funcional. Pendiente de revisión y validación final.
-
-\subsection{Spec Driven Development: colbPowers}
-\label{sec:estado_colbpowers}
-
-\textbf{Métricas de calidad de código:} La integración de las métricas ya está cubierta. Gracias al repo opensource de SCC.
-
-\textbf{Estado:} Funcional. En proceso iterativo activo.
-
-\subsection{Seguimiento del Cliente}
-\label{sec:estado_seguimiento_cliente}
-
-\subsubsection{Skill de Claude Cowork}
-\label{sec:estado_skill_claude_cowork}
-La skill de Claude Cowork para la generación automática de documentación de seguimiento post-reunión está implementada y en uso activo. Al finalizar cada reunión con el cliente, la skill procesa la transcripción y genera un documento Word estructurado con el resumen de los temas tratados, las decisiones acordadas y los próximos pasos para ambas partes. La skill ha sido utilizada en reuniones reales de Colb.Ai con resultado satisfactorio.
-
-\subsubsection{Alternativa propia}
-\label{sec:estado_alternativa_propia}
-La implementación propia basada en python-docx (descrita en la sección~\ref{sec:alternativa_codigo_abierto}) está pendiente de desarrollo. En el período cubierto por esta memoria, la skill de Claude Cowork ha cubierto completamente la necesidad operativa, por lo que la alternativa propia queda registrada como trabajo futuro.
-
-\textbf{Estado:} Skill de Claude Cowork operativa. Alternativa propia pendiente de implementación.
-
-\newpage
 
 \addcontentsline{toc}{section}{Referencias}
 \bibliographystyle{plain}

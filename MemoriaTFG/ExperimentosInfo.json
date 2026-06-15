@@ -1,0 +1,3391 @@
+{
+    "ConfortMental":
+        {
+            "Opencode":
+            {
+                "colbPowers":
+                {
+                    "colbPowers1":
+                    {
+                        "session ID": "ses_1469dd06cffeQ7XZFuwlS0Y51y",
+                        "token_usage": "1",
+                        "github_branch":"D1_OPENCODE_DeepSeekV4-Flash",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "read": 36,
+                            "bash": 20,
+                            "question": 13,
+                            "todowrite": 9,
+                            "edit": 9,
+                            "task": 8,
+                            "glob": 6,
+                            "skill": 4,
+                            "write": 3,
+                            "TOTAL": 108
+                        },
+                        "subagents": {
+                            "ses_1464e4199ffeB0w5NFPkSfHnRp": {
+                                "read": 1,
+                                "TOTAL": 1
+                            },
+                            "ses_14651182cffe8Ka60S2njXFhhK": {
+                                "read": 7,
+                                "todowrite": 4,
+                                "bash": 4,
+                                "write": 1,
+                                "TOTAL": 16
+                            },
+                            "ses_1465f3ff0ffePPSCfBVG70V1h9": {
+                                "read": 2,
+                                "TOTAL": 2
+                            },
+                            "ses_146654e33fferdQYTzGvRwrwX0": {
+                                "read": 2,
+                                "bash": 2,
+                                "skill": 1,
+                                "grep": 1,
+                                "TOTAL": 6
+                            },
+                            "ses_1467484b7ffe7JdwRlg5U6c2M7": {
+                                "read": 10,
+                                "edit": 9,
+                                "bash": 6,
+                                "grep": 1,
+                                "write": 1,
+                                "TOTAL": 27
+                            },
+                            "ses_1467920b5ffeCxOUX4zamlNWzn": {
+                                "read": 2,
+                                "TOTAL": 2
+                            },
+                            "ses_14679d951ffe6I232wNYzKNTpT": {
+                                "read": 1,
+                                "TOTAL": 1
+                            },
+                            "ses_146841f32ffeKAkR7WieXHeDew": {
+                                "bash": 12,
+                                "todowrite": 5,
+                                "read": 5,
+                                "glob": 5,
+                                "edit": 4,
+                                "write": 1,
+                                "grep": 1,
+                                "TOTAL": 33
+                            }
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 10639101,
+                            "input": 5404509,
+                            "output": 66811,
+                            "reasoning": 20517,
+                            "cache": {
+                                "write": 0,
+                                "read": 5147264
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 7994363,
+                            "input": 3936775,
+                            "output": 44176,
+                            "reasoning": 7396,
+                            "cache": {
+                                "write": 0,
+                                "read": 4006016
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "ses_1464e4199ffeB0w5NFPkSfHnRp": {
+                                "total": 48237,
+                                "input": 28190,
+                                "output": 394,
+                                "reasoning": 581,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 19072
+                                }
+                            },
+                            "ses_14651182cffe8Ka60S2njXFhhK": {
+                                "total": 380263,
+                                "input": 208835,
+                                "output": 3741,
+                                "reasoning": 391,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 167296
+                                }
+                            },
+                            "ses_1465f3ff0ffePPSCfBVG70V1h9": {
+                                "total": 51355,
+                                "input": 19010,
+                                "output": 767,
+                                "reasoning": 858,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 30720
+                                }
+                            },
+                            "ses_146654e33fferdQYTzGvRwrwX0": {
+                                "total": 141219,
+                                "input": 61638,
+                                "output": 796,
+                                "reasoning": 2753,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 76032
+                                }
+                            },
+                            "ses_1467484b7ffe7JdwRlg5U6c2M7": {
+                                "total": 999828,
+                                "input": 574180,
+                                "output": 7331,
+                                "reasoning": 2957,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 415360
+                                }
+                            },
+                            "ses_1467920b5ffeCxOUX4zamlNWzn": {
+                                "total": 66629,
+                                "input": 42795,
+                                "output": 736,
+                                "reasoning": 1466,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 21632
+                                }
+                            },
+                            "ses_14679d951ffe6I232wNYzKNTpT": {
+                                "total": 55063,
+                                "input": 28434,
+                                "output": 542,
+                                "reasoning": 3175,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 22912
+                                }
+                            },
+                            "ses_146841f32ffeKAkR7WieXHeDew": {
+                                "total": 902144,
+                                "input": 504652,
+                                "output": 8328,
+                                "reasoning": 940,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 388224
+                                }
+                            }
+                        }
+                    },
+                    "colbPowers2":
+                    {
+                        "session ID": "ses_1464a3ad1ffer9vAFF66A9RIMC",
+                        "token_usage": "1",
+                        "github_branch":"D2_OPENCODE_DeepSeekV4-Flash",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "read": 24,
+                            "todowrite": 11,
+                            "edit": 11,
+                            "task": 10,
+                            "bash": 6,
+                            "skill": 4,
+                            "glob": 2,
+                            "write": 2,
+                            "question": 1,
+                            "TOTAL": 71
+                        },
+                        "code-review-graph_calls": 0,
+                        "subagents": {
+                            "ses_146152480ffeMve6xrzo31dD5u": {
+                                "read": 5,
+                                "TOTAL": 5
+                            },
+                            "ses_146178389ffefbW66KPKHg81dd": {
+                                "read": 1,
+                                "TOTAL": 1
+                            },
+                            "ses_1461a90b2ffeDh5kjz7d09MuAC": {
+                                "read": 5,
+                                "bash": 3,
+                                "skill": 1,
+                                "grep": 1,
+                                "write": 1,
+                                "code-review-graph_build_or_update_graph_tool": 1,
+                                "TOTAL": 12
+                            },
+                            "ses_14625aebbffeGA26BowKIGV3OU": {
+                                "read": 6,
+                                "grep": 2,
+                                "bash": 1,
+                                "glob": 1,
+                                "TOTAL": 10
+                            },
+                            "ses_146262827ffeHNvgZ3JHJws3oV": {
+                                "read": 1,
+                                "TOTAL": 1
+                            },
+                            "ses_1462cf8dbffe3C47QX51c2PxjJ": {
+                                "read": 10,
+                                "bash": 9,
+                                "todowrite": 3,
+                                "skill": 2,
+                                "code-review-graph_build_or_update_graph_tool": 1,
+                                "write": 1,
+                                "edit": 1,
+                                "TOTAL": 27
+                            },
+                            "ses_14630bd10ffetSHlteCfI2Urw2": {
+                                "read": 9,
+                                "glob": 6,
+                                "bash": 2,
+                                "TOTAL": 17
+                            },
+                            "ses_14632aa7bffenE9uA86AS5228j": {
+                                "read": 4,
+                                "bash": 4,
+                                "glob": 1,
+                                "TOTAL": 9
+                            },
+                            "ses_1463a4324ffeokfu3xsKfc8jLx": {
+                                "bash": 13,
+                                "read": 12,
+                                "edit": 5,
+                                "glob": 4,
+                                "todowrite": 4,
+                                "grep": 2,
+                                "skill": 1,
+                                "write": 1,
+                                "TOTAL": 42
+                            },
+                            "ses_146495863ffemhZ35aJDO9F3Qd": {
+                                "read": 44,
+                                "glob": 5,
+                                "TOTAL": 49
+                            }
+                        },
+                        "total_tokens": {
+                            "total": 10548542,
+                            "input": 4180933,
+                            "output": 69763,
+                            "reasoning": 26614,
+                            "cache": {
+                                "write": 0,
+                                "read": 6271232
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 6433885,
+                            "input": 2604001,
+                            "output": 37633,
+                            "reasoning": 6011,
+                            "cache": {
+                                "write": 0,
+                                "read": 3786240
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "ses_146152480ffeMve6xrzo31dD5u": {
+                                "total": 81118,
+                                "input": 55389,
+                                "output": 838,
+                                "reasoning": 2491,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 22400
+                                }
+                            },
+                            "ses_146178389ffefbW66KPKHg81dd": {
+                                "total": 48594,
+                                "input": 25166,
+                                "output": 296,
+                                "reasoning": 1500,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 21632
+                                }
+                            },
+                            "ses_1461a90b2ffeDh5kjz7d09MuAC": {
+                                "total": 303700,
+                                "input": 103783,
+                                "output": 3510,
+                                "reasoning": 567,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 195840
+                                }
+                            },
+                            "ses_14625aebbffeGA26BowKIGV3OU": {
+                                "total": 203194,
+                                "input": 103610,
+                                "output": 1928,
+                                "reasoning": 4088,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 93568
+                                }
+                            },
+                            "ses_146262827ffeHNvgZ3JHJws3oV": {
+                                "total": 49928,
+                                "input": 47988,
+                                "output": 348,
+                                "reasoning": 1592,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 0
+                                }
+                            },
+                            "ses_1462cf8dbffe3C47QX51c2PxjJ": {
+                                "total": 952805,
+                                "input": 464602,
+                                "output": 6225,
+                                "reasoning": 2874,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 479104
+                                }
+                            },
+                            "ses_14630bd10ffetSHlteCfI2Urw2": {
+                                "total": 249640,
+                                "input": 64601,
+                                "output": 2611,
+                                "reasoning": 2332,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 180096
+                                }
+                            },
+                            "ses_14632aa7bffenE9uA86AS5228j": {
+                                "total": 152623,
+                                "input": 94292,
+                                "output": 1364,
+                                "reasoning": 1671,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 55296
+                                }
+                            },
+                            "ses_1463a4324ffeokfu3xsKfc8jLx": {
+                                "total": 1591701,
+                                "input": 460517,
+                                "output": 8110,
+                                "reasoning": 2946,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 1120128
+                                }
+                            },
+                            "ses_146495863ffemhZ35aJDO9F3Qd": {
+                                "total": 481354,
+                                "input": 156984,
+                                "output": 6900,
+                                "reasoning": 542,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 316928
+                                }
+                            }
+                        }
+                    },
+                    "colbPowers3":
+                    {
+                        "session ID": "ses_14645c40bffekP5GSJnsrSlBTi",
+                        "token_usage": "1",
+                        "github_branch":"D3_OPENCODE_DeepSeekV4-Flash",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "read": 53,
+                            "task": 10,
+                            "bash": 10,
+                            "todowrite": 8,
+                            "question": 6,
+                            "edit": 5,
+                            "skill": 3,
+                            "write": 2,
+                            "grep": 1,
+                            "TOTAL": 98
+                        },
+                        "code-review-graph_calls": 0,
+                        "subagents": {
+                            "ses_14626da50ffet0oSj13G6cB5g6": {
+                                "read": 3,
+                                "glob": 2,
+                                "bash": 1,
+                                "TOTAL": 6
+                            },
+                            "ses_14629cd32ffePhCe1Vt7MF1uZy": {
+                                "read": 3,
+                                "glob": 2,
+                                "TOTAL": 5
+                            },
+                            "ses_1462d3c81ffe3Ewr91wnJEf7gh": {
+                                "bash": 6,
+                                "edit": 6,
+                                "read": 5,
+                                "write": 1,
+                                "TOTAL": 18
+                            },
+                            "ses_1462e6c2dffeokzRNae4LKtcLd": {
+                                "read": 2,
+                                "bash": 1,
+                                "TOTAL": 3
+                            },
+                            "ses_1462f1573ffeHoMsY4NVe1rMSE": {
+                                "read": 1,
+                                "grep": 1,
+                                "TOTAL": 2
+                            },
+                            "ses_1463204a1ffemhefW1Y0fj01QW": {
+                                "bash": 8,
+                                "read": 5,
+                                "edit": 4,
+                                "skill": 2,
+                                "write": 1,
+                                "TOTAL": 20
+                            },
+                            "ses_14634cf89ffev0Y6MVOeoq5kWv": {
+                                "read": 4,
+                                "bash": 2,
+                                "glob": 2,
+                                "TOTAL": 8
+                            },
+                            "ses_146358493ffesv0ok7wMMOpSc3": {
+                                "read": 1,
+                                "TOTAL": 1
+                            },
+                            "ses_14638b5cfffe7Icat5S1gLTKeW": {
+                                "read": 10,
+                                "bash": 8,
+                                "edit": 3,
+                                "glob": 2,
+                                "write": 1,
+                                "TOTAL": 24
+                            }
+                        },
+                        "total_tokens": {
+                            "total": 6951630,
+                            "input": 2610324,
+                            "output": 54956,
+                            "reasoning": 17038,
+                            "cache": {
+                                "write": 0,
+                                "read": 4269312
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 4799074,
+                            "input": 2032795,
+                            "output": 34582,
+                            "reasoning": 5041,
+                            "cache": {
+                                "write": 0,
+                                "read": 2726656
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "ses_14626da50ffet0oSj13G6cB5g6": {
+                                "total": 110709,
+                                "input": 8358,
+                                "output": 919,
+                                "reasoning": 1080,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 100352
+                                }
+                            },
+                            "ses_14629cd32ffePhCe1Vt7MF1uZy": {
+                                "total": 100808,
+                                "input": 51421,
+                                "output": 761,
+                                "reasoning": 754,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 47872
+                                }
+                            },
+                            "ses_1462d3c81ffe3Ewr91wnJEf7gh": {
+                                "total": 374870,
+                                "input": 138199,
+                                "output": 4410,
+                                "reasoning": 1221,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 231040
+                                }
+                            },
+                            "ses_1462e6c2dffeokzRNae4LKtcLd": {
+                                "total": 95323,
+                                "input": 49551,
+                                "output": 644,
+                                "reasoning": 1352,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 43776
+                                }
+                            },
+                            "ses_1462f1573ffeHoMsY4NVe1rMSE": {
+                                "total": 50349,
+                                "input": 26540,
+                                "output": 536,
+                                "reasoning": 873,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 22400
+                                }
+                            },
+                            "ses_1463204a1ffemhefW1Y0fj01QW": {
+                                "total": 435403,
+                                "input": 96591,
+                                "output": 5079,
+                                "reasoning": 1317,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 332416
+                                }
+                            },
+                            "ses_14634cf89ffev0Y6MVOeoq5kWv": {
+                                "total": 146133,
+                                "input": 46189,
+                                "output": 1307,
+                                "reasoning": 1613,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 97024
+                                }
+                            },
+                            "ses_146358493ffesv0ok7wMMOpSc3": {
+                                "total": 51509,
+                                "input": 27596,
+                                "output": 383,
+                                "reasoning": 1130,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 22400
+                                }
+                            },
+                            "ses_14638b5cfffe7Icat5S1gLTKeW": {
+                                "total": 787452,
+                                "input": 133084,
+                                "output": 6335,
+                                "reasoning": 2657,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 645376
+                                }
+                            }
+                        }
+                    }
+                },
+                "baseline":
+                {
+                    "baseline1":
+                    {
+                        "session ID": "ses_1460986afffeErS6wXDiXitXkw",
+                        "token_usage": "1",
+                        "github_branch":"1",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "read": 41,
+                            "bash": 15,
+                            "edit": 7,
+                            "todowrite": 4,
+                            "write": 3,
+                            "glob": 2,
+                            "task": 1,
+                            "grep": 1,
+                            "TOTAL": 74
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 3666580,
+                            "input": 1146676,
+                            "output": 23336,
+                            "reasoning": 9016,
+                            "cache": {
+                                "write": 0,
+                                "read": 2487552
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 3666580,
+                            "input": 1146676,
+                            "output": 23336,
+                            "reasoning": 9016,
+                            "cache": {
+                                "write": 0,
+                                "read": 2487552
+                            }
+                        },
+                        "per_subagent_tokens": {}
+                    },
+                    "baseline2":
+                    {
+                        "session ID": "ses_1461bda54ffeAc3YmdRKuIO66v",
+                        "token_usage": "1",
+                        "github_branch":"1",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls":
+                        {
+                            "read": 34,
+                            "edit": 14,
+                            "bash": 9,
+                            "glob": 5,
+                            "write": 3,
+                            "todowrite": 2,
+                            "task": 1,
+                            "TOTAL": 68
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 2760046,
+                            "input": 885914,
+                            "output": 19276,
+                            "reasoning": 3848,
+                            "cache": {
+                                "write": 0,
+                                "read": 1851008
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 2760046,
+                            "input": 885914,
+                            "output": 19276,
+                            "reasoning": 3848,
+                            "cache": {
+                                "write": 0,
+                                "read": 1851008
+                            }
+                        },
+                        "per_subagent_tokens": {}
+                    },
+                    "baseline3":
+                    {
+                        "session ID": "ses_1460633d3ffeGKgsmg26y0VNyf",
+                        "token_usage": "1",
+                        "github_branch":"1",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "read": 38,
+                            "edit": 14,
+                            "bash": 6,
+                            "todowrite": 3,
+                            "write": 3,
+                            "task": 1,
+                            "glob": 1,
+                            "TOTAL": 66
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 3367693,
+                            "input": 907454,
+                            "output": 20981,
+                            "reasoning": 7258,
+                            "cache": {
+                                "write": 0,
+                                "read": 2432000
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 3367693,
+                            "input": 907454,
+                            "output": 20981,
+                            "reasoning": 7258,
+                            "cache": {
+                                "write": 0,
+                                "read": 2432000
+                            }
+                        },
+                        "per_subagent_tokens": {}
+                    }
+                }
+            },
+            "Claudecode":
+            {
+                "colbPowers":
+                {
+                    "colbPowers1":
+                    {
+                        "session ID": "60068c76-200f-476f-b6bb-55a977b89c18",
+                        "token_usage": "1",
+                        "github_branch":"D1_CLAUDECODE_Haiku4.5",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "Read": 15,
+                            "Bash": 14,
+                            "Agent": 7,
+                            "TaskUpdate": 6,
+                            "TaskCreate": 5,
+                            "Skill": 3,
+                            "Write": 3,
+                            "TaskList": 2,
+                            "ToolSearch": 1,
+                            "TOTAL": 56
+                        },
+                        "code-review-graph_calls": 0,
+                        "subagents":
+                        {
+                            "a7e0920d5caa4aff9":
+                            {
+                                "Bash": 30,
+                                "Read": 10,
+                                "Write": 2,
+                                "Edit": 2,
+                                "TOTAL": 44
+                            },
+                            "a8a382277ccc8aaaa":
+                            {
+                                "Read": 8,
+                                "Bash": 1,
+                                "TOTAL": 9
+                            },
+                            "a706e6bdf3e83a3c3":
+                            {
+                                "Bash": 19,
+                                "Read": 9,
+                                "Edit": 4,
+                                "Write": 2,
+                                "TOTAL": 34
+                            },
+                            "a801e82148d141a27":
+                            {
+                                "Read": 8,
+                                "Bash": 4,
+                                "TOTAL": 12
+                            },
+                            "a7935fd0b9b828fd7":
+                            {
+                                "Bash": 33,
+                                "Read": 15,
+                                "Edit": 8,
+                                "Write": 2,
+                                "TOTAL": 58
+                            },
+                            "aa1a0dad04dad639b":
+                            {
+                                "Bash": 10,
+                                "Read": 5,
+                                "Edit": 3,
+                                "TOTAL": 18
+                            },
+                            "ad254548e3a97b1d6":
+                            {
+                                "Bash": 20,
+                                "Read": 11,
+                                "Edit": 3,
+                                "Write": 2,
+                                "TOTAL": 36
+                            }
+                        },
+                        "total_tokens": {
+                            "total": 12225922,
+                            "input": 935,
+                            "output": 113266,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 454919,
+                                "read": 11656802
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 4280945,
+                            "input": 446,
+                            "output": 62662,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 124879,
+                                "read": 4092958
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "a706e6bdf3e83a3c3": {
+                                "total": 1116724,
+                                "input": 81,
+                                "output": 10219,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 43838,
+                                    "read": 1062586
+                                }
+                            },
+                            "a7935fd0b9b828fd7": {
+                                "total": 2148418,
+                                "input": 139,
+                                "output": 15257,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 63856,
+                                    "read": 2069166
+                                }
+                            },
+                            "a7e0920d5caa4aff9": {
+                                "total": 2145676,
+                                "input": 63,
+                                "output": 9638,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 59864,
+                                    "read": 2076111
+                                }
+                            },
+                            "a801e82148d141a27": {
+                                "total": 203998,
+                                "input": 50,
+                                "output": 3282,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 23333,
+                                    "read": 177333
+                                }
+                            },
+                            "a8a382277ccc8aaaa": {
+                                "total": 164392,
+                                "input": 36,
+                                "output": 2278,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 26456,
+                                    "read": 135622
+                                }
+                            },
+                            "aa1a0dad04dad639b": {
+                                "total": 541392,
+                                "input": 43,
+                                "output": 3752,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 58579,
+                                    "read": 479018
+                                }
+                            },
+                            "ad254548e3a97b1d6": {
+                                "total": 1624377,
+                                "input": 77,
+                                "output": 6178,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 54114,
+                                    "read": 1564008
+                                }
+                            }
+                        }
+                    },
+                    "colbPowers2":
+                    {
+                        "session ID": "85509acc-93f6-462f-ae1b-8225d76ce926",
+                        "token_usage": "1",
+                        "github_branch":"D2_CLAUDECODE_Haiku4.5",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls":
+                        {
+                            "Read": 18,
+                            "Bash": 13,
+                            "Agent": 13,
+                            "Edit": 6,
+                            "Skill": 3,
+                            "Write": 2,
+                            "ToolSearch": 1,
+                            "TOTAL": 56
+                        },
+                        "code-review-graph_calls": 0,
+                        "subagents":
+                        {
+                            "a4cc8397f428f9979":
+                            {
+                                "Read": 2,
+                                "TOTAL": 2
+                            },
+                            "a8c7fa1c19a96429b":
+                            {
+                                "Bash": 12,
+                                "Read": 5,
+                                "Edit": 3,
+                                "Write": 2,
+                                "TOTAL": 22
+                            },
+                            "a068db9b70de6c535":
+                            {
+                                "Read": 2,
+                                "ToolSearch": 1,
+                                "TOTAL": 3
+                            },
+                            "a580e70856fd4932d":
+                            {
+                                "Bash": 24,
+                                "Read": 5,
+                                "TOTAL": 29
+                            },
+                            "a754f3888e1348c27":
+                            {
+                                "Read": 1,
+                                "Edit": 1,
+                                "Bash": 1,
+                                "TOTAL": 3 
+                            },
+                            "a905cb9db4c2db524":
+                            {
+                                "Bash": 18,
+                                "Read": 7,
+                                "Write": 3,
+                                "Edit": 1,
+                                "TOTAL": 29 
+                            },
+                            "a5785a44a104c3def":
+                            {
+                                "Read": 5,
+                                "TOTAL": 5
+                            },
+                            "a31679e269647a32d":
+                            {
+                                "Read": 5,
+                                "TOTAL": 5
+                            },
+                            "a33424411fb0ee5b0":
+                            {
+                                "Read": 4,
+                                "TOTAL": 4
+                            },
+                            "a33745577694a8277":
+                            {
+                                "Bash": 36,
+                                "Edit": 12,
+                                "Read": 8,
+                                "Write": 2,
+                                "TOTAL": 58
+                            },
+                            "ab2ea59d84c50a688":
+                            {
+                                "Read": 4,
+                                "TOTAL": 4
+                            },
+                            "ab51a5fb936c14f4b":
+                            {
+                                "Read": 4,
+                                "TOTAL": 4
+                            },
+                            "ac222fdcc062afbf8":
+                            {
+                                "Bash": 22,
+                                "Read": 9,
+                                "ToolSearch": 1,
+                                "TOTAL": 32
+                            }
+                        },
+                        "total_tokens": {
+                            "total": 14907128,
+                            "input": 941,
+                            "output": 99125,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 522620,
+                                "read": 14284442
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 6335755,
+                            "input": 514,
+                            "output": 47682,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 150180,
+                                "read": 6137379
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "a068db9b70de6c535": {
+                                "total": 55131,
+                                "input": 13,
+                                "output": 2154,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 12193,
+                                    "read": 40771
+                                }
+                            },
+                            "a31679e269647a32d": {
+                                "total": 99789,
+                                "input": 22,
+                                "output": 2915,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 21118,
+                                    "read": 75734
+                                }
+                            },
+                            "a33424411fb0ee5b0": {
+                                "total": 59433,
+                                "input": 17,
+                                "output": 2878,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 14473,
+                                    "read": 42065
+                                }
+                            },
+                            "a33745577694a8277": {
+                                "total": 3389930,
+                                "input": 55,
+                                "output": 16661,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 66546,
+                                    "read": 3306668
+                                }
+                            },
+                            "a4cc8397f428f9979": {
+                                "total": 32811,
+                                "input": 10,
+                                "output": 1599,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 10120,
+                                    "read": 21082
+                                }
+                            },
+                            "a5785a44a104c3def": {
+                                "total": 102452,
+                                "input": 27,
+                                "output": 601,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 12143,
+                                    "read": 89681
+                                }
+                            },
+                            "a580e70856fd4932d": {
+                                "total": 995243,
+                                "input": 38,
+                                "output": 4949,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 31440,
+                                    "read": 958816
+                                }
+                            },
+                            "a754f3888e1348c27": {
+                                "total": 68102,
+                                "input": 16,
+                                "output": 577,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 16262,
+                                    "read": 51247
+                                }
+                            },
+                            "a8c7fa1c19a96429b": {
+                                "total": 1028434,
+                                "input": 53,
+                                "output": 5148,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 60337,
+                                    "read": 962896
+                                }
+                            },
+                            "a905cb9db4c2db524": {
+                                "total": 1255061,
+                                "input": 53,
+                                "output": 5197,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 45768,
+                                    "read": 1204043
+                                }
+                            },
+                            "ab2ea59d84c50a688": {
+                                "total": 109717,
+                                "input": 23,
+                                "output": 3103,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 16480,
+                                    "read": 90111
+                                }
+                            },
+                            "ab51a5fb936c14f4b": {
+                                "total": 91293,
+                                "input": 22,
+                                "output": 2085,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 17534,
+                                    "read": 71652
+                                }
+                            },
+                            "ac222fdcc062afbf8": {
+                                "total": 1283977,
+                                "input": 78,
+                                "output": 3576,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 48026,
+                                    "read": 1232297
+                                }
+                            }
+                        }
+                    },
+                    "colbPowers3":
+                    {
+                        "session ID": "6b8a20da-d9ff-4eae-90f1-0f16ffaae282",
+                        "token_usage": "1",
+                        "github_branch":"D3_CLAUDECODE_Haiku4.5",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls":
+                        {
+                            "Read": 17,
+                            "Bash": 16,
+                            "Agent": 13,
+                            "TaskUpdate": 8,
+                            "Edit": 6,
+                            "Skill": 4,
+                            "TaskCreate": 4,
+                            "ToolSearch": 3,
+                            "Write": 2,
+                            "mcp__code-review-graph__query_graph_tool": 2,
+                            "mcp__code-review-graph__get_architecture_overview_tool": 1,
+                            "TOTAL": 76
+                        },
+                        "code-review-graph_calls": 3,
+                        "subagents": 
+                        {
+                            "a7ef4d6b02a4a14e3":
+                            {
+                                "Bash": 3,
+                                "Read": 2,
+                                "TOTAL": 5
+                            },
+                            "a9bbd1b0b41d196ee":
+                            {
+                                "Read": 16,
+                                "Bash": 6,
+                                "ToolSearch": 1,
+                                "TOTAL": 23
+                            },
+                            "a041aad31ea83770f":
+                            {
+                                "Read": 1,
+                                "TOTAL": 1
+                            },
+                            "a99fcd13f37e39019":
+                            {
+                                "Read": 1,
+                                "TOTAL": 1
+                            },
+                            "a543f4c152363a189":
+                            {
+                                "Bash": 2,
+                                "ToolSearch": 1,
+                                "Read": 1,
+                                "TOTAL": 4
+                            },
+                            "a889f00e8bb077b93":
+                            {
+                                "Read": 13,
+                                "Bash": 5,
+                                "TOTAL": 18
+                            },
+                            "aa6dabc7b6744e9f6":
+                            {
+                                "Bash": 16,
+                                "Read": 6,
+                                "Write": 1,
+                                "TOTAL": 23
+                            },
+                            "aa305ea37883b3202":
+                            {
+                                "Bash": 20,
+                                "Read": 6,
+                                "Write": 1,
+                                "Edit": 1,
+                                "TOTAL": 28
+                            },
+                            "abf5e610b53c6863e":
+                            {
+                                "Read": 11,
+                                "Bash": 10,
+                                "Write": 1,
+                                "TOTAL": 22  
+                            },
+                            "ac4c67cb96afe6758":
+                            {
+                                "Read": 20,
+                                "Bash": 16,
+                                "ToolSearch": 1,
+                                "Edit": 1,
+                                "TOTAL": 38
+                            },
+                            "ac20d006bb73b8062":
+                            {
+                                "Read": 8,
+                                "Edit": 8,
+                                "Bash": 5,
+                                "ToolSearch": 1,
+                                "TOTAL": 22 
+                            },
+                            "ad7dbb673010aeeda":
+                            {
+                                "Edit": 9,
+                                "Bash": 7,
+                                "Read": 5,
+                                "Skill": 1,
+                                "TOTAL": 22                               
+                            },
+                            "aefbe439bfec7eb43":
+                            {
+                                "Bash": 18,
+                                "Read": 5,
+                                "ToolSearch": 1,
+                                "TOTAL": 24
+                            }
+
+                        },
+                        "total_tokens": {
+                            "total": 15852491,
+                            "input": 1145,
+                            "output": 108407,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 595307,
+                                "read": 15147632
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 7223453,
+                            "input": 592,
+                            "output": 55739,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 129193,
+                                "read": 7037929
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "a041aad31ea83770f": {
+                                "total": 28152,
+                                "input": 8,
+                                "output": 125,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 10094,
+                                    "read": 17925
+                                }
+                            },
+                            "a543f4c152363a189": {
+                                "total": 68349,
+                                "input": 24,
+                                "output": 1302,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 11928,
+                                    "read": 55095
+                                }
+                            },
+                            "a7ef4d6b02a4a14e3": {
+                                "total": 117592,
+                                "input": 28,
+                                "output": 1298,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 16537,
+                                    "read": 99729
+                                }
+                            },
+                            "a889f00e8bb077b93": {
+                                "total": 498039,
+                                "input": 82,
+                                "output": 3498,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 25774,
+                                    "read": 468685
+                                }
+                            },
+                            "a99fcd13f37e39019": {
+                                "total": 28759,
+                                "input": 8,
+                                "output": 437,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 10535,
+                                    "read": 17779
+                                }
+                            },
+                            "a9bbd1b0b41d196ee": {
+                                "total": 698048,
+                                "input": 80,
+                                "output": 4923,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 31331,
+                                    "read": 661714
+                                }
+                            },
+                            "aa305ea37883b3202": {
+                                "total": 1416658,
+                                "input": 49,
+                                "output": 11208,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 110965,
+                                    "read": 1294436
+                                }
+                            },
+                            "aa6dabc7b6744e9f6": {
+                                "total": 1164150,
+                                "input": 53,
+                                "output": 3781,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 61783,
+                                    "read": 1098533
+                                }
+                            },
+                            "abf5e610b53c6863e": {
+                                "total": 1087625,
+                                "input": 55,
+                                "output": 3198,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 52793,
+                                    "read": 1031579
+                                }
+                            },
+                            "ac20d006bb73b8062": {
+                                "total": 577104,
+                                "input": 21,
+                                "output": 6991,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 24646,
+                                    "read": 545446
+                                }
+                            },
+                            "ac4c67cb96afe6758": {
+                                "total": 1655882,
+                                "input": 69,
+                                "output": 6261,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 49865,
+                                    "read": 1599687
+                                }
+                            },
+                            "ad7dbb673010aeeda": {
+                                "total": 595930,
+                                "input": 23,
+                                "output": 6394,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 26936,
+                                    "read": 562577
+                                }
+                            },
+                            "aefbe439bfec7eb43": {
+                                "total": 692750,
+                                "input": 53,
+                                "output": 3252,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 32927,
+                                    "read": 656518
+                                }
+                            }
+                        }
+                    }
+                },
+                "baseline":
+                {
+                    "baseline1":
+                    {
+                        "session ID": "209b5bf4-1df0-4603-96f2-e0a91adb2798",
+                        "token_usage": "1",
+                        "github_branch":"1",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls":
+                        {
+                            "Bash": 32,
+                            "Read": 26,
+                            "Edit": 12,
+                            "Write": 4,
+                            "Skill": 2,
+                            "TOTAL": 76
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 6643140,
+                            "input": 7309,
+                            "output": 39571,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 97859,
+                                "read": 6498401
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 6643140,
+                            "input": 7309,
+                            "output": 39571,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 97859,
+                                "read": 6498401
+                            }
+                        },
+                        "per_subagent_tokens": {}
+                    },
+                    "baseline2":
+                    {
+                        "session ID": "6dc5be68-a840-465c-8735-59837be70bb8",
+                        "token_usage": "1",
+                        "github_branch":"A2_CLAUDECODE_Haiku4.5",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls":
+                        {
+                            "Bash": 19,
+                            "Edit": 13,
+                            "Read": 8,
+                            "Write": 3,
+                            "Skill": 1,
+                            "TOTAL": 44
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 2243383,
+                            "input": 6613,
+                            "output": 27779,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 61798,
+                                "read": 2147193
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 2243383,
+                            "input": 6613,
+                            "output": 27779,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 61798,
+                                "read": 2147193
+                            }
+                        },
+                        "per_subagent_tokens": {}
+                    },
+                    "baseline3":
+                    {
+                        "session ID": "2f9701b5-7fde-457d-885d-4ad9fbfafef4",
+                        "token_usage": "1",
+                        "github_branch":"A3_CLAUDECODE_Haiku4.5",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "Bash": 18,
+                            "Read": 12,
+                            "Edit": 5,
+                            "Write": 3,
+                            "TOTAL": 38
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 2330953,
+                            "input": 326,
+                            "output": 25538,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 59788,
+                                "read": 2245301
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 2330953,
+                            "input": 326,
+                            "output": 25538,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 59788,
+                                "read": 2245301
+                            }
+                        },
+                        "per_subagent_tokens": {}
+                    }
+                }
+            }
+        },
+    "ClassificationVisualization":
+        {
+            "Opencode":
+            {
+                "colbPowers":
+                {
+                    "colbPowers1":
+                    {
+                        "session ID": "ses_148d40fbfffe6uUHX65mlKGyO2",
+                        "token_usage": "1",
+                        "github_branch":"D1_OPENCODE_DeepSeekV4-Flash",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls":
+                        {
+                            "bash": 25,
+                            "read": 16,
+                            "task": 10,
+                            "todowrite": 9,
+                            "skill": 8,
+                            "question": 4,
+                            "write": 3,
+                            "edit": 3,
+                            "glob": 1,
+                            "code-review-graph_build_or_update_graph_tool": 1,
+                            "TOTAL": 80
+                        },
+                        "code-review-graph_calls": 1,
+                        "subagents": {
+                            "ses_148b5f0fdffeE1G3Rbc1dLD96P": {
+                                "read": 8,
+                                "bash": 6,
+                                "glob": 3,
+                                "edit": 2,
+                                "write": 1,
+                                "TOTAL": 20
+                            },
+                            "ses_148baaba0ffeDEiRXfUQgdCs63": {
+                                "read": 3,
+                                "bash": 2,
+                                "write": 1,
+                                "edit": 1,
+                                "TOTAL": 7
+                            },
+                            "ses_148bef189ffeVxZGuwkN5jM8Yg": {
+                                "read": 6,
+                                "bash": 5,
+                                "write": 2,
+                                "edit": 2,
+                                "TOTAL": 15
+                            },
+                            "ses_148c0169affebCbypwPmA2Nw4D": {
+                                "read": 4,
+                                "bash": 4,
+                                "write": 2,
+                                "TOTAL": 10
+                            },
+                            "ses_148c24431ffeFrrY9wZ0ITR4VM": {
+                                "read": 6,
+                                "todowrite": 6,
+                                "bash": 6,
+                                "write": 2,
+                                "skill": 1,
+                                "TOTAL": 21
+                            },
+                            "ses_148c46c64ffe5gAEOQA2xAOuJP": {
+                                "bash": 8,
+                                "read": 7,
+                                "write": 2,
+                                "edit": 1,
+                                "TOTAL": 18
+                            },
+                            "ses_148c818c4ffeb03MFG0eYYScOr": {
+                                "write": 7,
+                                "bash": 7,
+                                "read": 6,
+                                "todowrite": 4,
+                                "TOTAL": 24
+                            },
+                            "ses_148d3e0f8ffeso8I6q5iAwsdF5": {
+                                "glob": 15,
+                                "read": 13,
+                                "bash": 2,
+                                "TOTAL": 30
+                            }
+                        },
+                        "total_tokens": {
+                            "total": 6532677,
+                            "input": 2688526,
+                            "output": 57705,
+                            "reasoning": 17486,
+                            "cache": {
+                                "write": 0,
+                                "read": 3768960
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 3915705,
+                            "input": 1943299,
+                            "output": 31347,
+                            "reasoning": 10307,
+                            "cache": {
+                                "write": 0,
+                                "read": 1930752
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "ses_148b5f0fdffeE1G3Rbc1dLD96P": {
+                                "total": 423950,
+                                "input": 238436,
+                                "output": 3148,
+                                "reasoning": 2526,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 179840
+                                }
+                            },
+                            "ses_148baaba0ffeDEiRXfUQgdCs63": {
+                                "total": 141271,
+                                "input": 61667,
+                                "output": 4044,
+                                "reasoning": 808,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 74752
+                                }
+                            },
+                            "ses_148bef189ffeVxZGuwkN5jM8Yg": {
+                                "total": 387679,
+                                "input": 182152,
+                                "output": 3736,
+                                "reasoning": 703,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 201088
+                                }
+                            },
+                            "ses_148c0169affebCbypwPmA2Nw4D": {
+                                "total": 241187,
+                                "input": 37105,
+                                "output": 2654,
+                                "reasoning": 212,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 201216
+                                }
+                            },
+                            "ses_148c24431ffeFrrY9wZ0ITR4VM": {
+                                "total": 516319,
+                                "input": 10810,
+                                "output": 3002,
+                                "reasoning": 363,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 502144
+                                }
+                            },
+                            "ses_148c46c64ffe5gAEOQA2xAOuJP": {
+                                "total": 340979,
+                                "input": 12439,
+                                "output": 3536,
+                                "reasoning": 1676,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 323328
+                                }
+                            },
+                            "ses_148c818c4ffeb03MFG0eYYScOr": {
+                                "total": 371933,
+                                "input": 80763,
+                                "output": 2878,
+                                "reasoning": 676,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 287616
+                                }
+                            },
+                            "ses_148d3e0f8ffeso8I6q5iAwsdF5": {
+                                "total": 193654,
+                                "input": 121855,
+                                "output": 3360,
+                                "reasoning": 215,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 68224
+                                }
+                            }
+                        }
+                    },
+                    "colbPowers2":
+                    {
+                        "session ID": "ses_1483832f7ffewz638tZ7BzqAfp",
+                        "token_usage": "1",
+                        "github_branch":"D2_OPENCODE_DeepSeekV4-Flash",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "bash": 29,
+                            "read": 16,
+                            "todowrite": 12,
+                            "task": 12,
+                            "write": 6,
+                            "skill": 4,
+                            "edit": 4,
+                            "question": 2,
+                            "code-review-graph_list_graph_stats_tool": 1,
+                            "TOTAL": 86
+                        },
+                        "code-review-graph_calls": 1,
+                        "subagents": {
+                            "ses_147e1bd25ffeHeHxLz3GVEGsCz": {
+                                "read": 8,
+                                "bash": 8,
+                                "todowrite": 6,
+                                "write": 1,
+                                "TOTAL": 23
+                            },
+                            "ses_147e4c25affeypHCPL66ST7XuS": {
+                                "read": 3,
+                                "TOTAL": 3
+                            },
+                            "ses_147e88c78ffeed5KxgpUmEMQ8B": {
+                                "bash": 8,
+                                "read": 5,
+                                "todowrite": 5,
+                                "write": 2,
+                                "edit": 2,
+                                "TOTAL": 22
+                            },
+                            "ses_147f144f8ffejHAJl5DQv5O462": {
+                                "bash": 8,
+                                "read": 5,
+                                "todowrite": 4,
+                                "edit": 3,
+                                "glob": 2,
+                                "write": 2,
+                                "question": 1,
+                                "TOTAL": 25
+                            },
+                            "ses_147f718b0ffe3Zrea1Jn2wqYeS": {
+                                "read": 2,
+                                "TOTAL": 2
+                            },
+                            "ses_147fd4d96ffe34Rz91c0Y9BnxE": {
+                                "todowrite": 7,
+                                "bash": 7,
+                                "read": 6,
+                                "write": 2,
+                                "edit": 2,
+                                "TOTAL": 24
+                            },
+                            "ses_147ffc522ffe0Z1nXZRTwtO1aa": {
+                                "read": 2,
+                                "TOTAL": 2
+                            },
+                            "ses_148036cd2ffe5tHSsBuwYFy6kt": {
+                                "read": 6,
+                                "bash": 5,
+                                "write": 2,
+                                "skill": 1,
+                                "TOTAL": 14
+                            },
+                            "ses_14808f193ffeiHa3n3X7BN699M": {
+                                "read": 3,
+                                "glob": 3,
+                                "TOTAL": 6
+                            },
+                            "ses_148125b9affed8qU63Bo84CpRP": {
+                                "bash": 5,
+                                "read": 3,
+                                "glob": 2,
+                                "TOTAL": 10
+                            },
+                            "ses_148198c89ffecqh2G5MfOWQ4Bt": {
+                                "bash": 14,
+                                "read": 7,
+                                "write": 2,
+                                "edit": 2,
+                                "TOTAL": 25
+                            },
+                            "ses_1481c38e5fferOitnPhKLtTxC5": {
+                                "read": 4,
+                                "bash": 4,
+                                "write": 2,
+                                "TOTAL": 10
+                            }
+                        },
+                        "total_tokens": {
+                            "total": 10218932,
+                            "input": 6275126,
+                            "output": 71295,
+                            "reasoning": 30131,
+                            "cache": {
+                                "write": 0,
+                                "read": 3842380
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 6180860,
+                            "input": 3860368,
+                            "output": 40469,
+                            "reasoning": 9180,
+                            "cache": {
+                                "write": 0,
+                                "read": 2270843
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "ses_147e1bd25ffeHeHxLz3GVEGsCz": {
+                                "total": 534619,
+                                "input": 314170,
+                                "output": 4130,
+                                "reasoning": 1626,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 214693
+                                }
+                            },
+                            "ses_147e4c25affeypHCPL66ST7XuS": {
+                                "total": 71697,
+                                "input": 46854,
+                                "output": 841,
+                                "reasoning": 2524,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 21478
+                                }
+                            },
+                            "ses_147e88c78ffeed5KxgpUmEMQ8B": {
+                                "total": 497241,
+                                "input": 301067,
+                                "output": 5175,
+                                "reasoning": 696,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 190303
+                                }
+                            },
+                            "ses_147f144f8ffejHAJl5DQv5O462": {
+                                "total": 784041,
+                                "input": 443267,
+                                "output": 3941,
+                                "reasoning": 2547,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 334286
+                                }
+                            },
+                            "ses_147f718b0ffe3Zrea1Jn2wqYeS": {
+                                "total": 49415,
+                                "input": 25410,
+                                "output": 807,
+                                "reasoning": 2651,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 20547
+                                }
+                            },
+                            "ses_147fd4d96ffe34Rz91c0Y9BnxE": {
+                                "total": 485117,
+                                "input": 303464,
+                                "output": 5557,
+                                "reasoning": 2211,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 173885
+                                }
+                            },
+                            "ses_147ffc522ffe0Z1nXZRTwtO1aa": {
+                                "total": 44805,
+                                "input": 26196,
+                                "output": 307,
+                                "reasoning": 481,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 17821
+                                }
+                            },
+                            "ses_148036cd2ffe5tHSsBuwYFy6kt": {
+                                "total": 297480,
+                                "input": 201478,
+                                "output": 2181,
+                                "reasoning": 459,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 93362
+                                }
+                            },
+                            "ses_14808f193ffeiHa3n3X7BN699M": {
+                                "total": 141653,
+                                "input": 92087,
+                                "output": 1078,
+                                "reasoning": 1130,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 47358
+                                }
+                            },
+                            "ses_148125b9affed8qU63Bo84CpRP": {
+                                "total": 204200,
+                                "input": 107795,
+                                "output": 1145,
+                                "reasoning": 2437,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 92823
+                                }
+                            },
+                            "ses_148198c89ffecqh2G5MfOWQ4Bt": {
+                                "total": 753163,
+                                "input": 435001,
+                                "output": 4408,
+                                "reasoning": 3814,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 309940
+                                }
+                            },
+                            "ses_1481c38e5fferOitnPhKLtTxC5": {
+                                "total": 174641,
+                                "input": 117969,
+                                "output": 1256,
+                                "reasoning": 375,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 55041
+                                }
+                            }
+                        }
+                    },
+                    "colbPowers3":
+                    {
+                        "session ID": "ses_148390b22ffer38aSDWTNU9L95",
+                        "token_usage": "1",
+                        "github_branch":"D3_OPENCODE_DeepSeekV4-Flash",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "read": 24,
+                            "bash": 18,
+                            "task": 15,
+                            "todowrite": 13,
+                            "skill": 5,
+                            "write": 4,
+                            "edit": 4,
+                            "glob": 3,
+                            "question": 2,
+                            "code-review-graph_list_graph_stats_tool": 1,
+                            "TOTAL": 89
+                        },
+                        "subagents": {
+                            "ses_147e24e12ffePab9q3BJjVnlxY": {
+                                "glob": 6,
+                                "read": 3,
+                                "bash": 1,
+                                "TOTAL": 10
+                            },
+                            "ses_147e52011ffezXayg4Bnj8PwFL": {
+                                "read": 9,
+                                "bash": 8,
+                                "write": 2,
+                                "edit": 2,
+                                "skill": 1,
+                                "TOTAL": 22
+                            },
+                            "ses_147e8b82bffes9jHkrscVxcECO": {
+                                "read": 6,
+                                "bash": 4,
+                                "glob": 3,
+                                "skill": 1,
+                                "code-review-graph_get_minimal_context_tool": 1,
+                                "code-review-graph_get_impact_radius_tool": 1,
+                                "TOTAL": 16
+                            },
+                            "ses_147ea73d9ffeH0lSwuAgbHUiYo": {
+                                "glob": 3,
+                                "read": 2,
+                                "bash": 2,
+                                "TOTAL": 7
+                            },
+                            "ses_147ed6e93ffeaVP2CfjM5Xi5vH": {
+                                "bash": 12,
+                                "read": 6,
+                                "skill": 1,
+                                "edit": 1,
+                                "TOTAL": 20
+                            },
+                            "ses_14805ae46ffeBcQyEDaM1yzpvV": {
+                                "read": 3,
+                                "glob": 2,
+                                "code-review-graph_build_or_update_graph_tool": 1,
+                                "TOTAL": 6
+                            },
+                            "ses_14809be89ffeb70kT65M7akjf8": {
+                                "glob": 3,
+                                "read": 3,
+                                "bash": 2,
+                                "skill": 1,
+                                "grep": 1,
+                                "TOTAL": 10
+                            },
+                            "ses_148112361ffeDDejJXiLCAxklZ": {
+                                "read": 6,
+                                "bash": 6,
+                                "write": 2,
+                                "TOTAL": 14
+                            },
+                            "ses_14813a9a7ffeMfINRu9qaFwLKp": {
+                                "bash": 3,
+                                "read": 2,
+                                "glob": 2,
+                                "skill": 1,
+                                "TOTAL": 8
+                            },
+                            "ses_14816114cffeZFvB3gL62CWTH9": {
+                                "bash": 6,
+                                "write": 2,
+                                "TOTAL": 8
+                            },
+                            "ses_148184c78ffeRTYexr1XRygfZc": {
+                                "read": 6,
+                                "bash": 5,
+                                "skill": 1,
+                                "glob": 1,
+                                "TOTAL": 13
+                            },
+                            "ses_14819c86dffeHnwT3BFepm6dLK": {
+                                "bash": 3,
+                                "read": 2,
+                                "glob": 2,
+                                "TOTAL": 7
+                            },
+                            "ses_1481fab89ffejKKmeRZxqfcGi4": {
+                                "bash": 14,
+                                "read": 8,
+                                "todowrite": 6,
+                                "write": 2,
+                                "edit": 2,
+                                "skill": 1,
+                                "TOTAL": 33
+                            },
+                            "ses_14823e99effecoutP5cmKlvgaz": {
+                                "bash": 8,
+                                "read": 4,
+                                "todowrite": 4,
+                                "write": 2,
+                                "edit": 1,
+                                "TOTAL": 19
+                            }
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 8465162,
+                            "input": 5123511,
+                            "output": 62184,
+                            "reasoning": 27871,
+                            "cache": {
+                                "write": 0,
+                                "read": 3251596
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 4668119,
+                            "input": 2775882,
+                            "output": 34789,
+                            "reasoning": 6206,
+                            "cache": {
+                                "write": 0,
+                                "read": 1851242
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "ses_147e24e12ffePab9q3BJjVnlxY": {
+                                "total": 73601,
+                                "input": 39672,
+                                "output": 505,
+                                "reasoning": 2369,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 31055
+                                }
+                            },
+                            "ses_147e52011ffezXayg4Bnj8PwFL": {
+                                "total": 409995,
+                                "input": 242707,
+                                "output": 4046,
+                                "reasoning": 779,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 162463
+                                }
+                            },
+                            "ses_147e8b82bffes9jHkrscVxcECO": {
+                                "total": 209250,
+                                "input": 108849,
+                                "output": 2033,
+                                "reasoning": 2334,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 96034
+                                }
+                            },
+                            "ses_147ea73d9ffeH0lSwuAgbHUiYo": {
+                                "total": 128441,
+                                "input": 69357,
+                                "output": 1286,
+                                "reasoning": 2128,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 55670
+                                }
+                            },
+                            "ses_147ed6e93ffeaVP2CfjM5Xi5vH": {
+                                "total": 500510,
+                                "input": 358619,
+                                "output": 2383,
+                                "reasoning": 2439,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 137069
+                                }
+                            },
+                            "ses_14805ae46ffeBcQyEDaM1yzpvV": {
+                                "total": 95571,
+                                "input": 74483,
+                                "output": 996,
+                                "reasoning": 605,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 19487
+                                }
+                            },
+                            "ses_14809be89ffeb70kT65M7akjf8": {
+                                "total": 191604,
+                                "input": 100119,
+                                "output": 1235,
+                                "reasoning": 4429,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 85821
+                                }
+                            },
+                            "ses_148112361ffeDDejJXiLCAxklZ": {
+                                "total": 310055,
+                                "input": 194071,
+                                "output": 3041,
+                                "reasoning": 235,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 112708
+                                }
+                            },
+                            "ses_14813a9a7ffeMfINRu9qaFwLKp": {
+                                "total": 169847,
+                                "input": 109598,
+                                "output": 722,
+                                "reasoning": 657,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 58870
+                                }
+                            },
+                            "ses_14816114cffeZFvB3gL62CWTH9": {
+                                "total": 224633,
+                                "input": 130659,
+                                "output": 1689,
+                                "reasoning": 425,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 91860
+                                }
+                            },
+                            "ses_148184c78ffeRTYexr1XRygfZc": {
+                                "total": 159711,
+                                "input": 115512,
+                                "output": 1814,
+                                "reasoning": 2070,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 40315
+                                }
+                            },
+                            "ses_14819c86dffeHnwT3BFepm6dLK": {
+                                "total": 144474,
+                                "input": 78305,
+                                "output": 795,
+                                "reasoning": 1035,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 64339
+                                }
+                            },
+                            "ses_1481fab89ffejKKmeRZxqfcGi4": {
+                                "total": 907350,
+                                "input": 555516,
+                                "output": 4189,
+                                "reasoning": 1159,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 346486
+                                }
+                            },
+                            "ses_14823e99effecoutP5cmKlvgaz": {
+                                "total": 272001,
+                                "input": 170162,
+                                "output": 2661,
+                                "reasoning": 1001,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 98177
+                                }
+                            }
+                        }
+                    }
+                },
+                "baseline":
+                {
+                    "baseline1":
+                    {
+                        "session ID": "ses_147106f2dffeTjTSHZCwWs0lNU",
+                        "token_usage": "1",
+                        "github_branch":"A1_OPENCODE_DeepSeekV4-Flash",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "bash": 12,
+                            "write": 9,
+                            "read": 5,
+                            "todowrite": 5,
+                            "edit": 4,
+                            "task": 1,
+                            "TOTAL": 36
+                        }
+                        ,
+                        "subagents": {
+                            "ses_1470fc031ffe49IDNzIdYsR6Zi": {
+                                "glob": 12,
+                                "read": 6,
+                                "bash": 2,
+                                "TOTAL": 20
+                            }
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 1594957,
+                            "input": 965068,
+                            "output": 13891,
+                            "reasoning": 21089,
+                            "cache": {
+                                "write": 0,
+                                "read": 594909
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 1475643,
+                            "input": 891617,
+                            "output": 11317,
+                            "reasoning": 20936,
+                            "cache": {
+                                "write": 0,
+                                "read": 551773
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "ses_1470fc031ffe49IDNzIdYsR6Zi": {
+                                "total": 119314,
+                                "input": 73451,
+                                "output": 2574,
+                                "reasoning": 153,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 43136
+                                }
+                            }
+                        }
+
+                    },
+                    "baseline2":
+                    {
+                        "session ID": "ses_14712a237ffeOmL7KHuHm06Uer",
+                        "token_usage": "1",
+                        "github_branch":"1",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls":
+                        {
+                            "read": 22,
+                            "bash": 22,
+                            "write": 11,
+                            "edit": 10,
+                            "todowrite": 4,
+                            "task": 1,
+                            "TOTAL": 70
+                        },
+                        "subagents": {
+                            "ses_147105b56ffeiiib0J6hqyJh9z": {
+                                "bash": 7,
+                                "read": 5,
+                                "TOTAL": 12
+                            }
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 2517444,
+                            "input": 1408076,
+                            "output": 22470,
+                            "reasoning": 5083,
+                            "cache": {
+                                "write": 0,
+                                "read": 1081815
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 2187795,
+                            "input": 1146575,
+                            "output": 21263,
+                            "reasoning": 4719,
+                            "cache": {
+                                "write": 0,
+                                "read": 1015238
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "ses_147105b56ffeiiib0J6hqyJh9z": {
+                                "total": 329649,
+                                "input": 261501,
+                                "output": 1207,
+                                "reasoning": 364,
+                                "cache": {
+                                    "write": 0,
+                                    "read": 66577
+                                }
+                            }
+                        }
+                    },
+                    "baseline3":
+                    {
+                        "session ID": "ses_146e47133ffeediO94L6nNW8vT",
+                        "token_usage": "1",
+                        "github_branch":"1",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "bash": 12,
+                            "read": 10,
+                            "write": 10,
+                            "todowrite": 7,
+                            "glob": 5,
+                            "edit": 5,
+                            "TOTAL": 49
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 1529921,
+                            "input": 378031,
+                            "output": 16371,
+                            "reasoning": 4268,
+                            "cache": {
+                                "write": 0,
+                                "read": 1131251
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 1529921,
+                            "input": 378031,
+                            "output": 16371,
+                            "reasoning": 4268,
+                            "cache": {
+                                "write": 0,
+                                "read": 1131251
+                            }
+                        },
+                        "per_subagent_tokens": {}
+                    }
+                }
+            },
+            "Claudecode":
+            {
+                "colbPowers":
+                {
+                    "colbPowers1":
+                    {
+                        "session ID": "510041e3-2d55-42c6-bb5f-ccb7b70af875",
+                        "token_usage": "1",
+                        "github_branch":"D1_CLAUDECODE_Haiku4.5",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls":
+                        {
+                            "Agent": 15,
+                            "Read": 9,
+                            "Edit": 7,
+                            "Skill": 6,
+                            "Write": 4,
+                            "Bash": 3,
+                            "AskUserQuestion": 2,
+                            "TOTAL": 46
+                        },
+                        "code-review-graph_calls": 0,
+                        "subagents":
+                        {
+                            "a3c25a3c4fdad067c":
+                            {
+                                "Read": 5,
+                                "Bash": 1,
+                                "TOTAL": 6
+                            },
+                            "a4ff86c1048bacf9c":
+                            {
+                                "Read": 2,
+                                "TOTAL": 2   
+                            },
+                            "a05d773358f6b5ad3":
+                            {
+                                "Read": 5,
+                                "Bash": 4,
+                                "Edit": 3,
+                                "TOTAL": 12
+                            },
+                            "a6f37da1d1296da1d":
+                            {
+                                "Bash": 5,
+                                "Read": 5,
+                                "TOTAL": 10
+                            },
+                            "a14e2562b341e18f5":
+                            {
+                                "Bash": 10,
+                                "Read": 7,
+                                "TOTAL": 17
+                            },
+                            "a67fc1bd84507989d":
+                            {
+                                "Bash": 12,
+                                "Read": 8,
+                                "Write": 2,
+                                "TOTAL": 22
+                            },
+                            "a74a87750c5098242":
+                            {
+                                "ToolSearch": 1,
+                                "Agent": 1,
+                                "TOTAL": 2
+                            },
+                            "a320d804bd696ab07":
+                            {
+                                "Bash": 16,
+                                "Read": 7,
+                                "TOTAL": 23
+                            },
+                            "a392f03beb9140559":
+                            {
+                                "Bash": 21,
+                                "Read": 8,
+                                "Write": 1,
+                                "TOTAL": 30      
+                            },
+                            "a603ee33657a571e5":
+                            {
+                                "Read": 2,
+                                "TOTAL": 2
+                            },
+                            "a2514bce355460379":
+                            {
+                                "Bash": 9,
+                                "Read": 3,
+                                "Write": 2,
+                                "TOTAL": 14
+                            },
+                            "a684830e29d64097d":
+                            {
+                                "Read": 4,
+                                "Bash": 1,
+                                "TOTAL": 5
+                            },
+                            "aaa8dc3119a4cf101":
+                            {
+                                "Bash": 9,
+                                "Read": 3,
+                                "Write": 3,
+                                "Edit": 2,
+                                "TOTAL": 17
+                            },
+                            "aaa23464e5909d010":
+                            {
+                                "Bash": 3,
+                                "TOTAL": 3
+                            },
+                            "ab8edb2af544e3081":
+                            {
+                                "Bash": 11,
+                                "Read": 5,
+                                "Write": 2,
+                                "Edit": 1,
+                                "TOTAL": 19
+                            },
+                            "ace923a47baea5ae6":
+                            {
+                                "mcp__code-review-graph__query_graph_tool": 6,
+                                "Read": 5,
+                                "ToolSearch": 1,
+                                "TOTAL": 12
+                            },
+                            "afd0754d711facff7":
+                            {
+                                "Read": 2,
+                                "ToolSearch": 1,
+                                "Agent": 1,
+                                "TOTAL": 4
+                            }
+                        },
+                        "total_tokens": {
+                            "total": 7304821,
+                            "input": 1085,
+                            "output": 110766,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 370351,
+                                "read": 6822619
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 3412140,
+                            "input": 343,
+                            "output": 59204,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 99993,
+                                "read": 3252600
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "a05d773358f6b5ad3": {
+                                "total": 173787,
+                                "input": 39,
+                                "output": 1446,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 9342,
+                                    "read": 162960
+                                }
+                            },
+                            "a14e2562b341e18f5": {
+                                "total": 225740,
+                                "input": 138,
+                                "output": 5276,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 13999,
+                                    "read": 206327
+                                }
+                            },
+                            "a2514bce355460379": {
+                                "total": 359977,
+                                "input": 56,
+                                "output": 2910,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 22170,
+                                    "read": 334841
+                                }
+                            },
+                            "a320d804bd696ab07": {
+                                "total": 349549,
+                                "input": 92,
+                                "output": 3529,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 13048,
+                                    "read": 332880
+                                }
+                            },
+                            "a392f03beb9140559": {
+                                "total": 758191,
+                                "input": 66,
+                                "output": 9836,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 29021,
+                                    "read": 719268
+                                }
+                            },
+                            "a3c25a3c4fdad067c": {
+                                "total": 87087,
+                                "input": 23,
+                                "output": 1478,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 12545,
+                                    "read": 73041
+                                }
+                            },
+                            "a4ff86c1048bacf9c": {
+                                "total": 26441,
+                                "input": 10,
+                                "output": 245,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 5447,
+                                    "read": 20739
+                                }
+                            },
+                            "a603ee33657a571e5": {
+                                "total": 31068,
+                                "input": 10,
+                                "output": 1058,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 8856,
+                                    "read": 21144
+                                }
+                            },
+                            "a67fc1bd84507989d": {
+                                "total": 442279,
+                                "input": 70,
+                                "output": 3873,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 20586,
+                                    "read": 417750
+                                }
+                            },
+                            "a684830e29d64097d": {
+                                "total": 64556,
+                                "input": 22,
+                                "output": 1144,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 10509,
+                                    "read": 52881
+                                }
+                            },
+                            "a6f37da1d1296da1d": {
+                                "total": 126608,
+                                "input": 36,
+                                "output": 1797,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 18426,
+                                    "read": 106349
+                                }
+                            },
+                            "a74a87750c5098242": {
+                                "total": 41385,
+                                "input": 12,
+                                "output": 506,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 6184,
+                                    "read": 34683
+                                }
+                            },
+                            "aaa23464e5909d010": {
+                                "total": 33486,
+                                "input": 16,
+                                "output": 578,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 11876,
+                                    "read": 21016
+                                }
+                            },
+                            "aaa8dc3119a4cf101": {
+                                "total": 330872,
+                                "input": 32,
+                                "output": 2447,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 23138,
+                                    "read": 305255
+                                }
+                            },
+                            "ab8edb2af544e3081": {
+                                "total": 642304,
+                                "input": 62,
+                                "output": 12038,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 36969,
+                                    "read": 593235
+                                }
+                            },
+                            "ace923a47baea5ae6": {
+                                "total": 137113,
+                                "input": 41,
+                                "output": 1746,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 18187,
+                                    "read": 117139
+                                }
+                            },
+                            "afd0754d711facff7": {
+                                "total": 62238,
+                                "input": 17,
+                                "output": 1655,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 10055,
+                                    "read": 50511
+                                }
+                            }
+                        }
+                    },
+                    "colbPowers2":
+                    {
+                        "session ID": "622637d5-3e4f-4711-b302-0958caa134df",
+                        "token_usage": "1",
+                        "github_branch":"D2_CLAUDECODE_Haiku4.5",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "Read": 8,
+                            "TaskUpdate": 8,
+                            "Skill": 6,
+                            "Write": 5,
+                            "Agent": 5,
+                            "TaskCreate": 4,
+                            "Bash": 3,
+                            "ToolSearch": 2,
+                            "Edit": 2,
+                            "mcp__code-review-graph__get_architecture_overview_tool": 1,
+                            "TOTAL": 44
+                        },
+                        "code-review-graph_calls": 1,
+                        "subagents": {
+                            "adb65c14e7794fa8f": 
+                            {
+                                "Bash": 19,
+                                "Write": 10,
+                                "Read": 5,
+                                "Edit": 3,
+                                "TOTAL": 37
+                            },
+                            "a736889316b5d44e2": 
+                            {
+                                "Bash": 11,
+                                "Read": 9,
+                                "Write": 3,
+                                "TOTAL": 23
+                            },
+                            "a7bea041fab1fb2f4":
+                            {
+                                "Bash": 20,
+                                "Read": 6,
+                                "Write": 2,
+                                "Edit": 2,
+                                "TOTAL": 30
+                            },
+                            "a35c5f1e7f066b052": 
+                            {
+                                "Bash": 12,
+                                "Read": 6,
+                                "Write": 1,
+                                "TOTAL": 19
+                            },
+                            "a4274603c1c37cb78":
+                            {
+                                "Bash": 10,
+                                "Edit": 5,
+                                "Read": 4,
+                                "ToolSearch": 1,
+                                "TOTAL": 20
+                            }
+                        },
+                        "total_tokens": {
+                            "total": 6278232,
+                            "input": 600,
+                            "output": 85940,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 265941,
+                                "read": 5925751
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 2914388,
+                            "input": 346,
+                            "output": 54809,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 105625,
+                                "read": 2753608
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "a35c5f1e7f066b052": {
+                                "total": 552886,
+                                "input": 84,
+                                "output": 10929,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 33277,
+                                    "read": 508596
+                                }
+                            },
+                            "a4274603c1c37cb78": {
+                                "total": 495454,
+                                "input": 40,
+                                "output": 5076,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 30654,
+                                    "read": 459684
+                                }
+                            },
+                            "a736889316b5d44e2": {
+                                "total": 532614,
+                                "input": 46,
+                                "output": 2630,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 28282,
+                                    "read": 501656
+                                }
+                            },
+                            "a7bea041fab1fb2f4": {
+                                "total": 919362,
+                                "input": 47,
+                                "output": 6892,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 36096,
+                                    "read": 876327
+                                }
+                            },
+                            "adb65c14e7794fa8f": {
+                                "total": 863528,
+                                "input": 37,
+                                "output": 5604,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 32007,
+                                    "read": 825880
+                                }
+                            }
+                        }
+                    },
+                    "colbPowers3":
+                    {
+                        "session ID": "74eea883-a35f-4200-bccc-7999e93002c7",
+                        "token_usage": "1",
+                        "github_branch":"D3_CLAUDECODE_Haiku4.5",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls":
+                        {
+                            "Agent": 21,
+                            "Bash": 16,
+                            "Read": 7,
+                            "Skill": 5,
+                            "Write": 3,
+                            "AskUserQuestion": 2,
+                            "ToolSearch": 1,
+                            "TOTAL": 55
+                        },
+                        "code-review-graph_calls": 0,
+                        "subagents":
+                        {
+                            "a1bcc5f81462f2358":
+                            {
+                                "Bash": 8,
+                                "Read": 5,
+                                "TOTAL": 13
+                            },
+                            "a8f0ede9001f0b25b":
+                            {
+                                "Bash": 16,
+                                "Read": 7,
+                                "Edit": 5,
+                                "Write": 2,
+                                "ToolSearch": 1,
+                                "TOTAL": 31
+                            },
+                            "a15b7ddaa79be9788":
+                            {
+                                "ToolSearch": 1,
+                                "Agent": 1,
+                                "TOTAL": 2
+                            },
+                            "a0021be0ebee99f66":
+                            {
+                                "Bash": 8,
+                                "Read": 1,
+                                "ToolSearch": 1,
+                                "TOTAL": 10
+                            },
+                            "a25fa4316fd545dc8":
+                            {
+                                "Bash": 5,
+                                "TOTAL": 5
+                            },
+                            "a41de163c575aeb15":
+                            {
+                                "Bash": 7,
+                                "Read": 5,
+                                "TOTAL": 12
+                            },
+                            "a41eedf6c6d393da4":
+                            {
+                                "Read": 4,
+                                "Bash": 4,
+                                "Edit": 3,
+                                "TOTAL": 11
+                            },
+                            "a46fad55957dba285":
+                            {
+                                "Bash": 11,
+                                "Write": 5,
+                                "Read": 3,
+                                "TOTAL": 19
+                            },
+                            "a62b7893eb9365b2f":
+                            {
+                                "Edit": 2,
+                                "Bash": 2,
+                                "Read": 1,
+                                "TOTAL": 5
+                            },
+                            "a82ab9582e1fc4334":
+                            {
+                                "Bash": 14,
+                                "Read": 5,
+                                "ToolSearch": 1,
+                                "mcp__code-review-graph__detect_changes_tool": 1,
+                                "TOTAL": 21
+                            },
+                            "a449a08286b8f1d7b":
+                            {
+                                "Bash": 4,
+                                "Read": 2,
+                                "Write": 2,
+                                "TOTAL": 8
+                            },
+                            "a686c23fbaea0d763":
+                            {
+                                "Bash": 29,
+                                "Read": 12,
+                                "TOTAL": 41
+                            },
+                            "a9012cc4416d6a11b":
+                            {
+                                "Bash": 21,
+                                "Read": 3,
+                                "ToolSearch": 1,
+                                "TOTAL": 25
+                            },
+                            "a24234c5211bc1c9f":
+                            {
+                                "Bash": 12,
+                                "TOTAL": 12
+                            },
+                            "a80819f9b7cae28d3":
+                            {
+                                "Read": 8,
+                                "Bash": 5,
+                                "TOTAL": 13
+                            },
+                            "a8336330d60d48bf9":
+                            {
+                                "Bash": 14,
+                                "Read": 2,
+                                "TOTAL": 16
+                            },
+                            "aa2645748f4f6b60a":
+                            {
+                                "Bash": 3,
+                                "Read": 2,
+                                "Edit": 2,
+                                "TOTAL": 7
+                            },
+                            "ab65b21f8d0259131":
+                            {
+                                "Bash": 14,
+                                "Read": 6,
+                                "Write": 3,
+                                "TOTAL": 23
+                            },
+                            "ad8c6d7257f0d90c5":
+                            {
+                                "Bash": 14,
+                                "Read": 5,
+                                "Write": 2,
+                                "TOTAL": 21
+                            },
+                            "aeb536ec095508c4f":
+                            {
+                                "Bash": 10,
+                                "Read": 6,
+                                "TOTAL": 16
+                            },
+                            "af565de5e909dc8c1":
+                            {
+                                "Edit": 5,
+                                "Bash": 3,
+                                "Read": 2,
+                                "TOTAL": 10
+                            }
+                        },
+                        "total_tokens": {
+                            "total": 10974509,
+                            "input": 2403,
+                            "output": 108726,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 758018,
+                                "read": 10105362
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 3729891,
+                            "input": 379,
+                            "output": 36629,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 364669,
+                                "read": 3328214
+                            }
+                        },
+                        "per_subagent_tokens": {
+                            "a0021be0ebee99f66": {
+                                "total": 186095,
+                                "input": 26,
+                                "output": 2287,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 10706,
+                                    "read": 173076
+                                }
+                            },
+                            "a15b7ddaa79be9788": {
+                                "total": 43680,
+                                "input": 8,
+                                "output": 837,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 7250,
+                                    "read": 35585
+                                }
+                            },
+                            "a1bcc5f81462f2358": {
+                                "total": 284893,
+                                "input": 37,
+                                "output": 2495,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 15136,
+                                    "read": 267225
+                                }
+                            },
+                            "a24234c5211bc1c9f": {
+                                "total": 71226,
+                                "input": 20,
+                                "output": 3031,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 19927,
+                                    "read": 48248
+                                }
+                            },
+                            "a25fa4316fd545dc8": {
+                                "total": 43157,
+                                "input": 13,
+                                "output": 609,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 7872,
+                                    "read": 34663
+                                }
+                            },
+                            "a41de163c575aeb15": {
+                                "total": 213806,
+                                "input": 43,
+                                "output": 2198,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 12630,
+                                    "read": 198935
+                                }
+                            },
+                            "a41eedf6c6d393da4": {
+                                "total": 168137,
+                                "input": 31,
+                                "output": 2238,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 11431,
+                                    "read": 154437
+                                }
+                            },
+                            "a449a08286b8f1d7b": {
+                                "total": 139779,
+                                "input": 26,
+                                "output": 1243,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 11526,
+                                    "read": 126984
+                                }
+                            },
+                            "a46fad55957dba285": {
+                                "total": 374131,
+                                "input": 41,
+                                "output": 3898,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 23375,
+                                    "read": 346817
+                                }
+                            },
+                            "a62b7893eb9365b2f": {
+                                "total": 104587,
+                                "input": 14,
+                                "output": 1176,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 11433,
+                                    "read": 91964
+                                }
+                            },
+                            "a686c23fbaea0d763": {
+                                "total": 1022288,
+                                "input": 49,
+                                "output": 6143,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 30948,
+                                    "read": 985148
+                                }
+                            },
+                            "a80819f9b7cae28d3": {
+                                "total": 291583,
+                                "input": 45,
+                                "output": 3371,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 26672,
+                                    "read": 261495
+                                }
+                            },
+                            "a82ab9582e1fc4334": {
+                                "total": 506791,
+                                "input": 66,
+                                "output": 4824,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 24435,
+                                    "read": 477466
+                                }
+                            },
+                            "a8336330d60d48bf9": {
+                                "total": 323031,
+                                "input": 44,
+                                "output": 5251,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 17116,
+                                    "read": 300620
+                                }
+                            },
+                            "a8f0ede9001f0b25b": {
+                                "total": 1039062,
+                                "input": 46,
+                                "output": 10136,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 37656,
+                                    "read": 991224
+                                }
+                            },
+                            "a9012cc4416d6a11b": {
+                                "total": 599729,
+                                "input": 62,
+                                "output": 3157,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 20193,
+                                    "read": 576317
+                                }
+                            },
+                            "aa2645748f4f6b60a": {
+                                "total": 160736,
+                                "input": 16,
+                                "output": 2375,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 14953,
+                                    "read": 143392
+                                }
+                            },
+                            "ab65b21f8d0259131": {
+                                "total": 542022,
+                                "input": 47,
+                                "output": 4775,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 22866,
+                                    "read": 514334
+                                }
+                            },
+                            "ad8c6d7257f0d90c5": {
+                                "total": 489478,
+                                "input": 54,
+                                "output": 5195,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 21153,
+                                    "read": 463076
+                                }
+                            },
+                            "aeb536ec095508c4f": {
+                                "total": 426629,
+                                "input": 1318,
+                                "output": 4405,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 30784,
+                                    "read": 390122
+                                }
+                            },
+                            "af565de5e909dc8c1": {
+                                "total": 213778,
+                                "input": 18,
+                                "output": 2453,
+                                "reasoning": 0,
+                                "cache": {
+                                    "write": 15287,
+                                    "read": 196020
+                                }
+                            }
+                        }
+                    }
+                },
+                "baseline":
+                {
+                    "baseline1":
+                    {
+                        "session ID": "1ba869af-dfaf-4913-a13e-fdaf73516ec9",
+                        "token_usage": "1",
+                        "github_branch":"A1_CLAUDECODE_Haiku4.5",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls":
+                        {  
+                            "Bash": 45,
+                            "Edit": 26,
+                            "Write": 12,
+                            "Read": 6,
+                            "Skill": 1,
+                            "TOTAL": 90
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 6118815,
+                            "input": 725,
+                            "output": 47819,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 72450,
+                                "read": 5997821
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 6118815,
+                            "input": 725,
+                            "output": 47819,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 72450,
+                                "read": 5997821
+                            }
+                        },
+                        "per_subagent_tokens": {}
+                    },
+                    "baseline2":
+                    {
+                        "session ID": "2edc4771-5ce1-4a71-b8a7-9b6a3055c053",
+                        "token_usage": "1",
+                        "github_branch":"A2_CLAUDECODE_Haiku4.5",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "Bash": 21,
+                            "Write": 12,
+                            "Read": 10,
+                            "Edit": 10,
+                            "Skill": 1,
+                            "TOTAL": 54
+                        },
+                        "code-review-graph_calls":0,
+                        "total_tokens": {
+                            "total": 2749918,
+                            "input": 480,
+                            "output": 24529,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 46986,
+                                "read": 2677923
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 2749918,
+                            "input": 480,
+                            "output": 24529,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 46986,
+                                "read": 2677923
+                            }
+                        },
+                        "per_subagent_tokens": {}
+                    },
+                    "baseline3":
+                    {
+                        "session ID": "cd08ca32-5f8a-4e35-ba30-49e65c82a053",
+                        "token_usage": "1",
+                        "github_branch":"A3_CLAUDECODE_Haiku4.5",
+                        "token_input": "1", 
+                        "token_output": "1",
+                        "toolcalls": 
+                        {
+                            "Bash": 21,
+                            "Write": 13,
+                            "Read": 5,
+                            "Edit": 4,
+                            "Skill": 1,
+                            "TOTAL": 44
+                        },
+                        "code-review-graph_calls": 0,
+                        "total_tokens": {
+                            "total": 2365044,
+                            "input": 384,
+                            "output": 35554,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 56966,
+                                "read": 2272140
+                            }
+                        },
+                        "orchestrator_tokens": {
+                            "total": 2365044,
+                            "input": 384,
+                            "output": 35554,
+                            "reasoning": 0,
+                            "cache": {
+                                "write": 56966,
+                                "read": 2272140
+                            }
+                        },
+                        "per_subagent_tokens": {}
+                    }
+                }
+            }
+        }
+}
