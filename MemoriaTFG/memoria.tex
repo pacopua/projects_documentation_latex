@@ -1119,6 +1119,13 @@ La transcripción se realiza a través de la API REST de Azure Speech Service en
     \item \textbf{Descarga y formateo del resultado}: una vez completado el trabajo, se descarga el fichero de resultados y se procesan las frases reconocidas (\texttt{recognizedPhrases}). Cuando la diarización está activa, cada frase se ordena cronológicamente según su \textit{offset} en formato ISO 8601 y se formatea como \texttt{[Speaker N]: texto}, produciendo una transcripción estructurada por hablante. Si la diarización no está disponible, se recurre al campo \texttt{combinedRecognizedPhrases} como fallback.
 \end{enumerate}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{imagenes/Transcription System.png}
+    \caption{Diagrama de flujo de el proceso de transcripción. Generación propia.}
+    \label{fig:skill_definition}
+\end{figure}
+
 \subsection{Módulo de procesamiento de requerimientos}
 \label{sec:modulo_procesamiento}
 Una vez disponible la transcripción (producida por cualquiera de las vías descritas en la sección anterior), el módulo de procesamiento la analiza y genera un plan de implementación estructurado. Este módulo también dispone de dos implementaciones: un enfoque basado en la plataforma Claude Cowork y una implementación propia en Python.
@@ -1172,6 +1179,13 @@ El flujo de procesamiento sigue cuatro fases secuenciales:
 
 \paragraph{Bucle de refinamiento con \textit{Human in the Loop}.}
 Una característica diferencial de la aplicación es la capacidad de refinamiento iterativo en cada fase. El usuario puede modificar el plan de investigación o el plan arquitectónico mediante instrucciones en lenguaje natural. El sistema mantiene un historial de conversación mediante la abstracción \texttt{MessagesPlaceholder} de LangChain, lo que permite que el modelo tome en cuenta el contexto de intercambios anteriores al procesar cada solicitud de refinamiento. Este mecanismo implementa el principio \textit{Human in the Loop} definido en los objetivos del proyecto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{imagenes/Requirements Intake System.png}
+    \caption{Diagrama de flujo de el proceso generación de plan en la toma de requerimientos. Generación propia.}
+    \label{fig:skill_definition}
+\end{figure}
 
 \newpage
 
@@ -1368,7 +1382,7 @@ El flujo de trabajo completo se desarrolla de la siguiente forma cuando el usuar
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\textwidth]{imagenes/JustColbPowers.png}
-    \caption{Diagrama de flujo de colbPowers.}
+    \caption{Diagrama de flujo de colbPowers. Generación propia.}
     \label{fig:skill_definition}
 \end{figure}
 
@@ -1416,11 +1430,11 @@ De forma análoga al enfoque adoptado en la toma de requerimientos, se dispone d
 
 \section{Experimentos y evaluación}
 \label{sec:evaluacion_resultados}
-Con el objetivo de evaluar empíricamente el impacto de las herramientas desarrolladas, se ha diseñado un experimento controlado que compara tres condiciones de implementación sobre dos casos de uso distintos. Los experimentos están planificados y pendientes de ejecución; esta sección describe el diseño experimental y la estructura de resultados que se completará con los datos obtenidos.
+Con el objetivo de evaluar empíricamente el impacto de las herramientas desarrolladas, se ha ejecutado un experimento controlado que compara dos condiciones de implementación ---línea base sin plugins frente a la combinación colbPowers~+~code-review-graph--- sobre dos casos de uso distintos, utilizando dos asistentes de programación diferentes.
 
 \subsection{Diseño experimental}
 \label{sec:diseno_experimental}
-El experimento sigue un diseño de cuatro condiciones (A/B/C/D) con cuatro repeticiones por condición (n=3), ejecutadas con temperatura 0 para minimizar la varianza estocástica del modelo. Las cuatro condiciones son:
+El experimento compara dos condiciones (A y D) con tres repeticiones por condición (n=3), ejecutadas con temperatura~0 para minimizar la varianza estocástica del modelo. Las condiciones son:
 
 \begin{table}[H]
 \centering
@@ -1428,20 +1442,18 @@ El experimento sigue un diseño de cuatro condiciones (A/B/C/D) con cuatro repet
 \hline
 \textbf{Cond.} & \textbf{Herramientas activas} & \textbf{Descripción} \\
 \hline
-A & Herramientas nativas CLI & Solo Read, Write, Edit, Bash, Grep. Sin plugins ni servidores MCP adicionales. Actúa como baseline. \\
+A & Herramientas nativas CLI & Solo Read, Write, Edit, Bash, Grep. Sin plugins ni servidores MCP adicionales. Actúa como línea base. \\
 \hline
-B & Nativas + code-review-graph & Añade el servidor MCP de code-review-graph. El agente puede consultar el grafo de dependencias, calcular el blast radius de los cambios y realizar búsquedas semánticas sobre el código. \\
-\hline
-C & Nativas + colbPowers & El agente opera bajo el flujo SDD de colbPowers, sin acceso a las herramientas de exploración de código de code-review-graph. \\
-\hline
-D & Nativas + colbPowers + code-review-graph & Combinación completa. El agente sigue el flujo SDD de colbPowers con acceso además al servidor MCP de code-review-graph. La tarea sigue el ciclo: constitution $\rightarrow$ features $\rightarrow$ spec $\rightarrow$ plan $\rightarrow$ execute $\rightarrow$ review. \\
+D & Nativas + colbPowers + code-review-graph & Combinación completa. El agente sigue el flujo SDD de colbPowers con acceso al servidor MCP de code-review-graph. La tarea sigue el ciclo: constitution $\rightarrow$ features $\rightarrow$ spec $\rightarrow$ plan $\rightarrow$ execute $\rightarrow$ review. \\
 \hline
 \end{tabular}
-\caption{Condiciones experimentales del diseño A/B/C/D}
+\caption{Condiciones experimentales del diseño A/D}
 \label{tab:condiciones_experimentales}
 \end{table}
 
-Las métricas recogidas en cada ejecución son: tokens de entrada consumidos, tokens de salida consumidos, número total de tool calls, número de tool calls específicas de code-review-graph, cobertura de la implementación (porcentaje de ítems del enunciado correctamente implementados), y número de regresiones introducidas (cambios en funcionalidad no solicitada).
+Cada condición se ha ejecutado con dos asistentes distintos: \textbf{OpenCode con DeepSeek V4-Flash} y \textbf{ClaudeCode con Haiku~4.5}. Esto permite observar el impacto de los plugins de forma independiente al modelo de lenguaje subyacente.
+
+Las métricas recogidas en cada ejecución son: tokens totales consumidos (incluyendo tokens de caché), número de tool calls del orquestador, y número de llamadas a herramientas de code-review-graph.
 
 \paragraph{Metodología:} Para reducir al máximo los sesgos de
 confirmación y manipulación involuntaria por parte del experimentador,
@@ -1475,64 +1487,60 @@ reglas, ordenadas por prioridad:
 
 \subsection{Caso 1: Aplicación Flutter}
 \label{sec:caso1_confortmental}
-El primer experimento se llevará a cabo sobre un repositorio real de Colb.Ai. Con tal de respetar las políticas de confidencialidad, la descripción del proyecto será lo suficientemente detallada como para entender el contexto, pero se omitirán ciertos detalles con tal de anonimizarlo.
+El primer experimento se llevó a cabo sobre un repositorio real de Colb.Ai. Con tal de respetar las políticas de confidencialidad, la descripción del proyecto es lo suficientemente detallada como para entender el contexto, omitiendo ciertos detalles para anonimizarlo.
 
-El proyecto consiste en una aplicación de escritorio desarrollada con el SDK \textit{Flutter}. El experimento consistirá en pedirle al asistente de IA que haga una lista de cambios considerablemente extensa a lo largo de las distintas páginas de la aplicación; principalmente cambios visuales. La hipótesis inicial es que un agente de código básico, se olvida rápidamente de muchos de los cambios pedidos (ya sea por alucinaciones o por ventana de contexto), en cambio agentes que siguen la metodología estructurada de colbPowers, documentando los cambios exactos que deben hacer antes de hacerlos, no sufrirán de este problema. Además, también se espera ver una reducción de consumo de tokens en las configuraciones que utilizan code-review-graph, puesto que en teoría esta herramienta es ideal para una tarea como esta, que requiere explorar distintos archivos del repositorio.
+El proyecto consiste en una aplicación de escritorio desarrollada con el SDK \textit{Flutter}. La tarea consistió en pedirle al asistente de IA una lista de cambios considerablemente extensa a lo largo de distintas páginas de la aplicación; principalmente cambios visuales. La hipótesis era que un agente básico olvidaría con frecuencia parte de los cambios solicitados ---ya sea por alucinaciones o por limitaciones de ventana de contexto---, mientras que los agentes que siguen la metodología estructurada de colbPowers, documentando los cambios exactos antes de realizarlos, deberían sufrir menos de este problema.
 
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|l|c|c|c|c|}
 \hline
-\textbf{Métrica} & \textbf{Cond. A} & \textbf{Cond. B} & \textbf{Cond. C} & \textbf{Cond. D} \\
- & \textbf{(sin plugins)} & \textbf{(code-review-graph)} & \textbf{(colbPowers)} & \textbf{(colbPowers + CRG)} \\
+\textbf{Métrica} & \textbf{OpenCode} & \textbf{OpenCode} & \textbf{ClaudeCode} & \textbf{ClaudeCode} \\
+ & \textbf{Cond.~A} & \textbf{Cond.~D} & \textbf{Cond.~A} & \textbf{Cond.~D} \\
 \hline
-Tokens entrada (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Tokens salida (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Tool calls totales (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Tool calls CRG (media) & N/A & {[}PENDIENTE{]} & N/A & {[}PENDIENTE{]} \\
-Cobertura (media \%) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tokens totales (media, M) & 3,26 & 9,38 & 3,74 & 14,33 \\
+Tool calls orch. (media) & 69 & 92 & 53 & 63 \\
+Llamadas CRG (media) & 0 & 0 & 0 & 1,0 \\
 \hline
 \end{tabular}
 }
-\caption{Resultados Caso 1: Aplicación Flutter}
+\caption{Resultados Caso 1: Aplicación Flutter (n=3 por condición y asistente)}
 \label{tab:caso1_resultados}
 \end{table}
 
+En la condición D se observa un incremento muy notable en el consumo de tokens respecto a la condición A: ×2,9 para OpenCode y ×3,8 para ClaudeCode. Este sobrecoste refleja el overhead del flujo SDD de colbPowers, que genera documentación estructurada y delega la implementación a múltiples subagentes. El número de tool calls del orquestador crece de forma más moderada, ya que en la condición D parte del trabajo se distribuye entre subagentes. Destaca que las llamadas a code-review-graph fueron prácticamente nulas (0 en OpenCode, 1,0 de media en ClaudeCode), lo que sugiere que los agentes no incorporaron de forma proactiva el grafo de dependencias para una tarea de tipo exploratorio-visual.
+
 \subsection{Caso 2: Aplicación de simulación 3D}
 \label{sec:caso2_simulacion3d}
-El segundo caso de uso aplica el experimento sobre una tarea de nueva implementación desde cero: el desarrollo de una aplicación de simulación 3D en la que, al pulsar una tecla, aparece una esfera en el entorno tridimensional; al hacer clic sobre ella, la esfera explota en una animación de partículas. A diferencia del caso anterior (modificación de una base de código existente), este caso evalúa el comportamiento de las herramientas en la creación de funcionalidad nueva.
+El segundo caso aplica el experimento sobre una tarea de nueva implementación desde cero: el desarrollo de una aplicación de simulación 3D en la que, al pulsar una tecla, aparece una esfera en el entorno tridimensional; al hacer clic sobre ella, la esfera explota en una animación de partículas. A diferencia del caso anterior (modificación de una base de código existente), este caso evalúa el comportamiento de las herramientas en la creación de funcionalidad nueva.
 
-Este caso es especialmente relevante para evaluar colbPowers, ya que las condiciones C y D
-pueden ejecutar el ciclo completo de la metodología SDD: primero se generan de forma
+Este caso es especialmente relevante para evaluar colbPowers, ya que la condición D
+puede ejecutar el ciclo completo de la metodología SDD: primero se generan de forma
 interactiva con el usuario los documentos de constitución y \textit{features} del
 proyecto, y a continuación se genera la especificación técnica de la funcionalidad
 a implementar. En todo momento el proceso sigue el principio de \textit{Human-in-the-Loop}:
-el usuario participa en cada etapa y puede controlar el flujo. La hipótesis es que
-las condiciones C y D producen código de mayor calidad estructural (menor complejidad
-ciclomática, mejor índice de mantenibilidad) y mayor trazabilidad entre las
-decisiones de diseño y el código implementado.
+el usuario participa en cada etapa y puede controlar el flujo.
 
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{|l|c|c|c|c|}
 \hline
-\textbf{Métrica} & \textbf{Cond. A} & \textbf{Cond. B} & \textbf{Cond. C} & \textbf{Cond. D} \\
- & \textbf{(sin plugins)} & \textbf{(code-review-graph)} & \textbf{(colbPowers)} & \textbf{(colbPowers + CRG)} \\
+\textbf{Métrica} & \textbf{OpenCode} & \textbf{OpenCode} & \textbf{ClaudeCode} & \textbf{ClaudeCode} \\
+ & \textbf{Cond.~A} & \textbf{Cond.~D} & \textbf{Cond.~A} & \textbf{Cond.~D} \\
 \hline
-Tokens entrada (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Tokens salida (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Tool calls totales (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Cobertura funcional (media \%) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Complejidad ciclomática (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
-Índice de mantenibilidad (media) & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} & {[}PENDIENTE{]} \\
+Tokens totales (media, M) & 1,88 & 8,41 & 3,74 & 8,19 \\
+Tool calls orch. (media) & 52 & 85 & 63 & 48 \\
+Llamadas CRG (media) & 0 & 0,7 & 0 & 0,3 \\
 \hline
 \end{tabular}%
 }
-\caption{Resultados Caso 2: Aplicación de simulación 3D}
+\caption{Resultados Caso 2: Aplicación de simulación 3D (n=3 por condición y asistente)}
 \label{tab:caso2_resultados}
 \end{table}
+
+En el segundo caso el incremento de tokens en la condición D es también significativo (×4,5 para OpenCode y ×2,2 para ClaudeCode). El número de tool calls del orquestador en la condición D es inferior al de la condición A para ClaudeCode (48 frente a 63), lo que refleja que el orquestador de colbPowers delega la mayor parte de las operaciones a subagentes especializados, reduciendo su propia carga de acciones directas. Las llamadas a code-review-graph son igualmente bajas (0,7 y 0,3 de media para OpenCode y ClaudeCode respectivamente), lo que es coherente dado que se trata de un proyecto nuevo sin base de código preexistente que explorar.
 
 \newpage
 
@@ -1562,7 +1570,6 @@ En este apartado se presentan las asignaturas de las cuales se han podido utiliz
 
 
 \addcontentsline{toc}{section}{Referencias}
-\bibliographystyle{plain}
+\bibliographystyle{plainurl}
 \bibliography{references}
-
 \end{document}
