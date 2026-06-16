@@ -1537,7 +1537,11 @@ colbPowers & Ejec.~1 & 12,23 & 0,00 & 0,11 & 11,66 & 56 & 0 \\
 
 En ambos asistentes el paso de baseline a colbPowers multiplica el consumo de tokens (x2,9 en OpenCode, x3,8 en ClaudeCode), reflejo del overhead del flujo SDD: generación de documentación estructurada y delegación a múltiples subagentes. El número de tool calls crece moderadamente en OpenCode (69 → 92) y se mantiene similar en ClaudeCode (53 → 63). Las llamadas a code-review-graph son esporádicas: únicamente la Ejecución~2 de OpenCode colbPowers registró 2 llamadas y la Ejecución~3 de ClaudeCode colbPowers registró 3, lo que sugiere que los agentes no incorporaron de forma proactiva el grafo de dependencias para una tarea de tipo exploratorio-visual.
 
-El desglose de tokens revela una diferencia estructural entre los dos asistentes. En OpenCode, los tokens de entrada no cacheados son significativos (media 0,98~M en baseline, 4,07~M en colbPowers), lo que refleja que cada subagente inicia un contexto propio sin aprovechar caché de sesiones anteriores. En ClaudeCode, en cambio, los tokens de entrada son prácticamente nulos (aaprox 0,00~M) y casi la totalidad del consumo corresponde a tokens de caché (3,63~M en baseline, 13,70~M en colbPowers): la API de Anthropic almacena el prefijo del prompt y las peticiones sucesivas leen el contexto desde caché, lo que reduce el coste real pero infla el contador total. Esta asimetría hace que la comparación directa de tokens totales entre OpenCode y ClaudeCode no sea completamente homogénea. 
+Sin embargo, este sobrecoste de tokens no debe interpretarse en aislamiento. colbPowers genera como subproducto documentación estructurada (constitución del proyecto, especificación de cambios, plan de implementación) que persiste en el repositorio y facilita la incorporación de nuevos desarrolladores. Además, el diseño de colbPowers ---con su énfasis en especificación previa y revisión sistemática--- propicia un ambiente donde los tests forman parte natural del flujo, en lugar de ser un trabajo adicional. En un proyecto de desarrollo profesional con horizonte de vida largo, estos beneficios transcienden el consumo inmediato de tokens.
+
+El desglose de tokens revela una diferencia estructural entre los dos asistentes. En OpenCode, los tokens de entrada no cacheados son significativos (media 0,98~M en baseline, 4,07~M en colbPowers), lo que refleja que cada subagente inicia un contexto propio sin aprovechar caché de sesiones anteriores. En ClaudeCode, en cambio, los tokens de entrada son prácticamente nulos (aaprox 0,00~M) y casi la totalidad del consumo corresponde a tokens de caché (3,63~M en baseline, 13,70~M en colbPowers): la API de Anthropic almacena el prefijo del prompt y las peticiones sucesivas leen el contexto desde caché, lo que reduce el coste real pero infla el contador total. Esta asimetría hace que la comparación directa de tokens totales entre OpenCode y ClaudeCode no sea completamente homogénea.
+
+Finalmente, nótese que el Caso 1 no incluye métricas de calidad de código. Al tratarse de un proyecto ya iniciado con base preexistente, medir la complejidad ciclomática o el índice de mantenibilidad de cambios puntuales en archivos existentes resultaría metodológicamente problemático. Las métricas de calidad se reservan para el Caso 2, donde el modelo es responsable de la arquitectura completa. 
 
 \subsection{Caso 2: Visualizador de clasificadores en Python}
 \label{sec:caso2_simulacion3d}
@@ -1547,7 +1551,7 @@ Este caso es especialmente relevante para evaluar colbPowers, ya que puede ejecu
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{%
+\resizebox{\textwidth}{!}{
 \begin{tabular}{|l|l|r|r|r|r|r|}
 \hline
 \textbf{Condición} & \textbf{Ejecución} & \textbf{Tokens (M)} & \textbf{Tool calls} & \textbf{CRG} & \textbf{Comp. ciclom.} & \textbf{Mant. Index} \\
@@ -1591,7 +1595,34 @@ colbPowers & Ejec.~1 & 7,30 & 46 & 0 & 2,77 & 50,56 \\
 \label{tab:caso2_claudecode}
 \end{table}
 
-En el segundo caso el sobrecoste de tokens de colbPowers es también significativo (×4,5 para OpenCode, ×2,2 para ClaudeCode). En ClaudeCode el orquestador realiza menos tool calls en colbPowers (48) que en baseline (63), lo que confirma que delega la mayor parte del trabajo a subagentes. Las métricas de calidad revelan diferencias notables entre condiciones: en OpenCode, colbPowers genera código de menor complejidad ciclomática (3,13 frente a 4,31) y mayor índice de mantenibilidad (47,78 frente a 41,54) que baseline. En ClaudeCode la diferencia es menos pronunciada ---complejidad 3,11 (colbPowers) frente a 2,85 (baseline)---, aunque colbPowers obtiene un índice de mantenibilidad superior (59,01 frente a 56,97). Destaca que ClaudeCode produce código con un índice de mantenibilidad significativamente mayor que OpenCode en ambas condiciones, lo que sugiere una diferencia cualitativa entre los dos asistentes más allá del consumo de recursos.
+En el segundo caso el sobrecoste de tokens de colbPowers es también significativo (×4,5 para OpenCode, ×2,2 para ClaudeCode). En ClaudeCode el orquestador realiza menos tool calls en colbPowers (48) que en baseline (63), lo que confirma que delega la mayor parte del trabajo a subagentes. Las métricas de calidad revelan diferencias notables entre condiciones: en OpenCode, colbPowers genera código de menor complejidad ciclomática (3,13 frente a 4,31, una reducción del 27\%) y mayor índice de mantenibilidad (47,78 frente a 41,54, un incremento del 15\%) que baseline. En ClaudeCode la diferencia es menos pronunciada ---complejidad 3,11 (colbPowers) frente a 2,85 (baseline)---, aunque colbPowers obtiene un índice de mantenibilidad superior (59,01 frente a 56,97, un incremento del 3,6\%). Destaca que ClaudeCode produce código con un índice de mantenibilidad significativamente mayor que OpenCode en ambas condiciones, lo que sugiere una diferencia cualitativa entre los dos asistentes más allá del consumo de recursos.
+
+Estos resultados sugieren que el sobrecoste de tokens de colbPowers compra una mejora real en la estructura del código generado, especialmente en OpenCode. La especificación previa obliga al modelo a reflexionar sobre la arquitectura antes de escribir líneas de código, reduciendo la propensión a soluciones ad-hoc o funciones innecesariamente complejas. Adicionalmente, colbPowers genera por defecto documentación detallada (especificación del comportamiento, plan de implementación, criterios de aceptación) que permanece en el repositorio y facilita el entendimiento futuro del sistema. El flujo estructura también propicia la generación de tests: al exigir criterios de aceptación explícitos en cada tarea, se crea un ambiente natural donde los tests forman parte de la especificación inicial, no un trabajo adicional posterior. Para un proyecto con horizonte de vida extenso, estos beneficios ---código más mantenible, documentación estructurada, propensión a tests--- compensan ampliamente el overhead inicial de tokens.
+
+\subsubsection{Visualización de resultados}
+
+Los siguientes gráficos resumen las comparativas clave entre condiciones baseline y colbPowers:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{graficos/01_calidad_codigo.png}
+    \caption{Comparación de métricas de calidad en el Caso 2 (visualizador de clasificadores en Python). colbPowers reduce la complejidad ciclomática y mejora el índice de mantenibilidad, especialmente en OpenCode (CC: 4,31 → 3,13; MI: 41,54 → 47,78).}
+    \label{fig:calidad_codigo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{graficos/02_tokens_totales.png}
+    \caption{Consumo total de tokens (millones) en ambos casos de estudio. El incremento de colbPowers respecto a baseline oscila entre 2,2x (ClaudeCode) y 4,5x (OpenCode), reflejando el overhead de documentación y delegación a subagentes.}
+    \label{fig:tokens_totales}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{graficos/08_delta_calidad.png}
+    \caption{Efecto del plugin colbPowers en la calidad del código (delta = plugin - baseline). En OpenCode, colbPowers reduce la complejidad ciclomática en 1,172 puntos (mejora, verde) e incrementa el índice de mantenibilidad en 6,233 puntos. En ClaudeCode los cambios son menores pero favorables. Este gráfico evidencia que a pesar del overhead de tokens, colbPowers genera código cualitativamente superior.}
+    \label{fig:delta_calidad}
+\end{figure}
 
 \newpage
 
@@ -1619,6 +1650,7 @@ En este apartado se presentan las asignaturas de las cuales se han podido utiliz
     \item \textbf{Introducción a la ingeniería del software (IES):} La base proporcionada en esta asignatura sobre requisitos de software, diseño de sistemas y creación de diagramas de flujo, fueron extremadamente útiles tanto para planificar el sistema implementado en este proyecto.
 \end{itemize}
 
+\newpage
 
 \addcontentsline{toc}{section}{Referencias}
 \bibliographystyle{plainurl}
