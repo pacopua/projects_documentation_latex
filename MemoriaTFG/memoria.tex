@@ -226,12 +226,18 @@ En el Cuadro \ref{tab:comparativa_herramientas} se presenta un resumen de las ca
     \hline
     \textbf{AgentOS} & Orquestación de agentes & Diseñado principalmente para proyectos \textit{greenfield} & Muy compleja (\textit{Legacy}) \\
     \hline
-    \textbf{Copilot/Cursor} & \textit{Code-Driven} & Fomenta el \textit{slop code}, falta de planificación & Alta (pero sin contexto global) \\ 
+    \textbf{Copilot/Cursor} & \textit{Code-Driven} & Fomenta el \textit{slop code}, falta de planificación & Alta (pero sin contexto global) \\
+    \hline
+    \textbf{ClaudeCode / OpenCode} & CLI extensible mediante plugins y MCP & Requiere plugin/configuración para imponer flujo \textit{Spec-First} & Alta \\
+    \hline
+    \textbf{superpowers} & Orquestador + subagentes via skills & Sin constitución ni \textit{features} globales entre sesiones & Alta \\
     \hline
 \end{tabularx}
 \caption{Comparativa de soluciones existentes. [Fuente: Elaboración propia]}
 \label{tab:comparativa_herramientas}
 \end{table}
+
+De las herramientas analizadas, \textit{superpowers} fue evaluado como candidato directo al problema planteado. Resuelve la orquestación de agentes, pero no garantiza coherencia arquitectónica entre sesiones ni entre desarrolladores distintos, ya que carece de un mecanismo de contexto persistente y compartido. Se decidió adoptarlo como base y extenderlo: el resultado es \textbf{colbPowers}, que añade la capa de \texttt{constitution.md} (reglas y estándares del proyecto) y \texttt{features.md} (registro de funcionalidades) como fuente de verdad compartida para todos los agentes.
 
 A la vista de estas limitaciones, la creación de una solución propia resulta razonable. Desarrollar nuestro propio sistema nos proporciona la flexibilidad indispensable para integrarlo de forma nativa con nuestro \textit{pipeline} de trabajo. Esto nos permitirá personalizar la ingesta de contexto conectando la herramienta directamente a nuestras bases de datos, permitiendo la lectura automatizada de \textit{issues en GitHub} y la integración fluida con plataformas de gestión interna como \textit{Odoo} y \textit{Microsoft Teams}.
 
