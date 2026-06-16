@@ -305,7 +305,7 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
 \subsection{Métricas de Evaluación del Código}
 \label{sec:metricas}
 
-Para validar empíricamente la calidad del código generado por el sistema, se emplearán métricas de análisis estático ampliamente adoptadas en la ingeniería del software \cite{sommerville_se_2015}. Estas métricas serán calculadas mediante \textbf{radon}, una herramienta Python de análisis estático de código. Es importante destacar que las métricas no forman parte del flujo automatizado de los agentes: constituyen una herramienta de evaluación independiente que el desarrollador utiliza para analizar manualmente la calidad del código generado y contrastar los resultados entre distintas ejecuciones del sistema.
+Para validar empíricamente la calidad del código generado por el sistema, se emplearán métricas de análisis estático ampliamente adoptadas en la ingeniería del software \cite{sommerville_se_2015}. Estas métricas serán calculadas mediante \textbf{radon} \cite{Lacchia_radon}, una herramienta Python de análisis estático de código. Es importante destacar que las métricas no forman parte del flujo automatizado de los agentes: constituyen una herramienta de evaluación independiente que el desarrollador utiliza para analizar manualmente la calidad del código generado y contrastar los resultados entre distintas ejecuciones del sistema.
 
 Las métricas inicialmente contempladas son las siguientes:
 
@@ -463,7 +463,7 @@ La distribución de horas entre sprints no es uniforme, sino que responde a la c
 \label{sec:pv}
 Fase dedicada a la validación empírica y técnica del sistema, evaluando tanto el código como la interacción del usuario.
 \begin{itemize}
-    \item \textbf{PV1 - Pruebas unitarias de las Agent Skills (20h)}: Verificación técnica de los \textit{scripts} locales en Python y bash para asegurar que interactúan correctamente con el sistema de archivos y el IDE.
+    \item \textbf{PV1 - Pruebas unitarias de las Agent Skills (20h)}: Verificación técnica de los scripts de radon y las configuraciones del plugin colbPowers para asegurar que interactúan correctamente con el sistema de archivos y los asistentes CLI.
     \item \textbf{PV2 - Pruebas del bucle completo (Human in the Loop) (40h)}: Simulaciones de desarrollo de funcionalidades (\textit{features}) reales para auditar la colaboración entre el usuario y los agentes. Evaluar tanto la funcionalidad de el código desarrollado, como el resultado que recibe este código en las distintas métricas de calidad seleccionadas.
 \end{itemize}
 
@@ -486,7 +486,9 @@ Para el desarrollo óptimo de este proyecto, se requiere la siguiente infraestru
 El ecosistema tecnológico del proyecto se apoya en diversas herramientas categorizadas según su propósito:
 \begin{itemize}
     \item \textbf{Entorno de Desarrollo:} Sistema operativo Windows con Windows Subsystem for Linux (WSL) habilitado, proporcionando un entorno Unix nativo indispensable para la ejecución de \textit{scripts} en Bash y Python. El editor principal será Visual Studio Code (VSCode).
-    \item \textbf{Servicios de Inteligencia Artificial:} Suscripciones activas o acceso a APIs de proveedores de modelos de lenguaje (LLMs) y agentes de código, como \textit{GitHub Copilot}, \textit{Claude Code} o las APIs de Anthropic/OpenAI.
+    \item \textbf{Servicios de Inteligencia Artificial:} Suscripciones activas o acceso a APIs de proveedores de modelos de lenguaje (LLMs) y agentes de código, como \textit{Claude Code}, \textit{OpenCode} o las APIs de Anthropic/OpenAI. Adicionalmente, \textbf{Azure Speech Service} para la transcripción de reuniones presenciales con diarización, y \textbf{Tavily} como motor de búsqueda semántica para el módulo de toma de requerimientos.
+    \item \textbf{Análisis de código:} \textbf{radon}, herramienta Python de análisis estático para el cálculo de métricas de calidad del código generado.
+    \item \textbf{Orquestación:} \textbf{LangChain} para la construcción del pipeline de procesamiento de requerimientos.
     \item \textbf{Control de Versiones y Repositorios:} \textit{Git} como sistema de control de versiones local y \textit{GitHub} como plataforma de alojamiento remoto e integración.
     \item \textbf{Gestión y Planificación:} \textit{Odoo} para la gestión de tareas (seguimiento del \textit{Product/Sprint Backlog}), \textit{GanttProject} para la planificación temporal y \textit{Draw.io} para el diseño de diagramas arquitectónicos.
     \item \textbf{Comunicación:} \textit{Microsoft Teams} como canal principal para las reuniones de seguimiento y validación con el equipo supervisor.
@@ -534,10 +536,10 @@ A continuación, se presenta una tabla resumen con la información clave de cada
 \textbf{TP1} & Estudio estado del arte & 30h & - & Autor, PC, Internet \\
 \textbf{TP2} & Planificación estructura y flujo & 20h & TP1 & Autor, PC, Draw.io \\
 \midrule
-\textbf{DA1} & Sprint 1: MVP & 50h & TP2 & Autor, PC, VSCode, APIs LLM \\
-\textbf{DA2} & Sprint 2: Métricas de Evaluación & 50h & DA1 & Autor, PC, VSCode \\
-\textbf{DA3} & Sprint 3: Habilidades e Int. MCP & 80h & DA1 & Autor, PC, VSCode, Git, Bash, Python \\
-\textbf{DA4} & Sprint 4: Recup. Info. y Refinamiento & 80h & DA3 & Autor, PC, VSCode, Git, APIs LLM, Bash, Python \\
+\textbf{DA1} & Sprint 1: MVP colbPowers & 50h & TP2 & Autor, PC, ClaudeCode, OpenCode \\
+\textbf{DA2} & Sprint 2: Subagentes y métricas & 50h & DA1 & Autor, PC, Python, radon \\
+\textbf{DA3} & Sprint 3: Habilidades e Int. MCP & 80h & DA1 & Autor, PC, Git, Bash, Python \\
+\textbf{DA4} & Sprint 4: Módulos compl. y refinamiento & 80h & DA3 & Autor, PC, Azure Speech, LangChain, Tavily \\
 \midrule
 \textbf{PV1} & Pruebas unitarias Agent Skills & 20h & DA3 & Autor, PC, WSL (Bash/Python) \\
 \textbf{PV2} & Pruebas bucle completo (HITL) & 40h & DA1 & Autor, Tutor, Compañero, PC \\
