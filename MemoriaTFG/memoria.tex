@@ -1430,30 +1430,28 @@ De forma análoga al enfoque adoptado en la toma de requerimientos, se dispone d
 
 \section{Experimentos y evaluación}
 \label{sec:evaluacion_resultados}
-Con el objetivo de evaluar empíricamente el impacto de las herramientas desarrolladas, se ha ejecutado un experimento controlado que compara dos condiciones de implementación ---línea base sin plugins frente a la combinación colbPowers~+~code-review-graph--- sobre dos casos de uso distintos, utilizando dos asistentes de programación diferentes.
+Con el objetivo de evaluar empíricamente el impacto de las herramientas desarrolladas, se ha ejecutado un experimento controlado que compara dos condiciones ---\textbf{baseline} (herramientas nativas sin plugins) frente a \textbf{colbPowers} (colbPowers~+~code-review-graph)--- sobre dos casos de uso distintos, con dos asistentes de programación y tres repeticiones por condición (n=3) a temperatura~0.
 
 \subsection{Diseño experimental}
 \label{sec:diseno_experimental}
-El experimento compara dos condiciones (A y D) con tres repeticiones por condición (n=3), ejecutadas con temperatura~0 para minimizar la varianza estocástica del modelo. Las condiciones son:
+Las dos condiciones experimentales son:
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|p{1.2cm}|p{4.8cm}|p{8.2cm}|}
+\begin{tabular}{|p{2.4cm}|p{4.0cm}|p{6.8cm}|}
 \hline
-\textbf{Cond.} & \textbf{Herramientas activas} & \textbf{Descripción} \\
+\textbf{Condición} & \textbf{Herramientas activas} & \textbf{Descripción} \\
 \hline
-A & Herramientas nativas CLI & Solo Read, Write, Edit, Bash, Grep. Sin plugins ni servidores MCP adicionales. Actúa como línea base. \\
+\texttt{baseline} & Herramientas nativas CLI & Solo Read, Write, Edit, Bash, Grep. Sin plugins ni servidores MCP adicionales. Actúa como línea base. \\
 \hline
-D & Nativas + colbPowers + code-review-graph & Combinación completa. El agente sigue el flujo SDD de colbPowers con acceso al servidor MCP de code-review-graph. La tarea sigue el ciclo: constitution $\rightarrow$ features $\rightarrow$ spec $\rightarrow$ plan $\rightarrow$ execute $\rightarrow$ review. \\
+\texttt{colbPowers} & Nativas + colbPowers + code-review-graph & El agente sigue el flujo SDD de colbPowers con acceso al servidor MCP de code-review-graph. La tarea sigue el ciclo: constitution $\rightarrow$ features $\rightarrow$ spec $\rightarrow$ plan $\rightarrow$ execute $\rightarrow$ review. \\
 \hline
 \end{tabular}
-\caption{Condiciones experimentales del diseño A/D}
+\caption{Condiciones experimentales}
 \label{tab:condiciones_experimentales}
 \end{table}
 
-Cada condición se ha ejecutado con dos asistentes distintos: \textbf{OpenCode con DeepSeek V4-Flash} y \textbf{ClaudeCode con Haiku~4.5}. Esto permite observar el impacto de los plugins de forma independiente al modelo de lenguaje subyacente.
-
-Las métricas recogidas en cada ejecución son: tokens totales consumidos (incluyendo tokens de caché), número de tool calls del orquestador, y número de llamadas a herramientas de code-review-graph.
+Cada condición se ha ejecutado con dos asistentes: \textbf{OpenCode con DeepSeek V4-Flash} y \textbf{ClaudeCode con Haiku~4.5}. Las métricas recogidas son: tokens totales consumidos (incluyendo caché), número de tool calls del orquestador, y número de llamadas a herramientas de code-review-graph. En el Caso~2 se recogen adicionalmente métricas de calidad del código generado (complejidad ciclomática e índice de mantenibilidad) para las ejecuciones de OpenCode con colbPowers.
 
 \paragraph{Metodología:} Para reducir al máximo los sesgos de
 confirmación y manipulación involuntaria por parte del experimentador,
@@ -1489,58 +1487,111 @@ reglas, ordenadas por prioridad:
 \label{sec:caso1_confortmental}
 El primer experimento se llevó a cabo sobre un repositorio real de Colb.Ai. Con tal de respetar las políticas de confidencialidad, la descripción del proyecto es lo suficientemente detallada como para entender el contexto, omitiendo ciertos detalles para anonimizarlo.
 
-El proyecto consiste en una aplicación de escritorio desarrollada con el SDK \textit{Flutter}. La tarea consistió en pedirle al asistente de IA una lista de cambios considerablemente extensa a lo largo de distintas páginas de la aplicación; principalmente cambios visuales. La hipótesis era que un agente básico olvidaría con frecuencia parte de los cambios solicitados ---ya sea por alucinaciones o por limitaciones de ventana de contexto---, mientras que los agentes que siguen la metodología estructurada de colbPowers, documentando los cambios exactos antes de realizarlos, deberían sufrir menos de este problema.
+El proyecto consiste en una aplicación de escritorio desarrollada con el SDK \textit{Flutter}. La tarea consistió en pedirle al asistente de IA una lista de cambios considerablemente extensa a lo largo de distintas páginas de la aplicación, principalmente cambios visuales. La hipótesis era que un agente básico olvidaría con frecuencia parte de los cambios solicitados ---ya sea por alucinaciones o por limitaciones de ventana de contexto---, mientras que los agentes que siguen la metodología estructurada de colbPowers, documentando los cambios exactos antes de realizarlos, deberían sufrir menos de este problema.
 
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|c|c|c|c|}
+\begin{tabular}{|l|l|r|r|r|r|r|r|}
 \hline
-\textbf{Métrica} & \textbf{OpenCode} & \textbf{OpenCode} & \textbf{ClaudeCode} & \textbf{ClaudeCode} \\
- & \textbf{Cond.~A} & \textbf{Cond.~D} & \textbf{Cond.~A} & \textbf{Cond.~D} \\
+\textbf{Condición} & \textbf{Ejecución} & \textbf{Total (M)} & \textbf{Input (M)} & \textbf{Output (M)} & \textbf{Caché (M)} & \textbf{Tool calls} & \textbf{CRG} \\
 \hline
-Tokens totales (media, M) & 3,26 & 9,38 & 3,74 & 14,33 \\
-Tool calls orch. (media) & 69 & 92 & 53 & 63 \\
-Llamadas CRG (media) & 0 & 0 & 0 & 1,0 \\
+baseline & Ejec.~1 & 3,67 & 1,15 & 0,02 & 2,49 & 74 & 0 \\
+ & Ejec.~2 & 2,76 & 0,89 & 0,02 & 1,85 & 68 & 0 \\
+ & Ejec.~3 & 3,37 & 0,91 & 0,02 & 2,43 & 66 & 0 \\
+ & \textbf{Media} & \textbf{3,26} & \textbf{0,98} & \textbf{0,02} & \textbf{2,26} & \textbf{69} & \textbf{0} \\
+\hline
+colbPowers & Ejec.~1 & 10,64 & 5,40 & 0,07 & 5,15 & 108 & 0 \\
+ & Ejec.~2 & 10,55 & 4,18 & 0,07 & 6,27 & 71 & 2 \\
+ & Ejec.~3 & 6,95 & 2,61 & 0,05 & 4,27 & 98 & 0 \\
+ & \textbf{Media} & \textbf{9,38} & \textbf{4,07} & \textbf{0,06} & \textbf{5,23} & \textbf{92} & \textbf{0,7} \\
 \hline
 \end{tabular}
 }
-\caption{Resultados Caso 1: Aplicación Flutter (n=3 por condición y asistente)}
-\label{tab:caso1_resultados}
+\caption{Caso 1 --- OpenCode con DeepSeek V4-Flash. Caché = tokens leídos de caché.}
+\label{tab:caso1_opencode}
 \end{table}
-
-En la condición D se observa un incremento muy notable en el consumo de tokens respecto a la condición A: ×2,9 para OpenCode y ×3,8 para ClaudeCode. Este sobrecoste refleja el overhead del flujo SDD de colbPowers, que genera documentación estructurada y delega la implementación a múltiples subagentes. El número de tool calls del orquestador crece de forma más moderada, ya que en la condición D parte del trabajo se distribuye entre subagentes. Destaca que las llamadas a code-review-graph fueron prácticamente nulas (0 en OpenCode, 1,0 de media en ClaudeCode), lo que sugiere que los agentes no incorporaron de forma proactiva el grafo de dependencias para una tarea de tipo exploratorio-visual.
-
-\subsection{Caso 2: Aplicación de simulación 3D}
-\label{sec:caso2_simulacion3d}
-El segundo caso aplica el experimento sobre una tarea de nueva implementación desde cero: el desarrollo de una aplicación de simulación 3D en la que, al pulsar una tecla, aparece una esfera en el entorno tridimensional; al hacer clic sobre ella, la esfera explota en una animación de partículas. A diferencia del caso anterior (modificación de una base de código existente), este caso evalúa el comportamiento de las herramientas en la creación de funcionalidad nueva.
-
-Este caso es especialmente relevante para evaluar colbPowers, ya que la condición D
-puede ejecutar el ciclo completo de la metodología SDD: primero se generan de forma
-interactiva con el usuario los documentos de constitución y \textit{features} del
-proyecto, y a continuación se genera la especificación técnica de la funcionalidad
-a implementar. En todo momento el proceso sigue el principio de \textit{Human-in-the-Loop}:
-el usuario participa en cada etapa y puede controlar el flujo.
 
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|c|c|c|c|}
+\begin{tabular}{|l|l|r|r|r|r|r|r|}
 \hline
-\textbf{Métrica} & \textbf{OpenCode} & \textbf{OpenCode} & \textbf{ClaudeCode} & \textbf{ClaudeCode} \\
- & \textbf{Cond.~A} & \textbf{Cond.~D} & \textbf{Cond.~A} & \textbf{Cond.~D} \\
+\textbf{Condición} & \textbf{Ejecución} & \textbf{Total (M)} & \textbf{Input (M)} & \textbf{Output (M)} & \textbf{Caché (M)} & \textbf{Tool calls} & \textbf{CRG} \\
 \hline
-Tokens totales (media, M) & 1,88 & 8,41 & 3,74 & 8,19 \\
-Tool calls orch. (media) & 52 & 85 & 63 & 48 \\
-Llamadas CRG (media) & 0 & 0,7 & 0 & 0,3 \\
+baseline & Ejec.~1 & 6,64 & 0,01 & 0,04 & 6,50 & 76 & 0 \\
+ & Ejec.~2 & 2,24 & 0,01 & 0,03 & 2,15 & 44 & 0 \\
+ & Ejec.~3 & 2,33 & 0,00 & 0,03 & 2,25 & 38 & 0 \\
+ & \textbf{Media} & \textbf{3,74} & \textbf{0,00} & \textbf{0,03} & \textbf{3,63} & \textbf{53} & \textbf{0} \\
 \hline
-\end{tabular}%
+colbPowers & Ejec.~1 & 12,23 & 0,00 & 0,11 & 11,66 & 56 & 0 \\
+ & Ejec.~2 & 14,91 & 0,00 & 0,10 & 14,28 & 56 & 0 \\
+ & Ejec.~3 & 15,85 & 0,00 & 0,11 & 15,15 & 76 & 3 \\
+ & \textbf{Media} & \textbf{14,33} & \textbf{0,00} & \textbf{0,11} & \textbf{13,70} & \textbf{63} & \textbf{1,0} \\
+\hline
+\end{tabular}
 }
-\caption{Resultados Caso 2: Aplicación de simulación 3D (n=3 por condición y asistente)}
-\label{tab:caso2_resultados}
+\caption{Caso 1 --- ClaudeCode con Haiku~4.5. Caché = tokens leídos de caché.}
+\label{tab:caso1_claudecode}
 \end{table}
 
-En el segundo caso el incremento de tokens en la condición D es también significativo (×4,5 para OpenCode y ×2,2 para ClaudeCode). El número de tool calls del orquestador en la condición D es inferior al de la condición A para ClaudeCode (48 frente a 63), lo que refleja que el orquestador de colbPowers delega la mayor parte de las operaciones a subagentes especializados, reduciendo su propia carga de acciones directas. Las llamadas a code-review-graph son igualmente bajas (0,7 y 0,3 de media para OpenCode y ClaudeCode respectivamente), lo que es coherente dado que se trata de un proyecto nuevo sin base de código preexistente que explorar.
+En ambos asistentes el paso de baseline a colbPowers multiplica el consumo de tokens (×2,9 en OpenCode, ×3,8 en ClaudeCode), reflejo del overhead del flujo SDD: generación de documentación estructurada y delegación a múltiples subagentes. El número de tool calls crece moderadamente en OpenCode (69 → 92) y se mantiene similar en ClaudeCode (53 → 63). Las llamadas a code-review-graph son esporádicas: únicamente la Ejecución~2 de OpenCode colbPowers registró 2 llamadas y la Ejecución~3 de ClaudeCode colbPowers registró 3, lo que sugiere que los agentes no incorporaron de forma proactiva el grafo de dependencias para una tarea de tipo exploratorio-visual.
+
+El desglose de tokens revela una diferencia estructural entre los dos asistentes. En OpenCode, los tokens de entrada no cacheados son significativos (media 0,98~M en baseline, 4,07~M en colbPowers), lo que refleja que cada subagente inicia un contexto propio sin aprovechar caché de sesiones anteriores. En ClaudeCode, en cambio, los tokens de entrada son prácticamente nulos (≈0,00~M) y casi la totalidad del consumo corresponde a tokens de caché (3,63~M en baseline, 13,70~M en colbPowers): la API de Anthropic almacena el prefijo del prompt y las peticiones sucesivas leen el contexto desde caché, lo que reduce el coste real pero infla el contador total. Esta asimetría hace que la comparación directa de tokens totales entre OpenCode y ClaudeCode no sea completamente homogénea.
+
+\subsection{Caso 2: Visualizador de clasificadores en Python}
+\label{sec:caso2_simulacion3d}
+El segundo caso aplica el experimento sobre una tarea de nueva implementación desde cero: el desarrollo en Python de un visualizador interactivo que muestra, iteración a iteración, cómo dos clasificadores ---\textit{K-Nearest Neighbors} (KNN) y \textit{Logistic Regression}--- aprenden a separar un conjunto de clases en un espacio bidimensional. A diferencia del caso anterior (modificación de una base de código existente), este caso evalúa el comportamiento de las herramientas en la creación de funcionalidad nueva.
+
+Este caso es especialmente relevante para evaluar colbPowers, ya que puede ejecutar el ciclo completo de la metodología SDD: primero se generan de forma interactiva con el usuario los documentos de constitución y \textit{features} del proyecto, y a continuación se genera la especificación técnica de la funcionalidad a implementar. En todo momento el proceso sigue el principio de \textit{Human-in-the-Loop}: el usuario participa en cada etapa y puede controlar el flujo. Para todas las ejecuciones del Caso 2 se han calculado métricas de calidad del código generado.
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|r|r|r|r|r|}
+\hline
+\textbf{Condición} & \textbf{Ejecución} & \textbf{Tokens (M)} & \textbf{Tool calls} & \textbf{CRG} & \textbf{Comp. ciclom.} & \textbf{Mant. Index} \\
+\hline
+baseline & Ejec.~1 & 1,59 & 36 & 0 & 4,67 & 44,09 \\
+ & Ejec.~2 & 2,52 & 70 & 0 & 4,00 & 39,24 \\
+ & Ejec.~3 & 1,53 & 49 & 0 & 4,25 & 41,30 \\
+ & \textbf{Media} & \textbf{1,88} & \textbf{52} & \textbf{0} & \textbf{4,31} & \textbf{41,54} \\
+\hline
+colbPowers & Ejec.~1 & 6,53 & 80 & 1 & 3,27 & 47,20 \\
+ & Ejec.~2 & 10,22 & 86 & 1 & 2,97 & 48,66 \\
+ & Ejec.~3 & 8,47 & 89 & 0 & 3,16 & 47,47 \\
+ & \textbf{Media} & \textbf{8,41} & \textbf{85} & \textbf{0,7} & \textbf{3,13} & \textbf{47,78} \\
+\hline
+\end{tabular}
+}
+\caption{Caso 2 --- OpenCode con DeepSeek V4-Flash.}
+\label{tab:caso2_opencode}
+\end{table}
+
+\begin{table}[H]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|r|r|r|r|r|}
+\hline
+\textbf{Condición} & \textbf{Ejecución} & \textbf{Tokens (M)} & \textbf{Tool calls} & \textbf{CRG} & \textbf{Comp. ciclom.} & \textbf{Mant. Index} \\
+\hline
+baseline & Ejec.~1 & 6,12 & 90 & 0 & 2,50 & 49,92 \\
+ & Ejec.~2 & 2,75 & 54 & 0 & 3,23 & 62,24 \\
+ & Ejec.~3 & 2,37 & 44 & 0 & 2,83 & 58,76 \\
+ & \textbf{Media} & \textbf{3,74} & \textbf{63} & \textbf{0} & \textbf{2,85} & \textbf{56,97} \\
+\hline
+colbPowers & Ejec.~1 & 7,30 & 46 & 0 & 2,77 & 50,56 \\
+ & Ejec.~2 & 6,28 & 44 & 1 & 3,65 & 67,18 \\
+ & Ejec.~3 & 10,97 & 55 & 0 & 2,90 & 59,28 \\
+ & \textbf{Media} & \textbf{8,19} & \textbf{48} & \textbf{0,3} & \textbf{3,11} & \textbf{59,01} \\
+\hline
+\end{tabular}
+}
+\caption{Caso 2 --- ClaudeCode con Haiku~4.5}
+\label{tab:caso2_claudecode}
+\end{table}
+
+En el segundo caso el sobrecoste de tokens de colbPowers es también significativo (×4,5 para OpenCode, ×2,2 para ClaudeCode). En ClaudeCode el orquestador realiza menos tool calls en colbPowers (48) que en baseline (63), lo que confirma que delega la mayor parte del trabajo a subagentes. Las métricas de calidad revelan diferencias notables entre condiciones: en OpenCode, colbPowers genera código de menor complejidad ciclomática (3,13 frente a 4,31) y mayor índice de mantenibilidad (47,78 frente a 41,54) que baseline. En ClaudeCode la diferencia es menos pronunciada ---complejidad 3,11 (colbPowers) frente a 2,85 (baseline)---, aunque colbPowers obtiene un índice de mantenibilidad superior (59,01 frente a 56,97). Destaca que ClaudeCode produce código con un índice de mantenibilidad significativamente mayor que OpenCode en ambas condiciones, lo que sugiere una diferencia cualitativa entre los dos asistentes más allá del consumo de recursos.
 
 \newpage
 

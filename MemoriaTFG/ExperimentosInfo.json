@@ -199,7 +199,7 @@
                             "question": 1,
                             "TOTAL": 71
                         },
-                        "code-review-graph_calls": 0,
+                        "code-review-graph_calls": 2,
                         "subagents": {
                             "ses_146152480ffeMve6xrzo31dD5u": {
                                 "read": 5,
@@ -2086,7 +2086,7 @@
                                 "TOTAL": 19
                             }
                         },
-                        "code-review-graph_calls": 0,
+                        "code-review-graph_calls": 4,
                         "total_tokens": {
                             "total": 8465162,
                             "input": 5123511,
@@ -2444,7 +2444,7 @@
                             "AskUserQuestion": 2,
                             "TOTAL": 46
                         },
-                        "code-review-graph_calls": 0,
+                        "code-review-graph_calls": 1,
                         "subagents":
                         {
                             "a3c25a3c4fdad067c":
@@ -2907,7 +2907,7 @@
                             "ToolSearch": 1,
                             "TOTAL": 55
                         },
-                        "code-review-graph_calls": 0,
+                        "code-review-graph_calls": 1,
                         "subagents":
                         {
                             "a1bcc5f81462f2358":
