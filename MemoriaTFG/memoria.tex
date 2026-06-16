@@ -290,13 +290,15 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
     \item El sistema debe ser capaz de interpretar funcionalidades de alto nivel y desglosarlas en un plan de tareas granulares y estructuradas.
     \item El sistema debe incluir un mecanismo de auditoría autónoma que contraste el código fuente generado con las especificaciones documentadas, para ver si existe algún conflicto con las documentación y el código generado.
     \item Se le ha de ofrecer al desarrollador métricas para analizar la calidad y la estructura del código generado. Métricas como la \textit{Complejidad Ciclomática}\cite{McCabe_Complexity} del código, el Indice de Sostenibilidad del Código, y otras que se explorarán mas adelante.
+    \item El sistema debe incluir un módulo de procesamiento de transcripciones capaz de generar planes de implementación estructurados a partir de reuniones con el cliente, explorando automáticamente los \textit{frameworks} y tecnologías relevantes mediante búsqueda semántica en la web.
+    \item El sistema debe incluir un módulo de generación de documentación de seguimiento post-reunión con el formato específico de Colb.AI, a partir de la transcripción de reuniones periódicas con el cliente.
 \end{itemize}
 
 \subsubsection{Requerimientos No Funcionales}
 \label{sec:req_no_funcionales}
 \begin{itemize}
     \item \textbf{Transparencia y Trazabilidad:} Todo el estado, la memoria y las normativas manejadas por los agentes deben persistir en formatos de texto en un sistema de control de versiones.
-    \item \textbf{Integración Local:} El ecosistema debe poder acoplarse al entorno de desarrollo integrado (IDE) del usuario, utilizando protocolos de intercomunicación que permitan a los agentes actuar directamente sobre los archivos locales del proyecto.
+    \item \textbf{Integración con asistentes CLI:} El plugin debe ser compatible con ClaudeCode y OpenCode, utilizando sus mecanismos nativos de extensibilidad (MCP, hooks, skills) para actuar directamente sobre los archivos locales del proyecto.
     \item \textbf{Modularidad:} El diseño de los roles (\textit{prompts} y \textit{skills}) debe ser lo suficientemente modular para permitir futuras expansiones.
 \end{itemize}
 
