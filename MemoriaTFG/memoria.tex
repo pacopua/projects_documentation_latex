@@ -305,7 +305,7 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
 \subsection{Métricas de Evaluación del Código}
 \label{sec:metricas}
 
-Para validar empíricamente la calidad del código generado por el sistema, se emplearán métricas de análisis estático ampliamente adoptadas en la ingeniería del software \cite{sommerville_se_2015}. Estas métricas serán calculadas de forma automatizada por el agente \textit{Reviewer} sobre el código del repositorio local, y sus resultados se presentarán al desarrollador como parte de la auditoría. Para cada métrica, se definirá un umbral de aceptación a partir del cual el agente considerará el código como no conforme y señalará las funciones o módulos problemáticos. El conjunto de métricas aquí descrito no es definitivo; está previsto ampliarlo en iteraciones futuras del proyecto a medida que se identifiquen indicadores adicionales relevantes para el contexto del sistema.
+Para validar empíricamente la calidad del código generado por el sistema, se emplearán métricas de análisis estático ampliamente adoptadas en la ingeniería del software \cite{sommerville_se_2015}. Estas métricas serán calculadas mediante \textbf{radon}, una herramienta Python de análisis estático de código. Es importante destacar que las métricas no forman parte del flujo automatizado de los agentes: constituyen una herramienta de evaluación independiente que el desarrollador utiliza para analizar manualmente la calidad del código generado y contrastar los resultados entre distintas ejecuciones del sistema.
 
 Las métricas inicialmente contempladas son las siguientes:
 
