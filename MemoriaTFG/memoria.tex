@@ -628,6 +628,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
     \item \textbf{Tareas alternativas (Plan B):} Re-evaluación del \textit{Sprint Backlog} actual, congelación del código afectado y re-planificación de los objetivos en una reunión extraordinaria para el siguiente \textit{Sprint}.
     \item \textbf{Afectación a la duración total:} Retraso estimado de 15 horas sobre la planificación original, absorbible en la fase de pruebas (PV).
     \item \textbf{Recursos adicionales necesarios:} Horas extra del autor y disponibilidad del Director del proyecto para una sesión de rediseño.
+    \item \textbf{Resultado:} Este riesgo se materializó durante la fase TP1. El mecanismo de revisión de sprint absorbió el cambio de alcance de forma controlada, reorientando el Sprint Backlog sin comprometer la planificación global ni el presupuesto estimado.
 \end{itemize}
 
 \subsubsection{Riesgo 2: Bloqueo tecnológico (Vendor Lock-in) por cambio de precios o políticas en las APIs de los LLMs}
@@ -658,6 +659,7 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
     \item \textbf{Tareas alternativas (Plan B):} Rediseño de los \textit{prompts} de cada agente para que sean más breves, concisos y con un alcance muy acotado, reduciendo así la tendencia del modelo a desviarse del comportamiento esperado. En este escenario, la coordinación entre agentes recae explícitamente sobre el desarrollador humano, que actúa como orquestador manual del flujo. El inconveniente de esta solución es que exige que el usuario conozca con precisión el proceso de trabajo del sistema para dirigir correctamente a cada agente, lo que aumenta la curva de aprendizaje de la herramienta.
     \item \textbf{Afectación a la duración total:} Aumento estimado de 20 horas en \textbf{DA3} para rediseñar y ajustar los \textit{prompts} de los agentes afectados y documentar el flujo de coordinación manual para el usuario.
     \item \textbf{Recursos adicionales necesarios:} Tiempo de diseño de \textit{prompts} por parte del autor y elaboración de documentación del flujo de uso dirigida al desarrollador.
+    \item \textbf{Resultado:} Este riesgo se manifestó parcialmente. Los mecanismos nativos de extensibilidad de ClaudeCode y OpenCode (MCP, hooks, skills) resultaron suficientes para implementar el flujo de trabajo requerido.
 \end{itemize}
 
 \subsubsection{Riesgo 5: Desbordamiento de la ventana de contexto en proyectos grandes}
