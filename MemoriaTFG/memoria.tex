@@ -271,13 +271,13 @@ La validación de los resultados del sistema se hará a través de ciertas métr
 
 Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos funcionales y arquitectónicos:
 \begin{itemize}
-    \item \textbf{Separación efectiva de responsabilidades en el ciclo de desarrollo:} Conseguir que cada fase del proceso (diseño, implementación y revisión) sea ejecutada con criterios y restricciones propios, garantizando que ninguna etapa sea omitida y que el sistema reproduzca la dinámica de un equipo de desarrollo real con roles diferenciados (agente diseñador, agente desarrollador, agente revisor).
+    \item \textbf{Separación efectiva de responsabilidades en el ciclo de desarrollo:} Conseguir que cada fase del proceso (diseño, implementación y revisión) sea ejecutada con criterios y restricciones propios, garantizando que ninguna etapa sea omitida. Esta separación se materializa mediante skills que invocan subagentes especializados: un agente implementador, un agente revisor de código y un agente revisor de compatibilidad con las especificaciones, la constitución y las features del proyecto.
 
-    \item \textbf{Coherencia arquitectónica mantenida a lo largo de todo el proyecto:} Lograr que los agentes dispongan en todo momento de un contexto actualizado con las reglas del proyecto, su \textit{roadmap} y el estado de las tareas, eliminando las inconsistencias causadas por la pérdida de memoria entre sesiones y asegurando que todas las decisiones de implementación sean coherentes con la arquitectura definida.
+    \item \textbf{Coherencia arquitectónica mantenida a lo largo de todo el proyecto:} Lograr que los agentes dispongan en todo momento de un contexto actualizado con las reglas del proyecto, su \textit{roadmap} y el estado de las tareas, eliminando las inconsistencias causadas por la pérdida de memoria entre sesiones. Esta coherencia se implementa concretamente mediante \texttt{constitution.md} y \texttt{features.md} como fuente de verdad compartida entre sesiones y desarrolladores.
 
     \item \textbf{Agentes capaces de actuar de forma autónoma sobre el repositorio:} Obtener que los agentes puedan ejecutar acciones tangibles y verificables sobre el entorno local del proyecto —más allá de la mera generación de texto— convirtiéndolos en colaboradores activos capaces de materializar cambios reales en el código.
 
-    \item \textbf{Trazabilidad completa entre especificación y código entregado:} Garantizar que cada funcionalidad implementada pueda rastrearse desde su especificación original hasta el código final revisado, ofreciendo evidencia verificable de que lo entregado es coherente con lo planificado y cumple los estándares de calidad definidos.
+    \item \textbf{Trazabilidad completa entre especificación y código entregado:} Garantizar que cada funcionalidad implementada pueda rastrearse desde su especificación original hasta el código final revisado. Esta trazabilidad se garantiza porque todo cambio debe ser coherente con \texttt{constitution.md} y \texttt{features.md} antes de ser implementado, ofreciendo evidencia verificable de que lo entregado es coherente con lo planificado y cumple los estándares de calidad definidos.
 \end{itemize}
 
 \subsection{Requerimientos}
