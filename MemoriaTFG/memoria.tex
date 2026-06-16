@@ -289,7 +289,7 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
     \item El sistema debe permitir la ingesta y gestión de reglas fundamentales del proyecto (pila tecnológica, estándares de código) y mantener un registro actualizado de las características a desarrollar.
     \item El sistema debe ser capaz de interpretar funcionalidades de alto nivel y desglosarlas en un plan de tareas granulares y estructuradas.
     \item El sistema debe incluir un mecanismo de auditoría autónoma que contraste el código fuente generado con las especificaciones documentadas, para ver si existe algún conflicto con las documentación y el código generado.
-    \item Se le ha de ofrecer al desarrollador métricas para analizar la calidad y la estructura del código generado. Métricas como la \textit{Complejidad Ciclomática}\cite{McCabe_Complexity} del código, el Indice de Sostenibilidad del Código, y otras que se explorarán mas adelante.
+    \item Se le ha de ofrecer al desarrollador métricas para analizar la calidad y la estructura del código generado. Las métricas utilizadas serán: \textit{Complejidad Ciclomática}\cite{McCabe_Complexity} del código, y el Índice de Sostenibilidad del Código.
     \item El sistema debe incluir un módulo de procesamiento de transcripciones capaz de generar planes de implementación estructurados a partir de reuniones con el cliente, explorando automáticamente los \textit{frameworks} y tecnologías relevantes mediante búsqueda semántica en la web.
     \item El sistema debe incluir un módulo de generación de documentación de seguimiento post-reunión con el formato específico de Colb.AI, a partir de la transcripción de reuniones periódicas con el cliente.
 \end{itemize}
@@ -334,6 +334,32 @@ Todo proyecto conlleva dificultades que deben analizarse anticipadamente para mi
 
     \item \textbf{Dependencia de la calidad de las especificaciones:} La eficacia del sistema está directamente condicionada por la calidad de la documentación que el desarrollador proporciona como entrada. Si las especificaciones son ambiguas, incompletas o contradictorias, los agentes generarán código igualmente deficiente, trasladando el problema en lugar de resolverlo. Este riesgo es especialmente relevante en equipos con poca cultura de documentación previa. La mitigación pasa por diseñar el agente diseñador con capacidad de detectar ambigüedades y solicitar aclaraciones antes de proceder, manteniendo siempre al desarrollador humano como árbitro final (\textit{Human in the Loop}).
 \end{itemize}
+
+\subsection{Revisión del alcance inicial}
+\label{sec:revision_alcance}
+
+La planificación inicial del proyecto (GEP) establecía como objetivo principal la construcción desde cero de un ecosistema de tres agentes especializados (Architect, Developer, Reviewer) integrados en el entorno de desarrollo. Durante la fase de Trabajo Previo (TP1), la investigación del ecosistema de asistentes CLI reveló que \textit{superpowers} ya ofrecía la arquitectura orquestador/subagentes necesaria, haciendo redundante construir ese núcleo desde cero.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Alcance GEP} & \textbf{Alcance final} \\
+    \hlineB{3}
+    Construir agentes Architect, Developer y Reviewer desde cero & Desarrollar colbPowers como extensión de \textit{superpowers} \\
+    \hline
+    Integración en el IDE & Integración con asistentes CLI (ClaudeCode, OpenCode) \\
+    \hline
+    Un único pilar: SDD & Tres pilares: Toma de requerimientos, SDD, Seguimiento del cliente \\
+    \hline
+    Sin mecanismo de contexto persistente & \texttt{constitution.md} y \texttt{features.md} como fuente de verdad compartida \\
+    \hline
+\end{tabularx}
+\caption{Comparativa entre el alcance comprometido en el GEP y el alcance final ejecutado. Elaboración propia.}
+\label{tab:comparativa_alcance}
+\end{table}
+
+La justificación del cambio es doble. Por un lado, la adopción de \textit{superpowers} como base eliminó la necesidad de construir la capa de orquestación desde cero, redirigiendo el esfuerzo hacia la contribución diferencial: la capa de \texttt{constitution.md} y \texttt{features.md}. Por otro lado, la reducción de esfuerzo en el núcleo SDD liberó capacidad para incorporar los módulos de toma de requerimientos y seguimiento del cliente, ampliando el alcance del proyecto para cubrir el ciclo de vida completo del software. Los cuatro sub-objetivos originales (separación de responsabilidades, coherencia arquitectónica, agentes autónomos y trazabilidad) se mantienen intactos en su esencia; únicamente cambia el mecanismo de implementación.
 
 \newpage
 
