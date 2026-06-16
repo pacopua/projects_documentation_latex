@@ -430,18 +430,18 @@ El proyecto se estructura en iteraciones o Sprints de 2 a 3 semanas de duración
 La distribución de horas entre sprints no es uniforme, sino que responde a la complejidad técnica acumulada de cada iteración. Los primeros sprints (DA1 y DA2, 50h cada uno) son más ligeros porque su alcance está acotado: DA1 establece la base funcional de los agentes sobre tecnologías ya estudiadas en la fase TP, y DA2 añade un conjunto inicial de métricas de análisis con scripts relativamente independientes. En cambio, DA3 y DA4 (80h cada uno) requieren significativamente más esfuerzo: DA3 introduce la integración con protocolos MCP y el desarrollo de \textit{AgentSkills}, que exigen una depuración iterativa compleja al operar directamente sobre el entorno local; y DA4 afronta la implementación de técnicas de \textit{Information Retrieval} y la integración de herramientas externas avanzadas, además de incorporar el refinamiento global del sistema acumulado en los sprints anteriores.
 
 \begin{itemize}
-    \item \textbf{DA1 - Sprint 1: MVP (50h)}: Implementar la versión base funcional de los agentes asistentes en un entorno IDE (como VSCode).
+    \item \textbf{DA1 - Sprint 1: MVP (50h)}: Implementar la versión base funcional de colbPowers: configuración del plugin en ClaudeCode y OpenCode, definición de la estructura de \texttt{constitution.md} y \texttt{features.md}, e implementación del agente orquestador con las skills base.
     \begin{itemize}
-        \item \textbf{DA1.1} Implementación del agente \textbf{Architect} y generación de contexto estático (15h).
-        \item \textbf{DA1.2} Implementación del agente \textbf{Developer} para la lectura de requerimientos y generación de código (20h).
-        \item \textbf{DA1.3} Implementación del agente \textbf{Reviewer} para auditoría básica (15h).
+        \item \textbf{DA1.1} Configuración del plugin e integración con ClaudeCode y OpenCode (15h).
+        \item \textbf{DA1.2} Definición de la estructura de \texttt{constitution.md} y \texttt{features.md} (20h).
+        \item \textbf{DA1.3} Implementación del agente orquestador y skills base (15h).
     \end{itemize}
     
-    \item \textbf{DA2 - Sprint 2: Implementación de Métricas de Evaluación (50h)}: Integrar herramientas y lógica para medir la calidad y sostenibilidad del código generado por el MVP.
+    \item \textbf{DA2 - Sprint 2: Subagentes especializados y métricas de evaluación (50h)}: Implementar los subagentes especializados de colbPowers e integrar radon como herramienta de análisis estático independiente del flujo de agentes.
     \begin{itemize}
-        \item \textbf{DA2.1} Investigación, selección y configuración de métricas clave (Complejidad Ciclomática, Índice de Sostenibilidad, cobertura de código) (15h).
-        \item \textbf{DA2.2} Desarrollo de \textit{scripts} de análisis automatizado para extraer estas métricas del repositorio local (20h).
-        \item \textbf{DA2.3} Integración de las métricas en el flujo del agente \textbf{Reviewer} para enriquecer sus auditorías y bloqueos (15h).
+        \item \textbf{DA2.1} Implementación del subagente implementador (15h).
+        \item \textbf{DA2.2} Implementación de los subagentes revisores: revisor de código y revisor de compatibilidad con specs/constitución/features (20h).
+        \item \textbf{DA2.3} Desarrollo de scripts de \textbf{radon} como herramienta de evaluación manual de la calidad del código generado (15h).
     \end{itemize}
     
     \item \textbf{DA3 - Sprint 3: Habilidades e Integración MCP (80h)}: Dotar a los agentes de capacidades de interacción con el entorno y aplicar el \textit{feedback} de las iteraciones anteriores.
