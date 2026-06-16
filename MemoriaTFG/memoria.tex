@@ -246,7 +246,15 @@ A la vista de estas limitaciones, la creación de una solución propia resulta r
 
 Concluido que las herramientas preexistentes no se adaptan plenamente a nuestros requerimientos de agilidad e integración, nuestra propuesta toma inspiración de sus puntos fuertes para construir un sistema a medida.
 
-En lugar de depender de ecosistemas cerrados o frameworks pesados, hemos optado por aprovechar un concepto introducido recientemente en los IDEs más avanzados: los Agentes de Código \cite{vscode_agents} y las \textit{AgentSkills}\cite{agentskills_home}. Mediante la extensión y personalización de estas capacidades nativas de los entornos de desarrollo, propondremos un sistema híbrido de administración, planificación de tareas y generación de código que evite la fricción documental sin sacrificar la calidad estructural del proyecto. 
+Aprovechando la arquitectura de \textit{superpowers}, el proyecto propone el desarrollo de \textbf{colbPowers}: un plugin para ClaudeCode y OpenCode que extiende el patrón orquestador/subagentes añadiendo una capa de contexto persistente basada en \texttt{constitution.md} y \texttt{features.md}. Este plugin estructura el ciclo de vida del software en torno a tres pilares complementarios:
+
+\begin{enumerate}
+    \item \textbf{Toma de requerimientos:} transformar transcripciones de reuniones en planes de implementación estructurados mediante búsqueda semántica web.
+    \item \textbf{Spec-Driven Development:} garantizar que cada implementación esté precedida de una especificación validada, coordinada por un agente orquestador que invoca subagentes especializados (implementador, revisor de código, revisor de compatibilidad con specs/constitución/features).
+    \item \textbf{Seguimiento del cliente:} automatizar la generación de documentación post-reunión con el formato específico de Colb.AI.
+\end{enumerate}
+
+Originalmente se contempló construir este sistema desde cero. Durante la fase de investigación previa (TP1) se descubrió que \textit{superpowers} ya ofrecía la arquitectura base necesaria, lo que permitió redirigir el esfuerzo hacia la contribución diferencial: la capa de constitución y features, y los tres pilares del ciclo de vida del software.
 
 \newpage
 
