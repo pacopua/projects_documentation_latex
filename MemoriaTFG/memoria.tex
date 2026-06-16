@@ -919,7 +919,7 @@ A continuación, se presenta una tabla resumen con la consolidación de todas la
 \subsubsection{Revisión de los costes iniciales}
 \label{sec:revision_costes}
 
-El presupuesto comprometido en el GEP ascendía a \textbf{14.099,81\euro}. El cambio de alcance producido durante TP1 tuvo un impacto económico prácticamente neutro: las horas previstas para construir agentes desde cero se redistribuyeron entre la investigación del ecosistema de extensibilidad (TP1 ampliado) y la implementación de los módulos complementarios (DA4 reorientado), sin incrementar el total de horas estimado. La redistribución de horas entre fases no alteró los costes de personal porque los roles implicados en las tareas nuevas son los mismos que en las tareas sustituidas. Los costes genéricos tampoco variaron de forma significativa: las herramientas nuevas incorporadas (Azure Speech Service, Tavily) están cubiertas por las suscripciones existentes de Colb.AI o tienen un coste marginal absorbible dentro de la partida de APIs LLM ya presupuestada. El presupuesto final se mantiene en \textbf{14.099,81\euro}.
+El presupuesto comprometido en el GEP ascendía a \textbf{14.099,81€}. El cambio de alcance producido durante TP1 tuvo un impacto económico prácticamente neutro: las horas previstas para construir agentes desde cero se redistribuyeron entre la investigación del ecosistema de extensibilidad (TP1 ampliado) y la implementación de los módulos complementarios (DA4 reorientado), sin incrementar el total de horas estimado. La redistribución de horas entre fases no alteró los costes de personal porque los roles implicados en las tareas nuevas son los mismos que en las tareas sustituidas. Los costes genéricos tampoco variaron de forma significativa: las herramientas nuevas incorporadas (Azure Speech Service, Tavily) están cubiertas por las suscripciones existentes de Colb.AI o tienen un coste marginal absorbible dentro de la partida de APIs LLM ya presupuestada. El presupuesto final se mantiene en \textbf{14.099,81€}.
 
 \subsubsection{Control de gestión}
 \label{sec:control_gestion}
@@ -1032,137 +1032,6 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 
     \item \textbf{Licencias de terceros y Convenio de Cooperación Educativa: } Todas las herramientas de terceros utilizadas en el proyecto —OpenCode, code-review-graph, LangChain— disponen de licencias open source que permiten el uso comercial. Las APIs de Anthropic, Azure y Google Gemini no utilizan los datos de entrada para entrenar modelos bajo sus planes de pago. Por otro lado, Copilot sí que entrena con los datos adquiridos durante las interacciones con sus modelos -Des de el 24 de abril de 2026- de forma predeterminada, pero es una opción que se puede desactivar facilmente \cite{rodriguez2026copilot}. El TFG se desarrolla en el marco de un Convenio de Cooperación Educativa entre la UPC y Colb.AI, que regula la propiedad intelectual del trabajo y la confidencialidad de la información de la empresa. Los proyectos reales utilizados en la validación experimental están sujetos a NDA; en la memoria únicamente se reportan métricas técnicas que no exponen información confidencial del cliente.
 \end{description}
-
-\newpage
-
-\section{Cambios de Alcance del Proyecto}
-\label{sec:cambios_alcance}
-
-La planificación inicial del proyecto partía de un conocimiento superficial del ecosistema de herramientas de asistencia al desarrollo existentes. En el GEP se identificaron herramientas como Spec Kit, AgentOS o los asistentes comerciales (Copilot, Cursor), pero sin profundizar en el grado de extensibilidad que estos entornos ofrecían. Durante la fase de Trabajo Previo TP1, al investigar en detalle la arquitectura de los asistentes de código CLI más avanzados, se descubrió que el ecosistema era considerablemente más rico y maduro de lo que se había anticipado.
-
-En concreto, herramientas como ClaudeCode y OpenCode ofrecen mecanismos nativos de extensibilidad —plugins, hooks de ciclo de vida y el protocolo MCP (Model Context Protocol)— que permiten definir flujos de trabajo de programación estructurados de forma composable, sin necesidad de construir un asistente desde cero. Lo que en la planificación inicial se concebía como un problema de ingeniería complejo (imponer un flujo Spec-First sobre un agente de código) resultó ser un problema de configuración e integración, abordable dentro del alcance de un TFG.
-
-Este descubrimiento, unido a la evolución de las necesidades de Colb.Ai durante el período de desarrollo, fue el detonante del cambio de alcance. La empresa reconoció que el problema real al que se enfrentaba no era la ausencia de herramientas de generación de código —de eso ya había suficiente oferta—, sino la falta de un marco de trabajo que garantizase una estructura de proyecto consistente y trazable con independencia del desarrollador o del asistente concreto que se utilizase. Dicho de otro modo: a Colb.Ai no le importa cómo cada desarrollador aplica las tareas del día a día, sino que todos los proyectos arranquen con una definición clara de su arquitectura, mantengan actualizado un conjunto de documentos de referencia (la constitución del proyecto y el archivo features.md), y que cualquier nueva funcionalidad sea coherente con esas bases antes de ser implementada.
-
-Ante este rediseño del problema, se tomó la decisión de redirigir el foco del TFG hacia una contribución más ajustada a las necesidades reales de Colb.Ai: diseñar, integrar y evaluar el flujo de trabajo completo que cubre el ciclo de vida de un proyecto software, desde la toma de requerimientos hasta el seguimiento del cliente, aprovechando las capacidades de extensibilidad de los asistentes existentes en lugar de construir uno nuevo.
-
-
-\subsection{Nuevos objetivos del proyecto}
-\label{sec:nuevos_objetivos}
-El proyecto pasa a estructurarse en torno a tres pilares complementarios, cada uno de los cuales aborda una fase diferente del ciclo de vida de un proyecto de software:
-
-\begin{description}
-    \item[\textbf{Toma de Requerimientos:}] Diseñar e implementar un flujo de trabajo asistido por IA que, a partir de la transcripción de una reunión con el cliente, sea capaz de generar un plan de implementación estructurado, explorando automáticamente los frameworks y tecnologías relevantes mediante búsqueda semántica en la web. Implementación documentada en el apartado \ref{sec:toma_requerimientos_cap}.
-    \item[\textbf{Spec Driven Development (Estructura del repositorio):}] Integrar y configurar los asistentes de código de tipo CLI (ClaudeCode y OpenCode) con un conjunto de herramientas, plugins y workflows personalizados que impongan un flujo de trabajo Spec-First al equipo de desarrollo, garantizando que cada implementación esté precedida por una especificación validada y revisada. Documentado en la sección \ref{sec:sdd_implementacion}.
-    \item[\textbf{Seguimiento del cliente:}] Automatizar la generación de documentación de seguimiento post-reunión, produciendo de forma estructurada el resumen de lo acordado y los próximos pasos para ambas partes, a partir de la transcripción de las reuniones periódicas con el cliente. Documentado en la sección \ref{sec:seguimiento_cliente}.
-\end{description}
-
-\subsection{Actualización del estado del arte y tecnologías adoptadas}
-\label{sec:estado_arte_actualizado}
-
-El cambio de alcance introduce dos pilares nuevos ---toma de requerimientos y seguimiento del cliente--- que no estaban presentes en el análisis de mercado del GEP inicial. A continuación se actualiza el estado del arte para los tres pilares del proyecto.
-
-\subsubsection{Toma de requerimientos.} 
-Las plataformas de videoconferencia (Microsoft Teams, Google Meet, Zoom) ofrecen 
-transcripción automática integrada para reuniones telemáticas, por lo que no requieren solución propia. Para reuniones presenciales, las principales alternativas son Whisper \cite{radford2022whisper} (OpenAI, ejecución local, sin coste de API pero sin diarización nativa) y Azure Speech Service (cloud, con diarización de hablantes). Se optó por Azure Speech Service al estar incluido en la suscripción de Azure de Colb.AI y por ofrecer resultados satisfactorios en las pruebas realizadas. Para la conversión de transcripciones en especificaciones técnicas, la solución principal estudiada fue Claude Cowork mediante skills, que permite definir flujos de trabajo reutilizables con acceso a herramientas de búsqueda web y escritura de archivos.
-
-Como alternativa open source se evaluó OpenWork 
-\cite{differentai2025openwork}, una aplicación de escritorio 
-construida sobre OpenCode que replica las capacidades de 
-Claude Cowork; sin embargo, su versión de escritorio para 
-Windows requiere el plan de pago y la comunidad reporta 
-inestabilidad significativa. Ante esta limitación, se desarrolló 
-una implementación propia mediante una aplicación Python 
-orquestada con LangChain, que replica el flujo de Claude Cowork 
-de forma independiente de cualquier suscripción: incorpora un 
-pipeline de chunking para procesar transcripciones largas, 
-búsqueda semántica web mediante Tavily para investigar las 
-tecnologías identificadas, y una estrategia de dos niveles de 
-modelo que combina Azure OpenAI para el filtrado de alto 
-volumen con Google Gemini para la síntesis arquitectónica. 
-Esta implementación se describe en detalle en la 
-sección \ref{sec:toma_requerimientos_cap}.
-
-\subsubsection{Spec Driven Development.} 
-El análisis del GEP inicial ---Spec Kit, AgentOS, Copilot y Cursor--- sigue siendo válido 
-para caracterizar el problema general. En cuanto a asistentes 
-extensibles, las tres herramientas principales del ecosistema 
----ClaudeCode \cite{claude_code_2024}, OpenCode \cite{opencode_2025} y 
-Cursor \cite{cursor}--- exponen mecanismos equivalentes de 
-extensibilidad: hooks de ciclo de vida, protocolo MCP, skills y 
-agentes. El plugin colbPowers está diseñado sobre estos 
-estándares comunes y es en gran medida compatible con los tres 
-asistentes. Se optó por ClaudeCode como herramienta principal 
-al estar incluida en la suscripción de Colb.AI, y por OpenCode 
-como alternativa open source para mitigar el riesgo de 
-dependencia de proveedor, tal como se describe en la 
-sección \ref{sec:sdd_implementacion}.
-
-\subsubsection{Seguimiento del cliente.} 
-Existen herramientas 
-comerciales de transcripción y resumen de reuniones (Otter.ai, 
-Fireflies.ai, Microsoft Copilot for Teams) que generan 
-documentación post-reunión de forma automática. Sin embargo, 
-independientemente de su grado de personalización, la tarea de 
-seguimiento del cliente encaja de forma natural con el concepto 
-de Skill de Claude Cowork: un flujo de trabajo reutilizable que 
-recibe una transcripción como entrada, tiene acceso a 
-herramientas de escritura de archivos, y produce un documento 
-Word estructurado con el formato específico de Colb.AI. A esto 
-se suma que Claude Cowork está incluido en la suscripción de la 
-empresa, lo que elimina cualquier coste adicional. Al igual que 
-en el módulo de toma de requerimientos, se prevé desarrollar 
-también una implementación propia basada en Python que replique 
-este flujo de forma independiente de cualquier suscripción 
-comercial, siguiendo la misma arquitectura de pipeline descrita 
-en la sección \ref{sec:toma_requerimientos_cap}. 
-
-\subsection{Impacto en la planificación, costes y metodología}
-\label{sec:impacto_planificacion}
-
-\subsubsection{Impacto en los objetivos.} El cambio de alcance no 
-invalida los objetivos del GEP sino que los reorienta. Los 
-sub-objetivos de coherencia arquitectónica, trazabilidad entre 
-especificación y código, y modularidad del sistema se mantienen 
-intactos y se materializan ahora mediante la configuración de 
-herramientas existentes en lugar del desarrollo de un asistente 
-propio. El alcance se amplía además con dos pilares nuevos 
----toma de requerimientos y seguimiento del cliente--- que no 
-estaban contemplados en la planificación inicial.
-
-\subsubsection{Impacto en los costes.} El presupuesto estimado de 
-14.099,81\verb|€| definido en el GEP se mantiene como referencia 
-válida. El cambio de alcance tiene un impacto económico 
-prácticamente neutro: las horas previstas para el desarrollo 
-de agentes desde cero se redistribuyen entre la investigación 
-del ecosistema de extensibilidad, la integración de herramientas 
-externas y la implementación de los módulos de toma de 
-requerimientos y seguimiento del cliente. La estructura de 
-costes de personal, costes genéricos y contingencias no varía 
-de forma significativa.
-
-\subsubsection{Metodología.} La metodología SCRUM adoptada en el GEP 
-no ha experimentado ningún cambio. El propio mecanismo de 
-revisión de sprint fue el que permitió absorber el cambio de 
-alcance de forma controlada: al finalizar la fase TP1, los 
-hallazgos sobre la extensibilidad de los asistentes CLI se 
-presentaron al director del proyecto y a Colb.AI, y el Sprint 
-Backlog se reorientó en consecuencia.
-
-\subsubsection{Estado actual del proyecto.} El módulo de transcripción 
-está implementado y pendiente de revisiones finales. colbPowers, 
-con el flujo SDD completo de skills y servidores MCP, está 
-implementado y actualmente en fase de pruebas y evaluación, 
-sujeto a ajustes en caso de detectarse fallos o mejoras. Para 
-la evaluación de estas pruebas se utilizará SCC 
-\cite{boyter2025scc}, una herramienta open source de análisis 
-estático que calcula métricas de calidad del código como 
-líneas de código, complejidad y cobertura, ya integrada en el 
-sistema. El módulo de seguimiento del cliente está pendiente
-de implementación; se prevé que sea relativamente sencillo
-dado que su estructura es análoga a la del módulo de toma de
-requerimientos: recibe una transcripción o resumen como entrada
-y produce un documento de salida con un formato predefinido.
 
 \newpage
 
