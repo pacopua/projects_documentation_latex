@@ -588,6 +588,32 @@ En la siguiente página se muestra el diagrama de gantt resultante de la planifi
     \end{figure}
 \end{landscape}
 
+\subsubsection{Revisión de la planificación inicial}
+\label{sec:revision_planificacion}
+
+La planificación establecida en el GEP estructuraba el desarrollo en cuatro sprints centrados en la construcción de agentes desde cero. El cambio de alcance producido al finalizar TP1 implicó una redistribución del contenido de los sprints, manteniendo el número de fases y el total de horas estimado (~540h) sin desviación significativa.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{1cm}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
+    \hline
+    \textbf{Sprint} & \textbf{Planificación GEP} & \textbf{Planificación final} \\
+    \hlineB{3}
+    DA1 & Agentes Architect, Developer y Reviewer desde cero & Plugin colbPowers base: constitution.md, features.md, orquestador \\
+    \hline
+    DA2 & Métricas de evaluación integradas en el agente Reviewer & Subagentes especializados + scripts de radon como evaluación manual independiente \\
+    \hline
+    DA3 & AgentSkills e integración MCP & Ampliación de MCPs y refinamiento del flujo colbPowers --- sin cambio significativo \\
+    \hline
+    DA4 & Information Retrieval y MCPs avanzados & Módulo de toma de requerimientos (Azure Speech + LangChain/Tavily) y módulo de seguimiento del cliente \\
+    \hline
+\end{tabularx}
+\caption{Comparativa entre la planificación del GEP y la planificación final ejecutada. Elaboración propia.}
+\label{tab:comparativa_planificacion}
+\end{table}
+
+La justificación de estos cambios es consistente con lo descrito en la sección \ref{sec:revision_alcance}: la adopción de \textit{superpowers} redujo el esfuerzo necesario en DA1 y DA2, liberando capacidad que se reinvirtió en DA4 para los módulos complementarios. Las horas totales por fase se mantienen dentro del margen estimado; en la tabla \ref{tab:resumen_tareas} se recogen las horas estimadas, y en el apartado de gestión económica (\ref{sec:revision_costes}) se cuantifica el impacto económico real.
+
 \newpage
 
 \subsection{Gestión de riesgos: Planes alternativos y obstáculos}
