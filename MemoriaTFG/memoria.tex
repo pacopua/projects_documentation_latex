@@ -730,12 +730,12 @@ Esta actividad se estima que es de unas 50 horas. Requiere un estudio del estado
 Como se hizo en la entrega anterior, el desarrollo ágil (DA) se dividirá en DA1, DA2, DA3 y DA4. Basándonos en la naturaleza de cada iteración, repartiremos la carga de trabajo entre los distintos roles definidos para estimar su coste:
 
 \begin{itemize}
-    \item \textbf{DA1 (Sprint 1 - MVP):} Consta de 50 horas en total. Al tratarse de la implementación técnica de los agentes base en el entorno IDE, asignaremos la totalidad de estas horas al \textit{Programador junior}.
+    \item \textbf{DA1 (Sprint 1 - MVP colbPowers):} Consta de 50 horas en total. Al tratarse de la configuración del plugin e implementación del agente orquestador base, asignaremos la totalidad de estas horas al \textit{Programador junior}.
     \begin{equation*}
         Coste DA1 = 50h * 14{.}92\verb|€|/h = 746\verb|€|
     \end{equation*}
     
-    \item \textbf{DA2 (Sprint 2 - Métricas de Evaluación):} Consta de 50 horas. Las 15 horas iniciales de investigación y selección de métricas serán llevadas a cabo por el \textit{Investigador y documentador}, mientras que las 35 horas restantes de desarrollo de scripts e integración recaerán sobre el \textit{Programador junior}.
+    \item \textbf{DA2 (Sprint 2 - Subagentes y métricas):} Consta de 50 horas. Las 15 horas iniciales de investigación y configuración de radon serán llevadas a cabo por el \textit{Investigador y documentador}, mientras que las 35 horas restantes de implementación de subagentes y scripts recaerán sobre el \textit{Programador junior}.
     \begin{equation*}
         Coste DA2 = 15h * 20{.}85\verb|€|/h + 35h * 14{.}92\verb|€|/h = 836\verb|€|
     \end{equation*}
@@ -745,7 +745,7 @@ Como se hizo en la entrega anterior, el desarrollo ágil (DA) se dividirá en DA
         Coste DA3 = 65h * 14{.}92\verb|€|/h + 15h * 26{.}2\verb|€|/h = 1362{.}8\verb|€|
     \end{equation*}
     
-    \item \textbf{DA4 (Sprint 4 - Recuperación de Información y Refinamiento):} Cuenta con 80 horas totales. Asignaremos 20 horas al \textit{Investigador y documentador} para analizar y diseñar las técnicas de \textit{Information Retrieval}, y las 60 horas restantes al \textit{Programador junior} para la integración final y resolución de \textit{bugs}.
+    \item \textbf{DA4 (Sprint 4 - Módulos complementarios y refinamiento):} Cuenta con 80 horas totales. Asignaremos 20 horas al \textit{Investigador y documentador} para el diseño de los módulos de transcripción y seguimiento, y las 60 horas restantes al \textit{Programador junior} para la implementación de los módulos y el refinamiento final del sistema.
     \begin{equation*}
         Coste DA4 = 20h * 20{.}85\verb|€|/h + 60h * 14{.}92\verb|€|/h = 1312{.}2\verb|€|
     \end{equation*}
@@ -915,6 +915,11 @@ A continuación, se presenta una tabla resumen con la consolidación de todas la
     \caption{Presupuesto total estimado del proyecto. Generación propia.}
     \label{tab:coste_total}
 \end{table}
+
+\subsubsection{Revisión de los costes iniciales}
+\label{sec:revision_costes}
+
+El presupuesto comprometido en el GEP ascendía a \textbf{14.099,81\euro}. El cambio de alcance producido durante TP1 tuvo un impacto económico prácticamente neutro: las horas previstas para construir agentes desde cero se redistribuyeron entre la investigación del ecosistema de extensibilidad (TP1 ampliado) y la implementación de los módulos complementarios (DA4 reorientado), sin incrementar el total de horas estimado. La redistribución de horas entre fases no alteró los costes de personal porque los roles implicados en las tareas nuevas son los mismos que en las tareas sustituidas. Los costes genéricos tampoco variaron de forma significativa: las herramientas nuevas incorporadas (Azure Speech Service, Tavily) están cubiertas por las suscripciones existentes de Colb.AI o tienen un coste marginal absorbible dentro de la partida de APIs LLM ya presupuestada. El presupuesto final se mantiene en \textbf{14.099,81\euro}.
 
 \subsubsection{Control de gestión}
 \label{sec:control_gestion}
