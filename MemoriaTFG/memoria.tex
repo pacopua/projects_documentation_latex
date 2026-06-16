@@ -1035,19 +1035,22 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 
 \newpage
 
-\section{Toma de Requerimientos}
+\section{Módulos de Transcripción y Documentación}
+\label{sec:modulos_transcripcion}
+
+\subsection{Toma de Requerimientos}
 \label{sec:toma_requerimientos_cap}
 La toma de requerimientos es la primera fase del ciclo de vida de un proyecto de software. En este contexto, el objetivo es transformar las necesidades expresadas por el cliente en conversaciones informales en documentos de especificación técnica utilizables por el equipo de desarrollo. El proceso se articula en dos módulos independientes y secuenciales: en primer lugar, el módulo de transcripción convierte las reuniones en texto estructurado; a continuación, el módulo de procesamiento analiza ese texto y genera el plan de implementación. Cada módulo dispone de dos implementaciones complementarias, con el propósito de no depender de un único proveedor.
 
-\subsection{Módulo de transcripción}
+\subsubsection{Módulo de transcripción}
 \label{sec:modulo_transcripcion}
 Para que el módulo de procesamiento pueda operar, es necesario disponer previamente de una transcripción de la reunión con el cliente. Dependiendo del tipo de reunión, la forma de obtenerla difiere.
 
-\subsubsection{Reuniones telemáticas}
+\paragraph{Reuniones telemáticas}
 \label{sec:reuniones_telematicas}
 Las principales plataformas de videoconferencia (Microsoft Teams, Google Meet, Zoom, entre otras) ofrecen transcripción automática integrada. Dado que cada participante habla desde su propio dispositivo y micrófono, la atribución de fragmentos de texto a cada hablante (diarización) es gestionada de forma nativa por la plataforma, sin necesidad de ningún procesamiento adicional. Para las reuniones telemáticas, se utiliza directamente la transcripción exportada por la plataforma correspondiente como entrada al módulo de procesamiento.
 
-\subsubsection{Reuniones presenciales}
+\paragraph{Reuniones presenciales}
 \label{sec:reuniones_presenciales}
 En el caso de las reuniones presenciales, no existe ninguna plataforma que genere una transcripción de forma automática. Para cubrir este caso, se graba el audio de la reunión y se procesa a posteriori mediante Azure Speech Service, el servicio de transcripción de audio proporcionado por el proveedor de servicios cloud de la empresa.
 
@@ -1083,11 +1086,11 @@ La transcripción se realiza a través de la API REST de Azure Speech Service en
     \label{fig:skill_definition}
 \end{figure}
 
-\subsection{Módulo de procesamiento de requerimientos}
+\subsubsection{Módulo de procesamiento de requerimientos}
 \label{sec:modulo_procesamiento}
 Una vez disponible la transcripción (producida por cualquiera de las vías descritas en la sección anterior), el módulo de procesamiento la analiza y genera un plan de implementación estructurado. Este módulo también dispone de dos implementaciones: un enfoque basado en la plataforma Claude Cowork y una implementación propia en Python.
 
-\subsubsection{Enfoque mediante Claude Cowork}
+\paragraph{Enfoque mediante Claude Cowork}
   \label{sec:enfoque_claude_cowork}
   Claude Cowork es una herramienta de Anthropic orientada a la automatización de tareas en entorno de escritorio. 
   
@@ -1115,7 +1118,7 @@ Este enfoque es el preferido cuando se dispone de acceso a la plataforma Claude 
 
 \newpage
 
-\subsubsection{Implementación propia}
+\paragraph{Implementación propia}
 \label{sec:implementacion_propia_tr}
 Con el objetivo de disponer de una alternativa de coste reducido e independiente de suscripciones comerciales, se ha desarrollado una aplicación Python que replica el proceso anterior. La aplicación está estructurada en módulos desacoplados y orquestada mediante LangChain.
 
@@ -1145,6 +1148,28 @@ Una característica diferencial de la aplicación es la capacidad de refinamient
     \caption{Diagrama de flujo de el proceso generación de plan en la toma de requerimientos. Generación propia.}
     \label{fig:skill_definition}
 \end{figure}
+
+
+\subsection{Seguimiento del Cliente}
+\label{sec:seguimiento_cliente}
+La tercera dimensión del proyecto aborda la automatización del seguimiento posterior a las reuniones periódicas con el cliente. El objetivo es minimizar el tiempo dedicado a la redacción de documentación de seguimiento y garantizar que los acuerdos alcanzados en cada reunión queden recogidos de forma estructurada y accesible para ambas partes.
+
+\subsubsection{Generación de documentación con Claude Cowork}
+\label{sec:generacion_doc_claude_cowork}
+El flujo implementado mediante Claude Cowork se integra directamente con el proceso de reunión. Al finalizar cada reunión de seguimiento con el cliente, la transcripción o el resumen de lo acordado se proporciona como entrada a una skill de Claude Cowork desarrollada específicamente para este propósito. La skill procesa la información y genera de forma automática un documento Word estructurado que incluye los siguientes apartados:
+\begin{itemize}
+    \item Resumen de los temas tratados en la reunión.
+    \item Decisiones tomadas y acuerdos alcanzados.
+    \item Tareas asignadas al equipo de Colb.Ai con sus plazos correspondientes.
+    \item Tareas o acciones que corresponden al cliente.
+\end{itemize}
+Este documento se genera y está disponible para ser enviado al cliente en el mismo momento en que finaliza la reunión, eliminando la latencia habitual en la producción de este tipo de documentación.
+
+La skill aprovecha las capacidades nativas de Claude Cowork para acceder a herramientas de gestión de archivos en el entorno de escritorio, lo que le permite escribir directamente el documento en el directorio de trabajo del proyecto, integrándose de forma transparente en el flujo de gestión documental de la empresa.
+
+\subsubsection{Alternativa de código abierto}
+\label{sec:alternativa_codigo_abierto}
+De forma análoga al enfoque adoptado en la toma de requerimientos, se dispone de una alternativa de código abierto e independiente para los casos en que no se desee depender de la plataforma Claude Cowork. Esta alternativa se basa en una aplicación que combina un modelo de lenguaje de gran tamaño, accedido mediante API, con la biblioteca python-docx para la generación de documentos Word con formato estructurado. El flujo de la aplicación es equivalente al de la skill: a partir de la transcripción de la reunión, el modelo genera los distintos apartados del documento de seguimiento con un formato definido, que son entonces volcados al documento Word mediante la biblioteca de generación. Aunque la integración es menos fluida que la ofrecida por Claude Cowork, esta alternativa es igualmente válida para los casos de uso habituales y no incurre en costes de suscripción adicionales más allá del consumo de la API del modelo.
 
 \newpage
 
@@ -1363,27 +1388,6 @@ La plantilla de repositorio que colbPowers espera encontrar está diseñada para
 Esta aproximación resuelve uno de los problemas identificados en el análisis del estado del arte: a diferencia de herramientas como Spec Kit, que exigen documentación exhaustiva incluso para cambios pequeños, colbPowers adapta el nivel de formalismo a la magnitud de la tarea. Una corrección menor puede implementarse directamente con el agente; una nueva feature importante pasará por el ciclo completo de especificación, planificación y revisión. El agente decide el nivel de rigor apropiado en cada caso, basándose en el contexto del proyecto y la magnitud del cambio solicitado.
 
 \newpage
-
-\section{Seguimiento del Cliente}
-\label{sec:seguimiento_cliente}
-La tercera dimensión del proyecto aborda la automatización del seguimiento posterior a las reuniones periódicas con el cliente. El objetivo es minimizar el tiempo dedicado a la redacción de documentación de seguimiento y garantizar que los acuerdos alcanzados en cada reunión queden recogidos de forma estructurada y accesible para ambas partes.
-
-\subsection{Generación de documentación con Claude Cowork}
-\label{sec:generacion_doc_claude_cowork}
-El flujo implementado mediante Claude Cowork se integra directamente con el proceso de reunión. Al finalizar cada reunión de seguimiento con el cliente, la transcripción o el resumen de lo acordado se proporciona como entrada a una skill de Claude Cowork desarrollada específicamente para este propósito. La skill procesa la información y genera de forma automática un documento Word estructurado que incluye los siguientes apartados:
-\begin{itemize}
-    \item Resumen de los temas tratados en la reunión.
-    \item Decisiones tomadas y acuerdos alcanzados.
-    \item Tareas asignadas al equipo de Colb.Ai con sus plazos correspondientes.
-    \item Tareas o acciones que corresponden al cliente.
-\end{itemize}
-Este documento se genera y está disponible para ser enviado al cliente en el mismo momento en que finaliza la reunión, eliminando la latencia habitual en la producción de este tipo de documentación.
-
-La skill aprovecha las capacidades nativas de Claude Cowork para acceder a herramientas de gestión de archivos en el entorno de escritorio, lo que le permite escribir directamente el documento en el directorio de trabajo del proyecto, integrándose de forma transparente en el flujo de gestión documental de la empresa.
-
-\subsection{Alternativa de código abierto}
-\label{sec:alternativa_codigo_abierto}
-De forma análoga al enfoque adoptado en la toma de requerimientos, se dispone de una alternativa de código abierto e independiente para los casos en que no se desee depender de la plataforma Claude Cowork. Esta alternativa se basa en una aplicación que combina un modelo de lenguaje de gran tamaño, accedido mediante API, con la biblioteca python-docx para la generación de documentos Word con formato estructurado. El flujo de la aplicación es equivalente al de la skill: a partir de la transcripción de la reunión, el modelo genera los distintos apartados del documento de seguimiento con un formato definido, que son entonces volcados al documento Word mediante la biblioteca de generación. Aunque la integración es menos fluida que la ofrecida por Claude Cowork, esta alternativa es igualmente válida para los casos de uso habituales y no incurre en costes de suscripción adicionales más allá del consumo de la API del modelo.
 
 \newpage
 
