@@ -61,7 +61,7 @@
     {\normalsize \textbf{Memoria del trabajo de fin de grado}}\par
     {\normalsize\textbf{Facultat Informàtica de Barcelona (FIB)}}\par
     {\normalsize \textbf{Universitat Politècnica de Catalunya (UPC) - BarcelonaTech} \par}
-    {\normalsize \textbf{22/06/2026}}
+    {\normalsize \textbf{\today}}
     \vfill
 \end{titlepage}
 
@@ -73,9 +73,9 @@
 
 El presente trabajo consiste en el diseño de un sistema de automatización para el desarrollo y diseño de proyectos de software, utilizando como base herramientas basadas en \textit{LLMs}. El desarrollo de este sistema se enmarca y diseña para su uso dentro de una empresa real, \textit{Colb.ai}, dedicada principalmente a la consultoría de proyectos de software.
 
-Es innegable que las herramientas de inteligencia artificial, principalmente los grandes modelos de lenguaje (\textit{LLMs}), están cambiando la forma en que se desarrollan los proyectos de software en la mayor parte de las empresas del sector. Estas tecnologías presentan la oportunidad de automatizar muchas de las tareas que tradicionalmente habían sido llevadas a cabo exclusivamente por los desarrolladores humanos, aunque su adopción sin la supervisión humana adecuada conlleva riesgos que pueden comprometer la calidad y sostenibilidad del software a largo plazo.
+Es innegable que las herramientas de inteligencia artificial, principalmente los \textit{Large Language Models}, están cambiando la forma en que se desarrollan los proyectos de software para la mayor parte de empresas del sector. Estas tecnologías presentan la oportunidad de automatizar muchas de las tareas que tradicionalmente habían sido llevadas a cabo exclusivamente por los desarrolladores humanos, pero su adopción sin la supervisión humana adecuada conlleva riesgos que pueden comprometer la calidad y sostenibilidad del software, sobretodo a largo plazo.
 
-Se presentan tres apartados que se van a automatizar en el desarrollo de este TFG:
+Se presentan a continuación tres módulos que se van a automatizar en el desarrollo de este TFG:
 \begin{enumerate}
     \item \textbf{Toma de requerimientos y diseño de arquitectura:} Necesidades del cliente, exploración de \textit{frameworks} posibles a utilizar, y diseño de la arquitectura del proyecto.
     \item \textbf{Desarrollo del código:} Asistencia de programación al desarrollador, generación de código a partir de las especificaciones. Evitando la generación de código de baja calidad, principalmente mediante la generación de documentación y especificaciones previas a la generación de código.
@@ -85,21 +85,22 @@ Se presentan tres apartados que se van a automatizar en el desarrollo de este TF
 \subsection{Definición del Problema}
 \label{sec:definicion_problema}
 
-El reto central de la automatización de estas tareas, sin perder calidad, es conseguir un equilibrio entre la agilidad que ofrecen los asistentes de inteligencia artificial y la involucración de un desarrollador que garantice que cada paso cubre unos estándares de estructura y calidad. Este equilibrio es difícil de mantener en la práctica, y su dificultad puede explicarse a través de un principio en el ámbito de la psicología cognitiva: \textit{The Law of Least Effort}, o en otras palabras, la ley del mínimo esfuerzo. Esta teoría sostiene que los humanos y otros organismos tienden a priorizar la opción que presenta la menor resistencia para alcanzar sus objetivos, ya sea en términos de esfuerzo físico o cognitivo. Aunque pueda parecer paradójico ---puesto que a las personas también nos gustan los retos y los puzles---\cite{inzlicht_effort_paradox_2018}, este fenómeno explica con precisión la principal trampa de la automatización: el desarrollador tiene la tentación de delegar todo el trabajo en el asistente de IA sin involucrarse lo suficiente, comprometiendo así los estándares de calidad y estructura necesarios para un proyecto profesional y sostenible a largo plazo.
+El reto central de la automatización de estas tareas, sin perder calidad, es conseguir un equilibrio entre la agilidad que ofrecen los asistentes de inteligencia artificial y la involucración de un desarrollador que garantice que cada paso cubre unos estándares de estructura y calidad. Este equilibrio es difícil de mantener en la práctica, y su dificultad puede explicarse a través de un principio en el ámbito de la psicología cognitiva: \textit{The Law of Least Effort}, o en otras palabras, la ley del mínimo esfuerzo. Esta teoría sostiene que los humanos y otros organismos tienden a priorizar la opción que presenta la menor resistencia para alcanzar sus objetivos, ya sea en términos de esfuerzo físico o cognitivo\cite{avoidance_of_cognitive_demand}. Aunque pueda parecer paradójico ---puesto que a las personas también nos gustan los retos y los puzles---\cite{inzlicht_effort_paradox_2018}, este fenómeno explica con precisión la principal trampa de la automatización: el desarrollador tiene la tentación de delegar todo el trabajo en el asistente de IA sin involucrarse lo suficiente, comprometiendo así los estándares de calidad y estructura necesarios para un proyecto profesional y sostenible a largo plazo.
 
-A continuación, se detallan los problemas específicos identificados en cada apartado.
+A continuación, se hace una definición mas especifica de los problemas y puntos a cubrir detectados en cada apartado de el proyecto.
+\newpage 
 
 \subsubsection{Toma de requerimientos y planificación de la arquitectura}
 \label{sec:ProblemaTomaRequerimientos}
 
-La toma de requerimientos es una fase especialmente crítica en el desarrollo de software, puesto que sienta las bases del proyecto: su alcance, las tecnologías a utilizar y la arquitectura del sistema. Las necesidades del cliente se expresan habitualmente en conversaciones informales, y transformarlas en un documento de especificación completo, coherente y estructurado requiere hoy un esfuerzo manual significativo. Si esta fase no se lleva a cabo con el adecuado rigor, puede traer consecuencias muy graves para el resto del desarrollo. Sin embargo, no existe actualmente ninguna herramienta que, a partir de la transcripción de una reunión con el cliente, sea capaz de explorar de forma autónoma las tecnologías relevantes y producir un plan de implementación inicial listo para incorporarse al repositorio, manteniendo siempre al desarrollador en el control del proceso.
+La toma de requerimientos es una fase especialmente crítica en el desarrollo de software, puesto que sienta las bases del proyecto: su alcance, las tecnologías a utilizar y la arquitectura del sistema. Si esta fase no se lleva a cabo con el adecuado rigor, puede suponer todo tipo de imprevistos en la etapa del desarrollo del proyecto, causando retrasos en la entrega del proyecto, subidas en el presupuesto, y a veces dejando inservible modulos ya implementados. 
+
+Por lo tanto, es extremadamente crucial que este apartado se lleve a cabo con la máxima calidad y supervisión humana posible, por lo que la automatización deberá estar muy centrada en hacerle preguntas al desarrollador, que tiene que tener las riendas en todo momento.
 
 \subsubsection{Desarrollo de código}
 \label{sec:ProblemaDesarrolloCodigo}
 
-\textbf{El problema es la inexistencia de una solución de asistencia al desarrollo que equilibre la agilidad de las herramientas \textit{Code-Driven} con la rigurosidad estructural que exige el desarrollo de software profesional y sostenible.}
-
-Actualmente, los asistentes de código más populares (GitHub Copilot, Cursor, etc.) operan bajo un paradigma \textit{Code-Driven}: el desarrollador describe vagamente lo que quiere y el modelo genera código de forma inmediata, sin exigir ninguna especificación previa. Este enfoque tiene tres consecuencias directas y documentadas:
+Actualmente, los asistentes de código más populares (GitHub Copilot, Cursor, Claude Code, etc.) operan bajo un paradigma \textit{Code-Driven}: el desarrollador describe vagamente lo que quiere y el modelo genera código de forma inmediata, sin exigir ninguna especificación previa. Este enfoque tiene tres consecuencias directas y documentadas:
 
 \begin{itemize}
     \item \textbf{Generación de \textit{slop code}:} El código producido resuelve el problema inmediato, pero carece de estructura coherente, no sigue los estándares del proyecto y acumula deuda técnica. Al no haber una especificación de referencia, el modelo no puede saber qué es correcto más allá de lo que el usuario describe en ese momento. El resultado es un código difícil de mantener, escalar o auditar.
@@ -114,11 +115,11 @@ Por otro lado, las herramientas que sí exigen especificación previa (como Spec
 \subsubsection{Seguimiento del cliente}
 \label{sec:ProblemaSeguimientoCliente}
 
-Este apartado se considera especialmente relevante en el ámbito de la consultoría, debido a que la relación y el involucramiento con el cliente son una componente esencial para que un proyecto de software progrese adecuadamente. Cada reunión de seguimiento genera la necesidad de producir un documento estructurado que recoja los temas tratados, las decisiones tomadas y los próximos pasos para ambas partes. Este documento se elabora hoy de forma manual, lo que introduce latencia y variabilidad en el formato según quién lo redacte. Las herramientas comerciales existentes (Otter.ai, Fireflies, Microsoft Copilot for Teams) generan resúmenes genéricos, pero no producen la documentación estructurada con el formato específico que cada empresa de consultoría requiere, ni permiten parametrizar la salida en función del tipo de reunión o del cliente.
+Este apartado se considera especialmente relevante en el ámbito de la consultoría, debido a que la relación y el involucramiento con el cliente son una componente esencial para que un proyecto de software progrese adecuadamente. En la empresa \textit{Colb.AI} se acostumbra a escribir un documento word de seguimiento para el cliente después de cada reunión de seguimiento, para dejarle al cliente por escrito los temas tratados en la reunión, con las tareas cubiertas, las pendientes por cubrir, y el estado actual de la implementación.
 
 \subsection{Conceptos Relevantes Previos}
 \label{sec:conceptos_relevantes}
-Los principales conceptos relevantes que envuelven este tema son los siguientes:
+Los principales conceptos y definiciones relevantes que envuelven este tema son las siguientes:
 
 \subsubsection{Spec-Driven-Development (SDD)}
 \label{sec:sdd}
@@ -1156,6 +1157,8 @@ Se ha configurado una skill específica para la toma de requerimientos que imple
 
 Este enfoque es el preferido cuando se dispone de acceso a la plataforma Claude Cowork, dado que la integración con las herramientas de búsqueda y la calidad del razonamiento son superiores a los de la implementación propia.
 
+\newpage
+
 \subsubsection{Implementación propia}
 \label{sec:implementacion_propia_tr}
 Con el objetivo de disponer de una alternativa de coste reducido e independiente de suscripciones comerciales, se ha desarrollado una aplicación Python que replica el proceso anterior. La aplicación está estructurada en módulos desacoplados y orquestada mediante LangChain.
@@ -1539,7 +1542,7 @@ En ambos asistentes el paso de baseline a colbPowers multiplica el consumo de to
 
 Sin embargo, este sobrecoste de tokens no debe interpretarse en aislamiento. colbPowers genera como subproducto documentación estructurada (constitución del proyecto, especificación de cambios, plan de implementación) que persiste en el repositorio y facilita la incorporación de nuevos desarrolladores. Además, el diseño de colbPowers ---con su énfasis en especificación previa y revisión sistemática--- propicia un ambiente donde los tests forman parte natural del flujo, en lugar de ser un trabajo adicional. En un proyecto de desarrollo profesional con horizonte de vida largo, estos beneficios transcienden el consumo inmediato de tokens.
 
-El desglose de tokens revela una diferencia estructural entre los dos asistentes. En OpenCode, los tokens de entrada no cacheados son significativos (media 0,98~M en baseline, 4,07~M en colbPowers), lo que refleja que cada subagente inicia un contexto propio sin aprovechar caché de sesiones anteriores. En ClaudeCode, en cambio, los tokens de entrada son prácticamente nulos (aaprox 0,00~M) y casi la totalidad del consumo corresponde a tokens de caché (3,63~M en baseline, 13,70~M en colbPowers): la API de Anthropic almacena el prefijo del prompt y las peticiones sucesivas leen el contexto desde caché, lo que reduce el coste real pero infla el contador total. Esta asimetría hace que la comparación directa de tokens totales entre OpenCode y ClaudeCode no sea completamente homogénea.
+El desglose de tokens revela una diferencia estructural entre los dos asistentes. En OpenCode, los tokens de entrada no cacheados son significativos (media 0,98~M en baseline, 4,07~M en colbPowers), lo que refleja que cada subagente inicia un contexto propio sin aprovechar caché de sesiones anteriores. En ClaudeCode, en cambio, los tokens de entrada son prácticamente nulos (aaprox 0,00~M) y casi la totalidad del consumo corresponde a tokens de caché (3,63~M en baseline, 13,70~M en colbPowers): la API de Anthropic almacena el prefijo del prompt y las peticiones sucesivas leen el contexto desde caché, lo que reduce el coste real pero infla el contador total. Esta asimetría hace que la comparación directa de tokens totales entre OpenCode y ClaudeCode no sea completamente homogénea. 
 
 Finalmente, nótese que el Caso 1 no incluye métricas de calidad de código. Al tratarse de un proyecto ya iniciado con base preexistente, medir la complejidad ciclomática o el índice de mantenibilidad de cambios puntuales en archivos existentes resultaría metodológicamente problemático. Las métricas de calidad se reservan para el Caso 2, donde el modelo es responsable de la arquitectura completa. 
 
@@ -1551,7 +1554,7 @@ Este caso es especialmente relevante para evaluar colbPowers, ya que puede ejecu
 
 \begin{table}[H]
 \centering
-\resizebox{\textwidth}{!}{
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{|l|l|r|r|r|r|r|}
 \hline
 \textbf{Condición} & \textbf{Ejecución} & \textbf{Tokens (M)} & \textbf{Tool calls} & \textbf{CRG} & \textbf{Comp. ciclom.} & \textbf{Mant. Index} \\
@@ -1595,7 +1598,7 @@ colbPowers & Ejec.~1 & 7,30 & 46 & 0 & 2,77 & 50,56 \\
 \label{tab:caso2_claudecode}
 \end{table}
 
-En el segundo caso el sobrecoste de tokens de colbPowers es también significativo (×4,5 para OpenCode, ×2,2 para ClaudeCode). En ClaudeCode el orquestador realiza menos tool calls en colbPowers (48) que en baseline (63), lo que confirma que delega la mayor parte del trabajo a subagentes. Las métricas de calidad revelan diferencias notables entre condiciones: en OpenCode, colbPowers genera código de menor complejidad ciclomática (3,13 frente a 4,31, una reducción del 27\%) y mayor índice de mantenibilidad (47,78 frente a 41,54, un incremento del 15\%) que baseline. En ClaudeCode la diferencia es menos pronunciada ---complejidad 3,11 (colbPowers) frente a 2,85 (baseline)---, aunque colbPowers obtiene un índice de mantenibilidad superior (59,01 frente a 56,97, un incremento del 3,6\%). Destaca que ClaudeCode produce código con un índice de mantenibilidad significativamente mayor que OpenCode en ambas condiciones, lo que sugiere una diferencia cualitativa entre los dos asistentes más allá del consumo de recursos.
+En el segundo caso el sobrecoste de tokens de colbPowers es también significativo (x4,5 para OpenCode, x2,2 para ClaudeCode). En ClaudeCode el orquestador realiza menos tool calls en colbPowers (48) que en baseline (63), lo que confirma que delega la mayor parte del trabajo a subagentes. Las métricas de calidad revelan diferencias notables entre condiciones: en OpenCode, colbPowers genera código de menor complejidad ciclomática (3,13 frente a 4,31, una reducción del 27\%) y mayor índice de mantenibilidad (47,78 frente a 41,54, un incremento del 15\%) que baseline. En ClaudeCode la diferencia es menos pronunciada ---complejidad 3,11 (colbPowers) frente a 2,85 (baseline)---, aunque colbPowers obtiene un índice de mantenibilidad superior (59,01 frente a 56,97, un incremento del 3,6\%). Destaca que ClaudeCode produce código con un índice de mantenibilidad significativamente mayor que OpenCode en ambas condiciones, lo que sugiere una diferencia cualitativa entre los dos asistentes más allá del consumo de recursos.
 
 Estos resultados sugieren que el sobrecoste de tokens de colbPowers compra una mejora real en la estructura del código generado, especialmente en OpenCode. La especificación previa obliga al modelo a reflexionar sobre la arquitectura antes de escribir líneas de código, reduciendo la propensión a soluciones ad-hoc o funciones innecesariamente complejas. Adicionalmente, colbPowers genera por defecto documentación detallada (especificación del comportamiento, plan de implementación, criterios de aceptación) que permanece en el repositorio y facilita el entendimiento futuro del sistema. El flujo estructura también propicia la generación de tests: al exigir criterios de aceptación explícitos en cada tarea, se crea un ambiente natural donde los tests forman parte de la especificación inicial, no un trabajo adicional posterior. Para un proyecto con horizonte de vida extenso, estos beneficios ---código más mantenible, documentación estructurada, propensión a tests--- compensan ampliamente el overhead inicial de tokens.
 
