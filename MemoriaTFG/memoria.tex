@@ -1621,32 +1621,24 @@ En este apartado se presentan las asignaturas de las cuales se han podido utiliz
 \subsection{Conclusiones generales}
 \label{sec:conclusiones_generales}
 
-Este Trabajo de Fin de Grado ha resultado en el desarrollo de \textbf{colbPowers}, un plugin para los asistentes de código CLI ClaudeCode y OpenCode que extiende la arquitectura orquestador/subagentes de \textit{superpowers} con una capa de contexto persistente basada en \texttt{constitution.md} y \texttt{features.md}. El proyecto cubre el ciclo de vida completo de un proyecto software en tres pilares: la toma de requerimientos a partir de transcripciones de reuniones, el desarrollo guiado por especificaciones mediante Spec-Driven Development, y el seguimiento documental del cliente.
-
-El cambio de alcance producido durante la fase TP1 ---pasar de construir un sistema de agentes desde cero a extender \textit{superpowers}--- resultó ser una decisión acertada: permitió redirigir el esfuerzo hacia la contribución diferencial del proyecto (la capa de constitución y features y los módulos de transcripción) sin comprometer el presupuesto ni la planificación. Los cuatro sub-objetivos originales ---separación de responsabilidades, coherencia arquitectónica, trazabilidad y capacidad de actuar sobre el repositorio--- se mantienen cumplidos en su totalidad, implementados mediante mecanismos más ligeros y composables que los previstos inicialmente.
-
-Los experimentos realizados sobre dos casos de uso reales evidencian que el uso de colbPowers produce mejoras medibles en las métricas de calidad del código generado respecto a la condición de línea base, con valores de Complejidad Ciclomática e Índice de Mantenibilidad más favorables en la condición con plugin activo. La metodología Human-in-the-Loop ha demostrado ser un factor clave de fiabilidad: la intervención humana en los puntos de validación del flujo evitó regresiones que no habrían sido detectadas por la automatización aislada.
-
-Desde un punto de vista personal, el proyecto ha consolidado competencias técnicas en orquestación de LLMs, ingeniería de prompts y diseño de sistemas multi-agente, al tiempo que ha proporcionado experiencia práctica en gestión ágil de proyectos reales con un cliente externo.
-
 \subsection{Trabajo futuro}
 \label{sec:trabajo_futuro}
 
-A lo largo del desarrollo se han identificado diversas líneas de mejora y extensión que quedan fuera del alcance del presente TFG pero que representan continuaciones naturales del trabajo:
+\newpage
 
-\begin{itemize}
-    \item \textbf{Compatibilidad con más asistentes CLI:} colbPowers está diseñado sobre los estándares comunes de extensibilidad (MCP, hooks, skills), lo que lo hace en gran medida compatible con otros asistentes como Cursor. Una línea de trabajo futura es validar y certificar esta compatibilidad, reduciendo la dependencia de ClaudeCode como plataforma principal.
-
-    \item \textbf{Integración de métricas en el flujo de agentes:} Actualmente, las métricas calculadas con \textbf{radon} son una herramienta de evaluación manual independiente del flujo. Una mejora natural sería integrar estas métricas en el agente revisor de código, de modo que el sistema pueda señalar automáticamente funciones con complejidad ciclomática excesiva o índice de mantenibilidad bajo.
-
-    \item \textbf{Transcripción en tiempo real:} El módulo de transcripción actual opera en modo \textit{post-hoc} (procesa el audio una vez finalizada la reunión). Una extensión valiosa sería soportar transcripción y extracción de requerimientos en tiempo real durante la propia reunión.
-
-    \item \textbf{Integración con herramientas de gestión de proyectos:} La pipeline de toma de requerimientos genera planes de implementación como documentos de texto. Una mejora de alto impacto sería integrar la salida directamente con herramientas como Odoo o Jira, creando tareas de forma automática a partir de los planes generados.
-
-    \item \textbf{Evaluación a mayor escala:} Los experimentos del presente TFG se han realizado sobre dos casos de uso con tres repeticiones cada uno. Una validación más robusta requeriría una muestra más amplia de proyectos y desarrolladores, idealmente en condiciones de producción reales en el entorno de Colb.AI.
-
-    \item \textbf{Estabilización de la integración con OpenCode:} Durante el desarrollo se detectaron problemas de estabilidad en la versión de escritorio de OpenCode para Windows. Conforme la herramienta madure, consolidar la integración con OpenCode como alternativa open source de primera clase es una prioridad para reducir la dependencia del proveedor.
-\end{itemize}
+\section{Cosas en proceso y dudas}
+A continuación se listan las cosas que considero que están pendientes en la memoria y voy a implementar en los próximos dias. Están ordenadas según lo que yo consideraría ser la prioridad (más prioritarias primero).
+\begin{enumerate}
+    \item \textbf{Escribir los abstracts:} He de escrir el abstracts en Catalán, Castellano y Ingles.
+    \item \textbf{Debería eliminar el apartado de Integración de conocimiento?} El apartado de integración del conocimiento nos lo pedian para el informe de seguimiento, pero la verdad es que no aporta absolutamente nada en mi opinión...
+    \item \textbf{Acabar de comentar los experimentos en mayor detalle:} Los experimentos han sido comentados y se han añadido graficas para comparar las difereentes configuraciones, pero se puede expandir bastante este apartado. He hecho un script para hacer un estudio estadístico de los resultados, me falta añadirlo. También tengo un montón de graficos que no he puesto en el apartado pero podrian ir a un posible Anexo.
+    \item \textbf{Conclusiones y trabajo futuro:} Aún queda escribir este apartado.
+    \item \textbf{Apartado de "Uso de IA en el proyecto":} Compañeros mios han implementado un apartado que me parecería muy interesante de mencionar. Básicamente consiste en hacer una explicación de que usos se le han dado a la IA generativa para el desarrollo del proyecto, puesto que la he utilizado para hacer brainstorming, asistencia en la programación de modulos del proyecto, y ha ayudado a formular secciones de la memoría. Por supuesto se ha hecho con el máximo cuidado para evitar que haya basura, pero aún así considero que no es mala idea para tener una máxima transparencia hacer un tipo de disclaimer.
+    \item \textbf{Apartado de "Sistema completo":} Me gustaría añadir un apartado en el que explique el funcionamiento de el sistema completo y cómo seria el flujo, desde empezar con la transcripción del cliente, hasta el desarrollo de código y seguimiento del cliente. Ya tengo el diagrama preparado, pero no estoy muy seguro de donde poner la sección. 
+    \item \textbf{Revisar apartados 1-4:} Se han cambiado los apartados 1 a 4 para que sean compatibles con el nuevo estado del proyecto, se han ido añadiendo referencias a las diferencias entre la planifiación inicial el GEP. Queda revisarlo en mayor profundidad, pero ya debería estar.
+    \item \textbf{Modulos de transcripción y documentación:} Como David recomendó, he combinado los modulos de toma de requerimientos y seguimiento del cliente. Para el seguimiento del cliente me gustaría añadir un diagrama de flujo explicando como funciona el proceso. También quedaría repasar algunos apartados y extender alguna sección.
+    \item \textbf{Apartado de Spec Driven Development:} Este apartado es el mas extenso, me gustaría poner algo de feeedback visual de cómo funcionan los hooks, plugins, y en general que flujo siguen las herramientas como Opencode y Claudecode. También me he de leer de nuevo toda la sección para asegurarme de que haya una coherencia adecuada.
+\end{enumerate}
 
 \newpage
 
