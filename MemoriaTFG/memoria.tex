@@ -1615,6 +1615,41 @@ En este apartado se presentan las asignaturas de las cuales se han podido utiliz
 
 \newpage
 
+\section{Conclusiones}
+\label{sec:conclusiones}
+
+\subsection{Conclusiones generales}
+\label{sec:conclusiones_generales}
+
+Este Trabajo de Fin de Grado ha resultado en el desarrollo de \textbf{colbPowers}, un plugin para los asistentes de código CLI ClaudeCode y OpenCode que extiende la arquitectura orquestador/subagentes de \textit{superpowers} con una capa de contexto persistente basada en \texttt{constitution.md} y \texttt{features.md}. El proyecto cubre el ciclo de vida completo de un proyecto software en tres pilares: la toma de requerimientos a partir de transcripciones de reuniones, el desarrollo guiado por especificaciones mediante Spec-Driven Development, y el seguimiento documental del cliente.
+
+El cambio de alcance producido durante la fase TP1 ---pasar de construir un sistema de agentes desde cero a extender \textit{superpowers}--- resultó ser una decisión acertada: permitió redirigir el esfuerzo hacia la contribución diferencial del proyecto (la capa de constitución y features y los módulos de transcripción) sin comprometer el presupuesto ni la planificación. Los cuatro sub-objetivos originales ---separación de responsabilidades, coherencia arquitectónica, trazabilidad y capacidad de actuar sobre el repositorio--- se mantienen cumplidos en su totalidad, implementados mediante mecanismos más ligeros y composables que los previstos inicialmente.
+
+Los experimentos realizados sobre dos casos de uso reales evidencian que el uso de colbPowers produce mejoras medibles en las métricas de calidad del código generado respecto a la condición de línea base, con valores de Complejidad Ciclomática e Índice de Mantenibilidad más favorables en la condición con plugin activo. La metodología Human-in-the-Loop ha demostrado ser un factor clave de fiabilidad: la intervención humana en los puntos de validación del flujo evitó regresiones que no habrían sido detectadas por la automatización aislada.
+
+Desde un punto de vista personal, el proyecto ha consolidado competencias técnicas en orquestación de LLMs, ingeniería de prompts y diseño de sistemas multi-agente, al tiempo que ha proporcionado experiencia práctica en gestión ágil de proyectos reales con un cliente externo.
+
+\subsection{Trabajo futuro}
+\label{sec:trabajo_futuro}
+
+A lo largo del desarrollo se han identificado diversas líneas de mejora y extensión que quedan fuera del alcance del presente TFG pero que representan continuaciones naturales del trabajo:
+
+\begin{itemize}
+    \item \textbf{Compatibilidad con más asistentes CLI:} colbPowers está diseñado sobre los estándares comunes de extensibilidad (MCP, hooks, skills), lo que lo hace en gran medida compatible con otros asistentes como Cursor. Una línea de trabajo futura es validar y certificar esta compatibilidad, reduciendo la dependencia de ClaudeCode como plataforma principal.
+
+    \item \textbf{Integración de métricas en el flujo de agentes:} Actualmente, las métricas calculadas con \textbf{radon} son una herramienta de evaluación manual independiente del flujo. Una mejora natural sería integrar estas métricas en el agente revisor de código, de modo que el sistema pueda señalar automáticamente funciones con complejidad ciclomática excesiva o índice de mantenibilidad bajo.
+
+    \item \textbf{Transcripción en tiempo real:} El módulo de transcripción actual opera en modo \textit{post-hoc} (procesa el audio una vez finalizada la reunión). Una extensión valiosa sería soportar transcripción y extracción de requerimientos en tiempo real durante la propia reunión.
+
+    \item \textbf{Integración con herramientas de gestión de proyectos:} La pipeline de toma de requerimientos genera planes de implementación como documentos de texto. Una mejora de alto impacto sería integrar la salida directamente con herramientas como Odoo o Jira, creando tareas de forma automática a partir de los planes generados.
+
+    \item \textbf{Evaluación a mayor escala:} Los experimentos del presente TFG se han realizado sobre dos casos de uso con tres repeticiones cada uno. Una validación más robusta requeriría una muestra más amplia de proyectos y desarrolladores, idealmente en condiciones de producción reales en el entorno de Colb.AI.
+
+    \item \textbf{Estabilización de la integración con OpenCode:} Durante el desarrollo se detectaron problemas de estabilidad en la versión de escritorio de OpenCode para Windows. Conforme la herramienta madure, consolidar la integración con OpenCode como alternativa open source de primera clase es una prioridad para reducir la dependencia del proveedor.
+\end{itemize}
+
+\newpage
+
 \addcontentsline{toc}{section}{Referencias}
 \bibliographystyle{plainurl}
 \bibliography{references}
