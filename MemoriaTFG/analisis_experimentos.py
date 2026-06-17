@@ -16,7 +16,7 @@ C_OPENCODE_BASELINE = "#90CAF9"   # azul claro
 C_CLAUDE_PLUGIN     = "#F44336"   # rojo
 C_CLAUDE_BASELINE   = "#FFCDD2"   # rojo claro
 
-OUTPUT_DIR = Path("graficos")
+OUTPUT_DIR = Path("graficos/comparisons")
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 # ── carga de datos ─────────────────────────────────────────────────────────────

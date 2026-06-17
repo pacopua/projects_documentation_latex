@@ -1562,30 +1562,93 @@ En el segundo caso el sobrecoste de tokens de colbPowers es también significati
 
 Estos resultados sugieren que el sobrecoste de tokens de colbPowers compra una mejora real en la estructura del código generado, especialmente en OpenCode. La especificación previa obliga al modelo a reflexionar sobre la arquitectura antes de escribir líneas de código, reduciendo la propensión a soluciones ad-hoc o funciones innecesariamente complejas. Adicionalmente, colbPowers genera por defecto documentación detallada (especificación del comportamiento, plan de implementación, criterios de aceptación) que permanece en el repositorio y facilita el entendimiento futuro del sistema. El flujo estructura también propicia la generación de tests: al exigir criterios de aceptación explícitos en cada tarea, se crea un ambiente natural donde los tests forman parte de la especificación inicial, no un trabajo adicional posterior. Para un proyecto con horizonte de vida extenso, estos beneficios ---código más mantenible, documentación estructurada, propensión a tests--- compensan ampliamente el overhead inicial de tokens.
 
-\subsubsection{Visualización de resultados}
+\subsection{Discusión de los resultados}
 
-Los siguientes gráficos resumen las comparativas clave entre condiciones baseline y colbPowers:
+\subsubsection{Análisis de consumo}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.95\textwidth]{graficos/01_calidad_codigo.png}
-    \caption{Comparación de métricas de calidad en el Caso 2 (visualizador de clasificadores en Python). colbPowers reduce la complejidad ciclomática y mejora el índice de mantenibilidad, especialmente en OpenCode (CC: 4,31 → 3,13; MI: 41,54 → 47,78).}
-    \label{fig:calidad_codigo}
-\end{figure}
+\paragraph{Baseline vs.\ colbPowers.}
+En ambos casos el paso de baseline a colbPowers multiplica el consumo de tokens dentro de cada herramienta: en el Caso~1 el factor es $\times$2,9 para OpenCode y $\times$3,8 para ClaudeCode; en el Caso~2, $\times$4,5 y $\times$2,2 respectivamente. Este sobrecoste refleja el overhead estructural del flujo SDD: generación de documentación (constitution, features, spec, plan), delegación a múltiples subagentes y ejecución de revisiones sistemáticas. La Figura~\ref{fig:tokens_totales} muestra el consumo por experimento, asistente y condición.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{graficos/02_tokens_totales.png}
-    \caption{Consumo total de tokens (millones) en ambos casos de estudio. El incremento de colbPowers respecto a baseline oscila entre 2,2x (ClaudeCode) y 4,5x (OpenCode), reflejando el overhead de documentación y delegación a subagentes.}
+    \includegraphics[width=\textwidth]{graficos/comparisons/02_tokens_totales.png}
+    \caption{Tokens totales por experimento y condición, separados por asistente. La comparación entre columnas de distinto asistente no es directa por diferencias de tokenizador y caché.}
     \label{fig:tokens_totales}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{graficos/08_delta_calidad.png}
-    \caption{Efecto del plugin colbPowers en la calidad del código (delta = plugin - baseline). En OpenCode, colbPowers reduce la complejidad ciclomática en 1,172 puntos (mejora, verde) e incrementa el índice de mantenibilidad en 6,233 puntos. En ClaudeCode los cambios son menores pero favorables. Este gráfico evidencia que a pesar del overhead de tokens, colbPowers genera código cualitativamente superior.}
+    \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_cpbl_bars_Opencode_-_ConfortMental.png}
+    \caption{Test $t$ de Welch — colbPowers vs.\ baseline, OpenCode, Caso~1.}
+    \label{fig:ttest_cpbl_oc_cm}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_cpbl_bars_Claudecode_-_ConfortMental.png}
+    \caption{Test $t$ de Welch — colbPowers vs.\ baseline, ClaudeCode, Caso~1.}
+    \label{fig:ttest_cpbl_cc_cm}
+\end{figure}
+
+\textit{Análisis estadístico.} El incremento de tokens atribuible a colbPowers es estadísticamente significativo en tres de las cuatro combinaciones experimento/herramienta: OpenCode ConfortMental ($p=0{,}032$), ClaudeCode ConfortMental ($p=0{,}005$) y OpenCode ClassVis ($p=0{,}019$). La excepción es ClaudeCode ClassVis ($p=0{,}077$), donde la mayor varianza entre ejecuciones reduce la potencia del test. El número de tool calls no alcanza significancia estadística en ninguna combinación para esta comparación.
+
+\subsubsection{Métricas de calidad (Caso~2)}
+
+Las métricas de calidad del código ---complejidad ciclomática e índice de mantenibilidad--- únicamente se calcularon para el Caso~2 (ClassificationVisualization), donde el asistente genera la arquitectura completa desde cero. En el Caso~1, al tratarse de modificaciones puntuales sobre una base de código preexistente, la atribución de estas métricas al comportamiento del asistente sería metodológicamente problemática.
+
+\paragraph{Baseline vs.\ colbPowers.}
+La Figura~\ref{fig:calidad_codigo} muestra las métricas por asistente y condición. En OpenCode, colbPowers produce una reducción de la complejidad ciclomática (de 4,31 a 3,13, un 27\%) y un aumento del índice de mantenibilidad (de 41,54 a 47,78, un 15\%). En ClaudeCode el efecto es menos pronunciado: la complejidad ciclomática aumenta marginalmente (de 2,85 a 3,11) mientras que el índice de mantenibilidad mejora de 56,97 a 59,01 (un 3,6\%).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/comparisons/01_calidad_codigo.png}
+    \caption{Métricas de calidad del código en el Caso~2 por asistente y condición.}
+    \label{fig:calidad_codigo}
+\end{figure}
+
+La Figura~\ref{fig:delta_calidad} resume estas diferencias como delta (colbPowers $-$ baseline). Las Figuras~\ref{fig:ttest_cpbl_opencode_classvis} y~\ref{fig:ttest_cpbl_claudecode_classvis} presentan los valores absolutos con barras de error y brackets de significancia.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{graficos/comparisons/08_delta_calidad.png}
+    \caption{Efecto de colbPowers sobre la calidad del código (delta = colbPowers $-$ baseline). Verde: mejora; rojo: empeora.}
     \label{fig:delta_calidad}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_cpbl_bars_Opencode_-_ClassificationVisu.png}
+    \caption{Test $t$ de Welch — colbPowers vs.\ baseline, OpenCode, Caso~2 (* $p<0{,}05$).}
+    \label{fig:ttest_cpbl_opencode_classvis}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_cpbl_bars_Claudecode_-_ClassificationVisu.png}
+    \caption{Test $t$ de Welch — colbPowers vs.\ baseline, ClaudeCode, Caso~2.}
+    \label{fig:ttest_cpbl_claudecode_classvis}
+\end{figure}
+
+\textit{Análisis estadístico.} La mejora de calidad de OpenCode con colbPowers es estadísticamente significativa: reducción de complejidad ciclomática ($p=0{,}014$) y aumento del índice de mantenibilidad ($p=0{,}037$). En ClaudeCode, donde la baseline ya produce código de alta calidad, los efectos son consistentes en dirección pero no alcanzan significancia estadística (complejidad: $p=0{,}508$; mantenibilidad: $p=0{,}754$).
+
+\paragraph{OpenCode vs.\ ClaudeCode.}
+En la condición baseline, ClaudeCode genera código con menor complejidad ciclomática (2,85 frente a 4,31 de OpenCode) y mayor índice de mantenibilidad (56,97 frente a 41,54), lo que sugiere que Haiku~4.5 tiende a producir soluciones más simples y legibles de forma natural. Con colbPowers activo, las diferencias entre asistentes se reducen considerablemente: la complejidad ciclomática converge a valores casi idénticos (3,13 para OpenCode y 3,11 para ClaudeCode), lo que indica que el flujo estructurado de SDD homogeneiza la calidad del código independientemente del asistente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_occc_bars_baseline_-_ClassificationVisu.png}
+    \caption{Test $t$ de Welch — OpenCode vs.\ ClaudeCode, baseline, Caso~2. Los asteriscos indican significancia estadística.}
+    \label{fig:ttest_occc_baseline_classvis}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_occc_bars_colbPowers_-_ClassificationVisu.png}
+    \caption{Test $t$ de Welch — OpenCode vs.\ ClaudeCode, colbPowers, Caso~2.}
+    \label{fig:ttest_occc_colbpowers_classvis}
+\end{figure}
+
+\textit{Análisis estadístico.} En la condición baseline, las diferencias de calidad entre asistentes son estadísticamente significativas: complejidad ciclomática ($p=0{,}007$) e índice de mantenibilidad ($p=0{,}039$). Con colbPowers activo, ambas diferencias dejan de ser significativas (complejidad: $p=0{,}932$; mantenibilidad: $p=0{,}143$), confirmando la convergencia de calidad que propicia el flujo SDD. Las tablas completas del análisis estadístico se recogen en el Anexo~\ref{sec:anexo_ttest}.
 
 \newpage
 
@@ -1645,4 +1708,72 @@ A continuación se listan las cosas que considero que están pendientes en la me
 \addcontentsline{toc}{section}{Referencias}
 \bibliographystyle{plainurl}
 \bibliography{references}
+
+\newpage
+\appendix
+
+\section{Análisis estadístico completo}
+\label{sec:anexo_ttest}
+
+Las siguientes tablas recogen los resultados completos del análisis estadístico mediante el test $t$ de Welch para las dos comparaciones principales del experimento. Los tamaños muestrales son $n=3$ por grupo; los resultados deben interpretarse con cautela.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_cpbl_table.png}
+    \caption{Resultados del test $t$ de Welch: colbPowers vs.\ baseline.}
+    \label{fig:ttest_cpbl}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_occc_table.png}
+    \caption{Resultados del test $t$ de Welch: OpenCode vs.\ ClaudeCode.}
+    \label{fig:ttest_occc}
+\end{figure}
+
+\section{Gráficas adicionales del experimento}
+\label{sec:anexo_graficas}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/comparisons/03_desglose_tokens.png}
+    \caption{Desglose de tokens por tipo (input, output, caché leída) para cada experimento y condición.}
+    \label{fig:desglose_tokens}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/comparisons/04_toolcalls_subagentes.png}
+    \caption{Tool calls totales del orquestador y número de subagentes por sesión, por condición y experimento.}
+    \label{fig:toolcalls_subagentes}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/comparisons/05_crg_llamadas.png}
+    \caption{Llamadas al plugin code-review-graph por condición y experimento.}
+    \label{fig:crg_llamadas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/comparisons/06_ratios_eficiencia.png}
+    \caption{Ratios de eficiencia: porcentaje de tokens servidos desde caché y porcentaje de tokens consumidos por el orquestador.}
+    \label{fig:ratios_eficiencia}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/comparisons/07_tokens_vs_calidad.png}
+    \caption{Dispersión: tokens totales vs.\ métricas de calidad del código (Caso~2). Cada punto representa una sesión individual.}
+    \label{fig:tokens_vs_calidad}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/comparisons/09_distribucion_toolcalls.png}
+    \caption{Distribución de tool calls del orquestador por tipo (top~10 herramientas, sesiones con colbPowers).}
+    \label{fig:distribucion_toolcalls}
+\end{figure}
+
 \end{document}

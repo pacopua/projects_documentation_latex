@@ -1,0 +1,74 @@
+\usepackage{booktabs}
+\usepackage{siunitx}
+
+% ---- Table 1: colbPowers vs Baseline ----
+\begin{table}[ht]
+  \centering
+  \caption{Welch's \textit{t}-test results: colbPowers vs Baseline (n=3 per group).}
+  \label{tab:ttest_cpbl}
+  \begin{tabular}{llrrrl}
+    \toprule
+    Task & Tool & $\bar{x}_\text{cp}$ & $\bar{x}_\text{bl}$ & $t$ & $p$ \\
+    \midrule
+    \multicolumn{6}{l}{\textit{Total tool calls}} \\
+    \quad ConfortMental & Opencode & 92.3 & 69.3 & 2.034 & 0.168 \\
+    \quad ConfortMental & Claudecode & 62.7 & 52.7 & 0.738 & 0.511 \\
+    \quad ClassVis & Opencode & 85.0 & 51.7 & 3.251 & 0.069 \\
+    \quad ClassVis & Claudecode & 48.3 & 62.7 & -0.997 & 0.414 \\
+    \addlinespace
+    \multicolumn{6}{l}{\textit{Total tokens}} \\
+    \quad ConfortMental & Opencode & 9.38M & 3.26M & 4.918 & 0.032* \\
+    \quad ConfortMental & Claudecode & 14.33M & 3.74M & 5.839 & 0.005** \\
+    \quad ClassVis & Opencode & 8.41M & 1.88M & 5.871 & 0.019* \\
+    \quad ClassVis & Claudecode & 8.19M & 3.74M & 2.390 & 0.077 \\
+    \addlinespace
+    \multicolumn{6}{l}{\textit{Avg. cyclomatic complexity}} \\
+    \quad ClassVis & Opencode & 3.13 & 4.31 & -5.496 & 0.014* \\
+    \quad ClassVis & Claudecode & 3.11 & 2.85 & 0.732 & 0.508 \\
+    \addlinespace
+    \multicolumn{6}{l}{\textit{Maintainability index}} \\
+    \quad ClassVis & Opencode & 47.78 & 41.54 & 4.225 & 0.037* \\
+    \quad ClassVis & Claudecode & 59.01 & 56.97 & 0.337 & 0.754 \\
+    \addlinespace
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}
+    \small \item * $p<0.05$, ** $p<0.01$, *** $p<0.001$. ns = not significant.
+  \end{tablenotes}
+\end{table}
+
+% ---- Table 2: Opencode vs Claudecode ----
+\begin{table}[ht]
+  \centering
+  \caption{Welch's \textit{t}-test results: Opencode vs Claudecode (n=3 per group).}
+  \label{tab:ttest_occc}
+  \begin{tabular}{llrrrl}
+    \toprule
+    Task & Condition & $\bar{x}_\text{OC}$ & $\bar{x}_\text{CC}$ & $t$ & $p$ \\
+    \midrule
+    \multicolumn{6}{l}{\textit{Total tool calls}} \\
+    \quad ConfortMental & colbPowers & 92.3 & 62.7 & 2.299 & 0.097 \\
+    \quad ConfortMental & baseline & 69.3 & 52.7 & 1.385 & 0.292 \\
+    \quad ClassVis & colbPowers & 85.0 & 48.3 & 8.538 & 0.001** \\
+    \quad ClassVis & baseline & 51.7 & 62.7 & -0.642 & 0.559 \\
+    \addlinespace
+    \multicolumn{6}{l}{\textit{Total tokens}} \\
+    \quad ConfortMental & colbPowers & 9.38M & 14.33M & -3.038 & 0.039* \\
+    \quad ConfortMental & baseline & 3.26M & 3.74M & -0.321 & 0.777 \\
+    \quad ClassVis & colbPowers & 8.41M & 8.19M & 0.124 & 0.908 \\
+    \quad ClassVis & baseline & 1.88M & 3.74M & -1.510 & 0.255 \\
+    \addlinespace
+    \multicolumn{6}{l}{\textit{Avg. cyclomatic complexity}} \\
+    \quad ClassVis & colbPowers & 3.13 & 3.11 & 0.094 & 0.932 \\
+    \quad ClassVis & baseline & 4.31 & 2.85 & 5.071 & 0.007** \\
+    \addlinespace
+    \multicolumn{6}{l}{\textit{Maintainability index}} \\
+    \quad ClassVis & colbPowers & 47.78 & 59.01 & -2.330 & 0.143 \\
+    \quad ClassVis & baseline & 41.54 & 56.97 & -3.929 & 0.039* \\
+    \addlinespace
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}
+    \small \item * $p<0.05$, ** $p<0.01$, *** $p<0.001$. ns = not significant.
+  \end{tablenotes}
+\end{table}
