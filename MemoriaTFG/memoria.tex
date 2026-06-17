@@ -17,6 +17,7 @@
 \usepackage{tcolorbox}
 \usepackage{hyperref}
 \usepackage{amssymb} % Añadido para simbolos extra
+\usepackage{changepage}
 
 \usepackage[spanish,es-noindentfirst]{babel}
 \usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
@@ -65,6 +66,49 @@
     \vfill
 \end{titlepage}
 
+\newpage
+
+\begin{adjustwidth}{2cm}{2cm}
+{ %Abstract inglees
+\hspace{0pt} 
+\vfill
+\large
+\begin{center}
+{\textbf{Abstract}}
+\end{center}
+The present project consists of the design and application of an intelligent assistance system, with the objective of automating the various stages in the development of software projects, using mainly the orchestration of generative Artificial Intelligence tools. Placing emphasis on the interaction with the human developer, following a philosophy of \textit{Human in the loop}, and the generation of documentation to guide the process. This methodology looks to reduce the quality loss typically caused by the use of AI in the development of these projects. This final degree project is applied and developed for the working environment at the software consulting company \textit{Colb.AI}.
+\vfill
+\hspace{0pt}
+}
+
+\newpage
+{ %Abstract castellano
+\hspace{0pt}
+\vfill
+\large 
+\begin{center}
+{\textbf{Resumen}}
+\end{center}
+El presente proyecto engloba el diseño y aplicación de un sistema para la automatización de las diversas etapas en el desarrollo de proyectos de \textit{software}, utilizando principalmente la orquestación de herramientas de Inteligencia Artificial generativa. Haciendo un especial énfasis en la interacción de estos sistemas de automatización con el desarrollador, siguiendo una filosofía de \textit{Human in the loop}, y la generación de documentación para guiar el proceso. Esta metodología busca reducir la pérdida de calidad típicamente resultante del uso de IA en el desarrollo de los proyectos. Este trabajo de final de grado se aplica y desarrolla para el entorno laboral de la consultora de \textit{software} \textit{Colb.AI}.
+\vfill
+\hspace{0pt}
+}
+\newpage
+
+{ %Abstract català
+\hspace{0pt}
+\vfill
+\large
+\begin{center}
+{\textbf{Resum}}
+\end{center}
+El present projecte consisteix en el disseny i aplicació d'un sistema intel·ligent per a l'automatització de les etapes en el desenvolupament de projectes de \textit{software}, aplicant principalment l'orquestació d'eines d'Intel·ligència Artificial generativa. Es fa un especial èmfasi en la interacció d'aquests sistemes amb el desenvolupador humà, seguint una filosofia de \textit{Human in the loop}, i la generació de documentació per a guiar el procés. Aquesta metodologia tracta de reduir la pèrdua de qualitat típicament conseqüència de l'ús de la IA en el desenvolupament d'aquests projectes. Aquest treball de final de grau s'aplica i desenvolupa per a l'entorn laboral de la consultoria de \textit{software} \textit{Colb.AI}.
+\vfill
+\hspace{0pt}
+}
+\end{adjustwidth}
+
+\newpage
 \tableofcontents
 \newpage
 
@@ -387,6 +431,20 @@ Para garantizar el correcto seguimiento del progreso del proyecto, se emplearán
     
     \item \textbf{Reuniones de Seguimiento Académico:} Además de las interacciones diarias con la empresa, se establecerán reuniones periódicas con el director academico del TFG. La frecuencia exacta de estos encuentros se irá definiendo y ajustando de mutuo acuerdo a lo largo del desarrollo, con el objetivo de validar el rigor del proyecto, y revisar los entregables de documentación.
 \end{itemize}
+
+\subsection{Uso de IA generativa en el desarrollo del proyecto}
+\label{sec:uso_ia}
+
+Como se ha mencionado al comienzo de este documento, la IA generativa está cambiando cómo trabajamos, la mayoría de estudiantes la utilizan (no todos de forma responsable), para asistir en el desarrollo de sus proyectos. Este proyecto no es distinto, por lo que en aras a la transparencia, esta sección declara los usos que se le han dado a herramientas de inteligencia artificial generativa para el desarrollo de este TFG.
+
+\paragraph{Asistencia en la programación.}
+Los módulos de software del proyecto ---el pipeline de toma de requerimientos, el módulo de seguimiento del cliente y la configuración del plugin colbPowers--- se desarrollaron con asistencia de ClaudeCode y OpenCode como herramienta de programación. El asistente se utilizó para acelerar la implementación de los distintos módulos, por supuesto bajo una supervisión responsable por parte del desarrollador. 
+
+\paragraph{Brainstorming y toma de decisiones de arquitectura.}
+Durante las fases de diseño se ha empleado IA generativa para explorar alternativas arquitectónicas, evaluar trade-offs entre opciones tecnológicas y estructurar el razonamiento antes de tomar decisiones.
+
+\paragraph{Desarrollo de la memoria.}
+Se ha uitilizado IA generativa para la asistencia en la redacción de esa memoria, principalmente para borradores iniciales, además de para reestrucurar y reescribir secciones algunas secciones. 
 
 \newpage
 
@@ -1265,6 +1323,7 @@ Al recibir un mensaje del usuario, el sistema construye el system prompt que se 
     \item \textbf{Prompt base del proveedor}: instrucciones genéricas del asistente, adaptadas al modelo concreto que esté activo (Anthropic Claude, Google Gemini u otros). Si el agente activo define un campo \texttt{prompt} propio en su configuración, este sustituye al prompt base del proveedor.
     \item \textbf{Entorno y contexto}: directorio de trabajo actual, fecha, plataforma del sistema operativo y agente activo en la sesión.
     \item \textbf{Catálogo de skills}: una sección del system prompt lista los nombres y descripciones breves de todas las skills descubiertas. Esta lista es lo único que el LLM recibe sobre las skills en el prompt inicial; el contenido detallado de cada skill se carga bajo demanda más adelante.
+    \label{concepto:archivo_instrucciones}
     \item \textbf{Archivo de instrucciones del proyecto}: el contenido de un archivo de instrucciones del repositorio con el nombre \texttt{AGENTS.md} o  \texttt{CLAUDE.md} (para asegurar compatibilidad con proyectos desarrollados usando ClaudeCode) , que típicamente incluye la descripción del proyecto, el stack tecnológico, los estándares de código del equipo y las restricciones que el agente debe respetar. Además, los plugins pueden modificar el system prompt resultante mediante el hook \texttt{experimental.chat.system.transform}, inyectando secciones adicionales antes de que el prompt se envíe al modelo.
 \end{enumerate}
 
@@ -1687,19 +1746,52 @@ En este apartado se presentan las asignaturas de las cuales se han podido utiliz
 \subsection{Trabajo futuro}
 \label{sec:trabajo_futuro}
 
+A continuación se describen las líneas de mejora y expansión identificadas durante el desarrollo del proyecto, organizadas por componente del sistema.
+
+\subsubsection{Plugin colbPowers y flujo SDD}
+
+\paragraph{Refuerzo determinista del flujo mediante hooks.}
+El mecanismo actual para asegurar que el agente orquestador siga el flujo SDD se basa exclusivamente en el prompt de instrucciones, lo que es inherentemente no determinista: en los experimentos se observaron casos en los que el orquestador omitió la llamada al subagente revisor tras implementar código. Una mejora natural sería reemplazar parte de esta responsabilidad por hooks de ciclo de vida que comprueben el estado del flujo en puntos clave y bloqueen el avance si no se han completado los pasos requeridos. Esto transformaría una restricción de comportamiento en una restricción de ejecución, más robusta y reproducible.
+
+\paragraph{Mayor presencia de code-review-graph en los archivos de contexto.}
+Los experimentos mostraron que el servidor MCP \textit{code-review-graph} fue prácticamente ignorado por los agentes: las llamadas registradas fueron esporádicas y en su mayoría no iniciadas por el orquestador. Una causa probable es que el orquestador no transmitía a los subagentes información sobre la disponibilidad y el propósito del servidor. Añadir instrucciones explícitas en los archivos de contexto del agente ---indicando cuándo y cómo utilizar el grafo de dependencias--- podría incrementar significativamente su adopción y, con ello, la calidad del análisis de impacto previo a cada cambio.
+
+\paragraph{Experimentos adicionales.}
+Los experimentos realizados requieren supervisión manual continua, lo que limitó el tamaño muestral a $n=3$ por condición. Con más recursos, se proponen las siguientes comparaciones:
+\begin{itemize}
+    \item \textbf{colbPowers con y sin code-review-graph}, para aislar el efecto del servidor MCP de forma independiente al resto del flujo.
+    \item \textbf{colbPowers vs a superpowers}, su plugin predecesor, para cuantificar el valor añadido de las extensiones introducidas en este proyecto.
+    \item \textbf{Ejecución inline vs a subagent-driven}, para evaluar si el overhead de tokens de la ejecución por subagentes se traduce en mejoras de calidad consistentes respecto a que el orquestador resuelva las tareas directamente.
+\end{itemize}
+En todos los casos se recomendaría aumentar el numero de iteraciones a a $n \geq 5$ para obtener mayor rigurosidad estadística.
+
+\subsubsection{Módulos de transcripción y documentación}
+
+\paragraph{Memoria acumulativa entre reuniones.}
+Actualmente, tanto el módulo de toma de requerimientos como el de seguimiento del cliente procesan cada reunión de forma completamente independiente, sin acceso al historial de sesiones anteriores. Esto obliga al equipo a proporcionar manualmente el contexto acumulado en cada nueva ejecución. Una mejora sustancial consistiría en incorporar un almacén persistente ---por ejemplo, una base de datos vectorial--- que indexe los documentos generados en reuniones previas y permita al modelo recuperar contexto relevante mediante búsqueda semántica. Esto haría los documentos generados más coherentes con la evolución del proyecto a lo largo del tiempo.
+
+\paragraph{Base de datos RAG para estimaciones de presupuesto y horas.}
+El módulo de toma de requerimientos genera estimaciones de tiempo y coste por funcionalidad basándose únicamente en el razonamiento del modelo, sin datos históricos de referencia. Incorporar una base de datos de recuperación aumentada (\textit{Retrieval-Augmented Generation}) con ejemplos reales de proyectos anteriores ---incluyendo desglose de horas por tipo de tarea y presupuestos asociados--- permitiría al módulo fundamentar sus estimaciones en precedentes concretos, aumentando su fiabilidad y utilidad práctica para la planificación de proyectos.
+
+\paragraph{Integración con herramientas de gestión de proyectos.}
+El documento de seguimiento generado actualmente es un artefacto estático en formato Word. Un paso natural sería integrarlo con plataformas de gestión de proyectos como Linear o Jira, de modo que las tareas identificadas en la reunión se conviertan automáticamente en tickets asignados, con descripción, estimación y responsable. Esto cerraría el ciclo entre la reunión con el cliente y el flujo de trabajo del equipo de desarrollo sin intervención manual.
+
+\paragraph{Reducción de la dependencia de Claude Cowork.}
+Ambos módulos disponen de una implementación propia de código abierto como alternativa a la skill de Claude Cowork, pero esta alternativa no cubre todos los casos de uso de la plataforma comercial. Consolidar y extender las implementaciones propias reduciría la dependencia de una suscripción externa y facilitaría el despliegue del sistema en entornos con requisitos de privacidad o control de costes estrictos.
+
 \newpage
 
 \section{Cosas en proceso y dudas}
 A continuación se listan las cosas que considero que están pendientes en la memoria y voy a implementar en los próximos dias. Están ordenadas según lo que yo consideraría ser la prioridad (más prioritarias primero).
 \begin{enumerate}
-    \item \textbf{Escribir los abstracts:} He de escrir el abstracts en Catalán, Castellano y Ingles.
-    \item \textbf{Debería eliminar el apartado de Integración de conocimiento?} El apartado de integración del conocimiento nos lo pedian para el informe de seguimiento, pero la verdad es que no aporta absolutamente nada en mi opinión...
-    \item \textbf{Acabar de comentar los experimentos en mayor detalle:} Los experimentos han sido comentados y se han añadido graficas para comparar las difereentes configuraciones, pero se puede expandir bastante este apartado. He hecho un script para hacer un estudio estadístico de los resultados, me falta añadirlo. También tengo un montón de graficos que no he puesto en el apartado pero podrian ir a un posible Anexo.
-    \item \textbf{Conclusiones y trabajo futuro:} Aún queda escribir este apartado.
-    \item \textbf{Apartado de "Uso de IA en el proyecto":} Compañeros mios han implementado un apartado que me parecería muy interesante de mencionar. Básicamente consiste en hacer una explicación de que usos se le han dado a la IA generativa para el desarrollo del proyecto, puesto que la he utilizado para hacer brainstorming, asistencia en la programación de modulos del proyecto, y ha ayudado a formular secciones de la memoría. Por supuesto se ha hecho con el máximo cuidado para evitar que haya basura, pero aún así considero que no es mala idea para tener una máxima transparencia hacer un tipo de disclaimer.
+    \item \textbf{Escribir los abstracts:} He de escrir el abstracts en Catalán, Castellano y Ingles.  (Cubierto, pendiente de revisiones)
+    \item \textbf{Debería eliminar el apartado de Integración de conocimiento?} El apartado de integración del conocimiento nos lo pedian para el informe de seguimiento, pero la verdad es que no aporta absolutamente nada en mi opinión... Se podría quitar.
+    \item \textbf{Acabar de comentar los experimentos en mayor detalle:} Los experimentos han sido comentados y se han añadido graficas para comparar las difereentes configuraciones, pero se puede expandir bastante este apartado. He hecho un script para hacer un estudio estadístico de los resultados, me falta añadirlo. También tengo un montón de graficos que no he puesto en el apartado pero podrian ir a un posible Anexo. (Medio hecho)
+    \item \textbf{Conclusiones y trabajo futuro:} Aún queda escribir este apartado. (Trabajo futuro cubierto)
+    \item \textbf{Apartado de "Uso de IA en el proyecto":} Compañeros mios han implementado un apartado que me parecería muy interesante de mencionar. Básicamente consiste en hacer una explicación de que usos se le han dado a la IA generativa para el desarrollo del proyecto, puesto que la he utilizado para hacer brainstorming, asistencia en la programación de modulos del proyecto, y ha ayudado a formular secciones de la memoría. Por supuesto se ha hecho con el máximo cuidado para evitar que haya basura, pero aún así considero que no es mala idea para tener una máxima transparencia hacer un tipo de disclaimer. (Cubiero en el aparado \ref{sec:uso_ia})
     \item \textbf{Apartado de "Sistema completo":} Me gustaría añadir un apartado en el que explique el funcionamiento de el sistema completo y cómo seria el flujo, desde empezar con la transcripción del cliente, hasta el desarrollo de código y seguimiento del cliente. Ya tengo el diagrama preparado, pero no estoy muy seguro de donde poner la sección. 
-    \item \textbf{Revisar apartados 1-4:} Se han cambiado los apartados 1 a 4 para que sean compatibles con el nuevo estado del proyecto, se han ido añadiendo referencias a las diferencias entre la planifiación inicial el GEP. Queda revisarlo en mayor profundidad, pero ya debería estar.
-    \item \textbf{Modulos de transcripción y documentación:} Como David recomendó, he combinado los modulos de toma de requerimientos y seguimiento del cliente. Para el seguimiento del cliente me gustaría añadir un diagrama de flujo explicando como funciona el proceso. También quedaría repasar algunos apartados y extender alguna sección.
+    \item \textbf{Revisar apartados 1-4:} Se han cambiado los apartados 1 a 4 para que sean compatibles con el nuevo estado del proyecto, se han ido añadiendo referencias a las diferencias entre la planifiación inicial de GEP y la planificación final. Queda revisarlo en mayor profundidad, pero ya debería estar.
+    \item \textbf{Modulos de transcripción y documentación:} Como David recomendó, he combinado los modulos de toma de requerimientos y seguimiento del cliente. Para el seguimiento del cliente me gustaría añadir un diagrama de flujo explicando como funciona el proceso. También quedaría repasar algunos apartados y extender alguna sección, sobretodo para el seguimiento del cliente.
     \item \textbf{Apartado de Spec Driven Development:} Este apartado es el mas extenso, me gustaría poner algo de feeedback visual de cómo funcionan los hooks, plugins, y en general que flujo siguen las herramientas como Opencode y Claudecode. También me he de leer de nuevo toda la sección para asegurarme de que haya una coherencia adecuada.
 \end{enumerate}
 
