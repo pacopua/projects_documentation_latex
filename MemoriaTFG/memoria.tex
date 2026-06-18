@@ -372,7 +372,7 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
 \subsection{Métricas de Evaluación del Código}
 \label{sec:metricas}
 
-Para validar empíricamente la calidad del código generado por el sistema, se emplearán métricas de análisis estático ampliamente adoptadas en la ingeniería del software \cite{sommerville_se_2015}. Estas métricas serán calculadas mediante \textbf{radon} \cite{Lacchia_radon}, una herramienta Python de análisis estático de código. Es importante destacar que las métricas no forman parte del flujo automatizado de los agentes: constituyen una herramienta de evaluación independiente que el desarrollador utiliza para analizar manualmente la calidad del código generado y contrastar los resultados entre distintas ejecuciones del sistema.
+Para validar empíricamente la calidad del código generado por el sistema, se emplearán métricas de análisis estático ampliamente adoptadas en la ingeniería del software \cite{sommerville_se_2015}. Estas métricas serán calculadas con herramientas de análisis estático según el lenguaje del proyecto: \textbf{radon} \cite{Lacchia_radon} para proyectos Python y \textbf{DCM --- Dart Code Metrics} \cite{dart_code_metrics} para proyectos Flutter/Dart. Es importante destacar que las métricas no forman parte del flujo automatizado de los agentes: constituyen una herramienta de evaluación independiente que el desarrollador utiliza para analizar manualmente la calidad del código generado y contrastar los resultados entre distintas ejecuciones del sistema.
 
 Las métricas inicialmente contempladas son las siguientes:
 
@@ -1495,7 +1495,7 @@ Las dos condiciones experimentales son:
 \label{tab:condiciones_experimentales}
 \end{table}
 
-Cada condición se ha ejecutado con dos asistentes: \textbf{OpenCode con DeepSeek V4-Flash}\cite{deepseek_v4_flash} y \textbf{ClaudeCode con Haiku~4.5}\cite{claude_haiku_45}. Las métricas recogidas son: tokens totales consumidos (incluyendo caché), número de tool calls del orquestador, y número de llamadas a herramientas de code-review-graph. En el Caso~2 se recogen adicionalmente métricas de calidad del código generado (complejidad ciclomática e índice de mantenibilidad) para las ejecuciones de OpenCode con colbPowers.
+Cada condición se ha ejecutado con dos asistentes: \textbf{OpenCode con DeepSeek V4-Flash}\cite{deepseek_v4_flash} y \textbf{ClaudeCode con Haiku~4.5}\cite{claude_haiku_45}. Las métricas recogidas son: tokens totales consumidos (incluyendo caché), número de tool calls del orquestador, y número de llamadas a herramientas de code-review-graph. En ambos casos se recogen adicionalmente métricas de calidad del código generado (complejidad ciclomática e índice de mantenibilidad) mediante análisis estático: \textbf{radon} \cite{Lacchia_radon} para el Caso~2 (Python) y \textbf{DCM --- Dart Code Metrics} \cite{dart_code_metrics} para el Caso~1 (Flutter/Dart).
 
 \paragraph{Limitaciones del diseño experimental.} Deben señalarse dos limitaciones estructurales. En primer lugar, el tamaño muestral de $n=3$ repeticiones por condición limita la potencia estadística de los resultados e impide verificar los supuestos de normalidad del test $t$ de Welch; los resultados deben interpretarse como evidencia sugerente. En segundo lugar, tanto el diseño de la intervención (colbPowers) como la ejecución y evaluación de los experimentos son obra del mismo autor, en el contexto de la empresa para la que se desarrolla el sistema (Colb.AI). Esta ausencia de evaluación ciega o independiente es una limitación metodológica reconocida, y los resultados deben interpretarse teniendo en cuenta este sesgo potencial.
 
@@ -1538,46 +1538,46 @@ El proyecto consiste en una aplicación de escritorio desarrollada con el SDK \t
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{l l r r r r r r}
+\begin{tabular}{l l r r r r r r r r}
 \toprule
-\textbf{Condición} & \textbf{Ejecución} & \textbf{Total (M)} & \textbf{Input (M)} & \textbf{Output (M)} & \textbf{Caché (M)} & \textbf{Tool calls} & \textbf{CRG} \\
+\textbf{Condición} & \textbf{Ejecución} & \textbf{Total (M)} & \textbf{Input (M)} & \textbf{Output (M)} & \textbf{Caché (M)} & \textbf{Tool calls} & \textbf{CRG} & \textbf{Comp. cic.} & \textbf{Mant. Index} \\
 \midrule
-\textbf{baseline} & Ejec.~1 & 3,67 & 1,15 & 0,02 & 2,49 & 74 & 0 \\
- & Ejec.~2 & 2,76 & 0,89 & 0,02 & 1,85 & 68 & 0 \\
- & Ejec.~3 & 3,37 & 0,91 & 0,02 & 2,43 & 66 & 0 \\
- & \textbf{Media} & \textbf{3,26} & \textbf{0,98} & \textbf{0,02} & \textbf{2,26} & \textbf{69} & \textbf{0} \\
+\textbf{baseline} & Ejec.~1 & 3,67 & 1,15 & 0,02 & 2,49 & 74 & 0 & 2,67 & 64,85 \\
+ & Ejec.~2 & 2,76 & 0,89 & 0,02 & 1,85 & 68 & 0 & 2,84 & 68,66 \\
+ & Ejec.~3 & 3,37 & 0,91 & 0,02 & 2,43 & 66 & 0 & 2,50 & 69,27 \\
+ & \textbf{Media} & \textbf{3,26} & \textbf{0,98} & \textbf{0,02} & \textbf{2,26} & \textbf{69} & \textbf{0} & \textbf{2,67} & \textbf{67,59} \\
 \midrule
-\textbf{colbPowers} & Ejec.~1 & 10,64 & 5,40 & 0,07 & 5,15 & 108 & 0 \\
- & Ejec.~2 & 10,55 & 4,18 & 0,07 & 6,27 & 71 & 2 \\
- & Ejec.~3 & 6,95 & 2,61 & 0,05 & 4,27 & 98 & 0 \\
- & \textbf{Media} & \textbf{9,38} & \textbf{4,07} & \textbf{0,06} & \textbf{5,23} & \textbf{92} & \textbf{0,7} \\
+\textbf{colbPowers} & Ejec.~1 & 10,64 & 5,40 & 0,07 & 5,15 & 108 & 0 & 3,05 & 69,55 \\
+ & Ejec.~2 & 10,55 & 4,18 & 0,07 & 6,27 & 71 & 2 & 3,53 & 65,11 \\
+ & Ejec.~3 & 6,95 & 2,61 & 0,05 & 4,27 & 98 & 0 & 3,53 & 65,11 \\
+ & \textbf{Media} & \textbf{9,38} & \textbf{4,07} & \textbf{0,06} & \textbf{5,23} & \textbf{92} & \textbf{0,7} & \textbf{3,37} & \textbf{66,59} \\
 \bottomrule
 \end{tabular}
 }
-\caption{Caso 1 --- OpenCode con DeepSeek V4-Flash. Caché = tokens leídos de caché.}
+\caption{Caso 1 --- OpenCode con DeepSeek V4-Flash. Caché = tokens leídos de caché. Métricas de calidad calculadas con DCM.}
 \label{tab:caso1_opencode}
 \end{table}
 
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{l l r r r r r r}
+\begin{tabular}{l l r r r r r r r r}
 \toprule
-\textbf{Condición} & \textbf{Ejecución} & \textbf{Total (M)} & \textbf{Input (M)} & \textbf{Output (M)} & \textbf{Caché (M)} & \textbf{Tool calls} & \textbf{CRG} \\
+\textbf{Condición} & \textbf{Ejecución} & \textbf{Total (M)} & \textbf{Input (M)} & \textbf{Output (M)} & \textbf{Caché (M)} & \textbf{Tool calls} & \textbf{CRG} & \textbf{Comp. cic.} & \textbf{Mant. Index} \\
 \midrule
-\textbf{baseline} & Ejec.~1 & 6,64 & 0,01 & 0,04 & 6,50 & 76 & 0 \\
- & Ejec.~2 & 2,24 & 0,01 & 0,03 & 2,15 & 44 & 0 \\
- & Ejec.~3 & 2,33 & 0,00 & 0,03 & 2,25 & 38 & 0 \\
- & \textbf{Media} & \textbf{3,74} & \textbf{0,00} & \textbf{0,03} & \textbf{3,63} & \textbf{53} & \textbf{0} \\
+\textbf{baseline} & Ejec.~1 & 6,64 & 0,01 & 0,04 & 6,50 & 76 & 0 & 2,76 & 63,63 \\
+ & Ejec.~2 & 2,24 & 0,01 & 0,03 & 2,15 & 44 & 0 & 3,19 & 70,51 \\
+ & Ejec.~3 & 2,33 & 0,00 & 0,03 & 2,25 & 38 & 0 & 2,98 & 64,02 \\
+ & \textbf{Media} & \textbf{3,74} & \textbf{0,00} & \textbf{0,03} & \textbf{3,63} & \textbf{53} & \textbf{0} & \textbf{2,98} & \textbf{66,05} \\
 \midrule
-\textbf{colbPowers} & Ejec.~1 & 12,23 & 0,00 & 0,11 & 11,66 & 56 & 0 \\
- & Ejec.~2 & 14,91 & 0,00 & 0,10 & 14,28 & 56 & 0 \\
- & Ejec.~3 & 15,85 & 0,00 & 0,11 & 15,15 & 76 & 3 \\
- & \textbf{Media} & \textbf{14,33} & \textbf{0,00} & \textbf{0,11} & \textbf{13,70} & \textbf{63} & \textbf{1,0} \\
+\textbf{colbPowers} & Ejec.~1 & 12,23 & 0,00 & 0,11 & 11,66 & 56 & 0 & 2,97 & 67,03 \\
+ & Ejec.~2 & 14,91 & 0,00 & 0,10 & 14,28 & 56 & 0 & 3,53 & 69,03 \\
+ & Ejec.~3 & 15,85 & 0,00 & 0,11 & 15,15 & 76 & 3 & 3,94 & 63,51 \\
+ & \textbf{Media} & \textbf{14,33} & \textbf{0,00} & \textbf{0,11} & \textbf{13,70} & \textbf{63} & \textbf{1,0} & \textbf{3,48} & \textbf{66,52} \\
 \bottomrule
 \end{tabular}
 }
-\caption{Caso 1 --- ClaudeCode con Haiku~4.5. Caché = tokens leídos de caché.}
+\caption{Caso 1 --- ClaudeCode con Haiku~4.5. Caché = tokens leídos de caché. Métricas de calidad calculadas con DCM.}
 \label{tab:caso1_claudecode}
 \end{table}
 
@@ -1587,13 +1587,13 @@ Sin embargo, este sobrecoste de tokens no debe interpretarse en aislamiento. col
 
 El desglose de tokens revela una diferencia estructural entre los dos asistentes. En OpenCode, los tokens de entrada no cacheados son significativos (media 0,98~M en baseline, 4,07~M en colbPowers), lo que refleja que cada subagente inicia un contexto propio sin aprovechar caché de sesiones anteriores. En ClaudeCode, en cambio, los tokens de entrada son prácticamente nulos (aprox.\ 0,00~M) y casi la totalidad del consumo corresponde a tokens de caché (3,63~M en baseline, 13,70~M en colbPowers): la API de Anthropic almacena el prefijo del prompt y las peticiones sucesivas leen el contexto desde caché, lo que reduce el coste real pero infla el contador total. Esta asimetría hace que la comparación directa de tokens totales entre OpenCode y ClaudeCode no sea completamente homogénea. 
 
-Finalmente, nótese que el Caso 1 no incluye métricas de calidad de código. Al tratarse de un proyecto ya iniciado con base preexistente, medir la complejidad ciclomática o el índice de mantenibilidad de cambios puntuales en archivos existentes resultaría metodológicamente problemático. El Caso 1 evalúa el comportamiento del sistema sobre un repositorio real en producción, aportando evidencia sobre el overhead de tokens y el uso del grafo de dependencias en tareas de modificación incremental. Las métricas de calidad de código se reservan para el Caso 2, donde el agente es responsable de la arquitectura completa, permitiendo una comparación más limpia entre condiciones. 
+Las métricas de calidad de código del Caso~1, calculadas con DCM sobre el código modificado, muestran un patrón diferente al del Caso~2. En OpenCode, colbPowers produce código de \emph{mayor} complejidad ciclomática (3,37 frente a 2,67 del baseline, +26\%) y un índice de mantenibilidad ligeramente inferior (66,59 frente a 67,59, $-$1\%). En ClaudeCode el incremento de complejidad es similar (3,48 frente a 2,98, +17\%), mientras que el índice de mantenibilidad se mantiene prácticamente igual (66,52 frente a 66,05). Este comportamiento contrasta con el Caso~2: en tareas de modificación incremental sobre código existente, la estructuración adicional de colbPowers puede introducir abstracciones o ramas de control adicionales que incrementan la complejidad medida; en cambio, cuando el agente diseña la arquitectura completa desde cero (Caso~2), el efecto predominante es la reducción de soluciones ad-hoc y de funciones innecesariamente complejas. La Figura~\ref{fig:ttest_cpbl_oc_cm} y la Figura~\ref{fig:ttest_cpbl_cc_cm} muestran los cuatro paneles de métricas para el Caso~1.
 
 \subsection{Caso 2: Visualizador de clasificadores en Python}
 \label{sec:caso2_simulacion3d}
 El segundo caso aplica el experimento sobre una tarea de nueva implementación desde cero: el desarrollo en Python de un visualizador interactivo que muestra, iteración a iteración, cómo dos clasificadores ---\textit{K-Nearest Neighbors} (KNN) y \textit{Logistic Regression}--- aprenden a separar un conjunto de clases en un espacio bidimensional. A diferencia del caso anterior (modificación de una base de código existente), este caso evalúa el comportamiento de las herramientas en la creación de funcionalidad nueva.
 
-Este caso es especialmente relevante para evaluar colbPowers, ya que puede ejecutar el ciclo completo de la metodología SDD: primero se generan de forma interactiva con el usuario los documentos de constitución y \textit{features} del proyecto, y a continuación se genera la especificación técnica de la funcionalidad a implementar. En todo momento el proceso sigue el principio de \textit{Human-in-the-Loop}: el usuario participa en cada etapa y puede controlar el flujo. Para todas las ejecuciones del Caso 2 se han calculado métricas de calidad del código generado.
+Este caso es especialmente relevante para evaluar colbPowers, ya que puede ejecutar el ciclo completo de la metodología SDD: primero se generan de forma interactiva con el usuario los documentos de constitución y \textit{features} del proyecto, y a continuación se genera la especificación técnica de la funcionalidad a implementar. En todo momento el proceso sigue el principio de \textit{Human-in-the-Loop}: el usuario participa en cada etapa y puede controlar el flujo.
 
 \begin{table}[H]
 \centering
@@ -1675,11 +1675,11 @@ En ambos casos el paso de baseline a colbPowers multiplica el consumo de tokens 
 
 \textit{Análisis estadístico.} Dado el tamaño muestral reducido ($n=3$ por condición), la $d$ de Cohen se utiliza como métrica principal del tamaño de efecto; los $p$-values del test $t$ de Welch se reportan como referencia indicativa. El sobrecoste de tokens de colbPowers presenta un tamaño de efecto grande en todas las combinaciones donde se dispone de varianza no nula, lo que indica que la diferencia es sustancial con independencia de su significancia estadística formal. El número de tool calls presenta efectos de magnitud menor y más variable entre ejecuciones. Las figuras~\ref{fig:ttest_cpbl_oc_cm} y~\ref{fig:ttest_cpbl_cc_cm} muestran las medias con barras de error (SD) y la $d$ de Cohen para cada comparación en el Caso~1.
 
-\subsubsection{Métricas de calidad (Caso~2)}
+\subsubsection{Métricas de calidad}
 
-Las métricas de calidad del código ---complejidad ciclomática e índice de mantenibilidad--- únicamente se calcularon para el Caso~2 (ClassificationVisualization), donde el asistente genera la arquitectura completa desde cero. En el Caso~1, al tratarse de modificaciones puntuales sobre una base de código preexistente, la atribución de estas métricas al comportamiento del asistente sería metodológicamente problemática.
+Las métricas de calidad ---complejidad ciclomática e índice de mantenibilidad--- se calcularon para ambos casos, aunque con herramientas distintas según el lenguaje (DCM para Flutter/Dart en el Caso~1, radon para Python en el Caso~2) y con interpretaciones distintas según el tipo de tarea. En el Caso~1 la discusión cualitativa ya se ha incluido en la sección anterior; el análisis estadístico comparado se presenta a continuación junto con el del Caso~2 para facilitar la comparación entre experimentos.
 
-\paragraph{Baseline vs.\ colbPowers.}
+\paragraph{Baseline vs.\ colbPowers --- Caso~2 (ClassificationVisualization).}
 La Figura~\ref{fig:calidad_codigo} muestra las métricas por asistente y condición. En OpenCode, colbPowers produce una reducción de la complejidad ciclomática (de 4,31 a 3,13, un 27\%) y un aumento del índice de mantenibilidad (de 41,54 a 47,78, un 15\%). En ClaudeCode el efecto es menos pronunciado: la complejidad ciclomática aumenta marginalmente (de 2,85 a 3,11) mientras que el índice de mantenibilidad mejora de 56,97 a 59,01 (un 3,6\%).
 
 \begin{figure}[H]
@@ -1731,7 +1731,29 @@ En la condición baseline, ClaudeCode genera código con menor complejidad ciclo
     \label{fig:ttest_occc_colbpowers_classvis}
 \end{figure}
 
-\textit{Análisis estadístico.} En la condición baseline, las diferencias de calidad entre asistentes presentan un tamaño de efecto grande (véase Figura~\ref{fig:ttest_occc_baseline_classvis}), con $p$-values indicativos de $p=0{,}007$ para complejidad ciclomática y $p=0{,}039$ para índice de mantenibilidad. Con colbPowers activo, la magnitud de las diferencias se reduce sustancialmente: la $d$ de Cohen cae a valores próximos a cero en ambas métricas, confirmando la convergencia de calidad que propicia el flujo SDD independientemente del asistente. Las tablas completas del análisis estadístico se recogen en el Anexo~\ref{sec:anexo_ttest}.
+\textit{Análisis estadístico.} En la condición baseline, las diferencias de calidad entre asistentes presentan un tamaño de efecto grande (véase Figura~\ref{fig:ttest_occc_baseline_classvis}), con $p$-values indicativos de $p=0{,}007$ para complejidad ciclomática y $p=0{,}039$ para índice de mantenibilidad. Con colbPowers activo, la magnitud de las diferencias se reduce sustancialmente: la $d$ de Cohen cae a valores próximos a cero en ambas métricas, confirmando la convergencia de calidad que propicia el flujo SDD independientemente del asistente.
+
+\paragraph{Baseline vs.\ colbPowers --- Caso~1 (Repo Existente).}
+En el Caso~1 el efecto de colbPowers sobre las métricas de calidad es opuesto al del Caso~2: la complejidad ciclomática es mayor en colbPowers que en baseline, tanto en OpenCode (3,37 vs.\ 2,67, $+$26\%) como en ClaudeCode (3,48 vs.\ 2,98, $+$17\%). El índice de mantenibilidad se mantiene prácticamente sin cambios en ClaudeCode (66,52 vs.\ 66,05) y cae marginalmente en OpenCode (66,59 vs.\ 67,59, $-$1\%). Los paneles de calidad en las Figuras~\ref{fig:ttest_cpbl_oc_cm} y~\ref{fig:ttest_cpbl_cc_cm} muestran estos valores con barras de error (SD) y la $d$ de Cohen correspondiente.
+
+\paragraph{OpenCode vs.\ ClaudeCode --- Caso~1.}
+En el Caso~1, a diferencia del Caso~2, las diferencias de calidad entre asistentes son menos pronunciadas. En la condición baseline, ambos producen complejidad ciclomática similar (OpenCode 2,67, ClaudeCode 2,98) e índice de mantenibilidad comparable (67,59 vs.\ 66,05). Con colbPowers, la brecha es igualmente pequeña (3,37 vs.\ 3,48 en complejidad; 66,59 vs.\ 66,52 en mantenibilidad). Esto sugiere que en tareas de modificación incremental la elección del asistente tiene menor impacto en la calidad estructural del código producido.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_occc_bars_baseline_-_Repo_Existente.png}
+    \caption{OpenCode vs.\ ClaudeCode, baseline, Caso~1. Barras: media $\pm$ SD. Anotación: $d$ de Cohen y $p$-value indicativo.}
+    \label{fig:ttest_occc_baseline_caso1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_occc_bars_colbPowers_-_Repo_Existente.png}
+    \caption{OpenCode vs.\ ClaudeCode, colbPowers, Caso~1. Barras: media $\pm$ SD. Anotación: $d$ de Cohen y $p$-value indicativo.}
+    \label{fig:ttest_occc_colbpowers_caso1}
+\end{figure}
+
+Las tablas completas del análisis estadístico se recogen en el Anexo~\ref{sec:anexo_ttest}.
 
 \newpage
 
@@ -1775,7 +1797,7 @@ El sistema cumple los cuatro sub-objetivos funcionales y arquitectónicos establ
 
 \subsubsection*{Resultados experimentales}
 
-La evaluación experimental produce resultados mixtos pero coherentes. Dado el tamaño muestral ($n=3$ por condición), la $d$ de Cohen se utiliza como métrica principal del efecto; los $p$-values del test $t$ de Welch se reportan como referencia indicativa. El hallazgo principal es la mejora con tamaño de efecto grande en las métricas de calidad del código en el Caso~2 (proyecto generado desde cero): colbPowers reduce la complejidad ciclomática un 27\% y mejora el índice de mantenibilidad un 15\% en OpenCode, con $p$-values indicativos de $p=0{,}014$ y $p=0{,}037$ respectivamente. Con ClaudeCode, que de base produce código de mayor calidad, los efectos son consistentes en dirección pero de magnitud considerablemente menor, sin soporte estadístico con $n=3$.
+La evaluación experimental produce resultados mixtos pero coherentes. Dado el tamaño muestral ($n=3$ por condición), la $d$ de Cohen se utiliza como métrica principal del efecto; los $p$-values del test $t$ de Welch se reportan como referencia indicativa. El hallazgo principal es la mejora con tamaño de efecto grande en las métricas de calidad del código en el Caso~2 (proyecto generado desde cero): colbPowers reduce la complejidad ciclomática un 27\% y mejora el índice de mantenibilidad un 15\% en OpenCode, con $p$-values indicativos de $p=0{,}014$ y $p=0{,}037$ respectivamente. Con ClaudeCode, que de base produce código de mayor calidad, los efectos son consistentes en dirección pero de magnitud considerablemente menor, sin soporte estadístico con $n=3$. En el Caso~1 (modificación incremental sobre código existente), el patrón se invierte: colbPowers produce código de mayor complejidad ciclomática (+17--26\%) sin mejora neta en mantenibilidad, lo que sugiere que el beneficio estructural del flujo SDD es más pronunciado cuando el agente diseña la arquitectura completa que cuando interviene sobre una base preexistente.
 
 Un resultado secundario con implicaciones prácticas directas es la convergencia de calidad entre asistentes: con colbPowers activo, la $d$ de Cohen entre OpenCode y ClaudeCode cae a valores próximos a cero en ambas métricas de calidad. Esto indica que el flujo SDD homogeneiza la calidad del código con independencia del asistente, lo que permite a un equipo combinar herramientas distintas sin comprometer la consistencia del producto.
 
@@ -1783,7 +1805,7 @@ El coste del sistema es real y cuantificado: colbPowers multiplica el consumo de
 
 \subsubsection*{Limitaciones}
 
-El diseño experimental con $n=3$ repeticiones por condición tiene potencia estadística limitada e impide verificar los supuestos de normalidad requeridos por el test $t$ de Welch. Los resultados deben considerarse evidencia sugerente, no concluyente, y deberán ser confirmados con tamaños muestrales mayores ($n \geq 5$) en trabajos futuros. Adicionalmente, las métricas de calidad utilizadas (radon) únicamente cubren Python, lo que impidió evaluar el Caso~1 (Flutter/Dart) con las mismas herramientas. Por último, el mecanismo de garantía del flujo SDD es no determinista: en algunos experimentos el agente orquestador omitió la invocación del subagente revisor, lo que indica que la garantía de proceso es una restricción de comportamiento ---a nivel de prompt--- y no una restricción de ejecución.
+El diseño experimental con $n=3$ repeticiones por condición tiene potencia estadística limitada e impide verificar los supuestos de normalidad requeridos por el test $t$ de Welch. Los resultados deben considerarse evidencia sugerente, no concluyente, y deberán ser confirmados con tamaños muestrales mayores ($n \geq 5$) en trabajos futuros. Adicionalmente, las herramientas de análisis estático empleadas difieren entre casos ---radon para Python y DCM para Flutter/Dart---, lo que implica que las métricas de calidad no son directamente comparables entre experimentos, aunque sí lo son dentro de cada caso entre condiciones. Por último, el mecanismo de garantía del flujo SDD es no determinista: en algunos experimentos el agente orquestador omitió la invocación del subagente revisor, lo que indica que la garantía de proceso es una restricción de comportamiento ---a nivel de prompt--- y no una restricción de ejecución.
 
 \subsubsection*{Valoración global}
 
