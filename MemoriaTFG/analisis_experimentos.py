@@ -1,6 +1,6 @@
 """
 Análisis y visualización de resultados del experimento con el plugin code-review-graph.
-Experimentos: ConfortMental (sin métricas de calidad) y ClassificationVisualization (con métricas).
+Experimentos: Repo Existente (sin métricas de calidad) y ClassificationVisualization (con métricas).
 Condiciones: colbPowers (con plugin) vs baseline (sin plugin), para Opencode y Claudecode.
 """
 
@@ -193,7 +193,7 @@ def plot_quality_metrics():
 # ══════════════════════════════════════════════════════════════════════════════
 
 def plot_token_usage():
-    experiments = ["ConfortMental", "ClassificationVisualization"]
+    experiments = ["Repo Existente", "ClassificationVisualization"]
     tools       = ["Opencode", "Claudecode"]
     conditions  = [("colbPowers", "Con plugin"), ("baseline", "Sin plugin")]
 
@@ -247,7 +247,7 @@ def plot_token_usage():
 # ══════════════════════════════════════════════════════════════════════════════
 
 def plot_token_breakdown():
-    experiments = ["ConfortMental", "ClassificationVisualization"]
+    experiments = ["Repo Existente", "ClassificationVisualization"]
     tools       = ["Opencode", "Claudecode"]
     conditions  = {"colbPowers": "Con plugin", "baseline": "Sin plugin"}
 
@@ -308,7 +308,7 @@ def plot_token_breakdown():
 # ══════════════════════════════════════════════════════════════════════════════
 
 def plot_toolcalls_and_subagents():
-    experiments = ["ConfortMental", "ClassificationVisualization"]
+    experiments = ["Repo Existente", "ClassificationVisualization"]
     tools       = ["Opencode", "Claudecode"]
 
     fig, axes = plt.subplots(2, 2, figsize=(16, 12))
@@ -367,7 +367,7 @@ def plot_toolcalls_and_subagents():
 # ══════════════════════════════════════════════════════════════════════════════
 
 def plot_crg_usage():
-    experiments = ["ConfortMental", "ClassificationVisualization"]
+    experiments = ["Repo Existente", "ClassificationVisualization"]
     tools       = ["Opencode", "Claudecode"]
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
@@ -420,7 +420,7 @@ def plot_crg_usage():
 # ══════════════════════════════════════════════════════════════════════════════
 
 def plot_efficiency_ratios():
-    experiments = ["ConfortMental", "ClassificationVisualization"]
+    experiments = ["Repo Existente", "ClassificationVisualization"]
     tools       = ["Opencode", "Claudecode"]
 
     fig, axes = plt.subplots(2, 2, figsize=(16, 11))
@@ -607,7 +607,7 @@ def plot_summary_quality_delta():
 
 def plot_toolcall_distribution():
     """Agrega los tool calls del orquestador para las sesiones con plugin."""
-    experiments = ["ConfortMental", "ClassificationVisualization"]
+    experiments = ["Repo Existente", "ClassificationVisualization"]
     tools_list  = ["Opencode", "Claudecode"]
     ignore_keys = {"TOTAL"}
 
@@ -670,7 +670,7 @@ def print_summary_table():
     print("RESUMEN NUMÉRICO")
     print("="*80)
 
-    experiments = ["ConfortMental", "ClassificationVisualization"]
+    experiments = ["Repo Existente", "ClassificationVisualization"]
     tools       = ["Opencode", "Claudecode"]
     conditions  = [("colbPowers", "Plugin"), ("baseline", "Baseline")]
 

@@ -4,71 +4,71 @@
 % ---- Table 1: colbPowers vs Baseline ----
 \begin{table}[ht]
   \centering
-  \caption{Welch's \textit{t}-test results: colbPowers vs Baseline (n=3 per group).}
+  \caption{Resultados del análisis estadístico: colbPowers vs.\ Baseline ($n=3$ por grupo). Los $p$-values del test $t$ de Welch son indicativos; la $d$ de Cohen es la métrica principal.}
   \label{tab:ttest_cpbl}
-  \begin{tabular}{llrrrl}
+  \begin{tabular}{llrrrrl}
     \toprule
-    Task & Tool & $\bar{x}_\text{cp}$ & $\bar{x}_\text{bl}$ & $t$ & $p$ \\
+    Tarea & Herramienta & $\bar{x}_\text{cp}$ & $\bar{x}_\text{bl}$ & $t$ & $p$ & $d$ (Cohen) \\
     \midrule
-    \multicolumn{6}{l}{\textit{Total tool calls}} \\
-    \quad ConfortMental & Opencode & 92.3 & 69.3 & 2.034 & 0.168 \\
-    \quad ConfortMental & Claudecode & 62.7 & 52.7 & 0.738 & 0.511 \\
-    \quad ClassVis & Opencode & 85.0 & 51.7 & 3.251 & 0.069 \\
-    \quad ClassVis & Claudecode & 48.3 & 62.7 & -0.997 & 0.414 \\
+    \multicolumn{7}{l}{\textit{Total tool calls}} \\
+    \quad Repo Existente & Opencode & 92.3 & 69.3 & 2.034 & 0.168 & +1.66 \\
+    \quad Repo Existente & Claudecode & 62.7 & 52.7 & 0.738 & 0.511 & +0.60 \\
+    \quad ClassVis & Opencode & 85.0 & 51.7 & 3.251 & 0.069 & +2.65 \\
+    \quad ClassVis & Claudecode & 48.3 & 62.7 & -0.997 & 0.414 & -0.81 \\
     \addlinespace
-    \multicolumn{6}{l}{\textit{Total tokens}} \\
-    \quad ConfortMental & Opencode & 9.38M & 3.26M & 4.918 & 0.032* \\
-    \quad ConfortMental & Claudecode & 14.33M & 3.74M & 5.839 & 0.005** \\
-    \quad ClassVis & Opencode & 8.41M & 1.88M & 5.871 & 0.019* \\
-    \quad ClassVis & Claudecode & 8.19M & 3.74M & 2.390 & 0.077 \\
+    \multicolumn{7}{l}{\textit{Total tokens}} \\
+    \quad Repo Existente & Opencode & 9.38M & 3.26M & 4.918 & 0.032 & +4.02 \\
+    \quad Repo Existente & Claudecode & 14.33M & 3.74M & 5.839 & 0.005 & +4.77 \\
+    \quad ClassVis & Opencode & 8.41M & 1.88M & 5.871 & 0.019 & +4.79 \\
+    \quad ClassVis & Claudecode & 8.19M & 3.74M & 2.390 & 0.077 & +1.95 \\
     \addlinespace
-    \multicolumn{6}{l}{\textit{Avg. cyclomatic complexity}} \\
-    \quad ClassVis & Opencode & 3.13 & 4.31 & -5.496 & 0.014* \\
-    \quad ClassVis & Claudecode & 3.11 & 2.85 & 0.732 & 0.508 \\
+    \multicolumn{7}{l}{\textit{Avg. cyclomatic complexity}} \\
+    \quad ClassVis & Opencode & 3.13 & 4.31 & -5.496 & 0.014 & -4.49 \\
+    \quad ClassVis & Claudecode & 3.11 & 2.85 & 0.732 & 0.508 & +0.60 \\
     \addlinespace
-    \multicolumn{6}{l}{\textit{Maintainability index}} \\
-    \quad ClassVis & Opencode & 47.78 & 41.54 & 4.225 & 0.037* \\
-    \quad ClassVis & Claudecode & 59.01 & 56.97 & 0.337 & 0.754 \\
+    \multicolumn{7}{l}{\textit{Maintainability index}} \\
+    \quad ClassVis & Opencode & 47.78 & 41.54 & 4.225 & 0.037 & +3.45 \\
+    \quad ClassVis & Claudecode & 59.01 & 56.97 & 0.337 & 0.754 & +0.27 \\
     \addlinespace
     \bottomrule
   \end{tabular}
   \begin{tablenotes}
-    \small \item * $p<0.05$, ** $p<0.01$, *** $p<0.001$. ns = not significant.
+    \small \item $n=3$ por grupo. $p$-values indicativos; $d$ de Cohen es la métrica principal. $d$: trivial${<}0.2$, pequeño${<}0.5$, medio${<}0.8$, grande${\geq}0.8$.
   \end{tablenotes}
 \end{table}
 
 % ---- Table 2: Opencode vs Claudecode ----
 \begin{table}[ht]
   \centering
-  \caption{Welch's \textit{t}-test results: Opencode vs Claudecode (n=3 per group).}
+  \caption{Resultados del análisis estadístico: Opencode vs.\ Claudecode ($n=3$ por grupo).}
   \label{tab:ttest_occc}
-  \begin{tabular}{llrrrl}
+  \begin{tabular}{llrrrrl}
     \toprule
-    Task & Condition & $\bar{x}_\text{OC}$ & $\bar{x}_\text{CC}$ & $t$ & $p$ \\
+    Tarea & Condición & $\bar{x}_\text{OC}$ & $\bar{x}_\text{CC}$ & $t$ & $p$ & $d$ (Cohen) \\
     \midrule
-    \multicolumn{6}{l}{\textit{Total tool calls}} \\
-    \quad ConfortMental & colbPowers & 92.3 & 62.7 & 2.299 & 0.097 \\
-    \quad ConfortMental & baseline & 69.3 & 52.7 & 1.385 & 0.292 \\
-    \quad ClassVis & colbPowers & 85.0 & 48.3 & 8.538 & 0.001** \\
-    \quad ClassVis & baseline & 51.7 & 62.7 & -0.642 & 0.559 \\
+    \multicolumn{7}{l}{\textit{Total tool calls}} \\
+    \quad Repo Existente & colbPowers & 92.3 & 62.7 & 2.299 & 0.097 & +1.88 \\
+    \quad Repo Existente & baseline & 69.3 & 52.7 & 1.385 & 0.292 & +1.13 \\
+    \quad ClassVis & colbPowers & 85.0 & 48.3 & 8.538 & 0.001 & +6.97 \\
+    \quad ClassVis & baseline & 51.7 & 62.7 & -0.642 & 0.559 & -0.52 \\
     \addlinespace
-    \multicolumn{6}{l}{\textit{Total tokens}} \\
-    \quad ConfortMental & colbPowers & 9.38M & 14.33M & -3.038 & 0.039* \\
-    \quad ConfortMental & baseline & 3.26M & 3.74M & -0.321 & 0.777 \\
-    \quad ClassVis & colbPowers & 8.41M & 8.19M & 0.124 & 0.908 \\
-    \quad ClassVis & baseline & 1.88M & 3.74M & -1.510 & 0.255 \\
+    \multicolumn{7}{l}{\textit{Total tokens}} \\
+    \quad Repo Existente & colbPowers & 9.38M & 14.33M & -3.038 & 0.039 & -2.48 \\
+    \quad Repo Existente & baseline & 3.26M & 3.74M & -0.321 & 0.777 & -0.26 \\
+    \quad ClassVis & colbPowers & 8.41M & 8.19M & 0.124 & 0.908 & +0.10 \\
+    \quad ClassVis & baseline & 1.88M & 3.74M & -1.510 & 0.255 & -1.23 \\
     \addlinespace
-    \multicolumn{6}{l}{\textit{Avg. cyclomatic complexity}} \\
-    \quad ClassVis & colbPowers & 3.13 & 3.11 & 0.094 & 0.932 \\
-    \quad ClassVis & baseline & 4.31 & 2.85 & 5.071 & 0.007** \\
+    \multicolumn{7}{l}{\textit{Avg. cyclomatic complexity}} \\
+    \quad ClassVis & colbPowers & 3.13 & 3.11 & 0.094 & 0.932 & +0.08 \\
+    \quad ClassVis & baseline & 4.31 & 2.85 & 5.071 & 0.007 & +4.14 \\
     \addlinespace
-    \multicolumn{6}{l}{\textit{Maintainability index}} \\
-    \quad ClassVis & colbPowers & 47.78 & 59.01 & -2.330 & 0.143 \\
-    \quad ClassVis & baseline & 41.54 & 56.97 & -3.929 & 0.039* \\
+    \multicolumn{7}{l}{\textit{Maintainability index}} \\
+    \quad ClassVis & colbPowers & 47.78 & 59.01 & -2.330 & 0.143 & -1.90 \\
+    \quad ClassVis & baseline & 41.54 & 56.97 & -3.929 & 0.039 & -3.21 \\
     \addlinespace
     \bottomrule
   \end{tabular}
   \begin{tablenotes}
-    \small \item * $p<0.05$, ** $p<0.01$, *** $p<0.001$. ns = not significant.
+    \small \item $n=3$ por grupo. $p$-values indicativos; $d$ de Cohen es la métrica principal.
   \end{tablenotes}
 \end{table}

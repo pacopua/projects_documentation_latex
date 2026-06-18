@@ -5,6 +5,10 @@ Comparisons:
   1. colbPowers vs baseline
   2. Opencode vs Claudecode
 Metrics: total tool calls, total tokens, cyclomatic complexity, maintainability index
+
+NOTE: n=3 per group. Welch's t-test results should be interpreted as indicative
+only. With n=3, normality cannot be verified and power is very low.
+Cohen's d is reported as the primary effect-size metric.
 """
 
 import json
@@ -13,6 +17,30 @@ from scipy import stats
 import numpy as np
 
 DATA_FILE = Path(__file__).parent / "ExperimentosInfo.json"
+
+
+def cohens_d(a, b):
+    """Pooled Cohen's d effect size."""
+    if len(a) < 2 or len(b) < 2:
+        return float("nan")
+    pooled = np.sqrt((np.std(a, ddof=1) ** 2 + np.std(b, ddof=1) ** 2) / 2)
+    if pooled == 0:
+        return float("nan")
+    return (np.mean(a) - np.mean(b)) / pooled
+
+
+def effect_label(d):
+    if np.isnan(d):
+        return "n/a"
+    d = abs(d)
+    if d < 0.2:
+        return "trivial"
+    if d < 0.5:
+        return "small"
+    if d < 0.8:
+        return "medium"
+    return "large"
+
 
 def extract_runs(data, task, tool, condition):
     """Return list of dicts with metrics for each run in a condition."""
@@ -32,17 +60,22 @@ def extract_runs(data, task, tool, condition):
 
 
 def ttest_report(label, group_a, group_b, metric):
-    """Run Welch's t-test and print a formatted result line."""
+    """Run Welch's t-test + Cohen's d and print a formatted result line."""
     a = [r[metric] for r in group_a if metric in r]
     b = [r[metric] for r in group_b if metric in r]
     if len(a) < 2 or len(b) < 2:
         print(f"  {metric}: not enough data (n_a={len(a)}, n_b={len(b)})")
         return
-    t, p = stats.ttest_ind(a, b, equal_var=False)  # Welch's t-test
+    t, p = stats.ttest_ind(a, b, equal_var=False)
+    d = cohens_d(a, b)
     mean_a, mean_b = np.mean(a), np.mean(b)
     sig = "***" if p < 0.001 else ("**" if p < 0.01 else ("*" if p < 0.05 else "ns"))
     print(f"  {metric}:")
-    print(f"    mean_A={mean_a:.2f}  mean_B={mean_b:.2f}  t={t:.3f}  p={p:.4f}  {sig}")
+    print(
+        f"    mean_A={mean_a:.2f}  mean_B={mean_b:.2f} "
+        f" t={t:.3f}  p={p:.4f}  {sig}"
+        f"  |  d={d:+.2f} ({effect_label(d)})"
+    )
 
 
 def run_comparison(label_a, runs_a, label_b, runs_b, metrics):
@@ -66,6 +99,8 @@ def main():
 
     print("=" * 60)
     print("  T-TEST ANALYSIS  (Welch's independent samples)")
+    print("  WARNING: n=3 per group — interpret with caution.")
+    print("  Cohen's d is the primary effect-size metric.")
     print("=" * 60)
 
     # ----------------------------------------------------------------
@@ -122,7 +157,10 @@ def main():
         )
 
     print("\n\nNote: * p<0.05  ** p<0.01  *** p<0.001  ns=not significant")
-    print(f"      Sample sizes per group are small (n=3), interpret with caution.\n")
+    print(f"      d: trivial<0.2 | small<0.5 | medium<0.8 | large≥0.8")
+    print(f"      Sample sizes per group are small (n=3). With n=3 the minimum")
+    print(f"      achievable p-value for a non-parametric test is 0.10, so")
+    print(f"      Welch p-values should be treated as indicative only.\n")
 
 
 if __name__ == "__main__":

@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 """
 Generates:
-  - results_figure.png  : bar charts + summary table (for Word/Docs/PDF)
-  - results_table.tex   : LaTeX booktabs tables (for LaTeX memoria)
+  - results_*_bars*.png  : bar charts + Cohen's d annotation (no significance stars)
+  - results_*_table.png  : summary table with means, t, p, Cohen's d, effect size
+  - results_table.tex    : LaTeX booktabs tables
+
+NOTE: n=3 per group. Significance stars have been replaced with Cohen's d
+because with n=3 the minimum achievable p-value for a non-parametric test
+is 0.10, making * p<0.05 thresholds unreliable. Cohen's d is reported as
+the primary effect-size metric.
 """
 
 import json
@@ -25,8 +31,8 @@ matplotlib.rcParams.update({
 })
 
 DATA_FILE = Path(__file__).parent / "ExperimentosInfo.json"
-OUT_PNG   = Path(__file__).parent / "graficos" / "ttest_analisis"/ "results_figure.png"
-OUT_TEX   = Path(__file__).parent / "graficos" / "ttest_analisis"/ "results_table.tex"
+OUT_PNG   = Path(__file__).parent / "graficos" / "ttest_analisis" / "results_figure.png"
+OUT_TEX   = Path(__file__).parent / "graficos" / "ttest_analisis" / "results_table.tex"
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
@@ -51,12 +57,40 @@ def welch(a, b):
     return stats.ttest_ind(a, b, equal_var=False)
 
 
-def sig_stars(p):
-    if np.isnan(p):  return "n/a"
-    if p < 0.001:    return "***"
-    if p < 0.01:     return "**"
-    if p < 0.05:     return "*"
-    return "ns"
+def cohens_d_from_stats(mean_a, std_a, mean_b, std_b):
+    """Pooled Cohen's d computed from pre-calculated means and SDs."""
+    pooled = np.sqrt((std_a ** 2 + std_b ** 2) / 2)
+    if pooled == 0 or np.isnan(pooled):
+        return float("nan")
+    return (mean_a - mean_b) / pooled
+
+
+def effect_label(d):
+    """Cohen's d effect size label (Cohen 1988)."""
+    if np.isnan(d):
+        return "n/a"
+    d = abs(d)
+    if d < 0.2:
+        return "trivial"
+    if d < 0.5:
+        return "pequeño"
+    if d < 0.8:
+        return "medio"
+    return "grande"
+
+
+def d_color(d):
+    """Color for Cohen's d annotation by magnitude."""
+    if np.isnan(d):
+        return "#aaaaaa"
+    d = abs(d)
+    if d >= 0.8:
+        return "#1a5276"   # dark blue — large
+    if d >= 0.5:
+        return "#2980b9"   # blue — medium
+    if d >= 0.2:
+        return "#7fb3d3"   # light blue — small
+    return "#aaaaaa"       # gray — trivial
 
 
 def fmt_mean(vals, metric):
@@ -68,10 +102,10 @@ def fmt_mean(vals, metric):
 
 def metric_label(m):
     return {
-        "total_toolcalls":         "Total tool calls",
-        "total_tokens":            "Total tokens (M)",
+        "total_toolcalls":           "Total tool calls",
+        "total_tokens":              "Total tokens (M)",
         "avg_cyclomatic_complexity": "Cyclomatic complexity",
-        "mantainability_index":    "Maintainability index",
+        "mantainability_index":      "Maintainability index",
     }.get(m, m)
 
 
@@ -100,17 +134,22 @@ def build_results(data):
                 a = [r[metric] for r in cp if metric in r]
                 b = [r[metric] for r in bl if metric in r]
                 t, p = welch(a, b)
+                mean_a = np.mean(a) if a else float("nan")
+                mean_b = np.mean(b) if b else float("nan")
+                std_a  = np.std(a, ddof=1) if len(a) > 1 else 0
+                std_b  = np.std(b, ddof=1) if len(b) > 1 else 0
                 rows.append({
                     "comparison": f"{tool} – {task[:18]}",
                     "group":      "cp vs bl",
                     "metric":     metric,
-                    "mean_a": np.mean(a) if a else float("nan"),
-                    "mean_b": np.mean(b) if b else float("nan"),
-                    "std_a":  np.std(a, ddof=1) if len(a) > 1 else 0,
-                    "std_b":  np.std(b, ddof=1) if len(b) > 1 else 0,
+                    "mean_a":     mean_a,
+                    "mean_b":     mean_b,
+                    "std_a":      std_a,
+                    "std_b":      std_b,
                     "t": t, "p": p,
-                    "label_a": "colbPowers",
-                    "label_b": "baseline",
+                    "label_a":    "colbPowers",
+                    "label_b":    "baseline",
+                    "cohens_d":   cohens_d_from_stats(mean_a, std_a, mean_b, std_b),
                 })
 
     # 2. Opencode vs Claudecode per task × condition
@@ -125,17 +164,22 @@ def build_results(data):
                 a = [r[metric] for r in oc if metric in r]
                 b = [r[metric] for r in cc if metric in r]
                 t, p = welch(a, b)
+                mean_a = np.mean(a) if a else float("nan")
+                mean_b = np.mean(b) if b else float("nan")
+                std_a  = np.std(a, ddof=1) if len(a) > 1 else 0
+                std_b  = np.std(b, ddof=1) if len(b) > 1 else 0
                 rows.append({
                     "comparison": f"{cond} – {task[:18]}",
                     "group":      "oc vs cc",
                     "metric":     metric,
-                    "mean_a": np.mean(a) if a else float("nan"),
-                    "mean_b": np.mean(b) if b else float("nan"),
-                    "std_a":  np.std(a, ddof=1) if len(a) > 1 else 0,
-                    "std_b":  np.std(b, ddof=1) if len(b) > 1 else 0,
+                    "mean_a":     mean_a,
+                    "mean_b":     mean_b,
+                    "std_a":      std_a,
+                    "std_b":      std_b,
                     "t": t, "p": p,
-                    "label_a": "Opencode",
-                    "label_b": "Claudecode",
+                    "label_a":    "Opencode",
+                    "label_b":    "Claudecode",
+                    "cohens_d":   cohens_d_from_stats(mean_a, std_a, mean_b, std_b),
                 })
 
     # 3. Pooled colbPowers vs baseline
@@ -148,14 +192,21 @@ def build_results(data):
             a = [r[metric] for r in cp_all]
             b = [r[metric] for r in bl_all]
             t, p = welch(a, b)
+            mean_a, mean_b = np.mean(a), np.mean(b)
+            std_a = np.std(a, ddof=1)
+            std_b = np.std(b, ddof=1)
             rows.append({
                 "comparison": f"{tool} – Pooled",
                 "group":      "cp vs bl (pooled)",
                 "metric":     metric,
-                "mean_a": np.mean(a), "mean_b": np.mean(b),
-                "std_a":  np.std(a, ddof=1), "std_b": np.std(b, ddof=1),
+                "mean_a":     mean_a,
+                "mean_b":     mean_b,
+                "std_a":      std_a,
+                "std_b":      std_b,
                 "t": t, "p": p,
-                "label_a": "colbPowers", "label_b": "baseline",
+                "label_a":    "colbPowers",
+                "label_b":    "baseline",
+                "cohens_d":   cohens_d_from_stats(mean_a, std_a, mean_b, std_b),
             })
     return rows
 
@@ -164,6 +215,7 @@ def build_results(data):
 
 COLORS = {"colbPowers": "#4C72B0", "baseline": "#DD8452",
           "Opencode":   "#55A868", "Claudecode": "#C44E52"}
+
 
 def make_bar_axes(ax, row):
     metric = row["metric"]
@@ -176,21 +228,28 @@ def make_bar_axes(ax, row):
     ca = COLORS.get(row["label_a"], "#4C72B0")
     cb = COLORS.get(row["label_b"], "#DD8452")
 
-    bars = ax.bar([0, 1], [a_val, b_val], yerr=[a_err, b_err],
-                  color=[ca, cb], width=0.5, capsize=4,
-                  error_kw={"linewidth": 1.2})
+    ax.bar([0, 1], [a_val, b_val], yerr=[a_err, b_err],
+           color=[ca, cb], width=0.5, capsize=4,
+           error_kw={"linewidth": 1.2})
 
-    # significance bracket
-    p   = row["p"]
-    sig = sig_stars(p)
-    y_max = max(a_val + a_err, b_val + b_err) * 1.12
-    ax.set_ylim(0, y_max * 1.25)
+    # Bracket connecting the two bars
+    y_max   = max(a_val + a_err, b_val + b_err) * 1.12
+    ax.set_ylim(0, y_max * 1.40)
     brace_y = y_max * 1.05
-    ax.plot([0, 0, 1, 1], [brace_y * 0.97, brace_y, brace_y, brace_y * 0.97],
+    ax.plot([0, 0, 1, 1],
+            [brace_y * 0.97, brace_y, brace_y, brace_y * 0.97],
             color="black", linewidth=0.8)
-    color_sig = "black" if sig == "ns" else "#c0392b"
-    ax.text(0.5, brace_y * 1.02, sig, ha="center", va="bottom",
-            fontsize=9, color=color_sig, fontweight="bold")
+
+    # Cohen's d annotation (replaces significance stars)
+    d   = row.get("cohens_d", float("nan"))
+    p   = row["p"]
+    p_str  = f"p={p:.3f}" if not np.isnan(p) else "p=n/a"
+    d_str  = f"d={d:+.2f} ({effect_label(d)})" if not np.isnan(d) else "d=n/a"
+    ax.text(0.5, brace_y * 1.02, d_str,
+            ha="center", va="bottom", fontsize=8,
+            color=d_color(d), fontweight="bold")
+    ax.text(0.5, brace_y * 1.14, p_str,
+            ha="center", va="bottom", fontsize=7, color="gray")
 
     ax.set_xticks([0, 1])
     ax.set_xticklabels([row["label_a"], row["label_b"]], rotation=15, ha="right")
@@ -207,22 +266,15 @@ METRICS_ALL = [
 
 
 def _slug(text):
-    """Convert a comparison label to a safe filename fragment."""
     return text.replace(" ", "_").replace("/", "_").replace("–", "-").replace("—", "-")
 
 
 def make_bars_figure(rows, group_key, title, out_path, only_comparison=None):
-    """Bar chart figure — one column per comparison, one row per metric.
-
-    If only_comparison is given, restrict to that single comparison (single column).
-    """
-    subset      = [r for r in rows if r["group"] == group_key]
+    subset = [r for r in rows if r["group"] == group_key]
     if only_comparison:
-        subset  = [r for r in subset if r["comparison"] == only_comparison]
+        subset = [r for r in subset if r["comparison"] == only_comparison]
     comparisons = sorted(set(r["comparison"] for r in subset))
 
-    # Individual figures: metrics as columns (horizontal layout)
-    # Combined figures:   comparisons as columns, metrics as rows (vertical layout)
     individual = only_comparison is not None
     if individual:
         n_rows, n_cols = 1, len(METRICS_ALL)
@@ -230,9 +282,8 @@ def make_bars_figure(rows, group_key, title, out_path, only_comparison=None):
         n_rows, n_cols = len(METRICS_ALL), len(comparisons)
 
     fig, axes = plt.subplots(n_rows, n_cols,
-                             figsize=(3.5 * n_cols, 3.2 * n_rows),
+                             figsize=(3.5 * n_cols, 3.6 * n_rows),
                              constrained_layout=True)
-    # Normalise axes to always be 2-D array [row][col]
     if n_rows == 1 and n_cols == 1:
         axes = [[axes]]
     elif n_rows == 1:
@@ -266,36 +317,49 @@ def make_bars_figure(rows, group_key, title, out_path, only_comparison=None):
                 if mi == 0:
                     ax.set_title(comp, fontsize=9, fontweight="bold")
 
+    # Shared footnote
+    fig.text(0.01, -0.01,
+             "Barras: media ± SD (n=3). Anotación: Cohen's d + p-value indicativo.\n"
+             "d: trivial<0.2 | pequeño<0.5 | medio<0.8 | grande≥0.8",
+             fontsize=7, color="gray", va="top")
+
     fig.savefig(out_path, bbox_inches="tight")
     print(f"  Saved: {out_path}")
     plt.close(fig)
 
 
 def make_table_figure(rows, group_key, title, col_a, col_b, out_path):
-    """Summary table figure — means, t-stat, p-value, stars."""
     subset      = [r for r in rows if r["group"] == group_key]
     comparisons = sorted(set(r["comparison"] for r in subset))
 
-    # Build cell data
-    col_headers = ["Comparison", "Metric", f"Mean {col_a}", f"Mean {col_b}", "t", "p", "sig"]
-    cell_data   = []
+    col_headers = [
+        "Comparison", "Metric",
+        f"Mean {col_a}", f"Mean {col_b}",
+        "t", "p", "Cohen's d", "Efecto",
+    ]
+    cell_data = []
     for comp in comparisons:
         for metric in METRICS_ALL:
             match = [r for r in subset if r["comparison"] == comp and r["metric"] == metric]
             if not match:
                 continue
-            r = match[0]
+            r     = match[0]
             scale = 1e6 if metric == "total_tokens" else 1
-            suffix = "M" if metric == "total_tokens" else ""
-            ma = f"{r['mean_a']/scale:.2f}{suffix}"
-            mb = f"{r['mean_b']/scale:.2f}{suffix}"
-            t  = f"{r['t']:.3f}" if not np.isnan(r["t"]) else "—"
-            p  = f"{r['p']:.4f}" if not np.isnan(r["p"]) else "—"
-            cell_data.append([comp, metric_label(metric), ma, mb, t, p, sig_stars(r["p"])])
+            suf   = "M" if metric == "total_tokens" else ""
+            ma    = f"{r['mean_a']/scale:.2f}{suf}"
+            mb    = f"{r['mean_b']/scale:.2f}{suf}"
+            t_str = f"{r['t']:.3f}" if not np.isnan(r["t"]) else "—"
+            p_str = f"{r['p']:.4f}" if not np.isnan(r["p"]) else "—"
+            d     = r.get("cohens_d", float("nan"))
+            d_str = f"{d:+.2f}" if not np.isnan(d) else "—"
+            cell_data.append([
+                comp, metric_label(metric), ma, mb,
+                t_str, p_str, d_str, effect_label(d),
+            ])
 
     n_rows = len(cell_data)
-    fig_h  = max(2.5, 0.38 * n_rows + 1.0)
-    fig, ax = plt.subplots(figsize=(13, fig_h))
+    fig_h  = max(2.5, 0.38 * n_rows + 1.2)
+    fig, ax = plt.subplots(figsize=(15, fig_h))
     ax.axis("off")
     fig.suptitle(title, fontsize=12, fontweight="bold", y=1.02)
 
@@ -309,30 +373,34 @@ def make_table_figure(rows, group_key, title, col_a, col_b, out_path):
     tbl.set_fontsize(8.5)
     tbl.scale(1, 1.4)
 
-    # Style header row
     for col in range(len(col_headers)):
         tbl[0, col].set_facecolor("#2c3e50")
         tbl[0, col].set_text_props(color="white", fontweight="bold")
 
-    # Colour significance column
-    sig_col = len(col_headers) - 1
+    # Color effect-size column by magnitude
+    eff_col = len(col_headers) - 1
+    d_col   = len(col_headers) - 2
+    eff_colors = {
+        "grande":  "#d5e8d4",
+        "medio":   "#dae8fc",
+        "pequeño": "#fff2cc",
+        "trivial": "#f8cecc",
+        "n/a":     "#ffffff",
+    }
     for row_idx, row_data in enumerate(cell_data, start=1):
-        sig = row_data[-1]
-        color = {
-            "***": "#f9ebea", "**": "#fdebd0", "*": "#fef9e7", "ns": "#ffffff"
-        }.get(sig, "#ffffff")
-        tbl[row_idx, sig_col].set_facecolor(color)
-        # Alternate row shading
         bg = "#f2f3f4" if row_idx % 2 == 0 else "#ffffff"
-        for col in range(len(col_headers) - 1):
+        for col in range(len(col_headers)):
             tbl[row_idx, col].set_facecolor(bg)
-        tbl[row_idx, sig_col].set_facecolor(color)
+        # Override effect column color
+        eff = row_data[eff_col]
+        tbl[row_idx, eff_col].set_facecolor(eff_colors.get(eff, "#ffffff"))
 
-    # Wider first two columns
-    tbl.auto_set_column_width([0, 1])
+    tbl.auto_set_column_width(list(range(len(col_headers))))
 
-    # Footer note — aligned to the left edge of the axes, not the figure
-    ax.text(0.0, -0.02, "* p<0.05  ** p<0.01  *** p<0.001  ns = not significant",
+    ax.text(0.0, -0.02,
+            "n=3 por grupo. Los p-values son indicativos (Welch). "
+            "Cohen's d es la métrica principal de tamaño de efecto.\n"
+            "d: trivial<0.2 | pequeño<0.5 | medio<0.8 | grande≥0.8",
             transform=ax.transAxes, fontsize=7.5, color="gray", va="top", ha="left")
 
     fig.savefig(out_path, bbox_inches="tight", dpi=150)
@@ -351,24 +419,20 @@ def make_png(rows):
          "Opencode vs Claudecode — bar charts by condition & task",
          "Opencode", "Claudecode"),
     ]:
-        # Combined figure (all comparisons)
         make_bars_figure(
             rows, group_key, title_combined,
             base / f"results_{prefix}_bars.png",
         )
 
-        # Individual figure per comparison
         comparisons = sorted(set(r["comparison"] for r in rows if r["group"] == group_key))
         for comp in comparisons:
             slug = _slug(comp)
             make_bars_figure(
-                rows, group_key,
-                comp,
+                rows, group_key, comp,
                 base / f"results_{prefix}_bars_{slug}.png",
                 only_comparison=comp,
             )
 
-        # Summary table
         make_table_figure(
             rows, group_key,
             f"{col_a} vs {col_b} — summary table",
@@ -390,11 +454,12 @@ def make_latex(rows, data):
         "% ---- Table 1: colbPowers vs Baseline ----",
         r"\begin{table}[ht]",
         r"  \centering",
-        r"  \caption{Welch's \textit{t}-test results: colbPowers vs Baseline (n=3 per group).}",
+        r"  \caption{Resultados del análisis estadístico: colbPowers vs.\ Baseline ($n=3$ por grupo)."
+        r" Los $p$-values del test $t$ de Welch son indicativos; la $d$ de Cohen es la métrica principal.}",
         r"  \label{tab:ttest_cpbl}",
-        r"  \begin{tabular}{llrrrl}",
+        r"  \begin{tabular}{llrrrrl}",
         r"    \toprule",
-        r"    Task & Tool & $\bar{x}_\text{cp}$ & $\bar{x}_\text{bl}$ & $t$ & $p$ \\",
+        r"    Tarea & Herramienta & $\bar{x}_\text{cp}$ & $\bar{x}_\text{bl}$ & $t$ & $p$ & $d$ (Cohen) \\",
         r"    \midrule",
     ]
 
@@ -406,66 +471,61 @@ def make_latex(rows, data):
     ]
 
     for metric, mlabel in metric_groups:
-        lines.append(f"    \\multicolumn{{6}}{{l}}{{\\textit{{{mlabel}}}}} \\\\")
+        lines.append(f"    \\multicolumn{{7}}{{l}}{{\\textit{{{mlabel}}}}} \\\\")
         for task in tasks:
             for tool in tools:
                 match = [r for r in rows
                          if r["group"] == "cp vs bl"
-                         and metric in r["comparison"] + r["metric"]
                          and r["metric"] == metric
                          and task[:18] in r["comparison"]
                          and tool in r["comparison"]]
                 if not match:
                     continue
-                r  = match[0]
-                ma = r["mean_a"]
-                mb = r["mean_b"]
-                if metric == "total_tokens":
-                    ma_str = f"{ma/1e6:.2f}M"
-                    mb_str = f"{mb/1e6:.2f}M"
-                elif metric in ("avg_cyclomatic_complexity", "mantainability_index"):
-                    ma_str = f"{ma:.2f}"
-                    mb_str = f"{mb:.2f}"
-                else:
-                    ma_str = f"{ma:.1f}"
-                    mb_str = f"{mb:.1f}"
-                t_str = f"{r['t']:.3f}" if not np.isnan(r["t"]) else "—"
-                p_val = r["p"]
+                r      = match[0]
+                scale  = 1e6 if metric == "total_tokens" else 1
+                suffix = "M" if metric == "total_tokens" else ""
+                fmt    = ".2f" if metric not in ("total_toolcalls",) else ".1f"
+                ma_str = f"{r['mean_a']/scale:{fmt}}{suffix}"
+                mb_str = f"{r['mean_b']/scale:{fmt}}{suffix}"
+                t_str  = f"{r['t']:.3f}" if not np.isnan(r["t"]) else "—"
+                p_val  = r["p"]
+                d_val  = r.get("cohens_d", float("nan"))
                 if np.isnan(p_val):
                     p_str = "—"
                 elif p_val < 0.001:
-                    p_str = r"$<$0.001***"
-                elif p_val < 0.01:
-                    p_str = f"{p_val:.3f}**"
-                elif p_val < 0.05:
-                    p_str = f"{p_val:.3f}*"
+                    p_str = r"$<$0.001"
                 else:
                     p_str = f"{p_val:.3f}"
+                d_str = f"{d_val:+.2f}" if not np.isnan(d_val) else "—"
                 short_task = task.replace("ClassificationVisualization", "ClassVis")
-                lines.append(f"    \\quad {short_task} & {tool} & {ma_str} & {mb_str} & {t_str} & {p_str} \\\\")
+                lines.append(
+                    f"    \\quad {short_task} & {tool} & {ma_str} & {mb_str}"
+                    f" & {t_str} & {p_str} & {d_str} \\\\"
+                )
         lines.append(r"    \addlinespace")
 
     lines += [
         r"    \bottomrule",
         r"  \end{tabular}",
         r"  \begin{tablenotes}",
-        r"    \small \item * $p<0.05$, ** $p<0.01$, *** $p<0.001$. ns = not significant.",
+        r"    \small \item $n=3$ por grupo. $p$-values indicativos; $d$ de Cohen es la métrica principal."
+        r" $d$: trivial${<}0.2$, pequeño${<}0.5$, medio${<}0.8$, grande${\geq}0.8$.",
         r"  \end{tablenotes}",
         r"\end{table}",
         "",
         "% ---- Table 2: Opencode vs Claudecode ----",
         r"\begin{table}[ht]",
         r"  \centering",
-        r"  \caption{Welch's \textit{t}-test results: Opencode vs Claudecode (n=3 per group).}",
+        r"  \caption{Resultados del análisis estadístico: Opencode vs.\ Claudecode ($n=3$ por grupo).}",
         r"  \label{tab:ttest_occc}",
-        r"  \begin{tabular}{llrrrl}",
+        r"  \begin{tabular}{llrrrrl}",
         r"    \toprule",
-        r"    Task & Condition & $\bar{x}_\text{OC}$ & $\bar{x}_\text{CC}$ & $t$ & $p$ \\",
+        r"    Tarea & Condición & $\bar{x}_\text{OC}$ & $\bar{x}_\text{CC}$ & $t$ & $p$ & $d$ (Cohen) \\",
         r"    \midrule",
     ]
 
     for metric, mlabel in metric_groups:
-        lines.append(f"    \\multicolumn{{6}}{{l}}{{\\textit{{{mlabel}}}}} \\\\")
+        lines.append(f"    \\multicolumn{{7}}{{l}}{{\\textit{{{mlabel}}}}} \\\\")
         for task in tasks:
             for cond in ["colbPowers", "baseline"]:
                 match = [r for r in rows
@@ -475,39 +535,34 @@ def make_latex(rows, data):
                          and cond in r["comparison"]]
                 if not match:
                     continue
-                r  = match[0]
-                ma = r["mean_a"]
-                mb = r["mean_b"]
-                if metric == "total_tokens":
-                    ma_str = f"{ma/1e6:.2f}M"
-                    mb_str = f"{mb/1e6:.2f}M"
-                elif metric in ("avg_cyclomatic_complexity", "mantainability_index"):
-                    ma_str = f"{ma:.2f}"
-                    mb_str = f"{mb:.2f}"
-                else:
-                    ma_str = f"{ma:.1f}"
-                    mb_str = f"{mb:.1f}"
-                t_str = f"{r['t']:.3f}" if not np.isnan(r["t"]) else "—"
-                p_val = r["p"]
+                r      = match[0]
+                scale  = 1e6 if metric == "total_tokens" else 1
+                suffix = "M" if metric == "total_tokens" else ""
+                fmt    = ".2f" if metric not in ("total_toolcalls",) else ".1f"
+                ma_str = f"{r['mean_a']/scale:{fmt}}{suffix}"
+                mb_str = f"{r['mean_b']/scale:{fmt}}{suffix}"
+                t_str  = f"{r['t']:.3f}" if not np.isnan(r["t"]) else "—"
+                p_val  = r["p"]
+                d_val  = r.get("cohens_d", float("nan"))
                 if np.isnan(p_val):
                     p_str = "—"
                 elif p_val < 0.001:
-                    p_str = r"$<$0.001***"
-                elif p_val < 0.01:
-                    p_str = f"{p_val:.3f}**"
-                elif p_val < 0.05:
-                    p_str = f"{p_val:.3f}*"
+                    p_str = r"$<$0.001"
                 else:
                     p_str = f"{p_val:.3f}"
+                d_str = f"{d_val:+.2f}" if not np.isnan(d_val) else "—"
                 short_task = task.replace("ClassificationVisualization", "ClassVis")
-                lines.append(f"    \\quad {short_task} & {cond} & {ma_str} & {mb_str} & {t_str} & {p_str} \\\\")
+                lines.append(
+                    f"    \\quad {short_task} & {cond} & {ma_str} & {mb_str}"
+                    f" & {t_str} & {p_str} & {d_str} \\\\"
+                )
         lines.append(r"    \addlinespace")
 
     lines += [
         r"    \bottomrule",
         r"  \end{tabular}",
         r"  \begin{tablenotes}",
-        r"    \small \item * $p<0.05$, ** $p<0.01$, *** $p<0.001$. ns = not significant.",
+        r"    \small \item $n=3$ por grupo. $p$-values indicativos; $d$ de Cohen es la métrica principal.",
         r"  \end{tablenotes}",
         r"\end{table}",
     ]
