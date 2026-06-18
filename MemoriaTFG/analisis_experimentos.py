@@ -1,6 +1,7 @@
 """
 Análisis y visualización de resultados del experimento con el plugin code-review-graph.
-Experimentos: Repo Existente (sin métricas de calidad) y ClassificationVisualization (con métricas).
+Experimentos: Repo Existente (DCM/Dart) y ClassificationVisualization (radon/Python).
+Ambos experimentos incluyen métricas de calidad de código.
 Condiciones: colbPowers (con plugin) vs baseline (sin plugin), para Opencode y Claudecode.
 """
 
@@ -90,102 +91,85 @@ def avg_cache_ratio(sessions):
 # FIGURA 1 – Métricas de calidad de código (ClassificationVisualization)
 # ══════════════════════════════════════════════════════════════════════════════
 
-def plot_quality_metrics():
-    exp = "ClassificationVisualization"
-    tools = ["Opencode", "Claudecode"]
-
-    metrics = {
-        "avg_cyclomatic_complexity": ("Complejidad Ciclomática Promedio", "lower is better", True),
-        "mantainability_index":      ("Índice de Mantenibilidad Promedio",  "higher is better", False),
-    }
+def _plot_quality_single(exp, exp_label, tools, metrics, path):
+    """Genera la figura 1×2 de métricas de calidad para un único experimento."""
+    x = np.arange(len(tools))
+    w = 0.35
 
     fig, axes = plt.subplots(1, 2, figsize=(14, 6))
     fig.suptitle(
-        "Métricas de Calidad del Código — ClassificationVisualization\n(con plugin vs. sin plugin)",
+        f"Métricas de Calidad del Código — {exp_label}\n(con plugin vs. sin plugin)",
         fontsize=14, fontweight="bold"
     )
-
-    x = np.arange(len(tools))
-    w = 0.35
 
     for ax, (field, (title, subtitle, lower_better)) in zip(axes, metrics.items()):
         plugin_vals   = [avg_quality(get_sessions(data, exp, t, "colbPowers"), field) for t in tools]
         baseline_vals = [avg_quality(get_sessions(data, exp, t, "baseline"),   field) for t in tools]
 
-        colors_p = [C_OPENCODE_PLUGIN, C_CLAUDE_PLUGIN]
-        colors_b = [C_OPENCODE_BASELINE, C_CLAUDE_BASELINE]
+        bars_p = ax.bar(x - w/2, plugin_vals,   w, color=[C_OPENCODE_PLUGIN,   C_CLAUDE_PLUGIN],
+                        edgecolor="white", linewidth=1.2)
+        bars_b = ax.bar(x + w/2, baseline_vals, w, color=[C_OPENCODE_BASELINE, C_CLAUDE_BASELINE],
+                        edgecolor="white", linewidth=1.2)
 
-        bars_p = ax.bar(x - w/2, plugin_vals,   w, label="Con plugin",    color=colors_p, edgecolor="white", linewidth=1.2)
-        bars_b = ax.bar(x + w/2, baseline_vals, w, label="Sin plugin",    color=colors_b, edgecolor="white", linewidth=1.2)
-
-        # etiquetas de valor
         for bar in list(bars_p) + list(bars_b):
             h = bar.get_height()
             ax.text(bar.get_x() + bar.get_width()/2, h + 0.3, f"{h:.2f}",
                     ha="center", va="bottom", fontsize=9, fontweight="bold")
 
-        # Calculate max value for annotations placement
-        max_val = max(
-            [v for v in plugin_vals + baseline_vals if not np.isnan(v)],
-            default=0
-        )
         annotation_positions = []
-
-        # flechas de mejora
-        for i, (pv, bv) in enumerate(zip(plugin_vals, baseline_vals)):
-            if np.isnan(pv) or np.isnan(bv):
-                continue
-            better = (pv < bv) if lower_better else (pv > bv)
-            color  = "#2E7D32" if better else "#C62828"
-            symbol = "▼" if lower_better else "▲"
-            if not better:
-                symbol = "▲" if lower_better else "▼"
-            delta = abs(pv - bv)
-            annotation_positions.append(max(pv, bv) + 0.8)
+        for pv, bv in zip(plugin_vals, baseline_vals):
+            if not (np.isnan(pv) or np.isnan(bv)):
+                annotation_positions.append(max(pv, bv) + 0.8)
 
         ax.set_title(f"{title}\n({subtitle})", fontsize=11)
         ax.set_xticks(x)
         ax.set_xticklabels(tools, fontsize=11)
         ax.set_ylabel(title.split()[0], fontsize=10)
-        # Custom legend with proper color distinction
         handles = [
-            mpatches.Patch(color=C_OPENCODE_PLUGIN, label="Opencode con plugin"),
+            mpatches.Patch(color=C_OPENCODE_PLUGIN,   label="Opencode con plugin"),
             mpatches.Patch(color=C_OPENCODE_BASELINE, label="Opencode sin plugin"),
-            mpatches.Patch(color=C_CLAUDE_PLUGIN, label="Claudecode con plugin"),
-            mpatches.Patch(color=C_CLAUDE_BASELINE, label="Claudecode sin plugin"),
+            mpatches.Patch(color=C_CLAUDE_PLUGIN,     label="Claudecode con plugin"),
+            mpatches.Patch(color=C_CLAUDE_BASELINE,   label="Claudecode sin plugin"),
         ]
         ax.legend(handles=handles, fontsize=8)
 
-        # Set y limit with space for annotations
-        max_annotation = max(annotation_positions) if annotation_positions else max_val
-        ax.set_ylim(0, max_annotation * 1.35)
+        max_val = max([v for v in plugin_vals + baseline_vals if not np.isnan(v)], default=0)
+        max_ann = max(annotation_positions) if annotation_positions else max_val
+        ax.set_ylim(0, max_ann * 1.35)
 
-        # Add annotations after setting limits
-        annotation_idx = 0
         for i, (pv, bv) in enumerate(zip(plugin_vals, baseline_vals)):
             if np.isnan(pv) or np.isnan(bv):
                 continue
             better = (pv < bv) if lower_better else (pv > bv)
             color  = "#2E7D32" if better else "#C62828"
-            symbol = "▼" if lower_better else "▲"
-            if not better:
-                symbol = "▲" if lower_better else "▼"
-            delta = abs(pv - bv)
+            symbol = ("▼" if lower_better else "▲") if better else ("▲" if lower_better else "▼")
             ax.annotate(
-                f"{symbol} {delta:.2f}",
-                xy=(x[i], annotation_positions[annotation_idx]),
+                f"{symbol} {abs(pv - bv):.2f}",
+                xy=(x[i], annotation_positions[i]),
                 ha="center", fontsize=8, color=color, fontweight="bold"
             )
-            annotation_idx += 1
 
         ax.grid(axis="y", alpha=0.3)
         ax.spines[["top", "right"]].set_visible(False)
 
     plt.tight_layout()
-    path = OUTPUT_DIR / "01_calidad_codigo.png"
     plt.savefig(path, dpi=150, bbox_inches="tight")
     plt.close()
     print(f"  Guardado: {path}")
+
+
+def plot_quality_metrics():
+    tools = ["Opencode", "Claudecode"]
+    metrics = {
+        "avg_cyclomatic_complexity": ("Complejidad Ciclomática Promedio", "lower is better", True),
+        "mantainability_index":      ("Índice de Mantenibilidad Promedio",  "higher is better", False),
+    }
+    experiments = [
+        ("Repo Existente",            "Repo Existente (DCM)",              "01_calidad_codigo_caso1.png"),
+        ("ClassificationVisualization", "ClassificationVisualization (radon)", "01_calidad_codigo_caso2.png"),
+    ]
+    for exp, label, fname in experiments:
+        _plot_quality_single(exp, label, tools, metrics, OUTPUT_DIR / fname)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -481,52 +465,54 @@ def plot_efficiency_ratios():
 # ══════════════════════════════════════════════════════════════════════════════
 
 def plot_tokens_vs_quality():
-    exp   = "ClassificationVisualization"
+    experiments = ["Repo Existente", "ClassificationVisualization"]
+    exp_labels  = ["Repo Existente (DCM)", "ClassificationVisualization (radon)"]
     tools = ["Opencode", "Claudecode"]
-
-    fig, axes = plt.subplots(1, 2, figsize=(15, 7))
-    fig.suptitle(
-        "Tokens Usados vs. Calidad del Código — ClassificationVisualization",
-        fontsize=14, fontweight="bold"
-    )
 
     quality_metrics = [
         ("avg_cyclomatic_complexity", "Complejidad Ciclomática (↓ mejor)"),
         ("mantainability_index",      "Índice Mantenibilidad (↑ mejor)"),
     ]
 
+    fig, axes = plt.subplots(2, 2, figsize=(15, 14))
+    fig.suptitle(
+        "Tokens Usados vs. Calidad del Código",
+        fontsize=14, fontweight="bold"
+    )
+
     markers   = {"Opencode": "o", "Claudecode": "s"}
     palette_p = {"Opencode": C_OPENCODE_PLUGIN,   "Claudecode": C_CLAUDE_PLUGIN}
     palette_b = {"Opencode": C_OPENCODE_BASELINE,  "Claudecode": C_CLAUDE_BASELINE}
 
-    for ax, (field, ylabel) in zip(axes, quality_metrics):
-        for tool in tools:
-            for cond_key, cond_label, palette in [
-                ("colbPowers", "con plugin",  palette_p),
-                ("baseline",   "sin plugin",  palette_b),
-            ]:
-                sessions = get_sessions(data, exp, tool, cond_key)
-                tokens   = [s.get("total_tokens", {}).get("total", np.nan) / 1e6 for s in sessions]
-                quality  = [s.get(field, np.nan) for s in sessions]
-                ax.scatter(
-                    tokens, quality,
-                    marker=markers[tool],
-                    color=palette[tool],
-                    s=120, edgecolors="white", linewidths=1.5, zorder=3,
-                    label=f"{tool} {cond_label}"
-                )
-                # etiquetas de puntos
-                for i, (t, q) in enumerate(zip(tokens, quality)):
-                    if not (np.isnan(t) or np.isnan(q)):
-                        ax.annotate(f"{i+1}", (t, q), textcoords="offset points",
-                                    xytext=(5, 4), fontsize=8, color=palette[tool])
+    for row, (exp, exp_label) in enumerate(zip(experiments, exp_labels)):
+        for col, (field, ylabel) in enumerate(quality_metrics):
+            ax = axes[row][col]
+            for tool in tools:
+                for cond_key, cond_label, palette in [
+                    ("colbPowers", "con plugin",  palette_p),
+                    ("baseline",   "sin plugin",  palette_b),
+                ]:
+                    sessions = get_sessions(data, exp, tool, cond_key)
+                    tokens   = [s.get("total_tokens", {}).get("total", np.nan) / 1e6 for s in sessions]
+                    quality  = [s.get(field, np.nan) for s in sessions]
+                    ax.scatter(
+                        tokens, quality,
+                        marker=markers[tool],
+                        color=palette[tool],
+                        s=120, edgecolors="white", linewidths=1.5, zorder=3,
+                        label=f"{tool} {cond_label}"
+                    )
+                    for i, (t, q) in enumerate(zip(tokens, quality)):
+                        if not (np.isnan(t) or np.isnan(q)):
+                            ax.annotate(f"{i+1}", (t, q), textcoords="offset points",
+                                        xytext=(5, 4), fontsize=8, color=palette[tool])
 
-        ax.set_xlabel("Tokens totales (millones)", fontsize=10)
-        ax.set_ylabel(ylabel, fontsize=10)
-        ax.set_title(ylabel, fontsize=11)
-        ax.legend(fontsize=8, loc="best")
-        ax.grid(alpha=0.3)
-        ax.spines[["top", "right"]].set_visible(False)
+            ax.set_xlabel("Tokens totales (millones)", fontsize=9)
+            ax.set_ylabel(ylabel, fontsize=9)
+            ax.set_title(f"{exp_label}\n{ylabel}", fontsize=9)
+            ax.legend(fontsize=7, loc="best")
+            ax.grid(alpha=0.3)
+            ax.spines[["top", "right"]].set_visible(False)
 
     plt.tight_layout()
     path = OUTPUT_DIR / "07_tokens_vs_calidad.png"
@@ -539,49 +525,34 @@ def plot_tokens_vs_quality():
 # FIGURA 8 – Resumen ejecutivo: mejora del plugin en calidad
 # ══════════════════════════════════════════════════════════════════════════════
 
-def plot_summary_quality_delta():
-    """
-    Barras horizontales mostrando la mejora (delta) del plugin respecto al baseline
-    para cada métrica de calidad en ClassificationVisualization.
-    """
-    exp   = "ClassificationVisualization"
-    tools = ["Opencode", "Claudecode"]
-
-    metrics = {
-        "avg_cyclomatic_complexity": ("Complejidad Ciclomática", True),   # lower = better → delta neg = bueno
-        "mantainability_index":      ("Índice de Mantenibilidad", False),  # higher = better → delta pos = bueno
-    }
-
+def _plot_delta_single(exp, exp_label, tools, metrics, path):
+    """Genera la figura 1×2 de delta de calidad para un único experimento."""
     fig, axes = plt.subplots(1, 2, figsize=(14, 5))
     fig.suptitle(
-        "Efecto del Plugin en la Calidad del Código\n"
+        f"Efecto del Plugin en la Calidad — {exp_label}\n"
         "(delta = plugin − baseline; verde = mejora, rojo = empeora)",
         fontsize=13, fontweight="bold"
     )
 
     for ax, (field, (label, lower_better)) in zip(axes, metrics.items()):
-        deltas = []
-        labels = []
-        colors = []
+        deltas, bar_labels, colors = [], [], []
         for tool in tools:
             plugin_val   = avg_quality(get_sessions(data, exp, tool, "colbPowers"), field)
             baseline_val = avg_quality(get_sessions(data, exp, tool, "baseline"),   field)
             delta = plugin_val - baseline_val
             deltas.append(delta)
-            labels.append(tool)
-            # mejora si delta va en la dirección correcta
+            bar_labels.append(tool)
             good = (delta < 0) if lower_better else (delta > 0)
             colors.append("#2E7D32" if good else "#C62828")
 
-        bars = ax.barh(labels, deltas, color=colors, edgecolor="white", linewidth=1.5, height=0.5)
+        bars = ax.barh(bar_labels, deltas, color=colors, edgecolor="white", linewidth=1.5, height=0.5)
         ax.axvline(0, color="black", linewidth=1.2, linestyle="--")
 
         for bar, val in zip(bars, deltas):
             x_pos = val + (0.02 if val >= 0 else -0.02)
             ha    = "left" if val >= 0 else "right"
             ax.text(x_pos, bar.get_y() + bar.get_height()/2,
-                    f"{val:+.3f}", va="center", ha=ha,
-                    fontsize=11, fontweight="bold")
+                    f"{val:+.3f}", va="center", ha=ha, fontsize=11, fontweight="bold")
 
         ax.set_title(label, fontsize=11)
         ax.set_xlabel("Plugin − Baseline (media)", fontsize=10)
@@ -589,16 +560,29 @@ def plot_summary_quality_delta():
         ax.spines[["top", "right"]].set_visible(False)
         ax.margins(y=0.15, x=0.15)
 
-        # leyenda
         verde = mpatches.Patch(color="#2E7D32", label="Mejora con plugin")
         rojo  = mpatches.Patch(color="#C62828", label="Empeora con plugin")
         ax.legend(handles=[verde, rojo], fontsize=9, loc="lower right")
 
     plt.tight_layout()
-    path = OUTPUT_DIR / "08_delta_calidad.png"
     plt.savefig(path, dpi=150, bbox_inches="tight")
     plt.close()
     print(f"  Guardado: {path}")
+
+
+def plot_summary_quality_delta():
+    """Barras horizontales del delta del plugin en calidad, una figura por experimento."""
+    tools = ["Opencode", "Claudecode"]
+    metrics = {
+        "avg_cyclomatic_complexity": ("Complejidad Ciclomática", True),
+        "mantainability_index":      ("Índice de Mantenibilidad", False),
+    }
+    experiments = [
+        ("Repo Existente",            "Repo Existente (DCM)",              "08_delta_calidad_caso1.png"),
+        ("ClassificationVisualization", "ClassificationVisualization (radon)", "08_delta_calidad_caso2.png"),
+    ]
+    for exp, label, fname in experiments:
+        _plot_delta_single(exp, label, tools, metrics, OUTPUT_DIR / fname)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -676,7 +660,7 @@ def print_summary_table():
 
     for exp in experiments:
         print(f"\n-- {exp} ---------------------------------")
-        has_quality = exp == "ClassificationVisualization"
+        has_quality = True
 
         header = f"{'Tool':<12} {'Condición':<10} {'Tokens(M)':>9} {'ToolCalls':>10} {'Subagentes':>11} {'CRG calls':>10}"
         if has_quality:

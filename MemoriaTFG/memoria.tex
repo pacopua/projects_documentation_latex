@@ -112,6 +112,7 @@ El present projecte consisteix en el disseny i aplicació d'un sistema intel·li
 \tableofcontents
 \newpage
 \listoffigures
+\newpage
 \listoftables
 \newpage
 
@@ -1683,25 +1684,25 @@ En ambos casos el paso de baseline a colbPowers multiplica el consumo de tokens 
 
 \subsubsection{Métricas de calidad}
 
-Las métricas de calidad ---complejidad ciclomática e índice de mantenibilidad--- se calcularon para ambos casos, aunque con herramientas distintas según el lenguaje (DCM para Flutter/Dart en el Caso~1, radon para Python en el Caso~2) y con interpretaciones distintas según el tipo de tarea. En el Caso~1 la discusión cualitativa ya se ha incluido en la sección anterior; el análisis estadístico comparado se presenta a continuación junto con el del Caso~2 para facilitar la comparación entre experimentos.
+Las métricas de calidad ---complejidad ciclomática e índice de mantenibilidad--- se calcularon para ambos casos con herramientas de análisis estático adaptadas al lenguaje: DCM para Flutter/Dart (Caso~1) y radon para Python (Caso~2). Se presentan primero los resultados del Caso~2 y a continuación los del Caso~1, dado que el patrón difiere cualitativamente entre ellos.
 
-\paragraph{Baseline vs.\ colbPowers --- Caso~2 (ClassificationVisualization).}
-La Figura~\ref{fig:calidad_codigo} muestra las métricas por asistente y condición. En OpenCode, colbPowers produce una reducción de la complejidad ciclomática (de 4,31 a 3,13, un 27\%) y un aumento del índice de mantenibilidad (de 41,54 a 47,78, un 15\%). En ClaudeCode el efecto es menos pronunciado: la complejidad ciclomática aumenta marginalmente (de 2,85 a 3,11) mientras que el índice de mantenibilidad mejora de 56,97 a 59,01 (un 3,6\%).
+% ── Caso 2 ──────────────────────────────────────────────────────────────────
+
+\paragraph{Caso~2 (ClassificationVisualization) --- Baseline vs.\ colbPowers.}
+La Figura~\ref{fig:calidad_codigo_caso2} muestra las métricas medias por asistente y condición. En OpenCode, colbPowers produce una reducción de la complejidad ciclomática (de 4,31 a 3,13, $-$27\%) y un aumento del índice de mantenibilidad (de 41,54 a 47,78, $+$15\%). En ClaudeCode el efecto es menos pronunciado: la complejidad ciclomática aumenta marginalmente (de 2,85 a 3,11) mientras que el índice de mantenibilidad mejora de 56,97 a 59,01 ($+$3,6\%).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{graficos/comparisons/01_calidad_codigo.png}
-    \caption{Métricas de calidad del código en el Caso~2 por asistente y condición.}
-    \label{fig:calidad_codigo}
+    \includegraphics[width=\textwidth]{graficos/comparisons/01_calidad_codigo_caso2.png}
+    \caption{Métricas de calidad del código --- Caso~2 (ClassificationVisualization, radon/Python). Medias por asistente y condición.}
+    \label{fig:calidad_codigo_caso2}
 \end{figure}
 
-La Figura~\ref{fig:delta_calidad} resume estas diferencias como delta (colbPowers $-$ baseline). Las Figuras~\ref{fig:ttest_cpbl_opencode_classvis} y~\ref{fig:ttest_cpbl_claudecode_classvis} presentan los valores absolutos con barras de error (SD) y la $d$ de Cohen.
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{graficos/comparisons/08_delta_calidad.png}
-    \caption{Efecto de colbPowers sobre la calidad del código (delta = colbPowers $-$ baseline). Verde: mejora; rojo: empeora.}
-    \label{fig:delta_calidad}
+    \includegraphics[width=0.9\textwidth]{graficos/comparisons/08_delta_calidad_caso2.png}
+    \caption{Efecto de colbPowers sobre la calidad del código en el Caso~2 (delta = colbPowers $-$ baseline; verde: mejora, rojo: empeora).}
+    \label{fig:delta_calidad_caso2}
 \end{figure}
 
 \begin{figure}[H]
@@ -1718,10 +1719,10 @@ La Figura~\ref{fig:delta_calidad} resume estas diferencias como delta (colbPower
     \label{fig:ttest_cpbl_claudecode_classvis}
 \end{figure}
 
-\textit{Análisis estadístico.} En OpenCode, la mejora de calidad con colbPowers presenta un tamaño de efecto grande tanto para la complejidad ciclomática como para el índice de mantenibilidad (véase Figura~\ref{fig:ttest_cpbl_opencode_classvis}), acompañado de $p$-values indicativos ($p=0{,}014$ y $p=0{,}037$ respectivamente). En ClaudeCode, donde la baseline ya produce código de alta calidad, los efectos son consistentes en dirección pero de magnitud considerablemente menor, sin soporte estadístico con $n=3$ (complejidad: $p=0{,}508$; mantenibilidad: $p=0{,}754$).
+\textit{Análisis estadístico.} En OpenCode la mejora con colbPowers presenta un tamaño de efecto grande tanto para la complejidad ciclomática como para el índice de mantenibilidad, con $p$-values indicativos de $p=0{,}014$ y $p=0{,}037$ respectivamente. En ClaudeCode, donde la baseline ya produce código de alta calidad, los efectos son consistentes en dirección pero de magnitud considerablemente menor, sin soporte estadístico con $n=3$ (complejidad: $p=0{,}508$; mantenibilidad: $p=0{,}754$).
 
-\paragraph{OpenCode vs.\ ClaudeCode.}
-En la condición baseline, ClaudeCode genera código con menor complejidad ciclomática (2,85 frente a 4,31 de OpenCode) y mayor índice de mantenibilidad (56,97 frente a 41,54), lo que sugiere que Haiku~4.5 tiende a producir soluciones más simples y legibles de forma natural. Con colbPowers activo, las diferencias entre asistentes se reducen considerablemente: la complejidad ciclomática converge a valores casi idénticos (3,13 para OpenCode y 3,11 para ClaudeCode), lo que indica que el flujo estructurado de SDD homogeneiza la calidad del código independientemente del asistente.
+\paragraph{Caso~2 --- OpenCode vs.\ ClaudeCode.}
+En la condición baseline, ClaudeCode genera código con menor complejidad ciclomática (2,85 vs.\ 4,31) y mayor índice de mantenibilidad (56,97 vs.\ 41,54), lo que sugiere que Haiku~4.5 produce soluciones más legibles de forma natural. Con colbPowers activo, las diferencias se reducen considerablemente: la complejidad converge a valores casi idénticos (3,13 OpenCode, 3,11 ClaudeCode), confirmando que el flujo SDD homogeneiza la calidad con independencia del asistente.
 
 \begin{figure}[H]
     \centering
@@ -1737,13 +1738,31 @@ En la condición baseline, ClaudeCode genera código con menor complejidad ciclo
     \label{fig:ttest_occc_colbpowers_classvis}
 \end{figure}
 
-\textit{Análisis estadístico.} En la condición baseline, las diferencias de calidad entre asistentes presentan un tamaño de efecto grande (véase Figura~\ref{fig:ttest_occc_baseline_classvis}), con $p$-values indicativos de $p=0{,}007$ para complejidad ciclomática y $p=0{,}039$ para índice de mantenibilidad. Con colbPowers activo, la magnitud de las diferencias se reduce sustancialmente: la $d$ de Cohen cae a valores próximos a cero en ambas métricas, confirmando la convergencia de calidad que propicia el flujo SDD independientemente del asistente.
+\textit{Análisis estadístico.} En baseline las diferencias entre asistentes presentan efecto grande, con $p$-values indicativos de $p=0{,}007$ (complejidad) y $p=0{,}039$ (mantenibilidad). Con colbPowers, la $d$ de Cohen cae a valores próximos a cero en ambas métricas.
 
-\paragraph{Baseline vs.\ colbPowers --- Caso~1 (Repo Existente).}
-En el Caso~1 el efecto de colbPowers sobre las métricas de calidad es opuesto al del Caso~2: la complejidad ciclomática es mayor en colbPowers que en baseline, tanto en OpenCode (3,37 vs.\ 2,67, $+$26\%) como en ClaudeCode (3,48 vs.\ 2,98, $+$17\%). El índice de mantenibilidad se mantiene prácticamente sin cambios en ClaudeCode (66,52 vs.\ 66,05) y cae marginalmente en OpenCode (66,59 vs.\ 67,59, $-$1\%). Este resultado no confirma la hipótesis de que \textit{code-review-graph} proporcionaría un contexto de dependencias superior: las llamadas al servidor MCP fueron prácticamente nulas en todas las ejecuciones, lo que privó al flujo SDD de la ventaja de exploración que habría justificado su overhead. Los paneles de calidad en las Figuras~\ref{fig:ttest_cpbl_oc_cm} y~\ref{fig:ttest_cpbl_cc_cm} muestran estos valores con barras de error (SD) y la $d$ de Cohen correspondiente.
+% ── Caso 1 ──────────────────────────────────────────────────────────────────
 
-\paragraph{OpenCode vs.\ ClaudeCode --- Caso~1.}
-En el Caso~1, a diferencia del Caso~2, las diferencias de calidad entre asistentes son menos pronunciadas. En la condición baseline, ambos producen complejidad ciclomática similar (OpenCode 2,67, ClaudeCode 2,98) e índice de mantenibilidad comparable (67,59 vs.\ 66,05). Con colbPowers, la brecha es igualmente pequeña (3,37 vs.\ 3,48 en complejidad; 66,59 vs.\ 66,52 en mantenibilidad). Esto sugiere que en tareas de modificación incremental la elección del asistente tiene menor impacto en la calidad estructural del código producido.
+\paragraph{Caso~1 (Repo Existente) --- Baseline vs.\ colbPowers.}
+En el Caso~1 el patrón se invierte respecto al Caso~2: colbPowers produce mayor complejidad ciclomática que baseline tanto en OpenCode (3,37 vs.\ 2,67, $+$26\%) como en ClaudeCode (3,48 vs.\ 2,98, $+$17\%), mientras que el índice de mantenibilidad se mantiene prácticamente igual (OpenCode: 66,59 vs.\ 67,59; ClaudeCode: 66,52 vs.\ 66,05). Este resultado no confirma la hipótesis de que \textit{code-review-graph} proporcionaría un contexto de dependencias superior: las llamadas al servidor MCP fueron prácticamente nulas en todas las ejecuciones, lo que privó al flujo SDD de la ventaja de exploración que habría justificado su overhead.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{graficos/comparisons/01_calidad_codigo_caso1.png}
+    \caption{Métricas de calidad del código --- Caso~1 (Repo Existente, DCM/Flutter). Medias por asistente y condición.}
+    \label{fig:calidad_codigo_caso1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{graficos/comparisons/08_delta_calidad_caso1.png}
+    \caption{Efecto de colbPowers sobre la calidad del código en el Caso~1 (delta = colbPowers $-$ baseline; verde: mejora, rojo: empeora).}
+    \label{fig:delta_calidad_caso1}
+\end{figure}
+
+Las Figuras~\ref{fig:ttest_cpbl_oc_cm} y~\ref{fig:ttest_cpbl_cc_cm} (presentadas en la sección de análisis de consumo) muestran los paneles completos con barras de error (SD) y la $d$ de Cohen para cada comparación.
+
+\paragraph{Caso~1 --- OpenCode vs.\ ClaudeCode.}
+En el Caso~1 las diferencias de calidad entre asistentes son menos pronunciadas que en el Caso~2. En baseline, ambos producen complejidad ciclomática similar (2,67 OpenCode, 2,98 ClaudeCode) e índice de mantenibilidad comparable (67,59 vs.\ 66,05). Con colbPowers la brecha se mantiene pequeña (3,37 vs.\ 3,48 en complejidad; 66,59 vs.\ 66,52 en mantenibilidad), lo que sugiere que en tareas de modificación incremental la elección del asistente tiene menor impacto en la calidad estructural del código producido.
 
 \begin{figure}[H]
     \centering
@@ -1931,7 +1950,7 @@ Las siguientes tablas recogen los resultados completos del análisis para las do
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/comparisons/07_tokens_vs_calidad.png}
-    \caption{Dispersión: tokens totales vs.\ métricas de calidad del código (Caso~2). Cada punto representa una sesión individual.}
+    \caption{Dispersión: tokens totales vs.\ métricas de calidad del código en ambos experimentos. Fila superior: Repo Existente (DCM); fila inferior: ClassificationVisualization (radon). Cada punto representa una sesión individual.}
     \label{fig:tokens_vs_calidad}
 \end{figure}
 
