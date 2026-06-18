@@ -76,7 +76,7 @@
 \begin{center}
 {\textbf{Abstract}}
 \end{center}
-The present project consists of the design and application of an intelligent assistance system, with the objective of automating the various stages in the development of software projects, using mainly the orchestration of generative Artificial Intelligence tools. Placing emphasis on the interaction with the human developer, following a philosophy of \textit{Human in the loop}, and the generation of documentation to guide the process. This methodology looks to reduce the quality loss typically caused by the use of AI in the development of these projects. This final degree project is applied and developed for the working environment at the software consulting company \textit{Colb.AI}.
+The present project consists of the design and application of an intelligent assistance system, with the objective of automating the various stages in the development of software projects ---requirements gathering, Spec-Driven Development, and client follow-up--- through the orchestration of generative Artificial Intelligence tools. Placing emphasis on the interaction with the human developer, following a philosophy of \textit{Human in the loop}, and the generation of documentation to guide the process. This methodology aims to reduce the quality loss typically caused by the use of AI in the development of these projects. The experimental evaluation conducted suggests improvements in code quality and maintainability when using the proposed system. This final degree project is applied and developed for the working environment at the software consulting company \textit{Colb.AI}.
 \vfill
 \hspace{0pt}
 }
@@ -89,7 +89,7 @@ The present project consists of the design and application of an intelligent ass
 \begin{center}
 {\textbf{Resumen}}
 \end{center}
-El presente proyecto engloba el diseño y aplicación de un sistema para la automatización de las diversas etapas en el desarrollo de proyectos de \textit{software}, utilizando principalmente la orquestación de herramientas de Inteligencia Artificial generativa. Haciendo un especial énfasis en la interacción de estos sistemas de automatización con el desarrollador, siguiendo una filosofía de \textit{Human in the loop}, y la generación de documentación para guiar el proceso. Esta metodología busca reducir la pérdida de calidad típicamente resultante del uso de IA en el desarrollo de los proyectos. Este trabajo de final de grado se aplica y desarrolla para el entorno laboral de la consultora de \textit{software} \textit{Colb.AI}.
+El presente proyecto consiste en el diseño y aplicación de un sistema para la automatización de las diversas etapas en el desarrollo de proyectos de \textit{software} ---toma de requerimientos, \textit{Spec-Driven Development} y seguimiento del cliente--- utilizando principalmente la orquestación de herramientas de Inteligencia Artificial generativa. Haciendo un especial énfasis en la interacción de estos sistemas de automatización con el desarrollador, siguiendo una filosofía de \textit{Human in the loop}, y la generación de documentación para guiar el proceso. Esta metodología busca reducir la pérdida de calidad típicamente resultante del uso de IA en el desarrollo de los proyectos. La evaluación experimental realizada sugiere mejoras en la calidad y mantenibilidad del código al utilizar el sistema propuesto. Este trabajo de final de grado se aplica y desarrolla para el entorno laboral de la consultora de \textit{software} \textit{Colb.AI}.
 \vfill
 \hspace{0pt}
 }
@@ -102,7 +102,7 @@ El presente proyecto engloba el diseño y aplicación de un sistema para la auto
 \begin{center}
 {\textbf{Resum}}
 \end{center}
-El present projecte consisteix en el disseny i aplicació d'un sistema intel·ligent per a l'automatització de les etapes en el desenvolupament de projectes de \textit{software}, aplicant principalment l'orquestació d'eines d'Intel·ligència Artificial generativa. Es fa un especial èmfasi en la interacció d'aquests sistemes amb el desenvolupador humà, seguint una filosofia de \textit{Human in the loop}, i la generació de documentació per a guiar el procés. Aquesta metodologia tracta de reduir la pèrdua de qualitat típicament conseqüència de l'ús de la IA en el desenvolupament d'aquests projectes. Aquest treball de final de grau s'aplica i desenvolupa per a l'entorn laboral de la consultoria de \textit{software} \textit{Colb.AI}.
+El present projecte consisteix en el disseny i aplicació d'un sistema intel·ligent per a l'automatització de les etapes en el desenvolupament de projectes de \textit{software} ---toma de requeriments, \textit{Spec-Driven Development} i seguiment del client--- aplicant principalment l'orquestació d'eines d'Intel·ligència Artificial generativa. Es fa un especial èmfasi en la interacció d'aquests sistemes amb el desenvolupador humà, seguint una filosofia de \textit{Human in the loop}, i la generació de documentació per a guiar el procés. Aquesta metodologia tracta de reduir la pèrdua de qualitat típicament conseqüència de l'ús de la IA en el desenvolupament d'aquests projectes. L'avaluació experimental realitzada suggereix millores en la qualitat i mantenibilitat del codi utilitzant el sistema proposat. Aquest treball de final de grau s'aplica i desenvolupa per a l'entorn laboral de la consultoria de \textit{software} \textit{Colb.AI}.
 \vfill
 \hspace{0pt}
 }
@@ -262,22 +262,18 @@ En el Cuadro \ref{tab:comparativa_herramientas} se presenta un resumen de las ca
 % Nota: Asegúrate de tener \usepackage{booktabs} en tu preámbulo para que esta tabla se renderice correctamente.
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
-    \hline
-    \textbf{Herramienta} & \textbf{Enfoque Principal} & \textbf{Inconveniente Principal} & \textbf{Integración en Código Existente} \\ 
-    \hlineB{3}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+    \toprule
+    \textbf{Herramienta} & \textbf{Enfoque Principal} & \textbf{Inconveniente Principal} & \textbf{Integración en Código Existente} \\
+    \midrule
     \textbf{Spec Kit} & Basado en especificaciones & Exceso de documentación, alta fricción operativa & Moderada \\
-    \hline
     \textbf{AgentOS} & Orquestación de agentes & Diseñado principalmente para proyectos \textit{greenfield} & Muy compleja (\textit{Legacy}) \\
-    \hline
     \textbf{Copilot/Cursor} & \textit{Code-Driven} & Fomenta el \textit{slop code}, falta de planificación & Alta (pero sin contexto global) \\
-    \hline
     \textbf{ClaudeCode / OpenCode} & CLI extensible mediante plugins y MCP & Requiere plugin/configuración para imponer flujo \textit{Spec-First} & Alta \\
-    \hline
     \textbf{superpowers} & Orquestador + subagentes via skills & Sin constitución ni \textit{features} globales entre sesiones & Alta \\
-    \hline
+    \bottomrule
 \end{tabularx}
-\caption{Comparativa de soluciones existentes. [Fuente: Elaboración propia]}
+\caption{Comparativa de soluciones existentes. Elaboración propia.}
 \label{tab:comparativa_herramientas}
 \end{table}
 
@@ -299,6 +295,22 @@ Aprovechando la arquitectura de \textit{superpowers}, el proyecto propone el des
 \end{enumerate}
 
 Originalmente se contempló construir este sistema desde cero. Durante la fase de investigación previa (TP1) se descubrió que \textit{superpowers} ya ofrecía la arquitectura base necesaria, lo que permitió redirigir el esfuerzo hacia la contribución diferencial: la capa de constitución y features, y los tres pilares del ciclo de vida del software.
+
+\subsection{Flujo de trabajo completo}
+\label{sec:flujo_completo}
+
+La Figura~\ref{fig:flujo_completo} muestra el flujo de trabajo del sistema de principio a fin. El proceso arranca con la \textbf{toma de requerimientos}: la primera reunión con el cliente se transcribe de forma diferente según su modalidad ---en reuniones telemáticas se aprovechan las transcripciones automáticas de plataformas como Teams o Meet, mientras que en reuniones presenciales se graba el audio y se procesa con Azure Speech Service con diarización de hablantes--- y el texto resultante alimenta el módulo de procesamiento, que puede ejecutarse mediante la \textit{skill} de Claude Cowork o mediante la implementación propia en Python con LangChain y Tavily. En ambos casos, la salida es un plan de implementación estructurado que el usuario revisa y aprueba antes de continuar.
+
+A partir de ese plan aprobado, el flujo entra en la fase de \textbf{desarrollo con colbPowers}: el agente orquestador guía al equipo a través del ciclo SDD completo ---definición del contexto del proyecto, especificación de la funcionalidad, implementación y revisión---, con puntos de validación humana en cada etapa que garantizan el principio de \textit{Human in the Loop}.
+
+Una vez entregado el desarrollo, el sistema no termina: comienza la fase de \textbf{seguimiento del cliente}. Al igual que en la toma de requerimientos, la transcripción de la reunión de seguimiento se obtiene de forma automática si es telemática, o mediante Azure Speech si es presencial. A partir de ella, Claude Cowork o la alternativa propia generan un documento Word con el resumen, las decisiones tomadas y los próximos pasos. Si en esa reunión se identifican nuevas funcionalidades, el flujo regresa directamente a colbPowers para iniciar un nuevo ciclo de desarrollo --- convirtiendo el sistema en un \textbf{bucle continuo} que acompaña al proyecto durante toda su vida útil.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imagenes/DiagramaFlujoTrabajoCompleto.png}
+    \caption{Flujo de trabajo completo del sistema: desde la primera reunión con el cliente hasta el seguimiento iterativo del proyecto.}
+    \label{fig:flujo_completo}
+\end{figure}
 
 \newpage
 
@@ -386,18 +398,15 @@ La planificación inicial del proyecto (GEP) establecía como objetivo principal
 
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
-    \hline
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+    \toprule
     \textbf{Alcance GEP} & \textbf{Alcance final} \\
-    \hlineB{3}
-    Construir agentes Architect, Developer y Reviewer desde cero & Desarrollar colbPowers como extensión de \textit{superpowers} \\
-    \hline
-    Integración en el IDE & Integración con asistentes CLI (ClaudeCode, OpenCode) \\
-    \hline
-    Un único pilar: SDD & Tres pilares: Toma de requerimientos, SDD, Seguimiento del cliente \\
-    \hline
-    Sin mecanismo de contexto persistente & \texttt{constitution.md} y \texttt{features.md} como fuente de verdad compartida \\
-    \hline
+    \midrule
+    \textbf{Construir agentes Architect, Developer y Reviewer desde cero} & Desarrollar colbPowers como extensión de \textit{superpowers} \\
+    \textbf{Integración en el IDE} & Integración con asistentes CLI (ClaudeCode, OpenCode) \\
+    \textbf{Un único pilar: SDD} & Tres pilares: Toma de requerimientos, SDD, Seguimiento del cliente \\
+    \textbf{Sin mecanismo de contexto persistente} & \texttt{constitution.md} y \texttt{features.md} como fuente de verdad compartida \\
+    \bottomrule
 \end{tabularx}
 \caption{Comparativa entre el alcance comprometido en el GEP y el alcance final ejecutado. Elaboración propia.}
 \label{tab:comparativa_alcance}
@@ -613,23 +622,19 @@ Dado que el autor asume distintos roles a lo largo del proyecto (tal y como se d
 
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{|X|X|X|}
-\hline
+\begin{tabularx}{\textwidth}{X X X}
+\toprule
 \textbf{Rol} & \textbf{Horas estimadas} & \textbf{Tareas principales} \\
-\hline
-Jefe del Proyecto & $\sim$77h & \textbf{GP} (25\%), \textbf{TP2} (100\%), \textbf{DA3} (19\%) \\
-\hline
-Investigador / Documentador & $\sim$190h & \textbf{GP} (75\%), \textbf{TP1} (100\%), \textbf{DA2} (30\%), \textbf{DA4} (25\%) \\
-\hline
-Programador Junior & $\sim$210h & \textbf{DA1} (100\%), \textbf{DA2} (70\%), \textbf{DA3} (81\%), \textbf{DA4} (75\%) \\
-\hline
-Tester & $\sim$60h & \textbf{PV1} (100\%), \textbf{PV2} (100\%) \\
-\hline
-\hline
+\midrule
+\textbf{Jefe del Proyecto} & $\sim$77h & \textbf{GP} (25\%), \textbf{TP2} (100\%), \textbf{DA3} (19\%) \\
+\textbf{Investigador / Documentador} & $\sim$190h & \textbf{GP} (75\%), \textbf{TP1} (100\%), \textbf{DA2} (30\%), \textbf{DA4} (25\%) \\
+\textbf{Programador Junior} & $\sim$210h & \textbf{DA1} (100\%), \textbf{DA2} (70\%), \textbf{DA3} (81\%), \textbf{DA4} (75\%) \\
+\textbf{Tester} & $\sim$60h & \textbf{PV1} (100\%), \textbf{PV2} (100\%) \\
+\midrule
 \textbf{Total} & \textbf{$\sim$537h} & \\
-\hline
+\bottomrule
 \end{tabularx}
-\caption{Distribución estimada de horas del autor por rol a lo largo del proyecto. Generación propia.}
+\caption{Distribución estimada de horas del autor por rol a lo largo del proyecto. Elaboración propia.}
 \label{tab:desglose_roles}
 \end{table}
 
@@ -653,18 +658,15 @@ La planificación establecida en el GEP estructuraba el desarrollo en cuatro spr
 
 \begin{table}[H]
 \centering
-\begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{1cm}|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}
-    \hline
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{1cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+    \toprule
     \textbf{Sprint} & \textbf{Planificación GEP} & \textbf{Planificación final} \\
-    \hlineB{3}
-    DA1 & Agentes Architect, Developer y Reviewer desde cero & Plugin colbPowers base: constitution.md, features.md, orquestador \\
-    \hline
-    DA2 & Métricas de evaluación integradas en el agente Reviewer & Subagentes especializados + scripts de radon como evaluación manual independiente \\
-    \hline
-    DA3 & AgentSkills e integración MCP & Ampliación de MCPs y refinamiento del flujo colbPowers --- sin cambio significativo \\
-    \hline
-    DA4 & Information Retrieval y MCPs avanzados & Módulo de toma de requerimientos (Azure Speech + LangChain/Tavily) y módulo de seguimiento del cliente \\
-    \hline
+    \midrule
+    \textbf{DA1} & Agentes Architect, Developer y Reviewer desde cero & Plugin colbPowers base: constitution.md, features.md, orquestador \\
+    \textbf{DA2} & Métricas de evaluación integradas en el agente Reviewer & Subagentes especializados + scripts de radon como evaluación manual independiente \\
+    \textbf{DA3} & AgentSkills e integración MCP & Ampliación de MCPs y refinamiento del flujo colbPowers --- sin cambio significativo \\
+    \textbf{DA4} & Information Retrieval y MCPs avanzados & Módulo de toma de requerimientos (Azure Speech + LangChain/Tavily) y módulo de seguimiento del cliente \\
+    \bottomrule
 \end{tabularx}
 \caption{Comparativa entre la planificación del GEP y la planificación final ejecutada. Elaboración propia.}
 \label{tab:comparativa_planificacion}
@@ -752,18 +754,17 @@ Aplicando el \textit{feedback} de la anterior entrega de GEP, vamos a dividir es
 
 \begin{table}[H]
     \centering
-    \begin{tabularx}{\textwidth}{|X|c|c|}
-         \hline
-         \textbf{Rol} & \textbf{Salario Neto} & \textbf{Salario Bruto (+ SS)}\\ 
-         \hline
-         \hline
-         Jefe del Proyecto (Programador senior) & 20,15€/h & 26,20€/h \\
-         Investigador y documentador & 16,04€/h & 20,85€/h \\
-         Programador junior &  11,48€/h & 14,92€/h \\
-         Testers & 14,72€/h & 19,17€/h \\
-         \hline
+    \begin{tabularx}{\textwidth}{X c c}
+         \toprule
+         \textbf{Rol} & \textbf{Salario Neto} & \textbf{Salario Bruto (+ SS)}\\
+         \midrule
+         \textbf{Jefe del Proyecto (Programador senior)} & 20,15€/h & 26,20€/h \\
+         \textbf{Investigador y documentador} & 16,04€/h & 20,85€/h \\
+         \textbf{Programador junior} & 11,48€/h & 14,92€/h \\
+         \textbf{Testers} & 14,72€/h & 19,17€/h \\
+         \bottomrule
     \end{tabularx}
-    \caption{Costes de personal por hora según el rol asumido. Generación propia. Basada en información extraída de \cite{indeed_salarios}}.
+    \caption{Costes de personal por hora según el rol asumido. Elaboración propia. Basada en información extraída de \cite{indeed_salarios}.}
     \label{tab:costes_personal}
 \end{table}
 
@@ -862,19 +863,18 @@ La fórmula de amortización se define dividiendo el precio del equipo entre sus
 
 \begin{table}[H]
     \centering
-    \begin{tabularx}{\textwidth}{|X|c|c|c|}
-         \hline
-         \textbf{Dispositivo} & \textbf{Precio Compra} & \textbf{Vida Útil (h)} & \textbf{Amortización (540h)} \\ 
-         \hline
-         \hline
-         Estación de trabajo (PC) & 1500€ & 7040h & 115,06€ \\
-         Monitor externo & 200€ & 7040h & 15,34€ \\
-         Periféricos (Teclado, ratón, audio) & 100€ & 7040h & 7,67€ \\
-         \hline
-         \textbf{Total} & \textbf{1800€} & - & \textbf{138,07€} \\
-         \hline
+    \begin{tabularx}{\textwidth}{X c c c}
+         \toprule
+         \textbf{Dispositivo} & \textbf{Precio Compra} & \textbf{Vida Útil (h)} & \textbf{Amortización (540h)} \\
+         \midrule
+         \textbf{Estación de trabajo (PC)} & 1500€ & 7040h & 115,06€ \\
+         \textbf{Monitor externo} & 200€ & 7040h & 15,34€ \\
+         \textbf{Periféricos (Teclado, ratón, audio)} & 100€ & 7040h & 7,67€ \\
+         \midrule
+         \textbf{Total} & \textbf{1800€} & --- & \textbf{138,07€} \\
+         \bottomrule
     \end{tabularx}
-    \caption{Cálculo de la amortización de los recursos de \textit{Hardware}. Generación propia.}
+    \caption{Cálculo de la amortización de los recursos de \textit{Hardware}. Elaboración propia.}
     \label{tab:amortizacion_hardware}
 \end{table}
 
@@ -953,24 +953,22 @@ A continuación, se presenta una tabla resumen con la consolidación de todas la
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{|l|c|}
-         \hline
-         \textbf{Concepto} & \textbf{Coste Estimado} \\ 
-         \hline
-         \hline
-         Coste de Personal (GP, TP, DA, PV) & 10.262,02€ \\
-         Costes Genéricos (Estructurales, Software, Hardware) & 1.488,07€ \\
-         \hline
+    \begin{tabular}{l c}
+         \toprule
+         \textbf{Concepto} & \textbf{Coste Estimado} \\
+         \midrule
+         \textbf{Coste de Personal} (GP, TP, DA, PV) & 10.262,02€ \\
+         \textbf{Costes Genéricos} (Estructurales, Software, Hardware) & 1.488,07€ \\
+         \midrule
          \textbf{Subtotal (Base del proyecto)} & \textbf{11.750,09€} \\
-         \hline
-         Contingencias (15\verb|%| sobre el Subtotal) & 1.762,52€ \\
-         Imprevistos (Riesgos evaluados) & 587,20€ \\
-         \hline
-         \hline
+         \midrule
+         \textbf{Contingencias} (15\% sobre el Subtotal) & 1.762,52€ \\
+         \textbf{Imprevistos} (Riesgos evaluados) & 587,20€ \\
+         \midrule
          \textbf{PRESUPUESTO TOTAL} & \textbf{14.099,81€} \\
-         \hline
+         \bottomrule
     \end{tabular}
-    \caption{Presupuesto total estimado del proyecto. Generación propia.}
+    \caption{Presupuesto total estimado del proyecto. Elaboración propia.}
     \label{tab:coste_total}
 \end{table}
 
@@ -1229,6 +1227,13 @@ La skill aprovecha las capacidades nativas de Claude Cowork para acceder a herra
 \label{sec:alternativa_codigo_abierto}
 De forma análoga al enfoque adoptado en la toma de requerimientos, se dispone de una alternativa de código abierto e independiente para los casos en que no se desee depender de la plataforma Claude Cowork. Esta alternativa se basa en una aplicación que combina un modelo de lenguaje de gran tamaño, accedido mediante API, con la biblioteca python-docx para la generación de documentos Word con formato estructurado. El flujo de la aplicación es equivalente al de la skill: a partir de la transcripción de la reunión, el modelo genera los distintos apartados del documento de seguimiento con un formato definido, que son entonces volcados al documento Word mediante la biblioteca de generación. Aunque la integración es menos fluida que la ofrecida por Claude Cowork, esta alternativa es igualmente válida para los casos de uso habituales y no incurre en costes de suscripción adicionales más allá del consumo de la API del modelo.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{imagenes/SeguimientDelCliente.png}
+    \caption{Flujo de la implementación propia del módulo de seguimiento del cliente: generación del resumen inicial y bucle iterativo de refinamiento con \textit{Human in the Loop}. Generación propia.}
+    \label{fig:seguimiento_cliente}
+\end{figure}
+
 \newpage
 
 \section{Spec Driven Development: Implementación}
@@ -1265,6 +1270,13 @@ El patrón ReAct estructura el comportamiento del agente en un ciclo iterativo d
 
 \textbf{Observación (Observation):} El runtime de TypeScript ejecuta la acción sobre el sistema de archivos de la terminal y devuelve el resultado al modelo como nuevo mensaje en el historial. Este resultado se convierte en la entrada del siguiente ciclo.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{imagenes/Ciclo_ReAct.png}
+    \caption{Ciclo iterativo ReAct: el agente alterna entre Razonamiento, Acción y Observación hasta que no hay más herramientas que invocar. Generación propia.}
+    \label{fig:ciclo_react}
+\end{figure}
+
 El runtime que orquesta este bucle está implementado en TypeScript sobre Node.js. Su flujo de ejecución puede describirse de forma simplificada en tres pasos:
 
 \begin{enumerate}
@@ -1283,30 +1295,35 @@ El valor diferencial de los asistentes CLI frente a otras soluciones reside en s
 \label{sec:conceptos_clave_ext}
 \begin{table}[H]
 \centering
-\begin{tabular}{|p{2.5cm}|p{8cm}|p{5.5cm}|}
-\hline
+\begin{tabular}{p{2.5cm} p{8cm} p{5.5cm}}
+\toprule
 \textbf{Concepto} & \textbf{Qué es} & \textbf{Cuándo actúa} \\
-\hline
-Hook & Callback registrado en el runtime que se ejecuta automáticamente ante eventos del ciclo de vida del agente (SessionStart, PreToolUse, PostToolUse, etc.). Permite inyectar comportamiento sin intervención explícita del usuario. & Al inicio de sesión, antes o después de editar archivos, o al ejecutar comandos de terminal. \\
-\hline
-Skill & Documento Markdown con instrucciones procedimentales especializadas para el agente, análogo a las skills de Claude Cowork (véase Fig.~\ref{fig:skill_definition}). Puede incluir scripts, templates y referencias a herramientas. & Cuando el agente detecta que una tarea requiere un procedimiento específico; el contenido se carga bajo demanda para no consumir tokens innecesariamente. \\
-\hline
-Agente (subagente) & Instancia del LLM creada dinámicamente por el orquestador para ejecutar una tarea en aislamiento, sin acceso al historial de conversación del orquestador. & Para tareas que requieren un contexto acotado e independiente, eliminando interferencias con el hilo principal. \\
-\hline
-Plugin & Paquete instalable (análogo a un paquete npm) que agrupa y distribuye skills, hooks, comandos y agentes. Es la unidad de distribución del ecosistema. Su estructura incluye carpetas \texttt{skills/}, \texttt{agents/} y un fichero \texttt{hooks.json}. & Al inicializar el proyecto; instalable a nivel de usuario o de proyecto con un único comando. \\
-\hline
-MCP (Model Context Protocol) & Protocolo estándar abierto que define cómo un proceso externo expone herramientas invocables al agente. El servidor MCP es un proceso independiente (en cualquier lenguaje) que ejecuta las operaciones y devuelve los resultados al runtime. & Cuando el agente necesita capacidades externas: consultar un grafo de código, buscar en la web, leer una base de datos, etc. \\
-\hline
+\midrule
+\textbf{Hook} & Callback registrado en el runtime que se ejecuta automáticamente ante eventos del ciclo de vida del agente (SessionStart, PreToolUse, PostToolUse, etc.). Permite inyectar comportamiento sin intervención explícita del usuario. & Al inicio de sesión, antes o después de editar archivos, o al ejecutar comandos de terminal. \\
+\textbf{Skill} & Documento Markdown con instrucciones procedimentales especializadas para el agente, análogo a las skills de Claude Cowork (véase Fig.~\ref{fig:skill_definition}). Puede incluir scripts, templates y referencias a herramientas. & Cuando el agente detecta que una tarea requiere un procedimiento específico; el contenido se carga bajo demanda para no consumir tokens innecesariamente. \\
+\textbf{Agente (subagente)} & Instancia del LLM creada dinámicamente por el orquestador para ejecutar una tarea en aislamiento, sin acceso al historial de conversación del orquestador. & Para tareas que requieren un contexto acotado e independiente, eliminando interferencias con el hilo principal. \\
+\textbf{Plugin} & Paquete instalable (análogo a un paquete npm) que agrupa y distribuye skills, hooks, comandos y agentes. Es la unidad de distribución del ecosistema. Su estructura incluye carpetas \texttt{skills/}, \texttt{agents/} y un fichero \texttt{hooks.json}. & Al inicializar el proyecto; instalable a nivel de usuario o de proyecto con un único comando. \\
+\textbf{MCP (Model Context Protocol)} & Protocolo estándar abierto que define cómo un proceso externo expone herramientas invocables al agente. El servidor MCP es un proceso independiente (en cualquier lenguaje) que ejecuta las operaciones y devuelve los resultados al runtime. & Cuando el agente necesita capacidades externas: consultar un grafo de código, buscar en la web, leer una base de datos, etc. \\
+\bottomrule
 \end{tabular}
-\caption{Conceptos clave del sistema de extensibilidad de los asistentes CLI}
+\caption{Conceptos clave del sistema de extensibilidad de los asistentes CLI. Elaboración propia.}
 \label{tab:conceptos_extensibilidad}
 \end{table}
 
 \textbf{Distinción entre MCP y Skill.} Aunque ambos mecanismos amplían las capacidades del agente, su naturaleza es diferente. Una skill es esencialmente un prompt procedimental: incluye instrucciones detalladas sobre cómo abordar una tarea y puede invocar herramientas locales durante su ejecución. Un servidor MCP, en cambio, expone herramientas atómicas acompañadas únicamente de una descripción de su interfaz, sin lógica de orquestación; la ejecución se produce en el proceso del servidor MCP, no en el runtime local del asistente. En la práctica, las skills definen \textit{cómo} debe razonar el agente ante una clase de tarea, mientras que los MCPs definen \textit{qué} operaciones externas puede invocar.
 
+\newpage
+
 \subsubsection{El ciclo de vida completo de una sesión en OpenCode}
 \label{sec:ciclo_vida_opencode}
 Para extender y configurar OpenCode de forma eficaz, es necesario comprender con exactitud en qué momento del ciclo se carga cada componente ---plugins, skills, herramientas y agentes--- y cómo interactúan durante una conversación. Aprovechando que opencode es una herramienta de codigo abierto, a continuación vamos a describir el ciclo de funcionamiento de forma detallada, desde la inicialización del proceso hasta la entrega de la respuesta al usuario. % TODO: Cite oficial opencode repo
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{imagenes/CicloSesiónOpenCode.png}
+    \caption{Ciclo de vida completo de una sesión en OpenCode: desde la inicialización perezosa hasta la entrega de la respuesta, con el ciclo ReAct en el núcleo del bucle conversacional. Generación propia.}
+    \label{fig:ciclo_sesion_opencode}
+\end{figure}
 
 \paragraph{Inicialización perezosa del espacio de trabajo.}
 OpenCode implementa el patrón de inicialización perezosa (\textit{lazy initialization}): cuando el usuario abre un proyecto por primera vez en la sesión, el sistema no instancia de inmediato todos los servicios. Los plugins, el registro de herramientas, el catálogo de skills y los clientes MCP se crean la primera vez que son necesarios y se mantienen en caché para el resto de la sesión. Esto permite que el proceso arranque rápidamente con independencia del tamaño del proyecto.
@@ -1346,20 +1363,17 @@ Sin embargo, existen diferencias arquitectónicas significativas que conviene se
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|p{2.8cm}|p{4.5cm}|p{7cm}|}
-\hline
+\begin{tabular}{p{2.8cm} p{4.5cm} p{7cm}}
+\toprule
 \textbf{Dimensión} & \textbf{ClaudeCode} & \textbf{OpenCode} \\
-\hline
-Proveedores LLM & Exclusivo de Anthropic (modelos Claude) & Más de 25 proveedores a través del SDK de Vercel AI (OpenAI, Google, Azure, Bedrock, Mistral, Groq, GitHub Copilot, entre otros) \\
-\hline
-Modelo de interfaz & Exclusivamente CLI; interfaz renderizada en terminal mediante React e Ink & Servidor HTTP local (Hono) con aplicación web SolidJS; soporta además aplicaciones de escritorio nativas (Tauri y Electron) \\
-\hline
-Persistencia & Estado en memoria y ficheros JSON locales & Sesiones persistidas en SQLite con instantáneas del sistema de ficheros antes de cada invocación de herramienta, lo que permite revertir cambios \\
-\hline
-Framework técnico & TypeScript estándar para la composición de servicios & Uso intensivo del framework Effect (programación funcional monádica) para gestión de dependencias, errores y concurrencia \\
-\hline
+\midrule
+\textbf{Proveedores LLM} & Exclusivo de Anthropic (modelos Claude) & Más de 25 proveedores a través del SDK de Vercel AI (OpenAI, Google, Azure, Bedrock, Mistral, Groq, GitHub Copilot, entre otros) \\
+\textbf{Modelo de interfaz} & Exclusivamente CLI; interfaz renderizada en terminal mediante React e Ink & Servidor HTTP local (Hono) con aplicación web SolidJS; soporta además aplicaciones de escritorio nativas (Tauri y Electron) \\
+\textbf{Persistencia} & Estado en memoria y ficheros JSON locales & Sesiones persistidas en SQLite con instantáneas del sistema de ficheros antes de cada invocación de herramienta, lo que permite revertir cambios \\
+\textbf{Framework técnico} & TypeScript estándar para la composición de servicios & Uso intensivo del framework Effect (programación funcional monádica) para gestión de dependencias, errores y concurrencia \\
+\bottomrule
 \end{tabular}
-\caption{Comparativa arquitectónica entre ClaudeCode y OpenCode}
+\caption{Comparativa arquitectónica entre ClaudeCode y OpenCode. Elaboración propia.}
 \label{tab:comparativa_asistentes}
 \end{table}
 
@@ -1460,16 +1474,15 @@ Las dos condiciones experimentales son:
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|p{2.4cm}|p{4.0cm}|p{6.8cm}|}
-\hline
+\begin{tabular}{p{2.4cm} p{4.0cm} p{6.8cm}}
+\toprule
 \textbf{Condición} & \textbf{Herramientas activas} & \textbf{Descripción} \\
-\hline
-\texttt{baseline} & Herramientas nativas CLI & Solo Read, Write, Edit, Bash, Grep. Sin plugins ni servidores MCP adicionales. Actúa como línea base. \\
-\hline
-\texttt{colbPowers} & Nativas + colbPowers + code-review-graph & El agente sigue el flujo SDD de colbPowers con acceso al servidor MCP de code-review-graph. La tarea sigue el ciclo: constitution $\rightarrow$ features $\rightarrow$ spec $\rightarrow$ plan $\rightarrow$ execute $\rightarrow$ review. \\
-\hline
+\midrule
+\textbf{\texttt{baseline}} & Herramientas nativas CLI & Solo Read, Write, Edit, Bash, Grep. Sin plugins ni servidores MCP adicionales. Actúa como línea base. \\
+\textbf{\texttt{colbPowers}} & Nativas + colbPowers + code-review-graph & El agente sigue el flujo SDD de colbPowers con acceso al servidor MCP de code-review-graph. La tarea sigue el ciclo: constitution $\rightarrow$ features $\rightarrow$ spec $\rightarrow$ plan $\rightarrow$ execute $\rightarrow$ review. \\
+\bottomrule
 \end{tabular}
-\caption{Condiciones experimentales}
+\caption{Condiciones experimentales. Elaboración propia.}
 \label{tab:condiciones_experimentales}
 \end{table}
 
@@ -1514,20 +1527,20 @@ El proyecto consiste en una aplicación de escritorio desarrollada con el SDK \t
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|r|r|r|r|r|r|}
-\hline
+\begin{tabular}{l l r r r r r r}
+\toprule
 \textbf{Condición} & \textbf{Ejecución} & \textbf{Total (M)} & \textbf{Input (M)} & \textbf{Output (M)} & \textbf{Caché (M)} & \textbf{Tool calls} & \textbf{CRG} \\
-\hline
-baseline & Ejec.~1 & 3,67 & 1,15 & 0,02 & 2,49 & 74 & 0 \\
+\midrule
+\textbf{baseline} & Ejec.~1 & 3,67 & 1,15 & 0,02 & 2,49 & 74 & 0 \\
  & Ejec.~2 & 2,76 & 0,89 & 0,02 & 1,85 & 68 & 0 \\
  & Ejec.~3 & 3,37 & 0,91 & 0,02 & 2,43 & 66 & 0 \\
  & \textbf{Media} & \textbf{3,26} & \textbf{0,98} & \textbf{0,02} & \textbf{2,26} & \textbf{69} & \textbf{0} \\
-\hline
-colbPowers & Ejec.~1 & 10,64 & 5,40 & 0,07 & 5,15 & 108 & 0 \\
+\midrule
+\textbf{colbPowers} & Ejec.~1 & 10,64 & 5,40 & 0,07 & 5,15 & 108 & 0 \\
  & Ejec.~2 & 10,55 & 4,18 & 0,07 & 6,27 & 71 & 2 \\
  & Ejec.~3 & 6,95 & 2,61 & 0,05 & 4,27 & 98 & 0 \\
  & \textbf{Media} & \textbf{9,38} & \textbf{4,07} & \textbf{0,06} & \textbf{5,23} & \textbf{92} & \textbf{0,7} \\
-\hline
+\bottomrule
 \end{tabular}
 }
 \caption{Caso 1 --- OpenCode con DeepSeek V4-Flash. Caché = tokens leídos de caché.}
@@ -1537,20 +1550,20 @@ colbPowers & Ejec.~1 & 10,64 & 5,40 & 0,07 & 5,15 & 108 & 0 \\
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|r|r|r|r|r|r|}
-\hline
+\begin{tabular}{l l r r r r r r}
+\toprule
 \textbf{Condición} & \textbf{Ejecución} & \textbf{Total (M)} & \textbf{Input (M)} & \textbf{Output (M)} & \textbf{Caché (M)} & \textbf{Tool calls} & \textbf{CRG} \\
-\hline
-baseline & Ejec.~1 & 6,64 & 0,01 & 0,04 & 6,50 & 76 & 0 \\
+\midrule
+\textbf{baseline} & Ejec.~1 & 6,64 & 0,01 & 0,04 & 6,50 & 76 & 0 \\
  & Ejec.~2 & 2,24 & 0,01 & 0,03 & 2,15 & 44 & 0 \\
  & Ejec.~3 & 2,33 & 0,00 & 0,03 & 2,25 & 38 & 0 \\
  & \textbf{Media} & \textbf{3,74} & \textbf{0,00} & \textbf{0,03} & \textbf{3,63} & \textbf{53} & \textbf{0} \\
-\hline
-colbPowers & Ejec.~1 & 12,23 & 0,00 & 0,11 & 11,66 & 56 & 0 \\
+\midrule
+\textbf{colbPowers} & Ejec.~1 & 12,23 & 0,00 & 0,11 & 11,66 & 56 & 0 \\
  & Ejec.~2 & 14,91 & 0,00 & 0,10 & 14,28 & 56 & 0 \\
  & Ejec.~3 & 15,85 & 0,00 & 0,11 & 15,15 & 76 & 3 \\
  & \textbf{Media} & \textbf{14,33} & \textbf{0,00} & \textbf{0,11} & \textbf{13,70} & \textbf{63} & \textbf{1,0} \\
-\hline
+\bottomrule
 \end{tabular}
 }
 \caption{Caso 1 --- ClaudeCode con Haiku~4.5. Caché = tokens leídos de caché.}
@@ -1574,20 +1587,20 @@ Este caso es especialmente relevante para evaluar colbPowers, ya que puede ejecu
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|r|r|r|r|r|}
-\hline
+\begin{tabular}{l l r r r r r}
+\toprule
 \textbf{Condición} & \textbf{Ejecución} & \textbf{Tokens (M)} & \textbf{Tool calls} & \textbf{CRG} & \textbf{Comp. ciclom.} & \textbf{Mant. Index} \\
-\hline
-baseline & Ejec.~1 & 1,59 & 36 & 0 & 4,67 & 44,09 \\
+\midrule
+\textbf{baseline} & Ejec.~1 & 1,59 & 36 & 0 & 4,67 & 44,09 \\
  & Ejec.~2 & 2,52 & 70 & 0 & 4,00 & 39,24 \\
  & Ejec.~3 & 1,53 & 49 & 0 & 4,25 & 41,30 \\
  & \textbf{Media} & \textbf{1,88} & \textbf{52} & \textbf{0} & \textbf{4,31} & \textbf{41,54} \\
-\hline
-colbPowers & Ejec.~1 & 6,53 & 80 & 1 & 3,27 & 47,20 \\
+\midrule
+\textbf{colbPowers} & Ejec.~1 & 6,53 & 80 & 1 & 3,27 & 47,20 \\
  & Ejec.~2 & 10,22 & 86 & 1 & 2,97 & 48,66 \\
  & Ejec.~3 & 8,47 & 89 & 0 & 3,16 & 47,47 \\
  & \textbf{Media} & \textbf{8,41} & \textbf{85} & \textbf{0,7} & \textbf{3,13} & \textbf{47,78} \\
-\hline
+\bottomrule
 \end{tabular}
 }
 \caption{Caso 2 --- OpenCode con DeepSeek V4-Flash.}
@@ -1597,23 +1610,23 @@ colbPowers & Ejec.~1 & 6,53 & 80 & 1 & 3,27 & 47,20 \\
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|r|r|r|r|r|}
-\hline
+\begin{tabular}{l l r r r r r}
+\toprule
 \textbf{Condición} & \textbf{Ejecución} & \textbf{Tokens (M)} & \textbf{Tool calls} & \textbf{CRG} & \textbf{Comp. ciclom.} & \textbf{Mant. Index} \\
-\hline
-baseline & Ejec.~1 & 6,12 & 90 & 0 & 2,50 & 49,92 \\
+\midrule
+\textbf{baseline} & Ejec.~1 & 6,12 & 90 & 0 & 2,50 & 49,92 \\
  & Ejec.~2 & 2,75 & 54 & 0 & 3,23 & 62,24 \\
  & Ejec.~3 & 2,37 & 44 & 0 & 2,83 & 58,76 \\
  & \textbf{Media} & \textbf{3,74} & \textbf{63} & \textbf{0} & \textbf{2,85} & \textbf{56,97} \\
-\hline
-colbPowers & Ejec.~1 & 7,30 & 46 & 0 & 2,77 & 50,56 \\
+\midrule
+\textbf{colbPowers} & Ejec.~1 & 7,30 & 46 & 0 & 2,77 & 50,56 \\
  & Ejec.~2 & 6,28 & 44 & 1 & 3,65 & 67,18 \\
  & Ejec.~3 & 10,97 & 55 & 0 & 2,90 & 59,28 \\
  & \textbf{Media} & \textbf{8,19} & \textbf{48} & \textbf{0,3} & \textbf{3,11} & \textbf{59,01} \\
-\hline
+\bottomrule
 \end{tabular}
 }
-\caption{Caso 2 --- ClaudeCode con Haiku~4.5}
+\caption{Caso 2 --- ClaudeCode con Haiku~4.5. Elaboración propia.}
 \label{tab:caso2_claudecode}
 \end{table}
 
@@ -1789,10 +1802,10 @@ A continuación se listan las cosas que considero que están pendientes en la me
     \item \textbf{Acabar de comentar los experimentos en mayor detalle:} Los experimentos han sido comentados y se han añadido graficas para comparar las difereentes configuraciones, pero se puede expandir bastante este apartado. He hecho un script para hacer un estudio estadístico de los resultados, me falta añadirlo. También tengo un montón de graficos que no he puesto en el apartado pero podrian ir a un posible Anexo. (Medio hecho)
     \item \textbf{Conclusiones y trabajo futuro:} Aún queda escribir este apartado. (Trabajo futuro cubierto)
     \item \textbf{Apartado de "Uso de IA en el proyecto":} Compañeros mios han implementado un apartado que me parecería muy interesante de mencionar. Básicamente consiste en hacer una explicación de que usos se le han dado a la IA generativa para el desarrollo del proyecto, puesto que la he utilizado para hacer brainstorming, asistencia en la programación de modulos del proyecto, y ha ayudado a formular secciones de la memoría. Por supuesto se ha hecho con el máximo cuidado para evitar que haya basura, pero aún así considero que no es mala idea para tener una máxima transparencia hacer un tipo de disclaimer. (Cubiero en el aparado \ref{sec:uso_ia})
-    \item \textbf{Apartado de "Sistema completo":} Me gustaría añadir un apartado en el que explique el funcionamiento de el sistema completo y cómo seria el flujo, desde empezar con la transcripción del cliente, hasta el desarrollo de código y seguimiento del cliente. Ya tengo el diagrama preparado, pero no estoy muy seguro de donde poner la sección. 
+    \item \textbf{Apartado de "Sistema completo":} Me gustaría añadir un apartado en el que explique el funcionamiento de el sistema completo y cómo seria el flujo, desde empezar con la transcripción del cliente, hasta el desarrollo de código y seguimiento del cliente. Ya tengo el diagrama preparado, pero no estoy muy seguro de donde poner la sección. (Ahora mismo está en la ultima subsección de la primera sección, pero no estoy seguro de que sea el mejor sitio)
     \item \textbf{Revisar apartados 1-4:} Se han cambiado los apartados 1 a 4 para que sean compatibles con el nuevo estado del proyecto, se han ido añadiendo referencias a las diferencias entre la planifiación inicial de GEP y la planificación final. Queda revisarlo en mayor profundidad, pero ya debería estar.
-    \item \textbf{Modulos de transcripción y documentación:} Como David recomendó, he combinado los modulos de toma de requerimientos y seguimiento del cliente. Para el seguimiento del cliente me gustaría añadir un diagrama de flujo explicando como funciona el proceso. También quedaría repasar algunos apartados y extender alguna sección, sobretodo para el seguimiento del cliente.
-    \item \textbf{Apartado de Spec Driven Development:} Este apartado es el mas extenso, me gustaría poner algo de feeedback visual de cómo funcionan los hooks, plugins, y en general que flujo siguen las herramientas como Opencode y Claudecode. También me he de leer de nuevo toda la sección para asegurarme de que haya una coherencia adecuada.
+    \item \textbf{Modulos de transcripción y documentación:} Como David recomendó, he combinado los modulos de toma de requerimientos y seguimiento del cliente. Para el seguimiento del cliente me gustaría añadir un diagrama de flujo explicando como funciona el proceso. También quedaría repasar algunos apartados y extender alguna sección, sobretodo para el seguimiento del cliente. (Añadidos diagramas para seguimiento del cliente)
+    \item \textbf{Apartado de Spec Driven Development:} Este apartado es el mas extenso, me gustaría poner algo de feeedback visual de cómo funcionan los hooks, plugins, y en general que flujo siguen las herramientas como Opencode y Claudecode. También me he de leer de nuevo toda la sección para asegurarme de que haya una coherencia adecuada. (He añadido algún diagrama)
 \end{enumerate}
 
 \newpage
