@@ -45,7 +45,7 @@
     
     {\Huge \textsc{\textbf{}}\par}
     \vspace{2cm}
-    {\huge \textbf{S{\LARGE ISTEMA} I{\LARGE NTELIGENTE} {\LARGE DE} A{\LARGE SISTENCIA} {\LARGE AL} D{\LARGE ESARROLLO} E{\LARGE STRUCTURADO} {\LARGE Y} S{\LARGE EGUIMIENTO} {\LARGE DE} P{\LARGE ROYECTOS} {\LARGE DE} S{\LARGE OFTWARE}}\par} % Esto es ridículisimo, pero me gusta como se ven las letras, escribo aquí el texto por si en algún momento queremos hacer ctrl + f poder encontrarlo "SISTEMA INTELIGENTE DE ASISTENCIA AL DESARROLLO ESTRUCTURADO Y SEGUIMIENTO DE PROYECTOS DE SOFTWARE"
+    {\huge \textbf{S{\LARGE ISTEMA} I{\LARGE NTELIGENTE} {\LARGE DE} A{\LARGE SISTENCIA} {\LARGE AL} D{\LARGE ESARROLLO} E{\LARGE STRUCTURADO} {\LARGE Y} S{\LARGE EGUIMIENTO} {\LARGE DE} P{\LARGE ROYECTOS} {\LARGE DE} S{\LARGE OFTWARE}}\par}
     \vspace{2cm}
     
     {\normalsize \Large\textbf{ {Adrià Cebrián Ruiz}}\\ \par}
@@ -120,7 +120,7 @@ El present projecte consisteix en el disseny i aplicació d'un sistema intel·li
 
 El presente trabajo consiste en el diseño de un sistema de automatización para el desarrollo y diseño de proyectos de software, utilizando como pilar principal herramientas basadas en \textit{LLMs}. El desarrollo de este sistema se enmarca y diseña para su uso dentro de una empresa real, \textit{Colb.ai}, dedicada principalmente a la consultoría de proyectos de software.
 
-Es innegable que las herramientas de inteligencia artificial, principalmente los \textit{Large Language Models}, están cambiando la forma en que se desarrollan los proyectos de software para la mayor parte de empresas del sector. Estas tecnologías presentan la oportunidad de automatizar muchas de las tareas que tradicionalmente habían sido llevadas a cabo exclusivamente por los desarrolladores humanos, pero su adopción sin la supervisión humana adecuada conlleva riesgos que pueden comprometer la calidad y sostenibilidad del software generado, sobretodo a largo plazo.
+Es innegable que las herramientas de inteligencia artificial, principalmente los \textit{Large Language Models}, están cambiando la forma en que se desarrollan los proyectos de software para la mayor parte de empresas del sector. Estas tecnologías presentan la oportunidad de automatizar muchas de las tareas que tradicionalmente habían sido llevadas a cabo exclusivamente por los desarrolladores humanos, pero su adopción sin la supervisión humana adecuada conlleva riesgos que pueden comprometer la calidad y sostenibilidad del software generado, sobre todo a largo plazo.
 
 Se presentan a continuación tres módulos que se van a automatizar en el desarrollo de este TFG:
 \begin{enumerate}
@@ -324,7 +324,15 @@ De acuerdo con las necesidades de \textit{Colb.Ai} y la filosofía de documentar
 
 \subsection{Objetivo General}
 \label{sec:objetivo_general}
-El objetivo principal de este proyecto es desarrollar \textbf{colbPowers} como extensión de \textit{superpowers} que añade \texttt{constitution.md} y \texttt{features.md} como contexto global compartido, estructurando el flujo de desarrollo mediante un agente orquestador que coordina subagentes especializados. Este sistema operará de forma integrada en el entorno local del desarrollador, utilizando especificaciones en lenguaje natural como motor principal para planificar, estructurar y auditar la creación de software, garantizando que el código generado sea el resultado directo de una planificación previa.
+El objetivo principal de este proyecto es diseñar e implementar un \textbf{sistema integral de asistencia al desarrollo de software}, articulado en tres pilares originales:
+
+\begin{enumerate}
+    \item \textbf{Plugin colbPowers} para los asistentes CLI ClaudeCode y OpenCode: extiende \textit{superpowers} añadiendo \texttt{constitution.md} y \texttt{features.md} como contexto persistente compartido entre sesiones y desarrolladores, e implementa el flujo \textit{Spec-First} mediante un agente orquestador y subagentes especializados. La integración con OpenCode requirió el análisis en profundidad de su arquitectura interna ---disponible como software libre--- y el desarrollo manual de \textit{hooks} nativos en JavaScript. Este trabajo fue necesario para lograr la compatibilidad de OpenCode con herramientas como \textit{code-review-graph}, que implementan su integración mediante hooks nativos de ClaudeCode: dado que los sistemas de hooks de ambos asistentes difieren arquitectónicamente, fue necesario implementar los adaptadores equivalentes en JavaScript para que OpenCode pudiera invocar estos servidores MCP con el mismo comportamiento.
+    \item \textbf{Módulo de toma de requerimientos}: transforma transcripciones de reuniones con el cliente en planes de implementación estructurados. Incluye un componente de transcripción con Azure Speech Service (con diarización de hablantes y gestión idempotente mediante máquina de estados y hashes SHA-256) y un pipeline de procesamiento propio basado en LangChain y Tavily para búsqueda semántica y síntesis arquitectónica.
+    \item \textbf{Módulo de seguimiento del cliente}: automatiza la generación de documentación post-reunión en el formato específico de Colb.AI, disponible como skill de Claude Cowork y como implementación propia de código abierto con python-docx.
+\end{enumerate}
+
+El conjunto opera de forma integrada en el entorno local del desarrollador, cubriendo el ciclo de vida completo del software desde la primera reunión con el cliente hasta la entrega y seguimiento iterativo del producto.
 
 La validación de los resultados del sistema se hará a través de ciertas métricas de análisis de calidad del código, conocidas y utilizadas en el paradigma del desarrollo de software. Además de, por supuesto, los revisores humanos, que han de analizar en todo momento el código generado y los resultados producidos, haciendo a este un sistema con lo que se conoce \textit{Human In The Loop}, cosa que significa que en todo momento hay supervisión e intervención humana. \\
 
@@ -1053,7 +1061,6 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 
 \subsubsection{Dimensión económica}
 \label{sec:dimension_economica}
-% Añadir beneficios del proyecto. ¿Porque puede merecer la pena gastarse 14.000€ en esto?
 \textbf{PPP:} El coste total del proyecto se estima en 14.099,81€. Tras reflexionar sobre este presupuesto, considero que es realista y competitivo para un desarrollo de 540 horas que integra tecnologías punteras de IA. La optimización del gasto se logra mediante el uso de herramientas de código abierto y un modelo de pago por uso para las APIs, centrando la inversión en el valor del esfuerzo humano y la investigación.
 
 \textbf{Vida Útil:} Actualmente, la industria aborda el desarrollo asistido por IA de forma impulsiva (Code-Driven), lo que reduce costes iniciales pero dispara los de mantenimiento debido a la deuda técnica. Esta solución basada en SDD mejora económicamente este escenario al reducir dicha deuda desde la fase de planificación. Consideramos que la adopción del sistema desarrollado en este TFG puede llegar a decrementar las horas de mantenimiento y desarrollo a largo plazo, al garantizar que toda implementación esté respaldada por una especificación validada y coherente con la arquitectura del proyecto. Idealmente, el ahorro en tiempo de comprensión y corrección de errores debería amortizar la inversión inicial del proyecto.
@@ -1322,7 +1329,7 @@ El valor diferencial de los asistentes CLI frente a otras soluciones reside en s
 
 \subsubsection{El ciclo de vida completo de una sesión en OpenCode}
 \label{sec:ciclo_vida_opencode}
-Para extender y configurar OpenCode de forma eficaz, es necesario comprender con exactitud en qué momento del ciclo se carga cada componente ---plugins, skills, herramientas y agentes--- y cómo interactúan durante una conversación. Aprovechando que opencode es una herramienta de codigo abierto, a continuación vamos a describir el ciclo de funcionamiento de forma detallada, desde la inicialización del proceso hasta la entrega de la respuesta al usuario. % TODO: Cite oficial opencode repo
+Para extender y configurar OpenCode de forma eficaz, es necesario comprender con exactitud en qué momento del ciclo se carga cada componente ---plugins, skills, herramientas y agentes--- y cómo interactúan durante una conversación. Aprovechando que opencode es una herramienta de código abierto, a continuación vamos a describir el ciclo de funcionamiento de forma detallada, desde la inicialización del proceso hasta la entrega de la respuesta al usuario.
 
 \begin{figure}[H]
     \centering
@@ -1361,7 +1368,6 @@ Cuando el modelo decide invocar una herramienta, el runtime recibe el evento cor
 \paragraph{Carga perezosa de skills bajo demanda.}
 La herramienta \texttt{skill} ilustra con claridad el principio de carga perezosa. Cuando el modelo, al ver el catálogo de skills en el system prompt, decide que necesita las instrucciones de una skill concreta para ejecutar una tarea, invoca la herramienta \texttt{skill} con el nombre de la skill como parámetro. Es en ese momento ---y solo en ese momento--- cuando el sistema lee el archivo \texttt{SKILL.md} correspondiente del disco, enumera los ficheros asociados a la skill (hasta un máximo de diez), y devuelve el contenido completo al modelo envuelto en una etiqueta XML estructurada. De esta forma, el contenido detallado de las skills no ocupa tokens del contexto inicial: solo las descripciones breves del catálogo están siempre presentes; los contenidos completos se cargan únicamente cuando el modelo los solicita. La skill \textit{using-colbPowers} de colbPowers es una excepción deliberada a este principio: al inyectarse mediante el hook SessionStart antes de que comience la conversación, su contenido completo llega al modelo directamente en el system prompt, sin pasar por el mecanismo de carga perezosa. Esto garantiza que las reglas de orquestación estén activas desde el primer mensaje, sin depender de que el modelo recuerde invocar la herramienta \texttt{skill}.
 
-% TODO: cite filtered ClaudeCode repo?
 \paragraph{Similitud con ClaudeCode.}
 ClaudeCode implementa un pipeline estructuralmente análogo en lo que respecta al ciclo de vida de la conversación. Aunque las implementaciones concretas difieren ---ClaudeCode no es software libre---, el flujo conceptual comparte los mismos patrones: inicialización perezosa de servicios al inicio de la sesión, construcción del system prompt a partir de archivos de instrucciones y catálogos de skills, bucle ReAct con llamadas a herramienta y streaming de tokens, carga perezosa de skills bajo demanda, y mecanismos de hooks para interceptar el ciclo de vida.
 
@@ -1397,7 +1403,6 @@ colbPowers hace un uso central de ambos mecanismos. Las skills definen el compor
 \label{sec:herramientas_apoyo_sdd}
 La efectividad del flujo SDD depende en gran medida de la calidad del contexto que el agente tiene disponible en cada momento. A continuación se describen las herramientas principales integradas en el sistema.
 
-% Todo, cite Tree-Sitter here
 \subsubsection{code-review-graph}
 \label{sec:code_review_graph}
 code-review-graph \cite{code_review_graph_2025} es una herramienta de código abierto que utiliza el parser de sintaxis Tree-Sitter para analizar el repositorio y construir un grafo de dependencias entre las distintas entidades de código (funciones, clases, módulos). Este grafo se almacena en una base de datos SQLite local y se expone al agente a través de un servidor MCP, proporcionando un mecanismo eficiente para navegar la estructura del código sin necesidad de leer todos los archivos del proyecto.
@@ -1580,7 +1585,7 @@ En ambos asistentes el paso de baseline a colbPowers multiplica el consumo de to
 
 Sin embargo, este sobrecoste de tokens no debe interpretarse en aislamiento. colbPowers genera como subproducto documentación estructurada (constitución del proyecto, especificación de cambios, plan de implementación) que persiste en el repositorio y facilita la incorporación de nuevos desarrolladores. Además, el diseño de colbPowers ---con su énfasis en especificación previa y revisión sistemática--- propicia un ambiente donde los tests forman parte natural del flujo, en lugar de ser un trabajo adicional. En un proyecto de desarrollo profesional con horizonte de vida largo, estos beneficios transcienden el consumo inmediato de tokens.
 
-El desglose de tokens revela una diferencia estructural entre los dos asistentes. En OpenCode, los tokens de entrada no cacheados son significativos (media 0,98~M en baseline, 4,07~M en colbPowers), lo que refleja que cada subagente inicia un contexto propio sin aprovechar caché de sesiones anteriores. En ClaudeCode, en cambio, los tokens de entrada son prácticamente nulos (aaprox 0,00~M) y casi la totalidad del consumo corresponde a tokens de caché (3,63~M en baseline, 13,70~M en colbPowers): la API de Anthropic almacena el prefijo del prompt y las peticiones sucesivas leen el contexto desde caché, lo que reduce el coste real pero infla el contador total. Esta asimetría hace que la comparación directa de tokens totales entre OpenCode y ClaudeCode no sea completamente homogénea. 
+El desglose de tokens revela una diferencia estructural entre los dos asistentes. En OpenCode, los tokens de entrada no cacheados son significativos (media 0,98~M en baseline, 4,07~M en colbPowers), lo que refleja que cada subagente inicia un contexto propio sin aprovechar caché de sesiones anteriores. En ClaudeCode, en cambio, los tokens de entrada son prácticamente nulos (aprox.\ 0,00~M) y casi la totalidad del consumo corresponde a tokens de caché (3,63~M en baseline, 13,70~M en colbPowers): la API de Anthropic almacena el prefijo del prompt y las peticiones sucesivas leen el contexto desde caché, lo que reduce el coste real pero infla el contador total. Esta asimetría hace que la comparación directa de tokens totales entre OpenCode y ClaudeCode no sea completamente homogénea. 
 
 Finalmente, nótese que el Caso 1 no incluye métricas de calidad de código. Al tratarse de un proyecto ya iniciado con base preexistente, medir la complejidad ciclomática o el índice de mantenibilidad de cambios puntuales en archivos existentes resultaría metodológicamente problemático. El Caso 1 evalúa el comportamiento del sistema sobre un repositorio real en producción, aportando evidencia sobre el overhead de tokens y el uso del grafo de dependencias en tareas de modificación incremental. Las métricas de calidad de código se reservan para el Caso 2, donde el agente es responsable de la arquitectura completa, permitiendo una comparación más limpia entre condiciones. 
 

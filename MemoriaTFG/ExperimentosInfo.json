@@ -12,6 +12,8 @@
                         "github_branch":"D1_OPENCODE_DeepSeekV4-Flash",
                         "token_input": "1", 
                         "token_output": "1",
+                        "avg_cyclomatic_complexity": 3.0454545454545454,
+                        "mantainability_index": 69.54545454545455,
                         "toolcalls": 
                         {
                             "read": 36,
@@ -186,6 +188,8 @@
                         "github_branch":"D2_OPENCODE_DeepSeekV4-Flash",
                         "token_input": "1", 
                         "token_output": "1",
+                        "avg_cyclomatic_complexity": 3.526315789473684,
+                        "mantainability_index": 65.10526315789474,
                         "toolcalls": 
                         {
                             "read": 24,
@@ -398,6 +402,8 @@
                         "github_branch":"D3_OPENCODE_DeepSeekV4-Flash",
                         "token_input": "1", 
                         "token_output": "1",
+                        "avg_cyclomatic_complexity": 3.526315789473684,
+                        "mantainability_index": 65.10526315789474,
                         "toolcalls": 
                         {
                             "read": 53,
@@ -591,6 +597,8 @@
                         "github_branch":"1",
                         "token_input": "1", 
                         "token_output": "1",
+                        "avg_cyclomatic_complexity": 2.673076923076923,
+                        "mantainability_index": 64.84615384615384,
                         "toolcalls": 
                         {
                             "read": 41,
@@ -633,6 +641,8 @@
                         "github_branch":"1",
                         "token_input": "1", 
                         "token_output": "1",
+                        "avg_cyclomatic_complexity": 2.838709677419355,
+                        "mantainability_index": 68.66129032258064,
                         "toolcalls":
                         {
                             "read": 34,
@@ -674,6 +684,8 @@
                         "github_branch":"1",
                         "token_input": "1", 
                         "token_output": "1",
+                        "avg_cyclomatic_complexity": 2.5,
+                        "mantainability_index": 69.26666666666667,
                         "toolcalls": 
                         {
                             "read": 38,
@@ -721,6 +733,8 @@
                         "github_branch":"D1_CLAUDECODE_Haiku4.5",
                         "token_input": "1", 
                         "token_output": "1",
+                        "avg_cyclomatic_complexity": 2.96875,
+                        "mantainability_index": 67.03125,
                         "toolcalls": 
                         {
                             "Read": 15,
@@ -889,6 +903,8 @@
                         "github_branch":"D2_CLAUDECODE_Haiku4.5",
                         "token_input": "1", 
                         "token_output": "1",
+                        "avg_cyclomatic_complexity": 3.533333333333333,
+                        "mantainability_index": 69.03333333333333,
                         "toolcalls":
                         {
                             "Read": 18,
@@ -1144,6 +1160,8 @@
                         "github_branch":"D3_CLAUDECODE_Haiku4.5",
                         "token_input": "1", 
                         "token_output": "1",
+                        "avg_cyclomatic_complexity": 3.938775510204082,
+                        "mantainability_index": 63.51020408163265,
                         "toolcalls":
                         {
                             "Read": 17,
@@ -1413,9 +1431,11 @@
                     {
                         "session ID": "209b5bf4-1df0-4603-96f2-e0a91adb2798",
                         "token_usage": "1",
-                        "github_branch":"1",
+                        "github_branch":"A1_CLAUDECODE_Haiku4.5",
                         "token_input": "1", 
                         "token_output": "1",
+                        "avg_cyclomatic_complexity": 2.760869565217391,
+                        "mantainability_index": 63.630434782608695,
                         "toolcalls":
                         {
                             "Bash": 32,
@@ -1455,6 +1475,8 @@
                         "github_branch":"A2_CLAUDECODE_Haiku4.5",
                         "token_input": "1", 
                         "token_output": "1",
+                        "avg_cyclomatic_complexity": 3.1914893617021276,
+                        "mantainability_index": 70.51063829787235,
                         "toolcalls":
                         {
                             "Bash": 19,
@@ -1494,6 +1516,8 @@
                         "github_branch":"A3_CLAUDECODE_Haiku4.5",
                         "token_input": "1", 
                         "token_output": "1",
+                        "avg_cyclomatic_complexity": 2.977272727272727,
+                        "mantainability_index": 64.02272727272727,
                         "toolcalls": 
                         {
                             "Bash": 18,
