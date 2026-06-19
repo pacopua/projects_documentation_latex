@@ -1,4 +1,5 @@
 Lectura entera TFG con apuntes:
+# Review post lectura mia
 ---
 
 - Abstract: debería añadir "keywords"?
@@ -57,13 +58,29 @@ Lectura entera TFG con apuntes:
 
 7.2: Añadir un tipo de recuadro en gris que sea una nota aclarando que con n=3, estos resultados son meramente indicativos y se deberían sacar conclusiones con cautela?
 
-Se explica bien la metodología estadistica que se ha seguido??
+Se explica bien la metodología estadistica que se ha seguido?? 
 
 ---
 
 9. 
 	+ Añadir en las conclusiones si se han cubierto los requisitos funcionales y no funcionales definidos anteriormente. [Done]
 	+ Repasar conclusiones de resultados estadísticos.
+
 ---
 
 Anexo, eliminar mención de "Explicación completa", cuando realmente no es una explicación completa [DONE]
+
+# Review de David
+
+Hedges' g en vez de cohens. Decirme en que me he basa
+Cambiar cosasa que están a futuro sobretodo para los apartados 1-4 de la memoria.
+Cambiar lo de el "Uso de IA", que quede claro que la IA es una herramienta.
+Glosario de siglas.
+Keywords después del abstract.
+Intentar vigilar con las afirmaciones, poner referencias.
+Apartado 1.6 (Propuesta). Explicar qué se hace exactamente, que no hago codigo desde 0, sino que junto un montón de cosas ya implementadas en un solo sistema.
+Cambiar 6.3.3, explicar que colbPowers se ha desarrollado para este proyecto, entre otras cosas
+Cambiar readme.md de colbPowers para que ponga colbPowers y no superpowers.
+El p-value mide si hay o no efecto, mientras que cohen y hedges miden la magnitud del efecto. Cambiar las tablas para que se vea reflejado.
+Cambiar nombre de la lsita de tablas -> "Lista de tablas"
+Cambiar los diagramas con los módulos!
