@@ -61,8 +61,9 @@ Se explica bien la metodología estadistica que se ha seguido??
 
 ---
 
-9. Añadir en las conclusiones si se han cubierto los requisitos funcionales y no funcionales definidos anteriormente.
-
+9. 
+	+ Añadir en las conclusiones si se han cubierto los requisitos funcionales y no funcionales definidos anteriormente. [Done]
+	+ Repasar conclusiones de resultados estadísticos.
 ---
 
-Anexo, eliminar mención de "Explicación completa", cuando realmente no es una explicación completa
+Anexo, eliminar mención de "Explicación completa", cuando realmente no es una explicación completa [DONE]

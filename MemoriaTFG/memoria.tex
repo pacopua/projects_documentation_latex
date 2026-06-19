@@ -359,7 +359,6 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
     \item El sistema debe permitir la ingesta y gestión de reglas fundamentales del proyecto (pila tecnológica, estándares de código) y mantener un registro actualizado de las características a desarrollar.
     \item El sistema debe ser capaz de interpretar funcionalidades de alto nivel y desglosarlas en un plan de tareas granulares y estructuradas.
     \item El sistema debe incluir un mecanismo de auditoría autónoma que contraste el código fuente generado con las especificaciones documentadas, para ver si existe algún conflicto con las documentación y el código generado.
-    \item Se le ha de ofrecer al desarrollador métricas para analizar la calidad y la estructura del código generado. Las métricas utilizadas serán: \textit{Complejidad Ciclomática}\cite{McCabe_Complexity} del código, y el Índice de Sostenibilidad del Código \cite{microsoft_maintainability_index}.
     \item El sistema debe incluir un módulo de procesamiento de transcripciones capaz de generar planes de implementación estructurados a partir de reuniones con el cliente, explorando automáticamente los \textit{frameworks} y tecnologías relevantes mediante búsqueda semántica en la web.
     \item El sistema debe incluir un módulo de generación de documentación de seguimiento post-reunión con el formato específico de \textit{Colb.AI}, a partir de la transcripción de reuniones periódicas con el cliente.
 \end{itemize}
@@ -1838,11 +1837,44 @@ En este apartado se presentan las asignaturas de las cuales se han podido utiliz
 \subsection{Conclusiones generales}
 \label{sec:conclusiones_generales}
 
-Este trabajo ha abordado un problema relevante en el desarrollo de software asistido por inteligencia artificial: la tendencia del paradigma \textit{Code-Driven} a generar código de baja calidad estructural cuando no existe una fase previa de especificación y planificación. La propuesta central del proyecto ---el plugin colbPowers y el flujo \textit{Spec-Driven Development} (SDD)--- ha demostrado ser técnicamente viable y empíricamente evaluable dentro del entorno de trabajo de \textit{Colb.AI}.
+Este trabajo ha abordado un problema relevante en el desarrollo de software asistido por inteligencia artificial: la tendencia del paradigma \textit{Code-Driven} a generar código de baja calidad estructural cuando no existe una fase previa de especificación y planificación. La propuesta central del proyecto ---el plugin colbPowers y el flujo \textit{Spec-Driven Development} (SDD)--- ha demostrado ser técnicamente viable y evaluable dentro del entorno de trabajo de \textit{Colb.AI}, donde actualmente se utiliza este sistema. 
 
-\subsubsection*{Cumplimiento de objetivos}
+\subsubsection*{Cumplimiento de requisitos}
 
-El sistema cumple los cuatro sub-objetivos funcionales y arquitectónicos establecidos al inicio del proyecto. Se ha conseguido una separación efectiva de responsabilidades mediante subagentes especializados (implementador, revisor de código y revisor de coherencia con especificaciones); se mantiene coherencia arquitectónica entre sesiones gracias a \texttt{constitution.md} y \texttt{features.md} como fuente de verdad compartida; los agentes pueden ejecutar acciones reales y verificables sobre el repositorio; y existe trazabilidad completa entre la especificación y el código entregado a través del historial git. Los módulos de toma de requerimientos y seguimiento del cliente completan la cobertura del ciclo de vida del software, desde la primera reunión con el cliente hasta la entrega y seguimiento iterativo.
+Se van a mostrar los requisitos funcionales y no funcionales definidos con anteriorridad en \ref{sec:req_funcionales} y \ref{sec:req_no_funcionales}, se iterará sobre cada uno de estos justificando si se ha conseguido cubrir adecuadamente.
+
+\paragraph{Requisitos funcionales}
+
+\subparagraph{El sistema debe permitir la ingesta y gestión de reglas fundamentales del proyecto (pila tecnológica, estándares de código) y mantener un registro actualizado de las características a desarrollar.}
+Este requisito queda cubierto mediante los archivos \texttt{constitution.md} y \texttt{features.md}, que actúan como fuente de verdad del proyecto. \texttt{constitution.md} centraliza la pila tecnológica y los estándares de código del proyecto; \texttt{features.md} mantiene el registro actualizado de funcionalidades pendientes, en progreso y completadas. Adicionalmente, los documentos \texttt{plan.md} y \texttt{spec.md} generados durante el flujo SDD permiten consultar qué apartados han sido ya implementados y de qué forma concreta se llevó a cabo su implementación. Todos estos archivos se actualizan de forma iterativa durante el flujo SDD y persisten versionados en el repositorio Git del proyecto.
+
+\subparagraph{El sistema debe ser capaz de interpretar funcionalidades de alto nivel y desglosarlas en un plan de tareas granulares y estructuradas.}
+Este requisito se implementa en la fase de planificación del flujo SDD, donde el agente orquestador genera un plan de tareas granulares a partir de una funcionalidad de alto nivel definida en \texttt{features.md} antes de delegar la implementación a los subagentes especializados. Este mecanismo ha sido validado en los dos casos experimentales del Capítulo~7.
+
+\subparagraph{El sistema debe incluir un mecanismo de auditoría autónoma que contraste el código fuente generado con las especificaciones documentadas, para ver si existe algún conflicto con las documentación y el código generado.}
+Este requisito queda cubierto por el subagente revisor de coherencia con especificaciones, que contrasta el código generado con los documentos de contexto (\texttt{constitution.md}, \texttt{features.md}) e identifica posibles conflictos o desviaciones. Como se discute en las limitaciones, este mecanismo es no determinista ---basado en instrucciones de \textit{prompt}--- y en uno de los experimentos el orquestador omitió su invocación, lo que representa la principal limitación en el cumplimiento de este requisito.
+
+\subparagraph{El sistema debe incluir un módulo de procesamiento de transcripciones capaz de generar planes de implementación estructurados a partir de reuniones con el cliente, explorando automáticamente los \textit{frameworks} y tecnologías relevantes mediante búsqueda semántica en la web.}
+Este requisito queda cubierto por el módulo de Toma de Requerimientos (Sección~\ref{sec:toma_requerimientos_cap}), que procesa la transcripción de una reunión inicial con el cliente y genera un plan de implementación estructurado. El módulo incluye búsqueda web automática para explorar \textit{frameworks} y tecnologías relevantes según el contexto del proyecto descrito en la reunión.
+
+\subparagraph{El sistema debe incluir un módulo de generación de documentación de seguimiento post-reunión con el formato específico de \textit{Colb.AI}, a partir de la transcripción de reuniones periódicas con el cliente.}
+Este requisito queda cubierto por el módulo de Seguimiento del Cliente (Sección~\ref{sec:seguimiento_cliente}), que genera documentación post-reunión en el formato específico de \textit{Colb.AI} a partir de la transcripción de reuniones periódicas. El módulo produce los artefactos de seguimiento utilizados actualmente en los proyectos de la empresa.
+
+\paragraph{Requisitos no funcionales}
+
+\subparagraph{Transparencia y Trazabilidad: Todo el estado, la memoria y las normativas manejadas por los agentes deben persistir en formatos de texto en un sistema de control de versiones.}
+Todos los artefactos del sistema ---\texttt{constitution.md}, \texttt{features.md}, los documentos generados por los módulos de transcripción y los propios \textit{prompts} y \textit{skills}--- son archivos de texto plano versionados en Git. Esto garantiza que cualquier cambio en el estado del sistema sea auditable y reversible, cumpliendo plenamente este requisito.
+
+\subparagraph{Integración con asistentes CLI: El plugin debe ser compatible con ClaudeCode y OpenCode, utilizando sus mecanismos nativos de extensibilidad (MCP, hooks, skills) para actuar directamente sobre los archivos locales del proyecto.}
+El plugin colbPowers ha sido validado experimentalmente sobre los dos asistentes CLI objetivo: ClaudeCode y OpenCode. La integración se realiza mediante los mecanismos nativos de cada plataforma: \texttt{CLAUDE.md} y \textit{skills} para ClaudeCode, y el directorio \texttt{.opencode/} con su sistema de reglas para OpenCode. Los experimentos del Capítulo~7 confirman la compatibilidad efectiva con ambos asistentes.
+
+\subparagraph{Modularidad: El diseño de los roles (\textit{prompts} y \textit{skills}) debe ser lo suficientemente modular para permitir futuras expansiones.}
+El sistema está estructurado en componentes independientes: subagentes especializados (implementador, revisor de código, revisor de coherencia), módulos de transcripción y documentación, y herramientas de apoyo como \textit{code-review-graph}. Esta separación de responsabilidades permite añadir, modificar o sustituir componentes sin afectar al resto del sistema. Las líneas de trabajo futuro descritas en la sección siguiente ilustran la viabilidad de extensiones concretas sobre esta arquitectura modular.
+
+\subparagraph{Reducción del \textit{vendor lock-in}.}
+Aunque este aspecto no fue formulado explícitamente como requisito no funcional, sino como un riesgo identificado en la Sección~\ref{sec:obstaculos_riesgos}, merece destacarse que ha sido abordado de forma muy satisfactoria a lo largo del proyecto. Para cada módulo o componente con dependencia de una plataforma comercial se ha desarrollado una alternativa propia o de código abierto: los módulos de transcripción disponen de implementaciones independientes de Claude Cowork; el flujo SDD puede ejecutarse tanto sobre ClaudeCode como sobre OpenCode; y las herramientas de análisis estático empleadas (radon, DCM) son de código abierto. Esta cobertura garantiza que el sistema pueda desplegarse y mantenerse sin quedar a la merced de un único proveedor externo.
+
+% El sistema cumple los cuatro sub-objetivos funcionales y arquitectónicos establecidos al inicio del proyecto. Se ha conseguido una separación efectiva de responsabilidades mediante subagentes especializados (implementador, revisor de código y revisor de coherencia con especificaciones); se mantiene coherencia arquitectónica entre sesiones gracias a \texttt{constitution.md} y \texttt{features.md} como fuente de verdad compartida; los agentes pueden ejecutar acciones reales y verificables sobre el repositorio; y existe trazabilidad completa entre la especificación y el código entregado a través del historial git. Los módulos de toma de requerimientos y seguimiento del cliente completan la cobertura del ciclo de vida del software, desde la primera reunión con el cliente hasta la entrega y seguimiento iterativo.
 
 \subsubsection*{Resultados experimentales}
 
@@ -1850,7 +1882,7 @@ La evaluación experimental produce resultados mixtos pero coherentes. Dado el t
 
 Un resultado secundario con implicaciones prácticas directas es la convergencia de calidad entre asistentes: con colbPowers activo, la $d$ de Cohen entre OpenCode y ClaudeCode cae a valores próximos a cero en ambas métricas de calidad. Esto indica que el flujo SDD homogeneiza la calidad del código con independencia del asistente, lo que permite a un equipo combinar herramientas distintas sin comprometer la consistencia del producto.
 
-El coste del sistema es real y cuantificado: colbPowers multiplica el consumo de tokens por un factor de entre 2{,}9× y 4{,}5× respecto al baseline, con tamaños de efecto grandes en todas las combinaciones evaluadas. Este sobrecoste refleja el \textit{overhead} inherente al flujo SDD y debe considerarse una variable de diseño, no un defecto: el sistema intercambia recursos computacionales por mayor calidad estructural del código producido.
+El coste del sistema es real y cuantificado: colbPowers multiplica el consumo de tokens por un factor de entre 2{,}9x y 4{,}5x respecto al baseline, con tamaños de efecto grandes en todas las combinaciones evaluadas. Este sobrecoste refleja el \textit{overhead} inherente al flujo SDD y debe considerarse una variable de diseño, no un defecto: el sistema intercambia recursos computacionales por mayor calidad estructural del código producido.
 
 \subsubsection*{Limitaciones}
 
@@ -1859,6 +1891,8 @@ El diseño experimental con $n=3$ repeticiones por condición tiene potencia est
 \subsubsection*{Valoración global}
 
 La hipótesis principal del proyecto ---que estructurar el desarrollo mediante un flujo SDD mejora la calidad del código generado--- ha recibido soporte empírico preliminar en el contexto evaluado. Los resultados justifican continuar investigando el enfoque, ampliar el tamaño muestral y extender las métricas de evaluación a otros lenguajes y tipos de proyecto. La contribución técnica del TFG ---un plugin funcional, dos módulos de apoyo y un conjunto de datos experimentales cuantificables sobre el efecto del flujo SDD--- proporciona una base concreta para este trabajo futuro.
+
+Cabe señalar, no obstante, que los resultados experimentales mixtos contrastan con la experiencia de uso real del sistema en \textit{Colb.AI}, donde la valoración ha sido positiva desde su adopción. Esta divergencia puede explicarse por dos factores no controlados en el experimento: por un lado, los modelos empleados en producción son en general más capaces que los utilizados en las ejecuciones experimentales; por otro, es posible que el entorno de experimentación no haya replicado con suficiente fidelidad las condiciones reales de uso, en particular la calidad y exhaustividad de los documentos de contexto proporcionados. Ambas hipótesis constituyen líneas de análisis relevantes para trabajos futuros.
 
 \subsection{Trabajo futuro}
 \label{sec:trabajo_futuro}
@@ -1879,6 +1913,8 @@ Los experimentos realizados requieren supervisión manual continua, lo que limit
     \item \textbf{colbPowers con y sin code-review-graph}, para aislar el efecto del servidor MCP de forma independiente al resto del flujo.
     \item \textbf{colbPowers vs a superpowers}, su plugin predecesor, para cuantificar el valor añadido de las extensiones introducidas en este proyecto.
     \item \textbf{Ejecución inline vs a subagent-driven}, para evaluar si el overhead de tokens de la ejecución por subagentes se traduce en mejoras de calidad consistentes respecto a que el orquestador resuelva las tareas directamente.
+    \item \textbf{Efecto del modelo subyacente sobre los resultados}, para contrastar si la divergencia entre los resultados experimentales y la experiencia de uso real en \textit{Colb.AI} se debe a la mayor capacidad de los modelos empleados en producción. Esto requeriría repetir los experimentos con los mismos modelos utilizados en el entorno real y comparar los efectos obtenidos.
+    \item \textbf{Validación del entorno experimental}, para evaluar en qué medida las condiciones del experimento replican fielmente el uso real del sistema. En particular, convendría analizar si la calidad y exhaustividad de los documentos de contexto (\texttt{constitution.md}, \texttt{features.md}) proporcionados en los experimentos es comparable a la de los proyectos reales de la empresa, dado que la efectividad del flujo SDD depende directamente de la calidad de dichos documentos.
 \end{itemize}
 En todos los casos se recomendaría aumentar el número de iteraciones a $n \geq 5$ para poder aplicar tests no paramétricos (que con $n=3$ no pueden alcanzar $p<0{,}05$) y obtener estimaciones más robustas del tamaño de efecto.
 
@@ -1921,22 +1957,20 @@ A continuación se listan las cosas que considero que están pendientes en la me
 \newpage
 \appendix
 
-\section{Análisis estadístico completo}
+\section{Tablas completas análisis estadístico}
 \label{sec:anexo_ttest}
-
-Las siguientes tablas recogen los resultados completos del análisis para las dos comparaciones principales del experimento. Se reportan medias, el estadístico $t$ de Welch con su $p$-value indicativo, y la $d$ de Cohen como métrica principal del tamaño de efecto. Los tamaños muestrales son $n=3$ por grupo; con este tamaño el $p$-value mínimo alcanzable con un test no paramétrico es $0{,}10$, por lo que los $p$-values deben interpretarse solo como referencia orientativa.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_cpbl_table.png}
-    \caption{Análisis estadístico completo: colbPowers vs.\ baseline. Se incluye la $d$ de Cohen como métrica principal del tamaño de efecto.}
+    \caption{Análisis estadístico: colbPowers vs.\ baseline. Se incluye la $d$ de Cohen como métrica principal del tamaño de efecto.}
     \label{fig:ttest_cpbl}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_occc_table.png}
-    \caption{Análisis estadístico completo: OpenCode vs.\ ClaudeCode. Se incluye la $d$ de Cohen como métrica principal del tamaño de efecto.}
+    \caption{Análisis estadístico: OpenCode vs.\ ClaudeCode. Se incluye la $d$ de Cohen como métrica principal del tamaño de efecto.}
     \label{fig:ttest_occc}
 \end{figure}
 
