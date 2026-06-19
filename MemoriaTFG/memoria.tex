@@ -20,6 +20,12 @@
 \usepackage{changepage}
 
 \usepackage[spanish,es-noindentfirst]{babel}
+
+\addto\captionsspanish{
+  \renewcommand\spanishtablename{Tabla}
+  \renewcommand{\listtablename}{Índice de tablas}
+}
+
 \usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
 \usepackage[skip=5pt plus1pt, indent=20pt]{parskip}
 
@@ -102,7 +108,7 @@ El presente proyecto consiste en el diseño y aplicación de un sistema para la 
 \begin{center}
 {\textbf{Resum}}
 \end{center}
-El present projecte consisteix en el disseny i aplicació d'un sistema intel·ligent per a l'automatització de les etapes en el desenvolupament de projectes de \textit{software} ---recollida de requeriments, \textit{Spec-Driven Development} i seguiment del client--- aplicant principalment l'orquestació d'eines d'Intel·ligència Artificial generativa. Es fa un especial èmfasi en la interacció d'aquests sistemes amb el desenvolupador humà, seguint una filosofia de \textit{Human in the loop}, i la generació de documentació per a guiar el procés. Aquesta metodologia tracta de reduir la pèrdua de qualitat típicament conseqüència de l'ús de la IA en el desenvolupament d'aquests projectes. L'avaluació experimental realitzada suggereix millores en la qualitat i mantenibilitat del codi en projectes nous, amb resultats variats per a la modificació de projectes ja existents, en utilitzar el sistema proposat.. Aquest treball de final de grau s'aplica i desenvolupa per a l'entorn laboral de la consultoria de \textit{software} \textit{Colb.AI}.
+El present projecte consisteix en el disseny i aplicació d'un sistema intel·ligent per a l'automatització de les etapes en el desenvolupament de projectes de \textit{software} ---recollida de requeriments, \textit{Spec-Driven Development} i seguiment del client--- aplicant principalment l'orquestació d'eines d'Intel·ligència Artificial generativa. Es fa un especial èmfasi en la interacció d'aquests sistemes amb el desenvolupador humà, seguint una filosofia de \textit{Human in the loop}, i la generació de documentació per a guiar el procés. Aquesta metodologia tracta de reduir la pèrdua de qualitat típicament conseqüència de l'ús de la IA en el desenvolupament d'aquests projectes. L'avaluació experimental realitzada suggereix millores en la qualitat i mantenibilitat del codi en projectes nous, amb resultats variats per a la modificació de projectes ja existents, en utilitzar el sistema proposat. Aquest treball de final de grau s'aplica i desenvolupa per a l'entorn laboral de la consultoria de \textit{software} \textit{Colb.AI}.
 \vfill
 \hspace{0pt}
 }
@@ -113,7 +119,9 @@ El present projecte consisteix en el disseny i aplicació d'un sistema intel·li
 \newpage
 \listoffigures
 \newpage
+
 \listoftables
+
 \newpage
 
 \section{Introducción y contexto}
@@ -287,7 +295,7 @@ A la vista de estas limitaciones, la creación de una solución propia resulta r
 
 \newpage
 
-\subsection{Propuesta de implementación}
+\subsection{Propuesta}
 \label{sec:propuesta_implementacion}
 
 Concluido que las herramientas preexistentes no se adaptan plenamente a nuestros requerimientos de agilidad e integración, nuestra propuesta toma inspiración de sus puntos fuertes para construir un sistema a medida.
@@ -549,7 +557,7 @@ La distribución de horas entre sprints no es uniforme, sino que responde a la c
     
     \item \textbf{DA3 - Sprint 3: Habilidades e Integración MCP (80h)}: Ampliar las capacidades de colbPowers mediante MCPs adicionales y refinar el flujo completo basándose en el \textit{feedback} de los sprints anteriores.
     \begin{itemize}
-        \item \textbf{DA3.1} Desarrollo de skills adicionales para colbPowers: control de versiones, gestión de archivos de especificación... (30h).
+        \item \textbf{DA3.1} Desarrollo de skills adicionales para colbPowers: control de versiones, gestión de archivos de especificación. (30h).
         \item \textbf{DA3.2} Integración de Model Context Protocols (MCPs) para ampliar las herramientas disponibles para los agentes (25h).
         \item \textbf{DA3.3} Análisis de errores de los sprints anteriores, corrección de prompts y mejoras de estabilidad del plugin (25h).
     \end{itemize}
@@ -1893,6 +1901,8 @@ El diseño experimental con $n=3$ repeticiones por condición tiene potencia est
 La hipótesis principal del proyecto ---que estructurar el desarrollo mediante un flujo SDD mejora la calidad del código generado--- ha recibido soporte empírico preliminar en el contexto evaluado. Los resultados justifican continuar investigando el enfoque, ampliar el tamaño muestral y extender las métricas de evaluación a otros lenguajes y tipos de proyecto. La contribución técnica del TFG ---un plugin funcional, dos módulos de apoyo y un conjunto de datos experimentales cuantificables sobre el efecto del flujo SDD--- proporciona una base concreta para este trabajo futuro.
 
 Cabe señalar, no obstante, que los resultados experimentales mixtos contrastan con la experiencia de uso real del sistema en \textit{Colb.AI}, donde la valoración ha sido positiva desde su adopción. Esta divergencia puede explicarse por dos factores no controlados en el experimento: por un lado, los modelos empleados en producción son en general más capaces que los utilizados en las ejecuciones experimentales; por otro, es posible que el entorno de experimentación no haya replicado con suficiente fidelidad las condiciones reales de uso, en particular la calidad y exhaustividad de los documentos de contexto proporcionados. Ambas hipótesis constituyen líneas de análisis relevantes para trabajos futuros.
+
+\newpage
 
 \subsection{Trabajo futuro}
 \label{sec:trabajo_futuro}
