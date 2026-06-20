@@ -72,15 +72,15 @@ Anexo, eliminar mención de "Explicación completa", cuando realmente no es una 
 
 # Review de David
 
-Hedges' g en vez de cohens. Decirme en que me he basa
+Hedges' g en vez de cohens. Decirme en que me he basa [DONE]
 Cambiar cosasa que están a futuro sobretodo para los apartados 1-4 de la memoria.
-Cambiar lo de el "Uso de IA", que quede claro que la IA es una herramienta.
+Cambiar lo de el "Uso de IA", que quede claro que la IA es una herramienta. [DONE]
 Glosario de siglas.
 Keywords después del abstract.
-Intentar vigilar con las afirmaciones, poner referencias.
+Intentar vigilar con las afirmaciones, poner referencias. [DONE] solo code-review-graph pendiente
 Apartado 1.6 (Propuesta). Explicar qué se hace exactamente, que no hago codigo desde 0, sino que junto un montón de cosas ya implementadas en un solo sistema.
 Cambiar 6.3.3, explicar que colbPowers se ha desarrollado para este proyecto, entre otras cosas
 Cambiar readme.md de colbPowers para que ponga colbPowers y no superpowers.
-El p-value mide si hay o no efecto, mientras que cohen y hedges miden la magnitud del efecto. Cambiar las tablas para que se vea reflejado.
-Cambiar nombre de la lsita de tablas -> "Lista de tablas"
-Cambiar los diagramas con los módulos!
+El p-value mide si hay o no efecto, mientras que cohen y hedges miden la magnitud del efecto. Cambiar las tablas para que se vea reflejado. [DONE]
+Cambiar nombre de la lsita de tablas -> "Lista de tablas" [DONE]
+Cambiar los diagramas con los módulos! Ahora mismo hay un diagrama con lógica que no corresponde a su módulo.

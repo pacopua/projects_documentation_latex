@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
 Generates:
-  - results_*_bars*.png  : bar charts + Cohen's d annotation (no significance stars)
-  - results_*_table.png  : summary table with means, t, p, Cohen's d, effect size
+  - results_*_bars*.png  : bar charts + Hedges' g annotation (no significance stars)
+  - results_*_table.png  : summary table with means, t, p, Hedges' g, effect size
   - results_table.tex    : LaTeX booktabs tables
 
-NOTE: n=3 per group. Significance stars have been replaced with Cohen's d
+NOTE: n=3 per group. Significance stars have been replaced with Hedges' g
 because with n=3 the minimum achievable p-value for a non-parametric test
-is 0.10, making * p<0.05 thresholds unreliable. Cohen's d is reported as
+is 0.10, making * p<0.05 thresholds unreliable. Hedges' g is reported as
 the primary effect-size metric.
 """
 
@@ -57,32 +57,48 @@ def welch(a, b):
     return stats.ttest_ind(a, b, equal_var=False)
 
 
-def cohens_d_from_stats(mean_a, std_a, mean_b, std_b):
-    """Pooled Cohen's d computed from pre-calculated means and SDs."""
-    pooled = np.sqrt((std_a ** 2 + std_b ** 2) / 2)
-    if pooled == 0 or np.isnan(pooled):
+def hedges_g_from_stats(mean_a, std_a, n_a, mean_b, std_b, n_b):
+    """Hedges' g effect size computed from pre-calculated means and SDs."""
+    if n_a < 2 or n_b < 2:
         return float("nan")
-    return (mean_a - mean_b) / pooled
+    var_a = std_a ** 2
+    var_b = std_b ** 2
+    pooled_sd = np.sqrt(((n_a - 1) * var_a + (n_b - 1) * var_b) / (n_a + n_b - 2))
+    
+    if pooled_sd == 0 or np.isnan(pooled_sd):
+        return float("nan")
+        
+    d = (mean_a - mean_b) / pooled_sd
+    df = n_a + n_b - 2
+    j = 1 - (3 / (4 * df - 1))
+    
+    return d * j
 
 
-def effect_label(d):
-    """Cohen's d effect size label (Cohen 1988)."""
+def effect_label(d, p=None):
+    """Hedges' g effect size label; appends (ns) when p≥0.05."""
     if np.isnan(d):
         return "n/a"
-    d = abs(d)
-    if d < 0.2:
-        return "trivial"
-    if d < 0.5:
-        return "pequeño"
-    if d < 0.8:
-        return "medio"
-    return "grande"
+    mag = abs(d)
+    if mag < 0.2:
+        label = "trivial"
+    elif mag < 0.5:
+        label = "pequeño"
+    elif mag < 0.8:
+        label = "medio"
+    else:
+        label = "grande"
+    if p is None or np.isnan(p) or p >= 0.05:
+        label += " (ns)"
+    return label
 
 
-def d_color(d):
-    """Color for Cohen's d annotation by magnitude."""
+def d_color(d, p=None):
+    """Color for Hedges' g annotation; gray when p≥0.05 (not significant)."""
     if np.isnan(d):
         return "#aaaaaa"
+    if p is not None and not np.isnan(p) and p >= 0.05:
+        return "#aaaaaa"   # gray — not significant
     d = abs(d)
     if d >= 0.8:
         return "#1a5276"   # dark blue — large
@@ -149,7 +165,7 @@ def build_results(data):
                     "t": t, "p": p,
                     "label_a":    "colbPowers",
                     "label_b":    "baseline",
-                    "cohens_d":   cohens_d_from_stats(mean_a, std_a, mean_b, std_b),
+                    "hedges_g":   hedges_g_from_stats(mean_a, std_a, len(a), mean_b, std_b, len(b)),
                 })
 
     # 2. Opencode vs Claudecode per task × condition
@@ -179,7 +195,7 @@ def build_results(data):
                     "t": t, "p": p,
                     "label_a":    "Opencode",
                     "label_b":    "Claudecode",
-                    "cohens_d":   cohens_d_from_stats(mean_a, std_a, mean_b, std_b),
+                    "hedges_g":   hedges_g_from_stats(mean_a, std_a, len(a), mean_b, std_b, len(b)),
                 })
 
     # 3. Pooled colbPowers vs baseline
@@ -206,7 +222,7 @@ def build_results(data):
                 "t": t, "p": p,
                 "label_a":    "colbPowers",
                 "label_b":    "baseline",
-                "cohens_d":   cohens_d_from_stats(mean_a, std_a, mean_b, std_b),
+                "hedges_g":   hedges_g_from_stats(mean_a, std_a, len(a), mean_b, std_b, len(b)),
             })
     return rows
 
@@ -240,14 +256,14 @@ def make_bar_axes(ax, row):
             [brace_y * 0.97, brace_y, brace_y, brace_y * 0.97],
             color="black", linewidth=0.8)
 
-    # Cohen's d annotation (replaces significance stars)
-    d   = row.get("cohens_d", float("nan"))
+    # Hedges' g annotation (replaces significance stars)
+    g   = row.get("hedges_g", float("nan"))
     p   = row["p"]
     p_str  = f"p={p:.3f}" if not np.isnan(p) else "p=n/a"
-    d_str  = f"d={d:+.2f} ({effect_label(d)})" if not np.isnan(d) else "d=n/a"
-    ax.text(0.5, brace_y * 1.02, d_str,
+    g_str  = f"g={g:+.2f} ({effect_label(g, p)})" if not np.isnan(g) else "g=n/a"
+    ax.text(0.5, brace_y * 1.02, g_str,
             ha="center", va="bottom", fontsize=8,
-            color=d_color(d), fontweight="bold")
+            color=d_color(g, p), fontweight="bold")
     ax.text(0.5, brace_y * 1.14, p_str,
             ha="center", va="bottom", fontsize=7, color="gray")
 
@@ -319,8 +335,8 @@ def make_bars_figure(rows, group_key, title, out_path, only_comparison=None):
 
     # Shared footnote
     fig.text(0.01, -0.01,
-             "Barras: media ± SD (n=3). Anotación: Cohen's d + p-value indicativo.\n"
-             "d: trivial<0.2 | pequeño<0.5 | medio<0.8 | grande≥0.8",
+             "Barras: media ± SD (n=3). Anotación: Hedges' g + p-value indicativo.\n"
+             "g: trivial<0.2 | pequeño<0.5 | medio<0.8 | grande≥0.8  |  (ns) = p≥0.05",
              fontsize=7, color="gray", va="top")
 
     fig.savefig(out_path, bbox_inches="tight")
@@ -335,7 +351,7 @@ def make_table_figure(rows, group_key, title, col_a, col_b, out_path):
     col_headers = [
         "Comparison", "Metric",
         f"Mean {col_a}", f"Mean {col_b}",
-        "t", "p", "Cohen's d", "Efecto",
+        "t", "p", "Hedges' g", "Efecto",
     ]
     cell_data = []
     for comp in comparisons:
@@ -350,11 +366,11 @@ def make_table_figure(rows, group_key, title, col_a, col_b, out_path):
             mb    = f"{r['mean_b']/scale:.2f}{suf}"
             t_str = f"{r['t']:.3f}" if not np.isnan(r["t"]) else "—"
             p_str = f"{r['p']:.4f}" if not np.isnan(r["p"]) else "—"
-            d     = r.get("cohens_d", float("nan"))
-            d_str = f"{d:+.2f}" if not np.isnan(d) else "—"
+            g     = r.get("hedges_g", float("nan"))
+            g_str = f"{g:+.2f}" if not np.isnan(g) else "—"
             cell_data.append([
                 comp, metric_label(metric), ma, mb,
-                t_str, p_str, d_str, effect_label(d),
+                t_str, p_str, g_str, effect_label(g, r["p"]),
             ])
 
     n_rows = len(cell_data)
@@ -391,9 +407,9 @@ def make_table_figure(rows, group_key, title, col_a, col_b, out_path):
         bg = "#f2f3f4" if row_idx % 2 == 0 else "#ffffff"
         for col in range(len(col_headers)):
             tbl[row_idx, col].set_facecolor(bg)
-        # Override effect column color
+        # Override effect column color (strip ns marker before lookup)
         eff = row_data[eff_col]
-        tbl[row_idx, eff_col].set_facecolor(eff_colors.get(eff, "#ffffff"))
+        tbl[row_idx, eff_col].set_facecolor(eff_colors.get(eff.replace(" (ns)", ""), "#ffffff"))
 
     tbl.auto_set_column_width(list(range(len(col_headers))))
 

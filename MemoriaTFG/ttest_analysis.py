@@ -8,7 +8,7 @@ Metrics: total tool calls, total tokens, cyclomatic complexity, maintainability 
 
 NOTE: n=3 per group. Welch's t-test results should be interpreted as indicative
 only. With n=3, normality cannot be verified and power is very low.
-Cohen's d is reported as the primary effect-size metric.
+Hedges' g is reported as the primary effect-size metric.
 """
 
 import json
@@ -19,27 +19,41 @@ import numpy as np
 DATA_FILE = Path(__file__).parent / "ExperimentosInfo.json"
 
 
-def cohens_d(a, b):
-    """Pooled Cohen's d effect size."""
-    if len(a) < 2 or len(b) < 2:
+def hedges_g(a, b):
+    """Hedges' g effect size with small sample bias correction."""
+    n1, n2 = len(a), len(b)
+    if n1 < 2 or n2 < 2:
         return float("nan")
-    pooled = np.sqrt((np.std(a, ddof=1) ** 2 + np.std(b, ddof=1) ** 2) / 2)
-    if pooled == 0:
+    
+    var_a = np.var(a, ddof=1)
+    var_b = np.var(b, ddof=1)
+    pooled_sd = np.sqrt(((n1 - 1) * var_a + (n2 - 1) * var_b) / (n1 + n2 - 2))
+    
+    if pooled_sd == 0:
         return float("nan")
-    return (np.mean(a) - np.mean(b)) / pooled
+        
+    d = (np.mean(a) - np.mean(b)) / pooled_sd
+    df = n1 + n2 - 2
+    j = 1 - (3 / (4 * df - 1))
+    
+    return d * j
 
 
-def effect_label(d):
-    if np.isnan(d):
+def effect_label(g, p=None):
+    if np.isnan(g):
         return "n/a"
-    d = abs(d)
-    if d < 0.2:
-        return "trivial"
-    if d < 0.5:
-        return "small"
-    if d < 0.8:
-        return "medium"
-    return "large"
+    mag = abs(g)
+    if mag < 0.2:
+        label = "trivial"
+    elif mag < 0.5:
+        label = "small"
+    elif mag < 0.8:
+        label = "medium"
+    else:
+        label = "large"
+    if p is None or np.isnan(p) or p >= 0.05:
+        label += " (ns)"
+    return label
 
 
 def extract_runs(data, task, tool, condition):
@@ -60,21 +74,21 @@ def extract_runs(data, task, tool, condition):
 
 
 def ttest_report(label, group_a, group_b, metric):
-    """Run Welch's t-test + Cohen's d and print a formatted result line."""
+    """Run Welch's t-test + Hedges' g and print a formatted result line."""
     a = [r[metric] for r in group_a if metric in r]
     b = [r[metric] for r in group_b if metric in r]
     if len(a) < 2 or len(b) < 2:
         print(f"  {metric}: not enough data (n_a={len(a)}, n_b={len(b)})")
         return
     t, p = stats.ttest_ind(a, b, equal_var=False)
-    d = cohens_d(a, b)
+    g = hedges_g(a, b)
     mean_a, mean_b = np.mean(a), np.mean(b)
     sig = "***" if p < 0.001 else ("**" if p < 0.01 else ("*" if p < 0.05 else "ns"))
     print(f"  {metric}:")
     print(
         f"    mean_A={mean_a:.2f}  mean_B={mean_b:.2f} "
         f" t={t:.3f}  p={p:.4f}  {sig}"
-        f"  |  d={d:+.2f} ({effect_label(d)})"
+        f"  |  g={g:+.2f} ({effect_label(g, p)})"
     )
 
 
@@ -100,7 +114,7 @@ def main():
     print("=" * 60)
     print("  T-TEST ANALYSIS  (Welch's independent samples)")
     print("  WARNING: n=3 per group — interpret with caution.")
-    print("  Cohen's d is the primary effect-size metric.")
+    print("  Hedges' g is the primary effect-size metric.")
     print("=" * 60)
 
     # ----------------------------------------------------------------
@@ -157,7 +171,8 @@ def main():
         )
 
     print("\n\nNote: * p<0.05  ** p<0.01  *** p<0.001  ns=not significant")
-    print(f"      d: trivial<0.2 | small<0.5 | medium<0.8 | large≥0.8")
+    print(f"      g: trivial<0.2 | small<0.5 | medium<0.8 | large≥0.8")
+    print(f"      (ns) = p≥0.05; effect size label unreliable without significance")
     print(f"      Sample sizes per group are small (n=3). With n=3 the minimum")
     print(f"      achievable p-value for a non-parametric test is 0.10, so")
     print(f"      Welch p-values should be treated as indicative only.\n")

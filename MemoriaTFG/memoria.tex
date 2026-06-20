@@ -129,7 +129,7 @@ El present projecte consisteix en el disseny i aplicació d'un sistema intel·li
 
 El presente trabajo consiste en el diseño de un sistema de automatización para el desarrollo y diseño de proyectos de software, utilizando como pilar principal herramientas basadas en \textit{LLMs}. El desarrollo de este sistema se enmarca y diseña para su uso dentro de una empresa real, \textit{Colb.AI}, dedicada principalmente a la consultoría de proyectos de software.
 
-Es innegable que las herramientas de inteligencia artificial, principalmente los \textit{Large Language Models}, están cambiando la forma en que se desarrollan los proyectos de software para la mayor parte de empresas del sector. Estas tecnologías presentan la oportunidad de automatizar muchas de las tareas que tradicionalmente habían sido llevadas a cabo exclusivamente por los desarrolladores humanos, pero su adopción sin la supervisión humana adecuada conlleva riesgos que pueden comprometer la calidad y sostenibilidad del software generado, sobre todo a largo plazo.
+Es innegable que las herramientas de inteligencia artificial, principalmente los \textit{Large Language Models}, están cambiando la forma en que se desarrollan los proyectos de software para la mayor parte de empresas del sector \cite{jetbrains_deveco_2025}. Estas tecnologías presentan la oportunidad de automatizar muchas de las tareas que tradicionalmente habían sido llevadas a cabo exclusivamente por los desarrolladores humanos, pero su adopción sin la supervisión humana adecuada conlleva riesgos que pueden comprometer la calidad y sostenibilidad del software generado, sobre todo a largo plazo.
 
 Se presentan a continuación tres módulos que se van a automatizar en el desarrollo de este TFG:
 \begin{enumerate}
@@ -149,17 +149,17 @@ A continuación, se hace una definición mas especifica de los problemas y punto
 \subsubsection{Toma de requerimientos y planificación de la arquitectura}
 \label{sec:ProblemaTomaRequerimientos}
 
-La toma de requerimientos es una fase especialmente crítica en el desarrollo de software, puesto que sienta las bases del proyecto: su alcance, las tecnologías a utilizar y la arquitectura del sistema. Si esta fase no se lleva a cabo con el adecuado rigor, puede suponer todo tipo de imprevistos en la etapa de desarrollo del proyecto, causando retrasos en la entrega del proyecto, incrementos en el presupuesto y, en ocasiones, dejando inservibles módulos ya implementados. 
+La toma de requerimientos es una fase especialmente crítica en el desarrollo de software, puesto que sienta las bases del proyecto: su alcance, las tecnologías a utilizar y la arquitectura del sistema. Si esta fase no se lleva a cabo con el adecuado rigor, puede suponer todo tipo de imprevistos en la etapa de desarrollo del proyecto, causando retrasos en la entrega del proyecto, incrementos en el presupuesto y, en ocasiones, dejando inservibles módulos ya implementados \cite{standish_chaos_1994}.
 
 Por lo tanto, es crucial que este apartado se lleve a cabo con la máxima calidad y supervisión humana posible, por lo que la automatización de este módulo deberá tener un componente importante de interacción con el diseñador.
 
 \subsubsection{Desarrollo de código}
 \label{sec:ProblemaDesarrolloCodigo}
 
-Actualmente, los asistentes de código más populares (GitHub Copilot, Cursor, Claude Code, etc.) operan bajo un paradigma \textit{Code-Driven}: el desarrollador describe vagamente lo que quiere y el modelo genera código de forma inmediata, sin exigir ninguna especificación previa. Este enfoque tiene tres consecuencias negativas directas:
+Actualmente, los asistentes de código más populares (GitHub Copilot, Cursor, Claude Code, etc.) operan bajo un paradigma \textit{Code-Driven}: el desarrollador describe vagamente lo que quiere y el modelo genera código de forma inmediata, sin exigir ninguna especificación previa. Este enfoque tiene tres consecuencias negativas directas \cite{vaithilingam_2022}:
 
 \begin{itemize}
-    \item \textbf{Generación de \textit{slop code}:} El código producido resuelve el problema inmediato, pero carece de estructura coherente, no sigue los estándares del proyecto y acumula deuda técnica. Al no haber una especificación de referencia, el modelo no puede saber qué es correcto más allá de lo que el usuario describe en ese momento. El resultado es un código difícil de mantener, escalar o auditar.
+    \item \textbf{Generación de \textit{slop code}:} El código producido resuelve el problema inmediato, pero carece de estructura coherente, no sigue los estándares del proyecto y acumula deuda técnica \cite{cunningham_1992_techdebt}. Al no haber una especificación de referencia, el modelo no puede saber qué es correcto más allá de lo que el usuario describe en ese momento. El resultado es un código difícil de mantener, escalar o auditar.
 
     \item \textbf{Falta de trazabilidad entre requisitos y código:} Sin un documento de especificación que actúe como fuente de verdad, resulta imposible saber si el código generado cumple realmente con los requisitos del negocio, si ha habido desviaciones respecto al diseño original, o quién tomó qué decisión y cuándo.
 
@@ -256,7 +256,7 @@ Existen herramientas comerciales orientadas a la generación automática de res�
 
 \subsubsection{Asistentes CLI extensibles}
 \label{sec:asistentes_cli}
-Las herramientas de asistencia a la programación de tipo CLI (\textit{Command-Line Interface}) representan una categoría diferenciada de los asistentes integrados en el IDE. Operan directamente desde la terminal con acceso nativo al sistema de archivos y exponen mecanismos de extensibilidad nativos ---plugins, hooks de ciclo de vida y el protocolo MCP (\textit{Model Context Protocol})--- que permiten definir flujos de trabajo de programación estructurados de forma composable. Las dos principales herramientas de este tipo son ClaudeCode \cite{claude_code_2024} (Anthropic) y OpenCode \cite{opencode_2025} (open source, compatible con modelos locales y remotos).
+Las herramientas de asistencia a la programación de tipo CLI (\textit{Command-Line Interface}) representan una categoría diferenciada de los asistentes integrados en el IDE. Operan directamente desde la terminal con acceso nativo al sistema de archivos y exponen mecanismos de extensibilidad nativos ---plugins, hooks de ciclo de vida y el protocolo MCP (\textit{Model Context Protocol} \cite{anthropic_mcp_2024})--- que permiten definir flujos de trabajo de programación estructurados de forma composable. Las dos principales herramientas de este tipo son ClaudeCode \cite{claude_code_2024} (Anthropic) y OpenCode \cite{opencode_2025} (open source, compatible con modelos locales y remotos).
 
 \subsubsection{superpowers plugin}
 \label{sec:superpowers}
@@ -315,7 +315,7 @@ Originalmente se contempló construir este sistema desde cero. Durante la fase d
 
 La Figura~\ref{fig:flujo_completo} muestra el flujo de trabajo del sistema de principio a fin. El proceso arranca con la \textbf{toma de requerimientos}: la primera reunión con el cliente se transcribe de forma diferente según su modalidad ---en reuniones telemáticas se aprovechan las transcripciones automáticas de plataformas como Teams o Meet, mientras que en reuniones presenciales se graba el audio y se procesa con Azure Speech Service con diarización de hablantes--- y el texto resultante alimenta el módulo de procesamiento, que puede ejecutarse mediante la \textit{skill} de Claude Cowork o mediante la implementación propia en Python con LangChain y Tavily. En ambos casos, la salida es un plan de implementación estructurado que el usuario revisa y aprueba antes de continuar.
 
-A partir de ese plan aprobado, el flujo entra en la fase de \textbf{desarrollo con colbPowers}: el agente orquestador guía al equipo a través del ciclo SDD completo ---definición del contexto del proyecto, especificación de la funcionalidad, implementación y revisión---, con puntos de validación humana en cada etapa que garantizan el principio de \textit{Human in the Loop}.
+A partir de ese plan aprobado, el flujo entra en la fase de \textbf{desarrollo con colbPowers}: el agente orquestador guía al equipo a través del ciclo SDD completo ---definición del contexto del proyecto, especificación de la funcionalidad, implementación y revisión---, con puntos de validación humana en cada etapa que garantizan el principio de \textit{Human in the Loop} \cite{vaithilingam_2022}.
 
 Una vez entregado el desarrollo, el sistema no termina: comienza la fase de \textbf{seguimiento del cliente}. Al igual que en la toma de requerimientos, la transcripción de la reunión de seguimiento se obtiene de forma automática si es telemática, o mediante Azure Speech si es presencial. A partir de ella, Claude Cowork o la alternativa propia generan un documento Word con el resumen, las decisiones tomadas y los próximos pasos. Si en esa reunión se identifican nuevas funcionalidades, el flujo regresa directamente a colbPowers para iniciar un nuevo ciclo de desarrollo --- convirtiendo el sistema en un \textbf{bucle continuo} que acompaña al proyecto durante toda su vida útil.
 
@@ -345,7 +345,7 @@ El objetivo principal de este proyecto es diseñar e implementar un \textbf{sist
 
 El conjunto opera de forma integrada en el entorno local del desarrollador, cubriendo el ciclo de vida completo del software desde la primera reunión con el cliente hasta la entrega y seguimiento iterativo del producto.
 
-La validación de los resultados del sistema se hará a través de ciertas métricas de análisis de calidad del código, conocidas y utilizadas en el paradigma del desarrollo de software. Además de, por supuesto, los revisores humanos, que han de analizar en todo momento el código generado y los resultados producidos, haciendo a este un sistema con lo que se conoce \textit{Human In The Loop}, cosa que significa que en todo momento hay supervisión e intervención humana. \\
+La validación de los resultados del sistema se hará a través de ciertas métricas de análisis de calidad del código, conocidas y utilizadas en el paradigma del desarrollo de software. Además de, por supuesto, los revisores humanos, que han de analizar en todo momento el código generado y los resultados producidos, haciendo a este un sistema con lo que se conoce \textit{Human In The Loop} \cite{vaithilingam_2022}, cosa que significa que en todo momento hay supervisión e intervención humana. \\
 
 Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos funcionales y arquitectónicos:
 \begin{itemize}
@@ -488,16 +488,17 @@ Para garantizar el correcto seguimiento del progreso del proyecto, se emplearán
 \subsection{Uso de IA generativa en el desarrollo del proyecto}
 \label{sec:uso_ia}
 
-Como se ha mencionado al comienzo de este documento, la IA generativa está cambiando cómo trabajamos, la mayoría de estudiantes la utilizan (no todos de forma responsable), para asistir en el desarrollo de sus proyectos. Este proyecto no es distinto, por lo que en aras a la transparencia, esta sección declara los usos que se le han dado a herramientas de inteligencia artificial generativa para el desarrollo de este TFG.
+Como se ha mencionado al comienzo de este documento, la IA generativa está cambiando cómo trabajamos, la mayoría de estudiantes la utilizan ---aunque no todos de forma responsable---, para asistir en el desarrollo de sus proyectos. Este proyecto también la emplea, por lo que en aras a la transparencia, esta sección declara los usos que se le han dado a herramientas de inteligencia artificial generativa para el desarrollo de este TFG.
 
 \paragraph{Asistencia en la programación.}
 Los módulos de software del proyecto ---el pipeline de toma de requerimientos, el módulo de seguimiento del cliente y la configuración del plugin colbPowers--- se desarrollaron con asistencia de ClaudeCode y OpenCode como herramienta de programación. El asistente se utilizó para acelerar la implementación de los distintos módulos, por supuesto bajo una supervisión responsable por parte del desarrollador. 
 
-\paragraph{Brainstorming y toma de decisiones de arquitectura.}
-Durante las fases de diseño se ha empleado IA generativa para explorar alternativas arquitectónicas, evaluar trade-offs entre opciones tecnológicas y estructurar el razonamiento antes de tomar decisiones.
 
 \paragraph{Desarrollo de la memoria.}
-Se ha utilizado IA generativa para la asistencia en la redacción de esta memoria, principalmente para borradores iniciales, además de para reestructurar y reescribir algunas secciones.
+Se ha utilizado IA generativa para la asistencia en la redacción de esta memoria, principalmente para borradores iniciales, además de para reestructurar y reescribir algunas secciones. Todo el contenido generado se ha revisado, y el autor se hace responsable de la veracidad y exactitud de la información presentada. La IA se ha empleado como herramienta de apoyo, no como fuente primaria de contenido.
+
+\paragraph{Exploración de ideas.}
+Durante las fases de diseño se ha empleado IA generativa para explorar alternativas arquitectónicas, evaluar trade-offs entre opciones tecnológicas y evaluar el razonamiento tomar decisiones. Este proceso ha sido orientativo y exploratorio, y las decisiones finales se han tomado basándose en la experiencia del desarrollador y en la revisión de fuentes verídicas.
 
 \newpage
 
@@ -1094,7 +1095,7 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 \label{sec:dimension_economica}
 \textbf{PPP:} El coste total del proyecto se estima en 14.099,81€. Tras reflexionar sobre este presupuesto, considero que es realista y competitivo para un desarrollo de 540 horas que integra tecnologías punteras de IA. La optimización del gasto se logra mediante el uso de herramientas de código abierto y un modelo de pago por uso para las APIs, centrando la inversión en el valor del esfuerzo humano y la investigación.
 
-\textbf{Vida Útil:} Actualmente, la industria aborda el desarrollo asistido por IA de forma impulsiva (Code-Driven), lo que reduce costes iniciales pero dispara los de mantenimiento debido a la deuda técnica. Esta solución basada en SDD mejora económicamente este escenario al reducir dicha deuda desde la fase de planificación. Consideramos que la adopción del sistema desarrollado en este TFG puede llegar a decrementar las horas de mantenimiento y desarrollo a largo plazo, al garantizar que toda implementación esté respaldada por una especificación validada y coherente con la arquitectura del proyecto. Idealmente, el ahorro en tiempo de comprensión y corrección de errores debería amortizar la inversión inicial del proyecto.
+\textbf{Vida Útil:} Actualmente, la industria aborda el desarrollo asistido por IA de forma impulsiva (Code-Driven), lo que reduce costes iniciales pero dispara los de mantenimiento debido a la deuda técnica \cite{cunningham_1992_techdebt}. Esta solución basada en SDD mejora económicamente este escenario al reducir dicha deuda desde la fase de planificación. Consideramos que la adopción del sistema desarrollado en este TFG puede llegar a decrementar las horas de mantenimiento y desarrollo a largo plazo, al garantizar que toda implementación esté respaldada por una especificación validada y coherente con la arquitectura del proyecto. Idealmente, el ahorro en tiempo de comprensión y corrección de errores debería amortizar la inversión inicial del proyecto.
 
 \textbf{Riesgos:} El principal riesgo económico durante la vida útil del sistema es la escalada de precios de las APIs de los LLMs. Una subida significativa de tarifas por parte de los proveedores (Anthropic, OpenAI) podría encarecer el coste de mantenimiento mensual estimado, comprometiendo la viabilidad económica de la herramienta a largo plazo. La mitigación consiste en que el diseño del sistema sea compatible con distintes proveedores, permitiendo migrar a distintos proveedores o alternativas más económicas.
 
@@ -1107,7 +1108,7 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 \label{sec:dimension_social}
 \textbf{PPP:} A nivel personal, este proyecto es un catalizador en mi formación. Me permite consolidar conocimientos técnicos en la orquestación de LLMs y, simultáneamente, adquirir habilidades críticas en gestión económica y metodologías ágiles (SCRUM), competencias que han demostrado ser tan vitales como la propia programación.
 
-\textbf{Vida Útil:} Existe una necesidad real en el mercado debido al creciente estrés y frustración profesional que genera trabajar con bases de código incoherentes. La metodología SDD mejora la calidad de vida de los programadores al obligar a establecer especificaciones claras, reduciendo el caos y fomentando un entorno laboral más estructurado y colaborativo.
+\textbf{Vida Útil:} Existe una necesidad real en el mercado debido al creciente estrés y frustración profesional que genera trabajar con bases de código incoherentes \cite{burnout_swe_2022}. La metodología SDD mejora la calidad de vida de los programadores al obligar a establecer especificaciones claras, reduciendo el caos y fomentando un entorno laboral más estructurado y colaborativo.
 
 \textbf{Riesgos:} El principal riesgo social es la resistencia por parte de los desarrolladores a adoptar una metodología más estructurada como SDD, especialmente en equipos con poca cultura de documentación previa. Si la herramienta se percibe como una carga burocrática en lugar de un asistente, podría ser abandonada o eludida, anulando su impacto positivo. La mitigación pasa por un diseño centrado en la usabilidad, que guie al programador en su uso.
 
@@ -1219,7 +1220,7 @@ Este enfoque es el preferido cuando se dispone de acceso a la plataforma Claude 
 
 \paragraph{Implementación propia}
 \label{sec:implementacion_propia_tr}
-Con el objetivo de disponer de una alternativa de coste reducido e independiente de suscripciones comerciales, se ha desarrollado una aplicación Python que replica el proceso anterior. La aplicación está estructurada en módulos desacoplados y orquestada mediante LangChain.
+Con el objetivo de disponer de una alternativa de coste reducido e independiente de suscripciones comerciales, se ha desarrollado una aplicación Python que replica el proceso anterior. La aplicación está estructurada en módulos desacoplados y orquestada mediante LangChain \cite{langchain_2022}.
 
 \paragraph{Arquitectura.}
 El núcleo de la aplicación es el módulo \texttt{transcription\_preprocessing}, que implementa la clase \texttt{TranscriptionProcessor} y coordina toda la lógica de negocio. El módulo recibe como entrada el texto de la transcripción y produce como salida un plan de implementación arquitectónico en formato Markdown.
@@ -1239,7 +1240,7 @@ El flujo de procesamiento sigue cuatro fases secuenciales:
 
 
 \paragraph{Bucle de refinamiento con \textit{Human in the Loop}.}
-Una característica diferencial de la aplicación es la capacidad de refinamiento iterativo en cada fase. El usuario puede modificar el plan de investigación o el plan arquitectónico mediante instrucciones en lenguaje natural. El sistema mantiene un historial de conversación mediante la abstracción \texttt{MessagesPlaceholder} de LangChain, lo que permite que el modelo tome en cuenta el contexto de intercambios anteriores al procesar cada solicitud de refinamiento. Este mecanismo implementa el principio \textit{Human in the Loop} definido en los objetivos del proyecto.
+Una característica diferencial de la aplicación es la capacidad de refinamiento iterativo en cada fase. El usuario puede modificar el plan de investigación o el plan arquitectónico mediante instrucciones en lenguaje natural. El sistema mantiene un historial de conversación mediante la abstracción \texttt{MessagesPlaceholder} de LangChain \cite{langchain_2022}, lo que permite que el modelo tome en cuenta el contexto de intercambios anteriores al procesar cada solicitud de refinamiento. Este mecanismo implementa el principio \textit{Human in the Loop} definido en los objetivos del proyecto.
 
 \begin{figure}[H]
     \centering
@@ -1347,7 +1348,7 @@ El valor diferencial de los asistentes CLI frente a otras soluciones reside en s
 \textbf{Skill} & Documento Markdown con instrucciones procedimentales especializadas para el agente, análogo a las skills de Claude Cowork (véase Fig.~\ref{fig:skill_definition}). Puede incluir scripts, templates y referencias a herramientas. & Cuando el agente detecta que una tarea requiere un procedimiento específico; el contenido se carga bajo demanda para no consumir tokens innecesariamente. \\
 \textbf{Agente (subagente)} & Instancia del LLM creada dinámicamente por el orquestador para ejecutar una tarea en aislamiento, sin acceso al historial de conversación del orquestador. & Para tareas que requieren un contexto acotado e independiente, eliminando interferencias con el hilo principal. \\
 \textbf{Plugin} & Paquete instalable (análogo a un paquete npm) que agrupa y distribuye skills, hooks, comandos y agentes. Es la unidad de distribución del ecosistema. Su estructura incluye carpetas \texttt{skills/}, \texttt{agents/} y un fichero \texttt{hooks.json}. & Al inicializar el proyecto; instalable a nivel de usuario o de proyecto con un único comando. \\
-\textbf{MCP (Model Context Protocol)} & Protocolo estándar abierto que define cómo un proceso externo expone herramientas invocables al agente. El servidor MCP es un proceso independiente (en cualquier lenguaje) que ejecuta las operaciones y devuelve los resultados al runtime. & Cuando el agente necesita capacidades externas: consultar un grafo de código, buscar en la web, leer una base de datos, etc. \\
+\textbf{MCP (Model Context Protocol)}\cite{anthropic_mcp_2024} & Protocolo estándar abierto que define cómo un proceso externo expone herramientas invocables al agente. El servidor MCP es un proceso independiente (en cualquier lenguaje) que ejecuta las operaciones y devuelve los resultados al runtime. & Cuando el agente necesita capacidades externas: consultar un grafo de código, buscar en la web, leer una base de datos, etc. \\
 \bottomrule
 \end{tabular}
 \caption{Conceptos clave del sistema de extensibilidad de los asistentes CLI. Elaboración propia.}
@@ -1436,9 +1437,9 @@ La efectividad del flujo SDD depende en gran medida de la calidad del contexto q
 
 \subsubsection{code-review-graph}
 \label{sec:code_review_graph}
-code-review-graph \cite{code_review_graph_2025} es una herramienta de código abierto que utiliza el parser de sintaxis Tree-Sitter para analizar el repositorio y construir un grafo de dependencias entre las distintas entidades de código (funciones, clases, módulos). Este grafo se almacena en una base de datos SQLite local y se expone al agente a través de un servidor MCP, proporcionando un mecanismo eficiente para navegar la estructura del código sin necesidad de leer todos los archivos del proyecto.
+code-review-graph \cite{code_review_graph_2025} es una herramienta de código abierto que utiliza el parser de sintaxis Tree-Sitter~\cite{tree_sitter} para analizar el repositorio y construir un grafo de dependencias entre las distintas entidades de código (funciones, clases, módulos). Este grafo se almacena en una base de datos SQLite local y se expone al agente a través de un servidor MCP, proporcionando un mecanismo eficiente para navegar la estructura del código sin necesidad de leer todos los archivos del proyecto.
 
-La integración de esta herramienta aborda directamente el problema de gestión de la ventana de contexto identificado en el apartado de riesgos (sección~\ref{sec:riesgo5}). En pruebas preliminares realizadas sobre un monorepo de \textit{Colb.AI}, el agente con code-review-graph integrado necesitó aproximadamente 40.000 tokens para describir la arquitectura del proyecto, frente a los 64.000 tokens requeridos sin la herramienta, lo que supone una reducción del 37,5\verb|%| en esa prueba concreta. Las capacidades que expone al agente incluyen:
+La integración de esta herramienta aborda directamente el problema de gestión de la ventana de contexto identificado en el apartado de riesgos (sección~\ref{sec:riesgo5}). Según los \textit{benchmarks} oficiales publicados en el repositorio de la herramienta~\cite{code_review_graph_2025}, evaluados sobre 6 repositorios reales de código abierto (Flask, FastAPI, Express, Gin, httpx y el propio code-review-graph), el contexto del grafo reduce el consumo de tokens respecto a proporcionar el repositorio completo en un rango de \textbf{38× a 528×}, con una mediana de $\sim$82×: una consulta típica requiere entre 1.986 y 3.465 tokens extraídos del grafo, frente a los 89.492--951.071 que supondría leer la totalidad de los archivos fuente del repositorio correspondiente. Las capacidades que expone al agente incluyen:
 \begin{itemize}
     \item Análisis de diffs de git para identificar cambios de mayor riesgo.
     \item Cálculo del radio de impacto (\textit{blast radius}) de cualquier modificación.
@@ -1621,7 +1622,7 @@ Sin embargo, este sobrecoste de tokens no debe interpretarse en aislamiento. col
 
 El desglose de tokens revela una diferencia estructural entre los dos asistentes. En OpenCode, los tokens de entrada no cacheados son significativos (media 0,98~M en baseline, 4,07~M en colbPowers), lo que refleja que cada subagente inicia un contexto propio sin aprovechar caché de sesiones anteriores. En ClaudeCode, en cambio, los tokens de entrada son prácticamente nulos (aprox.\ 0,00~M) y casi la totalidad del consumo corresponde a tokens de caché (3,63~M en baseline, 13,70~M en colbPowers): la API de Anthropic almacena el prefijo del prompt y las peticiones sucesivas leen el contexto desde caché, lo que reduce el coste real pero infla el contador total. Esta asimetría hace que la comparación directa de tokens totales entre OpenCode y ClaudeCode no sea completamente homogénea. 
 
-Las métricas de calidad de código del Caso~1, calculadas con DCM sobre el código modificado, no confirman la hipótesis de partida. En OpenCode, colbPowers produce código de \emph{mayor} complejidad ciclomática (3,37 frente a 2,67 del baseline, $+$26\%) y un índice de mantenibilidad ligeramente inferior (66,59 frente a 67,59, $-$1\%). En ClaudeCode el incremento de complejidad es similar (3,48 frente a 2,98, $+$17\%), mientras que el índice de mantenibilidad se mantiene prácticamente sin cambios (66,52 frente a 66,05).
+Las métricas de calidad de código del Caso~1, calculadas con DCM sobre el código modificado, no confirman la hipótesis de partida. En OpenCode, colbPowers produce código de \emph{mayor} complejidad ciclomática (3,37 frente a 2,67 del baseline, $+$26\%; $p=0{,}029$, $g=+2{,}42$), diferencia estadísticamente significativa y de magnitud grande, mientras que el índice de mantenibilidad no muestra variación apreciable (66,59 frente a 67,59, $-$1\%; $p=0{,}646$, $g=-0{,}32$). En ClaudeCode el incremento de complejidad ($+$17\%; $p=0{,}208$, $g=+1{,}07$) no alcanza significación estadística, y el índice de mantenibilidad permanece prácticamente invariante (66,52 frente a 66,05; $p=0{,}873$, $g=+0{,}11$).
 
 La explicación más probable reside en que \textit{code-review-graph} apenas fue invocado durante las sesiones: las llamadas registradas fueron en su mayoría cero y en ningún caso más de tres (véase columna CRG en las tablas anteriores), lo que indica que los agentes no aprovecharon el grafo de dependencias para planificar la eliminación. Sin acceso efectivo al contexto de dependencias, el flujo estructurado de colbPowers ---especificación, planificación y revisión--- generó overhead procedimental sin la ventaja de información que habría justificado ese overhead. El resultado neto fue una intervención más fragmentada que la del baseline, con código de limpieza adicional y mayor ramificación residual. En contraste, el agente baseline realizó eliminaciones más directas, produciendo un código resultante estructuralmente más simple aunque sin la documentación ni la trazabilidad del flujo SDD.
 
@@ -1679,7 +1680,7 @@ Este caso es especialmente relevante para evaluar colbPowers, ya que puede ejecu
 \label{tab:caso2_claudecode}
 \end{table}
 
-En el segundo caso el sobrecoste de tokens de colbPowers es también significativo (x4,5 para OpenCode, x2,2 para ClaudeCode). En ClaudeCode el orquestador realiza menos tool calls en colbPowers (48) que en baseline (63), lo que confirma que delega la mayor parte del trabajo a subagentes. Las métricas de calidad revelan diferencias notables entre condiciones: en OpenCode, colbPowers genera código de menor complejidad ciclomática (3,13 frente a 4,31, una reducción del 27\%) y mayor índice de mantenibilidad (47,78 frente a 41,54, un incremento del 15\%) que baseline. En ClaudeCode la diferencia es menos pronunciada ---complejidad 3,11 (colbPowers) frente a 2,85 (baseline)---, aunque colbPowers obtiene un índice de mantenibilidad superior (59,01 frente a 56,97, un incremento del 3,6\%). Destaca que ClaudeCode produce código con un índice de mantenibilidad significativamente mayor que OpenCode en ambas condiciones, lo que sugiere una diferencia cualitativa entre los dos asistentes más allá del consumo de recursos.
+En el segundo caso el sobrecoste de tokens de colbPowers es también considerable (x4,5 para OpenCode, x2,2 para ClaudeCode). En ClaudeCode el orquestador realiza menos tool calls en colbPowers (48) que en baseline (63), lo que confirma que delega la mayor parte del trabajo a subagentes. Las métricas de calidad muestran un patrón diferenciado según el asistente: en OpenCode, colbPowers genera código de menor complejidad ciclomática (3,13 frente a 4,31, una reducción del 27\%) y mayor índice de mantenibilidad (47,78 frente a 41,54, un incremento del 15\%), diferencias que resultan estadísticamente significativas. En ClaudeCode los cambios son mucho menores ---complejidad 3,11 (colbPowers) frente a 2,85 (baseline), mantenibilidad 59,01 frente a 56,97 ($+$3,6\%)--- y no alcanzan significación estadística ($p=0{,}508$ y $p=0{,}754$ respectivamente), por lo que no puede afirmarse la existencia de un efecto real. Destaca que ClaudeCode produce código con un índice de mantenibilidad notablemente mayor que OpenCode en la condición baseline (56,97 frente a 41,54, diferencia estadísticamente significativa con $p=0{,}039$), lo que sugiere una diferencia cualitativa entre los dos asistentes más allá del consumo de recursos.
 
 Estos resultados sugieren que el sobrecoste de tokens de colbPowers compra una mejora real en la estructura del código generado, especialmente en OpenCode. La especificación previa obliga al modelo a reflexionar sobre la arquitectura antes de escribir líneas de código, reduciendo la propensión a soluciones ad-hoc o funciones innecesariamente complejas. Adicionalmente, colbPowers genera por defecto documentación detallada (especificación del comportamiento, plan de implementación, criterios de aceptación) que permanece en el repositorio y facilita el entendimiento futuro del sistema. El flujo estructura también propicia la generación de tests: al exigir criterios de aceptación explícitos en cada tarea, se crea un ambiente natural donde los tests forman parte de la especificación inicial, no un trabajo adicional posterior. Para un proyecto con horizonte de vida extenso, estos beneficios ---código más mantenible, documentación estructurada, propensión a tests--- compensan ampliamente el overhead inicial de tokens.
 
@@ -1711,7 +1712,9 @@ En ambos casos el paso de baseline a colbPowers multiplica el consumo de tokens 
     \label{fig:ttest_cpbl_cc_cm}
 \end{figure}
 
-\textit{Análisis estadístico.} Dado el tamaño muestral reducido ($n=3$ por condición), la $d$ de Cohen se utiliza como métrica principal del tamaño de efecto; los $p$-values del test $t$ de Welch se reportan como referencia indicativa. El sobrecoste de tokens de colbPowers presenta un tamaño de efecto grande en todas las combinaciones donde se dispone de varianza no nula, lo que indica que la diferencia es sustancial con independencia de su significancia estadística formal. El número de tool calls presenta efectos de magnitud menor y más variable entre ejecuciones. Las figuras~\ref{fig:ttest_cpbl_oc_cm} y~\ref{fig:ttest_cpbl_cc_cm} muestran las medias con barras de error (SD) y la $d$ de Cohen para cada comparación en el Caso~1.
+\textit{Análisis estadístico.} Se utiliza el test $t$ de Welch para comparar las medias de cada métrica entre condiciones, en lugar del $t$ de Student, dado que no se puede asumir igualdad de varianzas entre grupos. Como estimador del tamaño del efecto se emplea la $g$ de Hedges \cite{Hedges}, que corrige el sesgo de la $d$ de Cohen en muestras pequeñas.
+
+Se emplea el umbral estándar de $p<0{,}05$ como indicativo de que la diferencia observada es estadísticamente significativa. El $p$-value determina si existe un efecto real; la $g$ de Hedges mide su magnitud una vez confirmada la significación. Los umbrales de interpretación de $g$ son: trivial ($g<0{,}2$), pequeño ($0{,}2 \leq g < 0{,}5$), mediano ($0{,}5 \leq g < 0{,}8$) y grande ($g \geq 0{,}8$) \cite{cohen1988statistical}. Cuando el $p$-value no es significativo ($p \geq 0{,}05$), el valor de $g$ no constituye evidencia fiable de un efecto real, independientemente de su magnitud.
 
 \subsubsection{Métricas de calidad}
 
@@ -1739,14 +1742,14 @@ La Figura~\ref{fig:calidad_codigo_caso2} muestra las métricas medias por asiste
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_cpbl_bars_Opencode_-_ClassificationVisu.png}
-    \caption{colbPowers vs.\ baseline, OpenCode, Caso~2. Barras: media $\pm$ SD. Anotación: $d$ de Cohen y $p$-value indicativo.}
+    \caption{colbPowers vs.\ baseline, OpenCode, Caso~2. Barras: media $\pm$ SD. Anotación: $g$ de Hedges y $p$-value indicativo. (ns: no significativo, $p>0{,}05$).}
     \label{fig:ttest_cpbl_opencode_classvis}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_cpbl_bars_Claudecode_-_ClassificationVisu.png}
-    \caption{colbPowers vs.\ baseline, ClaudeCode, Caso~2. Barras: media $\pm$ SD. Anotación: $d$ de Cohen y $p$-value indicativo.}
+    \caption{colbPowers vs.\ baseline, ClaudeCode, Caso~2. Barras: media $\pm$ SD. Anotación: $g$ de Hedges y $p$-value indicativo. (ns: no significativo, $p>0{,}05$).}
     \label{fig:ttest_cpbl_claudecode_classvis}
 \end{figure}
 
@@ -1758,23 +1761,22 @@ En la condición baseline, ClaudeCode genera código con menor complejidad ciclo
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_occc_bars_baseline_-_ClassificationVisu.png}
-    \caption{OpenCode vs.\ ClaudeCode, baseline, Caso~2. Barras: media $\pm$ SD. Anotación: $d$ de Cohen y $p$-value indicativo.}
+    \caption{OpenCode vs.\ ClaudeCode, baseline, Caso~2. Barras: media $\pm$ SD. Anotación: $g$ de Hedges y $p$-value indicativo. (ns: no significativo, $p>0{,}05$).}
     \label{fig:ttest_occc_baseline_classvis}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_occc_bars_colbPowers_-_ClassificationVisu.png}
-    \caption{OpenCode vs.\ ClaudeCode, colbPowers, Caso~2. Barras: media $\pm$ SD. Anotación: $d$ de Cohen y $p$-value indicativo.}
+    \caption{OpenCode vs.\ ClaudeCode, colbPowers, Caso~2. Barras: media $\pm$ SD. Anotación: $g$ de Hedges y $p$-value indicativo. (ns: no significativo, $p>0{,}05$).}
     \label{fig:ttest_occc_colbpowers_classvis}
 \end{figure}
 
-\textit{Análisis estadístico.} En baseline las diferencias entre asistentes presentan efecto grande, con $p$-values indicativos de $p=0{,}007$ (complejidad) y $p=0{,}039$ (mantenibilidad). Con colbPowers, la $d$ de Cohen cae a valores próximos a cero en ambas métricas.
-
+\textit{Análisis estadístico.} En baseline las diferencias entre asistentes presentan efecto grande, con $p$-values indicativos de $p=0{,}007$ (complejidad) y $p=0{,}039$ (mantenibilidad). Con colbPowers, tenemos valores $p$ demasiado altos como para plantear la existencia de un efecto, excepto en el caso de las tool calls, donde ClaudeCode realiza menos llamadas que OpenCode ($p=0{,}001$) con un efecto considerable de $g=5{,}58$.
 % ── Caso 1 ──────────────────────────────────────────────────────────────────
 
 \paragraph{Caso~1 (Repo Existente) --- Baseline vs.\ colbPowers.}
-En el Caso~1 el patrón se invierte respecto al Caso~2: colbPowers produce mayor complejidad ciclomática que baseline tanto en OpenCode (3,37 vs.\ 2,67, $+$26\%) como en ClaudeCode (3,48 vs.\ 2,98, $+$17\%), mientras que el índice de mantenibilidad se mantiene prácticamente igual (OpenCode: 66,59 vs.\ 67,59; ClaudeCode: 66,52 vs.\ 66,05). Este resultado no confirma la hipótesis de que \textit{code-review-graph} proporcionaría un contexto de dependencias superior: las llamadas al servidor MCP fueron prácticamente nulas en todas las ejecuciones, lo que privó al flujo SDD de la ventaja de exploración que habría justificado su overhead.
+En el Caso~1 el patrón se invierte respecto al Caso~2: colbPowers produce mayor complejidad ciclomática que baseline tanto en OpenCode (3,37 vs.\ 2,67, $+$26\%; $p=0{,}029$, $g=+2{,}42$) ---diferencia estadísticamente significativa--- como en ClaudeCode (3,48 vs.\ 2,98, $+$17\%; $p=0{,}208$, $g=+1{,}07$), aunque en este último sin soporte estadístico. El índice de mantenibilidad no muestra diferencia apreciable en ningún asistente (OpenCode: $p=0{,}646$, $g=-0{,}32$; ClaudeCode: $p=0{,}873$, $g=+0{,}11$). Este resultado no confirma la hipótesis de que \textit{code-review-graph} proporcionaría un contexto de dependencias superior: las llamadas al servidor MCP fueron prácticamente nulas en todas las ejecuciones, lo que privó al flujo SDD de la ventaja de exploración que habría justificado su overhead.
 
 \begin{figure}[H]
     \centering
@@ -1790,22 +1792,22 @@ En el Caso~1 el patrón se invierte respecto al Caso~2: colbPowers produce mayor
     \label{fig:delta_calidad_caso1}
 \end{figure}
 
-Las Figuras~\ref{fig:ttest_cpbl_oc_cm} y~\ref{fig:ttest_cpbl_cc_cm} (presentadas en la sección de análisis de consumo) muestran los paneles completos con barras de error (SD) y la $d$ de Cohen para cada comparación.
+Las Figuras~\ref{fig:ttest_cpbl_oc_cm} y~\ref{fig:ttest_cpbl_cc_cm} (presentadas en la sección de análisis de consumo) muestran los paneles completos con barras de error (SD) y la $g$ de Hedges para cada comparación.
 
 \paragraph{Caso~1 --- OpenCode vs.\ ClaudeCode.}
-En el Caso~1 las diferencias de calidad entre asistentes son menos pronunciadas que en el Caso~2. En baseline, ambos producen complejidad ciclomática similar (2,67 OpenCode, 2,98 ClaudeCode) e índice de mantenibilidad comparable (67,59 vs.\ 66,05). Con colbPowers la brecha se mantiene pequeña (3,37 vs.\ 3,48 en complejidad; 66,59 vs.\ 66,52 en mantenibilidad), lo que sugiere que en tareas de modificación incremental la elección del asistente tiene menor impacto en la calidad estructural del código producido.
+En el Caso~1 las diferencias de calidad entre asistentes son menos pronunciadas que en el Caso~2 y ninguna alcanza significación estadística. En baseline, la complejidad ciclomática es similar entre asistentes ($p=0{,}129$, $g=-1{,}26$) y el índice de mantenibilidad también ($p=0{,}596$, $g=+0{,}38$). Con colbPowers la brecha es igualmente irrelevante estadísticamente (complejidad: $p=0{,}746$, $g=-0{,}23$; mantenibilidad: $p=0{,}979$, $g=+0{,}02$), lo que sugiere que en tareas de modificación incremental la elección del asistente tiene menor impacto en la calidad estructural del código producido.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_occc_bars_baseline_-_Repo_Existente.png}
-    \caption{OpenCode vs.\ ClaudeCode, baseline, Caso~1. Barras: media $\pm$ SD. Anotación: $d$ de Cohen y $p$-value indicativo.}
+    \caption{OpenCode vs.\ ClaudeCode, baseline, Caso~1. Barras: media $\pm$ SD. Anotación: $g$ de Hedges y $p$-value indicativo.}
     \label{fig:ttest_occc_baseline_caso1}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_occc_bars_colbPowers_-_Repo_Existente.png}
-    \caption{OpenCode vs.\ ClaudeCode, colbPowers, Caso~1. Barras: media $\pm$ SD. Anotación: $d$ de Cohen y $p$-value indicativo.}
+    \caption{OpenCode vs.\ ClaudeCode, colbPowers, Caso~1. Barras: media $\pm$ SD. Anotación: $g$ de Hedges y $p$-value indicativo.}
     \label{fig:ttest_occc_colbpowers_caso1}
 \end{figure}
 
@@ -1886,7 +1888,7 @@ Aunque este aspecto no fue formulado explícitamente como requisito no funcional
 
 \subsubsection*{Resultados experimentales}
 
-La evaluación experimental produce resultados mixtos. Dado el tamaño muestral ($n=3$ por condición), la $d$ de Cohen se utiliza como métrica principal del efecto, mientras que los $p$-values test $t$ de Welch se reportan como referencia indicativa. El hallazgo principal es la mejora con tamaño de efecto grande en las métricas de calidad del código en el Caso~2 (proyecto generado desde cero): colbPowers reduce la complejidad ciclomática un 27\% y mejora el índice de mantenibilidad un 15\% en OpenCode, con $p$-values indicativos de $p=0{,}014$ y $p=0{,}037$ respectivamente. Sin embargo, con ClaudeCode, que de base produce código de mayor calidad, los efectos son fueron mucho menos noables, teniendo una subida en la compljida ciclomaica de un 9\% respecto al baseline, y una mejora de el indice de mantenibilidad de un 3\%, sin embargo, siendo esta una diferencia tan reducida, con un soporte estadístico de $n=3$, no se pueden extraer resultados definitivos. En el Caso~1 (eliminación de funcionalidades complejas sobre un repositorio existente), el patrón se invierte: colbPowers produce código de mayor complejidad ciclomática (+17--26\%) sin mejora neta en mantenibilidad. El factor determinante parece ser que los agentes no invocaron \textit{code-review-graph} de forma efectiva, privando al flujo SDD del contexto de dependencias que habría justificado su overhead. Sin ese contexto, la planificación estructurada generó código de limpieza adicional más complejo que las eliminaciones directas del baseline.
+La evaluación experimental produce resultados mixtos. Dado el tamaño muestral ($n=3$ por condición), se emplea la $g$ de Hedges como estimador principal del tamaño del efecto; el $p$-value del test $t$ de Welch determina si la diferencia es estadísticamente significativa, y la $g$ cuantifica su magnitud solo cuando el $p$-value lo confirma. El hallazgo principal es la mejora estadísticamente significativa y de efecto grande en las métricas de calidad del código en el Caso~2 (proyecto generado desde cero): colbPowers reduce la complejidad ciclomática un 27\% y mejora el índice de mantenibilidad un 15\% en OpenCode ($p=0{,}014$ y $p=0{,}037$ respectivamente). Con ClaudeCode, que de base produce código de mayor calidad, los cambios fueron mucho menos notables ---un aumento del 9\% en complejidad ciclomática y una mejora del 3\% en mantenibilidad--- y no alcanzan significación estadística ($p=0{,}508$ y $p=0{,}754$), por lo que no puede afirmarse la existencia de un efecto real. En el Caso~1 (eliminación de funcionalidades complejas sobre un repositorio existente), el patrón se invierte: colbPowers produce código de mayor complejidad ciclomática ($+$26\% en OpenCode, $p=0{,}029$, $g=+2{,}42$; $+$17\% en ClaudeCode, $p=0{,}208$, $g=+1{,}07$), con efecto estadísticamente significativo solo en OpenCode, sin mejora neta en mantenibilidad en ningún asistente (OpenCode: $p=0{,}646$; ClaudeCode: $p=0{,}873$). El factor determinante parece ser que los agentes no invocaron \textit{code-review-graph} de forma efectiva, privando al flujo SDD del contexto de dependencias que habría justificado su overhead. Sin ese contexto, la planificación estructurada generó código de limpieza adicional más complejo que las eliminaciones directas del baseline.
 
 Un resultado secundario con implicaciones prácticas directas es la convergencia de calidad entre asistentes: con colbPowers activo, la $d$ de Cohen entre OpenCode y ClaudeCode cae a valores próximos a cero en ambas métricas de calidad. Esto indica que el flujo SDD homogeneiza la calidad del código con independencia del asistente, lo que permite a un equipo combinar herramientas distintas sin comprometer la consistencia del producto.
 
@@ -1944,22 +1946,6 @@ Ambos módulos disponen de una implementación propia de código abierto como al
 
 \newpage
 
-\section{Cosas en proceso y dudas}
-A continuación se listan las cosas que considero que están pendientes en la memoria y voy a implementar en los próximos dias. Están ordenadas según lo que yo consideraría ser la prioridad (más prioritarias primero).
-\begin{enumerate}
-    \item \textbf{Escribir los abstracts:} He de escrir el abstracts en Catalán, Castellano y Ingles.  (Cubierto, pendiente de revisiones)
-    \item \textbf{Debería eliminar el apartado de Integración de conocimiento?} El apartado de integración del conocimiento nos lo pedian para el informe de seguimiento, pero la verdad es que no aporta absolutamente nada en mi opinión... Se podría quitar.
-    \item \textbf{Acabar de comentar los experimentos en mayor detalle:} Los experimentos han sido comentados y se han añadido graficas para comparar las difereentes configuraciones, pero se puede expandir bastante este apartado. He hecho un script para hacer un estudio estadístico de los resultados, me falta añadirlo. También tengo un montón de graficos que no he puesto en el apartado pero podrian ir a un posible Anexo. (Medio hecho)
-    \item \textbf{Conclusiones y trabajo futuro:} Aún queda escribir este apartado. (Trabajo futuro cubierto)
-    \item \textbf{Apartado de "Uso de IA en el proyecto":} Compañeros mios han implementado un apartado que me parecería muy interesante de mencionar. Básicamente consiste en hacer una explicación de que usos se le han dado a la IA generativa para el desarrollo del proyecto, puesto que la he utilizado para hacer brainstorming, asistencia en la programación de modulos del proyecto, y ha ayudado a formular secciones de la memoría. Por supuesto se ha hecho con el máximo cuidado para evitar que haya basura, pero aún así considero que no es mala idea para tener una máxima transparencia hacer un tipo de disclaimer. (Cubiero en el aparado \ref{sec:uso_ia})
-    \item \textbf{Apartado de "Sistema completo":} Me gustaría añadir un apartado en el que explique el funcionamiento de el sistema completo y cómo seria el flujo, desde empezar con la transcripción del cliente, hasta el desarrollo de código y seguimiento del cliente. Ya tengo el diagrama preparado, pero no estoy muy seguro de donde poner la sección. (Ahora mismo está en la ultima subsección de la primera sección, pero no estoy seguro de que sea el mejor sitio)
-    \item \textbf{Revisar apartados 1-4:} Se han cambiado los apartados 1 a 4 para que sean compatibles con el nuevo estado del proyecto, se han ido añadiendo referencias a las diferencias entre la planifiación inicial de GEP y la planificación final. Queda revisarlo en mayor profundidad, pero ya debería estar.
-    \item \textbf{Modulos de transcripción y documentación:} Como David recomendó, he combinado los modulos de toma de requerimientos y seguimiento del cliente. Para el seguimiento del cliente me gustaría añadir un diagrama de flujo explicando como funciona el proceso. También quedaría repasar algunos apartados y extender alguna sección, sobretodo para el seguimiento del cliente. (Añadidos diagramas para seguimiento del cliente)
-    \item \textbf{Apartado de Spec Driven Development:} Este apartado es el mas extenso, me gustaría poner algo de feeedback visual de cómo funcionan los hooks, plugins, y en general que flujo siguen las herramientas como Opencode y Claudecode. También me he de leer de nuevo toda la sección para asegurarme de que haya una coherencia adecuada. (He añadido algún diagrama)
-\end{enumerate}
-
-\newpage
-
 \addcontentsline{toc}{section}{Referencias}
 \bibliographystyle{plainurl}
 \bibliography{references}
@@ -1973,14 +1959,14 @@ A continuación se listan las cosas que considero que están pendientes en la me
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_cpbl_table.png}
-    \caption{Análisis estadístico: colbPowers vs.\ baseline. Se incluye la $d$ de Cohen como métrica principal del tamaño de efecto.}
+    \caption{Análisis estadístico: colbPowers vs.\ baseline. Guiarese por el $p$ value para determinar si hay efecto, se incluye la $g$ de Hedges como métrica principal del tamaño de efecto.}
     \label{fig:ttest_cpbl}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_occc_table.png}
-    \caption{Análisis estadístico: OpenCode vs.\ ClaudeCode. Se incluye la $d$ de Cohen como métrica principal del tamaño de efecto.}
+    \caption{Análisis estadístico: OpenCode vs.\ ClaudeCode. Guiarese por el $p$ value para determinar si hay efecto, se incluye la $g$ de Hedges como métrica principal del tamaño de efecto.}
     \label{fig:ttest_occc}
 \end{figure}
 
