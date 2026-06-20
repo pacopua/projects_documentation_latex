@@ -83,6 +83,12 @@
 {\textbf{Abstract}}
 \end{center}
 The present project consists of the design and application of an intelligent assistance system, with the objective of automating the various stages in the development of software projects ---requirements gathering, Spec-Driven Development, and client follow-up--- through the orchestration of generative Artificial Intelligence tools. Placing emphasis on the interaction with the human developer, following a philosophy of \textit{Human in the loop}, and the generation of documentation to guide the process. This methodology aims to reduce the quality loss typically caused by the use of AI in the development of these projects. The experimental evaluation conducted suggests improvements in code quality and maintainability in greenfield scenarios, with mixed results in refactoring tasks when using the proposed system. This final degree project is applied and developed for the working environment at the software consulting company \textit{Colb.AI}.
+
+\medskip
+{
+\small
+\noindent\textbf{Keywords:} Spec-Driven Development (SDD), Large Language Models (LLM), Coding agents, Prompt engineering, Human-in-the-Loop (HITL), Software development
+}
 \vfill
 \hspace{0pt}
 }
@@ -96,6 +102,12 @@ The present project consists of the design and application of an intelligent ass
 {\textbf{Resumen}}
 \end{center}
 El presente proyecto consiste en el diseño y aplicación de un sistema para la automatización de las diversas etapas en el desarrollo de proyectos de \textit{software} ---toma de requerimientos, \textit{Spec-Driven Development} y seguimiento del cliente--- utilizando principalmente la orquestación de herramientas de Inteligencia Artificial generativa. Haciendo un especial énfasis en la interacción de estos sistemas de automatización con el desarrollador, siguiendo una filosofía de \textit{Human in the loop}, y la generación de documentación para guiar el proceso. Esta metodología busca reducir la pérdida de calidad típicamente resultante del uso de IA en el desarrollo de los proyectos. La evaluación experimental realizada sugiere mejoras en la calidad y mantenibilidad del código en proyectos comenzados de cero, con resultados variados para la edición de un proyecto ya existente al utilizar el sistema propuesto. Este trabajo de final de grado se aplica y desarrolla para el entorno laboral de la consultora de \textit{software} \textit{Colb.AI}.
+
+\medskip
+{
+\small
+\noindent\textbf{Palabras clave:} Spec-Driven Development (SDD), Large Language Models (LLM), Agentes de código, Ingeniería de \textit{prompts}, Human-in-the-Loop (HITL), Desarrollo de software
+}
 \vfill
 \hspace{0pt}
 }
@@ -109,6 +121,12 @@ El presente proyecto consiste en el diseño y aplicación de un sistema para la 
 {\textbf{Resum}}
 \end{center}
 El present projecte consisteix en el disseny i aplicació d'un sistema intel·ligent per a l'automatització de les etapes en el desenvolupament de projectes de \textit{software} ---recollida de requeriments, \textit{Spec-Driven Development} i seguiment del client--- aplicant principalment l'orquestació d'eines d'Intel·ligència Artificial generativa. Es fa un especial èmfasi en la interacció d'aquests sistemes amb el desenvolupador humà, seguint una filosofia de \textit{Human in the loop}, i la generació de documentació per a guiar el procés. Aquesta metodologia tracta de reduir la pèrdua de qualitat típicament conseqüència de l'ús de la IA en el desenvolupament d'aquests projectes. L'avaluació experimental realitzada suggereix millores en la qualitat i mantenibilitat del codi en projectes nous, amb resultats variats per a la modificació de projectes ja existents, en utilitzar el sistema proposat. Aquest treball de final de grau s'aplica i desenvolupa per a l'entorn laboral de la consultoria de \textit{software} \textit{Colb.AI}.
+
+\medskip
+{
+\small
+\noindent\textbf{Paraules clau:} Spec-Driven Development (SDD), Large Language Models (LLM), Agents de codi, Enginyeria de \textit{prompts}, Human-in-the-Loop (HITL), Desenvolupament de software
+}
 \vfill
 \hspace{0pt}
 }
@@ -121,6 +139,28 @@ El present projecte consisteix en el disseny i aplicació d'un sistema intel·li
 \newpage
 
 \listoftables
+
+\newpage
+
+\section*{Lista de siglas}
+\begin{tabular}{@{}lp{0.75\textwidth}}
+\textbf{API}    & Application Programming Interface \\
+\textbf{CC}     & Complejidad Ciclomática \\
+\textbf{CLI}    & Command-Line Interface \\
+\textbf{DCM}    & Dart Code Metrics \\
+\textbf{HITL}   & Human-In-The-Loop \\
+\textbf{IDE}    & Integrated Development Environment \\
+\textbf{LLM}    & Large Language Model \\
+\textbf{LoC}    & Lines of Code \\
+\textbf{MCP}    & Model Context Protocol \\
+\textbf{MI}     & Maintainability Index \\
+\textbf{MVP}    & Minimum Viable Product \\
+\textbf{ReAct}  & Reasoning + Acting \\
+\textbf{SAS}    & Shared Access Signature \\
+\textbf{SDK}    & Software Development Kit \\
+\textbf{SDD}    & Spec-Driven Development \\
+\textbf{WSL}    & Windows Subsystem for Linux \\
+\end{tabular}
 
 \newpage
 
@@ -180,7 +220,7 @@ Los principales conceptos y definiciones relevantes que envuelven los ámbitos t
 \subsubsection{Spec-Driven-Development (SDD)}
 \label{sec:sdd}
 
-El \textit{Spec-Driven Development} (SDD) es una filosofía donde la documentación detallada de los requisitos y el comportamiento esperado del sistema (la especificación) dirige la creación del software. A diferencia del enfoque tradicional, donde estos documentos descriptivos solían quedar subordinados o desactualizarse frente al código, el SDD invierte esta relación. El documento estructurado en lenguaje natural actúa como la base de la verdad sobre la que se construirá el futuro código. \cite{ostroff_agile_2004} \cite{github_spec_kit}
+El \textit{Spec-Driven Development} (SDD) es una filosofía donde la documentación detallada de los requisitos y el comportamiento esperado del sistema (la especificación) dirige la creación del software. A diferencia del enfoque tradicional, donde estos documentos descriptivos solían quedar subordinados o desactualizarse frente al código, el SDD invierte esta relación. El documento estructurado en lenguaje natural actúa como la base de la verdad sobre la que se construye el código. \cite{ostroff_agile_2004} \cite{github_spec_kit}
 
 En otras palabras, hay que tener definido previamente exactamente qué queremos que haga cada pieza de código, y cómo queremos que lo haga. Cuando se quiera hacer cambios en la implementación, se han de aplicar primero en los documentos de especificación y luego en el código del proyecto. \\
 
@@ -291,7 +331,7 @@ En el Cuadro \ref{tab:comparativa_herramientas} se presenta un resumen de las ca
 
 De las herramientas analizadas, \textit{superpowers} fue evaluado como candidato directo al problema planteado. Resuelve la orquestación de agentes, pero no garantiza coherencia arquitectónica entre sesiones ni entre desarrolladores distintos, ya que carece de un mecanismo de contexto persistente y compartido. Se decidió adoptarlo como base y extenderlo: el resultado es \textbf{colbPowers}, que añade la capa de \texttt{constitution.md} (reglas y estándares del proyecto) y \texttt{features.md} (registro de funcionalidades) como fuente de verdad compartida para todos los agentes.
 
-A la vista de estas limitaciones, la creación de una solución propia resulta razonable. Desarrollar nuestro propio sistema nos proporciona la flexibilidad indispensable para integrarlo de forma nativa con nuestro \textit{pipeline} de trabajo. Esto nos permitirá personalizar la ingesta de contexto conectando la herramienta directamente a nuestras bases de datos, permitiendo la lectura automatizada de \textit{issues en GitHub} y la integración fluida con plataformas de gestión interna como \textit{Odoo} y \textit{Microsoft Teams}.
+A la vista de estas limitaciones, la creación de una solución propia resulta razonable. Desarrollar nuestro propio sistema nos proporciona la flexibilidad indispensable para integrarlo de forma nativa con nuestro \textit{pipeline} de trabajo. Esto nos permitió personalizar la ingesta de contexto conectando la herramienta directamente a nuestras bases de datos, permitiendo la lectura automatizada de \textit{issues en GitHub} y la integración fluida con plataformas de gestión interna como \textit{Odoo} y \textit{Microsoft Teams}.
 
 \newpage
 
@@ -331,7 +371,7 @@ Una vez entregado el desarrollo, el sistema no termina: comienza la fase de \tex
 \section{Alcance del Proyecto}
 \label{sec:alcance}
 
-En esta sección del trabajo se declaran los objetivos del proyecto, cuales son los requerimientos para dar este objetivo por cumplido, las métricas que se utilizarán para evaluar el sistema, y los posibles obstáculos y riesgos que pueden aparecer en el desarrollo del proyecto (Tal y como pide la metodología de \textit{GEP}). Adicionalmente, se ha añadido un último subapartado destacando la evolución que ha tenido este proyecto respecto la planificación inicial de \textit{GEP}.
+En esta sección del trabajo se declaran los objetivos del proyecto, cuales son los requerimientos para dar este objetivo por cumplido, las métricas que se utilizaron para evaluar el sistema, y los posibles obstáculos y riesgos que pueden aparecer en el desarrollo del proyecto (Tal y como pide la metodología de \textit{GEP}). Adicionalmente, se ha añadido un último subapartado destacando la evolución que ha tenido este proyecto respecto la planificación inicial de \textit{GEP}.
 
 \subsection{Objetivo General}
 \label{sec:objetivo_general}
@@ -345,7 +385,7 @@ El objetivo principal de este proyecto es diseñar e implementar un \textbf{sist
 
 El conjunto opera de forma integrada en el entorno local del desarrollador, cubriendo el ciclo de vida completo del software desde la primera reunión con el cliente hasta la entrega y seguimiento iterativo del producto.
 
-La validación de los resultados del sistema se hará a través de ciertas métricas de análisis de calidad del código, conocidas y utilizadas en el paradigma del desarrollo de software. Además de, por supuesto, los revisores humanos, que han de analizar en todo momento el código generado y los resultados producidos, haciendo a este un sistema con lo que se conoce \textit{Human In The Loop} \cite{vaithilingam_2022}, cosa que significa que en todo momento hay supervisión e intervención humana. \\
+La validación de los resultados del sistema se realizó a través de ciertas métricas de análisis de calidad del código, conocidas y utilizadas en el paradigma del desarrollo de software. Además de, por supuesto, los revisores humanos, que han de analizar en todo momento el código generado y los resultados producidos, haciendo a este un sistema con lo que se conoce \textit{Human In The Loop} \cite{vaithilingam_2022}, cosa que significa que en todo momento hay supervisión e intervención humana. \\
 
 Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos funcionales y arquitectónicos:
 \begin{itemize}
@@ -382,7 +422,7 @@ Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos fu
 \subsection{Métricas de Evaluación del Código}
 \label{sec:metricas}
 
-Para validar empíricamente la calidad del código generado por el sistema, se emplearán métricas de análisis estático ampliamente adoptadas en la ingeniería del software \cite{sommerville_se_2015}. Estas métricas serán calculadas con herramientas de análisis estático según el lenguaje del proyecto: \textbf{radon} \cite{Lacchia_radon} para proyectos Python y \textbf{DCM --- Dart Code Metrics} \cite{dart_code_metrics} para proyectos Flutter/Dart. Es importante destacar que las métricas no forman parte del flujo automatizado de los agentes: constituyen una herramienta de evaluación independiente que el desarrollador utiliza para analizar manualmente la calidad del código generado y contrastar los resultados entre distintas ejecuciones del sistema.
+Para validar empíricamente la calidad del código generado por el sistema, se emplean métricas de análisis estático ampliamente adoptadas en la ingeniería del software \cite{sommerville_se_2015}. Estas métricas se calculan con herramientas de análisis estático según el lenguaje del proyecto: \textbf{radon} \cite{Lacchia_radon} para proyectos Python y \textbf{DCM --- Dart Code Metrics} \cite{dart_code_metrics} para proyectos Flutter/Dart. Es importante destacar que las métricas no forman parte del flujo automatizado de los agentes: constituyen una herramienta de evaluación independiente que el desarrollador utiliza para analizar manualmente la calidad del código generado y contrastar los resultados entre distintas ejecuciones del sistema.
 
 Las métricas empleadas se definen formalmente a continuación.
 
@@ -463,24 +503,24 @@ La justificación del cambio es doble. Por un lado, la adopción de \textit{supe
 
 \subsection{Metodología de Trabajo}
 \label{sec:metodologia_trabajo}
-Para el desarrollo de este Trabajo de Final de Grado, se adoptará una \textbf{metodología ágil}, específicamente en el marco de \textit{SCRUM}, orientada a la entrega continua de valor y a la adaptación rápida frente a posibles cambios. 
+Para el desarrollo de este Trabajo de Final de Grado, se adopta una \textbf{metodología ágil}, específicamente en el marco de \textit{SCRUM}, orientada a la entrega continua de valor y a la adaptación rápida frente a posibles cambios. 
 
 La idea es que el flujo de trabajo sea mediante ciclos iterativos breves, para ir validando e iterando sobre el producto, haciendo cambios sobre esta basándonos en las valoraciones del ciclo anterior. \cite{modul2_1} \cite{schwaber_scrum_2020}
 
-Una pieza fundamental de esta metodología serán las reuniones diarias . Estas sesiones breves se llevarán a cabo de forma telemática mediante \textbf{Microsoft Teams} junto al equipo de \textit{Colb.Ai}. En ellas se expondrá el progreso realizado el día anterior y se iterará sobre las ideas del proceso actual. Esto asegurará que el desarrollo se mantenga alineado con los objetivos de la empresa y los estándares de calidad esperados.
+Una pieza fundamental de esta metodología son las reuniones diarias. Estas sesiones breves se llevan a cabo de forma telemática mediante \textbf{Microsoft Teams} junto al equipo de \textit{Colb.Ai}. En ellas se expone el progreso realizado el día anterior y se itera sobre las ideas del proceso actual. Esto asegura que el desarrollo se mantenga alineado con los objetivos de la empresa y los estándares de calidad esperados.
 
 Un ejemplo concreto de esta metodología en acción fue el cambio de alcance producido al finalizar la fase TP1. Los hallazgos sobre la extensibilidad de los asistentes CLI y la existencia de \textit{superpowers} fueron presentados al director del proyecto al cierre del sprint, permitiendo reorientar el Sprint Backlog en consecuencia sin comprometer la planificación global ni el presupuesto estimado.
 
 \subsection{Herramientas de Seguimiento y Control}
 \label{sec:herramientas_seguimiento}
-Para garantizar el correcto seguimiento del progreso del proyecto, se emplearán las siguientes herramientas y dinámicas:
+Para garantizar el correcto seguimiento del progreso del proyecto, se emplean las siguientes herramientas y dinámicas:
 
 \begin{itemize}
-    \item \textbf{Gestión de Tareas (Odoo):} La planificación ágil y el seguimiento de las tareas del proyecto se gestionarán íntegramente a través de \textbf{Odoo}, la herramienta utilizada internamente por la empresa.
+    \item \textbf{Gestión de Tareas (Odoo):} La planificación ágil y el seguimiento de las tareas del proyecto se gestionan íntegramente a través de \textbf{Odoo}, la herramienta utilizada internamente por la empresa.
     
     \item \textbf{Control de Versiones (Git y GitHub):} El código fuente, la documentación y la evolución de los \textit{prompts} estarán controlados utilizando \textit{Git}. El repositorio remoto estará alojado en los servidores de \textbf{GitHub}. Esta combinación facilita controlar y evaluar los avances que se hacen sobre el proyecto.
     
-    \item \textbf{Reuniones de Seguimiento Académico:} Además de las interacciones diarias con la empresa, se establecerán reuniones periódicas con el director academico del TFG. La frecuencia exacta de estos encuentros se irá definiendo y ajustando de mutuo acuerdo a lo largo del desarrollo, con el objetivo de validar el rigor del proyecto, y revisar los entregables de documentación.
+    \item \textbf{Reuniones de Seguimiento Académico:} Además de las interacciones diarias con la empresa, se establecen reuniones periódicas con el director académico del TFG. La frecuencia exacta de estos encuentros se va definiendo y ajustando de mutuo acuerdo a lo largo del desarrollo, con el objetivo de validar el rigor del proyecto, y revisar los entregables de documentación.
 \end{itemize}
 
 \newpage
@@ -507,7 +547,7 @@ Durante las fases de diseño se ha empleado IA generativa para explorar alternat
 
 \subsection{Planificación}
 \label{sec:descripcion_tareas}
-Para garantizar el éxito en el desarrollo de colbPowers y los módulos complementarios de toma de requerimientos y seguimiento del cliente, se ha elaborado una planificación temporal detallada. El proyecto comenzó el 12 de febrero de 2026 (contando la documentación de esta asignatura) y tiene prevista su finalización y defensa entre el \textbf{23 de junio} hasta el \textbf{1 de julio} de 2026. Se estima que la dedicación total para la realización de este Trabajo de Fin de Grado es de aproximadamente 540 horas. La dedicación media será de unas 5 horas diarias durante los días laborables, y en ocasiones, un extra en las etapas en que se deba escribir bastante documentación.
+Para garantizar el éxito en el desarrollo de colbPowers y los módulos complementarios de toma de requerimientos y seguimiento del cliente, se ha elaborado una planificación temporal detallada. El proyecto comenzó el 12 de febrero de 2026 (contando la documentación de esta asignatura) y tiene prevista su finalización y defensa entre el \textbf{23 de junio} hasta el \textbf{1 de julio} de 2026. Se estima que la dedicación total para la realización de este Trabajo de Fin de Grado es de aproximadamente 540 horas. La dedicación media es de unas 5 horas diarias durante los días laborables, y en ocasiones, un extra en las etapas en que se deba escribir bastante documentación.
 
 \subsubsection{GP - Gestión del proyecto}
 \label{sec:gp}
@@ -1447,6 +1487,21 @@ La integración de esta herramienta aborda directamente el problema de gestión 
     \item Búsqueda semántica de entidades de código (funciones, clases, módulos).
     \item Obtención de una visión de alto nivel de la arquitectura del sistema.
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.72\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imagenes/code_review_graph_OnlyTheGraph.jpg}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.25\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{imagenes/code_review_graph_NodeTypes.png}
+    \end{minipage}
+    \caption{Gráfico estructural del código generado por code-review-graph sobre el repositorio del proyecto (izquierda) y leyenda de tipos de nodo y arista (derecha). Generado sobre un repositorio ya existente de \textit{Colb.AI}.}
+    \label{fig:code_review_graph}
+\end{figure}
 
 \subsubsection{colbPowers: flujo de trabajo}
 \label{sec:colbpowers_flujo}
