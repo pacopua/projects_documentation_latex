@@ -82,7 +82,7 @@ Anexo, eliminar mención de "Explicación completa", cuando realmente no es una 
 - Cambiar nombre de la lsita de tablas -> "Lista de tablas" [DONE]
 - Cambiar los diagramas con los módulos! Ahora mismo hay un diagrama con lógica que no corresponde a su módulo. [DONE]
 - Apartado 1.6 (Propuesta). Explicar qué se hace exactamente, que no hago codigo desde 0, sino que junto un montón de cosas ya implementadas en un solo sistema.
-- Cambiar 6.3.3, explicar que colbPowers se ha desarrollado para este proyecto, entre otras cosas
+- Cambiar 6.3.3, explicar que colbPowers se ha desarrollado para este proyecto, entre otras cosas [DONE]
 - Cambiar readme.md de colbPowers para que ponga colbPowers y no superpowers.
-
-9/12
+- Mover el apartado de integración del conocimiento a otro lado. [Done]
+10/13

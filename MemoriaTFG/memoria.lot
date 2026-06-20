@@ -1,16 +1,16 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {table}{\numberline {1}{\ignorespaces Comparativa de soluciones existentes. Elaboración propia.}}{17}{table.1}%
-\contentsline {table}{\numberline {2}{\ignorespaces Comparativa entre el alcance comprometido en el GEP y el alcance final ejecutado. Elaboración propia.}}{24}{table.2}%
-\contentsline {table}{\numberline {3}{\ignorespaces Resumen de las tareas del proyecto con sus dependencias y recursos asignados. Generación propia.}}{32}{table.3}%
-\contentsline {table}{\numberline {4}{\ignorespaces Distribución estimada de horas del autor por rol a lo largo del proyecto. Elaboración propia.}}{33}{table.4}%
-\contentsline {table}{\numberline {5}{\ignorespaces Comparativa entre la planificación del GEP y la planificación final ejecutada. Elaboración propia.}}{35}{table.5}%
-\contentsline {table}{\numberline {6}{\ignorespaces Costes de personal por hora según el rol asumido. Elaboración propia. Basada en información extraída de \cite {indeed_salarios}.}}{39}{table.6}%
-\contentsline {table}{\numberline {7}{\ignorespaces Cálculo de la amortización de los recursos de \textit {Hardware}. Elaboración propia.}}{41}{table.7}%
-\contentsline {table}{\numberline {8}{\ignorespaces Presupuesto total estimado del proyecto. Elaboración propia.}}{43}{table.8}%
-\contentsline {table}{\numberline {9}{\ignorespaces Conceptos clave del sistema de extensibilidad de los asistentes CLI. Elaboración propia.}}{60}{table.9}%
-\contentsline {table}{\numberline {10}{\ignorespaces Comparativa arquitectónica entre ClaudeCode y OpenCode. Elaboración propia.}}{64}{table.10}%
-\contentsline {table}{\numberline {11}{\ignorespaces Condiciones experimentales. Elaboración propia.}}{70}{table.11}%
-\contentsline {table}{\numberline {12}{\ignorespaces Caso 1 --- OpenCode con DeepSeek V4-Flash. Caché = tokens leídos de caché. Métricas de calidad calculadas con DCM.}}{71}{table.12}%
-\contentsline {table}{\numberline {13}{\ignorespaces Caso 1 --- ClaudeCode con Haiku~4.5. Caché = tokens leídos de caché. Métricas de calidad calculadas con DCM.}}{72}{table.13}%
-\contentsline {table}{\numberline {14}{\ignorespaces Caso 2 --- OpenCode con DeepSeek V4-Flash.}}{73}{table.14}%
-\contentsline {table}{\numberline {15}{\ignorespaces Caso 2 --- ClaudeCode con Haiku~4.5. Elaboración propia.}}{74}{table.15}%
+\contentsline {table}{\numberline {2}{\ignorespaces Comparativa entre el alcance comprometido en el GEP y el alcance final ejecutado. Elaboración propia.}}{26}{table.2}%
+\contentsline {table}{\numberline {3}{\ignorespaces Resumen de las tareas del proyecto con sus dependencias y recursos asignados. Generación propia.}}{34}{table.3}%
+\contentsline {table}{\numberline {4}{\ignorespaces Distribución estimada de horas del autor por rol a lo largo del proyecto. Elaboración propia.}}{35}{table.4}%
+\contentsline {table}{\numberline {5}{\ignorespaces Comparativa entre la planificación del GEP y la planificación final ejecutada. Elaboración propia.}}{37}{table.5}%
+\contentsline {table}{\numberline {6}{\ignorespaces Costes de personal por hora según el rol asumido. Elaboración propia. Basada en información extraída de \cite {indeed_salarios}.}}{41}{table.6}%
+\contentsline {table}{\numberline {7}{\ignorespaces Cálculo de la amortización de los recursos de \textit {Hardware}. Elaboración propia.}}{43}{table.7}%
+\contentsline {table}{\numberline {8}{\ignorespaces Presupuesto total estimado del proyecto. Elaboración propia.}}{45}{table.8}%
+\contentsline {table}{\numberline {9}{\ignorespaces Conceptos clave del sistema de extensibilidad de los asistentes CLI. Elaboración propia.}}{62}{table.9}%
+\contentsline {table}{\numberline {10}{\ignorespaces Comparativa arquitectónica entre ClaudeCode y OpenCode. Elaboración propia.}}{66}{table.10}%
+\contentsline {table}{\numberline {11}{\ignorespaces Condiciones experimentales. Elaboración propia.}}{72}{table.11}%
+\contentsline {table}{\numberline {12}{\ignorespaces Caso 1 --- OpenCode con DeepSeek V4-Flash. Caché = tokens leídos de caché. Métricas de calidad calculadas con DCM.}}{73}{table.12}%
+\contentsline {table}{\numberline {13}{\ignorespaces Caso 1 --- ClaudeCode con Haiku~4.5. Caché = tokens leídos de caché. Métricas de calidad calculadas con DCM.}}{74}{table.13}%
+\contentsline {table}{\numberline {14}{\ignorespaces Caso 2 --- OpenCode con DeepSeek V4-Flash.}}{75}{table.14}%
+\contentsline {table}{\numberline {15}{\ignorespaces Caso 2 --- ClaudeCode con Haiku~4.5. Elaboración propia.}}{76}{table.15}%
