@@ -2,10 +2,6 @@ Lectura entera TFG con apuntes:
 # Review post lectura mia
 ---
 
-- Abstract: debería añadir "keywords"?
-
----
-
 - Introducción: presento 3 (Toma de req, Desarrollo de código y Seguimiento del cliente)módulos y luego lo convierto en solo 2 (Solo hay dos apartados de implementación)
 - 1.1.2: párrafo final contradice lo que se termina aplicando, se podría borrar tal cual
 - 1.2.3: Agent Skill definición se podría mejorar. Ahora se dice que es cómo una herramienta o script que el agente puede usar, pero en realidad es un prompt que puede incluir scripts en subcarpetas que SÍ puede ejecutar, pero primero debe leer el prompt al activar la Skill.
@@ -14,19 +10,11 @@ Lectura entera TFG con apuntes:
 - 1.4:
 	+ En general quizás se podrían expandir estos apartados
 	+ Se debería citar tanto 1.4.5 como 1.4.7.
-- 1.5: Decir que colbPowers añade solamente constitution.md y features.md es pegarse un tiro en el pie. Lo simplifica muchísimo, cuando la implementación ha sido laboriosa.
-- 1.6: 
-	+ En la propuesta de implementación se vuelve a definirlos tres pilares de (Toma de req, Desarrollo de código y Seguimiento del cliente), cuando luego en la implementación simplemente junto el primer y segundo
-	+ Explicar de nuevo que solo se ha añadido constitution.md y features.md es un understatement.
-- 1.7: Esto me gusta, pero no sé si debería ir aquí.
 
 ---
 
 2: Cambiada introducción
-2.1: Se siguen planteando La toma de requerimientos y el módulo de seguimiento del cliente como apartados diferentes. Además 
-2.5: 
-	+ En la revisión del alcance vuelvo a hablar de los "tres pilares".
-	+ De vuelta vuelvo a mencionar "constitution.md" + "features.md" como única diferencia entre superpowers.
+2.1: Se siguen planteando La toma de requerimientos y el módulo de seguimiento del cliente como apartados diferentes. Además
 
 ---
 
@@ -37,16 +25,7 @@ Lectura entera TFG con apuntes:
 
 4.1.3: Revisar estos sprints, cambiarle la definición a alguno de ellos pero sin tener que actualizar el diagrama de GANTT.
 
-4.1.8: Revisar en mayor profundidad, pero otra vez estoy hablando de que colbPowers SOLO es consitution.md + features.md, cuando no es verdad.
-
 4.4.4: Apartado identificado como crítico, le tengo que preguntar a David si esto se lo van a mirar.
-4.5: Este apartado está bien, pero de nuevo he de preguntarle a David si alguien se va a mirar esto jaja.
-
----
-
----
-
-5. Se me han colado un par de cosas en los diagramas. La transcripción NO hace el chunking, eso se hace directamente en la toma de requerimientos.
 
 ---
 
@@ -81,8 +60,9 @@ Anexo, eliminar mención de "Explicación completa", cuando realmente no es una 
 - El p-value mide si hay o no efecto, mientras que cohen y hedges miden la magnitud del efecto. Cambiar las tablas para que se vea reflejado. [DONE]
 - Cambiar nombre de la lsita de tablas -> "Lista de tablas" [DONE]
 - Cambiar los diagramas con los módulos! Ahora mismo hay un diagrama con lógica que no corresponde a su módulo. [DONE]
-- Apartado 1.6 (Propuesta). Explicar qué se hace exactamente, que no hago codigo desde 0, sino que junto un montón de cosas ya implementadas en un solo sistema.
 - Cambiar 6.3.3, explicar que colbPowers se ha desarrollado para este proyecto, entre otras cosas [DONE]
-- Cambiar readme.md de colbPowers para que ponga colbPowers y no superpowers.
 - Mover el apartado de integración del conocimiento a otro lado. [Done]
-10/13
+
+- Cambiar readme.md de colbPowers para que ponga colbPowers y no superpowers. [DONE]
+- Apartado 1.6 (Propuesta). Explicar qué se hace exactamente, que no hago codigo desde 0, sino que junto un montón de cosas ya implementadas en un solo sistema. [DONE]
+13/13
