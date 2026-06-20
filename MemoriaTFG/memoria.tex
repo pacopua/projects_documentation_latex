@@ -191,7 +191,7 @@ A continuación, se hace una definición mas especifica de los problemas y punto
 
 La toma de requerimientos es una fase especialmente crítica en el desarrollo de software, puesto que sienta las bases del proyecto: su alcance, las tecnologías a utilizar y la arquitectura del sistema. Si esta fase no se lleva a cabo con el adecuado rigor, puede suponer todo tipo de imprevistos en la etapa de desarrollo del proyecto, causando retrasos en la entrega del proyecto, incrementos en el presupuesto y, en ocasiones, dejando inservibles módulos ya implementados \cite{standish_chaos_1994}.
 
-Por lo tanto, es crucial que este apartado se lleve a cabo con la máxima calidad y supervisión humana posible, por lo que la automatización de este módulo deberá tener un componente importante de interacción con el diseñador.
+Por lo tanto, es crucial que este apartado se lleve a cabo con la máxima calidad y supervisión humana posible, por lo que la automatización de este módulo debe tener un componente importante de interacción con el diseñador.
 
 \subsubsection{Desarrollo de código}
 \label{sec:ProblemaDesarrolloCodigo}
@@ -331,7 +331,7 @@ En el Cuadro \ref{tab:comparativa_herramientas} se presenta un resumen de las ca
 
 De las herramientas analizadas, \textit{superpowers} fue evaluado como candidato directo al problema planteado. Resuelve la orquestación de agentes, pero no garantiza coherencia arquitectónica entre sesiones ni entre desarrolladores distintos, ya que carece de un mecanismo de contexto persistente y compartido. Se decidió adoptarlo como base y extenderlo: el resultado es \textbf{colbPowers}, que añade la capa de \texttt{constitution.md} (reglas y estándares del proyecto) y \texttt{features.md} (registro de funcionalidades) como fuente de verdad compartida para todos los agentes.
 
-A la vista de estas limitaciones, la creación de una solución propia resulta razonable. Desarrollar nuestro propio sistema nos proporciona la flexibilidad indispensable para integrarlo de forma nativa con nuestro \textit{pipeline} de trabajo. Esto nos permitió personalizar la ingesta de contexto conectando la herramienta directamente a nuestras bases de datos, permitiendo la lectura automatizada de \textit{issues en GitHub} y la integración fluida con plataformas de gestión interna como \textit{Odoo} y \textit{Microsoft Teams}.
+A la vista de estas limitaciones, la creación de una solución propia resulta razonable. Desarrollar nuestro propio sistema nos proporciona la flexibilidad indispensable para integrarlo de forma nativa con nuestro \textit{pipeline} de trabajo. Esto permite personalizar la ingesta de contexto conectando la herramienta directamente a nuestras bases de datos, permitiendo la lectura automatizada de \textit{issues en GitHub} y la integración fluida con plataformas de gestión interna como \textit{Odoo} y \textit{Microsoft Teams}.
 
 \newpage
 
@@ -371,7 +371,7 @@ Una vez entregado el desarrollo, el sistema no termina: comienza la fase de \tex
 \section{Alcance del Proyecto}
 \label{sec:alcance}
 
-En esta sección del trabajo se declaran los objetivos del proyecto, cuales son los requerimientos para dar este objetivo por cumplido, las métricas que se utilizaron para evaluar el sistema, y los posibles obstáculos y riesgos que pueden aparecer en el desarrollo del proyecto (Tal y como pide la metodología de \textit{GEP}). Adicionalmente, se ha añadido un último subapartado destacando la evolución que ha tenido este proyecto respecto la planificación inicial de \textit{GEP}.
+En esta sección del trabajo se declaran los objetivos del proyecto, cuales son los requerimientos para dar este objetivo por cumplido, las métricas que se utilizan para evaluar el sistema, y los posibles obstáculos y riesgos que pueden aparecer en el desarrollo del proyecto (Tal y como pide la metodología de \textit{GEP}). Adicionalmente, se ha añadido un último subapartado destacando la evolución que ha tenido este proyecto respecto la planificación inicial de \textit{GEP}.
 
 \subsection{Objetivo General}
 \label{sec:objetivo_general}
@@ -385,7 +385,7 @@ El objetivo principal de este proyecto es diseñar e implementar un \textbf{sist
 
 El conjunto opera de forma integrada en el entorno local del desarrollador, cubriendo el ciclo de vida completo del software desde la primera reunión con el cliente hasta la entrega y seguimiento iterativo del producto.
 
-La validación de los resultados del sistema se realizó a través de ciertas métricas de análisis de calidad del código, conocidas y utilizadas en el paradigma del desarrollo de software. Además de, por supuesto, los revisores humanos, que han de analizar en todo momento el código generado y los resultados producidos, haciendo a este un sistema con lo que se conoce \textit{Human In The Loop} \cite{vaithilingam_2022}, cosa que significa que en todo momento hay supervisión e intervención humana. \\
+La validación de los resultados del sistema se realiza a través de ciertas métricas de análisis de calidad del código, conocidas y utilizadas en el paradigma del desarrollo de software. Además de, por supuesto, los revisores humanos, que han de analizar en todo momento el código generado y los resultados producidos, haciendo a este un sistema con lo que se conoce \textit{Human In The Loop} \cite{vaithilingam_2022}, cosa que significa que en todo momento hay supervisión e intervención humana. \\
 
 Para alcanzar el objetivo general, se establecen los siguientes sub-objetivos funcionales y arquitectónicos:
 \begin{itemize}
@@ -518,7 +518,7 @@ Para garantizar el correcto seguimiento del progreso del proyecto, se emplean la
 \begin{itemize}
     \item \textbf{Gestión de Tareas (Odoo):} La planificación ágil y el seguimiento de las tareas del proyecto se gestionan íntegramente a través de \textbf{Odoo}, la herramienta utilizada internamente por la empresa.
     
-    \item \textbf{Control de Versiones (Git y GitHub):} El código fuente, la documentación y la evolución de los \textit{prompts} estarán controlados utilizando \textit{Git}. El repositorio remoto estará alojado en los servidores de \textbf{GitHub}. Esta combinación facilita controlar y evaluar los avances que se hacen sobre el proyecto.
+    \item \textbf{Control de Versiones (Git y GitHub):} El código fuente, la documentación y la evolución de los \textit{prompts} están controlados utilizando \textit{Git}. El repositorio remoto está alojado en los servidores de \textbf{GitHub}. Esta combinación facilita controlar y evaluar los avances que se hacen sobre el proyecto.
     
     \item \textbf{Reuniones de Seguimiento Académico:} Además de las interacciones diarias con la empresa, se establecen reuniones periódicas con el director académico del TFG. La frecuencia exacta de estos encuentros se va definiendo y ajustando de mutuo acuerdo a lo largo del desarrollo, con el objetivo de validar el rigor del proyecto, y revisar los entregables de documentación.
 \end{itemize}
@@ -567,7 +567,7 @@ Este bloque engloba las tareas organizativas y documentales. Estas tareas son co
 Fase de preparación previa antes de comenzar el desarrollo del proyecto.
 \begin{itemize}
     \item \textbf{TP1 - Estudio estado del arte (30h)}: Investigar el ecosistema de asistentes CLI extensibles (ClaudeCode, OpenCode) y plugins existentes, especialmente \textit{superpowers}. Este estudio reveló que la arquitectura base ya existía y que su adopción era viable dentro del alcance del TFG. Este descubrimiento, unido a la constatación de que el esfuerzo de implementación del núcleo SDD era menor del previsto, permitió expandir el alcance del proyecto para incluir dos pilares adicionales: el módulo de toma de requerimientos y el módulo de seguimiento del cliente.
-    \item \textbf{TP2 - Planificación de estructura y flujo (20h)}: En esta etapa se planificará cual será la estructura básica del proyecto y como sería el flujo de utilización del producto final. 
+    \item \textbf{TP2 - Planificación de estructura y flujo (20h)}: En esta etapa se planifica cuál es la estructura básica del proyecto y cómo es el flujo de utilización del producto final.
 \end{itemize}
 
 \subsubsection{DA - Desarrollo Ágil (Sprints Iterativos)}
@@ -623,7 +623,7 @@ Fase dedicada a la validación empírica y técnica del sistema, evaluando tanto
 
 \subsubsection{Recursos}
 \label{sec:recursos}
-A continuación se listan los recursos Materiales, Humanos, y de software de los que se prevé que dependerá el proyecto.
+A continuación se listan los recursos Materiales, Humanos, y de software de los que depende el proyecto.
 \paragraph{Recursos Materiales}
 \label{sec:recursos_materiales}
 Para el desarrollo óptimo de este proyecto, se requiere la siguiente infraestructura física:
@@ -637,7 +637,7 @@ Para el desarrollo óptimo de este proyecto, se requiere la siguiente infraestru
 \label{sec:recursos_software}
 El ecosistema tecnológico del proyecto se apoya en diversas herramientas categorizadas según su propósito:
 \begin{itemize}
-    \item \textbf{Entorno de Desarrollo:} Sistema operativo Windows con Windows Subsystem for Linux (WSL) habilitado, proporcionando un entorno Unix nativo indispensable para la ejecución de \textit{scripts} en Bash y Python. El editor principal será Visual Studio Code (VSCode).
+    \item \textbf{Entorno de Desarrollo:} Sistema operativo Windows con Windows Subsystem for Linux (WSL) habilitado, proporcionando un entorno Unix nativo indispensable para la ejecución de \textit{scripts} en Bash y Python. El editor principal es Visual Studio Code (VSCode).
     \item \textbf{Servicios de Inteligencia Artificial:} Suscripciones activas o acceso a APIs de proveedores de modelos de lenguaje (LLMs) y agentes de código, como \textit{Claude Code}, \textit{OpenCode} o las APIs de Anthropic/OpenAI. Adicionalmente, \textbf{Azure Speech Service} para la transcripción de reuniones presenciales con diarización, y \textbf{Tavily} como motor de búsqueda semántica para el módulo de toma de requerimientos.
     \item \textbf{Análisis de código:} \textbf{radon}, herramienta Python de análisis estático para el cálculo de métricas de calidad del código generado.
     \item \textbf{Orquestación:} \textbf{LangChain} para la construcción del pipeline de procesamiento de requerimientos.
@@ -831,11 +831,11 @@ Durante la planificación y ejecución de este proyecto, se han identificado div
 
 \subsection{Gestión económica}
 \label{sec:gestion_economica}
-En este apartado plantearemos los distintos costes que se prevé que aparecerán a lo largo del desarrollo del proyecto.
+En este apartado se presentan los distintos costes que aparecen a lo largo del desarrollo del proyecto.
 
 \subsubsection{Coste del personal}
 \label{sec:coste_personal}
-Aplicando el \textit{feedback} de la anterior entrega de GEP, vamos a dividir este apartado en distintos roles. Cada uno tendrá un coste por hora determinado, y visitando el diagrama de Gantt y las tablas con las horas asignadas a cada tarea y sus recursos personales adjuntados, calcularemos el total de cada uno de estos roles. Adicionalmente, se mostrarán tanto los salarios netos como los brutos - añadida la contribución de 30\verb|%| a la Seguridad Social (SS) -, y cuando se haga la suma total de los costes, se utilizará obviamente el salario bruto.
+Aplicando el \textit{feedback} de la anterior entrega de GEP, se divide este apartado en distintos roles. Cada uno tiene un coste por hora determinado, y a partir del diagrama de Gantt y las tablas con las horas asignadas a cada tarea y sus recursos personales adjuntados, se calcula el total de cada uno de estos roles. Adicionalmente, se muestran tanto los salarios netos como los brutos - añadida la contribución de 30\verb|%| a la Seguridad Social (SS) -, y cuando se hace la suma total de los costes, se utiliza obviamente el salario bruto.
 
 \begin{table}[H]
     \centering
@@ -855,7 +855,7 @@ Aplicando el \textit{feedback} de la anterior entrega de GEP, vamos a dividir es
 
 \subsubsection{Coste por actividad}
 \label{sec:coste_actividad}
-Repasaremos las actividades presentadas en el entregable anterior, estudiaremos los recursos humanos invertidos en dicha actividad, y calcularemos el coste de cada una.
+Se repasan las actividades presentadas en el entregable anterior, los recursos humanos invertidos en cada una, y se calcula su coste.
 \paragraph{Gestión del proyecto}
 \label{sec:coste_gp}
 Esta se ha estimado que durará unas 167 horas en total. Dando por hecho que se desarrolla en un 25\verb|%| por el \textit{Jefe del Proyecto} y el restante 75\verb|%| por el \textit{Investigador/Documentador}, el coste humano de esta tarea es de: 
@@ -879,7 +879,7 @@ Como se hizo en la entrega anterior, el desarrollo ágil (DA) se dividirá en DA
         Coste DA1 = 50h * 14{.}92\verb|€|/h = 746\verb|€|
     \end{equation*}
     
-    \item \textbf{DA2 (Sprint 2 - Subagentes y métricas):} Consta de 50 horas. Las 15 horas iniciales de investigación y configuración de radon serán llevadas a cabo por el \textit{Investigador y documentador}, mientras que las 35 horas restantes de implementación de subagentes y scripts recaerán sobre el \textit{Programador junior}.
+    \item \textbf{DA2 (Sprint 2 - Subagentes y métricas):} Consta de 50 horas. Las 15 horas iniciales de investigación y configuración de radon son llevadas a cabo por el \textit{Investigador y documentador}, mientras que las 35 horas restantes de implementación de subagentes y scripts recaen sobre el \textit{Programador junior}.
     \begin{equation*}
         Coste DA2 = 15h * 20{.}85\verb|€|/h + 35h * 14{.}92\verb|€|/h = 836\verb|€|
     \end{equation*}
@@ -942,7 +942,7 @@ Se ha estimado un presupuesto de consumo mensual para estas herramientas:
 
 \paragraph{Costes de \textit{Hardware}}
 \label{sec:costes_hardware}
-Para calcular el coste del hardware, no se debe imputar el precio total de compra de los equipos, ya que estos no agotarán su vida útil exclusivamente con este proyecto. Se debe calcular su amortización. 
+Para calcular el coste del hardware, no se imputa el precio total de compra de los equipos, ya que estos no agotan su vida útil exclusivamente con este proyecto. Se calcula su amortización. 
 
 La fórmula de amortización se define dividiendo el precio del equipo entre sus horas de vida útil, y multiplicando el resultado por las horas dedicadas al TFG (estimadas en 540 horas en total). Se asume una vida útil de 4 años para los equipos informáticos (aproximadamente 220 días laborables al año, a 8 horas diarias = 7040 horas).
 
@@ -1064,9 +1064,9 @@ El presupuesto comprometido en el GEP ascendía a \textbf{14.099,81€}. El camb
 
 \subsubsection{Control de gestión}
 \label{sec:control_gestion}
-Para asegurar la viabilidad económica del Trabajo de Fin de Grado y evitar que el proyecto supere el presupuesto establecido, es estrictamente necesario aplicar un control de gestión continuo. Al utilizar una metodología ágil (SCRUM), este control se realizará al finalizar cada iteración o \textit{Sprint}, así como en las reuniones de seguimiento estipuladas.
+Para asegurar la viabilidad económica del Trabajo de Fin de Grado y evitar que el proyecto supere el presupuesto establecido, es estrictamente necesario aplicar un control de gestión continuo. Al utilizar una metodología ágil (SCRUM), este control se realiza al finalizar cada iteración o \textit{Sprint}, así como en las reuniones de seguimiento estipuladas.
 
-El control se basará en comparar los valores estimados en este documento con los gastos y horas reales consumidas. Para cada indicador se define su fórmula de cálculo y los criterios de actuación concretos en función de la magnitud de la desviación detectada:
+El control se basa en comparar los valores estimados en este documento con los gastos y horas reales consumidas. Para cada indicador se define su fórmula de cálculo y los criterios de actuación concretos en función de la magnitud de la desviación detectada:
 
 \begin{itemize}
     \item \textbf{Desviación de horas por tarea:} Mide si se ha invertido más o menos tiempo del planificado en una tarea concreta.
@@ -1540,10 +1540,9 @@ El flujo de trabajo completo se desarrolla de la siguiente forma cuando el usuar
 \begin{enumerate}
     \item \textbf{Verificación del estado del proyecto:} al iniciar la sesión, el agente lee \texttt{.specs/memory/} y comprueba si existen la constitución y el roadmap de features. Si alguno de los dos está ausente, el agente inicia de forma proactiva una conversación guiada con el usuario para definirlos, formulando preguntas sobre la visión del proyecto, el stack tecnológico, los estándares de código y las funcionalidades previstas. Este paso se ejecuta una única vez por proyecto.
     \item \textbf{Definición interactiva de la especificación:} una vez que los documentos base existen, el agente lleva al usuario por un proceso de preguntas estructuradas para definir con precisión la nueva implementación. Se determina qué debe hacer, a cuál de las features del roadmap pertenece, cuáles son los comportamientos esperados, qué restricciones técnicas aplican y qué criterios de aceptación debe cumplir. El objetivo es eliminar toda ambigüedad antes de escribir una sola línea de código.
-    \item \textbf{Generación de la especificación:} cuando el usuario confirma que la definición es correcta, el agente redacta el documento de especificación (design.md) y lo guarda en \texttt{docs/specs/}. Este documento es la fuente de verdad de la implementación y será consultado en cada paso posterior.
+    \item \textbf{Generación de la especificación:} cuando el usuario confirma que la definición es correcta, el agente redacta el documento de especificación (design.md) y lo guarda en \texttt{docs/specs/}. Este documento es la fuente de verdad de la implementación y es consultado en cada paso posterior.
     \item \textbf{Generación del plan de implementación:} a partir de la especificación, el agente elabora un plan de tareas (plan.md) en \texttt{docs/plans/} que desglosa la implementación en pasos concretos y ordenados, cada uno con su criterio de aceptación explícito.
-    \item \textbf{Ejecución iterativa con implementador y revisor:} el agente utiliza la herramienta de lista de tareas (\texttt{TodoWrite}) integrada en los asistentes CLI para ejecutar el plan de forma iterativa. Para cada tarea, actúa un subagente implementador que escribe el código, y a continuación un subagente revisor que verifica que el código se ajusta a la especificación, sigue el plan y pasa los tests definidos. Cuando estén disponibles, el revisor utilizará además las métricas de calidad de código para evaluar la calidad de la implementación.
-\end{enumerate}
+    \item \textbf{Ejecución iterativa con implementador y revisor:} el agente utiliza la herramienta de lista de tareas (\texttt{TodoWrite}) integrada en los asistentes CLI para ejecutar el plan de forma iterativa. Para cada tarea, actúa un subagente implementador que escribe el código, y a continuación un subagente revisor que verifica que el código se ajusta a la especificación, sigue el plan y pasa los tests definidos.\end{enumerate}
 
 \medskip
 \noindent\textit{Apunte sobre \texttt{TodoWrite}:} Esta herramienta mantiene el plan de implementación como una lista de tareas con estados explícitos (\textit{pendiente}, \textit{en progreso}, \textit{completada}), visible en todo momento en la interfaz del asistente. Esta visibilidad actúa como ancla de atención: al inicio de cada iteración, el agente consulta la lista para saber exactamente qué tarea tiene en curso y cuál es la siguiente, lo que reduce significativamente la tendencia de los LLMs a desviarse del plan o a saltarse pasos. Cabe mencionar que el runtime no bloquea al agente si este no respeta el orden establecido; la efectividad de \texttt{TodoWrite} como mecanismo de seguimiento proviene de la combinación de la visibilidad explícita del estado y de las instrucciones del sistema que describen su protocolo de uso.
@@ -1552,7 +1551,7 @@ El flujo de trabajo completo se desarrolla de la siguiente forma cuando el usuar
 \label{sec:plantilla_repositorio}
 La plantilla de repositorio que colbPowers espera encontrar está diseñada para mantenerse ligera y no imponer burocracia innecesaria. Los únicos documentos imprescindibles son constitution.md y features.md, que el propio agente puede generar desde cero en la primera sesión si no existen. El resto de la estructura (\texttt{docs/specs/}, \texttt{docs/plans/}) se va poblando de forma orgánica a medida que el equipo desarrolla features, convirtiéndose en un registro vivo y trazable de todas las decisiones de diseño del proyecto.
 
-Esta aproximación resuelve uno de los problemas identificados en el análisis del estado del arte: a diferencia de herramientas como Spec Kit, que exigen documentación exhaustiva incluso para cambios pequeños, colbPowers adapta el nivel de formalismo a la magnitud de la tarea. Una corrección menor puede implementarse directamente con el agente; una nueva feature importante pasará por el ciclo completo de especificación, planificación y revisión. El agente decide el nivel de rigor apropiado en cada caso, basándose en el contexto del proyecto y la magnitud del cambio solicitado.
+Esta aproximación resuelve uno de los problemas identificados en el análisis del estado del arte: a diferencia de herramientas como Spec Kit, que exigen documentación exhaustiva incluso para cambios pequeños, colbPowers adapta el nivel de formalismo a la magnitud de la tarea. Una corrección menor puede implementarse directamente con el agente; una nueva feature importante pasa por el ciclo completo de especificación, planificación y revisión. El agente decide el nivel de rigor apropiado en cada caso, basándose en el contexto del proyecto y la magnitud del cambio solicitado.
 
 \newpage
 
@@ -1951,7 +1950,7 @@ El coste del sistema es real y cuantificado: colbPowers multiplica el consumo de
 
 \subsubsection*{Limitaciones}
 
-El diseño experimental con $n=3$ repeticiones por condición tiene potencia estadística limitada e impide verificar los supuestos de normalidad requeridos por el test $t$ de Welch. Los resultados deben considerarse evidencia sugerente, no concluyente, y deberán ser confirmados con tamaños muestrales mayores ($n \geq 5$) en trabajos futuros. Adicionalmente, las herramientas de análisis estático empleadas difieren entre casos ---radon para Python y DCM para Flutter/Dart---, lo que implica que las métricas de calidad no son directamente comparables entre experimentos, aunque sí lo son dentro de cada caso entre condiciones. Por último, el mecanismo de garantía del flujo SDD es no determinista: en algunos experimentos el agente orquestador omitió la invocación del subagente revisor, lo que indica que la garantía de proceso es una restricción de comportamiento ---a nivel de prompt--- y no una restricción de ejecución.
+El diseño experimental con $n=3$ repeticiones por condición tiene potencia estadística limitada e impide verificar los supuestos de normalidad requeridos por el test $t$ de Welch. Los resultados deben considerarse evidencia sugerente, no concluyente, y deben ser confirmados con tamaños muestrales mayores ($n \geq 5$) en trabajos futuros. Adicionalmente, las herramientas de análisis estático empleadas difieren entre casos ---radon para Python y DCM para Flutter/Dart---, lo que implica que las métricas de calidad no son directamente comparables entre experimentos, aunque sí lo son dentro de cada caso entre condiciones. Por último, el mecanismo de garantía del flujo SDD es no determinista: en algunos experimentos el agente orquestador omitió la invocación del subagente revisor, lo que indica que la garantía de proceso es una restricción de comportamiento ---a nivel de prompt--- y no una restricción de ejecución.
 
 \subsubsection*{Valoración global}
 
