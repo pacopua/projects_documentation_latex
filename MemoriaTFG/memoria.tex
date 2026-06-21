@@ -173,9 +173,9 @@ Es innegable que las herramientas de inteligencia artificial, principalmente los
 
 Se presentan a continuación tres módulos que se van a automatizar en el desarrollo de este TFG:
 \begin{enumerate}
-    \item \textbf{Toma de requerimientos y diseño de arquitectura:} Necesidades del cliente, exploración de \textit{frameworks} posibles a utilizar, y diseño de la arquitectura del proyecto.
+    \item \textbf{Toma de requerimientos y diseño de arquitectura:} Necesidades del cliente a partir de la transcripción de reuniones, exploración de \textit{frameworks} posibles a utilizar, y diseño de la arquitectura del proyecto.
     \item \textbf{Desarrollo del código:} Asistencia de programación al desarrollador, generación de código a partir de las especificaciones. Evitando la generación de código de baja calidad, principalmente mediante la generación de documentación y especificaciones previas a la generación de código.
-    \item \textbf{Seguimiento del cliente:} Generación de informes de seguimiento para el cliente, basado en las reuniones con el mismo.
+    \item \textbf{Seguimiento del cliente:} Generación de informes de seguimiento para el cliente, a partir de la transcripción de las reuniones periódicas con el mismo.
 \end{enumerate}
 
 \subsection{Definición del Problema}
@@ -183,7 +183,7 @@ Se presentan a continuación tres módulos que se van a automatizar en el desarr
 
 El reto central de la automatización de estas tareas sin perder calidad, es conseguir un equilibrio entre la agilidad que ofrecen los asistentes de inteligencia artificial y la involucración de un desarrollador que garantice que cada paso cubre unos estándares de estructura y calidad. Este equilibrio es difícil de mantener en la práctica, y su dificultad puede explicarse a través de un principio en el ámbito de la psicología cognitiva: \textit{The Law of Least Effort}, o en otras palabras, la ley del mínimo esfuerzo. Esta teoría sostiene que los humanos y otros organismos tienden a priorizar la opción que presenta la menor resistencia para alcanzar sus objetivos, ya sea en términos de esfuerzo físico o cognitivo\cite{avoidance_of_cognitive_demand}. Aunque pueda parecer paradójico ---puesto que a las personas también nos gustan los retos y los puzles---\cite{inzlicht_effort_paradox_2018}, este fenómeno presenta una posible explicación al reto principal de la automatización, y es que el desarrollador tiene la tentación de delegar todo el trabajo en el asistente de IA sin involucrarse lo suficiente, comprometiendo así los estándares de calidad y estructura necesarios para poder elaborar un proyecto profesional y sostenible a largo plazo.
 
-A continuación, se hace una definición mas especifica de los problemas y puntos a cubrir detectados en cada apartado de el proyecto.
+A continuación, se hace una definición más específica de los problemas y puntos a cubrir detectados en cada apartado del proyecto.
 \newpage 
 
 \subsubsection{Toma de requerimientos y planificación de la arquitectura}
@@ -206,7 +206,7 @@ Actualmente, los asistentes de código más populares (GitHub Copilot, Cursor, C
     \item \textbf{Barrera de incorporación para nuevos desarrolladores:} La ausencia de documentación estructurada convierte la incorporación de un nuevo miembro al equipo en un proceso lento y costoso. Sin especificaciones claras que expliquen el \textit{porqué} de cada decisión de diseño, el nuevo desarrollador debe deducir la arquitectura y las reglas del proyecto leyendo directamente el código, lo que ralentiza su productividad y aumenta el riesgo de que introduzca cambios inconsistentes con la visión original del sistema.
 \end{itemize}
 
-Por otro lado, las herramientas que sí exigen especificación previa (como Spec Kit o AgentOS) presentan el problema opuesto: generan una fricción operativa excesiva, produciendo documentación desproporcionada incluso para cambios pequeños, lo que las hace incompatibles con metodologías ágiles reales.
+Aunque existen herramientas que sí exigen especificación previa como Spec Kit o AgentOS, estas no se adaptaban adecuadamente al flujo de trabajo de \textit{Colb.AI}, su modelo de documentación era demasiado rígido y generaba una fricción excesiva incluso para cambios menores.
 
 \subsubsection{Seguimiento del cliente}
 \label{sec:ProblemaSeguimientoCliente}
@@ -239,7 +239,7 @@ En el ámbito del desarrollo de software, los Modelos de Lenguaje de Gran Tamañ
 
     \item \textbf{Agentes de Código:} Un agente es un asistente al que se le asigna un rol mediante un \textit{prompt} y se le equipa con distintas \textit{Agent Skills} y herramientas varias. Su propósito es llevar a cabo una tarea específica. Además, es posible encadenar varios agentes especializados para construir un sistema coordinado. \cite{vscode_agents} \cite{wang_llm_agents_2024}
 
-    \item \textbf{Habilidades del Agente (\textit{Agent Skills}):} Son funciones, herramientas o \textit{scripts} específicos que el agente puede invocar para ejecutar acciones tangibles sobre el entorno local, como leer, crear o modificar archivos en un repositorio. \cite{agentskills_home} \cite{yao_react_2023}
+    \item \textbf{Habilidades del Agente (\textit{Agent Skills}):} Son documentos de instrucciones procedimentales en formato Markdown que el agente consulta bajo demanda cuando necesita ejecutar un tipo de tarea específico. Al activar una \textit{Skill}, el agente lee primero su contenido, que define \textit{cómo} debe razonar y actuar ante esa clase de tarea, y puede además invocar \textit{scripts} o plantillas incluidos en la propia \textit{Skill} durante su ejecución. \cite{agentskills_home} \cite{yao_react_2023}
 \end{itemize}
 
 \subsubsection{Transcripción automática y diarización}
@@ -292,7 +292,7 @@ Para reuniones telemáticas, las plataformas de videoconferencia más extendidas
 
 \subsubsection{Herramientas de documentación de reuniones}
 \label{sec:herramientas_documentacion_reuniones}
-Existen herramientas comerciales orientadas a la generación automática de resúmenes y documentación post-reunión, como Otter.ai, Fireflies.ai o Microsoft Copilot for Teams. Estas soluciones se descartaron por dos razones complementarias: en primer lugar, generan resúmenes genéricos no parametrizables, sin posibilidad de adaptar el formato al tipo de reunión o al cliente concreto de \textit{Colb.AI}; en segundo lugar, ya se disponía de ClaudeCode con skills, capaz de generar documentación de seguimiento con la misma eficacia a través de un skill dedicado. Por otro lado, la implementación de un módulo Python propio para este fin no supone una complejidad técnica elevada, lo que refuerza la decisión de desarrollar una solución a medida en lugar de depender de una herramienta externa.
+Existen herramientas comerciales orientadas a la generación automática de resúmenes y documentación post-reunión, como Otter.ai \cite{otter_ai_2026}, Fireflies.ai \cite{fireflies_ai_2026} o Microsoft Copilot for Teams. Estas soluciones se descartaron por dos razones complementarias: en primer lugar, generan resúmenes genéricos no parametrizables, sin posibilidad de adaptar el formato al tipo de reunión o al cliente concreto de \textit{Colb.AI}; en segundo lugar, ya se disponía de ClaudeCode con skills, capaz de generar documentación de seguimiento con la misma eficacia a través de un skill dedicado. Por otro lado, la implementación de un módulo Python propio para este fin no supone una complejidad técnica elevada, lo que refuerza la decisión de desarrollar una solución a medida en lugar de depender de una herramienta externa.
 
 \subsubsection{Asistentes CLI extensibles}
 \label{sec:asistentes_cli}
@@ -300,7 +300,7 @@ Las herramientas de asistencia a la programación de tipo CLI (\textit{Command-L
 
 \subsubsection{superpowers plugin}
 \label{sec:superpowers}
-\textit{superpowers} es un plugin open source para ClaudeCode que implementa el patrón orquestador + subagentes mediante skills. Proporciona una arquitectura base para flujos de trabajo \textit{Spec-First}, en la que un agente orquestador coordina subagentes especializados a través de skills reutilizables. Sin embargo, carece de un mecanismo de constitución ni de features compartidas entre sesiones o desarrolladores distintos, lo que limita su capacidad para garantizar coherencia arquitectónica a lo largo del ciclo de vida de un proyecto.
+\textit{superpowers} \cite{superpowers_2025} es un plugin open source para ClaudeCode que implementa el patrón orquestador + subagentes mediante skills. Proporciona una arquitectura base para flujos de trabajo \textit{Spec-First}, en la que un agente orquestador coordina subagentes especializados a través de skills reutilizables. Sin embargo, carece de un mecanismo de constitución ni de features compartidas entre sesiones o desarrolladores distintos, lo que limita su capacidad para garantizar coherencia arquitectónica a lo largo del ciclo de vida de un proyecto.
 
 \subsection{Análisis comparativo: ¿Está justificada una solución a medida?}
 \label{sec:analisis_comparativo}
@@ -373,7 +373,7 @@ Una vez entregado el desarrollo, el sistema no termina: comienza la fase de \tex
 \section{Alcance del Proyecto}
 \label{sec:alcance}
 
-En esta sección del trabajo se declaran los objetivos del proyecto, cuales son los requerimientos para dar este objetivo por cumplido, las métricas que se utilizan para evaluar el sistema, y los posibles obstáculos y riesgos que pueden aparecer en el desarrollo del proyecto (Tal y como pide la metodología de \textit{GEP}). Adicionalmente, se ha añadido un último subapartado destacando la evolución que ha tenido este proyecto respecto la planificación inicial de \textit{GEP}.
+En esta sección del trabajo se declaran los objetivos del proyecto, cuáles son los requerimientos para dar este objetivo por cumplido, las métricas que se utilizan para evaluar el sistema, y los posibles obstáculos y riesgos que pueden aparecer en el desarrollo del proyecto (Tal y como pide la metodología de \textit{GEP}). Adicionalmente, se ha añadido un último subapartado destacando la evolución que ha tenido este proyecto respecto la planificación inicial de \textit{GEP}.
 
 \subsection{Objetivo General}
 \label{sec:objetivo_general}
@@ -495,7 +495,7 @@ En este apartado se presentan las asignaturas de las cuales se han podido utiliz
 
 \begin{itemize}
     \item \textbf{Compresión de datos e imágenes (CDI):} Para la implementación propia del módulo de transcripción, se utiliza ffmpeg con técnicas de compresión vistas en CDI, para que el proceso de transcripción tarde menos sin perder demasiada calidad. Principalmente, se aplica un \textit{Downsampling} ---reducción en el muestreo del audio--- y luego se convierte a MP3 mono, formato que aprovecha la compresión con pérdida basada en MDCT (\textit{Modified Discrete Cosine Transform}) y modelado psicoacústico para reducir significativamente el tamaño del archivo.
-    \item \textbf{Búsqueda y analisis de información masiva (CAIM):} Del apartado de \textit{Local Sensitive Hashing} de la asignatura, se extrajo la idea de almacenar los audios transcritos con sus respectivos hashes, aunque en la implementación no se utiliza ningún método de \textit{LSH}, se utiliza un hash criptográfico SHA-256 para identificación exacta del contenido. Los apartados de \textit{Web, Information Retrieval} fueron de utilidad para entender y implementar servicios como \textit{Tavily} para la búsqueda web, así como el temario de \textit{Networks} para la formación de el grafo de \textit{code-review-graph}, que facilita a los asistentes de programación la búsqueda y exploración del código.
+    \item \textbf{Búsqueda y analisis de información masiva (CAIM):} Del apartado de \textit{Local Sensitive Hashing} de la asignatura, se extrajo la idea de almacenar los audios transcritos con sus respectivos hashes, aunque en la implementación no se utiliza ningún método de \textit{LSH}, se utiliza un hash criptográfico SHA-256 para identificación exacta del contenido. Los apartados de \textit{Web, Information Retrieval} fueron de utilidad para entender y implementar servicios como \textit{Tavily} para la búsqueda web, así como el temario de \textit{Networks} para la formación del grafo de \textit{code-review-graph}, que facilita a los asistentes de programación la búsqueda y exploración del código.
     \item \textbf{Introducción a la ingeniería del software (IES):} La base proporcionada en esta asignatura sobre requisitos de software, diseño de sistemas y creación de diagramas de flujo, fueron extremadamente útiles tanto para planificar el sistema implementado en este proyecto.
 \end{itemize}
 
@@ -645,7 +645,7 @@ La distribución de horas entre sprints no es uniforme, sino que responde a la c
 Fase dedicada a la validación empírica y técnica del sistema, evaluando tanto el código como la interacción del usuario.
 \begin{itemize}
     \item \textbf{PV1 - Pruebas unitarias de las Agent Skills (20h)}: Verificación técnica de los scripts de radon y las configuraciones del plugin colbPowers para asegurar que interactúan correctamente con el sistema de archivos y los asistentes CLI.
-    \item \textbf{PV2 - Pruebas del bucle completo (Human in the Loop) (40h)}: Simulaciones de desarrollo de funcionalidades (\textit{features}) reales para auditar la colaboración entre el usuario y los agentes. Evaluar tanto la funcionalidad de el código desarrollado, como el resultado que recibe este código en las distintas métricas de calidad seleccionadas.
+    \item \textbf{PV2 - Pruebas del bucle completo (Human in the Loop) (40h)}: Simulaciones de desarrollo de funcionalidades (\textit{features}) reales para auditar la colaboración entre el usuario y los agentes. Incluye la ejecución de los experimentos controlados (baseline vs.\ colbPowers), la recogida de métricas de calidad del código mediante análisis estático, y el análisis estadístico de los resultados (~20h).
 \end{itemize}
 
 \newpage
@@ -754,11 +754,11 @@ Dado que el autor asume distintos roles a lo largo del proyecto (tal y como se d
 
 \subsubsection{Diagrama de Gantt}
 \label{sec:gantt}
-En la siguiente página se muestra el diagrama de gantt resultante de la planifiación de las tareas anteriores.
+En la siguiente página se muestra el diagrama de gantt resultante de la planificación de las tareas anteriores.
 \begin{landscape}
     \begin{figure}[htbp] % Cambiamos [H] por [htbp]
      \centering
-     \title{AAA}
+     %\title{AAA}
      \includegraphics[width=1.5\textwidth]{imagenes/Gant_Lliurament2.png}
      \caption{Diagrama de Gantt, creado con el software \textit{GanttProject}. Generación propia}
      \label{fig:gantt}
@@ -1185,7 +1185,7 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 \label{sec:dimension_ambiental}
 \textbf{PPP:} El impacto ambiental proviene del consumo eléctrico de los equipos durante las 540 horas de trabajo y el uso de servidores en la nube para las APIs. Para minimizar este impacto, se ha optado por reutilizar hardware personal y planificar un desarrollo local mediante WSL que limite las peticiones innecesarias a la red durante las fases iniciales de pruebas.
 
-\textbf{Vida Útil:} La evaluación experimental confirma que colbPowers multiplica el consumo de tokens por un factor de entre 2{,}9× y 4{,}5× respecto a los asistentes sin flujo SDD, debido al overhead estructural del proceso (generación de especificaciones, delegación a subagentes y revisiones sistemáticas). El balance ambiental neto a largo plazo depende de si la mejora demostrada en la calidad del código se traduce en una reducción equivalente en sesiones de depuración, reescritura y mantenimiento futuro, compensando así el sobrecoste por sesión de desarrollo. Esta hipótesis es plausible pero no ha podido verificarse en el alcance de este trabajo.
+\textbf{Vida Útil:} La evaluación experimental confirma que colbPowers multiplica el consumo de tokens por un factor de entre 2{,}2× y 4{,}5× respecto a los asistentes sin flujo SDD, debido al overhead estructural del proceso (generación de especificaciones, delegación a subagentes y revisiones sistemáticas). El balance ambiental neto a largo plazo depende de si la mejora demostrada en la calidad del código se traduce en una reducción equivalente en sesiones de depuración, reescritura y mantenimiento futuro, compensando así el sobrecoste por sesión de desarrollo. Esta hipótesis es plausible pero no ha podido verificarse en el alcance de este trabajo.
 
 \textbf{Riesgos:} El principal riesgo ambiental, confirmado empíricamente, es que el overhead de tokens del flujo SDD no quede compensado por la reducción en ciclos de corrección posteriores. En ese escenario, el sistema tendría un impacto ambiental neto superior al de los asistentes sin flujo estructurado. Para evaluar este riesgo con rigor sería necesario un estudio longitudinal que mida el número total de sesiones de desarrollo hasta la entrega del producto, incluyendo las de mantenimiento.
 
@@ -1252,7 +1252,7 @@ La transcripción se realiza a través de la API REST de Azure Speech Service en
     \centering
     \includegraphics[width=1\textwidth]{imagenes/Transcription System.png}
     \caption{Diagrama de flujo de el proceso de transcripción. Generación propia.}
-    \label{fig:skill_definition}
+    \label{fig:transcription_workflow}
 \end{figure}
 
 \subsubsection{Módulo de procesamiento de requerimientos}
@@ -1315,7 +1315,7 @@ Una característica diferencial de la aplicación es la capacidad de refinamient
     \centering
     \includegraphics[width=1\textwidth]{imagenes/Requirements Intake System.png}
     \caption{Diagrama de flujo de el proceso generación de plan en la toma de requerimientos. Generación propia.}
-    \label{fig:skill_definition}
+    \label{fig:requirements_intake_workflow}
 \end{figure}
 
 \newpage
@@ -1469,7 +1469,7 @@ Cuando el modelo decide invocar una herramienta, el runtime recibe el evento cor
 \paragraph{Carga perezosa de skills bajo demanda.}
 La herramienta \texttt{skill} ilustra con claridad el principio de carga perezosa. Cuando el modelo, al ver el catálogo de skills en el system prompt, decide que necesita las instrucciones de una skill concreta para ejecutar una tarea, invoca la herramienta \texttt{skill} con el nombre de la skill como parámetro. Es en ese momento ---y solo en ese momento--- cuando el sistema lee el archivo \texttt{SKILL.md} correspondiente del disco, enumera los ficheros asociados a la skill (hasta un máximo de diez), y devuelve el contenido completo al modelo envuelto en una etiqueta XML estructurada. De esta forma, el contenido detallado de las skills no ocupa tokens del contexto inicial: solo las descripciones breves del catálogo están siempre presentes; los contenidos completos se cargan únicamente cuando el modelo los solicita. La skill \textit{using-colbPowers} de colbPowers es una excepción deliberada a este principio: al inyectarse mediante el hook SessionStart antes de que comience la conversación, su contenido completo llega al modelo directamente en el system prompt, sin pasar por el mecanismo de carga perezosa. Esto garantiza que las reglas de orquestación estén activas desde el primer mensaje, sin depender de que el modelo recuerde invocar la herramienta \texttt{skill}.
 
-\paragraph{Similitud con ClaudeCode.}
+\subsubsection{Similitud con ClaudeCode}
 ClaudeCode implementa un pipeline estructuralmente análogo en lo que respecta al ciclo de vida de la conversación. Aunque las implementaciones concretas difieren ---ClaudeCode no es software libre---, el flujo conceptual comparte los mismos patrones: inicialización perezosa de servicios al inicio de la sesión, construcción del system prompt a partir de archivos de instrucciones y catálogos de skills, bucle ReAct con llamadas a herramienta y streaming de tokens, carga perezosa de skills bajo demanda, y mecanismos de hooks para interceptar el ciclo de vida.
 
 Sin embargo, existen diferencias arquitectónicas significativas que conviene señalar:
@@ -1517,6 +1517,8 @@ La integración de esta herramienta aborda directamente el problema de gestión 
     \item Obtención de una visión de alto nivel de la arquitectura del sistema.
 \end{itemize}
 
+La integración de \textit{code-review-graph} con ClaudeCode se realiza de forma nativa mediante hooks de ciclo de vida. Sin embargo, dado que los sistemas de hooks de ClaudeCode y OpenCode difieren arquitectónicamente, fue necesario desarrollar adaptadores en JavaScript para que OpenCode pudiera invocar el servidor MCP con el mismo comportamiento.
+
 \begin{figure}[H]
     \centering
     \begin{minipage}[c]{0.72\textwidth}
@@ -1547,7 +1549,7 @@ Para funcionar, colbPowers asume que el proyecto dispone de una plantilla de rep
 
 \textbf{features.md:} Roadmap del producto. Lista todas las features aprobadas con su descripción, requisitos funcionales, restricciones técnicas y dependencias. Cualquier nueva funcionalidad debe estar aquí definida antes de poder planificarse.
 
-En caso de que una de las anteriores no exista. Al agente se le indica que ejecute las skills de "defining-constitution" y "defining-features", para popular estos archivos a través de un proceso iteractivo de preguntas al usuario.
+En caso de que una de las anteriores no exista, al agente se le indica que ejecute las skills de "defining-constitution" y "defining-features", para popular estos archivos a través de un proceso interactivo de preguntas al usuario.
 
 \textbf{docs/specs/:} Documentos de diseño por feature: descripción del comportamiento esperado, decisiones de arquitectura y justificación técnica de cada implementación.
 
@@ -1563,7 +1565,7 @@ El flujo de trabajo completo se desarrolla de la siguiente forma cuando el usuar
     \centering
     \includegraphics[width=1\textwidth]{imagenes/JustColbPowers.png}
     \caption{Diagrama de flujo de colbPowers. Generación propia.}
-    \label{fig:skill_definition}
+    \label{fig:colbPowers_workflow}
 \end{figure}
 
 \begin{enumerate}
@@ -1836,10 +1838,10 @@ La Figura~\ref{fig:calidad_codigo_caso2} muestra las métricas medias por asiste
     \label{fig:ttest_cpbl_claudecode_classvis}
 \end{figure}
 
-\textit{Análisis estadístico.} En OpenCode la mejora con colbPowers presenta un tamaño de efecto grande tanto para la complejidad ciclomática como para el índice de mantenibilidad, con $p$-values indicativos de $p=0{,}014$ y $p=0{,}037$ respectivamente. En ClaudeCode, donde la baseline ya produce código de alta calidad, los efectos son consistentes en dirección pero de magnitud considerablemente menor, sin soporte estadístico con $n=3$ (complejidad: $p=0{,}508$; mantenibilidad: $p=0{,}754$).
+\textit{Análisis estadístico.} En OpenCode la mejora con colbPowers presenta un tamaño de efecto grande tanto para la complejidad ciclomática como para el índice de mantenibilidad, con $p$-values indicativos de $p=0{,}014$ y $p=0{,}037$ respectivamente. En ClaudeCode, donde la baseline ya produce código de alta calidad, las diferencias observadas no alcanzan significación estadística con $n=3$ (complejidad: $p=0{,}508$; mantenibilidad: $p=0{,}754$), por lo que no puede afirmarse la existencia de un efecto real.
 
 \paragraph{Caso~2 --- OpenCode vs.\ ClaudeCode.}
-En la condición baseline, ClaudeCode genera código con menor complejidad ciclomática (2,85 vs.\ 4,31) y mayor índice de mantenibilidad (56,97 vs.\ 41,54), lo que sugiere que Haiku~4.5 produce soluciones más legibles de forma natural. Con colbPowers activo, las diferencias se reducen considerablemente: la complejidad converge a valores casi idénticos (3,13 OpenCode, 3,11 ClaudeCode), confirmando que el flujo SDD homogeneiza la calidad con independencia del asistente.
+En la condición baseline, ClaudeCode genera código con menor complejidad ciclomática (2,85 vs.\ 4,31) y mayor índice de mantenibilidad (56,97 vs.\ 41,54), lo que sugiere que Haiku~4.5 produce soluciones más legibles de forma natural. Con colbPowers activo, las diferencias se reducen considerablemente: la complejidad converge a valores casi idénticos (3,13 OpenCode, 3,11 ClaudeCode), lo que sugiere que el flujo SDD homogeneiza la calidad con independencia del asistente.
 
 \begin{figure}[H]
     \centering
@@ -1947,9 +1949,9 @@ Aunque este aspecto no fue formulado explícitamente como requisito no funcional
 
 La evaluación experimental produce resultados mixtos. Dado el tamaño muestral ($n=3$ por condición), se emplea la $g$ de Hedges como estimador principal del tamaño del efecto; el $p$-value del test $t$ de Welch determina si la diferencia es estadísticamente significativa, y la $g$ cuantifica su magnitud solo cuando el $p$-value lo confirma. El hallazgo principal es la mejora estadísticamente significativa y de efecto grande en las métricas de calidad del código en el Caso~2 (proyecto generado desde cero): colbPowers reduce la complejidad ciclomática un 27\% y mejora el índice de mantenibilidad un 15\% en OpenCode ($p=0{,}014$ y $p=0{,}037$ respectivamente). Con ClaudeCode, que de base produce código de mayor calidad, los cambios fueron mucho menos notables ---un aumento del 9\% en complejidad ciclomática y una mejora del 3\% en mantenibilidad--- y no alcanzan significación estadística ($p=0{,}508$ y $p=0{,}754$), por lo que no puede afirmarse la existencia de un efecto real. En el Caso~1 (eliminación de funcionalidades complejas sobre un repositorio existente), el patrón se invierte: colbPowers produce código de mayor complejidad ciclomática ($+$26\% en OpenCode, $p=0{,}029$, $g=+2{,}42$; $+$17\% en ClaudeCode, $p=0{,}208$, $g=+1{,}07$), con efecto estadísticamente significativo solo en OpenCode, sin mejora neta en mantenibilidad en ningún asistente (OpenCode: $p=0{,}646$; ClaudeCode: $p=0{,}873$). El factor determinante parece ser que los agentes no invocaron \textit{code-review-graph} de forma efectiva, privando al flujo SDD del contexto de dependencias que habría justificado su overhead. Sin ese contexto, la planificación estructurada generó código de limpieza adicional más complejo que las eliminaciones directas del baseline.
 
-Un resultado secundario con implicaciones prácticas directas es la convergencia de calidad entre asistentes: con colbPowers activo, la $d$ de Cohen entre OpenCode y ClaudeCode cae a valores próximos a cero en ambas métricas de calidad. Esto indica que el flujo SDD homogeneiza la calidad del código con independencia del asistente, lo que permite a un equipo combinar herramientas distintas sin comprometer la consistencia del producto.
+Un resultado secundario con implicaciones prácticas directas es la convergencia de calidad entre asistentes: con colbPowers activo, las diferencias de calidad entre OpenCode y ClaudeCode no alcanzan significación estadística, y la $g$ de Hedges cae a valores próximos a cero en ambas métricas, lo que indica que el flujo SDD homogeneiza la calidad del código con independencia del asistente y permite a un equipo combinar herramientas distintas sin comprometer la consistencia del producto.
 
-El coste del sistema es real y cuantificado: colbPowers multiplica el consumo de tokens por un factor de entre 2{,}9x y 4{,}5x respecto al baseline, con tamaños de efecto grandes en todas las combinaciones evaluadas. Este sobrecoste refleja el \textit{overhead} inherente al flujo SDD y debe considerarse una variable de diseño, no un defecto: el sistema intercambia recursos computacionales por mayor calidad estructural del código producido.
+El coste del sistema es real y cuantificado: colbPowers multiplica el consumo de tokens por un factor de entre 2{,}2x y 4{,}5x respecto al baseline, con tamaños de efecto grandes en todas las combinaciones evaluadas. Este sobrecoste es constante e independiente del resultado: se produce en todos los experimentos, pero la mejora de calidad que lo justificaría solo ha podido confirmarse estadísticamente en el Caso~2 con OpenCode. En el Caso~1, el overhead no se tradujo en mejoras de calidad, lo que indica que la relación entre coste computacional y beneficio estructural depende del tipo de tarea abordada.
 
 \subsubsection*{Limitaciones}
 
@@ -2016,14 +2018,14 @@ Ambos módulos disponen de una implementación propia de código abierto como al
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_cpbl_table.png}
-    \caption{Análisis estadístico: colbPowers vs.\ baseline. Guiarese por el $p$ value para determinar si hay efecto, se incluye la $g$ de Hedges como métrica principal del tamaño de efecto.}
+    \caption{Análisis estadístico: colbPowers vs.\ baseline. Guiarse por el $p$ value para determinar si hay efecto, se incluye la $g$ de Hedges como métrica principal del tamaño de efecto.}
     \label{fig:ttest_cpbl}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{graficos/ttest_analisis/results_occc_table.png}
-    \caption{Análisis estadístico: OpenCode vs.\ ClaudeCode. Guiarese por el $p$ value para determinar si hay efecto, se incluye la $g$ de Hedges como métrica principal del tamaño de efecto.}
+    \caption{Análisis estadístico: OpenCode vs.\ ClaudeCode. Guiarse por el $p$ value para determinar si hay efecto, se incluye la $g$ de Hedges como métrica principal del tamaño de efecto.}
     \label{fig:ttest_occc}
 \end{figure}
 
