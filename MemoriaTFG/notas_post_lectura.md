@@ -64,3 +64,44 @@ Anexo, eliminar mención de "Explicación completa", cuando realmente no es una 
 - Cambiar readme.md de colbPowers para que ponga colbPowers y no superpowers. [DONE]
 - Apartado 1.6 (Propuesta). Explicar qué se hace exactamente, que no hago codigo desde 0, sino que junto un montón de cosas ya implementadas en un solo sistema. [DONE]
 13/13
+
+# Cambios para que David pueda hacer una envaluación rápida.
+
+  ---
+  Estructura y formato
+
+  1. Keywords añadidas en los tres abstracts (EN/ES/CA): SDD, LLM, agentes de código, HITL, etc.
+  2. Nueva lista de siglas/acrónimos (API, CC, CLI, DCM, HITL, IDE, LLM, MCP, SDD, WSL…) añadida tras el índice de tablas.
+  3. "Integración de conocimientos" reubicada dentro del bloque de Alcance, eliminando su posición como sección independiente al final.
+  4. Sección privada de notas del autor eliminada ("Cosas en proceso y dudas").
+  5. "Similitud con ClaudeCode" promovida de \paragraph a \subsubsection.
+  6. Etiquetas \label duplicadas corregidas (tres figuras compartían fig:skill_definition).
+  7. Verbos pasados de futuro a presente en toda la memoria.
+
+  ---
+  Contenido técnico
+
+  8. Definición de Agent Skills reescrita: de "herramientas/scripts invocables" a "documentos de instrucciones procedimentales en Markdown que el agente consulta bajo demanda".
+  9. Motivo de descarte de Spec Kit / AgentOS más concreto: incompatibilidad con el flujo de Colb.AI, no solo "fricción excesiva".
+  10. Nuevo párrafo explicitando que el TFG gira en torno a la integración de herramientas existentes, no a construir desde cero.
+  11. Benchmarks de code-review-graph actualizados: de una prueba puntual (-37,5%) a los benchmarks oficiales (38× a 528×, mediana ~82×), con nueva figura del grafo sobre un repo de
+  Colb.AI.
+  12. Nuevo párrafo sobre adaptadores JavaScript para OpenCode en la sección de code-review-graph.
+  13. colbPowers descrito con más precisión: incluye creación de skills nuevas (defining-constitution, defining-features) además de la fuente de verdad compartida.
+
+  ---
+  Metodología estadística (cambio mayor)
+
+  14. d de Cohen → g de Hedges en todo el bloque experimental, con justificación (corrige sesgo en muestras pequeñas).
+  15. Aclaración metodológica añadida: el p-value determina existencia de efecto; la g solo cuantifica magnitud cuando p < 0,05.
+  16. p-values y valores de g incluidos directamente en los párrafos de análisis (antes solo porcentajes).
+  17. Factor de sobrecoste corregido: de 2,9×–4,5× a 2,2×–4,5× (en conclusiones y sección de sostenibilidad).
+
+  ---
+  Bibliografía (14 entradas nuevas)
+
+  Hedges (1981), Cohen (1988), Welch (1947), JetBrains DevEco 2025, Vaithilingam et al. (CHI 2022), Standish CHAOS Report (1994), Cunningham (1992, deuda técnica), LangChain, Tree-sitter,
+  Anthropic MCP (2024), estudio de burnout en SW (2023), Azure Speech Service, Otter.ai y Fireflies.ai.
+
+  ---
+  En total: cambios de estructura (7), de contenido técnico (6), de metodología estadística (4), y 14 referencias nuevas.

@@ -199,7 +199,7 @@ Por lo tanto, es crucial que este apartado se lleve a cabo con la máxima calida
 Actualmente, los asistentes de código más populares (GitHub Copilot, Cursor, Claude Code, etc.) operan bajo un paradigma \textit{Code-Driven}: el desarrollador describe vagamente lo que quiere y el modelo genera código de forma inmediata, sin exigir ninguna especificación previa. Este enfoque tiene tres consecuencias negativas directas \cite{vaithilingam_2022}:
 
 \begin{itemize}
-    \item \textbf{Generación de \textit{slop code}:} El código producido resuelve el problema inmediato, pero carece de estructura coherente, no sigue los estándares del proyecto y acumula deuda técnica \cite{cunningham_1992_techdebt}. Al no haber una especificación de referencia, el modelo no puede saber qué es correcto más allá de lo que el usuario describe en ese momento. El resultado es un código difícil de mantener, escalar o auditar.
+    \item \textbf{Generación de \textit{slop code}:} El código producido resuelve el problema inmediato, pero carece de estructura coherente, no sigue los estándares del proyecto y acumula deuda técnica \cite{cunningham_1992_techdebt}. En \cite{pearce2022asleep} se evaluó empíricamente este fenómeno generando más de 1.600 programas con GitHub Copilot, y se encontró que aproximadamente el 40\% contenía vulnerabilidades de seguridad, poniendo de manifiesto los riesgos de delegar la generación de código a agentes de IA sin una estructura de supervisión adecuada. Al no haber una especificación de referencia, el modelo no puede saber qué es correcto más allá de lo que el usuario describe en ese momento. El resultado es un código difícil de mantener, escalar o auditar.
 
     \item \textbf{Falta de trazabilidad entre requisitos y código:} Sin un documento de especificación que actúe como fuente de verdad, resulta imposible saber si el código generado cumple realmente con los requisitos del negocio, si ha habido desviaciones respecto al diseño original, o quién tomó qué decisión y cuándo.
 
@@ -301,6 +301,20 @@ Las herramientas de asistencia a la programación de tipo CLI (\textit{Command-L
 \subsubsection{superpowers plugin}
 \label{sec:superpowers}
 \textit{superpowers} \cite{superpowers_2025} es un plugin open source para ClaudeCode que implementa el patrón orquestador + subagentes mediante skills. Proporciona una arquitectura base para flujos de trabajo \textit{Spec-First}, en la que un agente orquestador coordina subagentes especializados a través de skills reutilizables. Sin embargo, carece de un mecanismo de constitución ni de features compartidas entre sesiones o desarrolladores distintos, lo que limita su capacidad para garantizar coherencia arquitectónica a lo largo del ciclo de vida de un proyecto.
+
+\subsubsection{Enfoques académicos: planificación previa y agentes múltiples}
+\label{sec:enfoques_academicos}
+
+Paralelamente al desarrollo de herramientas comerciales, la comunidad académica ha explorado enfoques estructurados para mejorar la calidad del código generado por LLMs, aportando evidencia empírica sobre las limitaciones del paradigma \textit{Code-Driven} y sobre la viabilidad de enfoques más estructurados.
+
+\paragraph{Planificación previa a la generación de código.}
+Jiang et al.\ \cite{jiang2023selfplanning} proponen un enfoque de dos fases ---planificar y luego generar--- en el que el LLM produce primero un plan estructurado y después genera el código guiado por él. Los resultados muestran mejoras de hasta un 25,4\% frente a la generación directa y un 11,9\% frente a \textit{chain-of-thought}, con evaluadores humanos confirmando ganancias en corrección, legibilidad y robustez del código producido. Este trabajo ofrece validación empírica directa al principio central del SDD: imponer una fase de especificación previa a la implementación mejora sistemáticamente la calidad del resultado.
+
+\paragraph{Sistemas multi-agente para el ciclo de vida del software.}
+MetaGPT \cite{hong2023metagpt} codifica procedimientos operativos estándar (SOPs) en secuencias de \textit{prompts} y asigna roles diferenciados a agentes LLM organizados en \textit{pipeline}, reduciendo las alucinaciones en cascada que surgen al encadenar modelos de lenguaje de forma directa. ChatDev \cite{qian2024chatdev} orquesta agentes especializados mediante una cadena de comunicación que guía el desarrollo a través de fases (diseño, codificación y pruebas), demostrando que la comunicación estructurada entre agentes es eficaz a lo largo de todo el ciclo de vida del software. Ambos trabajos comparten con \textit{colbPowers} la idea de que la separación de responsabilidades entre agentes especializados y la imposición de un protocolo estructurado producen código de mayor calidad que la generación directa.
+
+\paragraph{Evaluación de agentes en escenarios reales.}
+Jimenez et al.\ \cite{jimenez2024swebench} introdujeron SWE-bench, un \textit{benchmark} de 2.294 problemas reales extraídos de repositorios GitHub, y observaron que el modelo más capaz en el momento de la publicación solo resolvía el 1,96\% de los casos de forma autónoma. Este resultado ilustra la brecha entre la generación de código en aislamiento y la resolución de tareas de ingeniería reales, y contextualiza por qué la supervisión humana estructurada ---\textit{Human in the Loop}--- sigue siendo indispensable en los flujos de desarrollo asistidos por IA.
 
 \subsection{Análisis comparativo: ¿Está justificada una solución a medida?}
 \label{sec:analisis_comparativo}
@@ -1722,48 +1736,50 @@ Este caso es especialmente relevante para evaluar colbPowers, ya que puede ejecu
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{l l r r r r r}
+\begin{tabular}{l l r r r r r r r r}
 \toprule
-\textbf{Condición} & \textbf{Ejecución} & \textbf{Tokens (M)} & \textbf{Tool calls} & \textbf{CRG} & \textbf{Comp. ciclom.} & \textbf{Mant. Index} \\
+\textbf{Condición} & \textbf{Ejecución} & \textbf{Total (M)} & \textbf{Input (M)} & \textbf{Output (M)} & \textbf{Caché (M)} & \textbf{Tool calls} & \textbf{CRG} & \textbf{Comp. ciclom.} & \textbf{Mant. Index} \\
 \midrule
-\textbf{baseline} & Ejec.~1 & 1,59 & 36 & 0 & 4,67 & 44,09 \\
- & Ejec.~2 & 2,52 & 70 & 0 & 4,00 & 39,24 \\
- & Ejec.~3 & 1,53 & 49 & 0 & 4,25 & 41,30 \\
- & \textbf{Media} & \textbf{1,88} & \textbf{52} & \textbf{0} & \textbf{4,31} & \textbf{41,54} \\
+\textbf{baseline} & Ejec.~1 & 1,59 & 0,97 & 0,01 & 0,59 & 36 & 0 & 4,67 & 44,09 \\
+ & Ejec.~2 & 2,52 & 1,41 & 0,02 & 1,08 & 70 & 0 & 4,00 & 39,24 \\
+ & Ejec.~3 & 1,53 & 0,38 & 0,02 & 1,13 & 49 & 0 & 4,25 & 41,30 \\
+ & \textbf{Media} & \textbf{1,88} & \textbf{0,92} & \textbf{0,02} & \textbf{0,93} & \textbf{52} & \textbf{0} & \textbf{4,31} & \textbf{41,54} \\
 \midrule
-\textbf{colbPowers} & Ejec.~1 & 6,53 & 80 & 1 & 3,27 & 47,20 \\
- & Ejec.~2 & 10,22 & 86 & 1 & 2,97 & 48,66 \\
- & Ejec.~3 & 8,47 & 89 & 0 & 3,16 & 47,47 \\
- & \textbf{Media} & \textbf{8,41} & \textbf{85} & \textbf{0,7} & \textbf{3,13} & \textbf{47,78} \\
+\textbf{colbPowers} & Ejec.~1 & 6,53 & 2,69 & 0,06 & 3,77 & 80 & 1 & 3,27 & 47,20 \\
+ & Ejec.~2 & 10,22 & 6,28 & 0,07 & 3,84 & 86 & 1 & 2,97 & 48,66 \\
+ & Ejec.~3 & 8,47 & 5,12 & 0,06 & 3,25 & 89 & 0 & 3,16 & 47,47 \\
+ & \textbf{Media} & \textbf{8,41} & \textbf{4,70} & \textbf{0,06} & \textbf{3,62} & \textbf{85} & \textbf{0,7} & \textbf{3,13} & \textbf{47,78} \\
 \bottomrule
 \end{tabular}
 }
-\caption{Caso 2 --- OpenCode con DeepSeek V4-Flash.}
+\caption{Caso 2 --- OpenCode con DeepSeek V4-Flash. Caché = tokens leídos de caché.}
 \label{tab:caso2_opencode}
 \end{table}
 
 \begin{table}[H]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{l l r r r r r}
+\begin{tabular}{l l r r r r r r r r}
 \toprule
-\textbf{Condición} & \textbf{Ejecución} & \textbf{Tokens (M)} & \textbf{Tool calls} & \textbf{CRG} & \textbf{Comp. ciclom.} & \textbf{Mant. Index} \\
+\textbf{Condición} & \textbf{Ejecución} & \textbf{Total (M)} & \textbf{Input (M)} & \textbf{Output (M)} & \textbf{Caché (M)} & \textbf{Tool calls} & \textbf{CRG} & \textbf{Comp. ciclom.} & \textbf{Mant. Index} \\
 \midrule
-\textbf{baseline} & Ejec.~1 & 6,12 & 90 & 0 & 2,50 & 49,92 \\
- & Ejec.~2 & 2,75 & 54 & 0 & 3,23 & 62,24 \\
- & Ejec.~3 & 2,37 & 44 & 0 & 2,83 & 58,76 \\
- & \textbf{Media} & \textbf{3,74} & \textbf{63} & \textbf{0} & \textbf{2,85} & \textbf{56,97} \\
+\textbf{baseline} & Ejec.~1 & 6,12 & 0,00 & 0,05 & 6,00 & 90 & 0 & 2,50 & 49,92 \\
+ & Ejec.~2 & 2,75 & 0,00 & 0,02 & 2,68 & 54 & 0 & 3,23 & 62,24 \\
+ & Ejec.~3 & 2,37 & 0,00 & 0,04 & 2,27 & 44 & 0 & 2,83 & 58,76 \\
+ & \textbf{Media} & \textbf{3,74} & \textbf{0,00} & \textbf{0,04} & \textbf{3,65} & \textbf{63} & \textbf{0} & \textbf{2,85} & \textbf{56,97} \\
 \midrule
-\textbf{colbPowers} & Ejec.~1 & 7,30 & 46 & 0 & 2,77 & 50,56 \\
- & Ejec.~2 & 6,28 & 44 & 1 & 3,65 & 67,18 \\
- & Ejec.~3 & 10,97 & 55 & 0 & 2,90 & 59,28 \\
- & \textbf{Media} & \textbf{8,19} & \textbf{48} & \textbf{0,3} & \textbf{3,11} & \textbf{59,01} \\
+\textbf{colbPowers} & Ejec.~1 & 7,30 & 0,00 & 0,11 & 6,82 & 46 & 0 & 2,77 & 50,56 \\
+ & Ejec.~2 & 6,28 & 0,00 & 0,09 & 5,93 & 44 & 1 & 3,65 & 67,18 \\
+ & Ejec.~3 & 10,97 & 0,00 & 0,11 & 10,11 & 55 & 0 & 2,90 & 59,28 \\
+ & \textbf{Media} & \textbf{8,19} & \textbf{0,00} & \textbf{0,10} & \textbf{7,62} & \textbf{48} & \textbf{0,3} & \textbf{3,11} & \textbf{59,01} \\
 \bottomrule
 \end{tabular}
 }
-\caption{Caso 2 --- ClaudeCode con Haiku~4.5. Elaboración propia.}
+\caption{Caso 2 --- ClaudeCode con Haiku~4.5. Caché = tokens leídos de caché.}
 \label{tab:caso2_claudecode}
 \end{table}
+
+El desglose de tokens del Caso~2 confirma el mismo patrón estructural descrito para el Caso~1: en ClaudeCode los tokens de entrada son prácticamente nulos en ambas condiciones (aprox.\ 0,00~M) y el consumo se concentra en tokens de caché (3,65~M en baseline, 7,62~M en colbPowers), mientras que en OpenCode los tokens de entrada son significativos (media 0,92~M en baseline, 4,70~M en colbPowers). Una diferencia notable respecto al Caso~1 es que en OpenCode la condición baseline presenta aquí una distribución más equilibrada entre input y caché (0,92~M frente a 0,93~M), en contraste con el Caso~1 donde la caché superaba claramente a los tokens de entrada (2,26~M frente a 0,98~M). Esta diferencia es consistente con que en el Caso~2 el proyecto parte de un repositorio vacío: el prefijo cacheado por los subagentes es inicialmente más reducido, por lo que una mayor fracción del contexto se transmite como tokens de entrada no cacheados.
 
 En el segundo caso el sobrecoste de tokens de colbPowers es también considerable (x4,5 para OpenCode, x2,2 para ClaudeCode). En ClaudeCode el orquestador realiza menos tool calls en colbPowers (48) que en baseline (63), lo que confirma que delega la mayor parte del trabajo a subagentes. Las métricas de calidad muestran un patrón diferenciado según el asistente: en OpenCode, colbPowers genera código de menor complejidad ciclomática (3,13 frente a 4,31, una reducción del 27\%) y mayor índice de mantenibilidad (47,78 frente a 41,54, un incremento del 15\%), diferencias que resultan estadísticamente significativas. En ClaudeCode los cambios son mucho menores ---complejidad 3,11 (colbPowers) frente a 2,85 (baseline), mantenibilidad 59,01 frente a 56,97 ($+$3,6\%)--- y no alcanzan significación estadística ($p=0{,}508$ y $p=0{,}754$ respectivamente), por lo que no puede afirmarse la existencia de un efecto real. Destaca que ClaudeCode produce código con un índice de mantenibilidad notablemente mayor que OpenCode en la condición baseline (56,97 frente a 41,54, diferencia estadísticamente significativa con $p=0{,}039$), lo que sugiere una diferencia cualitativa entre los dos asistentes más allá del consumo de recursos.
 
