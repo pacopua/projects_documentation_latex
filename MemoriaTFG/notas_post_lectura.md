@@ -7,7 +7,7 @@ Lectura entera TFG con apuntes:
 - 1.2.4: Se introduce el apartado de transcripción por la cara cuando no se ha mencionado previamente in ningún momento.[DONE]
 
 - 1.4:
-	+ En general quizás se podrían expandir estos apartados[PENDING]
+	+ En general quizás se podrían expandir estos apartados[DONE]
 	+ Se deberian añadir citaciones tanto en 1.4.5 como en 1.4.7.[DONE]
 
 ---
@@ -105,3 +105,7 @@ Anexo, eliminar mención de "Explicación completa", cuando realmente no es una 
 
   ---
   En total: cambios de estructura (7), de contenido técnico (6), de metodología estadística (4), y 14 referencias nuevas.
+
+# Segunda lectura
+- Citar a Claue Cowork en 1.4.5 Herramientas de documentación de reuniones
+- El plan está fatal.
