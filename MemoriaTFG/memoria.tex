@@ -510,8 +510,7 @@ En este apartado se presentan las asignaturas de las cuales se han podido utiliz
     \item \textbf{Compresión de datos e imágenes (CDI):} Para la implementación propia del módulo de transcripción, se utiliza ffmpeg con técnicas de compresión vistas en CDI, para que el proceso de transcripción tarde menos sin perder demasiada calidad. Principalmente, se aplica un \textit{Downsampling} ---reducción en el muestreo del audio--- y luego se convierte a MP3 mono, formato que aprovecha la compresión con pérdida basada en MDCT (\textit{Modified Discrete Cosine Transform}) y modelado psicoacústico para reducir significativamente el tamaño del archivo.
     \item \textbf{Búsqueda y analisis de información masiva (CAIM):} Del apartado de \textit{Local Sensitive Hashing} de la asignatura, se extrajo la idea de almacenar los audios transcritos con sus respectivos hashes, aunque en la implementación no se utiliza ningún método de \textit{LSH}, se utiliza un hash criptográfico SHA-256 para identificación exacta del contenido. Los apartados de \textit{Web, Information Retrieval} fueron de utilidad para entender y implementar servicios como \textit{Tavily} para la búsqueda web, así como el temario de \textit{Networks} para la formación del grafo de \textit{code-review-graph}, que facilita a los asistentes de programación la búsqueda y exploración del código.
     \item \textbf{Introducción a la ingeniería del software (IES):} La base proporcionada en esta asignatura sobre requisitos de software, diseño de sistemas y creación de diagramas de flujo, fueron extremadamente útiles tanto para planificar el sistema implementado en este proyecto como para planificar el desarrollo del proyecto en si.
-    \item \textbf{Probabilidad y estadística (PE):} Disponer de una base en probabilidad y estadística ha sido de utilidad en la sección de experimentación, donde se aplican contrastes de hipótesis y estimadores del tamaño del efecto para interpretar los resultados obtenidos. Sin los fundamentos de esta asignatura, razonar sobre conceptos como significación estadística, potencia o tamaño muestral habría resultado considerablemente más difícil.
-
+    
 \end{itemize}
 
 \newpage
@@ -538,7 +537,7 @@ La planificación inicial del proyecto (GEP) establecía como objetivo principal
 \label{tab:comparativa_alcance}
 \end{table}
 
-La justificación del cambio es doble. Por un lado, la adopción de \textit{superpowers} como base eliminó la necesidad de construir la capa de orquestación desde cero, redirigiendo el esfuerzo hacia la contribución diferencial: la capa de \texttt{constitution.md} y \texttt{features.md}, así como la creación y modificación de skills para incorporar adecuadamente estos documentos al flujo del agente. Por otro lado, la reducción de esfuerzo en el núcleo SDD liberó capacidad para incorporar los módulos de toma de requerimientos y seguimiento del cliente, ampliando el alcance del proyecto para cubrir el ciclo de vida completo del software. Los cuatro sub-objetivos originales (separación de responsabilidades, coherencia arquitectónica, agentes autónomos y trazabilidad) se mantienen intactos en su esencia; únicamente cambia el mecanismo de implementación.
+La justificación del cambio es doble. Por un lado, la adopción de \textit{superpowers} como base eliminó la necesidad de construir la capa de orquestación desde cero, redirigiendo el esfuerzo hacia la contribución diferencial: la capa de \texttt{constitution.md} y \texttt{features.md}, así como la creación y modificación de skills para incorporar adecuadamente estos documentos al flujo del agente. Por otro lado, la reducción de esfuerzo en el núcleo SDD liberó capacidad para incorporar los módulos de toma de requerimientos y seguimiento del cliente, ampliando el alcance del proyecto para cubrir el ciclo de vida completo del software.
 
 \newpage
 
@@ -626,17 +625,17 @@ El proyecto se estructura en iteraciones o Sprints de 2 a 3 semanas de duración
 La distribución de horas entre sprints no es uniforme, sino que responde a la complejidad técnica acumulada de cada iteración. Los primeros sprints (DA1 y DA2, 50h cada uno) son más ligeros porque su alcance está acotado: DA1 establece la base funcional de los agentes sobre tecnologías ya estudiadas en la fase TP, y DA2 añade un conjunto inicial de métricas de análisis con scripts relativamente independientes. En cambio, DA3 y DA4 (80h cada uno) requieren significativamente más esfuerzo: DA3 introduce la integración con protocolos MCP y el desarrollo de \textit{AgentSkills}, que exigen una depuración iterativa compleja al operar directamente sobre el entorno local; y DA4 afronta la implementación de técnicas de \textit{Information Retrieval} y la integración de herramientas externas avanzadas, además de incorporar el refinamiento global del sistema acumulado en los sprints anteriores.
 
 \begin{itemize}
-    \item \textbf{DA1 - Sprint 1: MVP (50h)}: Implementar la versión base funcional de colbPowers: configuración del plugin en ClaudeCode y OpenCode, definición de la estructura de \texttt{constitution.md} y \texttt{features.md}, e implementación del agente orquestador con las skills base.
+    \item \textbf{DA1 - Sprint 1: MVP (50h)}: Adoptar \textit{superpowers} como base de colbPowers e instalar el plugin en ClaudeCode y OpenCode, definir la estructura de \texttt{constitution.md} y \texttt{features.md} como contexto persistente compartido entre sesiones y desarrolladores, y adaptar la skill \textit{using-superpowers} como \textit{using-colbPowers} para incorporar estos documentos al flujo del agente.
     \begin{itemize}
         \item \textbf{DA1.1} Configuración del plugin e integración con ClaudeCode y OpenCode (15h).
         \item \textbf{DA1.2} Definición de la estructura de \texttt{constitution.md} y \texttt{features.md} (20h).
-        \item \textbf{DA1.3} Implementación del agente orquestador y skills base (15h).
+        \item \textbf{DA1.3} Adaptación de la skill \textit{using-superpowers} como \textit{using-colbPowers} e integración del hook \texttt{SessionStart} para la inyección automática de las reglas de orquestación al inicio de cada sesión (15h).
     \end{itemize}
-    
-    \item \textbf{DA2 - Sprint 2: Subagentes especializados y métricas de evaluación (50h)}: Implementar los subagentes especializados de colbPowers e integrar radon como herramienta de análisis estático independiente del flujo de agentes.
+
+    \item \textbf{DA2 - Sprint 2: Skills SDD y métricas de evaluación (50h)}: Crear las skills \textit{defining-constitution} y \textit{defining-features}, y adaptar las skills heredadas de \textit{superpowers} para que los subagentes incorporen \texttt{constitution.md}, \texttt{features.md} y los documentos de especificación en cada fase del ciclo SDD. Integrar las herramientas de análisis estático como mecanismo de evaluación independiente.
     \begin{itemize}
-        \item \textbf{DA2.1} Implementación del subagente implementador (15h).
-        \item \textbf{DA2.2} Implementación de los subagentes revisores: revisor de código y revisor de compatibilidad con specs/constitución/features (20h).
+        \item \textbf{DA2.1} Creación de la skill \textit{defining-constitution} y adaptación de la skill de implementación de \textit{superpowers} para que el subagente incorpore \texttt{constitution.md} y los documentos de especificación como contexto (15h).
+        \item \textbf{DA2.2} Creación de la skill \textit{defining-features} y adaptación de las skills revisoras de \textit{superpowers} para incorporar \texttt{features.md} y los documentos de especificación en la revisión de código y de coherencia con la constitución del proyecto (20h).
         \item \textbf{DA2.3} Desarrollo de scripts de análisis estático como herramienta de evaluación manual de la calidad del código generado: \textbf{radon} para Python y \textbf{DCM} (Dart Code Metrics) para Flutter/Dart (15h).
     \end{itemize}
     
@@ -649,8 +648,8 @@ La distribución de horas entre sprints no es uniforme, sino que responde a la c
 
     \item \textbf{DA4 - Sprint 4: Módulos complementarios y refinamiento final (80h)}: Implementar el módulo de toma de requerimientos y el módulo de seguimiento del cliente, y refinar el sistema completo.
     \begin{itemize}
-        \item \textbf{DA4.1} Módulo de transcripción: integración con Azure Speech Service para transcripción con diarización de reuniones presenciales (35h).
-        \item \textbf{DA4.2} Módulo de procesamiento de requerimientos: implementación con LangChain y Tavily para generación de planes de implementación a partir de transcripciones (25h).
+        \item \textbf{DA4.1} Módulo de transcripción: integración con Azure Speech Service con diarización, implementación de la gestión idempotente mediante máquina de estados en Azure Blob Storage y hashes SHA-256, y compresión determinista del audio con \texttt{ffmpeg} (35h).
+        \item \textbf{DA4.2} Módulo de procesamiento de requerimientos: implementación del pipeline con LangChain, investigación y pruebas de integración de Tavily como motor de búsqueda semántica, y validación del flujo completo de generación del plan arquitectónico (25h).
         \item \textbf{DA4.3} Módulo de seguimiento del cliente y refinamiento global del sistema (20h).
     \end{itemize}
 \end{itemize}
@@ -733,7 +732,7 @@ A continuación, se presenta una tabla resumen con la información clave de cada
 \textbf{TP2} & Planificación estructura y flujo & 20h & TP1 & Autor, PC, Draw.io \\
 \midrule
 \textbf{DA1} & Sprint 1: MVP colbPowers & 50h & TP2 & Autor, PC, ClaudeCode, OpenCode \\
-\textbf{DA2} & Sprint 2: Subagentes y métricas & 50h & DA1 & Autor, PC, Python, radon \\
+\textbf{DA2} & Sprint 2: Skills SDD y métricas & 50h & DA1 & Autor, PC, Python, radon \\
 \textbf{DA3} & Sprint 3: Habilidades e Int. MCP & 80h & DA1 & Autor, PC, Git, Bash, Python \\
 \textbf{DA4} & Sprint 4: Módulos compl. y refinamiento & 80h & DA3 & Autor, PC, Azure Speech, LangChain, Tavily \\
 \midrule
@@ -791,8 +790,8 @@ La planificación establecida en el GEP estructuraba el desarrollo en cuatro spr
     \toprule
     \textbf{Sprint} & \textbf{Planificación GEP} & \textbf{Planificación final} \\
     \midrule
-    \textbf{DA1} & Agentes Architect, Developer y Reviewer desde cero & Plugin colbPowers base: constitution.md, features.md, orquestador \\
-    \textbf{DA2} & Métricas de evaluación integradas en el agente Reviewer & Subagentes especializados + scripts de radon como evaluación manual independiente \\
+    \textbf{DA1} & Agentes Architect, Developer y Reviewer desde cero & Adopción de \textit{superpowers} como base + capa \texttt{constitution.md}/\texttt{features.md} + inyección de \textit{using-colbPowers} mediante hook \texttt{SessionStart} \\
+    \textbf{DA2} & Métricas de evaluación integradas en el agente Reviewer & Nuevas skills SDD (\textit{defining-constitution}, \textit{defining-features}) + adaptación de skills de \textit{superpowers} + scripts de análisis estático \\
     \textbf{DA3} & AgentSkills e integración MCP & Ampliación de MCPs y refinamiento del flujo colbPowers --- sin cambio significativo \\
     \textbf{DA4} & Information Retrieval y MCPs avanzados & Módulo de toma de requerimientos (Azure Speech + LangChain/Tavily) y módulo de seguimiento del cliente \\
     \bottomrule
@@ -807,7 +806,9 @@ La justificación de estos cambios es consistente con lo descrito en la sección
 
 \subsection{Gestión de riesgos: Planes alternativos y obstáculos}
 \label{sec:gestion_riesgos}
-Durante la planificación y ejecución de este proyecto, se han identificado diversos obstáculos potenciales inherentes al desarrollo con IA. A continuación, se detallan estos riesgos junto con sus respectivos planes alternativos, tal y como dictan las buenas prácticas de gestión ágil de proyectos. En el apartado \ref{sec:imprevistos} se cuantifica el coste económico estimado de cada uno de estos imprevistos.
+Durante la planificación y ejecución de este proyecto, se identificaron diversos obstáculos potenciales inherentes al desarrollo con IA. A continuación, se detallan estos riesgos junto con sus respectivos planes alternativos, tal y como dictan las buenas prácticas de gestión ágil de proyectos. En el apartado \ref{sec:imprevistos} se cuantifica el coste económico estimado de cada uno de estos imprevistos.
+
+Estos riesgos se definieron al desarrollar la planificación inicial del proyecto, y se indicará cuales de ellos han ocurrido y las consecuencias de esto.
 
 \subsubsection{Riesgo 1: Cambios repentinos en los requerimientos por parte de la empresa}
 \label{sec:riesgo1}
@@ -879,7 +880,7 @@ En este apartado se presentan los distintos costes que aparecen a lo largo del d
 
 \subsubsection{Coste del personal}
 \label{sec:coste_personal}
-Aplicando el \textit{feedback} de la anterior entrega de GEP, se divide este apartado en distintos roles. Cada uno tiene un coste por hora determinado, y a partir del diagrama de Gantt y las tablas con las horas asignadas a cada tarea y sus recursos personales adjuntados, se calcula el total de cada uno de estos roles. Adicionalmente, se muestran tanto los salarios netos como los brutos - añadida la contribución de 30\verb|%| a la Seguridad Social (SS) -, y cuando se hace la suma total de los costes, se utiliza obviamente el salario bruto.
+Se divide este apartado en distintos roles. Cada uno tiene un coste por hora determinado, y a partir del diagrama de Gantt y las tablas con las horas asignadas a cada tarea y sus recursos personales adjuntados, se calcula el total de cada uno de estos roles. Adicionalmente, se muestran tanto los salarios netos como los brutos - añadida la contribución de 30\verb|%| a la Seguridad Social (SS) -, y cuando se hace la suma total de los costes, se utiliza obviamente el salario bruto.
 
 \begin{table}[H]
     \centering
