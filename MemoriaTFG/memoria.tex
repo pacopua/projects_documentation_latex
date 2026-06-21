@@ -377,7 +377,7 @@ Una vez entregado el desarrollo, el sistema no termina: comienza la fase de \tex
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{imagenes/DiagramaFlujoTrabajoCompleto.png}
+    \includegraphics[width=0.8\textwidth]{imagenes/DiagramaFlujoTrabajoCompleto.png}
     \caption{Flujo de trabajo completo del sistema: desde la primera reunión con el cliente hasta el seguimiento iterativo del proyecto.}
     \label{fig:flujo_completo}
 \end{figure}
@@ -1414,6 +1414,8 @@ El runtime que orquesta este bucle está implementado en TypeScript sobre Node.j
 \end{enumerate}
 
 Este diseño en TypeScript es la base sobre la que se apoyan todos los mecanismos de extensibilidad descritos en las secciones siguientes: al tratarse de un proceso Node.js estándar, es posible interceptar el bucle en distintos puntos mediante hooks, inyectar herramientas adicionales mediante plugins, y conectar servicios externos mediante el protocolo MCP.
+
+\newpage
 
 \subsection{Mecanismos de extensibilidad}
 \label{sec:mecanismos_extensibilidad}
