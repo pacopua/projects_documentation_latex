@@ -1225,7 +1225,7 @@ El bloque donde partía con menor preparación era el de gestión económica: co
 
 \subsection{Toma de Requerimientos}
 \label{sec:toma_requerimientos_cap}
-La toma de requerimientos es la primera fase del ciclo de vida de un proyecto de software. En este contexto, el objetivo es transformar las necesidades expresadas por el cliente en conversaciones informales en documentos de especificación técnica utilizables por el equipo de desarrollo. El proceso se articula en dos módulos independientes y secuenciales: en primer lugar, el módulo de transcripción convierte las reuniones en texto estructurado; a continuación, el módulo de procesamiento analiza ese texto y genera el plan de implementación. Cada módulo dispone de dos implementaciones complementarias, con el propósito de no depender de un único proveedor.
+La toma de requerimientos es la primera fase del ciclo de vida de un proyecto de software. En este contexto, el objetivo es transformar las necesidades expresadas por el cliente en documentos de especificación técnica utilizables por el equipo de desarrollo. El proceso se articula en dos módulos independientes y secuenciales: en primer lugar, el módulo de transcripción convierte las reuniones en texto estructurado; y en segundo lugar, el módulo de procesamiento analiza ese texto y genera el plan de implementación. Cada módulo dispone de dos implementaciones complementarias, con el propósito de no depender de un único proveedor, cubriendo así el riesgo de vendor lock-in mencionado anteriormente \ref{sec:riesgo2}.
 
 \subsubsection{Módulo de transcripción}
 \label{sec:modulo_transcripcion}
@@ -1237,9 +1237,9 @@ Las principales plataformas de videoconferencia (Microsoft Teams, Google Meet, Z
 
 \paragraph{Reuniones presenciales}
 \label{sec:reuniones_presenciales}
-En el caso de las reuniones presenciales, no existe ninguna plataforma que genere una transcripción de forma automática. Para cubrir este caso, se graba el audio de la reunión y se procesa a posteriori mediante Azure Speech Service, el servicio de transcripción de audio proporcionado por el proveedor de servicios cloud de la empresa.
+Para cubrir este caso se decide implementar nuestra propia solución, se graba el audio de la reunión y se procesa a posteriori mediante Azure Speech Service, el servicio de transcripción de audio proporcionado por el proveedor de servicios cloud de la empresa \textit{Colb.AI}.
 
-La característica técnica diferencial en este contexto es la diarización (\textit{speaker diarization}): el servicio no transcribe el audio como un bloque de texto continuo, sino que identifica a cada participante de forma independiente y etiqueta cada fragmento de texto con el hablante que lo pronunció. Esta atribución es especialmente relevante para la toma de requerimientos, ya que permite al módulo de procesamiento distinguir qué peticiones o restricciones provienen del cliente y cuáles son aclaraciones o comentarios del equipo técnico, mejorando la calidad del plan de implementación resultante.
+La característica técnica diferencial en este contexto es la diarización (\textit{speaker diarization}): se puede configurar el servicio parra identificar a cada participante de forma independiente y etiqueta cada fragmento de texto con el hablante que lo pronunció. Esta atribución es especialmente relevante para la toma de requerimientos, ya que permite al módulo de procesamiento distinguir qué peticiones o restricciones provienen del cliente y cuáles son aclaraciones o comentarios del equipo técnico, mejorando la calidad del plan de implementación resultante.
 
 \paragraph{Preprocesamiento del audio.}
 Antes de enviar el audio al servicio de transcripción, se aplica un paso de compresión cuyo objetivo es doble: reducir el tamaño del fichero para minimizar costes de almacenamiento y transferencia, y garantizar que el proceso sea determinista. La función \texttt{downsample\_audio\_deterministic} utiliza \texttt{ffmpeg} para convertir el audio original a formato MP3 mono a 8\,kHz, eliminando metadatos y aplicando flags de codificación bit-exacta (\texttt{-bitexact}, \texttt{-map\_metadata -1}, \texttt{-id3v2\_version 0}). Gracias a estas garantías, el mismo archivo de entrada siempre produce exactamente los mismos bytes de salida y, por tanto, el mismo hash SHA-256. Este hash actúa como identificador único del contenido del audio a lo largo de todo el sistema.
@@ -1261,7 +1261,7 @@ La transcripción se realiza a través de la API REST de Azure Speech Service en
 \begin{enumerate}
     \item \textbf{Envío del trabajo}: se realiza una petición \texttt{POST} al endpoint de transcripciones con la URL SAS del audio comprimido. La configuración incluye el idioma (español por defecto), el modo de puntuación automática y, cuando la diarización está habilitada, los parámetros \texttt{diarizationEnabled: true} junto con el rango esperado de hablantes (mínimo 2, máximo 5).
     \item \textbf{Sondeo del estado}: se consulta periódicamente el estado del trabajo (cada 5 segundos) hasta que la API reporta \texttt{Succeeded} o \texttt{Failed}.
-    \item \textbf{Descarga y formateo del resultado}: una vez completado el trabajo, se descarga el fichero de resultados y se procesan las frases reconocidas (\texttt{recognizedPhrases}). Cuando la diarización está activa, cada frase se ordena cronológicamente según su \textit{offset} en formato ISO 8601 y se formatea como \texttt{[Speaker N]: texto}, produciendo una transcripción estructurada por hablante. Si la diarización no está disponible, se recurre al campo \texttt{combinedRecognizedPhrases} como fallback.
+    \item \textbf{Descarga y formateo del resultado}: una vez completado el trabajo, se descarga el fichero de resultados y se procesan las frases reconocidas (\texttt{recognizedPhrases}). Cuando la diarización está activa, cada frase se ordena cronológicamente, y se formatea como \texttt{[Speaker N]: texto}, produciendo una transcripción estructurada por hablante.
 \end{enumerate}
 
 \begin{figure}[H]
@@ -1285,8 +1285,8 @@ Una vez disponible la transcripción (producida por cualquiera de las vías desc
   
   \begin{figure}[H]
       \centering
-      \includegraphics[width=1\textwidth]{imagenes/coworkSkills/skill_components_and_definition.png}
-      \caption{Estructura de una skill en Claude Cowork.}
+      \includegraphics[width=1\textwidth]{imagenes/requirements_intake_skill.png}
+      \caption{Skill de toma de requerimientos en Claude Cowork.}
       \label{fig:skill_definition}
   \end{figure}
 
@@ -1351,6 +1351,13 @@ El flujo implementado mediante Claude Cowork se integra directamente con el proc
 \end{itemize}
 Este documento se genera y está disponible para ser enviado al cliente en el mismo momento en que finaliza la reunión, eliminando la latencia habitual en la producción de este tipo de documentación.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{imagenes/meeting_summaries_skill.png}
+  \caption{Skill de seguimiento del cliente en Claude Cowork.}
+  \label{fig:skill_definition}
+\end{figure}
+
 La skill aprovecha las capacidades nativas de Claude Cowork para acceder a herramientas de gestión de archivos en el entorno de escritorio, lo que le permite escribir directamente el documento en el directorio de trabajo del proyecto, integrándose de forma transparente en el flujo de gestión documental de la empresa.
 \newpage
 \subsubsection{Alternativa de código abierto}
@@ -1368,7 +1375,7 @@ De forma análoga al enfoque adoptado en la toma de requerimientos, se dispone d
 
 \section{Spec Driven Development: Implementación}
 \label{sec:sdd_implementacion}
-Una vez definidos los requerimientos iniciales del proyecto, el siguiente paso es garantizar que el desarrollo de código siga un flujo estructurado y trazable. Este capítulo describe la arquitectura de herramientas y asistentes que se ha configurado para implementar la metodología SDD en el día a día del equipo de desarrollo.
+Este capítulo describe la arquitectura de herramientas y asistentes que se ha configurado para implementar la metodología SDD en el día a día del equipo de desarrollo.
 
 \subsection{Asistentes de Programación}
 \label{sec:asistentes_programacion}
@@ -1384,7 +1391,7 @@ OpenCode \cite{opencode_2025} es un asistente de programación de código abiert
 
 \subsubsection{Justificación de la doble integración}
 \label{sec:justificacion_doble_integracion}
-La utilización de ambas herramientas no es redundante, sino estratégica. Al configurar el sistema de modo que ambos asistentes sean capaces de operar con la misma configuración de proyecto (archivos de instrucciones, plugins y MCPs), se elimina la dependencia de cualquiera de los dos proveedores. Si las condiciones de uno de ellos cambian de forma desfavorable, el equipo puede migrar su flujo de trabajo sin necesidad de reconfigurarlo desde cero.
+Al configurar el sistema de modo que ambos asistentes sean capaces de operar con la misma configuración de proyecto (archivos de instrucciones, plugins y MCPs), se elimina la dependencia de cualquiera de los dos proveedores, ucbriendo el riesgo \ref{sec:riesgo2} de \textit{vendor lock-in}. Si las condiciones de uno de ellos cambian de forma desfavorable, el equipo puede migrar su flujo de trabajo sin necesidad de reconfigurarlo desde cero.
 
 Adicionalmente, los asistentes de tipo CLI resuelven de forma más limpia los problemas de integración con el entorno de desarrollo que afectan a los asistentes integrados en el IDE, ya que disponen de herramientas de edición, lectura y búsqueda implementadas directamente sobre el sistema de archivos del sistema operativo.
 
@@ -1394,11 +1401,11 @@ Para comprender plenamente cómo se pueden extender y configurar estas herramien
 
 El patrón ReAct estructura el comportamiento del agente en un ciclo iterativo de tres fases:
 
-\textbf{Razonamiento (Thought):} El modelo recibe el estado actual del contexto y genera un razonamiento interno en el que planifica el siguiente paso. Este razonamiento no es visible para el usuario, pero es el mecanismo por el que el agente decide qué acción tomar.
+\textbf{Razonamiento (Thought):} El modelo recibe el estado actual del contexto y genera un razonamiento interno en el que planifica el siguiente paso. Este razonamiento es el mecanismo por el que el agente decide qué acción tomar.
 
-\textbf{Acción (Action):} El modelo emite una llamada a herramienta estructurada (\textit{tool call}) en formato JSON, especificando qué herramienta invocar y con qué parámetros. Las herramientas disponibles incluyen la lectura de archivos, la escritura de código y la ejecución de comandos en terminal.
+\textbf{Acción (Action):} El modelo emite una llamada a herramienta estructurada (\textit{tool call}) especificando qué herramienta invocar y con qué parámetros. Las herramientas disponibles incluyen habitualmente la lectura de archivos, la escritura de código y la ejecución de comandos en terminal, aunque por supuesto dependen del sistema que se utilice.
 
-\textbf{Observación (Observation):} El runtime de TypeScript ejecuta la acción sobre el sistema de archivos de la terminal y devuelve el resultado al modelo como nuevo mensaje en el historial. Este resultado se convierte en la entrada del siguiente ciclo.
+\textbf{Observación (Observation):} Se ejecuta la acción sobre el sistema de archivos de la terminal y devuelve el resultado al modelo como nuevo mensaje en el historial. Este resultado se convierte en la entrada del siguiente ciclo.
 
 \begin{figure}[H]
     \centering
@@ -1407,21 +1414,21 @@ El patrón ReAct estructura el comportamiento del agente en un ciclo iterativo d
     \label{fig:ciclo_react}
 \end{figure}
 
-El runtime que orquesta este bucle está implementado en TypeScript sobre Node.js. Su flujo de ejecución puede describirse de forma simplificada en tres pasos:
+El flujo de ejecución que orquesta este bucle puede describirse de forma simplificada en tres pasos:
 
 \begin{enumerate}
-    \item Al iniciarse una sesión, el runtime construye el system prompt combinando las instrucciones globales del asistente con el contenido del archivo de configuración del proyecto (CLAUDE.md o equivalente), y define el conjunto de herramientas disponibles mediante un esquema JSON.
+    \item Al iniciarse una sesión, el runtime construye el system prompt combinando las instrucciones globales del asistente con el contenido del archivo de configuración del proyecto (CLAUDE.md, AGENT.md o equivalente), además de definir el conjunto de herramientas disponibles mediante un esquema JSON (habitualmente).
     \item En cada iteración del bucle, el runtime envía el historial de conversación actualizado a la API del modelo. Si la respuesta contiene llamadas a herramienta, las ejecuta secuencialmente, añade los resultados al historial y lanza una nueva iteración.
     \item Si la respuesta no contiene llamadas a herramienta, el runtime la presenta al usuario como respuesta final y espera una nueva instrucción, reiniciando el ciclo con el historial acumulado.
 \end{enumerate}
 
-Este diseño en TypeScript es la base sobre la que se apoyan todos los mecanismos de extensibilidad descritos en las secciones siguientes: al tratarse de un proceso Node.js estándar, es posible interceptar el bucle en distintos puntos mediante hooks, inyectar herramientas adicionales mediante plugins, y conectar servicios externos mediante el protocolo MCP.
+Este diseño es la base sobre la que se apoyan todos los mecanismos de extensibilidad descritos en las próximas secciones. Es posible interceptar el bucle en distintos puntos mediante hooks, inyectar herramientas adicionales mediante plugins, y conectar servicios externos mediante el protocolo MCP.
 
 \newpage
 
 \subsection{Mecanismos de extensibilidad}
 \label{sec:mecanismos_extensibilidad}
-El valor diferencial de los asistentes CLI frente a otras soluciones reside en su arquitectura de extensibilidad. Antes de describir la configuración concreta del sistema, es necesario definir con precisión los conceptos que la componen, ya que estos términos ---plugin, MCP, hook, skill, agente--- se utilizan con frecuencia de forma imprecisa en la literatura del sector.
+El valor diferencial de los asistentes CLI frente a otras soluciones reside en su arquitectura de extensibilidad. Antes de describir la configuración concreta del sistema, es necesario definir con precisión los conceptos que la componen, ya que estos términos (plugin, MCP, hook, skill, agente) se utilizan con frecuencia de forma en la literatura del sector.
 
 \subsubsection{Conceptos clave}
 \label{sec:conceptos_clave_ext}
@@ -1442,13 +1449,13 @@ El valor diferencial de los asistentes CLI frente a otras soluciones reside en s
 \label{tab:conceptos_extensibilidad}
 \end{table}
 
-\textbf{Distinción entre MCP y Skill.} Aunque ambos mecanismos amplían las capacidades del agente, su naturaleza es diferente. Una skill es esencialmente un prompt procedimental: incluye instrucciones detalladas sobre cómo abordar una tarea y puede invocar herramientas locales durante su ejecución. Un servidor MCP, en cambio, expone herramientas atómicas acompañadas únicamente de una descripción de su interfaz, sin lógica de orquestación; la ejecución se produce en el proceso del servidor MCP, no en el runtime local del asistente. En la práctica, las skills definen \textit{cómo} debe razonar el agente ante una clase de tarea, mientras que los MCPs definen \textit{qué} operaciones externas puede invocar.
+\textbf{Distinción entre MCP y Skill.} Aunque ambos mecanismos amplían las capacidades del agente, su naturaleza es diferente. Una skill es esencialmente un prompt procedimental: incluye instrucciones detalladas sobre cómo abordar una tarea y puede invocar herramientas y scripts locales durante su ejecución. Un servidor MCP, en cambio, expone herramientas atómicas acompañadas únicamente de una descripción de su interfaz, sin lógica de orquestación; la ejecución se produce en el proceso del servidor MCP, no en el runtime local del asistente. En la práctica, las skills definen \textit{cómo} debe razonar el agente ante una clase de tarea, mientras que los MCPs definen \textit{qué} operaciones externas puede invocar.
 
 \newpage
 
 \subsubsection{El ciclo de vida completo de una sesión en OpenCode}
 \label{sec:ciclo_vida_opencode}
-Para extender y configurar OpenCode de forma eficaz, es necesario comprender con exactitud en qué momento del ciclo se carga cada componente ---plugins, skills, herramientas y agentes--- y cómo interactúan durante una conversación. Aprovechando que opencode es una herramienta de código abierto, a continuación vamos a describir el ciclo de funcionamiento de forma detallada, desde la inicialización del proceso hasta la entrega de la respuesta al usuario.
+Para extender y configurar OpenCode de forma eficaz, es necesario comprender con exactitud en qué momento del ciclo se carga cada componente (plugins, skills, herramientas y agentes) y cómo interactúan durante una conversación. Aprovechando que opencode es una herramienta de \textbf{código abierto}, a continuación vamos a describir el ciclo de funcionamiento de forma detallada, desde la inicialización del proceso hasta la entrega de la respuesta al usuario.
 
 \begin{figure}[H]
     \centering
@@ -1498,10 +1505,10 @@ Sin embargo, existen diferencias arquitectónicas significativas que conviene se
 \toprule
 \textbf{Dimensión} & \textbf{ClaudeCode} & \textbf{OpenCode} \\
 \midrule
-\textbf{Proveedores LLM} & Exclusivo de Anthropic (modelos Claude) & Más de 25 proveedores a través del SDK de Vercel AI (OpenAI, Google, Azure, Bedrock, Mistral, Groq, GitHub Copilot, entre otros) \\
+\textbf{Proveedores LLM} & Exclusivo de modelos compatibles con la API de Anthropic (modelos Claude principalmente) & Más de 25 proveedores a través del SDK de Vercel AI (OpenAI, Google, Azure, Bedrock, Mistral, Groq, GitHub Copilot, entre otros) \\
 \textbf{Modelo de interfaz} & Exclusivamente CLI; interfaz renderizada en terminal mediante React e Ink & Servidor HTTP local (Hono) con aplicación web SolidJS; soporta además aplicaciones de escritorio nativas (Tauri y Electron) \\
 \textbf{Persistencia} & Estado en memoria y ficheros JSON locales & Sesiones persistidas en SQLite con instantáneas del sistema de ficheros antes de cada invocación de herramienta, lo que permite revertir cambios \\
-\textbf{Framework técnico} & TypeScript estándar para la composición de servicios & Uso intensivo del framework Effect (programación funcional monádica) para gestión de dependencias, errores y concurrencia \\
+\textbf{Framework técnico} & TypeScript estándar para la composición de servicios & Framework Effect para gestión de dependencias, errores y concurrencia \\
 \bottomrule
 \end{tabular}
 \caption{Comparativa arquitectónica entre ClaudeCode y OpenCode. Elaboración propia.}
@@ -1552,11 +1559,11 @@ La integración de \textit{code-review-graph} con ClaudeCode se realiza de forma
     \label{fig:code_review_graph}
 \end{figure}
 
-\subsubsection{colbPowers: flujo de trabajo}
+\subsubsection{Definición del flujo de trabajo, colbPowers}
 \label{sec:colbpowers_flujo}
 \textit{colbPowers} \cite{colbpowers_2026} es un plugin desarrollado para este proyecto a partir de la base proporcionada por el plugin \verb|"|superpowers\verb|"| \cite{superpowers_2025}, \textit{colbPowers} es instalable en cualquier proyecto y implementa el flujo de trabajo Spec-First de forma autónoma. Una vez instalado, no requiere que el desarrollador recuerde invocar comandos ni seguir un protocolo manual, gracias a una combinación de hooks que inyectan contexto y skills, el agente es capaz de entender la etapa del desarrollo en la que se encuentra en todo momento. 
 
-Distribuir el sistema como un plugin ---en lugar de como un conjunto de archivos de skills copiados manualmente en el proyecto--- aporta dos garantías que los archivos por sí solos no pueden ofrecer: el hook \texttt{SessionStart}, que inyecta la skill de bootstrap de forma incondicional en cada sesión sin depender de que el desarrollador la invoque, y una instalación cómoda y reproducible en cualquier proyecto, ya que los plugins se referencian directamente desde su repositorio en GitHub y ambos asistentes los descargan e instalan automáticamente.
+Distribuir el sistema como un plugin ---en lugar de como un conjunto de archivos de skills copiados manualmente en el proyecto--- aporta dos garantías que los archivos por sí solos no pueden ofrecer: el hook \texttt{SessionStart}, que inyecta la skill de forma incondicional en cada sesión sin depender de que el desarrollador la invoque, y una instalación cómoda y reproducible en cualquier proyecto, ya que los plugins se referencian directamente desde su repositorio en GitHub y ambos asistentes los descargan e instalan automáticamente.
 
 El diseño de \textit{colbPowers} no es arbitrario: cada mecanismo de extensibilidad descrito en las secciones anteriores cumple un papel arquitectónico específico dentro del flujo SDD. El hook \texttt{SessionStart} convierte el flujo de trabajo de un protocolo opcional en un comportamiento por defecto: al inyectar las reglas de orquestación antes de que el modelo reciba el primer mensaje, garantiza que el agente no pueda operar sin tenerlas presentes, independientemente de si el desarrollador las invoca o no. Las skills codifican cada fase del ciclo SDD como un procedimiento especializado e independiente: al cargarse únicamente cuando son necesarias, la especificación de brainstorming no ocupa contexto durante la revisión de código, y viceversa, manteniendo el consumo de tokens acotado a la fase activa en cada momento. Los subagentes aislados protegen la integridad de la especificación frente a la deriva conversacional: al arrancar sin acceso al historial de la sesión principal, el subagente implementador solo puede basar sus decisiones en el \texttt{design.md} que el orquestador le proporciona explícitamente, eliminando el riesgo de que cambios de alcance discutidos informalmente en el chat contaminen la implementación. Finalmente, el propio skill \textit{using-colbPowers}, inyectado en cada arranque, instruye al agente a verificar que \texttt{constitution.md} y \texttt{features.md} existen antes de cualquier otra acción, y a crearlos interactivamente si no es así: la especificación no es un documento opcional que el desarrollador puede consultar, sino una precondición estructural al inicio de cada sesión.
 
@@ -1591,7 +1598,8 @@ El flujo de trabajo completo se desarrolla de la siguiente forma cuando el usuar
     \item \textbf{Definición interactiva de la especificación:} una vez que los documentos base existen, el agente lleva al usuario por un proceso de preguntas estructuradas para definir con precisión la nueva implementación. Se determina qué debe hacer, a cuál de las features del roadmap pertenece, cuáles son los comportamientos esperados, qué restricciones técnicas aplican y qué criterios de aceptación debe cumplir. El objetivo es eliminar toda ambigüedad antes de escribir una sola línea de código.
     \item \textbf{Generación de la especificación:} cuando el usuario confirma que la definición es correcta, el agente redacta el documento de especificación (design.md) y lo guarda en \texttt{docs/specs/}. Este documento es la fuente de verdad de la implementación y es consultado en cada paso posterior.
     \item \textbf{Generación del plan de implementación:} a partir de la especificación, el agente elabora un plan de tareas (plan.md) en \texttt{docs/plans/} que desglosa la implementación en pasos concretos y ordenados, cada uno con su criterio de aceptación explícito.
-    \item \textbf{Ejecución iterativa con implementador y revisor:} el agente utiliza la herramienta de lista de tareas (\texttt{TodoWrite}) integrada en los asistentes CLI para ejecutar el plan de forma iterativa. Para cada tarea, actúa un subagente implementador que escribe el código, y a continuación un subagente revisor que verifica que el código se ajusta a la especificación, sigue el plan y pasa los tests definidos.\end{enumerate}
+    \item \textbf{Ejecución iterativa con implementador y revisor:} el agente utiliza la herramienta de lista de tareas (\texttt{TodoWrite}) integrada en los asistentes CLI para ejecutar el plan de forma iterativa. El agente orquestador da la opción al desarrollador de usar \textbf{subagent-driven-development} o \textbf{inline-execution}: (1) La primera opción para cada tarea actúa un subagente implementador que escribe el código, y a continuación un subagente revisor que verifica que el código se ajusta a la especificación, sigue el plan y pasa los tests definidos. (2) La segunda opción utiliza al propio agente orquestador como implementador, y revisor, pero como al ser el mismo agente el que lo hace todo, estará mas sesgado por el contexto anterior, adicionalmente, mediante se llene su contexto, será mas probable que se salte alguno de los pasos del flujo de implementación. 
+    \end{enumerate}
 
 \medskip
 \noindent\textit{Apunte sobre \texttt{TodoWrite}:} Esta herramienta mantiene el plan de implementación como una lista de tareas con estados explícitos (\textit{pendiente}, \textit{en progreso}, \textit{completada}), visible en todo momento en la interfaz del asistente. Esta visibilidad actúa como ancla de atención: al inicio de cada iteración, el agente consulta la lista para saber exactamente qué tarea tiene en curso y cuál es la siguiente, lo que reduce significativamente la tendencia de los LLMs a desviarse del plan o a saltarse pasos. Cabe mencionar que el runtime no bloquea al agente si este no respeta el orden establecido; la efectividad de \texttt{TodoWrite} como mecanismo de seguimiento proviene de la combinación de la visibilidad explícita del estado y de las instrucciones del sistema que describen su protocolo de uso.
@@ -1606,7 +1614,7 @@ Esta aproximación resuelve uno de los problemas identificados en el análisis d
 
 \section{Experimentos y evaluación}
 \label{sec:evaluacion_resultados}
-Con el objetivo de evaluar empíricamente el impacto de las herramientas desarrolladas, se ha ejecutado un experimento controlado que compara dos condiciones ---\textbf{baseline} (herramientas nativas sin plugins) frente a \textbf{colbPowers} (colbPowers~+~code-review-graph)--- sobre dos casos de uso distintos, con dos asistentes de programación y tres repeticiones por condición (n=3).
+Con el objetivo de evaluar empíricamente el impacto de las herramientas desarrolladas, se ha ejecutado un experimento controlado que compara dos condiciones, \textbf{baseline} (herramientas nativas sin plugins) frente a \textbf{colbPowers} (colbPowers~+~code-review-graph), sobre dos casos de uso distintos, con dos asistentes de programación y tres repeticiones por condición (n=3).
 
 \subsection{Diseño experimental}
 \label{sec:diseno_experimental}
@@ -1628,7 +1636,7 @@ Las dos condiciones experimentales son:
 
 Cada condición se ha ejecutado con dos asistentes: \textbf{OpenCode con DeepSeek V4-Flash}\cite{deepseek_v4_flash} y \textbf{ClaudeCode con Haiku~4.5}\cite{claude_haiku_45}. Las métricas recogidas son: tokens totales consumidos (incluyendo caché), número de tool calls del orquestador, y número de llamadas a herramientas de code-review-graph. En ambos casos se recogen adicionalmente métricas de calidad del código generado (complejidad ciclomática e índice de mantenibilidad) mediante análisis estático: \textbf{radon} \cite{Lacchia_radon} para el Caso~2 (Python) y \textbf{DCM --- Dart Code Metrics} \cite{dart_code_metrics} para el Caso~1 (Flutter/Dart).
 
-\paragraph{Limitaciones del diseño experimental.} Deben señalarse tres limitaciones estructurales.
+\paragraph{Limitaciones del diseño experimental.} Deben señalarse dos limitaciones estructurales.
 \begin{enumerate}
     \item El tamaño muestral de $n=3$ repeticiones por condición limita la potencia estadística de los resultados e impide verificar los supuestos de normalidad del test $t$ de Welch; los resultados deben interpretarse como evidencia sugerente. 
     \item Tanto el diseño de la intervención (colbPowers) como la ejecución y evaluación de los experimentos son obra del mismo autor, en el contexto de la empresa para la que se desarrolla el sistema (\textit{Colb.AI}). Esta ausencia de evaluación ciega o independiente es una limitación metodológica reconocida, y los resultados deben interpretarse teniendo en cuenta un potencial sesgo de confirmación. 
@@ -1671,7 +1679,7 @@ El primer experimento se llevó a cabo sobre un repositorio real de \textit{Colb
 
 El proyecto consiste en una aplicación de escritorio desarrollada con el SDK \textit{Flutter}. La tarea asignada al asistente fue la \textbf{eliminación de tres funcionalidades} de la aplicación. Estas funcionalidades eran de naturaleza técnica compleja: una de ellas coordinaba un modelo de IA mediante \textit{LangGraph}, y otras requerían interacción con una base de datos. Su eliminación implicaba identificar y desacoplar código repartido a lo largo de múltiples archivos del repositorio, sin comprometer el resto de la funcionalidad existente.
 
-La hipótesis de partida era que colbPowers obtendría mejores resultados que el baseline en esta tarea por dos razones complementarias. En primer lugar, el servidor MCP \textit{code-review-graph} permitiría al agente explorar el grafo de dependencias del repositorio para identificar con precisión qué entidades de código dependían de las funcionalidades a eliminar, reduciendo el riesgo de dejar referencias huérfanas o eliminar código del que otras partes dependen. En segundo lugar, el flujo de planificación previa de colbPowers ---especificación del alcance de la eliminación y plan de tareas antes de modificar código--- debería producir una intervención más ordenada y con menor complejidad residual que una eliminación directa.
+La hipótesis de partida era que colbPowers obtendría mejores resultados que el baseline en esta tarea por dos razones complementarias. En primer lugar, el servidor MCP \textit{code-review-graph} permitiría al agente explorar el grafo de dependencias del repositorio para identificar con precisión qué entidades de código dependían de las funcionalidades a eliminar, reduciendo el riesgo de dejar referencias huérfanas o eliminar código del que otras partes dependen. En segundo lugar, el flujo de planificación previa de colbPowers (especificación del alcance de la eliminación y plan de tareas antes de modificar código) debería producir una intervención más ordenada y con menor complejidad residual que una eliminación directa.
 
 \begin{table}[H]
 \centering
@@ -1721,9 +1729,9 @@ La hipótesis de partida era que colbPowers obtendría mejores resultados que el
 
 En ambos asistentes el paso de baseline a colbPowers multiplica el consumo de tokens (x2,9 en OpenCode, x3,8 en ClaudeCode), reflejo del overhead del flujo SDD: generación de documentación estructurada y delegación a múltiples subagentes. El número de tool calls crece moderadamente en OpenCode (69 → 92) y se mantiene similar en ClaudeCode (53 → 63). Las llamadas a code-review-graph son esporádicas: únicamente la Ejecución~2 de OpenCode colbPowers registró 2 llamadas y la Ejecución~3 de ClaudeCode colbPowers registró 3, lo que sugiere que los agentes no incorporaron de forma proactiva el grafo de dependencias para una tarea de tipo exploratorio-visual.
 
-Sin embargo, este sobrecoste de tokens no debe interpretarse en aislamiento. colbPowers genera como subproducto documentación estructurada (constitución del proyecto, especificación de cambios, plan de implementación) que persiste en el repositorio y facilita la incorporación de nuevos desarrolladores. Además, el diseño de colbPowers ---con su énfasis en especificación previa y revisión sistemática--- propicia un ambiente donde los tests forman parte natural del flujo, en lugar de ser un trabajo adicional. En un proyecto de desarrollo profesional con horizonte de vida largo, estos beneficios transcienden el consumo inmediato de tokens.
+Sin embargo, este sobrecoste de tokens no debe interpretarse en aislamiento. colbPowers genera como subproducto documentación estructurada (constitución del proyecto, especificación de cambios, plan de implementación) que persiste en el repositorio y facilita la incorporación de nuevos desarrolladores. Además, el diseño de colbPowers ---con su énfasis en especificación previa y revisión sistemática--- desarrolla un ambiente donde los tests forman parte natural del flujo, en lugar de ser un trabajo adicional. En un proyecto de desarrollo profesional con horizonte de vida largo, estos beneficios transcienden el consumo inmediato de tokens.
 
-El desglose de tokens revela una diferencia estructural entre los dos asistentes. En OpenCode, los tokens de entrada no cacheados son significativos (media 0,98~M en baseline, 4,07~M en colbPowers), lo que refleja que cada subagente inicia un contexto propio sin aprovechar caché de sesiones anteriores. En ClaudeCode, en cambio, los tokens de entrada son prácticamente nulos (aprox.\ 0,00~M) y casi la totalidad del consumo corresponde a tokens de caché (3,63~M en baseline, 13,70~M en colbPowers): la API de Anthropic almacena el prefijo del prompt y las peticiones sucesivas leen el contexto desde caché, lo que reduce el coste real pero infla el contador total. Esta asimetría hace que la comparación directa de tokens totales entre OpenCode y ClaudeCode no sea completamente homogénea. 
+El desglose de tokens revela una diferencia estructural entre los dos asistentes. En OpenCode, los tokens de entrada no cacheados son significativos (media 0,98~M en baseline, 4,07~M en colbPowers), lo que refleja que cada subagente inicia un contexto propio sin aprovechar caché de sesiones anteriores. En ClaudeCode, en cambio, los tokens de entrada son prácticamente nulos (aprox.\ 0,00~M) y casi la totalidad del consumo corresponde a tokens de caché (3,63~M en baseline, 13,70~M en colbPowers). 
 
 Las métricas de calidad de código del Caso~1, calculadas con DCM sobre el código modificado, no confirman la hipótesis de partida. En OpenCode, colbPowers produce código de \emph{mayor} complejidad ciclomática (3,37 frente a 2,67 del baseline, $+$26\%; $p=0{,}029$, $g=+2{,}42$), diferencia estadísticamente significativa y de magnitud grande, mientras que el índice de mantenibilidad no muestra variación apreciable (66,59 frente a 67,59, $-$1\%; $p=0{,}646$, $g=-0{,}32$). En ClaudeCode el incremento de complejidad ($+$17\%; $p=0{,}208$, $g=+1{,}07$) no alcanza significación estadística, y el índice de mantenibilidad permanece prácticamente invariante (66,52 frente a 66,05; $p=0{,}873$, $g=+0{,}11$).
 

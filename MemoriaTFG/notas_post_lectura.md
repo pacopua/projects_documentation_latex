@@ -108,4 +108,4 @@ Anexo, eliminar mención de "Explicación completa", cuando realmente no es una 
 
 # Segunda lectura
 - Citar a Claue Cowork en 1.4.5 Herramientas de documentación de reuniones
-- El plan está fatal.
+- Explicar qué es Claude Cowork en algún lado?
