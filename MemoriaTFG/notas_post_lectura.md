@@ -22,7 +22,7 @@ Lectura entera TFG con apuntes:
 
 ---
 
-4.1.3: Revisar estos sprints, cambiarle la definición a alguno de ellos pero sin tener que actualizar el diagrama de GANTT. Quzias se podría añadir mas peso a el tiempo que tomó hacer los experimentos y evaluarlos estadisticamente? 20 horas aproximadamente. [PENDING]
+4.1.3: Revisar estos sprints, cambiarle la definición a alguno de ellos pero sin tener que actualizar el diagrama de GANTT. Quzias se podría añadir mas peso a el tiempo que tomó hacer los experimentos y evaluarlos estadisticamente? 20 horas aproximadamente. [DONE]
 
 4.4.4: Apartado identificado como crítico, le tengo que preguntar a David si esto se lo van a mirar.[DONE]
 

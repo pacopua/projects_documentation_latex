@@ -355,7 +355,7 @@ Cabe destacar que este trabajo gira principalmente en torno al aprovechamiento d
 \subsection{Flujo de trabajo completo}
 \label{sec:flujo_completo}
 
-La Figura~\ref{fig:flujo_completo} muestra el flujo de trabajo del sistema de principio a fin. El proceso arranca con la \textbf{toma de requerimientos}: la primera reunión con el cliente se transcribe de forma diferente según su modalidad ---en reuniones telemáticas se aprovechan las transcripciones automáticas de plataformas como Teams o Meet, mientras que en reuniones presenciales se graba el audio y se procesa con Azure Speech Service con diarización de hablantes--- y el texto resultante alimenta el módulo de procesamiento, que puede ejecutarse mediante la \textit{skill} de Claude Cowork o mediante la implementación propia en Python con LangChain y Tavily. En ambos casos, la salida es un plan de implementación estructurado que el usuario revisa y aprueba antes de continuar.
+La Figura~\ref{fig:flujo_completo} muestra el flujo de trabajo del sistema de principio a fin. El proceso arranca con la \textbf{toma de requerimientos}: la primera reunión con el cliente se transcribe de forma diferente según su modalidad ---en reuniones telemáticas se aprovechan las transcripciones automáticas de plataformas como Teams o Meet, mientras que en reuniones presenciales se graba el audio y se procesa con Azure Speech Service \cite{azure_speech_2024} con diarización de hablantes--- y el texto resultante alimenta el módulo de procesamiento, que puede ejecutarse mediante la \textit{skill} de Claude Cowork o mediante la implementación propia en Python con LangChain y Tavily \cite{tavily_2025}. En ambos casos, la salida es un plan de implementación estructurado que el usuario revisa y aprueba antes de continuar.
 
 A partir de ese plan aprobado, el flujo entra en la fase de \textbf{desarrollo con colbPowers}: el agente orquestador guía al equipo a través del ciclo SDD completo ---definición del contexto del proyecto, especificación de la funcionalidad, implementación y revisión---, con puntos de validación humana en cada etapa que garantizan el principio de \textit{Human in the Loop} \cite{vaithilingam_2022}.
 
@@ -441,7 +441,7 @@ La \textbf{Complejidad Ciclomática} \cite{McCabe_Complexity} de un módulo o fu
 
 \subsubsection{Índice de Mantenibilidad}
 
-El \textbf{Índice de Mantenibilidad} (\textit{Maintainability Index}) \cite{microsoft_maintainability_index} es una métrica compuesta definida a partir de tres medidas base. Sea $\eta_1$ el número de operadores distintos, $\eta_2$ el número de operandos distintos, $N_1$ el número total de operadores y $N_2$ el número total de operandos de un módulo. El \textit{volumen de Halstead} \cite{halstead_1977} se define como:
+El \textbf{Índice de Mantenibilidad} (\textit{Maintainability Index}) \cite{oman_maintainability_1992,microsoft_maintainability_index} es una métrica compuesta definida a partir de tres medidas base. Sea $\eta_1$ el número de operadores distintos, $\eta_2$ el número de operandos distintos, $N_1$ el número total de operadores y $N_2$ el número total de operandos de un módulo. El \textit{volumen de Halstead} \cite{halstead_1977} se define como:
 
 \begin{equation}
     V_H = (N_1 + N_2)\log_2(\eta_1 + \eta_2)
@@ -622,13 +622,13 @@ La distribución de horas entre sprints no es uniforme, sino que responde a la c
     \begin{itemize}
         \item \textbf{DA2.1} Implementación del subagente implementador (15h).
         \item \textbf{DA2.2} Implementación de los subagentes revisores: revisor de código y revisor de compatibilidad con specs/constitución/features (20h).
-        \item \textbf{DA2.3} Desarrollo de scripts de \textbf{radon} como herramienta de evaluación manual de la calidad del código generado (15h).
+        \item \textbf{DA2.3} Desarrollo de scripts de análisis estático como herramienta de evaluación manual de la calidad del código generado: \textbf{radon} para Python y \textbf{DCM} (Dart Code Metrics) para Flutter/Dart (15h).
     \end{itemize}
     
     \item \textbf{DA3 - Sprint 3: Habilidades e Integración MCP (80h)}: Ampliar las capacidades de colbPowers mediante MCPs adicionales y refinar el flujo completo basándose en el \textit{feedback} de los sprints anteriores.
     \begin{itemize}
-        \item \textbf{DA3.1} Desarrollo de skills adicionales para colbPowers: control de versiones, gestión de archivos de especificación. (30h).
-        \item \textbf{DA3.2} Integración de Model Context Protocols (MCPs) para ampliar las herramientas disponibles para los agentes (25h).
+        \item \textbf{DA3.1} Desarrollo de \textit{skills} adicionales para colbPowers correspondientes a las fases del flujo SDD: \textit{brainstorming}, implementación y revisión de código contra especificaciones (30h).
+        \item \textbf{DA3.2} Integración de \textit{code-review-graph} como servidor MCP y desarrollo de los adaptadores JavaScript necesarios para que OpenCode pudiera invocarlo con el mismo comportamiento que ClaudeCode (25h).
         \item \textbf{DA3.3} Análisis de errores de los sprints anteriores, corrección de prompts y mejoras de estabilidad del plugin (25h).
     \end{itemize}
 
@@ -1374,7 +1374,7 @@ Adicionalmente, los asistentes de tipo CLI resuelven de forma más limpia los pr
 
 \subsubsection{Arquitectura interna: el patrón ReAct y su implementación en TypeScript}
 \label{sec:react_pattern}
-Para comprender plenamente cómo se pueden extender y configurar estas herramientas, es conveniente conocer la arquitectura interna sobre la que están construidas. Tanto ClaudeCode como OpenCode son aplicaciones de TypeScript que implementan un bucle de agente basado en el patrón ReAct (Reasoning + Acting), propuesto por Yao et al. (2022) \cite{yao_react_2023} como paradigma estándar para la construcción de agentes basados en modelos de lenguaje.
+Para comprender plenamente cómo se pueden extender y configurar estas herramientas, es conveniente conocer la arquitectura interna sobre la que están construidas. Tanto ClaudeCode como OpenCode son aplicaciones de TypeScript que implementan un bucle de agente basado en el patrón ReAct (Reasoning + Acting) \cite{yao_react_2023} como paradigma estándar para la construcción de agentes basados en modelos de lenguaje.
 
 El patrón ReAct estructura el comportamiento del agente en un ciclo iterativo de tres fases:
 
@@ -1797,7 +1797,7 @@ En ambos casos el paso de baseline a colbPowers multiplica el consumo de tokens 
     \label{fig:ttest_cpbl_cc_cm}
 \end{figure}
 
-\textit{Análisis estadístico.} Se utiliza el test $t$ de Welch para comparar las medias de cada métrica entre condiciones, en lugar del $t$ de Student, dado que no se puede asumir igualdad de varianzas entre grupos. Como estimador del tamaño del efecto se emplea la $g$ de Hedges \cite{Hedges}, que corrige el sesgo de la $d$ de Cohen en muestras pequeñas.
+\textit{Análisis estadístico.} Se utiliza el test $t$ de Welch \cite{welch1947} para comparar las medias de cada métrica entre condiciones, en lugar del $t$ de Student, dado que no se puede asumir igualdad de varianzas entre grupos. Como estimador del tamaño del efecto se emplea la $g$ de Hedges \cite{Hedges}, que corrige el sesgo de la $d$ de Cohen en muestras pequeñas.
 
 Se emplea el umbral estándar de $p<0{,}05$ como indicativo de que la diferencia observada es estadísticamente significativa. El $p$-value determina si existe un efecto real; la $g$ de Hedges mide su magnitud una vez confirmada la significación. Los umbrales de interpretación de $g$ son: trivial ($g<0{,}2$), pequeño ($0{,}2 \leq g < 0{,}5$), mediano ($0{,}5 \leq g < 0{,}8$) y grande ($g \geq 0{,}8$) \cite{cohen1988statistical}. Cuando el $p$-value no es significativo ($p \geq 0{,}05$), el valor de $g$ no constituye evidencia fiable de un efecto real, independientemente de su magnitud.
 
