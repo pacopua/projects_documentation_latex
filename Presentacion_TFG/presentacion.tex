@@ -144,12 +144,11 @@
             \begin{itemize}
                 \item \textit{Human-in-the-loop}
                 \item Documentación estructurada
-                \item Compatibilidad con asistentes existentes
             \end{itemize}
         \end{column}
         \begin{column}{0.57\textwidth}
             \begin{figure}
-                \includegraphics[width=\linewidth, keepaspectratio]{imagenes/DiagramaFlujoTrabajoCompleto.png}
+                \includegraphics[width=0.7\linewidth, keepaspectratio]{imagenes/HumanInTheLoop_AND_SpecDrivenDevelopment.png}
             \end{figure}
         \end{column}
     \end{columns}
@@ -160,42 +159,61 @@
 % ============================================================
 \begin{frame}{Estado del arte -- Desarrollo de código}
     Asistentes comerciales, \textbf{code-driven} de forma predeterminada:
-    \vspace{0.4cm}
+    \vspace{0.2cm}
 
     \begin{columns}[c]
         \begin{column}{0.33\textwidth}
             \centering
             \texttt{\textbf{ClaudeCode}}
+            \begin{figure}
+                \includegraphics[width=0.5\linewidth, keepaspectratio]{imagenes/ClaudeCodeIcon.png}
+            \end{figure}
         \end{column}
         \begin{column}{0.33\textwidth}
             \centering
             \texttt{\textbf{Copilot}}
+            \begin{figure}
+                \includegraphics[width=0.5\linewidth, keepaspectratio]{imagenes/CopilotIcon.png}
+            \end{figure}
         \end{column}
         \begin{column}{0.33\textwidth}
             \centering
             \texttt{\textbf{OpenCode}}
+            \begin{figure}
+                \includegraphics[width=0.5\linewidth, keepaspectratio]{imagenes/OpenCodeIcon.png}
+            \end{figure}
         \end{column}
     \end{columns}
 
     \vspace{0.5cm}
     Soluciones \textbf{spec-first}, construidas para expandir estos asistentes:
-    \vspace{0.3cm}
+    \vspace{-0.3cm}
 
     \begin{columns}[T]
         \begin{column}{0.33\textwidth}
-            \footnotesize
-            \textbf{obra/superpowers}\\
-            An agentic skills framework \& software development methodology.
+            \begin{figure}
+                \includegraphics[width=\linewidth, keepaspectratio]{imagenes/obra_superpowers_image.png}
+            \end{figure}
+            
+            %\footnotesize
+            %\textbf{obra/superpowers}\\
+            %An agentic skills framework \& software development methodology.
         \end{column}
         \begin{column}{0.33\textwidth}
-            \footnotesize
-            \textbf{GitHub Spec Kit}\\
-            Define what to build before building it -- with any AI coding agent.
+            \begin{figure}
+                \includegraphics[width=\linewidth, keepaspectratio]{imagenes/Github_SpecKit.png}
+            \end{figure}
+            %\footnotesize
+            %\textbf{GitHub Spec Kit}\\
+            %Define what to build before building it -- with any AI coding agent.
         \end{column}
         \begin{column}{0.33\textwidth}
-            \footnotesize
-            \textbf{Agent OS}\\
-            Agents that build the way you would.
+            \begin{figure}
+                \includegraphics[width=\linewidth, keepaspectratio]{imagenes/AgentOS.png}
+            \end{figure}
+            %\footnotesize
+            %\textbf{Agent OS}\\
+            %Agents that build the way you would.
         \end{column}
     \end{columns}
 \end{frame}
@@ -206,18 +224,33 @@
 \begin{frame}{Estado del arte -- Parte 2}
     \begin{columns}[T]
         \begin{column}{0.50\textwidth}
-            \textbf{Documentación de reuniones:}
-            \vspace{0.4cm}
-            \begin{itemize}
-                \item Otter.ai
-                \item Fireflies.ai
-            \end{itemize}
+            \begin{center}
+                \textbf{Documentación de reuniones}
+            \end{center}
+            \begin{columns}[c]
+                \begin{column}{0.49\textwidth}
+                    \centering
+                    \texttt{\textbf{Otter.ai}}
+                    \begin{figure}
+                        \includegraphics[width=0.5\linewidth, keepaspectratio]{imagenes/Otter.ai.png}
+                    \end{figure}
+                \end{column}
+                \begin{column}{0.49\textwidth}
+                    \centering
+                    \texttt{\textbf{Fireflies.ai}}
+                    \begin{figure}
+                        \includegraphics[width=0.5\linewidth, keepaspectratio]{imagenes/Fireflies.ai.png}
+                    \end{figure}
+                \end{column}
+            \end{columns}
         \end{column}
         \begin{column}{0.47\textwidth}
-            \textbf{Claude Cowork:}
+            \begin{center}
+                \textbf{Claude Cowork:}
+            \end{center}
             \vspace{0.3cm}
             \begin{figure}
-                \includegraphics[width=\linewidth, keepaspectratio]{imagenes/coworkSkills/skill_components_and_definition.png}
+                \includegraphics[width=0.5\linewidth, keepaspectratio]{imagenes/ClaudeCowork_logo.png}
             \end{figure}
         \end{column}
     \end{columns}
@@ -229,7 +262,7 @@
 \begin{frame}{Diseño simplificado de la implementación}
     \begin{figure}
         \centering
-        \includegraphics[width=0.92\linewidth, keepaspectratio]{imagenes/DiagramaFlujoTrabajoCompleto.png}
+        \includegraphics[width=0.92\linewidth, keepaspectratio]{imagenes/FlujoCompletoSimplificado.png}
     \end{figure}
 \end{frame}
 
@@ -307,6 +340,18 @@
             El hash permite reutilizar transcripciones previas evitando llamadas repetidas a la API.
         \end{column}
         \begin{column}{0.57\textwidth}
+            \begin{columns}
+                \begin{column}{0.6\linewidth}                    
+                    \begin{figure}
+                        \includegraphics[width=\linewidth, keepaspectratio]{imagenes/FFmpeg_logo.png}
+                    \end{figure}
+                \end{column}
+                \begin{column}{0.4\linewidth}
+                    \begin{figure}
+                        \includegraphics[width=\linewidth, keepaspectratio]{imagenes/azure_logo.png}
+                    \end{figure}
+                \end{column}
+            \end{columns}
             \begin{figure}
                 \includegraphics[width=\linewidth, keepaspectratio]{imagenes/Transcription System.png}
             \end{figure}
@@ -329,9 +374,10 @@
 % SLIDE 13: TOMA DE REQUERIMIENTOS – IMPLEMENTACIÓN PROPIA
 % ============================================================
 \begin{frame}{Toma de requerimientos -- Implementación propia}
+    \vspace{-1cm}
     \begin{figure}
         \centering
-        \includegraphics[width=0.88\linewidth, keepaspectratio]{imagenes/Requirements Intake System.png}
+        \includegraphics[width=0.75\linewidth, keepaspectratio]{imagenes/Requirements Intake System.png}
         \caption{Flujo del sistema de toma de requerimientos}
     \end{figure}
 \end{frame}
@@ -351,9 +397,10 @@
 % SLIDE 15: SEGUIMIENTO DE CLIENTE – IMPLEMENTACIÓN PROPIA
 % ============================================================
 \begin{frame}{Seguimiento de cliente -- Implementación propia}
+    \vspace{-0.5cm}
     \begin{figure}
         \centering
-        \includegraphics[width=0.88\linewidth, keepaspectratio]{imagenes/SeguimientDelCliente.png}
+        \includegraphics[width=0.50\linewidth, keepaspectratio]{imagenes/SeguimientDelCliente.png}
         \caption{Flujo del sistema de seguimiento de cliente}
     \end{figure}
 \end{frame}
@@ -371,17 +418,30 @@
                 \item Añadir \texttt{constitution.md} + \texttt{features.md}
                 \item Skills \textit{definingConstitution} y \textit{definingFeatures}
             \end{itemize}
-            \vspace{0.4cm}
-            \begin{figure}
-                \includegraphics[width=0.9\linewidth, keepaspectratio]{imagenes/JustColbPowers.png}
-            \end{figure}
+
         \end{column}
         \begin{column}{0.47\textwidth}
             Implementación compatible con \textbf{OpenCode} y \textbf{ClaudeCode}.
             \vspace{0.3cm}
-            \begin{figure}
-                \includegraphics[width=\linewidth, keepaspectratio]{imagenes/coworkSkills/skill_components_and_definition2.png}
-            \end{figure}
+            \begin{columns}[T]
+                \begin{column}{0.50\textwidth}
+                    \begin{figure}
+                        \includegraphics[width=\linewidth, keepaspectratio]{imagenes/ClaudeCodeIcon.png}
+                    \end{figure}
+                    
+                    %\footnotesize
+                    %\textbf{obra/superpowers}\\
+                    %An agentic skills framework \& software development methodology.
+                \end{column}
+                \begin{column}{0.50\textwidth}
+                    \begin{figure}
+                        \includegraphics[width=\linewidth, keepaspectratio]{imagenes/OpenCodeIcon.png}
+                    \end{figure}
+                    %\footnotesize
+                    %\textbf{GitHub Spec Kit}\\
+                    %Define what to build before building it -- with any AI coding agent.
+                \end{column}
+            \end{columns}
         \end{column}
     \end{columns}
 \end{frame}
@@ -390,9 +450,10 @@
 % SLIDE 17: SPEC-DRIVEN DEVELOPMENT – PART 2
 % ============================================================
 \begin{frame}{Spec-Driven Development -- Parte 2}
+    \vspace{-1cm}
     \begin{figure}
         \centering
-        \includegraphics[width=0.92\linewidth, keepaspectratio]{imagenes/FlowColbPowers.png}
+        \includegraphics[width=0.80\linewidth, keepaspectratio]{imagenes/JustColbPowers.png}
         \caption{Flujo completo de colbPowers}
     \end{figure}
 \end{frame}
@@ -613,14 +674,17 @@
 \end{frame}
 
 % ============================================================
+% SLIDE 30: Trabajo futuro
+% ============================================================
+
+% ============================================================
 % FINAL PAGE
 % ============================================================
-\begin{frame}[c]
+\begin{frame}[plain,noframenumbering]
     \centering
     \vfill
     \Huge {Gracias por vuestra atención}
     \Large {¿Preguntas?}
-    \vspace{1cm}
     \vfil
 \end{frame}
 
