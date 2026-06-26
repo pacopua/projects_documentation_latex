@@ -158,7 +158,7 @@
 % SLIDE 5: ESTADO DEL ARTE – DESARROLLO DE CÓDIGO
 % ============================================================
 \begin{frame}{Estado del arte -- Desarrollo de código}
-    Asistentes comerciales, \textbf{code-driven} de forma predeterminada:
+    Asistentes de programación, \textbf{code-driven} de forma predeterminada:
     \vspace{0.2cm}
 
     \begin{columns}[c]
@@ -221,25 +221,26 @@
 % ============================================================
 % SLIDE 6: ESTADO DEL ARTE – PARTE 2
 % ============================================================
-\begin{frame}{Estado del arte -- Parte 2}
+\begin{frame}{Estado del arte -- Toma de Req. y Seguimiento Cliente}
     \begin{columns}[T]
         \begin{column}{0.50\textwidth}
             \begin{center}
                 \textbf{Documentación de reuniones}
             \end{center}
-            \begin{columns}[c]
+            \begin{columns}[T]
                 \begin{column}{0.49\textwidth}
                     \centering
                     \texttt{\textbf{Otter.ai}}
+                    \vspace{0.7cm}
                     \begin{figure}
-                        \includegraphics[width=0.5\linewidth, keepaspectratio]{imagenes/Otter.ai.png}
+                        \includegraphics[width=0.8\linewidth, keepaspectratio]{imagenes/Otter.ai.png}
                     \end{figure}
                 \end{column}
                 \begin{column}{0.49\textwidth}
                     \centering
                     \texttt{\textbf{Fireflies.ai}}
                     \begin{figure}
-                        \includegraphics[width=0.5\linewidth, keepaspectratio]{imagenes/Fireflies.ai.png}
+                        \includegraphics[width=0.8\linewidth, keepaspectratio]{imagenes/Fireflies.ai.png}
                     \end{figure}
                 \end{column}
             \end{columns}
@@ -267,18 +268,37 @@
 \end{frame}
 
 % ============================================================
-% SLIDE 8: DIFERENCIA DISEÑO Y ESTADO DEL ARTE
+% SLIDE 8: LA DIFERENCIA: COLBPOWERS
 % ============================================================
-\begin{frame}{Diferencia diseño y estado del arte}
-    \begin{itemize}
-        \item \textbf{Integración completa:} el sistema engloba toma de requerimientos, desarrollo y seguimiento en un único flujo coherente.
-        \vspace{0.3cm}
-        \item \textbf{Spec-Driven por defecto:} la IA no genera código sin una especificación previa aprobada por el usuario.
-        \vspace{0.3cm}
-        \item \textbf{Human-in-the-loop:} el usuario valida en cada etapa crítica (plan, especificación, implementación).
-        \vspace{0.3cm}
-        \item \textbf{Compatible} con asistentes existentes (ClaudeCode, Opencode) sin modificarlos.
-    \end{itemize}
+\begin{frame}{La diferencia: \textit{colbPowers}}
+    \textit{superpowers} ofrece la arquitectura base (orquestador + subagentes vía skills). \textbf{colbPowers} añade:
+
+    \vspace{0.2cm}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Contexto persistente entre sesiones}
+                \footnotesize
+                \texttt{constitution.md}: visión del proyecto, stack tecnológico y estándares no negociables.\\[0.2cm]
+                \texttt{features.md}: roadmap con criterios de aceptación por funcionalidad.
+            \end{block}
+            \vspace{0.2cm}
+            \begin{block}{Configuración interactiva}
+                \footnotesize
+                Skills \textit{defining-constitution} y \textit{defining-features}: el agente construye estos documentos junto al desarrollador en la primera sesión.
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Flujo SDD garantizado}
+                \footnotesize
+                Skill \textit{using-colbPowers} inyectada en \texttt{SessionStart}: las reglas de orquestación están activas \textbf{desde el primer mensaje}, sin depender de que el desarrollador las invoque.
+            \end{block}
+            \vspace{0.2cm}
+            \begin{block}{Subagentes aislados}
+                \footnotesize
+                Implementador y revisor arrancan sin acceso al historial de conversación: solo ven el \texttt{design.md} explícito, eliminando la deriva conversacional.
+            \end{block}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 % ============================================================
@@ -365,8 +385,8 @@
 \begin{frame}{Toma de requerimientos -- ClaudeCowork}
     \begin{figure}
         \centering
-        \includegraphics[width=0.88\linewidth, keepaspectratio]{imagenes/meeting_summaries_skill.png}
-        \caption{Skill \texttt{meeting-summaries} en Claude Cowork}
+        \includegraphics[width=0.88\linewidth, keepaspectratio]{imagenes/requirements_intake_skill.png}
+        \caption{Skill de toma de requerimientos en Claude Cowork}
     \end{figure}
 \end{frame}
 
@@ -389,7 +409,7 @@
     \begin{figure}
         \centering
         \includegraphics[width=0.88\linewidth, keepaspectratio]{imagenes/meeting_summaries_skill.png}
-        \caption{Skill \texttt{meeting-summaries} en Claude Cowork}
+        \caption{Skill de seguimiento del cliente en Claude Cowork}
     \end{figure}
 \end{frame}
 
@@ -408,40 +428,43 @@
 % ============================================================
 % SLIDE 16: SPEC-DRIVEN DEVELOPMENT – PART 1
 % ============================================================
-\begin{frame}{Spec-Driven Development -- Parte 1}
+\begin{frame}{Spec-Driven Development -- \textit{colbPowers}}
     \begin{columns}[T]
         \begin{column}{0.50\textwidth}
-            Expansión de \textit{Superpowers} $\rightarrow$ \textbf{colbPowers}:
-            \vspace{0.3cm}
+            Expansión de \textit{superpowers} $\rightarrow$ \textbf{colbPowers}:
+            \vspace{0.2cm}
             \begin{itemize}
-                \item Adaptar skills existentes
+                \item Adaptar skills existentes al flujo SDD
                 \item Añadir \texttt{constitution.md} + \texttt{features.md}
-                \item Skills \textit{definingConstitution} y \textit{definingFeatures}
+                \item Skills \textit{defining-constitution} y \textit{defining-features}
             \end{itemize}
-
+            \vspace{0.3cm}
+            \textbf{Estructura del repositorio:}\\[0.2cm]
+            \footnotesize\ttfamily
+            .specs/memory/\\
+            \hspace{0.4cm}+-- constitution.md\\
+            \hspace{0.4cm}+-- features.md\\
+            \hspace{0.4cm}+-- docs/\\
+            \hspace{0.8cm}+-- specs/\;\;{\scriptsize\rmfamily$\leftarrow$ diseño}\\
+            \hspace{0.8cm}+-- plans/\;\;{\scriptsize\rmfamily$\leftarrow$ tareas}\normalfont
         \end{column}
         \begin{column}{0.47\textwidth}
-            Implementación compatible con \textbf{OpenCode} y \textbf{ClaudeCode}.
-            \vspace{0.3cm}
+            \normalsize
+            Compatible con \textbf{OpenCode} y \textbf{ClaudeCode}:
+            \vspace{0.2cm}
             \begin{columns}[T]
                 \begin{column}{0.50\textwidth}
                     \begin{figure}
                         \includegraphics[width=\linewidth, keepaspectratio]{imagenes/ClaudeCodeIcon.png}
                     \end{figure}
-                    
-                    %\footnotesize
-                    %\textbf{obra/superpowers}\\
-                    %An agentic skills framework \& software development methodology.
                 \end{column}
                 \begin{column}{0.50\textwidth}
                     \begin{figure}
                         \includegraphics[width=\linewidth, keepaspectratio]{imagenes/OpenCodeIcon.png}
                     \end{figure}
-                    %\footnotesize
-                    %\textbf{GitHub Spec Kit}\\
-                    %Define what to build before building it -- with any AI coding agent.
                 \end{column}
             \end{columns}
+            \vspace{0.2cm}
         \end{column}
     \end{columns}
 \end{frame}
@@ -449,12 +472,12 @@
 % ============================================================
 % SLIDE 17: SPEC-DRIVEN DEVELOPMENT – PART 2
 % ============================================================
-\begin{frame}{Spec-Driven Development -- Parte 2}
-    \vspace{-1cm}
+\begin{frame}{Spec-Driven Development -- Flujo de \textit{colbPowers}}
+    \vspace{-0.5cm}
     \begin{figure}
         \centering
-        \includegraphics[width=0.80\linewidth, keepaspectratio]{imagenes/JustColbPowers.png}
-        \caption{Flujo completo de colbPowers}
+        \includegraphics[width=0.82\linewidth, keepaspectratio]{imagenes/JustColbPowers.png}
+        \caption{Flujo completo de colbPowers: desde la verificación del estado hasta la ejecución con subagentes}
     \end{figure}
 \end{frame}
 
@@ -662,20 +685,52 @@
 % SLIDE 29: CONCLUSIONES
 % ============================================================
 \begin{frame}{Conclusiones}
+    \textbf{Resultados experimentales:}
+    \vspace{0.1cm}
     \begin{itemize}
-        \item \textbf{colbPowers} mejora la calidad del código generado en la mayoría de configuraciones evaluadas.
-        \vspace{0.2cm}
-        \item El efecto es más consistente y significativo con \textbf{Opencode}, especialmente en proyectos nuevos (Caso 2).
-        \vspace{0.2cm}
-        \item El uso del plugin incrementa el consumo de tokens, pero la relación calidad/coste resulta favorable.
-        \vspace{0.2cm}
-        \item La metodología \textbf{human-in-the-loop} con documentación estructurada (\texttt{constitution.md} + \texttt{features.md}) es viable y reproducible en entornos reales.
+        \item \textbf{Caso 2 (proyecto nuevo) con OpenCode}: $-$27\% complejidad ciclomática, $+$15\% índice de mantenibilidad ($p < 0{,}05$, efecto grande).
+        \vspace{0.1cm}
+        \item \textbf{Caso 1 (repo existente)}: mayor complejidad ciclomática con colbPowers; sin mejora neta en mantenibilidad. Los agentes apenas invocaron \textit{code-review-graph}.
+        \vspace{0.1cm}
+        \item \textbf{Resultado inesperado:} con colbPowers activo, las diferencias de calidad entre OpenCode y ClaudeCode desaparecen estadísticamente --- el flujo SDD \textbf{homogeneiza} la calidad con independencia del asistente.
+        \vspace{0.1cm}
+        \item \textbf{Sobrecoste de tokens:} $\times$2,2 -- $\times$4,5 respecto al baseline, constante en todos los experimentos.
     \end{itemize}
+    \vspace{0.15cm}
+    En producción en \textit{Colb.AI} la valoración del sistema ha sido \textbf{positiva} desde su adopción.
 \end{frame}
 
 % ============================================================
-% SLIDE 30: Trabajo futuro
+% SLIDE 30: TRABAJO FUTURO
 % ============================================================
+\begin{frame}{Trabajo futuro}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \textbf{Plugin colbPowers:}
+            \vspace{0.1cm}
+            \begin{itemize}
+                \footnotesize
+                \item Refuerzo \textbf{determinista} del flujo SDD mediante hooks: el orquestador omitió el subagente revisor en uno de los experimentos.
+                \vspace{0.1cm}
+                \item Mayor integración de \textit{code-review-graph} en el contexto explícito de los subagentes.
+                \vspace{0.1cm}
+                \item Experimentos con $n \geq 5$, modelos de producción, y comparativa \textit{colbPowers vs.\ superpowers}.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Módulos de documentación:}
+            \vspace{0.1cm}
+            \begin{itemize}
+                \footnotesize
+                \item \textbf{Memoria acumulativa} entre reuniones mediante base de datos vectorial.
+                \vspace{0.1cm}
+                \item \textbf{RAG} para estimaciones de presupuesto basadas en proyectos anteriores de \textit{Colb.AI}.
+                \vspace{0.1cm}
+                \item Integración con herramientas de gestión de proyectos (Linear, Jira): tareas generadas automáticamente desde el acta de reunión.
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
 
 % ============================================================
 % FINAL PAGE
