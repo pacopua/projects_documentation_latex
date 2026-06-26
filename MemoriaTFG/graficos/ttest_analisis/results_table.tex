@@ -4,40 +4,40 @@
 % ---- Table 1: colbPowers vs Baseline ----
 \begin{table}[ht]
   \centering
-  \caption{Resultados del análisis estadístico: colbPowers vs.\ Baseline ($n=3$ por grupo). Los $p$-values del test $t$ de Welch son indicativos; la $d$ de Cohen es la métrica principal.}
+  \caption{Resultados del análisis estadístico: colbPowers vs.\ Baseline ($n=3$ por grupo). Los $p$-values del test $t$ de Welch son indicativos; la $g$ de Hedges es la métrica principal.}
   \label{tab:ttest_cpbl}
   \begin{tabular}{llrrrrl}
     \toprule
-    Tarea & Herramienta & $\bar{x}_\text{cp}$ & $\bar{x}_\text{bl}$ & $t$ & $p$ & $d$ (Cohen) \\
+    Tarea & Herramienta & $\bar{x}_\text{cp}$ & $\bar{x}_\text{bl}$ & $t$ & $p$ & $g$ (Hedges) \\
     \midrule
     \multicolumn{7}{l}{\textit{Total tool calls}} \\
-    \quad Repo Existente & Opencode & 92.3 & 69.3 & 2.034 & 0.168 & — \\
-    \quad Repo Existente & Claudecode & 62.7 & 52.7 & 0.738 & 0.511 & — \\
-    \quad ClassVis & Opencode & 85.0 & 51.7 & 3.251 & 0.069 & — \\
-    \quad ClassVis & Claudecode & 48.3 & 62.7 & -0.997 & 0.414 & — \\
+    \quad Repo Existente & Opencode & 92.3 & 69.3 & 2.034 & 0.168 & +1.33 \\
+    \quad Repo Existente & Claudecode & 62.7 & 52.7 & 0.738 & 0.511 & +0.48 \\
+    \quad ClassVis & Opencode & 85.0 & 51.7 & 3.251 & 0.069 & +2.12 \\
+    \quad ClassVis & Claudecode & 48.3 & 62.7 & -0.997 & 0.414 & -0.65 \\
     \addlinespace
     \multicolumn{7}{l}{\textit{Total tokens}} \\
-    \quad Repo Existente & Opencode & 9.38M & 3.26M & 4.918 & 0.032 & — \\
-    \quad Repo Existente & Claudecode & 14.33M & 3.74M & 5.839 & 0.005 & — \\
-    \quad ClassVis & Opencode & 8.41M & 1.88M & 5.871 & 0.019 & — \\
-    \quad ClassVis & Claudecode & 8.19M & 3.74M & 2.390 & 0.077 & — \\
+    \quad Repo Existente & Opencode & 9.38M & 3.26M & 4.918 & 0.032 & +3.21 \\
+    \quad Repo Existente & Claudecode & 14.33M & 3.74M & 5.839 & 0.005 & +3.81 \\
+    \quad ClassVis & Opencode & 8.41M & 1.88M & 5.871 & 0.019 & +3.84 \\
+    \quad ClassVis & Claudecode & 8.19M & 3.74M & 2.390 & 0.077 & +1.56 \\
     \addlinespace
     \multicolumn{7}{l}{\textit{Avg. cyclomatic complexity}} \\
-    \quad Repo Existente & Opencode & 3.37 & 2.67 & 3.704 & 0.029 & — \\
-    \quad Repo Existente & Claudecode & 3.48 & 2.98 & 1.638 & 0.208 & — \\
-    \quad ClassVis & Opencode & 3.13 & 4.31 & -5.496 & 0.014 & — \\
-    \quad ClassVis & Claudecode & 3.11 & 2.85 & 0.732 & 0.508 & — \\
+    \quad Repo Existente & Opencode & 3.37 & 2.67 & 3.704 & 0.029 & +2.42 \\
+    \quad Repo Existente & Claudecode & 3.48 & 2.98 & 1.638 & 0.208 & +1.07 \\
+    \quad ClassVis & Opencode & 3.13 & 4.31 & -5.496 & 0.014 & -3.59 \\
+    \quad ClassVis & Claudecode & 3.11 & 2.85 & 0.732 & 0.508 & +0.48 \\
     \addlinespace
     \multicolumn{7}{l}{\textit{Maintainability index}} \\
-    \quad Repo Existente & Opencode & 66.59 & 67.59 & -0.497 & 0.646 & — \\
-    \quad Repo Existente & Claudecode & 66.52 & 66.05 & 0.171 & 0.873 & — \\
-    \quad ClassVis & Opencode & 47.78 & 41.54 & 4.225 & 0.037 & — \\
-    \quad ClassVis & Claudecode & 59.01 & 56.97 & 0.337 & 0.754 & — \\
+    \quad Repo Existente & Opencode & 66.59 & 67.59 & -0.497 & 0.646 & -0.32 \\
+    \quad Repo Existente & Claudecode & 66.52 & 66.05 & 0.171 & 0.873 & +0.11 \\
+    \quad ClassVis & Opencode & 47.78 & 41.54 & 4.225 & 0.037 & +2.76 \\
+    \quad ClassVis & Claudecode & 59.01 & 56.97 & 0.337 & 0.754 & +0.22 \\
     \addlinespace
     \bottomrule
   \end{tabular}
   \begin{tablenotes}
-    \small \item $n=3$ por grupo. $p$-values indicativos; $d$ de Cohen es la métrica principal. $d$: trivial${<}0.2$, pequeño${<}0.5$, medio${<}0.8$, grande${\geq}0.8$.
+    \small \item $n=3$ por grupo. $p$-values indicativos; $g$ de Hedges es la métrica principal. $g$: trivial${<}0.2$, pequeño${<}0.5$, medio${<}0.8$, grande${\geq}0.8$.
   \end{tablenotes}
 \end{table}
 
@@ -48,35 +48,35 @@
   \label{tab:ttest_occc}
   \begin{tabular}{llrrrrl}
     \toprule
-    Tarea & Condición & $\bar{x}_\text{OC}$ & $\bar{x}_\text{CC}$ & $t$ & $p$ & $d$ (Cohen) \\
+    Tarea & Condición & $\bar{x}_\text{OC}$ & $\bar{x}_\text{CC}$ & $t$ & $p$ & $g$ (Hedges) \\
     \midrule
     \multicolumn{7}{l}{\textit{Total tool calls}} \\
-    \quad Repo Existente & colbPowers & 92.3 & 62.7 & 2.299 & 0.097 & — \\
-    \quad Repo Existente & baseline & 69.3 & 52.7 & 1.385 & 0.292 & — \\
-    \quad ClassVis & colbPowers & 85.0 & 48.3 & 8.538 & 0.001 & — \\
-    \quad ClassVis & baseline & 51.7 & 62.7 & -0.642 & 0.559 & — \\
+    \quad Repo Existente & colbPowers & 92.3 & 62.7 & 2.299 & 0.097 & +1.50 \\
+    \quad Repo Existente & baseline & 69.3 & 52.7 & 1.385 & 0.292 & +0.90 \\
+    \quad ClassVis & colbPowers & 85.0 & 48.3 & 8.538 & 0.001 & +5.58 \\
+    \quad ClassVis & baseline & 51.7 & 62.7 & -0.642 & 0.559 & -0.42 \\
     \addlinespace
     \multicolumn{7}{l}{\textit{Total tokens}} \\
-    \quad Repo Existente & colbPowers & 9.38M & 14.33M & -3.038 & 0.039 & — \\
-    \quad Repo Existente & baseline & 3.26M & 3.74M & -0.321 & 0.777 & — \\
-    \quad ClassVis & colbPowers & 8.41M & 8.19M & 0.124 & 0.908 & — \\
-    \quad ClassVis & baseline & 1.88M & 3.74M & -1.510 & 0.255 & — \\
+    \quad Repo Existente & colbPowers & 9.38M & 14.33M & -3.038 & 0.039 & -1.98 \\
+    \quad Repo Existente & baseline & 3.26M & 3.74M & -0.321 & 0.777 & -0.21 \\
+    \quad ClassVis & colbPowers & 8.41M & 8.19M & 0.124 & 0.908 & +0.08 \\
+    \quad ClassVis & baseline & 1.88M & 3.74M & -1.510 & 0.255 & -0.99 \\
     \addlinespace
     \multicolumn{7}{l}{\textit{Avg. cyclomatic complexity}} \\
-    \quad Repo Existente & colbPowers & 3.37 & 3.48 & -0.353 & 0.746 & — \\
-    \quad Repo Existente & baseline & 2.67 & 2.98 & -1.934 & 0.129 & — \\
-    \quad ClassVis & colbPowers & 3.13 & 3.11 & 0.094 & 0.932 & — \\
-    \quad ClassVis & baseline & 4.31 & 2.85 & 5.071 & 0.007 & — \\
+    \quad Repo Existente & colbPowers & 3.37 & 3.48 & -0.353 & 0.746 & -0.23 \\
+    \quad Repo Existente & baseline & 2.67 & 2.98 & -1.934 & 0.129 & -1.26 \\
+    \quad ClassVis & colbPowers & 3.13 & 3.11 & 0.094 & 0.932 & +0.06 \\
+    \quad ClassVis & baseline & 4.31 & 2.85 & 5.071 & 0.007 & +3.31 \\
     \addlinespace
     \multicolumn{7}{l}{\textit{Maintainability index}} \\
-    \quad Repo Existente & colbPowers & 66.59 & 66.52 & 0.028 & 0.979 & — \\
-    \quad Repo Existente & baseline & 67.59 & 66.05 & 0.585 & 0.596 & — \\
-    \quad ClassVis & colbPowers & 47.78 & 59.01 & -2.330 & 0.143 & — \\
-    \quad ClassVis & baseline & 41.54 & 56.97 & -3.929 & 0.039 & — \\
+    \quad Repo Existente & colbPowers & 66.59 & 66.52 & 0.028 & 0.979 & +0.02 \\
+    \quad Repo Existente & baseline & 67.59 & 66.05 & 0.585 & 0.596 & +0.38 \\
+    \quad ClassVis & colbPowers & 47.78 & 59.01 & -2.330 & 0.143 & -1.52 \\
+    \quad ClassVis & baseline & 41.54 & 56.97 & -3.929 & 0.039 & -2.57 \\
     \addlinespace
     \bottomrule
   \end{tabular}
   \begin{tablenotes}
-    \small \item $n=3$ por grupo. $p$-values indicativos; $d$ de Cohen es la métrica principal.
+    \small \item $n=3$ por grupo. $p$-values indicativos; $g$ de Hedges es la métrica principal.
   \end{tablenotes}
 \end{table}

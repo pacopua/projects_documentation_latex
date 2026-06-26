@@ -415,8 +415,8 @@ def make_table_figure(rows, group_key, title, col_a, col_b, out_path):
 
     ax.text(0.0, -0.02,
             "n=3 por grupo. Los p-values son indicativos (Welch). "
-            "Cohen's d es la métrica principal de tamaño de efecto.\n"
-            "d: trivial<0.2 | pequeño<0.5 | medio<0.8 | grande≥0.8",
+            "Hedges's g es la métrica principal de tamaño de efecto.\n"
+            "g: trivial<0.2 | pequeño<0.5 | medio<0.8 | grande≥0.8",
             transform=ax.transAxes, fontsize=7.5, color="gray", va="top", ha="left")
 
     fig.savefig(out_path, bbox_inches="tight", dpi=150)
@@ -471,11 +471,11 @@ def make_latex(rows, data):
         r"\begin{table}[ht]",
         r"  \centering",
         r"  \caption{Resultados del análisis estadístico: colbPowers vs.\ Baseline ($n=3$ por grupo)."
-        r" Los $p$-values del test $t$ de Welch son indicativos; la $d$ de Cohen es la métrica principal.}",
+        r" Los $p$-values del test $t$ de Welch son indicativos; la $g$ de Hedges es la métrica principal.}",
         r"  \label{tab:ttest_cpbl}",
         r"  \begin{tabular}{llrrrrl}",
         r"    \toprule",
-        r"    Tarea & Herramienta & $\bar{x}_\text{cp}$ & $\bar{x}_\text{bl}$ & $t$ & $p$ & $d$ (Cohen) \\",
+        r"    Tarea & Herramienta & $\bar{x}_\text{cp}$ & $\bar{x}_\text{bl}$ & $t$ & $p$ & $g$ (Hedges) \\",
         r"    \midrule",
     ]
 
@@ -505,7 +505,7 @@ def make_latex(rows, data):
                 mb_str = f"{r['mean_b']/scale:{fmt}}{suffix}"
                 t_str  = f"{r['t']:.3f}" if not np.isnan(r["t"]) else "—"
                 p_val  = r["p"]
-                d_val  = r.get("cohens_d", float("nan"))
+                d_val  = r.get("hedges_g", float("nan"))
                 if np.isnan(p_val):
                     p_str = "—"
                 elif p_val < 0.001:
@@ -524,8 +524,8 @@ def make_latex(rows, data):
         r"    \bottomrule",
         r"  \end{tabular}",
         r"  \begin{tablenotes}",
-        r"    \small \item $n=3$ por grupo. $p$-values indicativos; $d$ de Cohen es la métrica principal."
-        r" $d$: trivial${<}0.2$, pequeño${<}0.5$, medio${<}0.8$, grande${\geq}0.8$.",
+        r"    \small \item $n=3$ por grupo. $p$-values indicativos; $g$ de Hedges es la métrica principal."
+        r" $g$: trivial${<}0.2$, pequeño${<}0.5$, medio${<}0.8$, grande${\geq}0.8$.",
         r"  \end{tablenotes}",
         r"\end{table}",
         "",
@@ -536,7 +536,7 @@ def make_latex(rows, data):
         r"  \label{tab:ttest_occc}",
         r"  \begin{tabular}{llrrrrl}",
         r"    \toprule",
-        r"    Tarea & Condición & $\bar{x}_\text{OC}$ & $\bar{x}_\text{CC}$ & $t$ & $p$ & $d$ (Cohen) \\",
+        r"    Tarea & Condición & $\bar{x}_\text{OC}$ & $\bar{x}_\text{CC}$ & $t$ & $p$ & $g$ (Hedges) \\",
         r"    \midrule",
     ]
 
@@ -559,7 +559,7 @@ def make_latex(rows, data):
                 mb_str = f"{r['mean_b']/scale:{fmt}}{suffix}"
                 t_str  = f"{r['t']:.3f}" if not np.isnan(r["t"]) else "—"
                 p_val  = r["p"]
-                d_val  = r.get("cohens_d", float("nan"))
+                d_val  = r.get("hedges_g", float("nan"))
                 if np.isnan(p_val):
                     p_str = "—"
                 elif p_val < 0.001:
@@ -578,7 +578,7 @@ def make_latex(rows, data):
         r"    \bottomrule",
         r"  \end{tabular}",
         r"  \begin{tablenotes}",
-        r"    \small \item $n=3$ por grupo. $p$-values indicativos; $d$ de Cohen es la métrica principal.",
+        r"    \small \item $n=3$ por grupo. $p$-values indicativos; $g$ de Hedges es la métrica principal.",
         r"  \end{tablenotes}",
         r"\end{table}",
     ]
