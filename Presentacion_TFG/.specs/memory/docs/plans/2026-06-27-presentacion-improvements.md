@@ -415,8 +415,9 @@
 - [x] Fix superpowers/colbPowers attribution + production note → Task 4
 - [x] Token overhead in sustainability → Task 5
 - [x] Diarization + hash clarification → Task 6
+- [x] CLI extensibility concepts slide → Task 7
 
-**Expected final page count:** 31 (original) + 1 (Task 2 adds one slide) = **32 pages**.
+**Expected final page count:** 31 (original) + 1 (Task 2 adds one slide) + 1 (Task 7 adds one slide) = **33 pages**.
 
 **Placeholder scan:** No TBDs or "implement later" items. Every step contains exact LaTeX.
 

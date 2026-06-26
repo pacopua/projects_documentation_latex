@@ -100,6 +100,8 @@
                 \item Parche rápido
                 \item Deuda técnica
             \end{itemize}
+            \vspace{0.3cm}
+            \footnotesize\textcolor{gray}{\textbf{44\%} de los programas generados con Copilot contienen vulnerabilidades de seguridad (Pearce et al., 2022).}
         \end{column}
         \begin{column}{0.58\textwidth}
             \centering
@@ -150,6 +152,36 @@
             \begin{figure}
                 \includegraphics[width=0.7\linewidth, keepaspectratio]{imagenes/HumanInTheLoop_AND_SpecDrivenDevelopment.png}
             \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ============================================================
+% SLIDE 4b: REQUISITOS
+% ============================================================
+\begin{frame}{Requisitos del proyecto}
+    \begin{columns}[T]
+        \begin{column}{0.54\textwidth}
+            \textbf{Funcionales:}
+            \vspace{0.15cm}
+            \begin{itemize}
+                \footnotesize
+                \item Ingesta y gestión de reglas fundamentales del proyecto (pila tecnológica, estándares de código) y registro actualizado de características.
+                \item Interpretar funcionalidades de alto nivel y desglosarlas en un plan de tareas granulares y estructuradas.
+                \item Auditoría autónoma: código fuente generado vs.\ especificaciones documentadas.
+                \item Módulo de transcripciones $\rightarrow$ plan de implementación estructurado con búsqueda semántica web.
+                \item Módulo de documentación de seguimiento post-reunión en el formato de \textit{Colb.AI}.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.42\textwidth}
+            \textbf{No funcionales:}
+            \vspace{0.15cm}
+            \begin{itemize}
+                \footnotesize
+                \item \textbf{Trazabilidad:} estado, memoria y normativas de los agentes en texto plano bajo control de versiones.
+                \item \textbf{Integración CLI:} compatible con ClaudeCode y OpenCode via MCP, hooks y skills.
+                \item \textbf{Modularidad:} roles (\textit{prompts} y \textit{skills}) modulares para permitir futuras expansiones.
+            \end{itemize}
         \end{column}
     \end{columns}
 \end{frame}
@@ -268,12 +300,28 @@
 \end{frame}
 
 % ============================================================
+% SLIDE 7b: MECANISMOS DE EXTENSIBILIDAD CLI
+% ============================================================
+\begin{frame}{Mecanismos de extensibilidad CLI}
+    \center
+    \vfill
+    \begin{tabular}{lp{0.70\textwidth}}
+        \toprule
+        \textbf{Skills} & Documentos Markdown que el agente lee bajo demanda para guiar su comportamiento en tareas específicas. \\[0.4cm]
+        \textbf{Hooks}  & Comandos ejecutados automáticamente en eventos del ciclo de vida (p.ej.\ \texttt{SessionStart}). \\[0.4cm]
+        \textbf{MCP}    & Servidores que exponen herramientas adicionales al agente vía el protocolo \textit{Model Context Protocol}. \\
+        \bottomrule
+    \end{tabular}
+    \vfill
+\end{frame}
+
+% ============================================================
 % SLIDE 8: LA DIFERENCIA: COLBPOWERS
 % ============================================================
 \begin{frame}{La diferencia: \textit{colbPowers}}
+    \vspace{-0.7cm}
     \textit{superpowers} ofrece la arquitectura base (orquestador + subagentes vía skills). \textbf{colbPowers} añade:
 
-    \vspace{0.2cm}
     \begin{columns}[T]
         \begin{column}{0.48\textwidth}
             \begin{block}{Contexto persistente entre sesiones}
@@ -288,17 +336,18 @@
             \end{block}
         \end{column}
         \begin{column}{0.48\textwidth}
-            \begin{block}{Flujo SDD garantizado}
+            \begin{block}{Flujo SDD}
                 \footnotesize
-                Skill \textit{using-colbPowers} inyectada en \texttt{SessionStart}: las reglas de orquestación están activas \textbf{desde el primer mensaje}, sin depender de que el desarrollador las invoque.
+                Skill \textit{using-colbPowers} (adaptación de \textit{using-superpowers}) inyectada vía hook \texttt{SessionStart}: las reglas SDD activas \textbf{desde el primer mensaje}.
             \end{block}
             \vspace{0.2cm}
             \begin{block}{Subagentes aislados}
                 \footnotesize
-                Implementador y revisor arrancan sin acceso al historial de conversación: solo ven el \texttt{design.md} explícito, eliminando la deriva conversacional.
+                Mecanismo de \textit{superpowers}; arrancan sin acceso al historial de conversación, solo ven el contexto que el orquestador les proporciona explícitamente..
             \end{block}
         \end{column}
     \end{columns}
+    \vspace{0.1cm}
 \end{frame}
 
 % ============================================================
@@ -317,7 +366,7 @@
             \centering\textbf{Ambiental}
             \rule{\linewidth}{0.4pt}\\[0.2cm]
             \footnotesize
-            Consumo inicial elevado, pero mejor documentado. La metodología SDD genera documentación que reduce el uso posterior de IA.\\[0.3cm]
+            Consumo inicial elevado (sobrecoste estructural \textbf{$\times$2,2--$\times$4,5} respecto al baseline), pero genera documentación que reduce el uso posterior de IA.\\[0.3cm]
             Los tests de prueba reducen la cantidad de \textit{prompts} para solucionar errores inesperados.
         \end{column}
         \begin{column}{0.32\textwidth}
@@ -352,12 +401,10 @@
             \vspace{0.3cm}
             Tecnologías utilizadas:
             \begin{itemize}
-                \item \textbf{FFmpeg} -- compresión de audio y cálculo de hash
-                \item \textbf{Azure Speech-to-Text} -- transcripción
-                \item \textbf{Azure Blob Storage} -- caché de resultados
+                \item \textbf{FFmpeg} -- compresión y hash SHA-256 (evita re-transcripciones duplicadas)
+                \item \textbf{Azure Speech-to-Text} -- transcripción con diarización (hasta 5 hablantes)
+                \item \textbf{Azure Blob Storage} -- caché de resultados por hash
             \end{itemize}
-            \vspace{0.3cm}
-            El hash permite reutilizar transcripciones previas evitando llamadas repetidas a la API.
         \end{column}
         \begin{column}{0.57\textwidth}
             \begin{columns}
@@ -429,17 +476,20 @@
 % SLIDE 16: SPEC-DRIVEN DEVELOPMENT – PART 1
 % ============================================================
 \begin{frame}{Spec-Driven Development -- \textit{colbPowers}}
+    Compatible con \textbf{OpenCode} y \textbf{ClaudeCode} via hooks, skills y MCP.
+    \vspace{0.2cm}
     \begin{columns}[T]
-        \begin{column}{0.50\textwidth}
-            Expansión de \textit{superpowers} $\rightarrow$ \textbf{colbPowers}:
+        \begin{column}{0.48\textwidth}
+            \textbf{Expansión de \textit{superpowers}:}
             \vspace{0.2cm}
             \begin{itemize}
                 \item Adaptar skills existentes al flujo SDD
                 \item Añadir \texttt{constitution.md} + \texttt{features.md}
                 \item Skills \textit{defining-constitution} y \textit{defining-features}
             \end{itemize}
-            \vspace{0.3cm}
-            \textbf{Estructura del repositorio:}\\[0.2cm]
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \textbf{Estructura del repositorio:}\\[0.3cm]
             \footnotesize\ttfamily
             .specs/memory/\\
             \hspace{0.4cm}+-- constitution.md\\
@@ -447,24 +497,6 @@
             \hspace{0.4cm}+-- docs/\\
             \hspace{0.8cm}+-- specs/\;\;{\scriptsize\rmfamily$\leftarrow$ diseño}\\
             \hspace{0.8cm}+-- plans/\;\;{\scriptsize\rmfamily$\leftarrow$ tareas}\normalfont
-        \end{column}
-        \begin{column}{0.47\textwidth}
-            \normalsize
-            Compatible con \textbf{OpenCode} y \textbf{ClaudeCode}:
-            \vspace{0.2cm}
-            \begin{columns}[T]
-                \begin{column}{0.50\textwidth}
-                    \begin{figure}
-                        \includegraphics[width=\linewidth, keepaspectratio]{imagenes/ClaudeCodeIcon.png}
-                    \end{figure}
-                \end{column}
-                \begin{column}{0.50\textwidth}
-                    \begin{figure}
-                        \includegraphics[width=\linewidth, keepaspectratio]{imagenes/OpenCodeIcon.png}
-                    \end{figure}
-                \end{column}
-            \end{columns}
-            \vspace{0.2cm}
         \end{column}
     \end{columns}
 \end{frame}
@@ -516,29 +548,17 @@
 \end{frame}
 
 % ============================================================
-% SLIDE 20: METODOLOGÍA – PARTE 1
+% SLIDE 20: METODOLOGÍA – LOS CASOS
 % ============================================================
-\begin{frame}{Metodología -- Parte 1}
+\begin{frame}{Metodología -- Los casos}
     \begin{columns}[T]
-        \begin{column}{0.48\textwidth}
-            \begin{block}{Análisis estadístico}
-                \footnotesize
-                \textit{T de Welch} (no asume varianza similar) y \textbf{g de Hedges} (adecuada para n=3 muestras pequeñas).
-            \end{block}
-            \vspace{0.3cm}
-            \begin{block}{Configuraciones}
-                \footnotesize
-                \textbf{Baseline}: CLI sin ningún plugin.\\
-                \textbf{SDD}: colbPowers + code-review-graph.\\[0.2cm]
-                Probado con \textbf{Opencode} (Deepseek-V4-Flash) y \textbf{Claudecode} (Haiku 4.5).
-            \end{block}
-        \end{column}
         \begin{column}{0.48\textwidth}
             \begin{block}{Caso 1 -- Repo existente (DCM)}
                 \footnotesize
                 Eliminamos funcionalidades de un repositorio de \textit{colb.AI}. Se deben reimplementar en Flutter coordinando llamadas a API e interacción con base de datos.
             \end{block}
-            \vspace{0.3cm}
+        \end{column}
+        \begin{column}{0.48\textwidth}
             \begin{block}{Caso 2 -- Proyecto nuevo}
                 \footnotesize
                 Implementamos desde cero un proyecto Python para visualizar el funcionamiento de diversos algoritmos de clasificación.
@@ -548,15 +568,15 @@
 \end{frame}
 
 % ============================================================
-% SLIDE 21: METODOLOGÍA – PARTE 2
+% SLIDE 21: METODOLOGÍA – MÉTRICAS DE CALIDAD
 % ============================================================
-\begin{frame}{Metodología -- Parte 2: métricas de calidad}
+\begin{frame}{Metodología -- Métricas de calidad}
     \textbf{Complejidad ciclomática} (McCabe):
     \begin{equation}
         \mathcal{CC}(G) = |E| - |V| + 2p
     \end{equation}
 
-    \vspace{0.3cm}
+    \vspace{0.1cm}
     \textbf{Índice de mantenibilidad} (Halstead + CC):
     \begin{equation}
         V_H = (N_1 + N_2)\log_2(\eta_1 + \eta_2)
@@ -564,6 +584,33 @@
     \begin{equation}
         MI = \max\!\left(0,\;\frac{171 - 5{,}2\ln(V_H) - 0{,}23\,\mathcal{CC} - 16{,}2\ln(LoC)}{171} \times 100\right)
     \end{equation}
+    \vspace{0.2cm}
+    \footnotesize
+    \textbf{Umbrales de referencia:}\;
+    CC $\leq 10$ \textrightarrow{} módulo simple;\quad
+    MI $< 20$ \textrightarrow{} código difícil de mantener.
+\end{frame}
+
+% ============================================================
+% SLIDE 21b: METODOLOGÍA – CONFIGURACIONES Y ANÁLISIS ESTADÍSTICO
+% ============================================================
+\begin{frame}{Metodología -- Configuraciones y análisis estadístico}
+    \begin{columns}[T]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Configuraciones}
+                \footnotesize
+                \textbf{Baseline}: CLI sin ningún plugin.\\
+                \textbf{SDD}: colbPowers + code-review-graph.\\[0.2cm]
+                Probado con \textbf{Opencode} (Deepseek-V4-Flash) y \textbf{Claudecode} (Haiku 4.5).
+            \end{block}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Análisis estadístico}
+                \footnotesize
+                \textit{T de Welch} (no asume varianza similar) y \textbf{g de Hedges} (adecuada para n=3 muestras pequeñas).
+            \end{block}
+        \end{column}
+    \end{columns}
 \end{frame}
 
 % ============================================================
@@ -682,22 +729,55 @@
 \end{frame}
 
 % ============================================================
-% SLIDE 29: CONCLUSIONES
+% SLIDE 29: CONCLUSIONES – CUMPLIMIENTO DE OBJETIVOS
 % ============================================================
-\begin{frame}{Conclusiones}
-    \textbf{Resultados experimentales:}
+\begin{frame}{Conclusiones -- Cumplimiento de objetivos}
+    \vspace{-0.5cm}
+    \begin{columns}[T]
+        \begin{column}{0.56\textwidth}
+            \textbf{Requisitos funcionales:}
+            \vspace{0.1cm}
+            \begin{itemize}
+                \footnotesize
+                \item Gestión de reglas y registro de funcionalidades (\texttt{constitution.md}, \texttt{features.md}, \texttt{spec.md}, \texttt{plan.md}).
+                \item Plan de tareas granulares generado en la fase de planificación del flujo SDD.
+                \item[*] Auditoría autónoma cubierta, pero no determinista: en un experimento el orquestador omitió el subagente revisor.
+                \item Módulo de transcripciones $\rightarrow$ plan estructurado con búsqueda web automática.
+                \item Módulo de documentación post-reunión en formato \textit{Colb.AI}.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.40\textwidth}
+            \textbf{Requisitos no funcionales:}
+            \vspace{0.1cm}
+            \begin{itemize}
+                \footnotesize
+                \item Trazabilidad: todos los artefactos en texto plano versionados en Git.
+                \item Integración CLI: ClaudeCode y OpenCode validados experimentalmente.
+                \item Modularidad: subagentes, módulos y skills independientes.
+            \end{itemize}
+            \vspace{0.2cm}
+            \footnotesize\textit{Reducción del \textit{vendor lock-in}: implementación propia para cada módulo con dependencia comercial.}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ============================================================
+% SLIDE 29b: CONCLUSIONES – RESULTADOS EXPERIMENTALES
+% ============================================================
+\begin{frame}{Conclusiones -- Resultados experimentales}
+    \textbf{Resultados mixtos:}
     \vspace{0.1cm}
     \begin{itemize}
-        \item \textbf{Caso 2 (proyecto nuevo) con OpenCode}: $-$27\% complejidad ciclomática, $+$15\% índice de mantenibilidad ($p < 0{,}05$, efecto grande).
-        \vspace{0.1cm}
-        \item \textbf{Caso 1 (repo existente)}: mayor complejidad ciclomática con colbPowers; sin mejora neta en mantenibilidad. Los agentes apenas invocaron \textit{code-review-graph}.
-        \vspace{0.1cm}
-        \item \textbf{Resultado inesperado:} con colbPowers activo, las diferencias de calidad entre OpenCode y ClaudeCode desaparecen estadísticamente --- el flujo SDD \textbf{homogeneiza} la calidad con independencia del asistente.
-        \vspace{0.1cm}
-        \item \textbf{Sobrecoste de tokens:} $\times$2,2 -- $\times$4,5 respecto al baseline, constante en todos los experimentos.
+        \item \textbf{Caso 2 (proyecto nuevo) con OpenCode}: $-$27\% complejidad ciclomática, $+$15\% índice de mantenibilidad ($p < 0{,}05$, efecto grande). \textcolor{green!70!black}{Hipótesis confirmada.}
+        \vspace{0.05cm}
+        \item \textbf{Caso 2 con ClaudeCode}: variaciones no significativas ($p > 0{,}5$); ClaudeCode ya produce código de mayor calidad en baseline.
+        \vspace{0.05cm}
+        \item \textbf{Caso 1 (repo existente)}: patrón invertido --- mayor complejidad ciclomática con colbPowers; sin mejora neta en mantenibilidad. Los agentes apenas invocaron \textit{code-review-graph}.
+        \vspace{0.05cm}
+        \item \textbf{Sobrecoste de tokens:} $\times$2,2 -- $\times$4,5 respecto al baseline, constante e independiente del resultado.
     \end{itemize}
-    \vspace{0.15cm}
-    En producción en \textit{Colb.AI} la valoración del sistema ha sido \textbf{positiva} desde su adopción.
+    \vspace{0.1cm}
+    \footnotesize En producción en \textit{Colb.AI} la valoración ha sido \textbf{positiva}: los modelos de producción son más capaces que los experimentales y los documentos de contexto reales tienen mayor calidad y exhaustividad.
 \end{frame}
 
 % ============================================================
