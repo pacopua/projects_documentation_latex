@@ -11,6 +11,13 @@
 \setbeamercolor{palette tertiary}{bg=MyBlue!60!black,fg=white}
 \setbeamerfont{caption}{size=\footnotesize}
 
+\usepackage[spanish,es-noindentfirst]{babel}
+\addto\captionsspanish{
+  \renewcommand\spanishtablename{Tabla}
+}
+
+\usepackage[skip=2pt]{caption}
+
 % Packages
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
@@ -88,6 +95,7 @@
 % SLIDE 3: EL PROBLEMA A RESOLVER
 % ============================================================
 \begin{frame}{El problema a resolver}
+    \vspace{-0.8cm}
     \begin{columns}[T]
         \begin{column}{0.38\textwidth}
             \vspace{0.3cm}
@@ -104,27 +112,13 @@
             \footnotesize\textcolor{gray}{\textbf{44\%} de los programas generados con Copilot contienen vulnerabilidades de seguridad (Pearce et al., 2022).}
         \end{column}
         \begin{column}{0.58\textwidth}
-            \centering
-            \vspace{0.2cm}
-            \begin{tikzpicture}[
-                node distance=0.8cm and 0.9cm,
-                box/.style={rectangle, draw=MyBlue, fill=MyBlue, text=white,
-                            minimum width=2.1cm, minimum height=0.75cm,
-                            font=\small, align=center, rounded corners=2pt},
-                arr/.style={-{Stealth[length=5pt]}, gray!70, line width=2.5pt, rounded corners=5pt}
-            ]
-                \node[box] (prompt) {Prompt\\impulsivo};
-                \node[box, below right=of prompt] (codigo) {Código sin\\estructura};
-                \node[box, below left=of codigo] (bugs) {Bugs};
-                \node[box, left=1.5cm of bugs] (parche) {Parche\\rápido};
-                \node[box, above left=of parche] (deuda) {Deuda\\técnica};
-
-                \draw[arr] (deuda.north) -- ++(0,0.6) -| (prompt.west);
-                \draw[arr] (prompt.east) -- ++(0.5,0) |- (codigo.north);
-                \draw[arr] (codigo.south) -- ++(0,-0.3) -| (bugs.east);
-                \draw[arr] (bugs.west) -- (parche.east);
-                \draw[arr] (parche.north) -- (deuda.south);
-            \end{tikzpicture}
+            \center
+            \vfill
+            \begin{figure}[p]
+                \includegraphics[width=1\textwidth, keepaspectratio]{imagenes/BucleUsoIAIncorrecto.png}
+                \caption{\footnotesize Ciclo vicioso con el uso de IA}
+            \end{figure}
+            \vfill
         \end{column}
     \end{columns}
 \end{frame}
@@ -150,7 +144,11 @@
         \end{column}
         \begin{column}{0.57\textwidth}
             \begin{figure}
-                \includegraphics[width=0.7\linewidth, keepaspectratio]{imagenes/HumanInTheLoop_AND_SpecDrivenDevelopment.png}
+                \centering
+                \includegraphics[width=0.48\linewidth, keepaspectratio]{imagenes/Human_in_the_loop.png}
+                \hfill
+                \includegraphics[width=0.48\linewidth, keepaspectratio]{imagenes/SpecDrivenDevelopment.png}
+                \caption{Principios base: el humano valida cada output de la IA sobre documentación que precede al código}
             \end{figure}
         \end{column}
     \end{columns}
@@ -293,9 +291,11 @@
 % SLIDE 7: DISEÑO SIMPLIFICADO DE LA IMPLEMENTACIÓN
 % ============================================================
 \begin{frame}{Diseño simplificado de la implementación}
+    \vspace{-0.4cm}
     \begin{figure}
         \centering
         \includegraphics[width=0.92\linewidth, keepaspectratio]{imagenes/FlujoCompletoSimplificado.png}
+        \caption{Flujo completo simplificado del sistema}
     \end{figure}
 \end{frame}
 
@@ -305,13 +305,16 @@
 \begin{frame}{Mecanismos de extensibilidad CLI}
     \center
     \vfill
-    \begin{tabular}{lp{0.70\textwidth}}
-        \toprule
-        \textbf{Skills} & Documentos Markdown que el agente lee bajo demanda para guiar su comportamiento en tareas específicas. \\[0.4cm]
-        \textbf{Hooks}  & Comandos ejecutados automáticamente en eventos del ciclo de vida (p.ej.\ \texttt{SessionStart}). \\[0.4cm]
-        \textbf{MCP}    & Servidores que exponen herramientas adicionales al agente vía el protocolo \textit{Model Context Protocol}. \\
-        \bottomrule
-    \end{tabular}
+    \begin{table}
+        \begin{tabular}{lp{0.70\textwidth}}
+            \toprule
+            \textbf{Skills} & Documentos Markdown que el agente lee bajo demanda para guiar su comportamiento en tareas específicas. \\[0.4cm]
+            \textbf{Hooks}  & Comandos ejecutados automáticamente en eventos del ciclo de vida (p.ej.\ \texttt{SessionStart}). \\[0.4cm]
+            \textbf{MCP}    & Servidores que exponen herramientas adicionales al agente vía el protocolo \textit{Model Context Protocol}. \\
+            \bottomrule
+        \end{tabular}
+        \caption{Definición de conceptos relevantes de los asistentes CLI}
+    \end{table}
     \vfill
 \end{frame}
 
@@ -421,6 +424,7 @@
             \end{columns}
             \begin{figure}
                 \includegraphics[width=\linewidth, keepaspectratio]{imagenes/Transcription System.png}
+                \caption{\footnotesize Arquitectura del sistema de transcripción}
             \end{figure}
         \end{column}
     \end{columns}
@@ -505,10 +509,10 @@
 % SLIDE 17: SPEC-DRIVEN DEVELOPMENT – PART 2
 % ============================================================
 \begin{frame}{Spec-Driven Development -- Flujo de \textit{colbPowers}}
-    \vspace{-0.5cm}
+    \vspace{-0.9cm}
     \begin{figure}
         \centering
-        \includegraphics[width=0.82\linewidth, keepaspectratio]{imagenes/JustColbPowers.png}
+        \includegraphics[width=0.78\linewidth, keepaspectratio]{imagenes/JustColbPowers.png}
         \caption{Flujo completo de colbPowers: desde la verificación del estado hasta la ejecución con subagentes}
     \end{figure}
 \end{frame}
@@ -516,19 +520,22 @@
 % ============================================================
 % SLIDE 18: SPEC-DRIVEN DEVELOPMENT – PART 3
 % ============================================================
-\begin{frame}{Spec-Driven Development -- Parte 3}
+\begin{frame}{Spec-Driven Development -- Herramientas extensibilidad}
     \begin{columns}[T]
-        \begin{column}{0.62\textwidth}
-            \begin{figure}
-                \includegraphics[width=\linewidth, keepaspectratio]{imagenes/code_review_graph_OnlyTheGraph.jpg}
-            \end{figure}
-        \end{column}
-        \begin{column}{0.35\textwidth}
+        \begin{column}{0.3\textwidth}
             \textbf{code-review-graph:}\\[0.3cm]
             Herramienta MCP para facilitar a los asistentes de programación la exploración del repositorio.
-            \vspace{0.3cm}
+        \end{column}
+        \begin{column}{0.55\textwidth}
+            \begin{figure}
+                \includegraphics[width=\linewidth, keepaspectratio]{imagenes/code_review_graph_OnlyTheGraph.jpg}
+                \caption{\footnotesize Grafo de conocimiento del repositorio}
+            \end{figure}
+        \end{column}
+        \begin{column}{0.15\textwidth}
             \begin{figure}
                 \includegraphics[width=\linewidth, keepaspectratio]{imagenes/code_review_graph_NodeTypes.png}
+                \caption{\footnotesize Tipos de nodo}
             \end{figure}
         \end{column}
     \end{columns}
@@ -571,24 +578,33 @@
 % SLIDE 21: METODOLOGÍA – MÉTRICAS DE CALIDAD
 % ============================================================
 \begin{frame}{Metodología -- Métricas de calidad}
+    \vspace{-0.5cm}
     \textbf{Complejidad ciclomática} (McCabe):
-    \begin{equation}
+    \begin{equation*}
         \mathcal{CC}(G) = |E| - |V| + 2p
-    \end{equation}
+    \end{equation*}
+    \vspace{-0.35cm}
+    {\footnotesize\color{gray}
+    \begin{itemize}\setlength{\itemsep}{1pt}
+        \item $G$: grafo de flujo de control de la función (nodos\,=\,bloques básicos, aristas\,=\,saltos de control)
+        \item $p$: Componentes conexas del grafo.
+    \end{itemize}}
 
     \vspace{0.1cm}
     \textbf{Índice de mantenibilidad} (Halstead + CC):
-    \begin{equation}
+    \begin{equation*}
         V_H = (N_1 + N_2)\log_2(\eta_1 + \eta_2)
-    \end{equation}
-    \begin{equation}
+    \end{equation*}
+    \vspace{-0.35cm}
+    {\footnotesize\color{gray}
+    \begin{itemize}\setlength{\itemsep}{1pt}
+        \item $N_1, N_2$: ocurrencias \emph{totales} de operadores y operandos en el código
+        \item $\eta_1, \eta_2$: número de operadores y operandos \emph{distintos}
+    \end{itemize}}
+    \vspace{-0.4cm}
+    \begin{equation*}
         MI = \max\!\left(0,\;\frac{171 - 5{,}2\ln(V_H) - 0{,}23\,\mathcal{CC} - 16{,}2\ln(LoC)}{171} \times 100\right)
-    \end{equation}
-    \vspace{0.2cm}
-    \footnotesize
-    \textbf{Umbrales de referencia:}\;
-    CC $\leq 10$ \textrightarrow{} módulo simple;\quad
-    MI $< 20$ \textrightarrow{} código difícil de mantener.
+    \end{equation*}
 \end{frame}
 
 % ============================================================
@@ -630,7 +646,7 @@
 \begin{frame}{Calidad -- efecto del plugin}
     \begin{figure}
         \centering
-        \includegraphics[width=0.90\linewidth, keepaspectratio]{graficos/comparisons/08_delta_calidad.png}
+        \includegraphics[width=0.70\linewidth, keepaspectratio]{graficos/comparisons/08_delta_calidad.png}
         \caption{Efecto del plugin (delta = plugin $-$ baseline)}
     \end{figure}
 \end{frame}
@@ -639,80 +655,68 @@
 % SLIDE 24: CASO 1 – CON Y SIN PLUGIN
 % ============================================================
 \begin{frame}{Caso 1 -- Con y sin plugin}
-    \begin{columns}[T]
-        \begin{column}{0.49\textwidth}
-            \begin{figure}
-                \includegraphics[width=\linewidth, keepaspectratio]{graficos/ttest_analisis/results_cpbl_bars_Claudecode_-_Repo_Existente.png}
-                \caption{Claudecode -- Repo Existente}
-            \end{figure}
-        \end{column}
-        \begin{column}{0.49\textwidth}
-            \begin{figure}
-                \includegraphics[width=\linewidth, keepaspectratio]{graficos/ttest_analisis/results_cpbl_bars_Opencode_-_Repo_Existente.png}
-                \caption{Opencode -- Repo Existente}
-            \end{figure}
-        \end{column}
-    \end{columns}
+    \vspace{-0.35cm}
+    \begin{figure}
+        \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_cpbl_bars_Claudecode_-_Repo_Existente.png}
+        \caption{Claudecode -- Repo Existente}
+    \end{figure}
+
+    \begin{figure}
+        \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_cpbl_bars_Opencode_-_Repo_Existente.png}
+        \caption{Opencode -- Repo Existente}
+    \end{figure}
+
 \end{frame}
 
 % ============================================================
 % SLIDE 25: CASO 1 – OPENCODE VS CLAUDECODE
 % ============================================================
 \begin{frame}{Caso 1 -- Opencode vs.\ Claudecode}
-    \begin{columns}[T]
-        \begin{column}{0.49\textwidth}
-            \begin{figure}
-                \includegraphics[width=\linewidth, keepaspectratio]{graficos/ttest_analisis/results_occc_bars_baseline_-_Repo_Existente.png}
-                \caption{Baseline -- Repo Existente}
-            \end{figure}
-        \end{column}
-        \begin{column}{0.49\textwidth}
-            \begin{figure}
-                \includegraphics[width=\linewidth, keepaspectratio]{graficos/ttest_analisis/results_occc_bars_colbPowers_-_Repo_Existente.png}
-                \caption{colbPowers -- Repo Existente}
-            \end{figure}
-        \end{column}
-    \end{columns}
+    \vspace{-0.35cm}
+    \begin{figure}
+        \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_occc_bars_baseline_-_Repo_Existente.png}
+        \caption{Baseline -- Repo Existente}
+    \end{figure}
+
+    \begin{figure}
+        \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_occc_bars_colbPowers_-_Repo_Existente.png}
+        \caption{colbPowers -- Repo Existente}
+    \end{figure}
+
 \end{frame}
 
 % ============================================================
 % SLIDE 26: CASO 2 – CON Y SIN PLUGIN
 % ============================================================
 \begin{frame}{Caso 2 -- Con y sin plugin}
-    \begin{columns}[T]
-        \begin{column}{0.49\textwidth}
-            \begin{figure}
-                \includegraphics[width=\linewidth, keepaspectratio]{graficos/ttest_analisis/results_cpbl_bars_Claudecode_-_ClassificationVisu.png}
-                \caption{Claudecode -- ClassificationVisu}
-            \end{figure}
-        \end{column}
-        \begin{column}{0.49\textwidth}
-            \begin{figure}
-                \includegraphics[width=\linewidth, keepaspectratio]{graficos/ttest_analisis/results_cpbl_bars_Opencode_-_ClassificationVisu.png}
-                \caption{Opencode -- ClassificationVisu}
-            \end{figure}
-        \end{column}
-    \end{columns}
+    \vspace{-0.35cm}
+    \begin{figure}
+        \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_cpbl_bars_Claudecode_-_ClassificationVisu.png}
+        \caption{Claudecode -- ClassificationVisu}
+    \end{figure}
+
+    \begin{figure}
+        \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_cpbl_bars_Opencode_-_ClassificationVisu.png}
+        \caption{Opencode -- ClassificationVisu}
+    \end{figure}
+
 \end{frame}
 
 % ============================================================
 % SLIDE 27: CASO 2 – OPENCODE VS CLAUDECODE
 % ============================================================
 \begin{frame}{Caso 2 -- Opencode vs.\ Claudecode}
-    \begin{columns}[T]
-        \begin{column}{0.49\textwidth}
-            \begin{figure}
-                \includegraphics[width=\linewidth, keepaspectratio]{graficos/ttest_analisis/results_occc_bars_baseline_-_ClassificationVisu.png}
-                \caption{Baseline -- ClassificationVisu}
-            \end{figure}
-        \end{column}
-        \begin{column}{0.49\textwidth}
-            \begin{figure}
-                \includegraphics[width=\linewidth, keepaspectratio]{graficos/ttest_analisis/results_occc_bars_colbPowers_-_ClassificationVisu.png}
-                \caption{colbPowers -- ClassificationVisu}
-            \end{figure}
-        \end{column}
-    \end{columns}
+    \vspace{-0.35cm}
+    \begin{figure}
+        \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_occc_bars_baseline_-_ClassificationVisu.png}
+        \caption{Baseline -- ClassificationVisu}
+    \end{figure}
+
+    \begin{figure}
+        \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_occc_bars_colbPowers_-_ClassificationVisu.png}
+        \caption{colbPowers -- ClassificationVisu}
+    \end{figure}
+
 \end{frame}
 
 % ============================================================
@@ -768,7 +772,7 @@
     \textbf{Resultados mixtos:}
     \vspace{0.1cm}
     \begin{itemize}
-        \item \textbf{Caso 2 (proyecto nuevo) con OpenCode}: $-$27\% complejidad ciclomática, $+$15\% índice de mantenibilidad ($p < 0{,}05$, efecto grande). \textcolor{green!70!black}{Hipótesis confirmada.}
+        \item \textbf{Caso 2 (proyecto nuevo) con OpenCode}: $-$27\% complejidad ciclomática, $+$15\% índice de mantenibilidad ($p < 0{,}05$, efecto grande).
         \vspace{0.05cm}
         \item \textbf{Caso 2 con ClaudeCode}: variaciones no significativas ($p > 0{,}5$); ClaudeCode ya produce código de mayor calidad en baseline.
         \vspace{0.05cm}
@@ -802,9 +806,9 @@
             \vspace{0.1cm}
             \begin{itemize}
                 \footnotesize
-                \item \textbf{Memoria acumulativa} entre reuniones mediante base de datos vectorial.
+                \item \textbf{Memoria acumulativa} entre reuniones para un mismo cliente.
                 \vspace{0.1cm}
-                \item \textbf{RAG} para estimaciones de presupuesto basadas en proyectos anteriores de \textit{Colb.AI}.
+                \item \textbf{RAG} para estimaciones de presupuesto y horas basadas en proyectos anteriores de \textit{Colb.AI}.
                 \vspace{0.1cm}
                 \item Integración con herramientas de gestión de proyectos (Linear, Jira): tareas generadas automáticamente desde el acta de reunión.
             \end{itemize}
