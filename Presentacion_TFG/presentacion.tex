@@ -27,6 +27,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{colortbl}
+\usepackage{comment}
 
 \usetikzlibrary{arrows.meta, shapes.geometric, positioning}
 
@@ -42,7 +43,7 @@
 % --- 2. CONFIGURATION FOR FIRST & LAST PAGE ---
 \newcommand{\FirstLastPageLayout}{
     \begin{tikzpicture}[remember picture,overlay]
-        \node[anchor=north, xshift=0cm, yshift=-0.3cm, inner sep=0pt] at (current page.north) {
+        \node[anchor=north, xshift=0cm, yshift=-1.2cm, inner sep=0pt] at (current page.north) {
             \begin{minipage}{0.10\paperwidth}
                 \centering
                 \includegraphics[width=\textwidth]{imagenes/Logo_UPC.svg.png}
@@ -57,13 +58,14 @@
         %    \textcolor{MyBlue}{\footnotesize Facultat d'Informàtica de Barcelona -- UPC}
         %};
     \end{tikzpicture}
+    \vspace{1.5cm}
 }
 
 % --- Info ---
 
 \title[Trabajo de Fin de Grado]{Sistema Inteligente de Asistencia al Desarrollo Estructurado y Seguimiento de Proyectos de software}
 \author{Adrià Cebrián Ruiz}
-\institute[FIB -- UPC]{Facultat d'Informàtica de Barcelona -- UPC}
+\institute[FIB -- UPC]{\scriptsize \textbf{Ponente:} David Garcia Soriano \\ Facultat d'Informàtica de Barcelona -- UPC}
 \date{30/06/2026}
 
 \begin{document}
@@ -312,41 +314,44 @@
 % ============================================================
 % SLIDE 8: LA DIFERENCIA: COLBPOWERS
 % ============================================================
-\begin{frame}{La diferencia: \textit{colbPowers}}
-    \vspace{-0.7cm}
-    \textit{superpowers} ofrece la arquitectura base (orquestador + subagentes vía skills). \textbf{colbPowers} añade:
-
-    \begin{columns}[T]
-        \begin{column}{0.48\textwidth}
-            \begin{block}{Contexto persistente entre sesiones}
-                \footnotesize
-                \texttt{constitution.md}: visión del proyecto, stack tecnológico y estándares no negociables.\\[0.2cm]
-                \texttt{features.md}: roadmap con criterios de aceptación por funcionalidad.
-            \end{block}
-            \vspace{0.2cm}
-            \begin{block}{Configuración interactiva}
-                \footnotesize
-                Skills \textit{defining-constitution} y \textit{defining-features}: el agente construye estos documentos junto al desarrollador en la primera sesión.
-            \end{block}
-        \end{column}
-        \begin{column}{0.48\textwidth}
-            \begin{block}{Flujo SDD}
-                \footnotesize
-                Skill \textit{using-colbPowers} (adaptación de \textit{using-superpowers}) inyectada vía hook \texttt{SessionStart}: las reglas SDD activas \textbf{desde el primer mensaje}.
-            \end{block}
-            \vspace{0.2cm}
-            \begin{block}{Subagentes aislados}
-                \footnotesize
-                Mecanismo de \textit{superpowers}; arrancan sin acceso al historial de conversación, solo ven el contexto que el orquestador les proporciona explícitamente..
-            \end{block}
-        \end{column}
-    \end{columns}
-    \vspace{0.1cm}
-\end{frame}
+\begin{comment}
+    \begin{frame}{La diferencia: \textit{colbPowers}}
+        \vspace{-0.7cm}
+        \textit{superpowers} ofrece la arquitectura base (orquestador + subagentes vía skills). \textbf{colbPowers} añade:
+    
+        \begin{columns}[T]
+            \begin{column}{0.48\textwidth}
+                \begin{block}{Contexto persistente entre sesiones}
+                    \footnotesize
+                    \texttt{constitution.md}: visión del proyecto, stack tecnológico y estándares no negociables.\\[0.2cm]
+                    \texttt{features.md}: roadmap con criterios de aceptación por funcionalidad.
+                \end{block}
+                \vspace{0.2cm}
+                \begin{block}{Configuración interactiva}
+                    \footnotesize
+                    Skills \textit{defining-constitution} y \textit{defining-features}: el agente construye estos documentos junto al desarrollador en la primera sesión.
+                \end{block}
+            \end{column}
+            \begin{column}{0.48\textwidth}
+                \begin{block}{Flujo SDD}
+                    \footnotesize
+                    Skill \textit{using-colbPowers} (adaptación de \textit{using-superpowers}) inyectada vía hook \texttt{SessionStart}: las reglas SDD activas \textbf{desde el primer mensaje}.
+                \end{block}
+                \vspace{0.2cm}
+                \begin{block}{Subagentes aislados}
+                    \footnotesize
+                    Mecanismo de \textit{superpowers}; arrancan sin acceso al historial de conversación, solo ven el contexto que el orquestador les proporciona explícitamente..
+                \end{block}
+            \end{column}
+        \end{columns}
+        \vspace{0.1cm}
+    \end{frame}
+\end{comment}
 
 % ============================================================
 % SLIDE 9: SOSTENIBILIDAD
 % ============================================================
+\begin{comment}
 \begin{frame}{Sostenibilidad}
     \begin{columns}[T]
         \begin{column}{0.32\textwidth}
@@ -372,7 +377,7 @@
         \end{column}
     \end{columns}
 \end{frame}
-
+\end{comment}
 % ============================================================
 % SLIDE 10: SECTION DIVIDER – IMPLEMENTACIÓN (no cuenta en el total)
 % ============================================================
@@ -435,13 +440,24 @@
 % ============================================================
 % SLIDE 13: TOMA DE REQUERIMIENTOS – IMPLEMENTACIÓN PROPIA
 % ============================================================
-\begin{frame}{Toma de requerimientos -- Implementación propia}
-    \vspace{-1cm}
+\begin{frame}{Toma de requerimientos -- Implementación propia parte 1}
+    \vfill
     \begin{figure}
         \centering
-        \includegraphics[width=0.75\linewidth, keepaspectratio]{imagenes/Requirements Intake System.png}
-        \caption{Flujo del sistema de toma de requerimientos}
+        \includegraphics[width=\linewidth, keepaspectratio]{imagenes/RequirementsIntakeSystem_Parte1.png}
+        \caption{Parte 1 de flujo del sistema de toma de requerimientos}
     \end{figure}
+    \vfill
+\end{frame}
+
+\begin{frame}{Toma de requerimientos -- Implementación propia parte 2}
+    \vfill
+    \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth, keepaspectratio]{imagenes/RequirementsIntakeSystem_Parte2.png}
+        \caption{Parte 2 de flujo del sistema de toma de requerimientos}
+    \end{figure}
+    \vfill
 \end{frame}
 
 % ============================================================
@@ -459,10 +475,10 @@
 % SLIDE 15: SEGUIMIENTO DE CLIENTE – IMPLEMENTACIÓN PROPIA
 % ============================================================
 \begin{frame}{Seguimiento de cliente -- Implementación propia}
-    \vspace{-0.5cm}
+    \vspace{-1cm}
     \begin{figure}
         \centering
-        \includegraphics[width=0.50\linewidth, keepaspectratio]{imagenes/SeguimientDelCliente.png}
+        \includegraphics[width=0.85\linewidth, keepaspectratio]{imagenes/SeguimientDelCliente.png}
         \caption{Flujo del sistema de seguimiento de cliente}
     \end{figure}
 \end{frame}
@@ -499,13 +515,26 @@
 % ============================================================
 % SLIDE 17: SPEC-DRIVEN DEVELOPMENT – PART 2
 % ============================================================
-\begin{frame}{Spec-Driven Development -- Flujo de \textit{colbPowers}}
+\begin{frame}{Spec-Driven Development -- Flujo de \textit{colbPowers} parte 1}
     \vspace{-0.9cm}
+    \vfill
     \begin{figure}
         \centering
-        \includegraphics[width=0.78\linewidth, keepaspectratio]{imagenes/JustColbPowers.png}
-        \caption{Flujo completo de colbPowers: desde la verificación del estado hasta la ejecución con subagentes}
+        \includegraphics[width=0.9\linewidth, keepaspectratio]{imagenes/JustColbPowers_Part1.png}
+        \caption{Parte 1 flujo completo de colbPowers}
     \end{figure}
+    \vfill
+\end{frame}
+
+\begin{frame}{Spec-Driven Development -- Flujo de \textit{colbPowers} parte 2}
+    \vspace{-0.9cm}
+    \vfill
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.65\linewidth, keepaspectratio]{imagenes/JustColbPowers_Part2.png}
+        \caption{Parte 2 flujo de colbPowers}
+    \end{figure}
+    \vfill
 \end{frame}
 
 % ============================================================
@@ -624,9 +653,10 @@
 % SLIDE 22: VISTA GENERAL
 % ============================================================
 \begin{frame}{Vista general}
+    \vspace{-0.4cm}
     \begin{figure}
         \centering
-        \includegraphics[width=0.90\linewidth, keepaspectratio]{graficos/01_calidad_codigo.png}
+        \includegraphics[width=0.65\linewidth, keepaspectratio]{graficos/comparisons/01_calidad_codigo.png}
         \caption{Métricas de calidad del código (con plugin vs.\ sin plugin)}
     \end{figure}
 \end{frame}
@@ -803,6 +833,36 @@
                 \vspace{0.1cm}
                 \item Integración con herramientas de gestión de proyectos (Linear, Jira): tareas generadas automáticamente desde el acta de reunión.
             \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% ============================================================
+% SLIDE 9: SOSTENIBILIDAD
+% ============================================================
+
+\begin{frame}{Sostenibilidad}
+    \begin{columns}[T]
+        \begin{column}{0.32\textwidth}
+            \centering\textbf{Económica}
+            \rule{\linewidth}{0.4pt}\\[0.2cm]
+            \footnotesize
+            Mayor inversión inicial, a cambio de un código mejor documentado. Reduce el tiempo que otros desarrolladores deben invertir en entender el código.\\[0.3cm]
+            La metodología fomenta la creación de tests de prueba, ahorrando costes de mantenimiento.
+        \end{column}
+        \begin{column}{0.32\textwidth}
+            \centering\textbf{Ambiental}
+            \rule{\linewidth}{0.4pt}\\[0.2cm]
+            \footnotesize
+            Consumo inicial elevado (sobrecoste estructural \textbf{$\times$2,2--$\times$4,5} respecto al baseline), pero genera documentación que reduce el uso posterior de IA.\\[0.3cm]
+            Los tests de prueba reducen la cantidad de \textit{prompts} para solucionar errores inesperados.
+        \end{column}
+        \begin{column}{0.32\textwidth}
+            \centering\textbf{Social}
+            \rule{\linewidth}{0.4pt}\\[0.2cm]
+            \footnotesize
+            La metodología Human-in-the-loop conlleva mayor involucra\-miento del desarrollador como profesional.\\[0.3cm]
+            La generación de documentación facilita la incorporación de talento nuevo en los proyectos.
         \end{column}
     \end{columns}
 \end{frame}
