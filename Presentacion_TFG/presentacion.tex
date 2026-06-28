@@ -152,11 +152,12 @@
             \vspace{0.15cm}
             \begin{itemize}
                 \footnotesize
-                \item Ingesta y gestión de reglas fundamentales del proyecto (pila tecnológica, estándares de código) y registro actualizado de características.
-                \item Interpretar funcionalidades de alto nivel y desglosarlas en un plan de tareas granulares y estructuradas.
-                \item Auditoría autónoma: código fuente generado vs.\ especificaciones documentadas.
-                \item Módulo de transcripciones $\rightarrow$ plan de implementación estructurado con búsqueda semántica web.
-                \item Módulo de documentación de seguimiento post-reunión en el formato de \textit{Colb.AI}.
+                \item Reglas fundamentales del proyecto y registro de funcionalidades a implementar.
+                \item Desglosar implementaciones en tareas granulares y estructuradas.
+                \item Código fuente generado sigue especificaciones documentadas.
+                \item Generación toma de requerimientos a partir de transcripción.
+                \item Capacidad de ingerir reuniones presenciales y online.
+                \item Módulo de seguimiento post-reunión.
             \end{itemize}
         \end{column}
         \begin{column}{0.42\textwidth}
@@ -165,7 +166,7 @@
             \begin{itemize}
                 \footnotesize
                 \item \textbf{Trazabilidad:} estado, memoria y normativas de los agentes en texto plano bajo control de versiones.
-                \item \textbf{Integración CLI:} compatible con ClaudeCode y OpenCode via MCP, hooks y skills.
+                \item \textbf{Integración CLI:} compatible con ClaudeCode y OpenCode usando MCPs, hooks y skills.
                 \item \textbf{Modularidad:} roles (\textit{prompts} y \textit{skills}) modulares para permitir futuras expansiones.
             \end{itemize}
         \end{column}
@@ -237,6 +238,25 @@
 \end{frame}
 
 % ============================================================
+% SLIDE 7b: MECANISMOS DE EXTENSIBILIDAD CLI
+% ============================================================
+\begin{frame}{Mecanismos de extensibilidad CLI}
+    \center
+    \vfill
+    \begin{table}
+        \begin{tabular}{lp{0.70\textwidth}}
+            \toprule
+            \textbf{Skills} & Documentos Markdown que el agente lee bajo demanda para guiar su comportamiento en tareas específicas. \\[0.4cm]
+            \textbf{Hooks}  & Comandos ejecutados automáticamente en eventos del ciclo de vida (p.ej.\ \texttt{SessionStart}). \\[0.4cm]
+            \textbf{MCP}    & Servidores que exponen herramientas adicionales al agente vía el protocolo \textit{Model Context Protocol}. \\
+            \bottomrule
+        \end{tabular}
+        \caption{Definición de conceptos relevantes de los asistentes CLI}
+    \end{table}
+    \vfill
+\end{frame}
+
+% ============================================================
 % SLIDE 6: ESTADO DEL ARTE – PARTE 2
 % ============================================================
 \begin{frame}{Estado del arte -- Toma de Req. y Seguimiento Cliente}
@@ -282,29 +302,11 @@
     \vspace{-0.4cm}
     \begin{figure}
         \centering
-        \includegraphics[width=0.92\linewidth, keepaspectratio]{imagenes/FlujoCompletoSimplificado.png}
+        \includegraphics[width=0.92\linewidth, keepaspectratio]{imagenes/SistemaSimplificado.png}
         \caption{Flujo completo simplificado del sistema}
     \end{figure}
 \end{frame}
 
-% ============================================================
-% SLIDE 7b: MECANISMOS DE EXTENSIBILIDAD CLI
-% ============================================================
-\begin{frame}{Mecanismos de extensibilidad CLI}
-    \center
-    \vfill
-    \begin{table}
-        \begin{tabular}{lp{0.70\textwidth}}
-            \toprule
-            \textbf{Skills} & Documentos Markdown que el agente lee bajo demanda para guiar su comportamiento en tareas específicas. \\[0.4cm]
-            \textbf{Hooks}  & Comandos ejecutados automáticamente en eventos del ciclo de vida (p.ej.\ \texttt{SessionStart}). \\[0.4cm]
-            \textbf{MCP}    & Servidores que exponen herramientas adicionales al agente vía el protocolo \textit{Model Context Protocol}. \\
-            \bottomrule
-        \end{tabular}
-        \caption{Definición de conceptos relevantes de los asistentes CLI}
-    \end{table}
-    \vfill
-\end{frame}
 
 % ============================================================
 % SLIDE 8: LA DIFERENCIA: COLBPOWERS
