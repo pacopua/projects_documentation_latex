@@ -127,31 +127,19 @@
 % SLIDE 4: PROPUESTA CONCEPTUAL
 % ============================================================
 \begin{frame}{Propuesta conceptual}
-    \begin{columns}[T]
-        \begin{column}{0.40\textwidth}
-            \textbf{Tres pilares principales:}
-            \begin{itemize}
-                \item Toma de requerimientos
-                \item Spec-Driven Development
-                \item Seguimiento del cliente
-            \end{itemize}
-            \vspace{0.4cm}
-            Construidos basándonos en los siguientes principios:
-            \begin{itemize}
-                \item \textit{Human-in-the-loop}
-                \item Documentación estructurada
-            \end{itemize}
-        \end{column}
-        \begin{column}{0.57\textwidth}
-            \begin{figure}
-                \centering
-                \includegraphics[width=0.48\linewidth, keepaspectratio]{imagenes/Human_in_the_loop.png}
-                \hfill
-                \includegraphics[width=0.48\linewidth, keepaspectratio]{imagenes/SpecDrivenDevelopment.png}
-                \caption{Principios base: el humano valida cada output de la IA sobre documentación que precede al código}
-            \end{figure}
-        \end{column}
-    \end{columns}
+    Construidos basándonos en los siguientes principios:
+    \begin{itemize}
+        \item \textit{Human-in-the-loop}
+        \item \textit{Spec-Driven Development}
+    \end{itemize}
+    \vspace{0.3cm}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.48\textwidth, keepaspectratio]{imagenes/Human_in_the_loop.png}
+        \hfill
+        \includegraphics[width=0.48\textwidth, keepaspectratio]{imagenes/SpecDrivenDevelopment.png}
+        \caption{Representación de los conceptos \textit{Human-in-the-loop} y \textit{Spec-Driven Development}}
+    \end{figure}
 \end{frame}
 
 % ============================================================
@@ -579,7 +567,7 @@
 % ============================================================
 \begin{frame}{Metodología -- Métricas de calidad}
     \vspace{-0.5cm}
-    \textbf{Complejidad ciclomática} (McCabe):
+    \textbf{Complejidad ciclomática} {\footnotesize\textcolor{gray}{(McCabe, 1976)}}:
     \begin{equation*}
         \mathcal{CC}(G) = |E| - |V| + 2p
     \end{equation*}
@@ -591,7 +579,7 @@
     \end{itemize}}
 
     \vspace{0.1cm}
-    \textbf{Índice de mantenibilidad} (Halstead + CC):
+    \textbf{Índice de mantenibilidad} {\footnotesize\textcolor{gray}{(Halstead, 1977; Oman \& Hagemeister, 1992)}}:
     \begin{equation*}
         V_H = (N_1 + N_2)\log_2(\eta_1 + \eta_2)
     \end{equation*}
