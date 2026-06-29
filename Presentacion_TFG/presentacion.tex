@@ -82,16 +82,18 @@
 % ============================================================
 % SLIDE 2: ÍNDICE
 % ============================================================
-\begin{frame}{Índice}
-    \begin{itemize}
-        \item El problema a resolver
-        \item Propuesta conceptual
-        \item Estado del arte
-        \item Diseño e implementación
-        \item Experimentos y resultados
-        \item Conclusiones
-    \end{itemize}
-\end{frame}
+\begin{comment}
+    \begin{frame}{Índice}
+        \begin{itemize}
+            \item El problema a resolver
+            \item Propuesta conceptual
+            \item Estado del arte
+            \item Diseño e implementación
+            \item Experimentos y resultados
+            \item Conclusiones
+        \end{itemize}
+    \end{frame}
+\end{comment}
 
 % ============================================================
 % SLIDE 3: EL PROBLEMA A RESOLVER
@@ -302,11 +304,13 @@
 % ============================================================
 \begin{frame}{Diseño simplificado de la implementación}
     \vspace{-0.4cm}
+    \vfill
     \begin{figure}
         \centering
         \includegraphics[width=0.92\linewidth, keepaspectratio]{imagenes/SistemaSimplificado.png}
         \caption{Flujo completo simplificado del sistema}
     \end{figure}
+    \vfill
 \end{frame}
 
 
@@ -648,28 +652,6 @@
     \end{columns}
 \end{frame}
 
-% ============================================================
-% SLIDE 22: VISTA GENERAL
-% ============================================================
-\begin{frame}{Vista general}
-    \vspace{-0.4cm}
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.65\linewidth, keepaspectratio]{graficos/comparisons/01_calidad_codigo.png}
-        \caption{Métricas de calidad del código (con plugin vs.\ sin plugin)}
-    \end{figure}
-\end{frame}
-
-% ============================================================
-% SLIDE 23: CALIDAD -- EFECTO DEL PLUGIN
-% ============================================================
-\begin{frame}{Calidad -- efecto del plugin}
-    \begin{figure}
-        \centering
-        \includegraphics[width=0.70\linewidth, keepaspectratio]{graficos/comparisons/08_delta_calidad.png}
-        \caption{Efecto del plugin (delta = plugin $-$ baseline)}
-    \end{figure}
-\end{frame}
 
 % ============================================================
 % SLIDE 24: CASO 1 – CON Y SIN PLUGIN
@@ -680,7 +662,7 @@
         \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_cpbl_bars_Claudecode_-_Repo_Existente.png}
         \caption{Claudecode -- Repo Existente}
     \end{figure}
-
+    
     \begin{figure}
         \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_cpbl_bars_Opencode_-_Repo_Existente.png}
         \caption{Opencode -- Repo Existente}
@@ -697,12 +679,12 @@
         \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_occc_bars_baseline_-_Repo_Existente.png}
         \caption{Baseline -- Repo Existente}
     \end{figure}
-
+    
     \begin{figure}
         \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_occc_bars_colbPowers_-_Repo_Existente.png}
         \caption{colbPowers -- Repo Existente}
     \end{figure}
-
+    
 \end{frame}
 
 % ============================================================
@@ -714,12 +696,12 @@
         \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_cpbl_bars_Claudecode_-_ClassificationVisu.png}
         \caption{Claudecode -- ClassificationVisu}
     \end{figure}
-
+    
     \begin{figure}
         \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_cpbl_bars_Opencode_-_ClassificationVisu.png}
         \caption{Opencode -- ClassificationVisu}
     \end{figure}
-
+    
 \end{frame}
 
 % ============================================================
@@ -731,12 +713,12 @@
         \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_occc_bars_baseline_-_ClassificationVisu.png}
         \caption{Baseline -- ClassificationVisu}
     \end{figure}
-
+    
     \begin{figure}
         \includegraphics[width=0.75\linewidth, keepaspectratio]{graficos/ttest_analisis/results_occc_bars_colbPowers_-_ClassificationVisu.png}
         \caption{colbPowers -- ClassificationVisu}
     \end{figure}
-
+    
 \end{frame}
 
 % ============================================================
@@ -837,10 +819,45 @@
 \end{frame}
 
 % ============================================================
+% FINAL PAGE
+% ============================================================
+\begin{frame}[plain,noframenumbering]
+    \centering
+    \vfill
+    \Huge {Gracias por vuestra atención}
+    \Large {¿Preguntas?}
+    \vfill
+\end{frame}
+
+
+% ============================================================
+% SLIDE 22: VISTA GENERAL
+% ============================================================
+\begin{frame}[noframenumbering]{Vista general}
+    \vspace{-0.4cm}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.65\linewidth, keepaspectratio]{graficos/comparisons/01_calidad_codigo.png}
+        \caption{Métricas de calidad del código (con plugin vs.\ sin plugin)}
+    \end{figure}
+\end{frame}
+
+% ============================================================
+% SLIDE 23: CALIDAD -- EFECTO DEL PLUGIN
+% ============================================================
+\begin{frame}[noframenumbering]{Calidad -- efecto del plugin}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.70\linewidth, keepaspectratio]{graficos/comparisons/08_delta_calidad.png}
+        \caption{Efecto del plugin (delta = plugin $-$ baseline)}
+    \end{figure}
+\end{frame}
+
+% ============================================================
 % SLIDE 9: SOSTENIBILIDAD
 % ============================================================
 
-\begin{frame}{Sostenibilidad}
+\begin{frame}[noframenumbering]{Sostenibilidad}
     \begin{columns}[T]
         \begin{column}{0.32\textwidth}
             \centering\textbf{Económica}
@@ -864,17 +881,6 @@
             La generación de documentación facilita la incorporación de talento nuevo en los proyectos.
         \end{column}
     \end{columns}
-\end{frame}
-
-% ============================================================
-% FINAL PAGE
-% ============================================================
-\begin{frame}[plain,noframenumbering]
-    \centering
-    \vfill
-    \Huge {Gracias por vuestra atención}
-    \Large {¿Preguntas?}
-    \vfil
 \end{frame}
 
 \end{document}
