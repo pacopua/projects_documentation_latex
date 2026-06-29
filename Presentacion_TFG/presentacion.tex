@@ -158,6 +158,7 @@
                 \footnotesize
                 \item Guiar el código fuente mediante una especificación formal con criterios de aceptación.
                 \item Desglosar implementaciones en subtareas atómicas y verificables.
+                \item Auditoría autónoma del código generado.
                 \item Procesar y transcribir reuniones en texto estructurado.
                 \item Extraer requisitos estructurados a partir de transcripciones.
                 \item Generar seguimiento post-reunión con acciones asignadas.
@@ -748,7 +749,8 @@
                 \item Gestión de reglas y registro de funcionalidades (\texttt{constitution.md}, \texttt{features.md}, \texttt{spec.md}, \texttt{plan.md}).
                 \item Plan de tareas granulares generado en la fase de planificación del flujo SDD.
                 \item[*] Auditoría autónoma cubierta, pero no determinista: en un experimento el orquestador omitió el subagente revisor.
-                \item Módulo de transcripciones $\rightarrow$ plan estructurado con búsqueda web automática.
+                \item Módulo de transcripción de reuniones en texto estructurado.
+                \item Extracción de requisitos estructurados con búsqueda web automática.
                 \item Módulo de documentación post-reunión en formato \textit{Colb.AI}.
             \end{itemize}
         \end{column}
@@ -811,8 +813,6 @@
                 \item \textbf{Memoria acumulativa} entre reuniones para un mismo cliente.
                 \vspace{0.1cm}
                 \item \textbf{RAG} para estimaciones de presupuesto y horas basadas en proyectos anteriores de \textit{Colb.AI}.
-                \vspace{0.1cm}
-                \item Integración con herramientas de gestión de proyectos (Linear, Jira): tareas generadas automáticamente desde el acta de reunión.
             \end{itemize}
         \end{column}
     \end{columns}
@@ -826,7 +826,7 @@
     \vfill
     \Huge {Gracias por vuestra atención}
     \Large {¿Preguntas?}
-    \vfill
+    \vfil
 \end{frame}
 
 
